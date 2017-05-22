@@ -30,9 +30,13 @@ group :test do
   gem 'rspec-given',  :require => false
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'ffaker'
+  gem 'fabrication'
   gem 'poltergeist'
-  gem "webmock"
-  gem "vcr"
+  gem 'launchy'
+  gem 'coderay'
+  gem "webmock", require: false
+  gem "vcr", require: false
 end
 
 group :development, :test do

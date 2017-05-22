@@ -25,6 +25,7 @@ config/database.yml
 .powrc
 .powenv
 .rvmrc
+/.byebug_history
 coverage/
 /.env
 

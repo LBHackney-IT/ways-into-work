@@ -1,0 +1,4 @@
+- flash.each do |name, msg|
+  - next unless msg.is_a?(String) && msg.present?
+  %div{:class => "alert alert-#{name} animated slideInDown"}
+    = content_tag :div, msg, :id => "flash_#{name}"
