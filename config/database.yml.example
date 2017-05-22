@@ -3,11 +3,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: app_development
+  database: ways_development
 
 test: &TEST
   <<: *defaults
-  database: app_test
+  database: ways_test
 
 cucumber:
   <<: *TEST
