@@ -1,0 +1,40 @@
+// Styleguide helpers
+
+.palette
+  +clearfix
+  margin-bottom: 1em
+  .color
+    width: 120px
+    height: 60px
+    margin-right: 1em
+    float: left
+    padding: 0.5em
+    text-align: center
+    &.base-accent-color
+      background-color: $base-accent-color
+      &.tint-half
+        background-color: tint($base-accent-color,50)
+      &.tint-quarter
+        background-color: tint($base-accent-color,75)
+      &.tint-tenth
+        background-color: tint($base-accent-color,90)
+      &.shade-half
+        background-color: shade($base-accent-color,50)
+        color: #fff
+      &.shade-quarter
+        background-color: shade($base-accent-color,75)
+        color: #fff
+      &.shade-tenth
+        background-color: shade($base-accent-color,90)
+        color: #fff
+
+    &.color-1
+      background-color: $color-1
+    &.color-2
+      background-color: $color-2
+    &.color-3
+      background-color: $color-3
+    &.color-4
+      background-color: $color-4
+    &.color-5
+      background-color: $color-5

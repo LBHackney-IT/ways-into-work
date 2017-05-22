@@ -1,0 +1,17 @@
+!!! 5
+%html{:lang => "en"}
+  %head
+    = render 'layouts/html_head'
+
+    %body
+      %header{:class => "site-header", :role => "banner"}
+        = render 'layouts/site_header'
+
+      %main{:class => "main", :id => "main", :role => "main"}
+        .container
+          = yield
+
+      %footer{:class => "site-footer", :role => "contentinfo"}
+        = render 'layouts/site_footer'
+
+

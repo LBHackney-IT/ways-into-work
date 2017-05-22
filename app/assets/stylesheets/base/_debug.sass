@@ -1,0 +1,97 @@
+// Colours 
+$orange: #EF884B
+$yellow: #FBD560
+$blue: #277FCD
+$white: #fff
+$black: #111
+$green: #6BC15E
+$fuschia: #DA54B7
+
+// Media query mixins 
+@mixin small()
+  +media($small-screen)
+    @content
+
+@mixin small-medium()
+  +media($small-medium-screen)
+    @content
+
+@mixin medium()
+  +media($medium-screen)
+    @content
+
+@mixin medium-large()
+  +media($medium-large-screen)
+    @content
+
+@mixin large()
+  +media($large-screen)
+    @content
+
+@mixin huge()
+  +media($huge-screen)
+    @content
+
+// Styles
+#debug
+  position: fixed
+  z-index: 10
+  bottom: 0
+  right: 0
+  width: 100px
+  height: 20px
+  text-align: center
+  font-size: 12px
+  line-height: 22px
+  color: $white
+  background: $orange
+  &:after
+    content: "Phone"
+
+  +small()
+    color: $black
+    background: $yellow
+    &:after
+      content: "small"
+
+  +small-medium()
+    color: $white
+    background: $green
+    &:after
+      content: "small-medium"
+
+  +medium()
+    color: $white
+    background: $blue
+    &:after
+      content: "medium"
+
+  +medium-large()
+    color: $white
+    background: $green
+    &:after
+      content: "medium-large"
+
+  +large()
+    color: $white
+    background: $black
+    &:after
+      content: "large"
+
+  +huge()
+    color: $white
+    background: $orange
+    &:after
+      content: "huge"
+
+#params
+  position: fixed
+  bottom: 0
+  left: 0
+  padding: 0 10px
+  height: 20px
+  text-align: center
+  font-size: 12px
+  line-height: 22px
+  color: $white
+  background: shade($orange,20)

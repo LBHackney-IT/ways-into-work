@@ -1,0 +1,13 @@
+defaults: &defaults
+  adapter: postgresql
+
+development:
+  <<: *defaults
+  database: app_development
+
+test: &TEST
+  <<: *defaults
+  database: app_test
+
+cucumber:
+  <<: *TEST
