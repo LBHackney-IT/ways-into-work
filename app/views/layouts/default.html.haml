@@ -3,15 +3,15 @@
   %head
     = render 'layouts/html_head'
 
-    %body
-      %header{:class => "site-header", :role => "banner"}
+  %body
+    %header{:class => "site-header section", :role => "banner"}
+      .container
         = render 'layouts/site_header'
 
-      %main{:class => "main", :id => "main", :role => "main"}
-        .container
-          = yield
+    %main{:class => "main section", :id => "main", :role => "main"}
+      .container
+        = yield
 
-      %footer{:class => "site-footer", :role => "contentinfo"}
+    %footer{:class => "site-footer section", :role => "contentinfo"}
+      .container
         = render 'layouts/site_footer'
-
-
