@@ -2,8 +2,7 @@
 %html{:lang => "en"}
   %head
     = render 'layouts/html_head'
-
-    %body
+    %body{class: page_class}
       %header{:class => "site-header", :role => "banner"}
         = render 'layouts/site_header'
 
