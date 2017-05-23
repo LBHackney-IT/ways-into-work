@@ -28,7 +28,8 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'rspec-given',  :require => false
-  gem 'rspec-rails'
+  gem 'rspec-rails', require: false
+  gem 'email_spec', require: false
   gem 'database_cleaner'
   gem 'ffaker'
   gem 'fabrication'

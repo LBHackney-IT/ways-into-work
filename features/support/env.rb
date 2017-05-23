@@ -5,6 +5,8 @@
 # files.
 
 require 'cucumber/rails'
+require "email_spec"
+require 'email_spec/cucumber'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 

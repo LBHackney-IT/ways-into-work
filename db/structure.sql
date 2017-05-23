@@ -95,7 +95,10 @@ CREATE TABLE user_logins (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     user_type character varying,
-    user_id bigint
+    user_id bigint,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone,
+    confirmation_sent_at timestamp without time zone
 );
 
 
@@ -165,6 +168,13 @@ ALTER TABLE ONLY user_logins
 
 
 --
+-- Name: index_user_logins_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_user_logins_on_confirmation_token ON user_logins USING btree (confirmation_token);
+
+
+--
 -- Name: index_user_logins_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -193,6 +203,7 @@ SET search_path TO "$user",public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20170522160426'),
-('20170522162706');
+('20170522162706'),
+('20170523104425');
 
 

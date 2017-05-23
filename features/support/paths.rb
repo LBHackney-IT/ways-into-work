@@ -11,6 +11,9 @@ module NavigationHelpers
     when /the advisor dashboard/
       advisor_cases_path
 
+    when /home page/
+      root_path
+
     else
       begin
         page_name =~ /the (.*) page/

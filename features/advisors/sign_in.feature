@@ -1,5 +1,5 @@
-Feature: Agent sign in
-  As an agent
+Feature: Advisor sign in
+  As an advisor
   I should be able to sign in
   So I can manage my case load
 
