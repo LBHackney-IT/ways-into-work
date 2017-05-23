@@ -4,9 +4,9 @@ gem 'rails', '5.1'
 
 # UI
 # gem 'draper'
-gem 'bitters'
-gem 'bourbon'
-gem 'neat'
+# gem 'bitters'
+# gem 'bourbon'
+# gem 'neat'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
