@@ -5,6 +5,7 @@ en:
     buttons:
       login: 'Log in'
       register: 'Register for the service'
+      sign_up: "Sign up"
       accept_terms: 'Accept and sign up'
     confirmations:
       confirmed: "Your email address has been successfully confirmed."

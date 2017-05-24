@@ -13,6 +13,8 @@ gem 'sass-rails'
 gem 'normalize-rails'
 gem 'devise'
 
+gem 'simple_form'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 

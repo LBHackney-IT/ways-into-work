@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     when "Advisor"
       :advisor_cases
     else
-      :root
+      :new_client
     end
   end
 end

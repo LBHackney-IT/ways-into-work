@@ -32,11 +32,6 @@ module EmailHelpers
     last_email_address || "example@example.com"
   end
 
-  def click_link_in_email_number(attrs={}, email = current_email)
-    link = links_in_email(email).uniq.select{|l| l =~ /#{Regexp.escape(attrs[:host])}/}[attrs[:position]-1]
-    visit request_uri(link)
-  end
-
   def has_link(email, link)
     expect(links_in_email(email).grep(link)).to be_present
   end
@@ -44,6 +39,14 @@ module EmailHelpers
 end
 
 World(EmailHelpers)
+
+When(/^I click the opt\-in email confirmation link$/) do
+  address = UserLogin.last.email
+  expect(unread_emails_for(address).size).to eq(1)
+  open_email(address)
+  visit request_uri(links_in_email(current_email).first)
+end
+
 
 #
 # Reset the e-mail queue within a scenario.
@@ -64,13 +67,6 @@ end
 
 Then(/^"(.*?)" receive an email asking to confirm address$/) do |address|
   expect(unread_emails_for(address).size).to eq(1)
-end
-
-Then(/^"(.*?)" should receive an email with service provider instructions$/) do |address|
-  expect(unread_emails_for(address).size).to eq(1)
-  open_email(address)
-  expect(current_email).to have_subject(I18n.t('email.service_provider.sign_up_request.subject', instance: Variant.config.instance_name))
-  expect(links_in_email(current_email)).to include(new_user_registration_url(role: "service_provider"))
 end
 
 Then(/^(?:I|they|"([^"]*?)") should receive an email with the following body:$/) do |address, expected_body|

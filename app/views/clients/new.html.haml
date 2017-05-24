@@ -1,0 +1,16 @@
+= simple_form_for [@client] do |form|
+  %fieldset
+    =form.input :first_name, as: :string
+    =form.input :last_name, as: :string
+
+  %fieldset
+    =form.input :phone, as: :string
+    =form.input :address_line_1, as: :string
+    =form.input :address_line_2, as: :string
+    =form.input :address_line_3, as: :string
+    =form.input :postcode, as: :string
+
+  %fieldset
+    =form.input :employment_status, as: :select, collection: EmploymentStatusOption.all
+    =form.input :benefits_status, as: :select, collection: BenefitsStatusOption.all
+

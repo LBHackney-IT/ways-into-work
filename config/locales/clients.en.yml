@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  clients:
+    employment_status:
+      no_work: 'Not currently in work'
+      lt_16_hours: 'Employed less than 16 hours'
+      gte_16_hours: 'Employed 16 hours or more'
+      full_time_education: 'Full-time education'
+      part_time_education: 'Part-time education'
+    benefits_status:
+      none: "None"
+      job_seekers: "Job seekers allowance"
+      employment_support: "Employment support allowance"
+      income_support:
+      universal_credit:
