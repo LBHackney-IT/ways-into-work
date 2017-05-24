@@ -3,6 +3,8 @@
 
 en:
   clients:
+    information:
+      registered_date: "Registered on %{created}"
     employment_status:
       no_work: 'Not currently in work'
       lt_16_hours: 'Employed less than 16 hours'

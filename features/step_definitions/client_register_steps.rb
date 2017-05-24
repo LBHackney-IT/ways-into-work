@@ -23,9 +23,12 @@ end
 
 When(/^I register my client details$/) do
   visit '/'
-  fill_in 'client_first_name', with: FFaker::Name.first_name
-  fill_in 'client_last_name', with: FFaker::Name.last_name
-  fill_in 'client_phone', with: FFaker::PhoneNumber.phone_number
+  client = Fabricate.build(:client)
+  fill_in 'client_first_name', with: client.first_name
+  fill_in 'client_last_name', with: client.last_name
+  fill_in 'client_phone', with: client.phone
+  fill_in 'client_address_line_1', with: client.address_line_1
+  fill_in 'client_postcode', with: client.postcode
   select "Not currently in work", from: 'client_employment_status'
   select "Employment support allowance", from: 'client_benefits_status'
   click_button 'Create Client'
@@ -34,4 +37,8 @@ end
 Then(/^my client details should be saved against my user login$/) do
   expect(Client.count).to eq(1)
   expect(Client.last.login).to eq(@user_login)
+end
+
+Given(/^there is a client who just registered$/) do
+  @client = Fabricate(:client)
 end

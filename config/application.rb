@@ -74,5 +74,6 @@ module WaysIntoWork
 
     config.action_mailer.default_url_options =     { host: 'localost:3000'}
 
+    config.support_email = ENV.fetch('SUPPORT_EMAIL', 'no-reply@example.com')
   end
 end
