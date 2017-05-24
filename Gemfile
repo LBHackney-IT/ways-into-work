@@ -4,14 +4,11 @@ gem 'rails', '5.1'
 
 # UI
 # gem 'draper'
-gem 'bitters'
-gem 'bourbon'
-gem 'neat'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
-gem 'normalize-rails'
 gem 'devise'
+gem 'font-awesome-rails'
 
 gem 'simple_form'
 

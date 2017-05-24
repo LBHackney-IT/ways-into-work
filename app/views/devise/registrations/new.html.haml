@@ -1,0 +1,37 @@
+.container.content
+  %h2.subtitle Sign up
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+
+    .field
+      = f.label :email, class: 'label'
+      %p.control.has-icons-left.has-icons-right
+        = f.email_field :email, autofocus: true, class: 'input validate email', placeholder: 'Your input'
+        %span.icon.is-small.is-left
+          %i.fa.fa-envelope
+        %span.icon.is-small.is-right
+          %i.right_icon.fa
+      %p.help.is-danger.hide This email is invalid
+
+    .field
+      = f.label :password, class: 'label'
+      %p.control.has-icons-right
+        %span.icon.is-small.is-right
+          %i.right_icon.fa
+        = f.password_field :password, autocomplete: "off", class: 'input validate password', :data => {:lengthvalidate => @minimum_password_length }
+        %p.help.is-danger.hide
+          This password is not valid
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+    .field
+      = f.label :password_confirmation, class: 'label'
+      %p.control.has-icons-right
+        %span.icon.is-small.is-right
+          %i.right_icon.fa
+        = f.password_field :password_confirmation, autocomplete: "off", class: 'input validate password_confirm'
+        %p.help.is-danger.hide These do not match
+
+    .actions
+      = f.submit "Sign up", class: 'button is-primary'
+  = render "devise/shared/links"

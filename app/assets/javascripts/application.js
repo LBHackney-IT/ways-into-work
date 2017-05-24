@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require eligibility
+//= require validate.js
 //= require public
 

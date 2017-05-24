@@ -17,4 +17,3 @@ Feature: Client signs up for the service
     When I register my client details
     Then my client details should be saved against my user login
     Then the service manager should receive a new client notification
-
