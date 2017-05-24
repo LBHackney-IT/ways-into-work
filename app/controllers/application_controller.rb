@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
     case resource_or_scope.user_type
     when "Advisor"
       :advisor_cases
+    when "ServiceManager"
+      :service_manager_cases
     else
       :new_client
     end

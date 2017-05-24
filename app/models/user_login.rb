@@ -7,4 +7,6 @@ class UserLogin < ApplicationRecord
   belongs_to :user
 
   delegate :name, to: :user
+
+  scope :service_managers, -> { where(user_type: 'ServiceManager')}
 end

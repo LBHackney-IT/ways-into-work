@@ -12,6 +12,8 @@ class CreateClients < ActiveRecord::Migration[5.1]
       t.datetime :date_of_birth
       t.string :employment_status
       t.string :benefits_status
+
+      t.timestamps null: false
     end
   end
 end

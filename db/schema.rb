@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20170524123308) do
     t.datetime "date_of_birth"
     t.string "employment_status"
     t.string "benefits_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "service_managers", force: :cascade do |t|
@@ -48,8 +50,6 @@ ActiveRecord::Schema.define(version: 20170524123308) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "user_type"
     t.bigint "user_id"
     t.string "confirmation_token"

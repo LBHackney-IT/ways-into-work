@@ -21,6 +21,9 @@ gem 'uglifier'
 # DB
 gem 'pg'
 
+# validation tools
+gem 'phony_rails'
+
 group :development do
   gem 'bullet'
   gem 'better_errors'

@@ -10,6 +10,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     @client.login = current_user_login
     if @client.save
+      ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
       redirect_to '/'
     else
       render :new

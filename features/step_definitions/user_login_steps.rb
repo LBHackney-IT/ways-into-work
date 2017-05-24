@@ -21,3 +21,11 @@ end
 Given(/^I have signed in$/) do
   login_as(@user_login)
 end
+
+When(/^I sign in$/) do
+  sign_in(@i.login)
+end
+
+Then(/^I should be signed in$/) do
+  expect(page).to have_content(I18n.t('devise.sessions.signed_in'))
+end

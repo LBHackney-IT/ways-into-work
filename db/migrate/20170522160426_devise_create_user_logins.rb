@@ -19,9 +19,6 @@ class DeviseCreateUserLogins < ActiveRecord::Migration[5.1]
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
 
-
-      t.timestamps null: false
-
       t.belongs_to :user, polymorphic: true
     end
 
