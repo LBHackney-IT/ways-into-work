@@ -15,9 +15,5 @@ $(document).ready(function() {
   $(".legal_pages.eligibility").checkAccepted();
 
   $(".validate").validate();
-  if($('#error_explanation').length) {
-    $(".validate").each(function() {
-      checkValidation($(this));
-    });
-  }
+
 });
