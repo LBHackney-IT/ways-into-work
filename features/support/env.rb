@@ -32,8 +32,3 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 #
 ActionController::Base.allow_rescue = false
 include ActionView::Helpers::TextHelper
-
-
-def sign_in_as_user(user)
-  sign_in_as user.login
-end

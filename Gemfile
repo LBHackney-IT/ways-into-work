@@ -10,6 +10,8 @@ gem 'sass-rails'
 gem 'devise'
 gem 'font-awesome-rails'
 
+gem 'simple_form'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 

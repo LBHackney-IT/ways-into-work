@@ -3,8 +3,9 @@ include ActionView::Helpers::TagHelper
 module FlashMessageHelpers
   def message_content_for(message_name)
     case message_name
-    when /some message/
-      "Some message"
+
+    when /client email confirmed/
+      I18n.t('devise.confirmations.confirmed')
 
     else
       raise "Can't find mapping from \"#{message_name}\" to a flash message.\n" +
