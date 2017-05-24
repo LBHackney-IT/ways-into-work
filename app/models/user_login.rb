@@ -5,4 +5,6 @@ class UserLogin < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   belongs_to :user
+
+  delegate :name, to: :user
 end
