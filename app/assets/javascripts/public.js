@@ -12,6 +12,5 @@
 // });
 
 $(document).ready(function() {
-
   $(".legal_pages.eligibility").checkAccepted();
 });
