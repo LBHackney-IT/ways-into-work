@@ -1,14 +1,15 @@
-%h3.subtitle Are you Eligible?
+.container.content
+  %h2.subtitle Are you Eligible?
 
-#eligibility_check
-  .check_box
-    =label_tag 'resident', class: 'checkbox' do
-      =check_box_tag "resident"
-      Are you a Hackney Resident?
-  .check_box
-    =label_tag 'unemployed', class: 'checkbox' do
-      =check_box_tag "unemployed"
-      Are you unemployed or earning below the London living wage?
+  #eligibility_check
+    .check_box
+      =label_tag 'resident', class: 'checkbox' do
+        =check_box_tag "resident"
+        Are you a Hackney Resident?
+    .check_box
+      =label_tag 'unemployed', class: 'checkbox' do
+        =check_box_tag "unemployed"
+        Are you unemployed or earning below the London living wage?
 
 
 #register_link.disabled

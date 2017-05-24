@@ -7,9 +7,7 @@
       = render 'layouts/site_header'
 
     %main{:class => "main section", :id => "main", :role => "main"}
-      .container
-        = yield
+      = yield
 
-    %footer{:class => "site-footer section", :role => "contentinfo"}
-      .container
-        = render 'layouts/site_footer'
+    %footer{:class => "site-footer footer", :role => "contentinfo"}
+      = render 'layouts/site_footer'
