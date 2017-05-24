@@ -5,5 +5,5 @@ en:
   service_managers:
     mail:
       subject:
-        new_client: "A new client has registered to the Ways into Work service"
+        new_client: "A new client has registered with the Ways into Work service"
 
