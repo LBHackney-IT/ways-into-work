@@ -1,2 +1,11 @@
 %h3.subtitle Tick some boxes
-= link_to I18n.t('devise.buttons.accept_terms'), :new_user_login_registration, class: 'button is-primary'
+
+%div
+  =label_tag 'resident', "Are you a Hackney Resident?"
+  =check_box_tag 'resident'
+%div
+  =label_tag 'unemployed', "Are you unemployed or earning below the London living wage?"
+  =check_box_tag "unemployed"
+
+#register_link.disabled=link_to I18n.t('devise.buttons.accept_terms'), '#', disabled: true
+>>>>>>> develop
