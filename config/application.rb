@@ -72,8 +72,11 @@ module WaysIntoWork
     config.devise_secret_key = ENV['DEVISE_SECRET_KEY']
     config.devise_pepper = ENV['DEVISE_PEPPER']
 
-    config.action_mailer.default_url_options =     { host: 'localost:3000'}
+    config.action_mailer.default_url_options = { host: 'localost:3000'}
 
     config.support_email = ENV.fetch('SUPPORT_EMAIL', 'no-reply@example.com')
+
+    config.action_mailer.preview_path = "#{Rails.root}/lib/mail_previews"
+
   end
 end

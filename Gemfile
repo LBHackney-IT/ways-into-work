@@ -33,8 +33,6 @@ group :test do
   gem 'rspec-rails', require: false
   gem 'email_spec', require: false
   gem 'database_cleaner'
-  gem 'ffaker'
-  gem 'fabrication'
   gem 'poltergeist'
   gem 'launchy'
   gem 'coderay'
@@ -43,6 +41,8 @@ group :test do
 end
 
 group :development, :test do
+  gem 'ffaker'
+  gem 'fabrication'
   gem 'byebug'
   gem 'dotenv-rails'
 end
