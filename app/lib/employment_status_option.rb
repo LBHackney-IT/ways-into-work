@@ -1,9 +1,9 @@
 class EmploymentStatusOption
-  attr_reader :id, :label
+  attr_reader :id, :name
 
-  def initialize(id, label)
+  def initialize(id, name)
     @id = id
-    @label = label
+    @name = name
   end
 
   def self.all

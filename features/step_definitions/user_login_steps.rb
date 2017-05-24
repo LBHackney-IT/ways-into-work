@@ -18,6 +18,6 @@ Given(/^I sign in with the user login details$/) do
   sign_in(@user_login)
 end
 
-Then(/^I should be asked to start creating my profile$/) do
-  expect(page).to have_css("input#client_first_name")
+Given(/^I have signed in$/) do
+  login_as(@user_login)
 end

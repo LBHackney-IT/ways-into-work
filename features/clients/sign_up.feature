@@ -1,4 +1,4 @@
-Feature: Client registers for the service
+Feature: Client signs up for the service
   As a client
   I should be able to sign up
   So I that can apply for the service
@@ -14,9 +14,4 @@ Feature: Client registers for the service
     When I click the opt-in email confirmation link
     Then I should see the client email confirmed notice message
     And I should be on the new user login session page
-
-  Scenario: client asked create profile
-    Given I have just registered a user login
-    And I sign in with the user login details
-    Then I should be asked to start creating my profile
 

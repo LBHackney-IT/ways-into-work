@@ -11,6 +11,8 @@
     =form.input :postcode, as: :string
 
   %fieldset
-    =form.input :employment_status, as: :select, collection: EmploymentStatusOption.all
-    =form.input :benefits_status, as: :select, collection: BenefitsStatusOption.all
+    =form.input :employment_status, as: :select, collection: EmploymentStatusOption.all, prompt: "Please select"
+    =form.input :benefits_status, as: :select, collection: BenefitsStatusOption.all, prompt: "Please select"
+
+  = form.submit
 

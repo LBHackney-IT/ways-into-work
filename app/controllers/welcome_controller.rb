@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
 
-  def show
+  skip_before_action :authenticate_user_login!
 
+  def show
   end
 
 end

@@ -13,5 +13,5 @@ en:
       none: "None"
       job_seekers: "Job seekers allowance"
       employment_support: "Employment support allowance"
-      income_support:
-      universal_credit:
+      income_support: "Income support"
+      universal_credit: "Universal credit"
