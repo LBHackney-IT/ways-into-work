@@ -40,5 +40,6 @@ Then(/^my client details should be saved against my user login$/) do
 end
 
 Given(/^there is a client who just registered$/) do
-  @client = Fabricate(:client)
+  @client = Fabricate.build(:client)
+  @client.save(validate: false)
 end

@@ -3,6 +3,9 @@
 
 en:
   clients:
+    validation:
+      outside_borough: "This postcode appears to be outside the borough of Hackney."
+      postcode_error: "The postcode you provided is invalid."
     information:
       registered_date: "Registered on %{created}"
     employment_status:
