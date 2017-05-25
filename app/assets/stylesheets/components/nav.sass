@@ -31,8 +31,15 @@ $nav-height: 3.25rem !default
   +mobile
     justify-content: flex-start
 
-.nav-item a,
-a.nav-item
+input.nav-item, .nav-item input
+  background: transparent
+  border: none
+  line-height: 1.75
+  &:focus
+    outline: 0
+  &:hover
+    cursor: pointer
+.nav-item a, a.nav-item, input.nav-item, .nav-item input
   color: $text-light
   &:hover
     color: $link-hover
@@ -75,11 +82,9 @@ a.nav-item
 .nav-left
   justify-content: flex-start
   white-space: nowrap
-  margin-left: -0.75rem
 
 .nav-right
   justify-content: flex-end
-  margin-right: -0.75rem
 
 .nav-center
   align-items: stretch
@@ -117,7 +122,6 @@ a.nav-item
   position: relative
   text-align: center
   z-index: 10
-  padding: 0 1.5rem
   & > .container
     align-items: stretch
     display: flex

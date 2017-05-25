@@ -1,15 +1,17 @@
-%nav.nav.container
-  .nav-left
-    .nav-item
-      WaysIntoWork
-  %span.nav-toggle
-    %span
-    %span
-    %span
-  .nav-right.nav-menu
-    %a.nav-item.is-tab Home
-    %a.nav-item.is-tab Information
-    %a.nav-item.is-tab Sign Up/In
+.container{:class => "site-header", :role => "banner"}
+  %nav.nav
+    .nav-left
+      = link_to "WaysIntoWork", root_url, class: 'nav-item is-brand'
+    %span.nav-toggle
+      %span
+      %span
+      %span
+    .nav-right.nav-menu
+      = link_to "Home", root_url, class: 'nav-item is-tab'
+      %a.nav-item.is-tab Information
+      - if !user_login_signed_in?
+        = link_to "Sign In", user_login_session_path, class: 'nav-item is-tab'
+      - else
+        = button_to "Sign Out", destroy_user_login_session_path, class: 'nav-item is-tab', :method => :delete
 
-#alerts
-  = render 'layouts/alerts'
+= render 'layouts/alerts'

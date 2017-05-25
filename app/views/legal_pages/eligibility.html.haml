@@ -1,16 +1,18 @@
-.container.content
-  %h2.subtitle Are you Eligible?
+.container.content.columns
+  .column.is-three-quarters.is-offset-2
+    %h2.subtitle Are you Eligible?
 
-  #eligibility_check
-    .check_box
-      =label_tag 'resident', class: 'checkbox' do
-        =check_box_tag "resident"
-        Are you a Hackney Resident?
-    .check_box
-      =label_tag 'unemployed', class: 'checkbox' do
-        =check_box_tag "unemployed"
-        Are you unemployed or earning below the London living wage?
+    #eligibility_check
+      %p.check_box.control
+        =label_tag 'resident', class: 'checkbox' do
+          =check_box_tag "resident"
+          Are you a Hackney Resident?
+      %p.check_box.control
+        =label_tag 'unemployed', class: 'checkbox' do
+          =check_box_tag "unemployed"
+          Are you unemployed or earning below the London living wage?
 
+    %hr
 
-#register_link.disabled
-  =button_to I18n.t('devise.buttons.accept_terms'), 'user_logins/sign_up', method: 'get', disabled: true, class: 'button is-primary'
+    #register_link.disabled.control
+      =button_to I18n.t('devise.buttons.accept_terms'), new_user_login_registration_url, method: 'get', disabled: true, class: 'button is-primary'

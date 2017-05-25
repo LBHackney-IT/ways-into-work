@@ -1,5 +1,9 @@
-.container.columns
-  .column
-    %p Find yourself in Hackney
-  .column.has-text-right
-    logo
+.container
+  .columns.level
+    .column.level-left
+      %p
+        %span.bold Find
+        %span yourself in
+        %span.bold Hackney
+    .column.has-text-right.level-right.is-3
+      =image_tag('hackney_logo_black.png', :alt => 'Hackney Council')
