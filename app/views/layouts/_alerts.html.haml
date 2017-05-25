@@ -1,6 +1,7 @@
 - flash.each do |name, msg|
   - next unless msg.is_a?(String) && msg.present?
-  %div{:class => "alert notification is-primary alert-#{name} animated slideInDown"}
-    %button.delete
-    .container
-      = content_tag :div, msg, :id => "flash_#{name}"
+  #alerts
+    %div{:class => "alert notification alert-#{name} animated slideInDown"}
+      %button.delete
+      .container
+        = content_tag :div, msg, :id => "flash_#{name}"

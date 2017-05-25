@@ -14,6 +14,8 @@
 $(document).ready(function() {
   $(".legal_pages.eligibility").checkAccepted();
 
+  $('.delete').hideDelete();
+
   $(".validate").validate();
 
 });

@@ -10,7 +10,7 @@
       = link_to "Home", root_url, class: 'nav-item is-tab'
       %a.nav-item.is-tab Information
       - if !user_login_signed_in?
-        = link_to "Sign Up/In", user_login_session_path, class: 'nav-item is-tab'
+        = link_to "Sign In", user_login_session_path, class: 'nav-item is-tab'
       - else
         = button_to "Sign Out", destroy_user_login_session_path, class: 'nav-item is-tab', :method => :delete
 
