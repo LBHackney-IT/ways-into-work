@@ -5,7 +5,7 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
-  config.wrappers :default, class: :input,
+  config.wrappers :default, class: 'field',
     hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
@@ -43,10 +43,12 @@ SimpleForm.setup do |config|
     # Calculates readonly automatically from readonly attributes
     b.optional :readonly
 
+
     ## Inputs
-    b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    b.use :label, class: 'label'
+    b.use :input, wrap_with: { tag: :span, class: 'simple_input' }
+    b.use :hint, wrap_with: { tag: :p, class: 'help' }
+    b.use :error, wrap_with: { tag: :p, class: 'help is-danger' }
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
@@ -65,7 +67,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  # config.button_class = 'button'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -98,20 +100,20 @@ SimpleForm.setup do |config|
   # config.item_wrapper_tag = :span
 
   # You can define a class to use in all item wrappers. Defaulting to none.
-  # config.item_wrapper_class = nil
+  # config.item_wrapper_class = 'control'
 
   # How the label text should be generated altogether with the required text.
-  # config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
+  config.label_text = lambda { |label, required, explicit_label| "#{label}#{required} " }
 
   # You can define the class to use on all labels. Default is nil.
-  # config.label_class = nil
+  # config.label_class = 'label'
 
   # You can define the default class to be used on forms. Can be overriden
   # with `html: { :class }`. Defaulting to none.
   # config.default_form_class = nil
 
   # You can define which elements should obtain additional classes
-  # config.generate_additional_classes_for = [:wrapper, :label, :input]
+  config.generate_additional_classes_for = []
 
   # Whether attributes are required by default (or not). Default is true.
   # config.required_by_default = true
