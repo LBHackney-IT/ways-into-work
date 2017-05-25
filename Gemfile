@@ -18,6 +18,8 @@ gem 'uglifier'
 # DB
 gem 'pg'
 
+gem 'puma'
+
 # validation tools
 gem 'phony_rails'
 
@@ -48,6 +50,6 @@ group :development, :test do
 end
 
 # IF HEROKU
-# group :production, :staging do
-#   gem 'rails_12factor'
-# end
+group :production, :staging do
+  gem 'rails_12factor'
+end

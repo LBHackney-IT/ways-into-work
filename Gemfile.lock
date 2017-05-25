@@ -160,6 +160,7 @@ GEM
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
     public_suffix (2.0.5)
+    puma (3.8.2)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -180,6 +181,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.1.0)
       actionpack (= 5.1.0)
       activesupport (= 5.1.0)
@@ -281,7 +287,9 @@ DEPENDENCIES
   pg
   phony_rails
   poltergeist
+  puma
   rails (= 5.1)
+  rails_12factor
   rspec-given
   rspec-rails
   sass-rails
