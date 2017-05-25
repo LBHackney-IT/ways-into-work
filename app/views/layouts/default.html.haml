@@ -3,8 +3,7 @@
   %head
     = render 'layouts/html_head'
   %body{class: page_class}
-    %header{:class => "site-header", :role => "banner"}
-      = render 'layouts/site_header'
+    = render 'layouts/site_header'
 
     %main{:class => "main section", :id => "main", :role => "main"}
       = yield

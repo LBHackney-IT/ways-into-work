@@ -1,15 +1,15 @@
-%nav.nav.container
-  .nav-left
-    .nav-item
-      WaysIntoWork
-  %span.nav-toggle
-    %span
-    %span
-    %span
-  .nav-right.nav-menu
-    %a.nav-item.is-tab Home
-    %a.nav-item.is-tab Information
-    %a.nav-item.is-tab Sign Up/In
+.container{:class => "site-header", :role => "banner"}
+  %nav.nav
+    .nav-left
+      = link_to "WaysIntoWork", root_url, class: 'nav-item is-brand'
+    %span.nav-toggle
+      %span
+      %span
+      %span
+    .nav-right.nav-menu
+      = link_to "Home", root_url, class: 'nav-item is-tab'
+      %a.nav-item.is-tab Information
+      %a.nav-item.is-tab Sign Up/In
 
 #alerts
   = render 'layouts/alerts'
