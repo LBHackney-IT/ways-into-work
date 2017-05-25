@@ -7,6 +7,7 @@ Feature: Service manager signs in
     Given I am a service manager
     And there is a client who just registered
 
+  @validate_postcode
   Scenario: Successful sign in
     When I sign in
     Then I should be signed in

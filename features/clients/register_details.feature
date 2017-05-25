@@ -10,7 +10,7 @@ Feature: Client signs up for the service
     When I sign in with the user login details
     Then I should be asked to start creating my profile
 
-  @wip
+  @validate_postcode
   Scenario: Client creates minimal profile
     Given I have signed in
     And there is a service manager

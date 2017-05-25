@@ -1,0 +1,134 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mapit.mysociety.org/postcode/E81EA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Contenttype:
+      - application/json
+  response:
+    status:
+      code: 301
+      message: mapit.mysociety.org
+    headers:
+      Location:
+      - https://mapit.mysociety.org/postcode/E81EA
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 25 May 2017 15:18:48 GMT
+      Age:
+      - '0'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 May 2017 15:18:48 GMT
+- request:
+    method: get
+    uri: https://mapit.mysociety.org/postcode/E81EA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Contenttype:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 25 May 2017 15:18:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4311'
+      Connection:
+      - keep-alive
+      Content-Language:
+      - en-gb
+      Vary:
+      - Accept-Language,Cookie,Accept-Encoding
+      Cache-Control:
+      - max-age=2419200
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '371'
+      - '371'
+      X-Url:
+      - "/postcode/E81EA"
+      Accept-Ranges:
+      - bytes
+      X-Quota-Limit:
+      - '50'
+      X-Quota-Current:
+      - '15'
+    body:
+      encoding: UTF-8
+      string: '{"wgs84_lat": 51.54503221642566, "coordsyst": "G", "shortcuts": {"WMC":
+        65752, "ward": 144394, "council": 2508}, "wgs84_lon": -0.05643433197087943,
+        "postcode": "E8 1EA", "easting": 534870, "areas": {"34240": {"parent_area":
+        null, "generation_high": 31, "all_names": {}, "id": 34240, "codes": {"ons":
+        "E02000361"}, "name": "Hackney 017", "country": "E", "type_name": "2001 Middle
+        Layer Super Output Area (Full)", "generation_low": 13, "country_name": "England",
+        "type": "OMF"}, "900001": {"parent_area": null, "generation_high": 31, "all_names":
+        {}, "id": 900001, "codes": {}, "name": "European Parliament", "country": "",
+        "type_name": "European Parliament", "generation_low": 1, "country_name": "-",
+        "type": "EUP"}, "900002": {"parent_area": 900006, "generation_high": 31, "all_names":
+        {}, "id": 900002, "codes": {}, "name": "London Assembly", "country": "E",
+        "type_name": "London Assembly area (shared)", "generation_low": 1, "country_name":
+        "England", "type": "LAE"}, "900000": {"parent_area": null, "generation_high":
+        19, "all_names": {}, "id": 900000, "codes": {}, "name": "House of Commons",
+        "country": "", "type_name": "UK Parliament", "generation_low": 1, "country_name":
+        "-", "type": "WMP"}, "900006": {"parent_area": null, "generation_high": 31,
+        "all_names": {}, "id": 900006, "codes": {}, "name": "London Assembly", "country":
+        "E", "type_name": "London Assembly area", "generation_low": 1, "country_name":
+        "England", "type": "LAS"}, "2247": {"parent_area": null, "generation_high":
+        31, "all_names": {}, "id": 2247, "codes": {"unit_id": "41441"}, "name": "Greater
+        London Authority", "country": "E", "type_name": "Greater London Authority",
+        "generation_low": 1, "country_name": "England", "type": "GLA"}, "102281":
+        {"parent_area": null, "generation_high": 31, "all_names": {}, "id": 102281,
+        "codes": {"ons": "E01001762"}, "name": "Hackney 017D", "country": "E", "type_name":
+        "2001 Lower Layer Super Output Area (Generalised)", "generation_low": 13,
+        "country_name": "England", "type": "OLG"}, "144394": {"parent_area": 2508,
+        "generation_high": 31, "all_names": {}, "id": 144394, "codes": {"gss": "E05009372",
+        "unit_id": "41886"}, "name": "Hackney Central", "country": "E", "type_name":
+        "London borough ward", "generation_low": 22, "country_name": "England", "type":
+        "LBW"}, "2508": {"parent_area": null, "generation_high": 31, "all_names":
+        {}, "id": 2508, "codes": {"ons": "00AM", "gss": "E09000012", "unit_id": "11199",
+        "local-authority-eng": "HCK"}, "name": "Hackney Borough Council", "country":
+        "E", "type_name": "London borough", "generation_low": 1, "country_name": "England",
+        "type": "LBO"}, "11824": {"parent_area": 2247, "generation_high": 31, "all_names":
+        {}, "id": 11824, "codes": {"gss": "E32000012", "unit_id": "41451"}, "name":
+        "North East", "country": "E", "type_name": "London Assembly constituency",
+        "generation_low": 1, "country_name": "England", "type": "LAC"}, "65752": {"parent_area":
+        null, "generation_high": 31, "all_names": {}, "id": 65752, "codes": {"gss":
+        "E14000721", "unit_id": "25071"}, "name": "Hackney South and Shoreditch",
+        "country": "E", "type_name": "UK Parliament constituency", "generation_low":
+        13, "country_name": "England", "type": "WMC"}, "148890": {"parent_area": null,
+        "generation_high": 31, "all_names": {}, "id": 148890, "codes": {"nhse": "07T"},
+        "name": "City & Hackney", "country": "E", "type_name": "Clinical Commissioning
+        Group", "generation_low": 29, "country_name": "England", "type": "CCG"}, "41434":
+        {"parent_area": null, "generation_high": 31, "all_names": {}, "id": 41434,
+        "codes": {"ons": "E02000361"}, "name": "Hackney 017", "country": "E", "type_name":
+        "2001 Middle Layer Super Output Area (Generalised)", "generation_low": 13,
+        "country_name": "England", "type": "OMG"}, "11806": {"parent_area": null,
+        "generation_high": 31, "all_names": {}, "id": 11806, "codes": {"ons": "07",
+        "gss": "E15000007", "unit_id": "41428"}, "name": "London", "country": "E",
+        "type_name": "European region", "generation_low": 1, "country_name": "England",
+        "type": "EUR"}, "67903": {"parent_area": null, "generation_high": 31, "all_names":
+        {}, "id": 67903, "codes": {"ons": "E01001762"}, "name": "Hackney 017D", "country":
+        "E", "type_name": "2001 Lower Layer Super Output Area (Full)", "generation_low":
+        13, "country_name": "England", "type": "OLF"}}, "northing": 184694}'
+    http_version: 
+  recorded_at: Thu, 25 May 2017 15:18:48 GMT
+recorded_with: VCR 3.0.3

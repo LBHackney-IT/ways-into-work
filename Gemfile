@@ -19,9 +19,11 @@ gem 'uglifier'
 gem 'pg'
 
 gem 'puma'
+gem "httparty"
 
 # validation tools
 gem 'phony_rails'
+gem 'going_postal'
 
 group :development do
   gem 'bullet'
