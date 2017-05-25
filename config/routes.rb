@@ -1,6 +1,8 @@
 WaysIntoWork::Application.routes.draw do
 
-  devise_for :user_logins
+  devise_for :user_logins, controllers: {
+    sessions: 'user_logins/sessions'
+  }
 
   root to: 'welcome#show'
 
