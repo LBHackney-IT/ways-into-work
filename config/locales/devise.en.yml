@@ -65,5 +65,5 @@ en:
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "Sorry, something went wrong. There is 1 error in this %{resource} form:"
+        other: "Sorry, something went wrong. There is %{count} errors in this %{resource} form:"

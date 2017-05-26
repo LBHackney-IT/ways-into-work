@@ -1,33 +1,34 @@
-.container.content
-  = simple_form_for [@client] do |form|
+.container.content.columns
+  .column.is-10.is-offset-1
+    = simple_form_for [@client] do |form|
 
-    %fieldset
-      %h3.subtitle Personal Details
-      %hr
-      =form.input :title, as: :select, collection: TitleOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
-      .columns
-        .column
-          =form.input :first_name, as: :string, :input_html => { :class => 'input' }
-        .column
-          =form.input :last_name, as: :string, :input_html => { :class => 'input' }
+      %fieldset
+        %h3.subtitle Personal Details
+        %hr
+        =form.input :title, as: :select, collection: TitleOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
+        .columns
+          .column
+            =form.input :first_name, as: :string, :input_html => { :class => 'input' }
+          .column
+            =form.input :last_name, as: :string, :input_html => { :class => 'input' }
 
-      =form.input :date_of_birth, as: :date, start_year: Date.today.year - 70, end_year: Date.today.year - 14, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>'
+        =form.input :date_of_birth, as: :date, start_year: Date.today.year - 70, end_year: Date.today.year - 14, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>'
 
-    %fieldset
-      %h3.subtitle Contact Details
-      %hr
-      =form.input :phone, as: :string, :input_html => { :class => 'input' }
-      =form.input :address_line_1, as: :string, :input_html => { :class => 'input' }
-      =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
-      =form.input :address_line_3, as: :string, :input_html => { :class => 'input' }
-      =form.input :postcode, as: :string, :input_html => { :class => 'input' }
+      %fieldset
+        %h3.subtitle Contact Details
+        %hr
+        =form.input :phone, as: :tel, :input_html => { :class => 'input' }
+        =form.input :address_line_1, as: :string, :input_html => { :class => 'input' }
+        =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
+        =form.input :address_line_3, as: :string, :input_html => { :class => 'input' }
+        =form.input :postcode, as: :string, :input_html => { :class => 'input' }
 
-    %fieldset
-      %h3.subtitle Employment Details
-      %hr
+      %fieldset
+        %h3.subtitle Employment Details
+        %hr
 
-      =form.input :employment_status, as: :select, collection: EmploymentStatusOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
-      =form.input :benefits_status, as: :select, collection: BenefitsStatusOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
+        =form.input :employment_status, as: :select, collection: EmploymentStatusOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
+        =form.input :benefits_status, as: :select, collection: BenefitsStatusOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
 
-    = form.submit 'Save Details', :class => 'button is-primary'
+      = form.submit 'Save Details', :class => 'button is-primary'
 

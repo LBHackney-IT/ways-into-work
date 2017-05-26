@@ -1,7 +1,8 @@
-.container.content
-  %h2.subtitle Welcome to Ways Into Work
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h2.subtitle Welcome to Ways Into Work
 
-  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi cursus eros vel turpis posuere vehicula. Quisque a nulla sed orci vulputate viverra non nec lacus. Mauris eleifend semper placerat. Donec lobortis dui ut elementum viverra. Cras orci dolor, dignissim at accumsan id, blandit varius erat.
+    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi cursus eros vel turpis posuere vehicula. Quisque a nulla sed orci vulputate viverra non nec lacus. Mauris eleifend semper placerat. Donec lobortis dui ut elementum viverra. Cras orci dolor, dignissim at accumsan id, blandit varius erat.
 
-  - if !user_login_signed_in?
-    = link_to I18n.t('devise.buttons.register'), confirm_eligibility_path, title: "Register for the Ways into Work service", class: 'button is-primary'
+    - if !user_login_signed_in?
+      = link_to I18n.t('devise.buttons.register'), confirm_eligibility_path, title: "Register for the Ways into Work service", class: 'button is-primary'
