@@ -8,7 +8,7 @@ $.fn.validate = function() {
     });
   }
 
-  $(this).bind("change keyup input",function(){
+  $(this).bind("blur change",function(){
     checkValidation($(this));
   });
 
