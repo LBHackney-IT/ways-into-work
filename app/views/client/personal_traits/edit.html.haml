@@ -7,11 +7,8 @@
     = simple_form_for [current_client], url: :client_personal_traits do |form|
       %field_set
         =form.input :personal_traits, as: :check_boxes, collection: PersonalTraitOption.all
-        =label_tag I18n.t('clients.personal_trait.other')
 
-        / TODO abstract if needed = render partial: 'shared/other_text'
-        =check_box_tag 'Other', 0, false, id: 'toggle_other'
-        = form.input :other_personal_trait, as: :string, label: false, wrapper_html: {class: 'is-hidden', id: 'other_text'}
+        = render partial: 'shared/other_text', locals: {form: form, field: :other_personal_trait}
 
       %fieldset
         = form.submit 'Next', :class => 'button is-primary'

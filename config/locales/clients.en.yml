@@ -10,6 +10,11 @@ en:
       postcode_error: "The postcode you provided is invalid."
     information:
       registered_date: "Registered on %{created}"
+    aspiration:
+      job: 'Job'
+      apprenticeship: 'Apprenticeship'
+      training: 'Training'
+      work_experience: 'Work experience'
     employment_status:
       no_work: 'Not currently in work'
       lt_16_hours: 'Employed less than 16 hours'

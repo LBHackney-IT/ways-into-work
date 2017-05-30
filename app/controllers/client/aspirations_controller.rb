@@ -1,11 +1,11 @@
-class Client::EmploymentStatusController < Client::BaseController
+class Client::AspirationsController < Client::BaseController
 
   def edit
   end
 
   def update
     if current_client.update_attributes(client_params)
-      redirect_to :edit_client_aspirations
+      redirect_to :client_profile
     else
       render :edit
     end
@@ -14,8 +14,8 @@ class Client::EmploymentStatusController < Client::BaseController
   private
   def client_params
     params.require(:client).permit(
-      :other_personal_trait,
-      employment_status: []
+      :other_aspiration,
+      aspirations: []
       )
   end
 end

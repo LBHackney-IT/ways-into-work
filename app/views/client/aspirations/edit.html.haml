@@ -1,0 +1,14 @@
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h2.subtitle What can we help you with?
+
+    %p Which of these do you want to discuss with an advisor?
+
+    = simple_form_for [current_client], url: :client_aspirations do |form|
+      %field_set
+        =form.input :aspirations, as: :check_boxes, collection: AspirationOption.all
+        = render partial: 'shared/other_text', locals: { form: form, field: :other_aspiration }
+
+      %fieldset
+        = form.submit 'Next', :class => 'button is-primary'
+
