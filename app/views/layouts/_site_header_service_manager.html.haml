@@ -1,13 +1,13 @@
 .container{:class => "site-header", :role => "banner"}
   %nav.nav
     .nav-left
-      = link_to "WaysIntoWork", after_sign_in_path_for(current_user_login), class: 'nav-item is-brand'
+      = link_to "WaysIntoWork", user_root, class: 'nav-item is-brand'
     %span.nav-toggle
       %span
       %span
       %span
     .nav-right.nav-menu
-      = link_to "My Cases", after_sign_in_path_for(current_user_login), class: 'nav-item is-tab'
+      = link_to "My Cases", user_root, class: 'nav-item is-tab'
       %a.nav-item.is-tab All Cases
       = button_to "Sign Out", destroy_user_login_session_path, class: 'nav-item is-tab', :method => :delete
 
