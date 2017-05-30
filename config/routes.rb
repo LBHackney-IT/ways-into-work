@@ -4,6 +4,8 @@ WaysIntoWork::Application.routes.draw do
 
   root to: 'welcome#show'
 
+  #TODO tidy this crap - make this more restful
+  # it's a bit out of place
   get '/confirm_eligibility'  => 'legal_pages#eligibility'
 
   namespace :advisor do
@@ -15,7 +17,9 @@ WaysIntoWork::Application.routes.draw do
   end
 
   resources :clients, only: [:new, :create]
-  namespace :clients do
+
+  namespace :client do
+    resource :personal_traits, only: [:new, :create]
     resource :dashboard, only: :show
   end
 

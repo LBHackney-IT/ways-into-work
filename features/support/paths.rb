@@ -12,7 +12,7 @@ module NavigationHelpers
       advisor_cases_path
 
     when /the client dashboard/
-      clients_dashboard_path
+      client_dashboard_path
 
     when /home page/
       root_path

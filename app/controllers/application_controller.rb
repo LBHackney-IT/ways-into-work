@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     when "ServiceManager"
       :service_manager_cases
     else
-      :clients_dashboard
+      :client_dashboard
     end
   end
 

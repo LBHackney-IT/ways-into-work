@@ -9,7 +9,7 @@ class ClientsController < ApplicationController
     @client.login = current_user_login
     if @client.save
       ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
-      redirect_to clients_dashboard_path
+      redirect_to client_dashboard_path
     else
       render :new
     end
