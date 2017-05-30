@@ -29,9 +29,7 @@ class ClientsController < ApplicationController
       :address_line_1,
       :address_line_2,
       :address_line_3,
-      :postcode,
-      :employment_status,
-      :benefits_status
+      :postcode
       )
   end
 

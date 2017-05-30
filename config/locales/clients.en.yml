@@ -16,6 +16,16 @@ en:
       gte_16_hours: 'Employed 16 hours or more'
       full_time_education: 'Full-time education'
       part_time_education: 'Part-time education'
+    personal_trait:
+      creative: 'Creative'
+      active: 'Active'
+      caring: 'Caring'
+      problem_solver: 'Problem solver'
+      organised: 'Organised'
+      people_person: 'People person'
+      persuasive: 'Persuasive'
+      chatty: 'Chatty'
+      other: 'Other'
     benefits_status:
       none: "None"
       job_seekers: "Job seekers allowance"

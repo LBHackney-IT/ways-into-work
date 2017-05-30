@@ -1,0 +1,18 @@
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h2.subtitle Tell us a little about yourself
+
+    %p Which of these best describes your situation?
+
+    = simple_form_for [current_client], url: :client_personal_traits do |form|
+      %field_set
+        =form.input :employment_status, as: :check_boxes, collection: EmploymentStatusOption.all
+        =label_tag I18n.t('clients.personal_trait.other')
+
+        / TODO abstract if needed = render partial: 'shared/other_text'
+        / =check_box_tag 'Other', 0, false, id: 'toggle_other'
+        / = form.input :other_personal_trait, as: :string, label: false, wrapper_html: {class: 'is-hidden', id: 'other_text'}
+
+      %fieldset
+        = form.submit 'Next', :class => 'button is-primary'
+

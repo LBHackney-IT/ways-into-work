@@ -18,4 +18,6 @@ $(document).ready(function() {
 
   $(".validate").validate();
 
+  $("form").handleFormElements();
+
 });

@@ -19,7 +19,8 @@ WaysIntoWork::Application.routes.draw do
   resources :clients, only: [:new, :create]
 
   namespace :client do
-    resource :personal_traits, only: [:new, :create]
+    resource :personal_traits, only: [:edit, :update]
+    resource :employment_status, only: [:edit, :update], controller: 'employment_status'
     resource :dashboard, only: :show
   end
 
