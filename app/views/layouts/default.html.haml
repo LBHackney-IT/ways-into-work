@@ -3,14 +3,7 @@
   %head
     = render 'layouts/html_head'
   %body{class: page_class}
-    - unless user_login_signed_in?
-      = render 'layouts/site_header_base'
-    - else
-      - if current_user_login.user_type == 'ServiceManager' || current_user_login.user_type == 'Advisor'
-        = render 'layouts/site_header_service_manager'
-      - else
-        = render 'layouts/site_header_client'
-
+    = render current_header
     %main{:class => "main section", :id => "main", :role => "main"}
       = yield
 
