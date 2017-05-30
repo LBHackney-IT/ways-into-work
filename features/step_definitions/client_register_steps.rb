@@ -22,16 +22,14 @@ Then(/^I should be asked to start creating my profile$/) do
 end
 
 When(/^I register my client details$/) do
-  visit '/'
+  visit new_client_path
   client = Fabricate.build(:client)
   fill_in 'client_first_name', with: client.first_name
   fill_in 'client_last_name', with: client.last_name
   fill_in 'client_phone', with: client.phone
   fill_in 'client_address_line_1', with: client.address_line_1
   fill_in 'client_postcode', with: client.postcode
-  select "Not currently in work", from: 'client_employment_status'
-  select "Employment support allowance", from: 'client_benefits_status'
-  click_button 'Create Client'
+  click_button 'Save details'
 end
 
 Then(/^my client details should be saved against my user login$/) do

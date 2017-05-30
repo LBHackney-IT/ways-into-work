@@ -16,6 +16,8 @@ WaysIntoWork::Application.routes.draw do
     resources :cases, only: :index
   end
 
-  resources :clients
+  resources :clients do
+    resource :dashboard, only: :show
+  end
 
 end

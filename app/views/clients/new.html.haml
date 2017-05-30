@@ -23,12 +23,4 @@
         =form.input :address_line_3, as: :string, :input_html => { :class => 'input' }
         =form.input :postcode, as: :string, :input_html => { :class => 'input' }
 
-      %fieldset
-        %h3.subtitle Employment Details
-        %hr
-
-        =form.input :employment_status, as: :select, collection: EmploymentStatusOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
-        =form.input :benefits_status, as: :select, collection: BenefitsStatusOption.all, prompt: "Please select", :wrapper_html => { :class => 'with_select' }
-
-      = form.submit 'Save Details', :class => 'button is-primary'
-
+      = form.submit 'Save details', :class => 'button is-primary'

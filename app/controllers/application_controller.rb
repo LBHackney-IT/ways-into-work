@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     when "ServiceManager"
       :service_manager_cases
     else
-      :new_client
+      client_dashboard_path(client_id: current_user_login.user_id)
     end
   end
 
