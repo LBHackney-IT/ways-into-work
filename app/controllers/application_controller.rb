@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user_login!
 
-  helper_method :after_sign_in_path_for
+  helper_method :user_root
 
   layout 'default'
 
