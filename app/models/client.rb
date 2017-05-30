@@ -16,6 +16,7 @@ class Client < ApplicationRecord
   end
 
   def within_hackney?
+    # TODo - move this back outside of validation
     eligible = HackneyPostcodeValidator.new(self.postcode).within_hackney?
     errors[:postcode] << I18n.t('clients.validation.outside_borough') unless eligible
     eligible
@@ -29,6 +30,10 @@ class Client < ApplicationRecord
       errors[:postcode] << I18n.t('clients.validation.postcode_error')
     end
     errors[:postcode].empty?
+  end
+
+  def profile_complete?
+    employment_status.present?
   end
 
 end

@@ -11,6 +11,9 @@ module NavigationHelpers
     when /the advisor dashboard/
       advisor_cases_path
 
+    when /the client dashboard/
+      clients_dashboard_path
+
     when /home page/
       root_path
 

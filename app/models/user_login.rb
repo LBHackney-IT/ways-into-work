@@ -4,7 +4,7 @@ class UserLogin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  belongs_to :user
+  belongs_to :user, polymorphic: true
 
   delegate :name, to: :user
 

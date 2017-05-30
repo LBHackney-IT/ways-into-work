@@ -1,8 +1,6 @@
 WaysIntoWork::Application.routes.draw do
 
-  devise_for :user_logins, controllers: {
-    sessions: 'user_logins/sessions'
-  }
+  devise_for :user_logins
 
   root to: 'welcome#show'
 
@@ -16,7 +14,8 @@ WaysIntoWork::Application.routes.draw do
     resources :cases, only: :index
   end
 
-  resources :clients do
+  resources :clients, only: [:new, :create]
+  namespace :clients do
     resource :dashboard, only: :show
   end
 

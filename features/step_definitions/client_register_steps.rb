@@ -41,3 +41,12 @@ Given(/^there is a client who just registered$/) do
   @client = Fabricate.build(:client)
   @client.save(validate: false)
 end
+
+Given(/^I have just signed up as a client$/) do
+  @i = Fabricate.build(:client)
+  @i.save(validate: false)
+end
+
+Then(/^I should be asked to provide more information$/) do
+  expect(page).to have_link(I18n.t('clients.buttons.complete_profile'))
+end

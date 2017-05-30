@@ -1,7 +1,5 @@
 class ClientsController < ApplicationController
 
-  skip_before_action :register_new_client_to_login
-
   def new
     @client = Client.new()
   end
@@ -11,7 +9,7 @@ class ClientsController < ApplicationController
     @client.login = current_user_login
     if @client.save
       ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
-      redirect_to client_dashboard_path(client_id: @client.id)
+      redirect_to clients_dashboard_path
     else
       render :new
     end

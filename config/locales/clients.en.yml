@@ -3,6 +3,8 @@
 
 en:
   clients:
+    buttons:
+      complete_profile: "Complete my profile"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."
