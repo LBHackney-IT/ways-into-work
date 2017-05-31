@@ -25,6 +25,25 @@ fieldset
 abbr
   text-decoration: none
 
+.actions
+  margin-top: $size-4
+  .button
+    +mobile
+      width: 100%
+
+.confirmations.new, .passwords.new
+  #devise_links
+    display: none
+
+#devise_links
+  margin-top: $size-4
+  color: $grey-dark
+  .link
+    margin-bottom: $size-6
+  a
+    color: $black
+  .small-text
+    font-size: 14px
 
 #footer_logo
   img
