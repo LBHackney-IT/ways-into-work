@@ -22,7 +22,7 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
 =button-large
   font-size: $size-large
 
-.button
+.button, .convert_checkbox span.checkbox
   +control
   +unselectable
   background-color: $button-background
@@ -185,3 +185,20 @@ input[type="submit"].button
   line-height: 1
   padding-bottom: 0.4em
   padding-top: 0.35em
+
+.convert_checkbox
+
+
+.convert_checkbox
+  margin-bottom: $size-4
+  .field, #other
+    display: inline
+  #other_text input
+    margin: $size-8
+  span.checkbox,
+    margin: $size-8
+    label:hover
+      cursor: pointer
+    input[type=checkbox]
+      display: none
+

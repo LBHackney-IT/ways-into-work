@@ -1,3 +1,6 @@
-= label_tag I18n.t('clients.personal_trait.other')
-= check_box_tag 'Other', 0, false, id: 'toggle_other'
-= form.input field, as: :string, label: false, wrapper_html: {class: 'is-hidden', id: 'other_text'}
+#other
+  %span.checkbox
+    = label_tag '' do
+      = check_box_tag 'Other', 0, false, id: 'toggle_other'
+      = I18n.t('clients.personal_trait.other')
+  = form.input field, as: :string, label: false, :input_html => { :class => "input" }, wrapper_html: {class: 'is-hidden', id: 'other_text'}

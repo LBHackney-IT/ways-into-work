@@ -2,12 +2,10 @@
   .column.is-10.is-offset-1
     %h2.subtitle Tell us a little about yourself
 
-    %p Which of these best describes your situation?
-
     = simple_form_for [current_client], url: :client_employment_status do |form|
-      %field_set
-        =form.input :employment_status, as: :check_boxes, collection: EmploymentStatusOption.all
+      .convert_checkbox
+        =form.input :employment_status, as: :check_boxes, collection: EmploymentStatusOption.all, :label => 'Which of these best describes your situation?'
 
-      %fieldset
+      .actions
         = form.submit 'Next', :class => 'button is-primary'
 
