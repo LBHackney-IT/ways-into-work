@@ -3,7 +3,12 @@
 
 en:
   clients:
+    steps:
+      step_1: "Step 1"
+      step_2: "Step 2"
+      step_3: "Step 3"
     buttons:
+      edit_profile: "Edit Profile"
       complete_profile: "Complete my profile"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
