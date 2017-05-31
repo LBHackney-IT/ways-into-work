@@ -55,9 +55,13 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
 .has-text-left
   text-align: left
+  +mobile
+    text-align: center !important
 
 .has-text-right
   text-align: right
+  +mobile
+    text-align: center !important
 
 @each $name, $pair in $colors
   $color: nth($pair, 1)
