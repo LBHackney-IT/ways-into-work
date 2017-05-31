@@ -1,0 +1,4 @@
+#profile_steps
+  = link_to "Step 1", edit_client_personal_traits_path, :class => (current_step == 1 ? "step button is-primary" : "step button is-white")
+  = link_to "Step 2", edit_client_employment_status_path, :class => (current_step == 2 ? "step button is-primary" : "step button is-white")
+  = link_to "Step 3", edit_client_aspirations_path, :class => (current_step == 3 ? "step button is-primary" : "step button is-white")
