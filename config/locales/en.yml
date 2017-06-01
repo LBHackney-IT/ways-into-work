@@ -4,3 +4,6 @@
 en:
   buttons:
     unassigned_cases: "Unassigned clients"
+  flash:
+    errors:
+      not_authorized: "Appears you are trying to access a page without authorization"
