@@ -2,5 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  buttons:
-    unassigned_cases: "Unassigned clients"
+  advisors:
+    headers:
+      no_clients: "Your case load is currently empty. You can assign yourself cases from the unassigned client list."

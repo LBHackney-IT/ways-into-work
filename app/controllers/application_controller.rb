@@ -14,12 +14,17 @@ class ApplicationController < ActionController::Base
   def user_root(user_type = current_user_login.user_type)
     case user_type
     when "Advisor"
-      :advisor_cases
+      :advisor_my_cases
     when "ServiceManager"
       :service_manager_cases
     else
       :client_dashboard
     end
+  end
+
+  def not_authorized
+    flash[:alert] = t('flash.errors.not_authorized')
+    redirect_to request.referrer || user_root
   end
 
 end
