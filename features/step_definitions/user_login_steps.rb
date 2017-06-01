@@ -19,7 +19,7 @@ Given(/^I sign in with the user login details$/) do
 end
 
 Given(/^I have signed in$/) do
-  login_as(@user_login)
+  login_as(@user_login || @i.login)
 end
 
 When(/^I sign in$/) do

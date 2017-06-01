@@ -15,7 +15,7 @@ class Client::BaseController < ApplicationController
   end
 
   def authentcate_client!
-    redirect_to user_root unless current_client.present?
+    not_authorised unless current_advisor.present?
   end
 
 end

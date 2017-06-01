@@ -10,6 +10,8 @@ WaysIntoWork::Application.routes.draw do
 
   namespace :advisor do
     resources :cases, only: :index
+    resources :my_cases, only: :index
+    resources :unassigned_cases, only: :index
   end
 
   namespace :service_manager do

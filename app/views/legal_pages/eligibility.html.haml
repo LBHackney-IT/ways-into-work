@@ -8,6 +8,10 @@
           =check_box_tag "resident"
           Are you a Hackney Resident?
       %p.check_box.control
+        =label_tag 'can_work', class: 'checkbox' do
+          =check_box_tag "can_work"
+          Are you legally eligible to work in the UK?
+      %p.check_box.control
         =label_tag 'unemployed', class: 'checkbox' do
           =check_box_tag "unemployed"
           Are you unemployed or earning below the London living wage?
