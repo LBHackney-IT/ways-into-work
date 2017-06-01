@@ -1,4 +1,4 @@
-service_managers = [
+advisors = [
   {
     email: 'jrae@wearefuturegov.com',
     name: 'Jason Rae'
@@ -8,7 +8,10 @@ service_managers = [
   },{
     email: 'benunsworth@wearefuturegov.com',
     name: 'Ben Unsworth'
+  },{
+    email: 'elle@wearefuturegov.com',
+    name: 'Elle Tweedy'
   }
 ]
 
-SeedHelper.instance.make_service_managers(service_managers)
+SeedHelper.instance.make_advisors(advisors)

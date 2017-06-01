@@ -9,4 +9,13 @@ class SeedHelper
       service_manager.save!
     end
   end
+
+  def make_advisors(user_attrs)
+    user_attrs.each do |attrs|
+      email = attrs.delete(:email)
+      advisor = Advisor.new(attrs)
+      advisor.login = UserLogin.new(email: email, password: 'WaysIntoWork', confirmed_at: Date.today)
+      advisor.save!
+    end
+  end
 end
