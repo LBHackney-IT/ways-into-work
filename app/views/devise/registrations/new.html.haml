@@ -12,7 +12,7 @@
             %i.fa.fa-envelope
           %span.icon.is-small.is-right
             %i.right_icon.fa
-          %span.help.is-danger.hide This email is invalid
+          %span.help.is-danger.is-hidden This email is invalid
 
       .field
         = f.label :password, class: 'label'
@@ -20,7 +20,7 @@
           %span.icon.is-small.is-right
             %i.right_icon.fa
           = f.password_field :password, autocomplete: "off", class: 'input validate password', :data => {:lengthvalidate => @minimum_password_length }
-          %span.help.is-danger.hide
+          %span.help.is-danger.is-hidden
             This password is not valid
             - if @minimum_password_length
               %em
@@ -31,7 +31,7 @@
           %span.icon.is-small.is-right
             %i.right_icon.fa
           = f.password_field :password_confirmation, autocomplete: "off", class: 'input validate password_confirm'
-          %span.help.is-danger.hide These do not match
+          %span.help.is-danger.is-hidden These do not match
 
       .actions
         = f.submit "Sign up", class: 'button is-primary'
