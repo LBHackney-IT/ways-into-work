@@ -3,9 +3,10 @@
   %head
     = render 'layouts/html_head'
   %body{class: page_class}
-    = render current_header
-    %main{:class => "main section", :id => "main", :role => "main"}
-      = yield
+    #main-site-wrapper
+      = render current_header
+      %main{:class => "main section", :id => "main", :role => "main"}
+        = yield
 
     %footer{:class => "site-footer footer", :role => "contentinfo"}
       = render 'layouts/site_footer'
