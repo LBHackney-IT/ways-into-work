@@ -50,14 +50,21 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
 // Text
 
+.uppercase
+  text-transform: uppercase
+
 .has-text-centered
   text-align: center
 
 .has-text-left
   text-align: left
+  +mobile
+    text-align: center !important
 
 .has-text-right
   text-align: right
+  +mobile
+    text-align: center !important
 
 @each $name, $pair in $colors
   $color: nth($pair, 1)
