@@ -1,0 +1,13 @@
+.container.content.has-text-centered
+  = render partial: 'shared/profile_steps', locals: { current_step: 2 }
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h2.subtitle Tell us a little about yourself
+
+    = simple_form_for [current_client], url: :client_employment_status do |form|
+      .convert_checkbox
+        =form.input :employment_status, as: :check_boxes, collection: EmploymentStatusOption.all, :label => 'Which of these best describes your situation?'
+
+      .actions
+        = form.submit 'Next', :class => 'button is-primary'
+

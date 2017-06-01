@@ -3,19 +3,39 @@
 
 en:
   clients:
+    steps:
+      step_1: "Step 1"
+      step_2: "Step 2"
+      step_3: "Step 3"
     buttons:
+      edit_profile: "Edit Profile"
       complete_profile: "Complete my profile"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."
     information:
       registered_date: "Registered on %{created}"
+    aspiration:
+      job: 'Job'
+      apprenticeship: 'Apprenticeship'
+      training: 'Training'
+      work_experience: 'Work experience'
     employment_status:
       no_work: 'Not currently in work'
       lt_16_hours: 'Employed less than 16 hours'
       gte_16_hours: 'Employed 16 hours or more'
       full_time_education: 'Full-time education'
       part_time_education: 'Part-time education'
+    personal_trait:
+      creative: 'Creative'
+      active: 'Active'
+      caring: 'Caring'
+      problem_solver: 'Problem solver'
+      organised: 'Organised'
+      people_person: 'People person'
+      persuasive: 'Persuasive'
+      chatty: 'Chatty'
+      other: 'Other'
     benefits_status:
       none: "None"
       job_seekers: "Job seekers allowance"

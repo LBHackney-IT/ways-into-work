@@ -1,4 +1,4 @@
-class Clients::BaseController < ApplicationController
+class Client::BaseController < ApplicationController
 
   before_action :register_new_client_to_login
 
@@ -11,7 +11,11 @@ class Clients::BaseController < ApplicationController
   end
 
   def current_client
-    current_user_login.user if current_user_login.user_type == 'Client'
+    @current_client ||= current_user_login.user if current_user_login.user_type == 'Client'
+  end
+
+  def authentcate_client!
+    redirect_to user_root unless current_client.present?
   end
 
 end

@@ -9,7 +9,7 @@ class ClientsController < ApplicationController
     @client.login = current_user_login
     if @client.save
       ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
-      redirect_to clients_dashboard_path
+      redirect_to client_dashboard_path
     else
       render :new
     end
@@ -29,9 +29,7 @@ class ClientsController < ApplicationController
       :address_line_1,
       :address_line_2,
       :address_line_3,
-      :postcode,
-      :employment_status,
-      :benefits_status
+      :postcode
       )
   end
 

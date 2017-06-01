@@ -1,4 +1,4 @@
-class BenefitsStatusOption
+class ServiceRequestOption
   attr_reader :id, :name
 
   def initialize(id, name)

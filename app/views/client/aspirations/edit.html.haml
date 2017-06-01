@@ -1,0 +1,15 @@
+.container.content.has-text-centered
+  = render partial: 'shared/profile_steps', locals: { current_step: 3 }
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h2.subtitle What can we help you with?
+
+    = simple_form_for [current_client], url: :client_aspirations do |form|
+      .convert_checkbox
+        =form.input :aspirations, as: :check_boxes, collection: AspirationOption.all, :label => 'Which of these do you want to discuss with an advisor?'
+
+        = render partial: 'shared/other_text', locals: { form: form, field: :other_aspiration }
+
+      .actions
+        = form.submit 'Next', :class => 'button is-primary'
+

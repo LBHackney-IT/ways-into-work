@@ -14,5 +14,6 @@
 //= require eligibility
 //= require delete
 //= require validate
+//= require form-helper
 //= require public
 
