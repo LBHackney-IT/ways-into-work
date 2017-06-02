@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530205629) do
+ActiveRecord::Schema.define(version: 20170602152143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,14 @@ ActiveRecord::Schema.define(version: 20170530205629) do
     t.string "personal_traits", default: [], array: true
     t.string "other_personal_trait"
     t.string "aspirations", default: [], array: true
-    t.string "employment_status", default: [], array: true
     t.string "other_aspiration"
+    t.boolean "employed"
+    t.boolean "studying"
+    t.integer "working_hours_per_week"
+    t.string "time_since_last_job"
+    t.string "job_title"
+    t.string "current_education"
+    t.string "past_education"
   end
 
   create_table "service_managers", force: :cascade do |t|

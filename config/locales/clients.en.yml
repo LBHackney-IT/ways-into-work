@@ -35,12 +35,12 @@ en:
       apprenticeship: 'Apprenticeship'
       training: 'Training'
       work_experience: 'Work experience'
-    employment_status:
-      no_work: 'Not currently in work'
-      lt_16_hours: 'Employed less than 16 hours'
-      gte_16_hours: 'Employed 16 hours or more'
-      full_time_education: 'Full-time education'
-      part_time_education: 'Part-time education'
+    out_of_work:
+      0-6: '0-6'
+      7-11: '7-11'
+      12-23: '12-23'
+      24-35: '24-35'
+      36+: 'More than 36 Months'
     personal_trait:
       creative: 'Creative'
       active: 'Active'

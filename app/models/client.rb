@@ -41,7 +41,7 @@ class Client < ApplicationRecord
   end
 
   def profile_complete?
-    employment_status.present?
+    false
   end
 
   def devise_mailer

@@ -14,8 +14,10 @@ class Client::EmploymentStatusController < Client::BaseController
   private
   def client_params
     params.require(:client).permit(
-      :other_personal_trait,
-      employment_status: []
+      :employed,
+      :working_hours_per_week,
+      :time_since_last_job,
+      :job_title
       )
   end
 end

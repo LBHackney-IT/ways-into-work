@@ -7,7 +7,7 @@
     = simple_form_for [current_client], url: :client_employment_status do |form|
       = render 'shared/form_errors', object: form.object
       .convert_checkbox
-        =form.input :employment_status, as: :check_boxes, collection: EmploymentStatusOption.all, :label => 'Which of these best describes your situation?'
+        =form.input :time_since_last_job, as: :check_boxes, collection: OutOfWorkOption.all, :label => 'How long have you been out of work for?'
 
       .actions
         = form.submit 'Next', :class => 'button is-primary'
