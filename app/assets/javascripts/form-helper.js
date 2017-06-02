@@ -6,7 +6,7 @@ $.fn.handleFormElements = function() {
 
   convertCheckbox = $(this).find('.convert_checkbox')
 
-  if(convertCheckbox.length)
+  if(convertCheckbox.length) {
     convertCheckbox.find('input[type=checkbox]').each(function() {
       if ($(this).is(':checked')) {
         $(this).parents('.checkbox label').addClass('is-primary is-outlined');
@@ -15,10 +15,11 @@ $.fn.handleFormElements = function() {
     convertCheckbox.find('input[type=checkbox]').click(function() {
       $(this).parents('.checkbox label').toggleClass('is-primary is-outlined');
     });
+  }
 
-  if(toggleOther.length)
+  if(toggleOther.length) {
     textFieldBlock = toggleOther.parents('#other').find('#other_text');
-    console.log(textFieldBlock.find('input[type=text]').val());
+
     if (textFieldBlock.find('input[type=text]').val() != '') {
       toggleOther.parents('.checkbox label').addClass('is-primary is-outlined');
       textFieldBlock.removeClass('is-hidden');
@@ -32,5 +33,5 @@ $.fn.handleFormElements = function() {
         textFieldBlock.find('input[type="text"]').focus();
       }
     });
-
+  }
 };

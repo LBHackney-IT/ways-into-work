@@ -1,51 +1,13 @@
-.bold
-  font-weight: $weight-semibold
+body
+  display: flex
+  min-height: 100vh
+  flex-direction: column
 
-.hide
-  display: none
+#main-site-wrapper
+  flex: 1
 
-.nav-item a.is-brand, a.nav-item.is-brand
-  padding-left: 1.5rem
 
-@media screen and (min-width: $desktop)
-  .nav-item a.is-brand, a.nav-item.is-brand
-    padding-left: 0
-
-.alert-alert, .alert-error
-  background-color: $danger
-  color: $white
-
-.alert-notice
-  background-color: $primary
-  color: $white
-
-fieldset
-  border: none
-  margin-bottom: 3.5rem
-abbr
-  text-decoration: none
-
-.actions
-  margin-top: $size-4
-  .button
-    +mobile
-      width: 100%
-
-.confirmations.new, .passwords.new
-  #devise_links
-    display: none
-
-#devise_links
-  margin-top: $size-4
-  color: $grey-dark
-  .link
-    margin-bottom: $size-6
-  a
-    color: $black
-  .small-text
-    font-size: 14px
-
-#footer_logo
+.hackney-logo
   img
     max-width: 200px
 
@@ -53,3 +15,16 @@ abbr
 #profile_steps
   .button_to
     display: inline
+    transform: rotate(-5deg)
+
+#watermark
+  position: absolute
+  opacity: 0.075
+  top: 40%
+  left: 5%
+  max-width: 275px
+  z-index: -1
+  +mobile
+    opacity: 0.03
+    top: 25%
+    max-width: 250px

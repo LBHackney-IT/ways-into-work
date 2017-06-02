@@ -1,17 +1,18 @@
 .container.content.columns
   .column.is-10.is-offset-1
     %h2.subtitle Are you Eligible?
+    %p In order to register for this service you need to fulfil these three criteria:
 
     #eligibility_check
-      %p.check_box.control
+      %p.check_box.control.medium
         =label_tag 'resident', class: 'checkbox' do
           =check_box_tag "resident"
           Are you a Hackney Resident?
-      %p.check_box.control
+      %p.check_box.control.medium
         =label_tag 'can_work', class: 'checkbox' do
           =check_box_tag "can_work"
           Are you legally eligible to work in the UK?
-      %p.check_box.control
+      %p.check_box.control.medium
         =label_tag 'unemployed', class: 'checkbox' do
           =check_box_tag "unemployed"
           Are you unemployed or earning below the London living wage?
@@ -20,3 +21,9 @@
 
     #register_link.disabled.control
       =button_to I18n.t('devise.buttons.accept_terms'), new_client_path, method: 'get', disabled: true, class: 'button is-primary'
+
+.container.content.columns
+  .column.is-10.is-offset-1
+    %p
+      Already have an account?
+      %span.bold=link_to "Log in", user_login_session_path
