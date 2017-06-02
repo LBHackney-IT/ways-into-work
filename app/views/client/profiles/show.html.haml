@@ -1,6 +1,6 @@
 .container.content.columns
   .column.is-10.is-offset-1
-    %h2.subtitle Profile page
+    %h2.subtitle="#{current_client.first_name}'s Profile"
 
     %p Placeholder
     = link_to I18n.t('clients.buttons.edit_profile'), edit_client_personal_traits_path, :class => "step button is-primary"
