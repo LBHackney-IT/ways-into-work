@@ -3,24 +3,27 @@
     = simple_form_for [@client] do |form|
 
       %fieldset
-        %h3.subtitle Personal Details
+        %h3.subtitle Sign up for Account
         %hr
+        %p In order to get you registered we need to take a few of your details. We will then create an account for you and send you an email for you to create a password for this account and log in.
+
+        = render 'shared/form_errors', object: form.object
         .columns
           .column
             =form.input :first_name, as: :string, :input_html => { :class => 'input' }
           .column
             =form.input :last_name, as: :string, :input_html => { :class => 'input' }
 
-        =form.input :date_of_birth, as: :date, start_year: Date.today.year - 70, end_year: Date.today.year - 14, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: 'select'
+        / =form.input :date_of_birth, as: :date, start_year: Date.today.year - 70, end_year: Date.today.year - 14, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: 'select'
+        .columns
+          .column
+            =form.simple_fields_for :login do |login_form|
+              =login_form.input :email, :required => true, as: :email, :input_html => { :class => 'input' }
+          .column
+            =form.input :phone, as: :tel, :input_html => { :class => 'input' }
 
-      %fieldset
-        %h3.subtitle Contact Details
-        %hr
-        =form.input :phone, as: :tel, :input_html => { :class => 'input' }
-        =form.simple_fields_for :login do |login_form|
-          =login_form.input :email, as: :email, :input_html => { :class => 'input' }
         =form.input :address_line_1, as: :string, :input_html => { :class => 'input' }
-        =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
+        / =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
         =form.input :postcode, as: :string, :input_html => { :class => 'input' }
 
       = form.submit 'Save details', :class => 'button is-primary'
