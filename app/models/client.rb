@@ -4,6 +4,10 @@ class Client < ApplicationRecord
 
   validates :login, :first_name, :last_name, :phone, :address_line_1, :postcode, presence: true
 
+  delegate :email, to: :login
+
+  accepts_nested_attributes_for :login
+
   validate do
     valid_postcode? && within_hackney?
   end
@@ -34,6 +38,10 @@ class Client < ApplicationRecord
 
   def profile_complete?
     employment_status.present?
+  end
+
+  def devise_mailer
+    CustomDeviseMailer
   end
 
 end

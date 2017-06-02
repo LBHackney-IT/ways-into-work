@@ -1,15 +1,19 @@
 class ClientsController < ApplicationController
 
+  skip_before_action :authenticate_user_login!
+
   def new
     @client = Client.new()
+    @client.build_login
   end
 
   def create
     @client = Client.new(client_params)
-    @client.login = current_user_login
+    @client.login.password = Devise.friendly_token.first(20)
     if @client.save
-      ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
-      redirect_to client_dashboard_path
+      @client.login.send_reset_password_instructions
+      redirect_to '/'
+      ServiceManagerMailer.notify_client_signed_up(@client).deliver_later
     else
       render :new
     end
@@ -29,7 +33,8 @@ class ClientsController < ApplicationController
       :address_line_1,
       :address_line_2,
       :address_line_3,
-      :postcode
+      :postcode,
+      login_attributes: [ :email ]
       )
   end
 

@@ -3,6 +3,9 @@
 
 en:
   clients:
+    mail:
+      subject:
+        welcome: "Welcome to Ways Into Work"
     steps:
       step_1: "Step 1"
       step_2: "Step 2"
