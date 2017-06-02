@@ -56,13 +56,13 @@ $.fn.validate = function() {
 
   function setToDanger(input) {
     input.removeClass('is-success').addClass('is-danger');
-    input.parents('.field').find('.help').removeClass('hide');
+    input.parents('.field').find('.help').removeClass('is-hidden');
     input.parents('.control').find('.right_icon').addClass('fa-warning').removeClass('fa-check');
   }
 
   function setToSuccess(input) {
     input.removeClass('is-danger').addClass('is-success');
-    input.parents('.field').find('.help').addClass('hide');
+    input.parents('.field').find('.help').addClass('is-hidden');
     input.parents('.control').find('.right_icon').addClass('fa-check').removeClass('fa-warning');
   }
 

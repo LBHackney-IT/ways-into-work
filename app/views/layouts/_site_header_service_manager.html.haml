@@ -1,7 +1,7 @@
 .container{:class => "site-header", :role => "banner"}
   %nav.nav
     .nav-left
-      = link_to "WaysIntoWork", user_root, class: 'nav-item is-brand'
+      = link_to I18n.t('header.title'), user_root, class: 'nav-item is-brand bold'
     %span.nav-toggle
       %span
       %span
