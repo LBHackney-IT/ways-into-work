@@ -21,6 +21,7 @@ WaysIntoWork::Application.routes.draw do
   resources :clients, only: [:new, :create]
 
   namespace :client do
+    resource :password, only: [:edit]
     resource :profile, only: [:show]
     resource :personal_traits, only: [:edit, :update]
     resource :aspirations, only: [:edit, :update]

@@ -4,4 +4,8 @@ class ServiceManager < ApplicationRecord
 
   validates :login, :name, presence: true
 
+  def devise_mailer
+    Devise::Mailer
+  end
+
 end

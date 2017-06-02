@@ -4,6 +4,10 @@ class Client < ApplicationRecord
 
   validates :login, :first_name, :last_name, :phone, :address_line_1, :postcode, presence: true
 
+  delegate :email, to: :login
+
+  accepts_nested_attributes_for :login
+
   validate do
     valid_postcode? && within_hackney?
   end
@@ -16,10 +20,14 @@ class Client < ApplicationRecord
   end
 
   def within_hackney?
-    # TODo - move this back outside of validation
-    eligible = HackneyPostcodeValidator.new(self.postcode).within_hackney?
-    errors[:postcode] << I18n.t('clients.validation.outside_borough') unless eligible
-    eligible
+    if postcode_changed?
+      # TODo - move this back outside of validation
+      eligible = HackneyPostcodeValidator.new(self.postcode).within_hackney?
+      errors[:postcode] << I18n.t('clients.validation.outside_borough') unless eligible
+      eligible
+    else
+      true
+    end
   end
 
   def valid_postcode?
@@ -34,6 +42,10 @@ class Client < ApplicationRecord
 
   def profile_complete?
     employment_status.present?
+  end
+
+  def devise_mailer
+    CustomDeviseMailer
   end
 
 end

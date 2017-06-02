@@ -3,10 +3,25 @@
 
 en:
   clients:
+    mail:
+      subject:
+        welcome: "Welcome to Ways Into Work"
     steps:
-      step_1: "Step 1"
-      step_2: "Step 2"
-      step_3: "Step 3"
+      step_1:
+        long: "Tell us a little about yourself"
+        short: "About You"
+      step_2:
+        long: "Tell us about your employment status"
+        short: "Employment"
+      step_3:
+        long: "What can we help you with?"
+        short: "Goals"
+      step_4:
+        long: "Tell us about your education"
+        short: "Education"
+      step_5:
+        long: "For monitoring purposes please provide us with some details about you"
+        short: "Details"
     buttons:
       edit_profile: "Edit Profile"
       complete_profile: "Complete my profile"

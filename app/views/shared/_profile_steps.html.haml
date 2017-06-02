@@ -1,4 +1,4 @@
 #profile_steps
-  = link_to I18n.t('clients.steps.step_1'), edit_client_personal_traits_path, :class => (current_step == 1 ? "step button is-primary" : "step button is-white")
-  = link_to I18n.t('clients.steps.step_2'), edit_client_employment_status_path, :class => (current_step == 2 ? "step button is-primary" : "step button is-white")
-  = link_to I18n.t('clients.steps.step_3'), edit_client_aspirations_path, :class => (current_step == 3 ? "step button is-primary" : "step button is-white")
+  = button_to I18n.t('clients.steps.step_1.short'), edit_client_personal_traits_path, :class => (current_step == 1 ? "step button is-primary" : "step button is-white"), method: 'get'
+  = button_to I18n.t('clients.steps.step_2.short'), edit_client_employment_status_path, :class => (current_step == 2 ? "step button is-primary" : "step button is-white"), method: 'get', disabled: controller_name == 'employment_status' || controller_name == 'aspirations' ? false : true
+  = button_to I18n.t('clients.steps.step_3.short'), edit_client_aspirations_path, :class => (current_step == 3 ? "step button is-primary" : "step button is-white"), method: 'get', disabled: controller_name == 'aspirations' ? false : true

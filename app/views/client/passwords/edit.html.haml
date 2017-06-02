@@ -1,0 +1,18 @@
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h2.subtitle Create your password
+
+    = form_for(@user_login, url: user_login_password_path, html: { method: :put }) do |f|
+      / = devise_error_messages!
+      = f.hidden_field :reset_password_token
+      .field
+        = f.label :password, "New password", class: 'label'
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        = f.password_field :password, autofocus: true, autocomplete: "off", class: 'input'
+      .field
+        = f.label :password_confirmation, "Confirm new password", class: 'label'
+        = f.password_field :password_confirmation, autocomplete: "off", class: 'input'
+      .actions
+        = f.submit "Create my password", class: 'button is-primary'
