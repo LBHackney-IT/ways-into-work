@@ -7,7 +7,7 @@
     = simple_form_for [current_client], url: :client_aspirations do |form|
       = render 'shared/form_errors', object: form.object
       .convert_checkbox
-        =form.input :aspirations, as: :check_boxes, collection: AspirationOption.all, :label => 'Which of these do you want to discuss with an advisor?'
+        =form.input :aspirations, as: :check_boxes, collection: AspirationOption.all, :label => 'Which of these do you want to discuss with an advisor?', include_hidden: false
 
         = render partial: 'shared/other_text', locals: { form: form, field: :other_aspiration }
 
