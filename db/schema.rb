@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 20170602182708) do
     t.string "objectives", default: [], array: true
     t.string "other_objective"
     t.boolean "employed"
-    t.boolean "studying"
     t.integer "working_hours_per_week"
     t.string "time_since_last_job"
     t.string "job_title"
     t.string "current_education"
     t.string "past_education"
+    t.integer "studying", default: 0
   end
 
   create_table "service_managers", force: :cascade do |t|
