@@ -13,6 +13,14 @@ $.fn.handleFormElements = function() {
       }
     });
     convertCheckbox.find('input[type=checkbox]').click(function() {
+      if ($(this).parents('.convert_checkbox').hasClass('single_option')) {
+        currentClick = $(this)
+        $('.convert_checkbox input[type=checkbox]').each(function() {
+          if ($(this).is(':checked')) {
+            $(this).not(currentClick).attr('checked', false).parents('.checkbox label').removeClass('is-primary is-outlined');
+          }
+        });
+      }
       $(this).parents('.checkbox label').toggleClass('is-primary is-outlined');
     });
   }
