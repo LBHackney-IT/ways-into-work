@@ -1,0 +1,20 @@
+%h2 Create your password
+
+= form_for(@user_login, url: user_login_password_path, html: { method: :put }) do |f|
+  / = devise_error_messages!
+  = f.hidden_field :reset_password_token
+  .field
+    = f.label :password, "New password"
+    %br
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+      %br
+    = f.password_field :password, autofocus: true, autocomplete: "off"
+  .field
+    = f.label :password_confirmation, "Confirm new password"
+    %br
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .actions
+    = f.submit "Create my password"
+/ = render "devise/shared/links"
