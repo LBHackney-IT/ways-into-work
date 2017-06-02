@@ -12,6 +12,7 @@ class ClientsController < ApplicationController
     @client.login.password = Devise.friendly_token.first(20)
     if @client.save
       @client.login.send_reset_password_instructions
+      flash[:alert] = I18n.t('devise.confirmations.send_instructions')
       redirect_to '/'
       ServiceManagerMailer.notify_client_signed_up(@client).deliver_later
     else
