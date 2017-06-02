@@ -7,9 +7,15 @@ en:
       subject:
         welcome: "Welcome to Ways Into Work"
     steps:
-      step_1: "About You"
-      step_2: "Employment"
-      step_3: "Goals"
+      step_1:
+        long: "Tell us a little about yourself"
+        short: "About You"
+      step_2:
+        long: "Tell us about your employment status"
+        short: "Employment"
+      step_3:
+        long: "What can we help you with?"
+        short: "Goals"
     buttons:
       edit_profile: "Edit Profile"
       complete_profile: "Complete my profile"

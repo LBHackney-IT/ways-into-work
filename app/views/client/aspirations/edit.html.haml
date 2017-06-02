@@ -2,7 +2,7 @@
   = render partial: 'shared/profile_steps', locals: { current_step: 3 }
 .container.content.columns
   .column.is-10.is-offset-1
-    %h2.subtitle What can we help you with?
+    %h2.subtitle=I18n.t('clients.steps.step_3.long')
 
     = simple_form_for [current_client], url: :client_aspirations do |form|
       = render 'shared/form_errors', object: form.object
