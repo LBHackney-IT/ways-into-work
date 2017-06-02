@@ -8,6 +8,8 @@ class Client < ApplicationRecord
 
   accepts_nested_attributes_for :login
 
+  enum studying: [ :unknown, :no, :part_time, :full_time ]
+
   validate do
     valid_postcode? && within_hackney?
   end
