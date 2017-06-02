@@ -5,6 +5,7 @@
     %h2.subtitle Tell us a little about yourself
 
     = simple_form_for [current_client], url: :client_personal_traits do |form|
+      = render 'shared/form_errors', object: form.object
       .convert_checkbox
         =form.input :personal_traits, as: :check_boxes, collection: PersonalTraitOption.all, :label => 'What would you say best describes you?'
 
