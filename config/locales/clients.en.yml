@@ -30,7 +30,7 @@ en:
       postcode_error: "The postcode you provided is invalid."
     information:
       registered_date: "Registered on %{created}"
-    aspiration:
+    objective:
       job: 'Job'
       apprenticeship: 'Apprenticeship'
       training: 'Training'

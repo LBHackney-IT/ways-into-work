@@ -1,4 +1,4 @@
-class Client::AspirationsController < Client::BaseController
+class Client::ObjectivesController < Client::BaseController
 
   def edit
   end
@@ -14,8 +14,8 @@ class Client::AspirationsController < Client::BaseController
   private
   def client_params
     params.require(:client).permit(
-      :other_aspiration,
-      aspirations: []
+      :other_objectives,
+      objectivess: []
       )
   end
 end
