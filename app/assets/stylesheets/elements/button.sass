@@ -28,7 +28,7 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
   padding-left: 1.75em
   padding-right: 1.75em
 
-.button, .convert_checkbox span.checkbox label
+.button, .convert_checkbox span.checkbox label, .convert_radio span.radio label
   +control
   +unselectable
   background-color: $button-background
@@ -192,21 +192,4 @@ input[type="submit"].button
   padding-bottom: 0.4em
   padding-top: 0.35em
 
-.convert_checkbox
-  .field, #other
-    display: inline
-  #other_text
-    display: inline-block
-    vertical-align: bottom
-    input
-      display: inline
-      margin: $size-8
-  .checkbox
-    cursor: default
-  span.checkbox label,
-    margin: $size-8
-    &:hover
-      cursor: pointer
-    input[type=checkbox]
-      display: none
 
