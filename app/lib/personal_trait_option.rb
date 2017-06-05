@@ -24,7 +24,7 @@ class PersonalTraitOption
   end
 
   def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(',')
+    ids.collect{|id| find(id).name}.join(', ')
   end
 
 end

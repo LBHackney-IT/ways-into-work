@@ -1,25 +1,74 @@
 .container.content.columns
   .column.is-10.is-offset-1
     %h2.subtitle="Your Profile"
+    -if current_client.name.present?
+      %p
+        %label.label Full Name:
+        ="#{current_client.name}"
 
-    %p="Name: #{current_client.name}"
-    %p="Phone number: #{current_client.phone}"
-    %p="Address: #{current_client.address_to_s}"
+    -if current_client.phone.present?
+      %p
+        %label.label Phone number:
+        ="#{current_client.phone}"
 
-    %p="Your strengths: #{PersonalTraitOption.display(current_client.personal_traits)}"
-    %p="Other: #{current_client.other_personal_trait}" if current_client.other_personal_trait.present?
+    -if current_client.address_to_s.present?
+      %p
+        %label.label Address:
+        ="#{current_client.address_to_s}"
 
-    %p="Your objectives: #{ObjectiveOption.display(current_client.objectives)}"
-    %p="Other: #{current_client.other_objective}" if current_client.other_objective.present?
+    -if current_client.phone.present?
+      %p
+        %label.label Your strengths:
+        ="#{PersonalTraitOption.display(current_client.personal_traits)}"
 
-    %p="Currently studying: #{current_client.studying.to_s}"
-    %p="Course title: #{current_client.current_education}" if current_client.current_education.present?
-    %p="Past education: #{current_client.current_education}" if current_client.current_education.present?
+    -if current_client.other_personal_trait.present?
+      %p
+        %label.label Other:
+        ="#{current_client.other_personal_trait}"
 
-    %p="Currently employed: #{current_client.employed ? 'Yes' : 'No'}"
-    %p="Job title: #{current_client.job_title}" if current_client.job_title.present?
-    %p="Hours per week: #{current_client.working_hours_per_week}" if current_client.working_hours_per_week.present?
-    %p="Months since last job: #{current_client.time_since_last_job}" if current_client.time_since_last_job.present?
+    -if current_client.objectives.present?
+      %p
+        %label.label Your objectives:
+        ="#{ObjectiveOption.display(current_client.objectives)}"
+
+    -if current_client.other_objective.present?
+      %p
+        %label.label Other:
+        ="#{current_client.other_objective}"
+
+    -if current_client.studying.to_s.present?
+      %p
+        %label.label Currently studying:
+        ="#{current_client.studying.to_s}"
+
+    -if current_client.current_education.present?
+      %p
+        %label.label Course title:
+        ="#{current_client.current_education}"
+
+    -if current_client.past_education.present?
+      %p
+        %label.label Past education:
+        ="#{current_client.past_education}"
+
+    %p
+      %label.label Currently employed:
+      ="#{current_client.employed ? 'Yes' : 'No'}"
+
+    -if current_client.job_title.present?
+      %p
+        %label.label Job title:
+        ="#{current_client.job_title}"
+
+    -if current_client.working_hours_per_week.present?
+      %p
+        %label.label Hours per week:
+        ="#{current_client.working_hours_per_week}"
+
+    -if current_client.time_since_last_job.present?
+      %p
+        %label.label Months since last job:
+        ="#{current_client.time_since_last_job}"
 
     / t.datetime "date_of_birth"
 
