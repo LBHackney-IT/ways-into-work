@@ -7,7 +7,7 @@
     = simple_form_for [current_client], url: :client_education do |form|
       = render 'shared/form_errors', object: form.object
 
-      = form.input :studying, as: :radio_buttons, label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
+      = form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
 
       .is-hidden.on-true
         = form.input :studying_part_time, as: :radio_buttons, collection: [['Part time', true], ['Full time', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio radio_child" }
