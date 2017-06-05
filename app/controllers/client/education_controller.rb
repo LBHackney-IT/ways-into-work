@@ -21,6 +21,7 @@ class Client::EducationController < Client::BaseController
   def client_params
     params.require(:client).permit(
       :studying,
+      :studying_part_time,
       :past_education,
       :current_education
       )
