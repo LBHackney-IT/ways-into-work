@@ -11,6 +11,12 @@ class Client::PersonalTraitsController < Client::BaseController
     end
   end
 
+  def profile_steps
+    @profile_steps ||= ProfileSteps.new(current_client, :about_you)
+  end
+  helper_method :profile_steps
+
+
   private
   def client_params
     params.require(:client).permit(

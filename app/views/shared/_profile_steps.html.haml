@@ -1,4 +1,3 @@
 #profile_steps
-  = button_to I18n.t('clients.steps.step_1.short'), edit_client_personal_traits_path, :class => (current_step == 1 ? "step button is-primary" : "step button is-white"), method: 'get'
-  = button_to I18n.t('clients.steps.step_2.short'), edit_client_employment_status_path, :class => (current_step == 2 ? "step button is-primary" : "step button is-white"), method: 'get', disabled: controller_name == 'employment_status' || controller_name == 'objectives' ? false : true
-  = button_to I18n.t('clients.steps.step_3.short'), edit_client_objectives_path, :class => (current_step == 3 ? "step button is-primary" : "step button is-white"), method: 'get', disabled: controller_name == 'objectives' ? false : true
+  = profile_steps.decorated do |decorated_step|
+    = button_to decorated_step.name, decorated_step.href, decorated_step.properties
