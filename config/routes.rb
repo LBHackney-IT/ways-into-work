@@ -9,6 +9,7 @@ WaysIntoWork::Application.routes.draw do
   get '/confirm_eligibility'  => 'legal_pages#eligibility'
 
   namespace :advisor do
+    resources :client, only: :show
     resources :cases, only: :index
     resources :my_cases, only: :index
     resources :unassigned_cases, only: :index

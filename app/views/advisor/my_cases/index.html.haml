@@ -1,9 +1,10 @@
-.container.content
-  %h3 Here is a list of all the registered clients
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h3 Here is a list of all the registered clients
 
-  -if @clients.any?
-    %ul.clients
-      = render partial: 'client', collection: @clients
-  - else
-    %h4=I18n.t('advisors.headers.no_clients')
-    =link_to I18n.t('buttons.unassigned_cases'), :advisor_unassigned_cases
+    -if @clients.any?
+      %ul.clients
+        = render partial: 'client', collection: @clients
+    - else
+      %h4=I18n.t('advisors.headers.no_clients')
+      =link_to I18n.t('buttons.unassigned_cases'), :advisor_unassigned_cases
