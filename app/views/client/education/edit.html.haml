@@ -10,12 +10,12 @@
       = form.input :studying, as: :radio_buttons, label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
 
       .is-hidden.on-true
-        = form.input :studying_part_time, as: :radio_buttons, collection: [['Part time', true], ['Full time', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
+        = form.input :studying_part_time, as: :radio_buttons, collection: [['Part time', true], ['Full time', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio radio_child" }
 
         =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }
 
       .convert_checkbox.single_option.is-hidden.on-false
-        =form.input :past_education, as: :string, :label => "What was the highest level of education you studied for? eg. GCSE, A-Levels, Degree"
+        =form.input :past_education, as: :string, :label => "What was the highest level of education you studied for? eg. GCSE, A-Levels, Degree", :input_html => { :class => 'input' }
 
       .actions
         = form.submit 'Next', :class => 'button is-primary'

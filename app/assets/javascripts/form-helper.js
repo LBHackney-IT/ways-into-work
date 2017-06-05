@@ -69,13 +69,18 @@ $.fn.handleFormElements = function() {
     convertRadio.find('input[type=radio]').each(function() {
       if ($(this).is(':checked')) {
         $(this).parents('.radio label').addClass('is-primary is-outlined');
-        runThroughRadios($(this));
+        if(!$(this).parents('.convert_radio').hasClass('radio_child')) {
+          runThroughRadios($(this));
+        }
       }
     });
     convertRadio.find('input[type=radio]').change(function() {
       $(this).parents('.convert_radio').find('.is-primary').removeClass('is-primary is-outlined');
       $(this).parents('.radio label').addClass('is-primary is-outlined');
-      runThroughRadios($(this));
+      console.log($(this).parents('.convert_radio').hasClass('radio_child'))
+      if(!$(this).parents('.convert_radio').hasClass('radio_child')) {
+        runThroughRadios($(this));
+      }
     });
 
     function runThroughRadios(theRadio){
