@@ -20,10 +20,12 @@ class ProfileSteps
   def latest_index
     if @client.objectives.any?
       3
-    elsif @client.employed.present?
+    elsif !@client.employed.nil?
       2
     elsif @client.personal_traits.any?
       1
+    else
+      0
     end
   end
 

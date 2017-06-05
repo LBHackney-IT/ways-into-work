@@ -21,7 +21,7 @@ class Client::ObjectivesController < Client::BaseController
   def client_params
     params.require(:client).permit(
       :other_objectives,
-      objectivess: []
+      objectives: []
       )
   end
 end

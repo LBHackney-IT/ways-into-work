@@ -5,7 +5,7 @@ class Client::EmploymentStatusController < Client::BaseController
 
   def update
     if current_client.update_attributes(client_params)
-      redirect_to :edit_client_education
+      redirect_to :edit_client_objectives
     else
       render :edit
     end

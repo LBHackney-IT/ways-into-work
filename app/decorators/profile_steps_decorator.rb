@@ -8,12 +8,13 @@ class ProfileStepsDecorator < SimpleDelegator
   end
 
   def properties
-    {
-      "aria-disabled" => (enabled? ? "false" : "true"),
-      "aria-selected" => (profile.current_step?(self) ? "true" : "false"),
+    result = {
+      "selected" => (profile.current_step?(self) ? "true" : "false"),
       method: 'get',
       class: decorated_class
     }
+    result['disabled'] = 'disabled' unless enabled?
+    result
   end
 
   def href
