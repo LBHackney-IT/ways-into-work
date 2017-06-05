@@ -8,10 +8,11 @@ Feature: Client signs up for the service
     When I follow the link to register for the service
     Then I should be asked to accept the eligibility criteria
 
+  @validate_postcode @wip
   Scenario: client signs up
     When I register my self as "client@example.com"
     Then "client@example.com" receive an email asking to confirm address
     When I click the opt-in email confirmation link
-    Then I should see the client email confirmed notice message
-    And I should be on the new user login session page
+    And I create a new password
+    Then I should be on the complete profile page
 

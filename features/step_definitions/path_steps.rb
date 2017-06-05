@@ -25,6 +25,6 @@ end
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   uri = URI.parse(current_url)
   current_path = uri.path
-  current_path += "?#{uri.query}" if uri.query
+  # current_path += "?#{uri.query}" if uri.query
   expect(current_path).to eq path_to(page_name)
 end
