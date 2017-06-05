@@ -14,8 +14,8 @@
 
         =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
 
-      .convert_checkbox.single_option.is-hidden.on-false
-        =form.input :time_since_last_job, as: :check_boxes, collection: OutOfWorkOption.all, :label => 'How long have you been out of work for?', include_hidden: false
+      .is-hidden.on-false
+        =form.input :time_since_last_job, as: :radio_buttons, collection: OutOfWorkOption.all, :label => 'How long have you been out of work for?', include_hidden: false, wrapper_html: { class: "convert_radio" }
 
       .actions
         = form.submit 'Next', :class => 'button is-primary'
