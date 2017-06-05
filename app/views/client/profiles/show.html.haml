@@ -1,6 +1,8 @@
 .container.content.columns
   .column.is-10.is-offset-1
     %h2.subtitle="Your Profile"
+    %hr
+
     -if current_client.name.present?
       %p
         %label.label Full Name:
@@ -16,7 +18,7 @@
         %label.label Address:
         ="#{current_client.address_to_s}"
 
-    -if current_client.phone.present?
+    -if current_client.personal_traits.present?
       %p
         %label.label Your strengths:
         ="#{PersonalTraitOption.display(current_client.personal_traits)}"
