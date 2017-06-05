@@ -50,4 +50,13 @@ class Client < ApplicationRecord
     CustomDeviseMailer
   end
 
+  def address_to_s
+    address_to_a.join(", ")
+  end
+
+  def address_to_a
+    [address_line_1, address_line_2, postcode].select{|s| s.present?}
+  end
+
+
 end

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170602182708) do
     t.string "job_title"
     t.string "current_education"
     t.string "past_education"
-    t.integer "studying", default: 0
+    t.integer "studying", default: 0, null: false
   end
 
   create_table "service_managers", force: :cascade do |t|

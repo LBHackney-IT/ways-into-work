@@ -9,7 +9,6 @@ Then(/^I should be asked to accept the eligibility criteria$/) do
 end
 
 When(/^I create a new password$/) do
-  debugger
   fill_in 'user_login_password', :with => "SomeLongPassword"
   fill_in('Password confirmation', :with => "SomeLongPassword")
   click_button 'Save details'

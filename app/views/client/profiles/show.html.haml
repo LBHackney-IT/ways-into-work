@@ -1,7 +1,28 @@
 .container.content.columns
   .column.is-10.is-offset-1
-    %h2.subtitle="#{current_client.first_name}'s Profile"
+    %h2.subtitle="Your Profile"
 
-    %p Placeholder
+    %p="Name: #{current_client.name}"
+    %p="Phone number: #{current_client.phone}"
+    %p="Address: #{current_client.address_to_s}"
+
+    %p="Your strengths: #{PersonalTraitOption.display(current_client.personal_traits)}"
+    %p="Other: #{current_client.other_personal_trait}" if current_client.other_personal_trait.present?
+
+    %p="Your objectives: #{ObjectiveOption.display(current_client.objectives)}"
+    %p="Other: #{current_client.other_objective}" if current_client.other_objective.present?
+
+    %p="Currently studying: #{current_client.studying.to_s}"
+    %p="Course title: #{current_client.current_education}" if current_client.current_education.present?
+    %p="Past education: #{current_client.current_education}" if current_client.current_education.present?
+
+    %p="Currently employed: #{current_client.employed ? 'Yes' : 'No'}"
+    %p="Job title: #{current_client.job_title}" if current_client.job_title.present?
+    %p="Hours per week: #{current_client.working_hours_per_week}" if current_client.working_hours_per_week.present?
+    %p="Months since last job: #{current_client.time_since_last_job}" if current_client.time_since_last_job.present?
+
+    / t.datetime "date_of_birth"
+
+
     = link_to I18n.t('clients.buttons.edit_profile'), edit_client_personal_traits_path, :class => "step button is-primary"
 

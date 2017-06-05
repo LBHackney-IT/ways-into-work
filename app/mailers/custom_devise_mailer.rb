@@ -2,8 +2,6 @@ class CustomDeviseMailer < Devise::Mailer
 
   default from: WaysIntoWork.config.support_email
 
-  # include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`
-
   def reset_password_instructions(record, token, opts={})
     if record.sign_in_count > 0
       super(record, token, opts={})
