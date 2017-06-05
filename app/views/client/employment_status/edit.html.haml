@@ -6,7 +6,6 @@
 
     = simple_form_for [current_client], url: :client_employment_status do |form|
       = render 'shared/form_errors', object: form.object
-<<<<<<< HEAD
 
       =form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio" }
 
@@ -16,11 +15,7 @@
         =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
 
       .convert_checkbox.single_option.is-hidden.on-false
-        =form.input :time_since_last_job, as: :check_boxes, collection: OutOfWorkOption.all, :label => 'How long have you been out of work for?'
-=======
-      .convert_checkbox
         =form.input :time_since_last_job, as: :check_boxes, collection: OutOfWorkOption.all, :label => 'How long have you been out of work for?', include_hidden: false
->>>>>>> origin/ce_update_user_profile
 
       .actions
         = form.submit 'Next', :class => 'button is-primary'
