@@ -8,6 +8,11 @@
         %label.label Full Name:
         ="#{current_client.name}"
 
+    -if current_client.email.present?
+      %p
+        %label.label Email account:
+        ="#{current_client.email}"
+
     -if current_client.phone.present?
       %p
         %label.label Phone number:
