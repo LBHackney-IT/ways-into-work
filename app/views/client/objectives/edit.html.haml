@@ -1,0 +1,15 @@
+.container.content.has-text-centered
+  = render partial: 'shared/profile_steps'
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h2.subtitle=I18n.t('clients.steps.step_3.long')
+
+    = simple_form_for [current_client], url: :client_objectives do |form|
+      = render 'shared/form_errors', object: form.object
+      .convert_checkbox
+        =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'Which of these do you want to discuss with an advisor?', include_hidden: false
+
+        = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
+
+      .actions
+        = form.submit 'Next', :class => 'button is-primary'

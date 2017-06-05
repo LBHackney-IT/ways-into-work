@@ -1,13 +1,21 @@
 .container.content.has-text-centered
-  = render partial: 'shared/profile_steps', locals: { current_step: 2 }
+  = render partial: 'shared/profile_steps'
 .container.content.columns
   .column.is-10.is-offset-1
     %h2.subtitle=I18n.t('clients.steps.step_2.long')
 
     = simple_form_for [current_client], url: :client_employment_status do |form|
       = render 'shared/form_errors', object: form.object
-      .convert_checkbox
-        =form.input :employment_status, as: :check_boxes, collection: EmploymentStatusOption.all, :label => 'Which of these best describes your situation?'
+
+      =form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio" }
+
+      .is-hidden.on-true
+        =form.input :working_hours_per_week, as: :integer, :label => 'How many hours per week do you currently work?', :input_html => { :class => 'input' }
+
+        =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
+
+      .is-hidden.on-false
+        =form.input :time_since_last_job, as: :radio_buttons, collection: OutOfWorkOption.all, :label => 'How long have you been out of work for?', include_hidden: false, wrapper_html: { class: "convert_radio" }
 
       .actions
         = form.submit 'Next', :class => 'button is-primary'

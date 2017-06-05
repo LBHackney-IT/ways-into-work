@@ -391,3 +391,74 @@ abbr
   h2
     font-size: $body-size
     color: $white
+
+.convert_checkbox, .convert_radio
+  .field, #other
+    display: inline
+  #other_text
+    display: inline-block
+    vertical-align: top
+    input
+      display: inline
+      margin: $size-8
+  .checkbox, .radio
+    cursor: default
+  span.checkbox label, span.radio label,
+    margin: $size-8
+    &:hover
+      cursor: pointer
+    input[type=checkbox], input[type=radio]
+      display: none
+
+.on-true, .on-false, .convert_checkbox
+  .field:last-child
+    margin-bottom: $size-4
+
+
+
+
+// .convert_radio .simple_input
+//   padding: 40px
+//   overflow: hidden
+
+// .switch-title
+//   margin-bottom: 6px
+
+// .convert_radio .simple_input
+//   input
+//     position: absolute !important
+//     clip: rect(0, 0, 0, 0)
+//     height: 1px
+//     width: 1px
+//     border: 0
+//     overflow: hidden
+//   label
+//     float: left
+//     display: inline-block
+//     width: 60px
+//     background-color: #e4e4e4
+//     color: rgba(0, 0, 0, 0.6)
+//     font-size: 14px
+//     font-weight: normal
+//     text-align: center
+//     text-shadow: none
+//     padding: 6px 14px
+//     border: 1px solid rgba(0, 0, 0, 0.2)
+//     -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1)
+//     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1)
+//     -webkit-transition: all 0.1s ease-in-out
+//     -moz-transition: all 0.1s ease-in-out
+//     -ms-transition: all 0.1s ease-in-out
+//     -o-transition: all 0.1s ease-in-out
+//     transition: all 0.1s ease-in-out
+//     &:hover
+//       cursor: pointer
+//   input:checked + label
+//     background-color: #A5DC86
+//     -webkit-box-shadow: none
+//     box-shadow: none
+//   label
+//     &:first-of-type
+//       border-radius: 4px 0 0 4px
+//     &:last-of-type
+//       border-radius: 0 4px 4px 0

@@ -24,7 +24,8 @@ WaysIntoWork::Application.routes.draw do
     resource :password, only: [:edit]
     resource :profile, only: [:show]
     resource :personal_traits, only: [:edit, :update]
-    resource :aspirations, only: [:edit, :update]
+    resource :objectives, only: [:edit, :update]
+    resource :education, only: [:edit, :update], controller: 'education'
     resource :employment_status, only: [:edit, :update], controller: 'employment_status'
     resource :dashboard, only: :show
   end

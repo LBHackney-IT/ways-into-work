@@ -12,6 +12,9 @@
 // });
 
 $(document).ready(function() {
+
+  $('.nav-toggle').mobileNav();
+
   $(".legal_pages.eligibility").checkAccepted();
 
   $('.delete').hideDelete();

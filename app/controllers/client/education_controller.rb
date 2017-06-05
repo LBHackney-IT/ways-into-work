@@ -1,18 +1,18 @@
-class Client::PersonalTraitsController < Client::BaseController
+class Client::EducationController < Client::BaseController
 
   def edit
   end
 
   def update
     if current_client.update_attributes(client_params)
-      redirect_to :edit_client_employment_status
+      redirect_to :client_profile
     else
       render :edit
     end
   end
 
   def profile_steps
-    @profile_steps ||= ProfileSteps.new(current_client, :about_you)
+    @profile_steps ||= ProfileSteps.new(current_client, :education)
   end
   helper_method :profile_steps
 
@@ -20,8 +20,10 @@ class Client::PersonalTraitsController < Client::BaseController
   private
   def client_params
     params.require(:client).permit(
-      :other_personal_trait,
-      personal_traits: []
+      :studying,
+      :studying_part_time,
+      :past_education,
+      :current_education
       )
   end
 end

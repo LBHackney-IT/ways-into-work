@@ -8,6 +8,7 @@ class Client < ApplicationRecord
 
   accepts_nested_attributes_for :login
 
+
   validate do
     valid_postcode? && within_hackney?
   end
@@ -41,11 +42,20 @@ class Client < ApplicationRecord
   end
 
   def profile_complete?
-    employment_status.present?
+    false
   end
 
   def devise_mailer
     CustomDeviseMailer
   end
+
+  def address_to_s
+    address_to_a.join(", ")
+  end
+
+  def address_to_a
+    [address_line_1, address_line_2, postcode].select{|s| s.present?}
+  end
+
 
 end
