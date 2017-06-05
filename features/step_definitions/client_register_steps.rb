@@ -10,8 +10,8 @@ end
 
 When(/^I create a new password$/) do
   fill_in 'user_login_password', :with => "SomeLongPassword"
-  fill_in('Password confirmation', :with => "SomeLongPassword")
-  click_button 'Save details'
+  fill_in('user_login_password_confirmation', :with => "SomeLongPassword")
+  click_button 'Create my password'
 end
 
 When(/^I register my self as "([^"]*)"$/) do |email|
