@@ -43,10 +43,10 @@
         %label.label Other:
         ="#{current_client.other_objective}"
 
-    -if current_client.studying.to_s.present?
+    -if current_client.studying.present?
       %p
         %label.label Currently studying:
-        ="#{current_client.studying.to_s}"
+        ="#{current_client.studying ? 'Yes' : 'No'}"
 
     -if current_client.current_education.present?
       %p
