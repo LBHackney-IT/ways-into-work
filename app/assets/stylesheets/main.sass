@@ -18,6 +18,13 @@ body
   .button_to
     display: inline
     transform: rotate(-5deg)
+    .button.is-white
+      background-color: rgba($blue, 0.025)
+      &:hover
+        background-color: rgba($blue, 0.1)
+      &:disabled
+        background-color: transparent
+
 
 #watermark
   position: absolute
