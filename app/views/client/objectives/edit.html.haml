@@ -12,4 +12,5 @@
         = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 
       .actions
-        = form.submit 'Next', :class => 'button is-primary'
+        = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
+        = form.submit 'Save and Exit', :class => 'button'

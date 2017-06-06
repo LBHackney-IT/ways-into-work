@@ -43,9 +43,10 @@
         %label.label Other:
         ="#{current_client.other_objective}"
 
-    %p
-      %label.label Currently studying:
-      ="#{current_client.studying ? 'Yes' : 'No'}"
+    -if !current_client.studying.nil?
+      %p
+        %label.label Currently studying:
+        ="#{current_client.studying ? 'Yes' : 'No'}"
 
     -if current_client.current_education.present?
       %p
@@ -57,9 +58,10 @@
         %label.label Past education:
         ="#{current_client.past_education}"
 
-    %p
-      %label.label Currently employed:
-      ="#{current_client.employed ? 'Yes' : 'No'}"
+    -if !current_client.employed.nil?
+      %p
+        %label.label Currently employed:
+        ="#{current_client.employed ? 'Yes' : 'No'}"
 
     -if current_client.job_title.present?
       %p

@@ -5,7 +5,11 @@ class Client::EducationController < Client::BaseController
 
   def update
     if current_client.update_attributes(client_params)
-      redirect_to :client_profile
+      if params[:commit] == 'Next Step'
+        redirect_to :client_profile
+      elsif params[:commit] == 'Save and Exit'
+        redirect_to :client_profile
+      end
     else
       render :edit
     end
