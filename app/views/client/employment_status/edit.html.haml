@@ -15,7 +15,7 @@
         =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
 
       .is-hidden.on-false
-        =form.input :time_since_last_job, as: :radio_buttons, collection: OutOfWorkOption.all, :label => 'How long have you been out of work for?', include_hidden: false, wrapper_html: { class: "convert_radio" }
+        =form.input :time_since_last_job, as: :radio_buttons, collection: OutOfWorkOption.all, :label => 'How many months have you been out of work?', include_hidden: false, wrapper_html: { class: "convert_radio" }
 
       .actions
         = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
