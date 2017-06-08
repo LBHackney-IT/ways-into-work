@@ -41,7 +41,7 @@ input.nav-item, .nav-item input
     cursor: pointer
 .nav-item a, a.nav-item, input.nav-item, .nav-item input
   color: $text-light
-  &:hover
+  &:hover, &.current
     color: $link-hover
   // Modifiers
   &.is-active
@@ -53,7 +53,7 @@ input.nav-item, .nav-item input
     padding-left: 1rem
     padding-right: 1rem
     padding-top: calc(0.75rem - 1px)
-    &:hover
+    &:hover, &.current
       border-bottom-color: $primary
       border-top-color: transparent
     &.is-active

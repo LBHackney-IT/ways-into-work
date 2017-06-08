@@ -11,4 +11,8 @@ module ApplicationHelper
       'layouts/site_header_service_manager'
     end
   end
+
+  def cp(path)
+    "current" if current_page?(path)
+  end
 end

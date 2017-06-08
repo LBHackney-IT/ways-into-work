@@ -7,8 +7,8 @@
       %span
       %span
     .nav-right.nav-menu
-      = link_to "Home", root_url, class: 'nav-item is-tab'
+      = link_to "Home", root_url, class: 'nav-item is-tab #{cp(user_root)}'
       %a.nav-item.is-tab Information
-      = link_to "Log In", user_login_session_path, class: 'nav-item is-tab'
+      = link_to "Log In", user_login_session_path, class: 'nav-item is-tab #{cp(user_login_session_path)}'
 
 = render 'layouts/alerts'
