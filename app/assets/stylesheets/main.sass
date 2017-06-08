@@ -19,11 +19,15 @@ body
     display: inline
     transform: rotate(-5deg)
     .button.is-white
-      background-color: rgba($blue, 0.025)
+      background-color: rgba($blue, 0.05)
       &:hover
         background-color: rgba($blue, 0.1)
       &:disabled
         background-color: transparent
+    input
+      +mobile
+        width: 49%
+        margin-bottom: 0.25rem
 
 
 #watermark

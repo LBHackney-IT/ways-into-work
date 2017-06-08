@@ -95,6 +95,11 @@ $input-radius:              $radius !default
   & + .radio
     margin-left: 0.5em
 
+.simple_input
+  .radio
+    & + .radio
+      margin-left: 0 !important
+
 .select, .with_select .simple_input, .with_multi_select .simple_input
   display: inline-block
   height: 2.25em
@@ -179,6 +184,11 @@ $input-radius:              $radius !default
     $color: nth($pair, 1)
     &.is-#{$name}
       color: $color
+
+.convert_checkbox
+  .help
+    +mobile
+      margin-top: 0.75rem
 
 // Containers
 
