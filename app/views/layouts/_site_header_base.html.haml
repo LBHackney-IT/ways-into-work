@@ -7,8 +7,11 @@
       %span
       %span
     .nav-right.nav-menu
-      = link_to "Home", root_url, class: 'nav-item is-tab #{cp(user_root)}'
+      = link_to "Home", root_url, class: "nav-item is-tab #{cp(root_url)}"
       %a.nav-item.is-tab Information
-      = link_to "Log In", user_login_session_path, class: 'nav-item is-tab #{cp(user_login_session_path)}'
+      -if cp(user_login_session_path) == "current"
+        = link_to "Sign Up", new_user_login_registration_url, class: "nav-item is-tab #{cp(new_user_login_registration_url)}"
+      -else
+        = link_to "Log In", user_login_session_path, class: "nav-item is-tab #{cp(user_login_session_path)}"
 
-= render 'layouts/alerts'
+= render "layouts/alerts"
