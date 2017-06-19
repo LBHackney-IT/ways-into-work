@@ -7,7 +7,7 @@
     = simple_form_for [current_client], url: :client_objectives do |form|
       = render 'shared/form_errors', object: form.object
       .convert_checkbox
-        =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'Which of these do you want to discuss with an advisor?', include_hidden: false
+        =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with your advisor?', include_hidden: false
 
         = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
         %p.help Choose as many options that apply to you.

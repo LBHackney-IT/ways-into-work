@@ -1,21 +1,21 @@
 .container.content.columns
   .column.is-10.is-offset-1
     %h2.subtitle Are you Eligible?
-    %p In order to register for this service you need to fulfil these three criteria:
+    %p Before you register, we need to check that you are eligible for support.
 
     #eligibility_check
       %p.check_box.control.medium
         =label_tag 'resident', class: 'checkbox' do
           =check_box_tag "resident"
-          Are you a Hackney Resident?
+          Do you live in Hackney?
       %p.check_box.control.medium
         =label_tag 'can_work', class: 'checkbox' do
           =check_box_tag "can_work"
-          Are you legally eligible to work in the UK?
+          Are you eligible to work in the UK?
       %p.check_box.control.medium
         =label_tag 'unemployed', class: 'checkbox' do
           =check_box_tag "unemployed"
-          Are you unemployed or earning below the London living wage?
+          Are you out of work or earning less than £18,000 per year?
 
     %hr
 

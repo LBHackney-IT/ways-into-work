@@ -3,9 +3,9 @@
     = simple_form_for [@client] do |form|
 
       %fieldset
-        %h3.subtitle Sign up for Account
+        %h3.subtitle Register for the service
         %hr
-        %p In order to get you registered we need to take a few of your details. We will then create an account for you and send you an email for you to create a password for this account and log in.
+        %p Please complete the details below. Once you have registered, you will receive an email to verify your account.
 
         = render 'shared/form_errors', object: form.object
         .columns
@@ -26,4 +26,4 @@
         =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
         =form.input :postcode, as: :string, :input_html => { :class => 'input' }
 
-      = form.submit 'Save details', :class => 'button is-primary'
+      = form.submit 'Register', :class => 'button is-primary'
