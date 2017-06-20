@@ -26,4 +26,6 @@
         =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
         =form.input :postcode, as: :string, :input_html => { :class => 'input' }
 
+        =form.input :date_of_birth, as: :date, start_year: Date.today.year - 70, end_year: Date.today.year - 14, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: 'Select'
+
       = form.submit 'Register', :class => 'button is-primary'
