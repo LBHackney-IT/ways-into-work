@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
   def user_root(user_type = current_user_login.user_type)
     case user_type
     when "Advisor"
-      :advisor_my_cases
+      :advisor_my_clients
     when "ServiceManager"
-      :service_manager_cases
+      :service_manager_clients
     else
       :client_dashboard
     end

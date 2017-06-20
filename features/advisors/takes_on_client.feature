@@ -9,7 +9,7 @@ Feature: Advisor takes on new case
 
   Scenario: Sees client in unassigned cases
     Given I have signed in
-    When I am on the advisor my cases page
+    When I am on the advisor my clients page
     Then I should not see the client in my case load
     When I navigate to the unnassigned cases
     Then I should see the new client listed

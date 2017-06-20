@@ -9,4 +9,4 @@ Feature: Advisor sign in
   Scenario: Successful sign in
     When I sign in
     Then I should be signed in
-    And I should be on the advisor my cases page
+    And I should be on the advisor my clients page

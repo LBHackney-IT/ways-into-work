@@ -3,7 +3,7 @@ Given(/^I am an advisor$/) do
 end
 
 Then(/^I should not see the client in my case load$/) do
-  within '.my_cases' do
+  within '.my_clients' do
     expect(page).to have_content(I18n.t('advisors.headers.no_clients'))
     expect(page).not_to have_content(@client.name)
   end

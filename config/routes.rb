@@ -7,14 +7,13 @@ WaysIntoWork::Application.routes.draw do
   get 'outside_hackney' => 'eligibility#outside_hackney'
 
   namespace :advisor do
-    resources :client, only: :show
-    resources :cases, only: :index
-    resources :my_cases, only: :index
-    resources :unassigned_cases, only: :index
+    resources :clients, only: [:show, :index]
+    resources :my_clients, only: :index
+    resources :unassigned_clients, only: :index
   end
 
   namespace :service_manager do
-    resources :cases, only: :index
+    resources :clients, only: :index
   end
 
   resources :clients, only: [:new, :create]
