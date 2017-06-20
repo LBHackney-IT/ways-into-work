@@ -2,7 +2,7 @@ class Client < ApplicationRecord
   # associations
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
 
-  validates :login, :first_name, :last_name, :phone, :address_line_1, :postcode, presence: true
+  validates :login, :first_name, :last_name, :phone, :postcode, presence: true
 
   delegate :email, to: :login
 
