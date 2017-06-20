@@ -25,6 +25,8 @@ gem "httparty"
 gem 'phony_rails'
 gem 'going_postal'
 
+gem 'geocoder'
+
 group :development do
   gem 'bullet'
   gem 'better_errors'

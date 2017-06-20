@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620111042) do
+ActiveRecord::Schema.define(version: 20170620112555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "advisors", force: :cascade do |t|
     t.string "name"
+    t.bigint "hub_id"
+    t.index ["hub_id"], name: "index_advisors_on_hub_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -41,10 +43,23 @@ ActiveRecord::Schema.define(version: 20170620111042) do
     t.string "past_education"
     t.boolean "studying"
     t.boolean "studying_part_time"
+    t.bigint "advisor_id"
+    t.index ["advisor_id"], name: "index_clients_on_advisor_id"
+  end
+
+  create_table "hubs", force: :cascade do |t|
+    t.string "name"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "postcode"
+    t.float "longitude"
+    t.float "latitude"
   end
 
   create_table "service_managers", force: :cascade do |t|
     t.string "name"
+    t.bigint "hub_id"
+    t.index ["hub_id"], name: "index_service_managers_on_hub_id"
   end
 
   create_table "user_logins", force: :cascade do |t|
@@ -66,4 +81,7 @@ ActiveRecord::Schema.define(version: 20170620111042) do
     t.index ["user_type", "user_id"], name: "index_user_logins_on_user_type_and_user_id"
   end
 
+  add_foreign_key "advisors", "hubs"
+  add_foreign_key "clients", "advisors"
+  add_foreign_key "service_managers", "hubs"
 end
