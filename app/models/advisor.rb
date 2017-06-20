@@ -6,6 +6,9 @@ class Advisor < ApplicationRecord
 
   belongs_to :hub
 
+  has_many :clients
+
+
   def devise_mailer
     Devise::Mailer
   end

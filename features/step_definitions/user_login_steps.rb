@@ -29,3 +29,8 @@ end
 Then(/^I should be signed in$/) do
   expect(page).to have_content(I18n.t('devise.sessions.signed_in'))
 end
+
+Given(/^I am signed in as a service manager$/) do
+  @i = Fabricate(:service_manager)
+  login_as(@i.login)
+end

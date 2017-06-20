@@ -15,6 +15,10 @@ class Client < ApplicationRecord
   phony_normalize :phone, default_country_code: 'GB'
   validates_plausible_phone :phone, country_code: 'GB'
 
+  belongs_to :advisor
+
+  scope :unassigned, -> { where(advisor_id: nil) }
+
   def name
    "#{first_name} #{last_name}"
   end

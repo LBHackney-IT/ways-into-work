@@ -1,0 +1,73 @@
+%h2.subtitle=@client.client_profile_header
+
+#actions= render partial: 'actions'
+
+%hr
+
+-if @client.email.present?
+  %p
+    %label.label Email account:
+    ="#{@client.email}"
+
+-if @client.phone.present?
+  %p
+    %label.label Phone number:
+    ="#{@client.phone}"
+
+-if @client.address_to_s.present?
+  %p
+    %label.label Address:
+    ="#{@client.address_to_s}"
+
+-if @client.personal_traits.present?
+  %p
+    %label.label Strengths:
+    ="#{PersonalTraitOption.display(@client.personal_traits)}"
+
+-if @client.other_personal_trait.present?
+  %p
+    %label.label Other:
+    ="#{@client.other_personal_trait}"
+
+-if @client.objectives.present?
+  %p
+    %label.label Objectives:
+    ="#{ObjectiveOption.display(@client.objectives)}"
+
+-if @client.other_objective.present?
+  %p
+    %label.label Other:
+    ="#{@client.other_objective}"
+
+%p
+  %label.label Currently studying:
+  ="#{@client.studying ? 'Yes' : 'No'}"
+
+-if @client.current_education.present?
+  %p
+    %label.label Current education course title:
+    ="#{@client.current_education}"
+
+-if @client.past_education.present?
+  %p
+    %label.label Past education:
+    ="#{@client.past_education}"
+
+%p
+  %label.label Currently employed:
+  ="#{@client.employed ? 'Yes' : 'No'}"
+
+-if @client.job_title.present?
+  %p
+    %label.label Job title:
+    ="#{@client.job_title}"
+
+-if @client.working_hours_per_week.present?
+  %p
+    %label.label Hours per week:
+    ="#{@client.working_hours_per_week}"
+
+-if @client.time_since_last_job.present?
+  %p
+    %label.label Months since last job:
+    ="#{@client.time_since_last_job}"

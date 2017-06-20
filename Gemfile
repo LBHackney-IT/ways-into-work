@@ -3,7 +3,7 @@ ruby "2.4.1"
 gem 'rails', '5.1'
 
 # UI
-# gem 'draper'
+gem 'draper'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
