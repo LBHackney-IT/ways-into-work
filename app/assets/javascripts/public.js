@@ -15,7 +15,9 @@ $(document).ready(function() {
 
   $('.nav-toggle').mobileNav();
 
-  $(".legal_pages.eligibility").checkAccepted();
+  // Removing explicit eligibility check to only use postcode
+  // May come back
+  // $(".legal_pages.eligibility").checkAccepted();
 
   $('.delete').hideDelete();
 
