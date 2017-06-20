@@ -5,7 +5,7 @@ class SeedHelper
     user_attrs.each do |attrs|
       email = attrs.delete(:email)
       service_manager = ServiceManager.new(attrs)
-      service_manager.login = UserLogin.new(email: email, password: 'WaysIntoWork', confirmed_at: Date.today)
+      service_manager.login = UserLogin.new(email: email, password: 'WaysIntoWork')
       service_manager.save!
     end
   end
@@ -14,7 +14,7 @@ class SeedHelper
     user_attrs.each do |attrs|
       email = attrs.delete(:email)
       advisor = Advisor.new(attrs)
-      advisor.login = UserLogin.new(email: email, password: 'WaysIntoWork', confirmed_at: Date.today)
+      advisor.login = UserLogin.new(email: email, password: 'WaysIntoWork')
       advisor.save!
     end
   end
