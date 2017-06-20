@@ -4,6 +4,8 @@ WaysIntoWork::Application.routes.draw do
 
   root to: 'welcome#show'
 
+  get 'outside_hackney' => 'eligibility#outside_hackney'
+
   namespace :advisor do
     resources :client, only: :show
     resources :cases, only: :index
@@ -16,6 +18,7 @@ WaysIntoWork::Application.routes.draw do
   end
 
   resources :clients, only: [:new, :create]
+
 
   namespace :client do
     resource :password, only: [:edit]

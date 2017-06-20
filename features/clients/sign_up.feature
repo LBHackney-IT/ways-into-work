@@ -3,10 +3,12 @@ Feature: Client signs up for the service
   I should be able to sign up
   So I that can apply for the service
 
-  Scenario: client is asked for eligibility
+  @outside_hackney_postcode
+  Scenario: client outside borough can't register
     Given I am on the home page
     When I follow the link to register for the service
-    Then I should be asked to accept the eligibility criteria
+    And I try and register with a postcode outside the borough
+    Then I should be on the outside hackney page
 
   @validate_postcode
   Scenario: client signs up
@@ -17,7 +19,7 @@ Feature: Client signs up for the service
     Then I should see a password updated notice message
 
 
-  @validate_postcode @wip
+  @validate_postcode
   Scenario: service manager receives notification
     Given there is a service manager
     When I register my self as "client@example.com"

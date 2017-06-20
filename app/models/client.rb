@@ -8,9 +8,8 @@ class Client < ApplicationRecord
 
   accepts_nested_attributes_for :login
 
-
   validate do
-    valid_postcode? && within_hackney?
+    valid_postcode?
   end
 
   phony_normalize :phone, default_country_code: 'GB'
@@ -18,17 +17,6 @@ class Client < ApplicationRecord
 
   def name
    "#{first_name} #{last_name}"
-  end
-
-  def within_hackney?
-    if postcode_changed?
-      # TODo - move this back outside of validation
-      eligible = HackneyPostcodeValidator.new(self.postcode).within_hackney?
-      errors[:postcode] << I18n.t('clients.validation.outside_borough') unless eligible
-      eligible
-    else
-      true
-    end
   end
 
   def valid_postcode?

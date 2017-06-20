@@ -7,5 +7,5 @@ VCR.configure do |c|
 end
 
 VCR.cucumber_tags do |t|
-  t.tags '@validate_postcode'
+  t.tags '@validate_postcode', '@outside_hackney_postcode'
 end

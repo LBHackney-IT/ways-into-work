@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mapit.mysociety.org/postcode/GU11YF
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Contenttype:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 20 Jun 2017 10:19:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3925'
+      Connection:
+      - keep-alive
+      Content-Language:
+      - en-gb
+      Vary:
+      - Accept-Language,Cookie,Accept-Encoding
+      Cache-Control:
+      - max-age=2419200
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '0'
+      - '0'
+      X-Url:
+      - "/postcode/GU11YF"
+      Accept-Ranges:
+      - bytes
+      X-Quota-Limit:
+      - '50'
+      X-Quota-Current:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: '{"wgs84_lat": 51.25692397285712, "coordsyst": "G", "shortcuts": {"WMC":
+        65838, "ward": {"county": 143924, "district": 7511}, "council": {"county":
+        2242, "district": 2452}}, "wgs84_lon": -0.5431947560860764, "postcode": "GU1
+        1YF", "easting": 501755, "areas": {"47424": {"parent_area": null, "generation_high":
+        31, "all_names": {}, "id": 47424, "codes": {"ons": "E02006351"}, "name": "Guildford
+        008", "country": "E", "type_name": "2001 Middle Layer Super Output Area (Generalised)",
+        "generation_low": 13, "country_name": "England", "type": "OMG"}, "96576":
+        {"parent_area": null, "generation_high": 31, "all_names": {}, "id": 96576,
+        "codes": {"ons": "E01030435"}, "name": "Guildford 008B", "country": "E", "type_name":
+        "2001 Lower Layer Super Output Area (Full)", "generation_low": 13, "country_name":
+        "England", "type": "OLF"}, "2242": {"parent_area": null, "generation_high":
+        31, "all_names": {}, "id": 2242, "codes": {"ons": "43", "gss": "E10000030",
+        "unit_id": "13965", "local-authority-eng": "SRY"}, "name": "Surrey County
+        Council", "country": "E", "type_name": "County council", "generation_low":
+        1, "country_name": "England", "type": "CTY"}, "11811": {"parent_area": null,
+        "generation_high": 31, "all_names": {}, "id": 11811, "codes": {"ons": "08",
+        "gss": "E15000008", "unit_id": "41421"}, "name": "South East", "country":
+        "E", "type_name": "European region", "generation_low": 1, "country_name":
+        "England", "type": "EUR"}, "40230": {"parent_area": null, "generation_high":
+        31, "all_names": {}, "id": 40230, "codes": {"ons": "E02006351"}, "name": "Guildford
+        008", "country": "E", "type_name": "2001 Middle Layer Super Output Area (Full)",
+        "generation_low": 13, "country_name": "England", "type": "OMF"}, "900001":
+        {"parent_area": null, "generation_high": 31, "all_names": {}, "id": 900001,
+        "codes": {}, "name": "European Parliament", "country": "", "type_name": "European
+        Parliament", "generation_low": 1, "country_name": "-", "type": "EUP"}, "130954":
+        {"parent_area": null, "generation_high": 31, "all_names": {}, "id": 130954,
+        "codes": {"ons": "E01030435"}, "name": "Guildford 008B", "country": "E", "type_name":
+        "2001 Lower Layer Super Output Area (Generalised)", "generation_low": 13,
+        "country_name": "England", "type": "OLG"}, "65838": {"parent_area": null,
+        "generation_high": 31, "all_names": {}, "id": 65838, "codes": {"gss": "E14000719",
+        "unit_id": "25056"}, "name": "Guildford", "country": "E", "type_name": "UK
+        Parliament constituency", "generation_low": 13, "country_name": "England",
+        "type": "WMC"}, "2452": {"parent_area": null, "generation_high": 31, "all_names":
+        {}, "id": 2452, "codes": {"ons": "43UD", "gss": "E07000209", "unit_id": "14002",
+        "local-authority-eng": "GRT"}, "name": "Guildford Borough Council", "country":
+        "E", "type_name": "District council", "generation_low": 1, "country_name":
+        "England", "type": "DIS"}, "7511": {"parent_area": 2452, "generation_high":
+        31, "all_names": {}, "id": 7511, "codes": {"ons": "43UDGB", "gss": "E05007289",
+        "unit_id": "42073"}, "name": "Burpham", "country": "E", "type_name": "District
+        council ward", "generation_low": 1, "country_name": "England", "type": "DIW"},
+        "143924": {"parent_area": 2242, "generation_high": 31, "all_names": {}, "id":
+        143924, "codes": {"unit_id": "13994"}, "name": "Guildford East", "country":
+        "E", "type_name": "County council electoral division", "generation_low": 20,
+        "country_name": "England", "type": "CED"}, "148924": {"parent_area": null,
+        "generation_high": 31, "all_names": {}, "id": 148924, "codes": {"nhse": "09N"},
+        "name": "Guildford & Waverley", "country": "E", "type_name": "Clinical Commissioning
+        Group", "generation_low": 29, "country_name": "England", "type": "CCG"}, "900000":
+        {"parent_area": null, "generation_high": 19, "all_names": {}, "id": 900000,
+        "codes": {}, "name": "House of Commons", "country": "", "type_name": "UK Parliament",
+        "generation_low": 1, "country_name": "-", "type": "WMP"}}, "northing": 151870}'
+    http_version: 
+  recorded_at: Tue, 20 Jun 2017 10:19:32 GMT
+recorded_with: VCR 3.0.3

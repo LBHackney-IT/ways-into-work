@@ -1,3 +1,19 @@
+module RegistrationSH
+  def fill_in_registration_form(email, client = Fabricate.build(:client))
+    fill_in('Email', :with => email)
+    fill_in 'client_first_name', with: client.first_name
+    fill_in 'client_last_name', with: client.last_name
+    fill_in 'client_phone', with: client.phone
+    fill_in 'client_address_line_1', with: client.address_line_1
+    fill_in 'client_postcode', with: client.postcode
+  end
+
+  def save
+    click_button 'Register'
+  end
+end
+World RegistrationSH
+
 When(/^I follow the link to register for the service$/) do
   click_link I18n.t('devise.buttons.register')
 end
@@ -14,16 +30,17 @@ When(/^I create a new password$/) do
   click_button 'Create my password'
 end
 
+When(/^I try and register with a postcode outside the borough$/) do
+  client = Fabricate.build(:client, postcode: 'GU1 1YF')
+  fill_in_registration_form(FFaker::Internet.email, client)
+  save
+end
+
+
 When(/^I register my self as "([^"]*)"$/) do |email|
   visit new_client_path
-  fill_in('Email', :with => email)
-  client = Fabricate.build(:client)
-  fill_in 'client_first_name', with: client.first_name
-  fill_in 'client_last_name', with: client.last_name
-  fill_in 'client_phone', with: client.phone
-  fill_in 'client_address_line_1', with: client.address_line_1
-  fill_in 'client_postcode', with: client.postcode
-  click_button 'Save details'
+  fill_in_registration_form(email)
+  save
 end
 
 

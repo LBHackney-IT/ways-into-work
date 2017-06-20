@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
 
   skip_before_action :authenticate_user_login!
+  before_action :hackney_postcode_eligibility, only: :create
 
   def new
     @client = Client.new()
@@ -14,13 +15,22 @@ class ClientsController < ApplicationController
       @client.login.send_reset_password_instructions
       flash[:alert] = I18n.t('devise.confirmations.send_instructions')
       redirect_to '/'
-      ServiceManagerMailer.notify_client_signed_up(@client).deliver_later
+      ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
     else
       render :new
     end
   end
 
   private
+
+  def hackney_postcode_eligibility
+    unless client_params[:postcode].present? &&
+      # This will be picked up by client validation
+      GoingPostal.postcode?(client_params[:postcode], 'GB').present? &&
+      HackneyPostcodeValidator.new(client_params[:postcode]).within_hackney?
+      redirect_to :outside_hackney
+    end
+  end
 
   def client_params
     params.require(:client).permit(
