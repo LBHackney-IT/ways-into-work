@@ -1,6 +1,5 @@
 class ClientsController < ApplicationController
 
-  skip_before_action :authenticate_user_login!
   before_action :hackney_postcode_eligibility, only: :create
 
   def new
@@ -14,7 +13,7 @@ class ClientsController < ApplicationController
     if @client.save
       @client.login.send_reset_password_instructions
       flash[:alert] = I18n.t('devise.confirmations.send_instructions')
-      redirect_to '/'
+      redirect_to just_registered_path
       ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
     else
       render :new

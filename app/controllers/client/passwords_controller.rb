@@ -1,5 +1,5 @@
 class Client::PasswordsController < ApplicationController
-  skip_before_action :authenticate_user_login!
+
   before_action :assert_reset_token_passed, only: :edit
 
   def edit

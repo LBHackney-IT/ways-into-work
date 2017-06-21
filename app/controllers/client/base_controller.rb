@@ -1,5 +1,6 @@
 class Client::BaseController < ApplicationController
 
+  before_action :authenticate_user_login!
   before_action :register_new_client_to_login
 
   helper_method :current_client
