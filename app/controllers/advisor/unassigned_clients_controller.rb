@@ -1,7 +1,7 @@
 class Advisor::UnassignedClientsController < Advisor::BaseController
 
   def index
-    @clients = Client.all
+    @clients = Client.unassigned
   end
 
 end

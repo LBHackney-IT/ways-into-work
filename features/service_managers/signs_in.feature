@@ -11,4 +11,4 @@ Feature: Service manager signs in
     When I sign in
     Then I should be signed in
     And I should be on the service manager clients page
-    And I should see the new client listed
+    And I should see the new client listed as unassigned
