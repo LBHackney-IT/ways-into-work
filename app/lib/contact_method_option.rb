@@ -1,4 +1,5 @@
-class TitleOption
+# This could just as easily be an enum
+class ContactMethodOption
   attr_reader :id, :name
 
   def initialize(id)
@@ -8,11 +9,8 @@ class TitleOption
 
   def self.all
     [
-      new('Miss'),
-      new('Mr'),
-      new('Mrs'),
-      new('Doctor'),
-      new('Other'),
+      new('Email'),
+      new('Phone call')
     ]
   end
 

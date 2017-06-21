@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620112555) do
+ActiveRecord::Schema.define(version: 20170621163730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,13 +37,27 @@ ActiveRecord::Schema.define(version: 20170620112555) do
     t.string "other_objective"
     t.boolean "employed"
     t.integer "working_hours_per_week"
-    t.string "time_since_last_job"
     t.string "job_title"
     t.string "current_education"
     t.string "past_education"
     t.boolean "studying"
     t.boolean "studying_part_time"
     t.bigint "advisor_id"
+    t.string "time_since_last_job"
+    t.string "preferred_contact_method"
+    t.string "qualifications", default: [], array: true
+    t.string "other_qualification"
+    t.string "training_courses", default: [], array: true
+    t.string "other_training_course"
+    t.string "type_of_works", default: [], array: true
+    t.string "other_type_of_work"
+    t.string "gender"
+    t.boolean "has_children"
+    t.boolean "lone_parent"
+    t.boolean "receive_benefits"
+    t.boolean "below_living_wage"
+    t.boolean "affected_by_welfare_reform"
+    t.boolean "care_leaver"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
   end
 
