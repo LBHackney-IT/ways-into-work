@@ -1,7 +1,7 @@
 class Advisor::MyClientsController < Advisor::BaseController
 
   def index
-    @clients = []
+    @clients = current_advisor.clients
   end
 
 end

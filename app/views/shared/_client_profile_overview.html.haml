@@ -1,0 +1,21 @@
+%h2.subtitle=@client.client_profile_header
+
+#actions= render partial: 'actions'
+
+%hr
+
+= @client.decorate_email
+= @client.decorate_phone
+= @client.decorate_address
+= @client.decorate_age
+= @client.decorate_personal_traits
+= @client.decorate_other_personal_trait
+= @client.decorate_objectives
+= @client.decorate_other_objective
+= @client.decorate_studying
+= @client.decorate_current_education
+= @client.decorate_past_education
+= @client.decorate_currently_employed
+= @client.decorate_job_title
+= @client.decorate_hours_per_week
+= @client.decorate_time_since_last_job

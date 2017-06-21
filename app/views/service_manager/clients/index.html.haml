@@ -1,5 +1,10 @@
-.container.content
-  %h3 Here is a list of all the registered clients
+.container.content.columns
+  .column.is-10.is-offset-1
+    %h4 Unassigned clients
 
-  %ul.clients
-    = render partial: 'client', collection: @clients
+    %ul#unassigned_clients
+      = render partial: 'unassigned_client', collection: @unassigned_clients, as: 'client'
+
+    %h4 Assigned clients
+    %ul#assigned_clients
+      = render partial: 'assigned_client', collection: @assigned_clients, as: 'client'

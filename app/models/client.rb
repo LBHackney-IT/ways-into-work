@@ -15,6 +15,11 @@ class Client < ApplicationRecord
   phony_normalize :phone, default_country_code: 'GB'
   validates_plausible_phone :phone, country_code: 'GB'
 
+  belongs_to :advisor
+
+  scope :unassigned, -> { where(advisor_id: nil) }
+  scope :assigned, -> { where('advisor_id is not NULL') }
+
   def name
    "#{first_name} #{last_name}"
   end
@@ -45,5 +50,8 @@ class Client < ApplicationRecord
     [address_line_1, address_line_2, postcode].select{|s| s.present?}
   end
 
+  def age_in_years
+    @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd)/365 if date_of_birth
+  end
 
 end
