@@ -5,7 +5,7 @@ en:
   clients:
     flashes:
       error:
-        advisor_assignment: "Advisor could not be notified for some reason. Maybe an issue with clients details: (%{errors})"
+        advisor_assignment: "Advisor could not be notified for some reason. Maybe an issue with clients or advisor."
       success:
         advisor_assigned: "Advisor has now been assigned to manage this client and has been notified."
     mail:
