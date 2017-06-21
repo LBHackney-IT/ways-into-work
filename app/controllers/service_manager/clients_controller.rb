@@ -1,7 +1,8 @@
 class ServiceManager::ClientsController < ServiceManager::BaseController
 
   def index
-    @clients = Client.all
+    @unassigned_clients = Client.unassigned
+    @assigned_clients = Client.assigned
   end
 
   def show

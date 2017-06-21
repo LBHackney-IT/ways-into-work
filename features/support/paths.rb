@@ -17,6 +17,9 @@ module NavigationHelpers
     when /home page/
       root_path
 
+    when /the service manager client/
+      service_manager_client_path(@client)
+
     else
       begin
         page_name =~ /the (.*) page/

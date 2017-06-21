@@ -10,6 +10,9 @@ module FlashMessageHelpers
     when /password updated/
       I18n.t('devise.passwords.updated')
 
+    when /advisor assigned/
+      I18n.t('clients.flashes.success.advisor_assigned')
+
 
     else
       raise "Can't find mapping from \"#{message_name}\" to a flash message.\n" +

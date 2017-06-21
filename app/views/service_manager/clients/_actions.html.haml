@@ -1,3 +1,4 @@
 = simple_form_for @client.object, url: service_manager_client_advisors_path(client_id: @client.id) do |form|
+  = render 'shared/form_errors', object: form.object
   = form.input :advisor_id, as: :select, collection: @advisors, prompt: 'Unassigned'
   = form.submit I18n.t('clients.buttons.assign_advisor'), class: "step button is-primary"

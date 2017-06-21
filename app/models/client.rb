@@ -18,6 +18,7 @@ class Client < ApplicationRecord
   belongs_to :advisor
 
   scope :unassigned, -> { where(advisor_id: nil) }
+  scope :assigned, -> { where('advisor_id is not NULL') }
 
   def name
    "#{first_name} #{last_name}"
