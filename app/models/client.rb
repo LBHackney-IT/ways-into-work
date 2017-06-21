@@ -50,5 +50,8 @@ class Client < ApplicationRecord
     [address_line_1, address_line_2, postcode].select{|s| s.present?}
   end
 
+  def age_in_years
+    @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd)/365 if date_of_birth
+  end
 
 end
