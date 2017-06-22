@@ -25,6 +25,7 @@ WaysIntoWork::Application.routes.draw do
   resources :clients, only: [:new, :create] do
   end
 
+  resources :hubs, only: :index
 
 
   namespace :client do
