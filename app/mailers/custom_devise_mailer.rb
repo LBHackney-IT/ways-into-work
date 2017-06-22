@@ -11,10 +11,11 @@ class CustomDeviseMailer < Devise::Mailer
   end
 
   def welcome_set_password(record, token)
-    @token = token
     @user_login = record
+    @url = edit_client_password_url(user_login_id: @user_login.id, reset_password_token: token)
+    puts @url
     mail(
-        to: @user_login.email,
+        to: record.email,
         subject: I18n.t('clients.mail.subject.welcome'),
         template_name: "welcome_set_password"
     )

@@ -12,19 +12,19 @@ en:
       subject:
         welcome: "Welcome to Ways Into Work"
     steps:
-      step_1:
+      about_you:
         long: "Tell us a little about yourself"
         short: "About You"
-      step_2:
+      employment:
         long: "Tell us about your employment status"
         short: "Employment"
-      step_3:
+      objectives:
         long: "What can we help you with?"
         short: "Goals"
-      step_4:
+      education:
         long: "Tell us about your education"
         short: "Education"
-      step_5:
+      additional_information:
         long: "For monitoring purposes please provide us with some details about you"
         short: "Details"
     buttons:
@@ -42,12 +42,6 @@ en:
       apprenticeship: 'Apprenticeship'
       training: 'Training'
       work_experience: 'Work experience'
-    out_of_work:
-      0-6: '0-6'
-      7-11: '7-11'
-      12-23: '12-23'
-      24-35: '24-35'
-      36+: 'More than 36 Months'
     personal_trait:
       creative: 'Creative'
       active: 'Active'
@@ -56,7 +50,8 @@ en:
       organised: 'Organised'
       people_person: 'People person'
       persuasive: 'Persuasive'
-      chatty: 'Chatty'
+      outgoing: 'Outgoing'
+      good_listener: 'Good listener'
       other: 'Other'
     benefits_status:
       none: "None"

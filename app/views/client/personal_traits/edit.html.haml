@@ -2,7 +2,7 @@
   = render partial: 'shared/profile_steps'
 .container.content.columns
   .column.is-10.is-offset-1
-    %h2.subtitle=I18n.t('clients.steps.step_1.long')
+    %h2.subtitle=I18n.t('clients.steps.about_you.long')
 
     = simple_form_for [current_client], url: :client_personal_traits do |form|
       = render 'shared/form_errors', object: form.object

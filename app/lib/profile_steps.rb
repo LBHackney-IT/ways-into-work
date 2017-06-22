@@ -4,10 +4,10 @@ class ProfileSteps
 
   STEPS = [
     :about_you,
-    :employment,
     :objectives,
-    :education
-    # :details
+    :education,
+    :employment,
+    :additional_information
   ]
 
   def initialize(client, step_key)
@@ -18,11 +18,13 @@ class ProfileSteps
   end
 
   def latest_index
-    if @client.objectives.any?
+    if !@client.employed.nil?
+      4
+    elsif @client.qualifications.any? || @client.training_courses.any? || !@client.studying.nil?
       3
-    elsif !@client.employed.nil?
-      2
     elsif @client.personal_traits.any?
+      2
+    elsif @client.objectives.any?
       1
     else
       0
@@ -74,23 +76,23 @@ class ProfileSteps
   end
 
   def about_you_step
-    Step.new(index_of_step(:about_you), I18n.t('clients.steps.step_1.short'), edit_client_personal_traits_path)
+    Step.new(index_of_step(:about_you), I18n.t('clients.steps.about_you.short'), edit_client_personal_traits_path)
   end
 
   def employment_step
-    Step.new(index_of_step(:employment), I18n.t('clients.steps.step_2.short'), edit_client_employment_status_path)
+    Step.new(index_of_step(:employment), I18n.t('clients.steps.employment.short'), edit_client_employment_status_path)
   end
 
   def objectives_step
-    Step.new(index_of_step(:objectives), I18n.t('clients.steps.step_3.short'), edit_client_objectives_path)
+    Step.new(index_of_step(:objectives), I18n.t('clients.steps.objectives.short'), edit_client_objectives_path)
   end
 
   def education_step
-    Step.new(index_of_step(:education), I18n.t('clients.steps.step_4.short'), edit_client_education_path)
+    Step.new(index_of_step(:education), I18n.t('clients.steps.education.short'), edit_client_education_path)
   end
 
-  def details_step
-    Step.new(index_of_step(:details), I18n.t('clients.steps.step_5.short'), edit_client_education_path)
+  def additional_information_step
+    Step.new(index_of_step(:additional_information), I18n.t('clients.steps.additional_information.short'), edit_client_additional_information_path)
   end
 
   def decorated(&block)

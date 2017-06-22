@@ -33,12 +33,14 @@
     %p You can skip any questions that you don’t want to answer. If you’d prefer not to create a profile at all at this stage, that’s fine too.
 
 
-    - unless current_client.profile_complete?
-      %p If you have time it would help us get some more information. Please could you follow the link below and answer a couple more questions:
 
-      =link_to I18n.t('clients.buttons.complete_profile'), edit_client_personal_traits_path, class: 'button is-primary'
-    - else
+    - if current_client.profile_complete?
       %p Thanks for giving us some more information. If you want to make any edits to your profile click the link below:
 
       = link_to I18n.t('clients.buttons.edit_profile'), edit_client_personal_traits_path, :class => "step button is-primary"
+    - else
+      %p If you have time it would help us get some more information. Please could you follow the link below and answer a couple more questions:
 
+      =link_to I18n.t('clients.buttons.complete_profile'), edit_client_personal_traits_path, class: 'button is-primary'
+
+    = link_to "Meet the team", hubs_path, class: 'button is-primary'

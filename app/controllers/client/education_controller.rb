@@ -6,7 +6,7 @@ class Client::EducationController < Client::BaseController
   def update
     if current_client.update_attributes(client_params)
       if params[:commit] == 'Next Step'
-        redirect_to :client_profile
+        redirect_to profile_steps.next_step.url
       elsif params[:commit] == 'Save and Exit'
         redirect_to :client_profile
       end
@@ -27,7 +27,10 @@ class Client::EducationController < Client::BaseController
       :studying,
       :studying_part_time,
       :past_education,
-      :current_education
-      )
+      :current_education,
+      :other_qualification,
+      :other_training_course,
+      qualifications:  [],
+      training_courses:  [])
   end
 end

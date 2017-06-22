@@ -35,6 +35,7 @@ WaysIntoWork::Application.routes.draw do
     resource :objectives, only: [:edit, :update]
     resource :education, only: [:edit, :update], controller: 'education'
     resource :employment_status, only: [:edit, :update], controller: 'employment_status'
+    resource :additional_information, only: [:edit, :update], controller: 'additional_information'
     resource :dashboard, only: :show
   end
 

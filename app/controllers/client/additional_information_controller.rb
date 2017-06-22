@@ -1,4 +1,4 @@
-class Client::ObjectivesController < Client::BaseController
+class Client::AdditionalInformationController < Client::BaseController
 
   def edit
   end
@@ -6,7 +6,7 @@ class Client::ObjectivesController < Client::BaseController
   def update
     if current_client.update_attributes(client_params)
       if params[:commit] == 'Next Step'
-        redirect_to profile_steps.next_step.url
+        redirect_to :client_profile
       elsif params[:commit] == 'Save and Exit'
         redirect_to :client_profile
       end
@@ -16,7 +16,7 @@ class Client::ObjectivesController < Client::BaseController
   end
 
   def profile_steps
-    @profile_steps ||= ProfileSteps.new(current_client, :objectives)
+    @profile_steps ||= ProfileSteps.new(current_client, :additional_information)
   end
   helper_method :profile_steps
 
@@ -24,8 +24,12 @@ class Client::ObjectivesController < Client::BaseController
   private
   def client_params
     params.require(:client).permit(
-      :other_objectives,
-      objectives: []
+      :gender,
+      :other_gender,
+      :receive_benefits,
+      :care_leaver,
+      :has_children,
+      :lone_parent
       )
   end
 end
