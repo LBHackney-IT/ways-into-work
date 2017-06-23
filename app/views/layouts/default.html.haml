@@ -5,6 +5,7 @@
   %body{class: page_class}
     #main-site-wrapper
       = render current_header
+      = render "layouts/alerts"
 
       #watermark.hackney-logo.container
         =image_tag('hackney_opportunities_logo@2x.png', :alt => 'Hackney Opportunities')

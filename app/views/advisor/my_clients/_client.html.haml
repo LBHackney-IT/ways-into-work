@@ -1,3 +1,5 @@
-%li[client]
-  =client.name
-  =I18n.t('clients.information.registered_date', created: client.created_at.to_s(:short))
+%li.is-block[client]
+  .is-inline-block
+    =link_to client.name, advisor_client_path(client)
+    =I18n.t('clients.information.registered_date', created: client.created_at.to_date.to_s(:short))
+    =link_to I18n.t('clients.buttons.arrange_meeting')
