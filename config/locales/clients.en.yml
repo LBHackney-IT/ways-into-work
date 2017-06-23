@@ -38,11 +38,6 @@ en:
       postcode_error: "The postcode you provided is invalid."
     information:
       registered_date: "Registered on %{created}"
-    objective:
-      job: 'Job'
-      apprenticeship: 'Apprenticeship'
-      training: 'Training'
-      work_experience: 'Work experience'
     personal_trait:
       creative: 'Creative'
       active: 'Active'

@@ -24,8 +24,12 @@ class Client::ObjectivesController < Client::BaseController
   private
   def client_params
     params.require(:client).permit(
-      :other_objectives,
-      objectives: []
+      :other_objective,
+      :other_support_priority,
+      :other_type_of_work,
+      objectives: [],
+      support_priorities: [],
+      types_of_work: []
       )
   end
 end

@@ -8,10 +8,11 @@ class ObjectiveOption
 
   def self.all
     [
-      new('job', I18n.t('clients.objective.job')),
-      new('apprenticeship', I18n.t('clients.objective.apprenticeship')),
-      new('training', I18n.t('clients.objective.training')),
-      new('work_experience', I18n.t('clients.objective.work_experience'))
+      new('full_time_work', 'Full time work'),
+      new('part_time_work', 'Part time work'),
+      new('training_qualification', 'Training or qualifications'),
+      new('apprenticeship', 'Apprenticeship'),
+      new('work_experience', 'Work experience')
     ]
   end
 
