@@ -39,7 +39,8 @@ group :test do
   gem 'rspec-rails', require: false
   gem 'email_spec', require: false
   gem 'database_cleaner'
-  gem 'poltergeist'
+  gem 'chromedriver-helper'
+  gem 'capybara-selenium'
   gem 'launchy'
   gem 'coderay'
   gem "webmock", require: false
