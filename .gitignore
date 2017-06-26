@@ -42,3 +42,5 @@ coverage/
 /.gemtags
 
 public/sitemap.xml.gz
+Gemfile.lock
+.env.example
