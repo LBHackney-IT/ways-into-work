@@ -34,3 +34,8 @@ Given(/^I am signed in as a service manager$/) do
   @i = Fabricate(:service_manager)
   login_as(@i.login)
 end
+
+Given(/^I am signed in as an advisor$/) do
+  @i = Fabricate(:advisor)
+  login_as(@i.login)
+end
