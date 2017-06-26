@@ -1,0 +1,9 @@
+%tr[client]
+  %td=link_to client.name, advisor_client_path(client)
+  %td
+  %td=client.postcode
+  %td
+  %td=client.created_at.to_date.to_s(:short)
+  %td=client.phone
+  %td=link_to I18n.t('clients.buttons.arrange_meeting')
+  //%td=button_to "Assign to me", '#', disabled: true, class: "button is-primary is-small"

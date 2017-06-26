@@ -6,6 +6,8 @@ class Client < ApplicationRecord
 
   delegate :email, to: :login
 
+  has_many :meetings
+
   accepts_nested_attributes_for :login
 
   validate do

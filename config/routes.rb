@@ -10,6 +10,7 @@ WaysIntoWork::Application.routes.draw do
   namespace :advisor do
     resources :clients, only: [:show, :index] do
       post :assign_to_me
+      resources :meetings, only: [:new, :create]
     end
 
     resources :my_clients, only: :index

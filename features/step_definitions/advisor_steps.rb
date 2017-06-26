@@ -28,6 +28,9 @@ When(/^I assign the client to myself$/) do
   click_on I18n.t('clients.buttons.assign_to_me')
 end
 
+Given(/^the client is assigned to me$/) do
+  @i.clients << @client
+end
 
 Then(/^the client should be part of my case load$/) do
   expect(@i.reload.clients).to include(@client)

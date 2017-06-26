@@ -1,7 +1,7 @@
 Feature: Advisor takes on new case
-  As a advisor
-  I should be able to sign in
-  So I can assign client cases to advisors
+  So I can work flexibily in case service managers are off
+  As an advisor
+  I should be able to assign clients to myself
 
   Background:
     Given I am an advisor

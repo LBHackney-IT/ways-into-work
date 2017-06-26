@@ -35,6 +35,9 @@ $.fn.handleFormElements = function() {
           textFieldBlock.find('input[type="text"]').val('');
         } else {
           textFieldBlock.find('input[type="text"]').focus();
+          if( $(elem).parents('.convert_radio').length){
+            clearRadioInputs($(elem).parents('.convert_radio').find('input[type=radio]'))
+          }
         }
       });
     });
@@ -43,22 +46,35 @@ $.fn.handleFormElements = function() {
   convertRadio = $(this).find('.convert_radio')
 
   if (convertRadio.length) {
-    convertRadio.find('input[type=radio]').each(function() {
-      if ($(this).is(':checked')) {
-        $(this).parents('.radio label').addClass('is-primary is-outlined');
-        if(!$(this).parents('.convert_radio').hasClass('radio_child')) {
-          runThroughRadios($(this));
+    convertRadio.find('input[type=radio]').each(function(index, elem) {
+      if ($(elem).is(':checked')) {
+        $(elem).parents('.radio label').addClass('is-primary is-outlined');
+        if(!$(elem).parents('.convert_radio').hasClass('radio_child')) {
+          runThroughRadios($(elem));
         }
       }
     });
     convertRadio.find('input[type=radio]').change(function() {
+
       $(this).parents('.convert_radio').find('.is-primary').removeClass('is-primary is-outlined');
       $(this).parents('.radio label').addClass('is-primary is-outlined');
-      console.log($(this).parents('.convert_radio').hasClass('radio_child'))
+
+      clear_other_option($(this))
+
       if(!$(this).parents('.convert_radio').hasClass('radio_child')) {
         runThroughRadios($(this));
       }
     });
+
+    function clear_other_option(radio_button) {
+      other_option =  $(radio_button).parents('.convert_radio').find('.other')
+      if(other_option.length) {
+        other_option.find('input[type="checkbox"]').checked = false
+        other_option.find('.checkbox label').removeClass('is-primary is-outlined')
+        other_option.find('input[type="text"]').val('')
+        other_option.find('.other_text').addClass('is-hidden')
+      }
+    }
 
     function runThroughRadios(theRadio){
       if (theRadio.val() == 'true') {
@@ -68,6 +84,14 @@ $.fn.handleFormElements = function() {
         $('.on-false').removeClass('is-hidden');
         clearAllInputs($('.on-true').addClass('is-hidden').find('input'));
       }
+    }
+
+
+    function clearRadioInputs(radio_buttons) {
+      $(radio_buttons).each(function(index, input) {
+        $(input).checked = false;
+        $(input).parents('.radio label').removeClass('is-primary is-outlined');
+      });
     }
 
     function clearAllInputs(inputs) {
@@ -83,7 +107,7 @@ $.fn.handleFormElements = function() {
         case 'number':
         case 'tel':
         case 'email':
-          jQuery(this).val('');
+          $(this).val('');
           break;
         case 'checkbox':
         case 'radio':
