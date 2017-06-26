@@ -29,6 +29,10 @@ When(/^I assign the client to myself$/) do
 end
 
 
+Given(/^the client is assigned to me$/) do
+  @i.clients << @client
+end
+
 Then(/^the client should be part of my case load$/) do
   expect(@i.reload.clients).to include(@client)
   visit advisor_my_clients_path
