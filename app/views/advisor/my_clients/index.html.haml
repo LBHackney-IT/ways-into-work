@@ -10,7 +10,7 @@
 
     .clients_table
       -if @clients.any?
-        %ul.clients
+        %ul.clients#unassigned_clients
           = render partial: 'client', collection: @clients
       - else
         %h4=I18n.t('advisors.headers.no_clients')

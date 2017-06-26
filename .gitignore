@@ -44,3 +44,5 @@ coverage/
 public/sitemap.xml.gz
 Gemfile.lock
 .env.example
+
+Gemfile.lock
