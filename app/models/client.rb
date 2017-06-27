@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
   # associations
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
+  has_one :hub
 
   validates :login, :first_name, :last_name, :phone, :date_of_birth, :postcode, presence: true
 
@@ -52,6 +53,10 @@ class Client < ApplicationRecord
 
   def age_in_years
     @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd)/365 if date_of_birth
+  end
+
+  def assign_hub(ward_mapit_code)
+    self.hub = Hub.covering_ward(ward_mapit_code).first
   end
 
 end

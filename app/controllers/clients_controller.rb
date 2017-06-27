@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
 
-  before_action :hackney_postcode_eligibility, only: :create
+  before_action :lookup_hub, only: :create
 
   def new
     @client = Client.new()
@@ -8,9 +8,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_params)
-    @client.login.password = Devise.friendly_token.first(20)
-    if @client.save
+    if @client.login.generate_default_password && @client.save
       @client.login.send_reset_password_instructions
       flash[:alert] = I18n.t('devise.confirmations.send_instructions')
       redirect_to just_registered_path
@@ -22,11 +20,12 @@ class ClientsController < ApplicationController
 
   private
 
-  def hackney_postcode_eligibility
-    unless client_params[:postcode].present? &&
-      # This will be picked up by client validation
-      GoingPostal.postcode?(client_params[:postcode], 'GB').present? &&
-      HackneyPostcodeValidator.new(client_params[:postcode]).within_hackney?
+  def lookup_hub
+    @mapit_ward_finder = HackneyPostcodeValidator.new(client_params[:postcode])
+    if @mapit_ward_finder.within_hackney?
+      @client = Client.new(client_params)
+      @client.assign_hub(@mapit_ward_finder.ward_code)
+    else
       redirect_to :outside_hackney
     end
   end

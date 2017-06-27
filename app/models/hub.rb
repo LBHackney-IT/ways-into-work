@@ -5,6 +5,8 @@ class Hub < ApplicationRecord
   has_many :advisors
   has_one :service_manager
 
+  scope :covering_ward, lambda { |code| where('? = ANY (ward_mapit_codes)', code) }
+
   after_validation :geocode
   geocoded_by :address_to_s
 

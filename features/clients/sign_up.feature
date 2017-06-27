@@ -10,7 +10,7 @@ Feature: Client signs up for the service
     And I try and register with a postcode outside the borough
     Then I should be on the outside hackney page
 
-  @validate_postcode
+   @validate_postcode
   Scenario: client signs up
     When I register my self as "client@example.com"
     Then "client@example.com" receive an email asking to confirm address
