@@ -6,9 +6,7 @@ module RegistrationSH
     fill_in 'client_phone', with: client.phone
     fill_in 'client_address_line_1', with: client.address_line_1
     fill_in 'client_postcode', with: client.postcode
-    select client.date_of_birth.year, from: 'client_date_of_birth_1i'
-    select Date::MONTHNAMES[client.date_of_birth.month], from: 'client_date_of_birth_2i'
-    select client.date_of_birth.day, from: 'client_date_of_birth_3i'
+    fill_in 'client_date_of_birth', with: client.date_of_birth
   end
 
   def save

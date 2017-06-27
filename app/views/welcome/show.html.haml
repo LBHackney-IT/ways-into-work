@@ -19,6 +19,7 @@
   %br
   %br
   %p other elements needed: meet the team / see latest opportunities / register for the service
+  %p= link_to "Meet the team", hubs_path
 
   %p our success stories
 
@@ -32,3 +33,4 @@
 
   - unless user_login_signed_in?
     = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Ways into Work service", class: 'button is-primary'
+

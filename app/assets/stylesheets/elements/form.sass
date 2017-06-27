@@ -179,6 +179,7 @@ $input-radius:              $radius !default
 .help
   display: block
   font-size: $size-small
+  color: rgba($black, 0.5)
   margin-top: 0.25rem
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -388,8 +389,11 @@ abbr
       margin-bottom: $size-5
       width: 100%
 
+#client_date_of_birth
+  max-width: 190px
 #client_postcode
-  max-width: 100px
+  +mobile
+    max-width: 100px
 // #client_phone
 //   max-width: 175px
 
@@ -415,16 +419,21 @@ abbr
   .checkbox, .radio
     cursor: default
   span.checkbox label, span.radio label,
-    margin: $size-8
+    margin: $size-8 $size-6 $size-8 0
     &:hover
       cursor: pointer
     input[type=checkbox], input[type=radio]
       display: none
+    &.is-primary.is-outlined
+      background-color: rgba(#E6F1F9, 0.7)
+      &:hover
+        background-color: rgba(#E6F1F9, 0.7)
+        color: $primary
+        opacity: 0.4
 
 .on-true, .on-false, .convert_checkbox
   .field:last-child
     margin-bottom: $size-4
-
 
 
 

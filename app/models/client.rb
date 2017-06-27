@@ -22,6 +22,14 @@ class Client < ApplicationRecord
   scope :unassigned, -> { where(advisor_id: nil) }
   scope :assigned, -> { where('advisor_id is not NULL') }
 
+  # def date_of_birth=(value)
+  #   if value.is_a?(String)
+  #     value.to_date
+  #   else
+  #     super
+  #   end
+  # end
+
   def name
    "#{first_name} #{last_name}"
   end

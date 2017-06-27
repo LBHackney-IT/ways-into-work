@@ -5,7 +5,7 @@
       %span.client_total="#{@clients.count} Total"
 
     .level-right.column
-      =link_to "#{I18n.t('buttons.unassigned_clients')}", :advisor_unassigned_clients, :class => "button is-primary"
+      =link_to "View #{}all unassigned clients", :advisor_unassigned_clients, :class => "button is-primary"
 
   -if @clients.any?
     %table.table

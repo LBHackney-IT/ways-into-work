@@ -7,6 +7,6 @@
 .nav-right.nav-menu
   = link_to "Home", user_root, class: "nav-item is-tab #{cp(user_root)}"
   = link_to "My Profile", client_profile_path, class: "nav-item is-tab #{cp(client_profile_path)}"
-  %a.nav-item.is-tab Information
+  = link_to "Meet the team", hubs_path, class: "nav-item is-tab #{cp(hubs_path)}"
   = button_to "Log Out", destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
 

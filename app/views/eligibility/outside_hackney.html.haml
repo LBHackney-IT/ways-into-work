@@ -1,10 +1,14 @@
 .column.is-10.is-offset-1
   %h2.subtitle Do you live within Hackney?
 
-  %p This service is only for Hackney residents.
+  %p Sorry, this service is only for Hackney residents.
 
   %br
 
   %p Using your postcode we looked up to see whether your address is within the London borough of Hackney but it doesn't seem to be.
 
   %p You may be able to find other Ways into work schemes in you area.
+
+  %p If you live in Hackney and are seeing this screen then please call your local hub using the link below.
+
+  =link_to "Find your local hub", hubs_path, class: "button is-primary"
