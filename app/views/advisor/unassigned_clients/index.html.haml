@@ -12,21 +12,4 @@
         %th Phone Number
         %th
     %tbody
-      = render partial: 'client', collection: @unassigned_clients, as: 'client'
-
-
-.column.is-10.is-offset-1
-  %h3 Here is a list of all the registered clients
-
-  %table#all_clients.table
-    %thead
-      %tr
-        %th Client
-        %th Age
-        %th Postcode
-        %th Sectors
-        %th Registered
-        %th Phone Number
-        %th
-    %tbody
-      = render partial: 'client', collection: @clients
+      = render partial: 'client', collection: @clients, as: 'client'
