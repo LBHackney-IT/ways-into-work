@@ -5,4 +5,4 @@
   %td
   %td=client.created_at.to_date.to_s(:short)
   %td=client.phone
-  %td=link_to I18n.t('clients.buttons.arrange_meeting')
+  %td=button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), class: "button is-primary is-small"
