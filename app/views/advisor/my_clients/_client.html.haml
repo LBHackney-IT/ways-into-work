@@ -1,8 +1,6 @@
 %tr[client]
   %td=link_to client.name, advisor_client_path(client)
-  %td
+  %td=client.age
   %td=client.postcode
-  %td
   %td=client.created_at.to_date.to_s(:short)
-  %td=client.phone
-  %td=button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), class: "button is-primary is-small"
+  %td.has-text-right=button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), class: "button is-primary is-small"

@@ -1,22 +1,20 @@
-.column.is-10.is-offset-1
+#your_clients.column.is-10.is-offset-1
   .head.columns.level
     .level-left.column
       %h2 Your Clients
       %span.client_total="#{@clients.count} Total"
 
     .level-right.column
-      =link_to "View #{} #{I18n.t('buttons.unassigned_clients')}", :advisor_unassigned_clients, :class => "button is-primary"
+      =link_to "#{I18n.t('buttons.unassigned_clients')}", :advisor_unassigned_clients, :class => "button is-primary"
 
   -if @clients.any?
-    %table#my_clients.table
+    %table.table
       %thead
         %tr
           %th Client
           %th Age
           %th Postcode
-          %th Sectors
-          %th Registered
-          %th Phone Number
+          %th Date Created
           %th
       %tbody
         = render partial: 'client', collection: @clients

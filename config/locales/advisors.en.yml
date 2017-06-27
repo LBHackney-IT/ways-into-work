@@ -5,3 +5,4 @@ en:
   advisors:
     headers:
       no_clients: "Your case load is currently empty. You can assign yourself cases from the unassigned client list."
+      no_unassigned_clients: "There are currently not any unassigned clients. To view your clients click on the link below."
