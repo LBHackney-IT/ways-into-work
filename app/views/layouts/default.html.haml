@@ -4,14 +4,18 @@
     = render 'layouts/html_head'
   %body{:class => (user_login_signed_in? && current_user_login.user_type == 'Advisor') ? "admin #{page_class}" : page_class}
     #main-site-wrapper
-      = render current_header
+      .site-header{ :role => "banner"}
+        %nav.nav.container
+          = render current_header
+
       = render "layouts/alerts"
       -if !user_login_signed_in? || current_user_login.user_type != 'Advisor'
         #watermark.hackney-logo.container
           =image_tag('hackney_opportunities_logo@2x.png', :alt => 'Hackney Opportunities')
 
       %main{:class => "main section", :id => "main", :role => "main"}
-        = yield
+        .container.content.columns.is-multiline
+          = yield
 
     %footer{:class => "site-footer footer", :role => "contentinfo"}
       = render 'layouts/site_footer'

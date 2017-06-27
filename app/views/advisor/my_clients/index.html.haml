@@ -1,17 +1,15 @@
-#advisor_view.container.content.columns
-  .column.is-10.is-offset-1
-    .head.columns.level
-      .level-left.column
-        %h2 Your Clients
-        %span.client_total="#{@clients.count} Total"
+.column.is-10.is-offset-1
+  .head.columns.level
+    .level-left.column
+      %h2 Your Clients
+      %span.client_total="#{@clients.count} Total"
 
-      .level-right.column
-        =link_to "View #{} #{I18n.t('buttons.unassigned_clients')}", :advisor_unassigned_clients, :class => "button is-primary"
+    .level-right.column
+      =link_to "View #{} #{I18n.t('buttons.unassigned_clients')}", :advisor_unassigned_clients, :class => "button is-primary"
 
-    .clients_table
-      -if @clients.any?
-        %ul.clients#unassigned_clients
-          = render partial: 'client', collection: @clients
-      - else
-        %h4=I18n.t('advisors.headers.no_clients')
-        =link_to I18n.t('buttons.unassigned_clients'), :advisor_unassigned_clients
+  -if @clients.any?
+    %ul#unassigned_clients
+      = render partial: 'client', collection: @clients
+  - else
+    %h4=I18n.t('advisors.headers.no_clients')
+    =link_to I18n.t('buttons.unassigned_clients'), :advisor_unassigned_clients

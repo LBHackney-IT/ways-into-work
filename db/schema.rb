@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170623153608) do
 
   # These are extensions that must be enabled in order to support this database
@@ -38,13 +37,13 @@ ActiveRecord::Schema.define(version: 20170623153608) do
     t.string "other_objective"
     t.boolean "employed"
     t.integer "working_hours_per_week"
+    t.string "time_since_last_job"
     t.string "job_title"
     t.string "current_education"
     t.string "past_education"
     t.boolean "studying"
     t.boolean "studying_part_time"
     t.bigint "advisor_id"
-    t.string "time_since_last_job"
     t.string "preferred_contact_method"
     t.string "qualifications", default: [], array: true
     t.string "other_qualification"

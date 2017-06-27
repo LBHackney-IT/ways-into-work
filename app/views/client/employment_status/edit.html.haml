@@ -1,22 +1,22 @@
-.container.content.has-text-centered
+.column.is-12.has-text-centered
   = render partial: 'shared/profile_steps'
-.container.content.columns
-  .column.is-10.is-offset-1
-    %h2.subtitle=I18n.t('clients.steps.employment.long')
 
-    = simple_form_for [current_client], url: :client_employment_status do |form|
-      = render 'shared/form_errors', object: form.object
+.column.is-10.is-offset-1
+  %h2.subtitle=I18n.t('clients.steps.employment.long')
 
-      =form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio" }
+  = simple_form_for [current_client], url: :client_employment_status do |form|
+    = render 'shared/form_errors', object: form.object
 
-      .is-hidden.on-true
-        =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
-        =form.input :working_hours_per_week, as: :integer, :label => 'How many hours per week do you currently work?', :input_html => { :class => 'input' }
-        =form.input :below_living_wage, as: :radio_buttons, :label => 'Are the earnings from your job below the living wage?', wrapper_html: { class: "convert_radio" }
+    =form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio" }
 
-      / .is-hidden.on-false
-      /   =form.input :time_since_last_job, as: :radio_buttons, collection: OutOfWorkOption.all, :label => 'How many months have you been out of work?', include_hidden: false, wrapper_html: { class: "convert_radio" }
+    .is-hidden.on-true
+      =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
+      =form.input :working_hours_per_week, as: :integer, :label => 'How many hours per week do you currently work?', :input_html => { :class => 'input' }
+      =form.input :below_living_wage, as: :radio_buttons, :label => 'Are the earnings from your job below the living wage?', wrapper_html: { class: "convert_radio" }
 
-      .actions
-        = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
-        = form.submit 'Save and Exit', :class => 'button'
+    / .is-hidden.on-false
+    /   =form.input :time_since_last_job, as: :radio_buttons, collection: OutOfWorkOption.all, :label => 'How many months have you been out of work?', include_hidden: false, wrapper_html: { class: "convert_radio" }
+
+    .actions
+      = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
+      = form.submit 'Save and Exit', :class => 'button'
