@@ -1,5 +1,6 @@
 class Advisor::BaseController < ApplicationController
 
+  before_action :authenticate_user_login!
   before_action :authenticate_current_advisor!
 
   helper_method :current_advisor

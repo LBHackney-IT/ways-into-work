@@ -9,14 +9,16 @@ class ApplicationController < ActionController::Base
     user_root(resource_or_scope.user_type)
   end
 
-  def user_root(user_type = current_user_login.user_type)
+  def user_root(user_type = current_user_login.try(:user_type))
     case user_type
     when "Advisor"
       :advisor_my_clients
     when "ServiceManager"
       :service_manager_clients
-    else
+    when 'Client'
       :client_dashboard
+    else
+      '/'
     end
   end
 
