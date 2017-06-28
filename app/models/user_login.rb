@@ -9,4 +9,8 @@ class UserLogin < ApplicationRecord
   delegate :name, :devise_mailer, to: :user
 
   scope :service_managers, -> { where(user_type: 'ServiceManager')}
+
+  def generate_default_password
+    self.password = Devise.friendly_token.first(20)
+  end
 end

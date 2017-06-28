@@ -1,8 +1,10 @@
 class Client < ApplicationRecord
   # associations
+  belongs_to :advisor
+  has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
 
-  validates :login, :first_name, :last_name, :phone, :date_of_birth, :postcode, presence: true
+  validates :login, :first_name, :last_name, :phone, :date_of_birth, :postcode, :advisor, :hub, presence: true
 
   delegate :email, to: :login
 
@@ -14,8 +16,6 @@ class Client < ApplicationRecord
 
   phony_normalize :phone, default_country_code: 'GB'
   validates_plausible_phone :phone, country_code: 'GB'
-
-  belongs_to :advisor
 
   scope :unassigned, -> { where(advisor_id: nil) }
   scope :assigned, -> { where('advisor_id is not NULL') }
@@ -52,6 +52,10 @@ class Client < ApplicationRecord
 
   def age_in_years
     @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd)/365 if date_of_birth
+  end
+
+  def assign_team_leader(ward_mapit_code)
+    self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first
   end
 
 end

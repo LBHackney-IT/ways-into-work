@@ -40,8 +40,8 @@ end
 
 World(EmailHelpers)
 
-Then(/^the service manager should receive a new client notification$/) do
-  address = @i.login.email
+Then(/^the team leader should receive a new client notification$/) do
+  address = Advisor.team_leader(@hub).first.email
   expect(unread_emails_for(address).size).to eq(1)
   open_email(address)
   expect(current_email).to have_subject(I18n.t('service_managers.mail.subject.new_client'))

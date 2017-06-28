@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
 
-  before_action :hackney_postcode_eligibility, only: :create
+  before_action :init_client, only: :create
 
   def new
     @client = Client.new()
@@ -8,8 +8,6 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_params)
-    @client.login.password = Devise.friendly_token.first(20)
     if @client.save
       @client.login.send_reset_password_instructions
       flash[:alert] = I18n.t('devise.confirmations.send_instructions')
@@ -22,11 +20,12 @@ class ClientsController < ApplicationController
 
   private
 
-  def hackney_postcode_eligibility
-    unless client_params[:postcode].present? &&
-      # This will be picked up by client validation
-      GoingPostal.postcode?(client_params[:postcode], 'GB').present? &&
-      HackneyPostcodeValidator.new(client_params[:postcode]).within_hackney?
+  def init_client
+    if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
+      @client = Client.new(client_params)
+      @client.assign_team_leader(ward_mapit_code)
+      @client.login.generate_default_password
+    else
       redirect_to :outside_hackney
     end
   end
