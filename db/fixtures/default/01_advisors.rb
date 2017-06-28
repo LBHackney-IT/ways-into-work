@@ -2,11 +2,12 @@ advisors = [
   {
     email: 'jrae@wearefuturegov.com',
     name: 'Jason Rae',
-    hub_id: 1
+    hub_id: 2
   },{
     email: 'jrae+tl@wearefuturegov.com',
     name: 'Jason Team Leader',
-    hub_id: 2
+    team_leader: true,
+    hub_id: 1
   },{
     email: 'chris@wearefuturegov.com',
     name: 'Chris Evans',
@@ -14,6 +15,7 @@ advisors = [
   },{
     email: 'chris+tl@wearefuturegov.com',
     name: 'Chris Team Leader',
+    team_leader: true,
     hub_id: 2
   },{
     email: 'benunsworth@wearefuturegov.com',
@@ -30,6 +32,7 @@ advisors = [
   },{
     email: 'jan+tl@wearefuturegov.com',
     name: 'Jan Team Leader',
+    team_leader: true,
     hub_id: 3
   }
 ]
