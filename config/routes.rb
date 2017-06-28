@@ -9,8 +9,8 @@ WaysIntoWork::Application.routes.draw do
 
   namespace :advisor do
     resources :clients, only: [:show, :index] do
-      post :assign_to_me
       resources :meetings, only: [:new, :create]
+      resource :assign, only: :update, controller: 'assign_client'
     end
 
     resources :my_clients, only: :index
@@ -18,7 +18,6 @@ WaysIntoWork::Application.routes.draw do
 
   namespace :service_manager do
     resources :clients, only: [:index, :show] do
-      resource :advisors, only: :update, controller: 'client_advisors'
     end
   end
 

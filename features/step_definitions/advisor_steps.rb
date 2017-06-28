@@ -46,3 +46,12 @@ Then(/^the client should be part of my case load$/) do
   visit advisor_my_clients_path
   expect(page).to have_content(@client.name)
 end
+
+
+Given(/^there is an advisor Dave$/) do
+  @dave = Fabricate(:advisor, name: 'Dave Donald')
+end
+
+Given(/^there is an advisor Dave in my hub$/) do
+  @dave = Fabricate(:advisor, name: 'Dave Donald', hub: @i.hub)
+end

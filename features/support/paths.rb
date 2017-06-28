@@ -17,11 +17,12 @@ module NavigationHelpers
     when /home page/
       root_path
 
-    when /the service manager clients/
-      service_manager_clients_path
+    when /the advisor clients/
+      advisor_clients_path
 
-    when /the service manager client/
-      service_manager_client_path(@client)
+    when /the advisor client/
+      advisor_client_path(@client)
+
 
     else
       begin
