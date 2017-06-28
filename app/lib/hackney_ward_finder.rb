@@ -1,13 +1,11 @@
-class HackneyPostcodeValidator
-
-  attr_reader :ward_code
+class HackneyWardFinder
 
   def initialize(postcode)
     @postcode = postcode
   end
 
-  def within_hackney?
-    find_hackney_ward_from_postcode.present?
+  def lookup
+    find_hackney_ward_from_postcode
   end
 
   private
@@ -24,7 +22,7 @@ class HackneyPostcodeValidator
     end
 
     def ward_from(response)
-      @ward_code ||= response["areas"].select{ |area| response["areas"][area]["type"] == 'LBW'}.keys[0]
+      response["areas"].select{ |area| response["areas"][area]["type"] == 'LBW'}.keys[0]
     end
 end
 

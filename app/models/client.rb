@@ -54,7 +54,7 @@ class Client < ApplicationRecord
     @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd)/365 if date_of_birth
   end
 
-  def assign_hub(ward_mapit_code)
+  def assign_team_leader(ward_mapit_code)
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first
   end
 

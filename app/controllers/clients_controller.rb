@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
 
-  before_action :lookup_hub, only: :create
+  before_action :init_client, only: :create
 
   def new
     @client = Client.new()
@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    if @client.login.generate_default_password && @client.save
+    if @client.save
       @client.login.send_reset_password_instructions
       flash[:alert] = I18n.t('devise.confirmations.send_instructions')
       redirect_to just_registered_path
@@ -20,11 +20,11 @@ class ClientsController < ApplicationController
 
   private
 
-  def lookup_hub
-    @mapit_ward_finder = HackneyPostcodeValidator.new(client_params[:postcode])
-    if @mapit_ward_finder.within_hackney?
+  def init_client
+    if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
       @client = Client.new(client_params)
-      @client.assign_hub(@mapit_ward_finder.ward_code)
+      @client.assign_team_leader(ward_mapit_code)
+      @client.login.generate_default_password
     else
       redirect_to :outside_hackney
     end
