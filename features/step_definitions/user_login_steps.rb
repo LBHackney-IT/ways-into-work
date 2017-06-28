@@ -10,10 +10,6 @@ module UserLoginSH
 end
 World UserLoginSH
 
-Given(/^I have just registered a user login$/) do
-  @user_login = Fabricate(:user_login)
-end
-
 Given(/^I sign in with the user login details$/) do
   sign_in(@user_login)
 end
