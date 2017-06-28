@@ -6,6 +6,15 @@ Given(/^there is an advisor$/) do
   @advisor = Fabricate(:advisor)
 end
 
+Given(/^there is a team leader for homerton$/) do
+  @team_leader = Fabricate(:advisor, team_leader: true, hub: @hub)
+end
+
+Then(/^I should be auto assigned to homerton$/) do
+  expect(Client.last.advisor).to eq(@team_leader)
+end
+
+
 Then(/^I should not see the client in my case load$/) do
   within '.my_clients' do
     expect(page).to have_content(I18n.t('advisors.headers.no_clients'))
