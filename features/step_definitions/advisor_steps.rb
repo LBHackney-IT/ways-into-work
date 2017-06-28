@@ -22,8 +22,8 @@ Then(/^I should not see the client in my case load$/) do
   end
 end
 
-When(/^I navigate to the unnassigned clients$/) do
-  click_link I18n.t('buttons.unassigned_clients')
+When(/^I navigate to see all clients$/) do
+  click_link I18n.t('buttons.all_clients')
 end
 
 Then(/^I should see the new client listed$/) do

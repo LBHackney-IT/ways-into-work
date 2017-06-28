@@ -5,7 +5,7 @@ en:
   header:
     title: "Hackney Opportunities"
   buttons:
-    unassigned_clients: "View unassigned clients"
+    all_clients: "View all clients"
     my_clients: "View my clients"
   flash:
     errors:

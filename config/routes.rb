@@ -14,7 +14,6 @@ WaysIntoWork::Application.routes.draw do
     end
 
     resources :my_clients, only: :index
-    resources :unassigned_clients, only: :index
   end
 
   namespace :service_manager do

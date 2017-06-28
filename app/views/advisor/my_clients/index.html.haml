@@ -4,20 +4,16 @@
       %h2 Your Clients
       %span.client_total="#{@clients.count} Total"
 
-    .level-right.column
-      =link_to "View #{}all unassigned clients", :advisor_unassigned_clients, :class => "button is-primary"
-
   -if @clients.any?
     %table.table
       %thead
         %tr
           %th Client
           %th Age
-          %th Postcode
           %th Date Created
           %th
       %tbody
         = render partial: 'client', collection: @clients
   - else
     %h4=I18n.t('advisors.headers.no_clients')
-    =link_to I18n.t('buttons.unassigned_clients'), :advisor_unassigned_clients
+    =link_to I18n.t('buttons.all_clients'), :advisor_clients

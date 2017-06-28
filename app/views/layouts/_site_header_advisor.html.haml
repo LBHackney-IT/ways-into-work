@@ -6,6 +6,6 @@
   %span
 .nav-right.nav-menu
   = link_to "My Clients", user_root, class: "nav-item is-tab #{cp(user_root)}"
-  %a.nav-item.is-tab All Clients
+  = link_to "All Clients", :advisor_clients, class: "nav-item is-tab}"
   = button_to "Log Out", destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
 

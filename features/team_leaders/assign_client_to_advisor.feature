@@ -1,4 +1,4 @@
-Feature: Service Manager assigns client
+Feature: Team leader assigns client to another Advisor
 
   Background:
     Given there is an advisor

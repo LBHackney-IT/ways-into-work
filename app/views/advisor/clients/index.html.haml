@@ -1,19 +1,16 @@
 .column.is-10.is-offset-1
-  %h4 Unassigned clients
+  %h4 All clients
 
   -if @clients.any?
-    %table#unassigned_clients.table
+    %table.table
       %thead
         %tr
           %th Client
-          %th Age
-          %th Postcode
-          %th Sectors
           %th Registered
-          %th Phone Number
+          %th Advisor
           %th
       %tbody
         = render partial: 'client', collection: @clients, as: 'client'
   - else
-    %h4=I18n.t('advisors.headers.no_unassigned_clients')
+    %h4=I18n.t('advisors.headers.no_clients_yet')
     =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary'
