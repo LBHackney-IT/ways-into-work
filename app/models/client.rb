@@ -8,6 +8,8 @@ class Client < ApplicationRecord
 
   delegate :email, to: :login
 
+  has_many :meetings
+
   accepts_nested_attributes_for :login
 
   validate do
@@ -20,8 +22,21 @@ class Client < ApplicationRecord
   scope :unassigned, -> { where(advisor_id: nil) }
   scope :assigned, -> { where('advisor_id is not NULL') }
 
+  # def date_of_birth=(value)
+  #   if value.is_a?(String)
+  #     value.to_date
+  #   else
+  #     super
+  #   end
+  # end
+
   def name
    "#{first_name} #{last_name}"
+  end
+
+  def age
+    now = Time.now.utc.to_date
+    now.year - date_of_birth.year - ((now.month > date_of_birth.month || (now.month == date_of_birth.month && now.day >= date_of_birth.day)) ? 0 : 1)
   end
 
   def valid_postcode?

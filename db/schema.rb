@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20170627181826) do
     t.string "other_objective"
     t.boolean "employed"
     t.integer "working_hours_per_week"
+    t.string "time_since_last_job"
     t.string "job_title"
     t.string "current_education"
     t.string "past_education"
     t.boolean "studying"
     t.boolean "studying_part_time"
     t.bigint "advisor_id"
-    t.string "time_since_last_job"
     t.string "preferred_contact_method"
     t.string "qualifications", default: [], array: true
     t.string "other_qualification"
@@ -72,6 +72,19 @@ ActiveRecord::Schema.define(version: 20170627181826) do
     t.float "longitude"
     t.float "latitude"
     t.string "ward_mapit_codes", default: [], array: true
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.datetime "start_datetime"
+    t.text "notes"
+    t.string "agenda"
+    t.string "other_agenda"
+    t.bigint "advisor_id"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advisor_id"], name: "index_meetings_on_advisor_id"
+    t.index ["client_id"], name: "index_meetings_on_client_id"
   end
 
   create_table "meetings", force: :cascade do |t|

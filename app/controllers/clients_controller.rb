@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
   def create
     if @client.save
       @client.login.send_reset_password_instructions
-      flash[:alert] = I18n.t('devise.confirmations.send_instructions')
+      # flash[:alert] = I18n.t('devise.confirmations.send_instructions')
       redirect_to just_registered_path
       ServiceManagerMailer.notify_client_signed_up(@client).deliver_now
     else
@@ -33,9 +33,7 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(
       :title,
-      'date_of_birth(1i)',
-      'date_of_birth(2i)',
-      'date_of_birth(3i)',
+      :date_of_birth,
       :first_name,
       :last_name,
       :phone,

@@ -1,13 +1,11 @@
-.container{:class => "site-header", :role => "banner"}
-  %nav.nav
-    .nav-left
-      = link_to I18n.t('header.title'), advisor_clients_path, class: 'nav-item is-brand bold'
-    %span.nav-toggle
-      %span
-      %span
-      %span
-    .nav-right.nav-menu
-      = link_to "My Clients", user_root, class: "nav-item is-tab #{cp(user_root)}"
-      %a.nav-item.is-tab All Clients
-      = button_to "Log Out", destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
+.nav-left
+  = link_to I18n.t('header.title'), user_root, class: 'nav-item is-brand bold'
+%span.nav-toggle
+  %span
+  %span
+  %span
+.nav-right.nav-menu
+  = link_to "My Clients", user_root, class: "nav-item is-tab #{cp(user_root)}"
+  %a.nav-item.is-tab All Clients
+  = button_to "Log Out", destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
 

@@ -1,13 +1,19 @@
-.container.content.columns
-  .column.is-10.is-offset-1
-    %h3 Here is a list of all the registered clients
+.column.is-10.is-offset-1
+  %h4 Unassigned clients
 
-    %ul.clients
-      = render partial: 'client', collection: @clients
-
-.container.content.columns
-  .column.is-10.is-offset-1
-    %h4 Unassigned clients
-
-    %ul#unassigned_clients
-      = render partial: 'client', collection: @unassigned_clients, as: 'client'
+  -if @clients.any?
+    %table#unassigned_clients.table
+      %thead
+        %tr
+          %th Client
+          %th Age
+          %th Postcode
+          %th Sectors
+          %th Registered
+          %th Phone Number
+          %th
+      %tbody
+        = render partial: 'client', collection: @clients, as: 'client'
+  - else
+    %h4=I18n.t('advisors.headers.no_unassigned_clients')
+    =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary'

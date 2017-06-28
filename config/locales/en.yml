@@ -5,7 +5,8 @@ en:
   header:
     title: "Hackney Opportunities"
   buttons:
-    unassigned_clients: "Unassigned clients"
+    unassigned_clients: "View unassigned clients"
+    my_clients: "View my clients"
   flash:
     errors:
       not_authorized: "Appears you are trying to access a page without authorization"

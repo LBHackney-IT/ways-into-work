@@ -1,27 +1,26 @@
-.container.content.columns
-  .column.is-10.is-offset-1
-    %h2.subtitle Log in
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+.column.is-10.is-offset-1
+  %h2.subtitle Log in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email, class: 'label'
+      %p.control.has-icons-left
+        = f.email_field :email, autofocus: true, class: 'input', placeholder: 'Your email'
+        %span.icon.is-small.is-left
+          %i.fa.fa-envelope
+
+    .field
+      = f.label :password, class: 'label'
+      %p.control.has-icons-left
+        = f.password_field :password, autocomplete: "off", class: 'input'
+        %span.icon.is-small.is-left
+          %i.fa.fa-unlock-alt
+
+    - if devise_mapping.rememberable?
       .field
-        = f.label :email, class: 'label'
-        %p.control.has-icons-left
-          = f.email_field :email, autofocus: true, class: 'input', placeholder: 'Your email'
-          %span.icon.is-small.is-left
-            %i.fa.fa-envelope
+        = f.label :remember_me, class: 'checkbox' do
+          = f.check_box :remember_me
+          Remember me
 
-      .field
-        = f.label :password, class: 'label'
-        %p.control.has-icons-left
-          = f.password_field :password, autocomplete: "off", class: 'input'
-          %span.icon.is-small.is-left
-            %i.fa.fa-unlock-alt
-
-      - if devise_mapping.rememberable?
-        .field
-          = f.label :remember_me, class: 'checkbox' do
-            = f.check_box :remember_me
-            Remember me
-
-      .actions
-        = f.submit "Log in", class: 'button is-primary'
-    = render "devise/shared/links"
+    .actions
+      = f.submit "Log in", class: 'button is-primary'
+  = render "devise/shared/links"

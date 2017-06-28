@@ -1,0 +1,48 @@
+.admin
+  background-color: $background
+
+  .footer, .site-footer, footer
+    background-color: $white
+
+  .head
+    h2
+      display: inline-block
+      margin: 0 1.5rem 0 0
+
+  .table
+    border-collapse: separate
+    border-spacing: 0 $size-5
+    background-color: transparent
+    tbody
+      tr
+        background-color: $white
+        margin-bottom: $size-1
+        border: 1px solid #DADADA
+        line-height: 27px
+        &:hover
+          background-color: rgba($white, 0.4)
+    thead
+      tr
+        background-color: transparent
+      th
+        text-transform: uppercase
+        font-weight: 500
+        font-size: 13px
+    td, th
+      border: none
+    button.button, input[type="submit"].button
+      padding-bottom: 0.35em
+
+
+
+
+  .clients_list
+    .table
+      th:hover, tr:hover
+        background-color: transparent
+      th
+        text-transform: uppercase
+        font-weight: 600
+        font-size: 90%
+        border: 0
+      tr
