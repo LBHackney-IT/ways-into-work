@@ -2,6 +2,106 @@
 http_interactions:
 - request:
     method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=Homerton%20Library,%20Homerton%20High%20Road,%20E9%206AS&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 28 Jun 2017 11:58:14 GMT
+      Expires:
+      - Thu, 29 Jun 2017 11:58:14 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '537'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Homerton High Street",
+                       "short_name" : "Homerton High St",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "London",
+                       "short_name" : "London",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "E9 6AS",
+                       "short_name" : "E9 6AS",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Homerton High St, London E9 6AS, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5488747,
+                       "lng" : -0.04165820000000001
+                    },
+                    "location_type" : "GEOMETRIC_CENTER",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5502236802915,
+                          "lng" : -0.04030921970849798
+                       },
+                       "southwest" : {
+                          "lat" : 51.5475257197085,
+                          "lng" : -0.04300718029150204
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJWziIhgQddkgR-r2X2Ra9CwQ",
+                 "types" : [ "establishment", "library", "point_of_interest" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 28 Jun 2017 11:58:14 GMT
+- request:
+    method: get
     uri: https://mapit.mysociety.org/postcode/GU11YF
     body:
       encoding: US-ASCII
@@ -17,7 +117,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 20 Jun 2017 10:19:32 GMT
+      - Wed, 28 Jun 2017 11:58:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -33,8 +133,8 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Age:
-      - '0'
-      - '0'
+      - '697123'
+      - '697123'
       X-Url:
       - "/postcode/GU11YF"
       Accept-Ranges:
@@ -42,7 +142,7 @@ http_interactions:
       X-Quota-Limit:
       - '50'
       X-Quota-Current:
-      - '2'
+      - '3'
     body:
       encoding: UTF-8
       string: '{"wgs84_lat": 51.25692397285712, "coordsyst": "G", "shortcuts": {"WMC":
@@ -96,5 +196,5 @@ http_interactions:
         "codes": {}, "name": "House of Commons", "country": "", "type_name": "UK Parliament",
         "generation_low": 1, "country_name": "-", "type": "WMP"}}, "northing": 151870}'
     http_version: 
-  recorded_at: Tue, 20 Jun 2017 10:19:32 GMT
+  recorded_at: Wed, 28 Jun 2017 11:58:15 GMT
 recorded_with: VCR 3.0.3

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623153608) do
+ActiveRecord::Schema.define(version: 20170627181826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170623153608) do
   create_table "advisors", force: :cascade do |t|
     t.string "name"
     t.bigint "hub_id"
+    t.boolean "team_leader", default: false
     t.index ["hub_id"], name: "index_advisors_on_hub_id"
   end
 
@@ -70,6 +71,20 @@ ActiveRecord::Schema.define(version: 20170623153608) do
     t.string "postcode"
     t.float "longitude"
     t.float "latitude"
+    t.string "ward_mapit_codes", default: [], array: true
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.datetime "start_datetime"
+    t.text "notes"
+    t.string "agenda"
+    t.string "other_agenda"
+    t.bigint "advisor_id"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advisor_id"], name: "index_meetings_on_advisor_id"
+    t.index ["client_id"], name: "index_meetings_on_client_id"
   end
 
   create_table "meetings", force: :cascade do |t|

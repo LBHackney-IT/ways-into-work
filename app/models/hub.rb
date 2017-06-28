@@ -3,7 +3,11 @@ class Hub < ApplicationRecord
   validates :name, :address_line_1, :postcode, presence: true
 
   has_many :advisors
-  has_one :service_manager
+
+
+  scope :covering_ward, lambda { |code| where('? = ANY (ward_mapit_codes)', code) }
+  scope :team_leader, -> { advisors.where(team_leader: true)}
+
 
   after_validation :geocode
   geocoded_by :address_to_s
