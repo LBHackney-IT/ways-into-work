@@ -1,5 +1,5 @@
 %tr[client]
   %td=link_to client.name, advisor_client_path(client)
-  %td=client.age
+  %td=client.phone_formatted
   %td=client.created_at.to_date.to_s(:short)
   %td.has-text-right=button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"

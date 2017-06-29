@@ -4,29 +4,31 @@
       %h2 Your Clients
       %span.client_total="#{current_advisor.clients.count} Total"
 
-      -if current_advisor.clients.any?
-        %h4 Need to book an initial appointment
-        %table.table#clients_needing_appointment
-          %thead
-            %tr
-              %th Client
-              %th Age
-              %th Date Created
-              %th
-          %tbody
-            = render partial: 'client', collection: @clients_needing_appointment
+  -if @clients_needing_appointment.any?
+    %h4 This clients need their initial meeting booked
+    %span
+    %table.table#clients_needing_appointment
+      %thead
+        %tr
+          %th Client
+          %th Phone number
+          %th Date Created
+          %th
+      %tbody
+        = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
 
-        %h4 Have upcoming meetings
-        %table.table#clients_with_initial_appointment
-          %thead
-            %tr
-              %th Client
-              %th Age
-              %th Date Created
-              %th
-          %tbody
-            = render partial: 'client', collection: @clients_with_initial_appointment
+  - if @clients_with_initial_appointment.any?
+    %h4 Have upcoming meetings
+    %table.table#clients_with_initial_appointment
+      %thead
+        %tr
+          %th Client
+          %th Meeting date
+          %th Date Created
+          %th
+      %tbody
+        = render partial: 'with_meeting', collection: @clients_with_initial_appointment, as: 'client'
 
-      - else
-        %h4=I18n.t('advisors.headers.no_clients')
-        =link_to I18n.t('buttons.all_clients'), :advisor_clients
+  - unless current_advisor.clients.any?
+    %h4=I18n.t('advisors.headers.no_clients')
+    =link_to I18n.t('buttons.all_clients'), :advisor_clients

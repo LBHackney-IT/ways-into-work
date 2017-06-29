@@ -23,9 +23,7 @@ end
 
 
 Then(/^I should see the meeting has been booked$/) do
-  within '#clients_needing_appointment' do
-    expect(page).not_to have_content(@client.name)
-  end
+  expect(page).not_to have_css('#clients_needing_appointment')
   within '#clients_with_initial_appointment' do
     expect(page).to have_content(@client.name)
   end

@@ -49,6 +49,10 @@ class Client < ApplicationRecord
     CustomDeviseMailer
   end
 
+  def phone_formatted
+    self.phone.phony_formatted
+  end
+
   def address_to_s
     address_to_a.join(", ")
   end
