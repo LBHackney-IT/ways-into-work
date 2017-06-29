@@ -8,7 +8,7 @@
     %p.help Choose as many options that apply to you in all three questions below.
 
     .convert_checkbox
-      =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with your advisor?', include_hidden: false
+      =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with us?', include_hidden: false
 
       = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 

@@ -14,9 +14,6 @@
       =form.input :working_hours_per_week, as: :integer, :label => 'How many hours per week do you currently work?', :input_html => { :class => 'input' }
       =form.input :below_living_wage, as: :radio_buttons, :label => 'Are the earnings from your job below the living wage?', wrapper_html: { class: "convert_radio" }
 
-    / .is-hidden.on-false
-    /   =form.input :time_since_last_job, as: :radio_buttons, collection: OutOfWorkOption.all, :label => 'How many months have you been out of work?', include_hidden: false, wrapper_html: { class: "convert_radio" }
-
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
       = form.submit 'Save and Exit', :class => 'button'

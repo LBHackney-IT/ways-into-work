@@ -64,10 +64,6 @@ class ClientDecorator < Draper::Decorator
     standard_wrapper("Hours per week:", client.working_hours_per_week)
   end
 
-  def decorate_time_since_last_job
-    standard_wrapper("Months since last job:", client.time_since_last_job)
-  end
-
 
   def value_from(boolean)
     case boolean

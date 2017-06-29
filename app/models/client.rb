@@ -1,4 +1,6 @@
 class Client < ApplicationRecord
+
+  enum rag_status: [ :un_assessed, :red, :amber, :green ]
   # associations
   belongs_to :advisor
   has_one :hub, through: :advisor
@@ -22,6 +24,10 @@ class Client < ApplicationRecord
   phony_normalize :phone, default_country_code: 'GB'
   validates_plausible_phone :phone, country_code: 'GB'
 
+  has_many :assessment_notes
+
+  accepts_nested_attributes_for :assessment_notes, reject_if: :all_blank
+
   def name
    "#{first_name} #{last_name}"
   end
@@ -42,7 +48,7 @@ class Client < ApplicationRecord
   end
 
   def profile_complete?
-    false
+    !self.un_assessed?
   end
 
   def devise_mailer
