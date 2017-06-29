@@ -22,8 +22,8 @@ Then(/^I should not see the client in my case load$/) do
   end
 end
 
-When(/^I navigate to the unnassigned clients$/) do
-  click_link I18n.t('buttons.unassigned_clients')
+When(/^I navigate to see all clients$/) do
+  click_link I18n.t('buttons.all_clients')
 end
 
 Then(/^I should see the new client listed$/) do
@@ -45,4 +45,13 @@ Then(/^the client should be part of my case load$/) do
   expect(@i.reload.clients).to include(@client)
   visit advisor_my_clients_path
   expect(page).to have_content(@client.name)
+end
+
+
+Given(/^there is an advisor Dave$/) do
+  @dave = Fabricate(:advisor, name: 'Dave Donald')
+end
+
+Given(/^there is an advisor Dave in my hub$/) do
+  @dave = Fabricate(:advisor, name: 'Dave Donald', hub: @i.hub)
 end

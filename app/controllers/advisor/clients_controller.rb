@@ -5,13 +5,7 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   def index
-    @clients = Client.all
+    @clients = Client.where(meetings_count: 0)
   end
 
-  def assign_to_me
-    client = Client.find(params[:client_id])
-    client.advisor = current_advisor
-    client.save(validate: false)
-    redirect_to advisor_client_path(client)
-  end
 end

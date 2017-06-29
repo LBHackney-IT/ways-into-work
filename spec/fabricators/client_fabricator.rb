@@ -6,4 +6,5 @@ Fabricator(:client) do
   postcode 'E8 1EA'
   date_of_birth { Time.now - 30.years }
   login { Fabricate.build(:user_login) }
+  advisor { Fabricate(:team_leader) }
 end

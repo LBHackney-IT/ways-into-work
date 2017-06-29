@@ -66,13 +66,11 @@ Then(/^my client details should be saved against my user login$/) do
 end
 
 Given(/^there is a client who just registered$/) do
-  @client = Fabricate.build(:client)
-  @client.save(validate: false)
+  @client = Fabricate.create(:client)
 end
 
 Given(/^I have just signed up as a client$/) do
-  @i = Fabricate.build(:client)
-  @i.save(validate: false)
+  @i = Fabricate.create(:client)
 end
 
 Then(/^I should be asked to provide more information$/) do

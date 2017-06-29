@@ -4,13 +4,15 @@ class Hub < ApplicationRecord
 
   has_many :advisors
 
+  has_many :clients, through: :advisors
+
 
   scope :covering_ward, lambda { |code| where('? = ANY (ward_mapit_codes)', code) }
   scope :team_leader, -> { advisors.where(team_leader: true)}
 
 
-  after_validation :geocode
-  geocoded_by :address_to_s
+  # after_validation :geocode
+  # geocoded_by :address_to_s
 
   def address_to_s
     address_to_a.join(", ")

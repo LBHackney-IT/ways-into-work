@@ -10,6 +10,9 @@ class Client < ApplicationRecord
 
   has_many :meetings
 
+  scope :needing_appointment, -> { where(meetings_count: 0) }
+  scope :with_appointment, -> { where('meetings_count > 0') }
+
   accepts_nested_attributes_for :login
 
   validate do
@@ -18,17 +21,6 @@ class Client < ApplicationRecord
 
   phony_normalize :phone, default_country_code: 'GB'
   validates_plausible_phone :phone, country_code: 'GB'
-
-  scope :unassigned, -> { where(advisor_id: nil) }
-  scope :assigned, -> { where('advisor_id is not NULL') }
-
-  # def date_of_birth=(value)
-  #   if value.is_a?(String)
-  #     value.to_date
-  #   else
-  #     super
-  #   end
-  # end
 
   def name
    "#{first_name} #{last_name}"
@@ -55,6 +47,10 @@ class Client < ApplicationRecord
 
   def devise_mailer
     CustomDeviseMailer
+  end
+
+  def phone_number
+    self.phone.phony_formatted
   end
 
   def address_to_s
