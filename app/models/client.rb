@@ -10,6 +10,9 @@ class Client < ApplicationRecord
 
   has_many :meetings
 
+  scope :needing_appointment, -> { where(meetings_count: 0) }
+  scope :with_appointment, -> { where('meetings_count > 0') }
+
   accepts_nested_attributes_for :login
 
   validate do

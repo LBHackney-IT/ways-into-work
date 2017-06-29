@@ -2,18 +2,31 @@
   .head.columns.level
     .level-left.column
       %h2 Your Clients
-      %span.client_total="#{@clients.count} Total"
+      %span.client_total="#{current_advisor.clients.count} Total"
 
-  -if @clients.any?
-    %table.table
-      %thead
-        %tr
-          %th Client
-          %th Age
-          %th Date Created
-          %th
-      %tbody
-        = render partial: 'client', collection: @clients
-  - else
-    %h4=I18n.t('advisors.headers.no_clients')
-    =link_to I18n.t('buttons.all_clients'), :advisor_clients
+      -if current_advisor.clients.any?
+        %h4 Need to book an initial appointment
+        %table.table#clients_needing_appointment
+          %thead
+            %tr
+              %th Client
+              %th Age
+              %th Date Created
+              %th
+          %tbody
+            = render partial: 'client', collection: @clients_needing_appointment
+
+        %h4 Have upcoming meetings
+        %table.table#clients_with_initial_appointment
+          %thead
+            %tr
+              %th Client
+              %th Age
+              %th Date Created
+              %th
+          %tbody
+            = render partial: 'client', collection: @clients_with_initial_appointment
+
+      - else
+        %h4=I18n.t('advisors.headers.no_clients')
+        =link_to I18n.t('buttons.all_clients'), :advisor_clients
