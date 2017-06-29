@@ -49,7 +49,7 @@ class Client < ApplicationRecord
     CustomDeviseMailer
   end
 
-  def phone_formatted
+  def phone_number
     self.phone.phony_formatted
   end
 

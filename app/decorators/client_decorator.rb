@@ -13,7 +13,7 @@ class ClientDecorator < Draper::Decorator
   end
 
   def decorate_phone
-    standard_wrapper("Phone number:", client.phone)
+    standard_wrapper("Phone number:", client.phone_number)
   end
 
   def decorate_address
