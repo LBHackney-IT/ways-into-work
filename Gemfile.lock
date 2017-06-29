@@ -53,8 +53,7 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
+    bindex (0.5.0)
     builder (3.2.3)
     bullet (5.5.1)
       activesupport (>= 3.0.0)
@@ -97,7 +96,6 @@ GEM
       railties (>= 4, < 5.2)
     cucumber-wire (0.0.1)
     database_cleaner (1.6.1)
-    debug_inspector (0.0.3)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -281,6 +279,11 @@ GEM
     vcr (3.0.3)
     warden (1.2.7)
       rack (>= 1.0)
+    web-console (3.5.1)
+      actionview (>= 5.0)
+      activemodel (>= 5.0)
+      bindex (>= 0.4.0)
+      railties (>= 5.0)
     webmock (3.0.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -296,7 +299,6 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  binding_of_caller
   bullet
   byebug
   capybara-selenium
@@ -327,6 +329,7 @@ DEPENDENCIES
   simple_form
   uglifier
   vcr
+  web-console
   webmock
 
 RUBY VERSION
