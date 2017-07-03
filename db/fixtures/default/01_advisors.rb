@@ -1,11 +1,11 @@
 advisors = [
   {
-    email: 'jrae@wearefuturegov.com',
-    name: 'Jason Rae',
+    email: 'kiran@wearefuturegov.com',
+    name: 'Kiran Dhillon',
     hub_id: 2
   },{
-    email: 'jrae+tl@wearefuturegov.com',
-    name: 'Jason Team Leader',
+    email: 'kiran+tl@wearefuturegov.com',
+    name: 'Kiran Team Leader',
     team_leader: true,
     hub_id: 1
   },{
@@ -34,7 +34,12 @@ advisors = [
     name: 'Jan Team Leader',
     team_leader: true,
     hub_id: 3
-  }
+  },
+  {
+    email: 'jrae@wearefuturegov.com',
+    name: 'Jason Rae',
+    hub_id: 2
+  },
 ]
 
 SeedHelper.instance.make_advisors(advisors)

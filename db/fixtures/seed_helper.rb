@@ -33,4 +33,11 @@ class SeedHelper
       hub.update_attributes(attrs)
     end
   end
+
+  def make_clients(number)
+    number.times.each do |n|
+      advisor = Advisor.all.sample
+      Fabricate(:client, advisor: advisor )
+    end
+  end
 end
