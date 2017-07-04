@@ -1,36 +1,59 @@
-#all_clients.column.is-10.is-offset-1
-  .head.columns.level
-    .level-left.column
+#all_clients.column.is-10-widescreen.is-offset-1-widescreen
+  .head.level
+    .level-left
       %h2 All Clients
-      %span.client_total="#{@clients.count} Total"
+      %span.client_total
+        -if @clients.count == Client.all.count
+          ="#{Client.all.count} Total"
+        -else
+          %span.bold="#{@clients.count} filtered clients"
+          =" - from #{Client.all.count} total"
 
   -if Client.any?
     = form_for_filterrific @filterrific do |f|
-      %label Hub
-      = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
-      %label Advisor
-      = f.select(:by_advisor_id, @filterrific.select_options[:by_advisor_id], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
-      %label Industry interest
-      = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
-      %label Name Search
-      = f.text_field(:search_query, class: 'filterrific-periodically-observed')
-      = link_to('Reset filters', reset_filterrific_url)
+      #client_filters
+        .columns
+          .column
+            %label.label Hub
+            %span.select
+              = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+          .column.has-text-centered
+            %label.label Assigned Advisor
+            %span.select
+              = f.select(:by_advisor_id, @filterrific.select_options[:by_advisor_id], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+          .column.has-text-right
+            %label.label Industry preference
+            %span.select
+              = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+
+        .columns#vertical
+          .column
+            %label.label Search client names:
+            = f.text_field(:search_query, class: 'filterrific-periodically-observed', class: 'input auto-width')
+
+          .column.has-text-right
+            = link_to('Reset filters', reset_filterrific_url, class: "button is-danger")
+
 
     #filterrific_results
-      %div
-        = page_entries_info @clients # provided by kaminari
-      %table.table
-        %thead
-          %tr
-            %th Client
-            %th Registered
-            / %th Assigned Hub
-            %th Current Advisor
-            %th
-        %tbody
-          = render partial: 'client', collection: @clients, as: 'client'
+      / %div
+      /   = page_entries_info @clients # provided by kaminari
+      -if @clients.any?
+        %table.table
+          %thead
+            %tr
+              %th Client
+              %th Registered
+              / %th Assigned Hub
+              %th Current Advisor
+              %th
+          %tbody
+            = render partial: 'client', collection: @clients, as: 'client'
 
-      = paginate @clients # provided by kaminari
+        = paginate @clients # provided by kaminari
+      -else
+        %p.bold No clients were found within that filter criteria use the reset filter button to start again
+
   - else
     %h4=I18n.t('advisors.headers.no_clients_yet')
     =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary'
