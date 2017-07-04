@@ -13,7 +13,10 @@
   .head.columns.level
     .level-left.column
       %h2 Your Clients
-      %span.client_total="#{current_advisor.clients.count} Total"
+      -if @clients_needing_appointment.count > 0
+        %span.client_total="#{current_advisor.clients.count} Total (#{@clients_needing_appointment.count} need initial contact)"
+      -else
+        %span.client_total="#{current_advisor.clients.count} Total"
 
   - if @clients_with_appointment.any?
     = form_for_filterrific @filterrific do |f|
