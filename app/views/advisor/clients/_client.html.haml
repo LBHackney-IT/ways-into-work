@@ -1,7 +1,7 @@
 %tr[client]
   %td=link_to client.name, edit_advisor_client_path(client)
   %td=client.created_at.to_date.to_s(:short)
-  %td=client.advisor.hub.name
+  / %td=client.advisor.hub.name
   %td=client.advisor.name
   %td.has-text-right
     =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small" unless client.advisor == current_advisor

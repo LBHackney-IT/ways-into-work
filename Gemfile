@@ -29,6 +29,10 @@ gem 'going_postal'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem 'filterrific'
+gem 'kaminari'
+gem 'pg_search'
+
 group :development do
   gem 'bullet'
   gem 'better_errors'

@@ -10,12 +10,20 @@ class Advisor < ApplicationRecord
 
   has_many :clients
 
-  scope :admins, -> { where(hub_id: nil) }
+  scope :by_hub_id, lambda { |hub_id| where(hub_id: hub_id) }
 
   scope :team_leader, lambda { |hub| where(hub: hub, team_leader: true) }
 
   def devise_mailer
     Devise::Mailer
+  end
+
+  def self.options_for_select(hub_id)
+    if hub_id.blank?
+      order('LOWER(name)')
+    else
+      by_hub_id(hub_id).order('LOWER(name)')
+    end.map { |e| [e.name, e.id] }
   end
 
 end

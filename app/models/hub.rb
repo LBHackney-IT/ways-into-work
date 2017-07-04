@@ -17,4 +17,8 @@ class Hub < ApplicationRecord
     [name, address_line_1, address_line_2, postcode].select{|s| s.present?}
   end
 
+  def self.options_for_select
+    order('LOWER(name)').map { |e| [e.name, e.id] }
+  end
+
 end

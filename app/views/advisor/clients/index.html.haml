@@ -5,16 +5,32 @@
       %span.client_total="#{@clients.count} Total"
 
   -if Client.any?
-    %table.table
-      %thead
-        %tr
-          %th Client
-          %th Registered
-          %th Assigned Hub
-          %th Current Advisor
-          %th
-      %tbody
-        = render partial: 'client', collection: @clients, as: 'client'
+    = form_for_filterrific @filterrific do |f|
+      %label Hub
+      = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+      %label Advisor
+      = f.select(:by_advisor_id, @filterrific.select_options[:by_advisor_id], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+      %label Industry interest
+      = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+      %label Name Search
+      = f.text_field(:search_query, class: 'filterrific-periodically-observed')
+      = link_to('Reset filters', reset_filterrific_url)
+
+    #filterrific_results
+      %div
+        = page_entries_info @clients # provided by paginate
+      %table.table
+        %thead
+          %tr
+            %th Client
+            %th Registered
+            / %th Assigned Hub
+            %th Current Advisor
+            %th
+        %tbody
+          = render partial: 'client', collection: @clients, as: 'client'
+
+      = paginate @clients # provided by paginate
   - else
     %h4=I18n.t('advisors.headers.no_clients_yet')
     =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary'

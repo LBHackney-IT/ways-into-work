@@ -1,5 +1,7 @@
 class Client < ApplicationRecord
 
+  include PgSearch
+
   enum rag_status: [ :un_assessed, :red, :amber, :green ]
   # associations
   belongs_to :advisor
@@ -30,13 +32,24 @@ class Client < ApplicationRecord
 
   accepts_nested_attributes_for :assessment_notes, reject_if: :all_blank
 
+  filterrific(
+    # default_filter_params: { sorted_by: 'created_at_desc' },
+    available_filters: [
+      :search_query,
+      :by_hub_id,
+      :by_types_of_work,
+      :by_advisor_id
+    ]
+  )
+
+  scope :by_hub_id, lambda { |hub_id| joins(:advisor).where('advisors.hub_id = ?', hub_id ) }
+  scope :by_advisor_id, lambda { |advisor_id| where(advisor_id: advisor_id ) }
+  scope :by_types_of_work, lambda { |advisor_id| where(advisor_id: advisor_id ) }
+
+  pg_search_scope :search_query, :against => [:first_name, :last_name]
+
   def name
    "#{first_name} #{last_name}"
-  end
-
-  def age
-    now = Time.now.utc.to_date
-    now.year - date_of_birth.year - ((now.month > date_of_birth.month || (now.month == date_of_birth.month && now.day >= date_of_birth.day)) ? 0 : 1)
   end
 
   def valid_postcode?

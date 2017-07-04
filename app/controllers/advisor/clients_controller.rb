@@ -1,7 +1,21 @@
 class Advisor::ClientsController < Advisor::BaseController
 
   def index
-    @clients = Client.where(meetings_count: 0)
+    @filterrific = initialize_filterrific(
+      Client,
+      params[:filterrific],
+      select_options: {
+        by_hub_id: Hub.options_for_select,
+        by_advisor_id: Advisor.options_for_select(selected_hub_id),
+        by_types_of_work: TypeOfWorkOption.options_for_select
+      },
+      default_filter_params: {
+        by_hub_id: default_hub_id
+      }
+    ) or return
+    @clients = @filterrific.find.page(params[:page])
+
+    # @clients = Client.needing_appointment
   end
 
   def edit
@@ -20,6 +34,15 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   private
+
+    def default_hub_id
+      @default_hub_id ||= current_advisor.hub_id
+    end
+
+    def selected_hub_id
+      return default_hub_id if params[:filterrific].blank?
+      params[:filterrific][:by_hub_id]
+    end
 
     def client_params
       params.require(:client).permit(
