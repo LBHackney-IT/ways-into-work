@@ -13,15 +13,17 @@
     border-collapse: separate
     border-spacing: 0 $size-5
     background-color: transparent
+    margin-bottom: 0
     tbody
       tr
-        background-color: $white
+        background-color: rgba($white, 0.95)
         margin-bottom: $size-1
         border: 1px solid #DADADA
         line-height: 27px
         &:hover
-          background-color: rgba($white, 0.4)
+          background-color: rgba($white, 1)
     thead
+      line-height: 0
       tr
         background-color: transparent
       th
@@ -45,4 +47,17 @@
         font-weight: 600
         font-size: 90%
         border: 0
-      tr
+
+
+#clients_needing_appointment
+  background-color: $red
+  padding: 0.5rem 1.5rem
+  h4
+    text-align: center
+    color: $white
+    font-weight: 600
+    margin-bottom: 0
+
+
+
+

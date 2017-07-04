@@ -1,5 +1,8 @@
-.column.is-10.is-offset-1
-  %h4 All clients
+#all_clients.column.is-10.is-offset-1
+  .head.columns.level
+    .level-left.column
+      %h2 All Clients
+      %span.client_total="#{@clients.count} Total"
 
   -if Client.any?
     %table.table

@@ -29,6 +29,7 @@ en:
         short: "Details"
     buttons:
       arrange_meeting: "Schedule meeting"
+      arrange_first_meeting: "Schedule initial meeting"
       assign_to_me: 'Assign to me'
       assign_advisor: 'Assign Advisor'
       edit_profile: "Edit Profile"

@@ -5,29 +5,26 @@
       %span.client_total="#{current_advisor.clients.count} Total"
 
   -if @clients_needing_appointment.any?
-    %h4 This clients need their initial meeting booked
-    %span
-    %table.table#clients_needing_appointment
-      %thead
-        %tr
-          %th Client
-          %th Phone number
-          %th Date Created
-          %th
-      %tbody
-        = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+    %section#clients_needing_appointment.hero.is-fullwidth.section
+      .container.content.columns
+        .column.is-10.is-offset-1
+          %h4="#{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
+          %span
+          %table.table
+            %tbody
+              = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
 
   - if @clients_with_initial_appointment.any?
-    %h4 Have upcoming meetings
-    %table.table#clients_with_initial_appointment
-      %thead
-        %tr
-          %th Client
-          %th Meeting date
-          %th Date Created
-          %th
-      %tbody
-        = render partial: 'with_meeting', collection: @clients_with_initial_appointment, as: 'client'
+    #clients_with_initial_appointment
+      %table.table
+        %thead
+          %tr
+            %th Client
+            %th Meeting date
+            %th Date Created
+            %th
+        %tbody
+          = render partial: 'with_meeting', collection: @clients_with_initial_appointment, as: 'client'
 
   - unless current_advisor.clients.any?
     %h4=I18n.t('advisors.headers.no_clients')

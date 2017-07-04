@@ -44,5 +44,4 @@ class ClientsController < ApplicationController
       login_attributes: [ :email ]
       )
   end
-
 end
