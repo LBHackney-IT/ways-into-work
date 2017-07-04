@@ -16,6 +16,7 @@
 //= require eligibility
 //= require delete
 //= require validate
+//= require clients-needing-appointment
 //= require form-helper
 //= require public
 

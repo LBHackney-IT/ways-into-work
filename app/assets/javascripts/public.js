@@ -27,4 +27,6 @@ $(document).ready(function() {
 
   $("#tabs").tabs();
 
+  $("#clients_needing_appointment").clients_needing_appointment();
+
 });

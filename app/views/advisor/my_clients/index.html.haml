@@ -8,11 +8,13 @@
     %section#clients_needing_appointment.hero.is-fullwidth.section
       .container.content.columns
         .column.is-10.is-offset-1
-          %h4="#{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
-          %span
-          %table.table
-            %tbody
-              = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+          %h4
+            ="#{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
+            %i.fa.fa-chevron-down
+          #hidden-section
+            %table.table
+              %tbody
+                = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
 
   - if @clients_with_initial_appointment.any?
     #clients_with_initial_appointment

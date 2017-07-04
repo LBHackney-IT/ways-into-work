@@ -52,12 +52,23 @@
 #clients_needing_appointment
   background-color: $red
   padding: 0.5rem 1.5rem
+  &.open
+    .fa
+      transform: rotate(-180deg)
+  #hidden-section
+    display: none
+  .fa
+    vertical-align: initial
+    margin-left: 3px
+    -webkit-transition: all 0.3s
+    transition: all 0.3s
   h4
     text-align: center
     color: $white
     font-weight: 600
-    margin-bottom: 0
-
+    margin-bottom: 0.4em
+    &:hover
+      cursor: pointer
 
 
 
