@@ -1,4 +1,4 @@
-#your_clients.column.is-10.is-offset-1
+#your_clients.column.is-10-widescreen.is-offset-1-widescreen
   .head.columns.level
     .level-left.column
       %h2 Your Clients
@@ -16,27 +16,38 @@
               %tbody
                 = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
 
+
   - if @clients_with_appointment.any?
     = form_for_filterrific @filterrific do |f|
-      %label Industry interest
-      = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
-      %label Name Search
-      = f.text_field(:search_query, class: 'filterrific-periodically-observed')
-      = link_to('Reset filters', reset_filterrific_url)
+      #client_filters
+        .columns
+          .column
+            %label.label Search client names:
+            = f.text_field(:search_query, class: 'filterrific-periodically-observed', class: 'input auto-width')
+          .column.has-text-centered
+            %label.label Industry preference
+            %span.select
+              = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+          .column.has-text-right#fix-line-hieght
+            = link_to('Reset filters', reset_filterrific_url, class: "button is-danger")
 
     #filterrific_results
-      %div
-        = page_entries_info @filtered_clients # provided by kaminari
-      %table.table#clients_with_initial_appointment
-        %thead
-          %tr
-            %th Client
-            %th Meeting date
-            %th Date Created
-            %th
-        %tbody
-          = render partial: 'with_meeting', collection: @filtered_clients, as: 'client'
-      = paginate @filtered_clients # provided by kaminari
+      / %div
+      /   = page_entries_info @filtered_clients # provided by kaminari
+      -if @filtered_clients.any?
+        %table.table#clients_with_initial_appointment
+          %thead
+            %tr
+              %th Client
+              %th Meeting date
+              %th Date Created
+              %th
+          %tbody
+            = render partial: 'with_meeting', collection: @filtered_clients, as: 'client'
+        = paginate @filtered_clients # provided by kaminari
+      -else
+        %p.bold No clients were found within that filter criteria use the reset filter button to start again
+
 
   - unless current_advisor.clients.any?
     %h4=I18n.t('advisors.headers.no_clients')
