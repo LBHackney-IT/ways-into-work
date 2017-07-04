@@ -22,8 +22,9 @@
       border-bottom-color: $text-strong
       color: $text-strong
   li
+    margin: 0 !important
     display: block
-    &.is-active
+    &.is-active, &.ui-state-active
       a
         border-bottom-color: $primary
         color: $primary
@@ -65,7 +66,7 @@
         background-color: $background
         border-bottom-color: $border
     li
-      &.is-active
+      &.is-active, &.ui-state-active
         a
           background-color: $white
           border-color: $border
@@ -90,7 +91,7 @@
         border-radius: $radius 0 0 $radius
       &:last-child a
         border-radius: 0 $radius $radius 0
-      &.is-active
+      &.is-active, &.ui-state-active
         a
           background-color: $primary
           border-color: $primary
