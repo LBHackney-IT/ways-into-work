@@ -49,7 +49,7 @@ $.fn.handleFormElements = function() {
     convertRadio.find('input[type=radio]').each(function(index, elem) {
       if ($(elem).is(':checked')) {
         $(elem).parents('.radio label').addClass('is-primary is-outlined');
-        if(!$(elem).parents('.convert_radio').hasClass('radio_child')) {
+        if($(elem).parents('.convert_radio').hasClass('has_child')) {
           runThroughRadios($(elem));
         }
       }
@@ -61,7 +61,7 @@ $.fn.handleFormElements = function() {
 
       clear_other_option($(this))
 
-      if(!$(this).parents('.convert_radio').hasClass('radio_child')) {
+      if($(this).parents('.convert_radio').hasClass('has_child')) {
         runThroughRadios($(this));
       }
     });
