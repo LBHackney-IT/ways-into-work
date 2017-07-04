@@ -17,6 +17,8 @@ class Client < ApplicationRecord
 
   accepts_nested_attributes_for :login
 
+  has_many :file_uploads, dependent: :destroy
+
   validate do
     valid_postcode?
   end

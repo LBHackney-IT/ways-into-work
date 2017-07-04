@@ -11,6 +11,7 @@ WaysIntoWork::Application.routes.draw do
     resources :clients, only: [:show, :index, :edit, :update] do
       resources :meetings, only: [:new, :create]
       resource :assign, only: :update, controller: 'assign_client'
+      resources :file_uploads, only: [:create, :new, :destroy]
     end
 
     resources :my_clients, only: :index
