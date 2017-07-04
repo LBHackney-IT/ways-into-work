@@ -9,7 +9,7 @@
       .container.content.columns
         .column.is-10.is-offset-1
           %h4
-            ="#{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
+            ="View #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
             %i.fa.fa-chevron-down
           #hidden-section
             %table.table
