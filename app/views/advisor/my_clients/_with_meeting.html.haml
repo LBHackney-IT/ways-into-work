@@ -1,5 +1,5 @@
 %tr[client]
-  %td=link_to client.name, advisor_client_path(client)
+  %td=link_to client.name, edit_advisor_client_path(client)
   %td=client.meetings.order(:start_datetime).first.start_datetime.to_date.to_s(:short)
   %td=client.created_at.to_date.to_s(:short)
   %td.has-text-right=button_to 'Review', advisor_client_path(client), method: :get, class: "button is-primary is-small"

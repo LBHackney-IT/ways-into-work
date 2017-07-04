@@ -1,5 +1,5 @@
 %tr[client]
-  %td=link_to client.name, advisor_client_path(client)
+  %td=link_to client.name, edit_advisor_client_path(client)
   %td.has-text-centered
     ="Registered: #{client.created_at.to_date.to_s(:short)}"
     %span.bold=number_of_days_waiting(client.created_at.to_date)

@@ -8,7 +8,7 @@ class Advisor::FileUploadsController < Advisor::BaseController
   def create
     @file = FileUpload.new(file_params)
     if @file.save
-      redirect_to advisor_client_path(@file.client)
+      redirect_to edit_advisor_client_path(@file.client)
     else
       render 'new'
     end

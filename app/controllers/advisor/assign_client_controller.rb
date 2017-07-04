@@ -9,7 +9,7 @@ class Advisor::AssignClientController < Advisor::BaseController
     else
       flash[:error] = I18n.t('clients.flashes.error.advisor_assignment')
     end
-    redirect_to advisor_client_path(id: params[:client_id])
+    redirect_to edit_advisor_client_path(id: params[:client_id])
   end
 
   private
