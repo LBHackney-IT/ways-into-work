@@ -7,8 +7,8 @@
 
 = form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
   =notes_form.input :content, label: 'What are your Strengths?', :input_html => { :class => "textarea" }
-  =notes_form.input :content_key, as: :hidden
+
 
 = form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
   =notes_form.input :content, label: 'What would you like to get better at?', :input_html => { :class => "textarea" }
-  =notes_form.input :content_key, as: :hidden
+
