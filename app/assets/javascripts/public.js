@@ -25,4 +25,6 @@ $(document).ready(function() {
 
   $("form").handleFormElements();
 
+  $("#tabs").tabs();
+
 });
