@@ -14,8 +14,6 @@ class Advisor::ClientsController < Advisor::BaseController
       }
     ) or return
     @clients = @filterrific.find.page(params[:page])
-
-    # @clients = Client.needing_appointment
   end
 
   def edit

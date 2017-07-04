@@ -18,7 +18,7 @@
 
     #filterrific_results
       %div
-        = page_entries_info @clients # provided by paginate
+        = page_entries_info @clients # provided by kaminari
       %table.table
         %thead
           %tr
@@ -30,7 +30,7 @@
         %tbody
           = render partial: 'client', collection: @clients, as: 'client'
 
-      = paginate @clients # provided by paginate
+      = paginate @clients # provided by kaminari
   - else
     %h4=I18n.t('advisors.headers.no_clients_yet')
     =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary'
