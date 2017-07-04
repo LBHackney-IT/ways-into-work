@@ -1,0 +1,13 @@
+%h3 Additional details
+
+=form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:', wrapper_html: { class: "convert_radio" }
+=form.input :gender, as: :string, label: 'If you prefer to use your own term, please describe it here:', :input_html => { :class => "input" }
+
+=form.input :receive_benefits, as: :radio_buttons, :label => 'Are you recieving any benefits?', wrapper_html: { class: "convert_radio" }
+
+=form.input :care_leaver, as: :radio_buttons, :label => 'Have you recently left care?', wrapper_html: { class: "convert_radio" }
+
+=form.input :has_children, as: :radio_buttons, :label => 'Do you have any children?', wrapper_html: { class: "convert_radio" }
+
+.is-hidden.on-true
+  =form.input :lone_parent, as: :radio_buttons, :label => 'Are you an only parent?', :wrapper_html => { class: 'convert_radio' }
