@@ -1,15 +1,11 @@
 class Advisor::ClientsController < Advisor::BaseController
 
-  def show
-    @client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
-  end
-
   def index
     @clients = Client.where(meetings_count: 0)
   end
 
   def edit
-    @client = Client.find(params[:id])
+    @client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
     init_assessment_notes
   end
 

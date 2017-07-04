@@ -1,76 +1,89 @@
-#tabs
-  = simple_form_for [@client], url: advisor_client_path(@client), method: :put do |form|
-
-    %p This should should be used to record details when meeting your client
+#tabs.container
+  = simple_form_for [@client.object], url: advisor_client_path(@client.object), method: :put do |form|
 
     = render 'shared/form_errors', object: form.object
 
-    = form.submit 'Save and Exit', :class => 'button is-primary'
+    .head.columns.level
+      .level-left.column
+        %h2=@client.name
+      .level-right.column
+        = form.submit 'Save and Exit', :class => 'button is-primary'
 
     .column.is-12.tabs.is-centered
       %ul
         %li
           %a{href: "#tabs-1"}
-            %span Strengths
+            %span Details
         %li
           %a{href: "#tabs-2"}
-            %span Aspirations
+            %span Strengths
         %li
           %a{href: "#tabs-3"}
-            %span Support
+            %span Aspirations
         %li
           %a{href: "#tabs-4"}
-            %span CV building
+            %span Support
         %li
           %a{href: "#tabs-5"}
-            %span Additional details
+            %span Education
         %li
           %a{href: "#tabs-6"}
+            %span Employment
+        %li
+          %a{href: "#tabs-7"}
+            %span Additional Info
+        %li
+          %a{href: "#tabs-8"}
             %span Notes
 
 
     .column.is-10.is-offset-1
       #tabs-1.tab
+        %h3.subtitle Details
+
+        = render partial: '/shared/client_profile_overview'
+
+      #tabs-2.tab
         %h3.subtitle Strengths
 
         .convert_checkbox
           =form.input :personal_traits, as: :check_boxes, collection: PersonalTraitOption.all, :label => 'Which words best describe you?', include_hidden: false
           = render partial: 'shared/other_text', locals: {form: form, field: :other_personal_trait}
-          %p.help Choose as many options that apply to you.
+        %br
 
         = form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
-          =notes_form.input :content, label: 'What are your Strengths?'
+          =notes_form.input :content, label: 'What are your Strengths?', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
         = form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
-          =notes_form.input :content, label: 'What would you like to get better at?'
+          =notes_form.input :content, label: 'What would you like to get better at?', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
-      #tabs-2.tab
+      #tabs-3.tab
         %h3.subtitle Aspirations
         %p.help Choose as many options that apply to you in all three questions below.
 
         = form.simple_fields_for :assessment_notes, @aspirations_notes  do |notes_form|
-          =notes_form.input :content, label: 'What are your Aspirations?'
+          =notes_form.input :content, label: 'What are your Aspirations?', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
         = form.simple_fields_for :assessment_notes, @driving_force_notes  do |notes_form|
-          =notes_form.input :content, label: 'What is driving you?'
+          =notes_form.input :content, label: 'What is driving you?', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
         = form.simple_fields_for :assessment_notes, @barriers_notes  do |notes_form|
-          =notes_form.input :content, label: 'What are your barriers?'
+          =notes_form.input :content, label: 'What are your barriers?', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
         = form.simple_fields_for :assessment_notes, @job_goal_1_notes  do |notes_form|
-          =notes_form.input :content, label: 'Job Goal 1'
+          =notes_form.input :content, label: 'Job Goal 1', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
         = form.simple_fields_for :assessment_notes, @job_goal_2_notes  do |notes_form|
-          =notes_form.input :content, label: 'Job Goal 2'
+          =notes_form.input :content, label: 'Job Goal 2', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
-      #tabs-3.tab
+      #tabs-4.tab
         %h3.subtitle Support
 
         .convert_checkbox
@@ -90,25 +103,18 @@
 
           = render partial: 'shared/other_text', locals: { form: form, field: :other_type_of_work }
 
-      #tabs-4.tab
-        %h3.subtitle CV building
-
-        %h4.subtitle Education
+      #tabs-5.tab
+        %h3.subtitle Education
         %hr
 
         .convert_checkbox
           =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
           = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
-          %p.help Choose as many options that apply to you.
-
         %br
-
 
         .convert_checkbox
           =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'have you completed any of the following training courses?', include_hidden: false
           = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
-          %p.help Choose as many options that apply to you.
-
         %br
 
         = form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
@@ -119,7 +125,7 @@
           =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }
 
 
-
+      #tabs-6.tab
         %h4.subtitle Employment
         %hr
 
@@ -131,9 +137,9 @@
           =form.input :below_living_wage, as: :radio_buttons, :label => 'Are the earnings from your job below the living wage?', wrapper_html: { class: "convert_radio" }
 
 
-      #tabs-5.tab
+      #tabs-7.tab
         %h3.subtitle Additional details
-        .columns
+        %hr
           =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:', wrapper_html: { class: "convert_radio" }
           =form.input :gender, as: :string, label: 'If you prefer to use your own term, please describe it here:', :input_html => { :class => "input" }
 
@@ -146,11 +152,11 @@
         .is-hidden.on-true
           =form.input :lone_parent, as: :radio_buttons, :label => 'Are you an only parent?', :wrapper_html => { class: 'convert_radio' }
 
-      #tabs-6.tab
+      #tabs-8.tab
         %h3.subtitle Notes
-
+        %hr
         = form.simple_fields_for :assessment_notes, @general_notes  do |notes_form|
-          =notes_form.input :content, label: 'General'
+          =notes_form.input :content, label: 'General', :input_html => { :class => "textarea" }
           =notes_form.input :content_key, as: :hidden
 
         =form.input :rag_status, as: :radio_buttons, label: 'Assessment status:', collection: [["Red",:red], ["Amber", :amber], ["Green", :green]], wrapper_html: { class: "convert_radio" }

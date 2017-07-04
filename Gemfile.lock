@@ -62,8 +62,6 @@ GEM
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
     bindex (0.5.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     builder (3.2.3)
     bullet (5.5.1)
       activesupport (>= 3.0.0)
@@ -109,7 +107,6 @@ GEM
       railties (>= 4, < 5.2)
     cucumber-wire (0.0.1)
     database_cleaner (1.6.1)
-    debug_inspector (0.0.3)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -324,7 +321,6 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   better_errors
-  binding_of_caller
   bullet
   byebug
   capybara-selenium
