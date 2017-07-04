@@ -1,9 +1,4 @@
 #your_clients.column.is-10-widescreen.is-offset-1-widescreen
-  .head.columns.level
-    .level-left.column
-      %h2 Your Clients
-      %span.client_total="#{current_advisor.clients.count} Total"
-
   -if @clients_needing_appointment.any?
     %section#clients_needing_appointment.hero.is-fullwidth.section
       .container.content.columns
@@ -15,7 +10,10 @@
             %table.table
               %tbody
                 = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
-
+  .head.columns.level
+    .level-left.column
+      %h2 Your Clients
+      %span.client_total="#{current_advisor.clients.count} Total"
 
   - if @clients_with_appointment.any?
     = form_for_filterrific @filterrific do |f|
