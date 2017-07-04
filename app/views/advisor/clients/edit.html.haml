@@ -6,6 +6,11 @@
     .head.columns.level
       .level-left.column
         %h2=@client.name
+        - if @client.advisor == current_advisor
+          %span.client_total="You are #{@client.first_name}'s advisor"
+        - else
+          %span.client_total="#{@client.advisor.name} is #{@client.first_name}'s advisor"
+
       .level-right.column
         = form.submit 'Save and Exit', :class => 'button is-primary'
 
@@ -39,7 +44,7 @@
 
     .column.is-10.is-offset-1
       #tabs-1.tab
-        %h3 Details
+        %h3="#{@client.name}'s Details"
         = render partial: '/shared/client_profile_overview'
 
       #tabs-2.tab

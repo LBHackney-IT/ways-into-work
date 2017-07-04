@@ -4,7 +4,7 @@
     = form.input :advisor_id, as: :select, collection: current_advisor.hub.advisors, include_blank: false
     = form.submit I18n.t('clients.buttons.assign_advisor'), class: "step button is-primary"
 - else
-  =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: @client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small"
+  - if @client.advisor != current_advisor
+    =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: @client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small"
 
-= link_to I18n.t('clients.buttons.start_assessment'), edit_advisor_client_path(@client), class: "button is-primary"
 = @client.decorate_file_action

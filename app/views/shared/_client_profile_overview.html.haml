@@ -1,8 +1,3 @@
-
-#actions= render partial: 'actions'
-
-%hr
-
 = @client.decorate_email
 = @client.decorate_phone
 = @client.decorate_address
@@ -17,3 +12,6 @@
 = @client.decorate_currently_employed
 = @client.decorate_job_title
 = @client.decorate_hours_per_week
+
+%br
+#actions= render partial: 'actions'
