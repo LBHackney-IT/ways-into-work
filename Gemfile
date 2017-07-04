@@ -34,6 +34,7 @@ gem 'kaminari'
 gem 'pg_search'
 
 gem 'fabrication'
+gem 'ffaker'
 
 group :development do
   gem 'bullet'
@@ -57,7 +58,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'ffaker'
   gem 'byebug'
   gem 'dotenv-rails'
 end
