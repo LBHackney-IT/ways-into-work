@@ -37,7 +37,7 @@ class SeedHelper
   def make_clients(number)
     number.times.each do |n|
       advisor = Advisor.all.sample
-      Fabricate(:client, advisor: advisor )
+      Fabricate([:client, :partial_reg_client, :fully_reg_client].sample, advisor: advisor )
     end
   end
 end
