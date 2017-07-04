@@ -13,15 +13,17 @@
     border-collapse: separate
     border-spacing: 0 $size-5
     background-color: transparent
+    margin-bottom: 0
     tbody
       tr
-        background-color: $white
+        background-color: rgba($white, 0.7)
         margin-bottom: $size-1
         border: 1px solid #DADADA
         line-height: 27px
         &:hover
-          background-color: rgba($white, 0.4)
+          background-color: rgba($white, 1)
     thead
+      line-height: 0
       tr
         background-color: transparent
       th
@@ -33,7 +35,10 @@
     button.button, input[type="submit"].button
       padding-bottom: 0.35em
 
-
+  .hero
+    tbody
+      tr
+        background-color: rgba($white, 0.95)
 
 
   .clients_list
@@ -45,4 +50,28 @@
         font-weight: 600
         font-size: 90%
         border: 0
-      tr
+
+
+#clients_needing_appointment
+  background-color: $red
+  padding: 0.5rem 1.5rem
+  &.open
+    .fa
+      transform: rotate(-180deg)
+  #hidden-section
+    display: none
+  .fa
+    vertical-align: initial
+    margin-left: 3px
+    -webkit-transition: all 0.3s
+    transition: all 0.3s
+  h4
+    text-align: center
+    color: $white
+    font-weight: 600
+    margin-bottom: 0.4em
+    &:hover
+      cursor: pointer
+
+
+

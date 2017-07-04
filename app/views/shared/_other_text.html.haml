@@ -3,4 +3,7 @@
     = label_tag '' do
       = check_box_tag 'Other', 0, false, class: 'toggle_other'
       = I18n.t('clients.personal_trait.other')
-  = form.input field, as: :string, label: false, :input_html => { :class => "input" }, wrapper_html: {class: 'is-hidden other_text'}
+  .is-hidden.other_text
+    = form.input field, as: :string, label: false, :input_html => { :class => "input" }
+    -if field == :other_gender
+      %span.text-align-right If you prefer to use your own term

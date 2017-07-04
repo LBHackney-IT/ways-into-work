@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628211833) do
+ActiveRecord::Schema.define(version: 20170704085819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20170628211833) do
     t.bigint "hub_id"
     t.boolean "team_leader", default: false
     t.index ["hub_id"], name: "index_advisors_on_hub_id"
+  end
+
+  create_table "assessment_notes", force: :cascade do |t|
+    t.text "content"
+    t.string "content_key"
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_assessment_notes_on_client_id"
+    t.index ["content_key", "client_id"], name: "index_assessment_notes_on_content_key_and_client_id", unique: true
   end
 
   create_table "clients", force: :cascade do |t|
@@ -38,7 +46,6 @@ ActiveRecord::Schema.define(version: 20170628211833) do
     t.string "other_objective"
     t.boolean "employed"
     t.integer "working_hours_per_week"
-    t.string "time_since_last_job"
     t.string "job_title"
     t.string "current_education"
     t.string "past_education"
@@ -62,7 +69,19 @@ ActiveRecord::Schema.define(version: 20170628211833) do
     t.string "support_priorities", default: [], array: true
     t.string "other_support_priority"
     t.integer "meetings_count", default: 0
+    t.integer "rag_status", default: 0
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
+  end
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string "attachment_file_name", null: false
+    t.integer "attachment_file_size", null: false
+    t.string "attachment_content_type", null: false
+    t.string "uploaded_by", null: false
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_file_uploads_on_client_id"
   end
 
   create_table "hubs", force: :cascade do |t|

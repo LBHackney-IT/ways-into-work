@@ -26,7 +26,6 @@ class Client::EmploymentStatusController < Client::BaseController
     params.require(:client).permit(
       :employed,
       :working_hours_per_week,
-      :time_since_last_job,
       :job_title
       )
   end

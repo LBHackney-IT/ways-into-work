@@ -25,4 +25,8 @@ $(document).ready(function() {
 
   $("form").handleFormElements();
 
+  $("#tabs").tabs();
+
+  $("#clients_needing_appointment").clients_needing_appointment();
+
 });

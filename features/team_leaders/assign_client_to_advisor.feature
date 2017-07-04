@@ -15,3 +15,4 @@ Feature: Team leader assigns client to another Advisor
     Given I am on the advisor client page
     When I assign the client to dave
     Then I should see the advisor assigned success message
+    And dave should receive a client asssigned notification

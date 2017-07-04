@@ -6,6 +6,7 @@ gem 'rails', '5.1'
 gem 'draper'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'devise'
 gem 'font-awesome-rails'
@@ -25,12 +26,18 @@ gem "httparty"
 gem 'phony_rails'
 gem 'going_postal'
 
-gem 'geocoder'
+gem 'paperclip'
+gem 'aws-sdk'
+
+gem 'filterrific'
+gem 'kaminari'
+gem 'pg_search'
 
 group :development do
   gem 'bullet'
   gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'web-console'
+  # gem 'binding_of_caller'
 end
 
 group :test do

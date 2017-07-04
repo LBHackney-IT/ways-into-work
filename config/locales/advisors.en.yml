@@ -3,6 +3,10 @@
 
 en:
   advisors:
+    mail:
+      subject:
+        new_client: "A new client has registered with the Ways into Work service"
+        assigned: "A client has been assigned to you within the Ways into Work service"
     headers:
       no_clients: "Your case load is currently empty. You can assign yourself cases from the unassigned client list."
       no_clients_yet: "There are currently clients in the system yet."

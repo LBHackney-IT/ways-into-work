@@ -1,0 +1,18 @@
+%h3 Education
+
+.convert_checkbox
+  =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
+  = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
+%br
+
+.convert_checkbox
+  =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'have you completed any of the following training courses?', include_hidden: false
+  = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
+%br
+
+= form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio has_child" }
+
+.is-hidden.on-true
+  = form.input :studying_part_time, as: :radio_buttons, collection: [['Part time', true], ['Full time', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
+
+  =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }

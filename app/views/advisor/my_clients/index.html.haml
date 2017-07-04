@@ -5,29 +5,38 @@
       %span.client_total="#{current_advisor.clients.count} Total"
 
   -if @clients_needing_appointment.any?
-    %h4 This clients need their initial meeting booked
-    %span
-    %table.table#clients_needing_appointment
-      %thead
-        %tr
-          %th Client
-          %th Phone number
-          %th Date Created
-          %th
-      %tbody
-        = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+    %section#clients_needing_appointment.hero.is-fullwidth.section
+      .container.content.columns
+        .column.is-10.is-offset-1
+          %h4
+            ="View #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
+            %i.fa.fa-chevron-down
+          #hidden-section
+            %table.table
+              %tbody
+                = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
 
-  - if @clients_with_initial_appointment.any?
-    %h4 Have upcoming meetings
-    %table.table#clients_with_initial_appointment
-      %thead
-        %tr
-          %th Client
-          %th Meeting date
-          %th Date Created
-          %th
-      %tbody
-        = render partial: 'with_meeting', collection: @clients_with_initial_appointment, as: 'client'
+  - if @clients_with_appointment.any?
+    = form_for_filterrific @filterrific do |f|
+      %label Industry interest
+      = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
+      %label Name Search
+      = f.text_field(:search_query, class: 'filterrific-periodically-observed')
+      = link_to('Reset filters', reset_filterrific_url)
+
+    #filterrific_results
+      %div
+        = page_entries_info @filtered_clients # provided by kaminari
+      %table.table#clients_with_initial_appointment
+        %thead
+          %tr
+            %th Client
+            %th Meeting date
+            %th Date Created
+            %th
+        %tbody
+          = render partial: 'with_meeting', collection: @filtered_clients, as: 'client'
+      = paginate @filtered_clients # provided by kaminari
 
   - unless current_advisor.clients.any?
     %h4=I18n.t('advisors.headers.no_clients')

@@ -1,0 +1,69 @@
+#tabs.container
+  = simple_form_for [@client.object], url: edit_advisor_client_path(@client.object), method: :put do |form|
+
+    = render 'shared/form_errors', object: form.object
+
+    .head.columns.level
+      .level-left.column
+        %h2=@client.name
+        - if @client.advisor == current_advisor
+          %span.client_total="You are #{@client.first_name}'s advisor"
+        - else
+          %span.client_total="#{@client.advisor.name} is #{@client.first_name}'s advisor"
+
+      .level-right.column
+        = form.submit 'Save and Exit', :class => 'button is-primary'
+
+    .column.is-12.tabs.is-centered
+      %ul
+        %li
+          %a{href: "#tabs-1"}
+            %span Details
+        %li
+          %a{href: "#tabs-2"}
+            %span Strengths
+        %li
+          %a{href: "#tabs-3"}
+            %span Aspirations
+        %li
+          %a{href: "#tabs-4"}
+            %span Support
+        %li
+          %a{href: "#tabs-5"}
+            %span Education
+        %li
+          %a{href: "#tabs-6"}
+            %span Employment
+        %li
+          %a{href: "#tabs-7"}
+            %span Additional Info
+        %li
+          %a{href: "#tabs-8"}
+            %span Notes
+
+
+    .column.is-10.is-offset-1
+      #tabs-1.tab
+        %h3="#{@client.name}'s Details"
+        = render partial: '/shared/client_profile_overview'
+
+      #tabs-2.tab
+        = render partial: 'tab_strengths', :locals => {:form => form}
+
+      #tabs-3.tab
+        = render partial: 'tab_aspirations', :locals => {:form => form}
+
+      #tabs-4.tab
+        = render partial: 'tab_support', :locals => {:form => form}
+
+      #tabs-5.tab
+        = render partial: 'tab_education', :locals => {:form => form}
+
+      #tabs-6.tab
+        = render partial: 'tab_employment', :locals => {:form => form}
+
+      #tabs-7.tab
+        = render partial: 'tab_additional', :locals => {:form => form}
+
+      #tabs-8.tab
+        = render partial: 'tab_notes', :locals => {:form => form}

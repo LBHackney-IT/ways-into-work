@@ -28,11 +28,15 @@ en:
         long: "For monitoring purposes please provide us with some details about you"
         short: "Details"
     buttons:
+      upload_cv: 'Upload CV'
+      replace_cv: 'Replace CV'
       arrange_meeting: "Schedule meeting"
+      arrange_first_meeting: "Schedule initial meeting"
       assign_to_me: 'Assign to me'
       assign_advisor: 'Assign Advisor'
       edit_profile: "Edit Profile"
       complete_profile: "Complete my profile"
+      start_assessment: "Add details"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."

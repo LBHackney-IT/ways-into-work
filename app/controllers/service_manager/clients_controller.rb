@@ -5,7 +5,7 @@ class ServiceManager::ClientsController < ServiceManager::BaseController
   end
 
   def show
-    @client = ServiceManagerClientDecorator.decorate(Client.find(params[:id]))
+    @client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
     # We may want to isolate this per hub
     @advisors = Advisor.all
   end

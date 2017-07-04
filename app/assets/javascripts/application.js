@@ -11,10 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require mobile-nav
 //= require eligibility
 //= require delete
 //= require validate
+//= require clients-needing-appointment
 //= require form-helper
 //= require public
 

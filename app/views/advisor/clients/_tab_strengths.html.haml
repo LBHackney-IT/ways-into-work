@@ -1,0 +1,14 @@
+%h3 Strengths
+
+.convert_checkbox
+  =form.input :personal_traits, as: :check_boxes, collection: PersonalTraitOption.all, :label => 'Which words best describe you?', include_hidden: false
+  = render partial: 'shared/other_text', locals: {form: form, field: :other_personal_trait}
+%br
+
+= form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
+  =notes_form.input :content, label: 'What are your Strengths?', :input_html => { :class => "textarea" }
+  =notes_form.input :content_key, as: :hidden
+
+= form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
+  =notes_form.input :content, label: 'What would you like to get better at?', :input_html => { :class => "textarea" }
+  =notes_form.input :content_key, as: :hidden
