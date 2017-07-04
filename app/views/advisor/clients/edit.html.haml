@@ -1,6 +1,6 @@
 #tabs.container
   .column.is-10.is-offset-1
-    = simple_form_for [@client.object], url: edit_advisor_client_path(@client.object), method: :put do |form|
+    = simple_form_for [@client.object], url: advisor_client_path(@client.object), method: :put do |form|
 
       = render 'shared/form_errors', object: form.object
 
