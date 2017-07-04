@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629113701) do
+ActiveRecord::Schema.define(version: 20170704085819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 20170629113701) do
     t.integer "meetings_count", default: 0
     t.integer "rag_status", default: 0
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
+  end
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string "attachment_file_name", null: false
+    t.integer "attachment_file_size", null: false
+    t.string "attachment_content_type", null: false
+    t.string "uploaded_by", null: false
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_file_uploads_on_client_id"
   end
 
   create_table "hubs", force: :cascade do |t|

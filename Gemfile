@@ -26,6 +26,9 @@ gem "httparty"
 gem 'phony_rails'
 gem 'going_postal'
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :development do
   gem 'bullet'
   gem 'better_errors'
