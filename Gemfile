@@ -33,6 +33,8 @@ gem 'filterrific'
 gem 'kaminari'
 gem 'pg_search'
 
+gem 'fabrication'
+
 group :development do
   gem 'bullet'
   gem 'better_errors'
@@ -56,7 +58,6 @@ end
 
 group :development, :test do
   gem 'ffaker'
-  gem 'fabrication'
   gem 'byebug'
   gem 'dotenv-rails'
 end
