@@ -23,9 +23,6 @@ module NavigationHelpers
     when /the advisors edit client/
       edit_advisor_client_path(@client)
 
-    when /the advisor client/
-      advisor_client_path(@client)
-
 
     else
       begin

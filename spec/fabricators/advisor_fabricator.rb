@@ -1,6 +1,6 @@
 Fabricator(:advisor) do
   name { "#{FFaker::Name.first_name} #{FFaker::Name.last_name}"}
-  hub { Fabricate(:hub) }
+  hub { Hub.last || Fabricate(:hub) }
   login(fabricator: :user_login)
 end
 

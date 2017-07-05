@@ -11,13 +11,13 @@ end
 World MeetingSH
 
 Given(/^I schedule a meeting for next week with notes$/) do
-  click_on I18n.t('clients.buttons.arrange_meeting')
+  click_on I18n.t('clients.buttons.arrange_first_meeting')
   meeting_date = Time.now + 3.days
   select meeting_date.year, from: 'meeting_start_datetime_1i'
   select Date::MONTHNAMES[meeting_date.month], from: 'meeting_start_datetime_2i'
   select meeting_date.day, from: 'meeting_start_datetime_3i'
   select double_digit(meeting_date.hour), from: 'meeting_start_datetime_4i'
-  select double_digit(meeting_date.min), from: 'meeting_start_datetime_5i'
+  select '00', from: 'meeting_start_datetime_5i'
   click_on 'Save'
 end
 

@@ -12,7 +12,7 @@ Feature: Team leader assigns client to another Advisor
     And I should be able to assign the client to Dave
 
   Scenario: Advisor assigns client
-    Given I am on the advisor client page
+    Given I am on the advisors edit client page
     When I assign the client to dave
     Then I should see the advisor assigned success message
     And dave should receive a client asssigned notification
