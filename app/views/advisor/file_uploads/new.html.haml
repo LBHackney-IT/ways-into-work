@@ -1,10 +1,10 @@
 %section.new_file_upload.column.is-10.is-offset-1
   %h2= "Upload a file"
-  = simple_form_for [@client, @file], url: advisor_client_file_uploads_path(@client), method: :post, action: "create" do |form|
+  = simple_form_for [@client, @file], url: advisor_client_file_uploads_path(@client) do |form|
     = render 'shared/form_errors', object: form.object
     %fieldset
       = form.input :attachment, as: :file, label: "Choose a file to upload for your CV"
       = form.input :uploaded_by, as: :hidden
       = form.input :client_id, as: :hidden
       %br
-      = form.submit I18n.t('clients.buttons.upload_cv'), class: 'button is-primary'
+      = form.submit I18n.t('clients.buttons.upload_cv'), class: "button is-primary is-disabled", disabled: true, id: 'submit_file'
