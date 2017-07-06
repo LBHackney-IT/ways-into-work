@@ -7,12 +7,10 @@
   = simple_form_for [current_client], url: :client_employment_status do |form|
     = render 'shared/form_errors', object: form.object
 
-    =form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio" }
+    =form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio has_child" }
 
     .is-hidden.on-true
       =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
-      =form.input :working_hours_per_week, as: :integer, :label => 'How many hours per week do you currently work?', :input_html => { :class => 'input' }
-      =form.input :below_living_wage, as: :radio_buttons, :label => 'Are the earnings from your job below the living wage?', wrapper_html: { class: "convert_radio" }
 
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'

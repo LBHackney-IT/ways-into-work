@@ -8,9 +8,9 @@ Feature: Advisor uploads file for information page
     And there is a client who just registered
     And the client is assigned to me
 
-  @wip
+  @javascript
   Scenario: Advisor uploads pdf
-    Given I am on the advisor client page
+    Given I am on the advisors edit client page
     When I upload a cv file
     Then a cv upload reference should be saved
     And I should see that I uploaded the file

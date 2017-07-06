@@ -33,8 +33,11 @@ gem 'filterrific'
 gem 'kaminari'
 gem 'pg_search'
 
+# TODO - move to staging group (not needed in production)
 gem 'fabrication'
 gem 'ffaker'
+
+gem 'appsignal'
 
 group :development do
   gem 'bullet'
@@ -55,6 +58,7 @@ group :test do
   gem 'coderay'
   gem "webmock", require: false
   gem "vcr", require: false
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
