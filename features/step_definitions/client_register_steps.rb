@@ -44,6 +44,12 @@ When(/^I register my self as "([^"]*)"$/) do |email|
   save
 end
 
+Given(/^when I navigate through all the profile steps$/) do
+  click_on(I18n.t('clients.buttons.complete_profile'))
+  ProfileSteps::STEPS.count.times do |n|
+    click_on('Next Step')
+  end
+end
 
 Then(/^I should be asked to start creating my profile$/) do
   expect(page).to have_css("input#client_first_name")
