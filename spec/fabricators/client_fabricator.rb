@@ -26,3 +26,8 @@ Fabricator(:fully_reg_client, from: :partial_reg_client) do
   has_children {[true, false].sample}
   below_living_wage {[true, false].sample}
 end
+
+Fabricator(:assessed_client, from: :fully_reg_client) do
+  meetings { [ Fabricate.build(:meeting, advisor: Advisor.last) ] }
+
+end

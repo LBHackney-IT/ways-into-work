@@ -29,7 +29,7 @@
                   = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
 
 
-  - if @clients_with_appointment.any?
+  - if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
       #client_filters
         .columns

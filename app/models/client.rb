@@ -44,7 +44,7 @@ class Client < ApplicationRecord
 
   scope :by_hub_id, lambda { |hub_id| joins(:advisor).where('advisors.hub_id = ?', hub_id ) }
   scope :by_advisor_id, lambda { |advisor_id| where(advisor_id: advisor_id ) }
-  scope :by_types_of_work, lambda { |advisor_id| where(advisor_id: advisor_id ) }
+  scope :by_types_of_work, lambda { |type| where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
 
   pg_search_scope :search_query, :against => [:first_name, :last_name]
 

@@ -71,14 +71,6 @@ Then(/^my client details should be saved against my user login$/) do
   expect(Client.last.login).to eq(@user_login)
 end
 
-Given(/^there is a client who just registered$/) do
-  @client = Fabricate.create(:client)
-end
-
-Given(/^I have just signed up as a client$/) do
-  @i = Fabricate.create(:client)
-end
-
 Then(/^I should be asked to provide more information$/) do
   expect(page).to have_link(I18n.t('clients.buttons.complete_profile'))
 end

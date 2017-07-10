@@ -1,3 +1,12 @@
+module AdvisorSH
+  def my_client_listed(client = @client)
+    within '.my_clients' do
+      expect(page).to have_content(client.name)
+    end
+  end
+end
+World AdvisorSH
+
 Given(/^I am an advisor$/) do
   @i = Fabricate(:advisor)
 end
@@ -37,9 +46,6 @@ When(/^I assign the client to myself$/) do
   click_on I18n.t('clients.buttons.assign_to_me')
 end
 
-Given(/^the client is assigned to me$/) do
-  @i.clients << @client
-end
 
 Then(/^the client should be part of my case load$/) do
   expect(@i.reload.clients).to include(@client)
@@ -54,4 +60,12 @@ end
 
 Given(/^there is an advisor Dave in my hub$/) do
   @dave = Fabricate(:advisor, name: 'Dave Donald', hub: @i.hub)
+end
+
+When(/^I filter by to Retail as types of work$/) do
+  select TypeOfWorkOption.find('retail').name, from: 'filterrific_by_types_of_work'
+end
+
+Then(/^I should see my client in the filtered list$/) do
+  my_client_listed
 end

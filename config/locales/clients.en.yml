@@ -8,6 +8,7 @@ en:
         advisor_assignment: "Advisor could not be notified for some reason. Maybe an issue with clients or advisor."
       success:
         advisor_assigned: "Advisor has now been assigned to manage this client and has been notified."
+        updated: 'Client updates have been saved'
     mail:
       subject:
         welcome: "Welcome to Ways Into Work"

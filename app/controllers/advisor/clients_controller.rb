@@ -24,7 +24,8 @@ class Advisor::ClientsController < Advisor::BaseController
   def update
     @client = Client.find(params[:id])
     if @client.update_attributes(client_params)
-      redirect_to :advisor_my_clients
+      flash[:success] = I18n.t('clients.flashes.success.updated')
+      redirect_back(fallback_location: root_path)
     else
       # init_assessment_notes
       render :edit
@@ -50,6 +51,7 @@ class Advisor::ClientsController < Advisor::BaseController
         :other_qualification,
         :other_training_course,
         :other_personal_trait,
+        :other_gender,
         :studying,
         :studying_part_time,
         :receive_benefits,
@@ -67,7 +69,6 @@ class Advisor::ClientsController < Advisor::BaseController
         objectives: [],
         support_priorities: [],
         types_of_work: [],
-        other_personal_trait: [],
         training_courses: [],
         personal_traits: [],
         assessment_notes_attributes: [
