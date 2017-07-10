@@ -2,7 +2,7 @@ $.fn.clients_needing_appointment = function() {
 
   if (this.length === 0) { return false; }
 
-  $("#clients_needing_appointment h4").click(function() {
+  $("#clients_needing_appointment #view_more").click(function() {
     if ($("#clients_needing_appointment").hasClass('open')) {
       console.log('test1')
       $("#clients_needing_appointment #hidden-section").slideUp();

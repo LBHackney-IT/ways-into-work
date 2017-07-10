@@ -1,7 +1,9 @@
 class Advisor::MyClientsController < Advisor::BaseController
 
   def index
-    @clients_needing_appointment = current_advisor.clients.needing_appointment
+    @clients_needing_appointment = current_advisor.clients.needing_appointment.to_a
+
+
     @filterrific = initialize_filterrific(
       default_clients_with_appointment,
       params[:filterrific],

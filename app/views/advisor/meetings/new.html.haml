@@ -16,6 +16,7 @@
 
       =form.input :notes, as: :text
 
-      =form.input :advisor_id, as: :select, collection: Advisor.all, include_blank: false
+
+      =form.input :advisor_id, as: :select, collection: Advisor.all, include_blank: false, input_wrapper_html: {class: 'select'}
 
       = form.submit 'Save', :class => 'button is-primary'

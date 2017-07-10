@@ -1,15 +1,5 @@
 #your_clients.column.is-10-widescreen.is-offset-1-widescreen
-  -if @clients_needing_appointment.any?
-    %section#clients_needing_appointment.hero.is-fullwidth.section
-      .container.content.columns
-        .column.is-10.is-offset-1
-          %h4
-            ="View #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
-            %i.fa.fa-chevron-down
-          #hidden-section
-            %table.table
-              %tbody
-                = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+
   .head.columns.level
     .level-left.column
       %h2 Your Clients
@@ -17,6 +7,27 @@
         %span.client_total="#{current_advisor.clients.count} Total (#{@clients_needing_appointment.count} need initial contact)"
       -else
         %span.client_total="#{current_advisor.clients.count} Total"
+
+  -if @clients_needing_appointment.any?
+    %section#clients_needing_appointment.hero.is-fullwidth.section
+      .container.content.columns
+        .column.is-10.is-offset-1
+          %h4.bold
+            ="You have #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
+
+          %table.table
+            %tbody
+              = render partial: 'needing_appointment', collection: @clients_needing_appointment.shift(2), as: 'client'
+
+          -if @clients_needing_appointment.any?
+            %h4#view_more
+              ="View other #{pluralize((@clients_needing_appointment.count), 'client')}"
+              %i.fa.fa-chevron-down
+            #hidden-section
+              %table.table
+                %tbody
+                  = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+
 
   - if @clients_with_appointment.any?
     = form_for_filterrific @filterrific do |f|
