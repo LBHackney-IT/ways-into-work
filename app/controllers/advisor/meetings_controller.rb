@@ -1,7 +1,7 @@
 class Advisor::MeetingsController < Advisor::BaseController
 
   def new
-    @client = current_advisor.clients.find_by(id: params[:client_id])
+    @client = Client.find_by(id: params[:client_id])
     @meeting = @client.meetings.build(advisor_id: current_advisor.id)
     @meeting.agenda = 'initial_assessment' if @client.meetings.count == 0
   end
