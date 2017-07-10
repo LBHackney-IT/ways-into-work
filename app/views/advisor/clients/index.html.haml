@@ -11,6 +11,7 @@
 
   -if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
+      %a.button.is-white Filters
       #client_filters
         .columns
           .column
@@ -37,7 +38,7 @@
               = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
 
           .column.has-text-right
-            = link_to('Reset filters', reset_filterrific_url, class: "button is-danger")
+            = link_to('Reset filters & show all', reset_filterrific_url, class: "button is-danger")
 
     = render partial: 'filtered_table', locals: { clients: @filtered_clients }
 
