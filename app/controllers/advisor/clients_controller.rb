@@ -1,19 +1,11 @@
 class Advisor::ClientsController < Advisor::BaseController
 
   def index
-    @filterrific = initialize_filterrific(
-      Client,
-      params[:filterrific],
-      select_options: {
-        by_hub_id: Hub.options_for_select,
-        by_advisor_id: Advisor.options_for_select(selected_hub_id),
-        by_types_of_work: TypeOfWorkOption.options_for_select
-      },
-      default_filter_params: {
-        by_hub_id: default_hub_id
-      }
-    ) or return
-    @clients = @filterrific.find.page(params[:page])
+    init_filterrific_table
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -33,6 +25,22 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   private
+    def init_filterrific_table
+      @filterrific = initialize_filterrific(
+        Client,
+        params[:filterrific],
+        persistence_id: false,
+        select_options: {
+          by_hub_id: Hub.options_for_select,
+          by_advisor_id: Advisor.options_for_select(selected_hub_id),
+          by_types_of_work: TypeOfWorkOption.options_for_select
+        },
+        default_filter_params: {
+          by_hub_id: default_hub_id
+        }
+      ) or return
+      @clients = @filterrific.find.page(params[:page])
+    end
 
     def default_hub_id
       @default_hub_id ||= current_advisor.hub_id

@@ -1,0 +1,16 @@
+#filterrific_results
+  -if clients.any?
+    %table.table
+      %thead
+        %tr
+          %th Client
+          %th Registered
+          / %th Assigned Hub
+          %th Current Advisor
+          %th
+      %tbody
+        = render partial: 'client', collection: clients
+
+    = paginate @clients # provided by kaminari
+  -else
+    %p.bold No clients were found within that filter criteria use the reset filter button to start again

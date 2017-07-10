@@ -9,7 +9,7 @@
           %span.bold="#{@clients.count} filtered clients"
           =" - from #{Client.all.count} total"
 
-  -if Client.any?
+  -if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
       #client_filters
         .columns
@@ -34,25 +34,7 @@
           .column.has-text-right
             = link_to('Reset filters', reset_filterrific_url, class: "button is-danger")
 
-
-    #filterrific_results
-      / %div
-      /   = page_entries_info @clients # provided by kaminari
-      -if @clients.any?
-        %table.table
-          %thead
-            %tr
-              %th Client
-              %th Registered
-              / %th Assigned Hub
-              %th Current Advisor
-              %th
-          %tbody
-            = render partial: 'client', collection: @clients, as: 'client'
-
-        = paginate @clients # provided by kaminari
-      -else
-        %p.bold No clients were found within that filter criteria use the reset filter button to start again
+    = render partial: 'filtered_table', locals: { clients: @clients }
 
   - else
     %h4=I18n.t('advisors.headers.no_clients_yet')
