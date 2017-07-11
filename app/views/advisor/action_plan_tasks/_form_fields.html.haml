@@ -4,4 +4,4 @@
   = form.input :notes, as: :text, label: "Notes"
   .convert_radio
     = form.input :advisor_id, as: :radio_buttons, label: "Action to be completed by:", collection: [['Client', ''], ['Advisor', current_advisor.id]]
-  = form.input :due_date, as: :string, input_html: {type: :date, :class => 'input', :value => form.object.due_date.to_date}, placeholder: "dd/mm/yyyy"
+  = form.input :due_date, as: :string, input_html: {type: :date, :class => 'input', :value => form.object.try(:due_date).try(:to_date)}, placeholder: "dd/mm/yyyy"

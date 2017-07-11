@@ -25,6 +25,23 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
     end
   end
 
+  def update
+    @action_plan_task = ActionPlanTask.find(params[:id])
+    if @action_plan_task.update_attributes(task_params)
+      flash[:success] = "Agreed Action: #{@action_plan_task.title} saved"
+      redirect_to advisor_client_action_plan_tasks_path(client_id: @action_plan_task.client_id)
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @action_plan_task = ActionPlanTask.find(params[:id])
+    flash[:success] = "Agreed Action: #{@action_plan_task.title} deleted"
+    @action_plan_task.destroy!
+    redirect_to advisor_client_action_plan_tasks_path(client_id: params[:client_id])
+  end
+
 
   private
 
@@ -42,6 +59,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
       :notes,
       :advisor_id,
       :due_date,
+      :status
       ])
   end
 
