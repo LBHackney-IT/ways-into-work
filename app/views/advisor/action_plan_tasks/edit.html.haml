@@ -1,0 +1,7 @@
+%section.column.is-10.is-offset-1
+  %h2= "Update details"
+  = simple_form_for [@client, @action_plan_task], url: advisor_client_action_plan_task_path(client_id: @client.id, id: @action_plan_task.id), method: :put do |form|
+    = render partial: 'form_fields', locals: {form: form}
+
+    = link_to I18n.t('clients.buttons.cancel'), advisor_client_action_plan_tasks_path(client_id: @client.id), method: :get, class: "button is-primary"
+    = form.submit I18n.t('clients.buttons.update'), class: "button is-primary", id: 'save_and_exit'

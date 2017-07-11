@@ -39,6 +39,11 @@ en:
       complete_profile: "Complete my profile"
       start_assessment: "Add details"
       action_plan: "View action plan"
+      save: "Save"
+      update: "Update"
+      cancel: "Cancel"
+      create_next_task: "Save and Create Another"
+      new_action_plan_task: "New task"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."
