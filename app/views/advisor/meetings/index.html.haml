@@ -1,0 +1,19 @@
+.column.is-10-widescreen.is-offset-1-widescreen
+  =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(@client), method: :get, class: "button is-primary is-small"
+
+  .head.level
+    .level-left
+      %h2 Meetings
+      %span
+        =@client.meetings.count
+
+  %section
+    %table.table
+      %thead
+        %tr
+          %th Scheduled For Date
+          %th Agenda
+          %th Advisor
+          %th
+      %tbody
+        = render partial: 'meeting', collection: @client.meetings
