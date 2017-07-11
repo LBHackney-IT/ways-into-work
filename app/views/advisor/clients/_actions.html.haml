@@ -13,4 +13,5 @@
   -else
     .column
       =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(@client), method: :get, class: "button is-primary is-small"
-
+%section
+  = button_to I18n.t('clients.buttons.action_plan'), advisor_client_action_plan_tasks_path(client_id: @client.id), method: :get, class: "button is-primary is-small"

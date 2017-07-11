@@ -38,6 +38,7 @@ en:
       edit_profile: "Edit Profile"
       complete_profile: "Complete my profile"
       start_assessment: "Add details"
+      action_plan: "View action plan"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."

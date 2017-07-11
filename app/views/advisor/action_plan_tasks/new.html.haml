@@ -1,0 +1,8 @@
+%section.column.is-10.is-offset-1
+  %h2= "Add a task to the action plan"
+  = simple_form_for [@client, @action_plan], url: advisor_client_action_plans_path(@client) do |form|
+    = render 'shared/form_errors', object: form.object
+    %fieldset
+      = form.input :attachment, as: :action_plan, label: "Choose a action_plan to upload for your CV"
+      %br
+      = form.submit I18n.t('clients.buttons.upload_cv'), class: "button is-primary is-disabled", disabled: true, id: 'submit_action_plan'
