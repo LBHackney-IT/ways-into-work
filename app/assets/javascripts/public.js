@@ -15,10 +15,6 @@ $(document).ready(function() {
 
   $('.nav-toggle').mobileNav();
 
-  // Removing explicit eligibility check to only use postcode
-  // May come back
-  // $(".legal_pages.eligibility").checkAccepted();
-
   $('.delete').hideDelete();
 
   $(".validate").validate();
@@ -30,5 +26,7 @@ $(document).ready(function() {
   $("#new_file_upload").uploadFile();
 
   $("#clients_needing_appointment").clients_needing_appointment();
+
+  $('#hubs').handleMaps();
 
 });

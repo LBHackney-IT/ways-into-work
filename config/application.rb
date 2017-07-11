@@ -78,6 +78,8 @@ module WaysIntoWork
 
     config.action_mailer.preview_path = "#{Rails.root}/lib/mail_previews"
 
+    config.mapbox_access_token = ENV['MAPBOX_ACCESS_TOKEN']
+
     if ENV["AWS_SECRET_ACCESS_KEY"]
       s3_conf = {
         access_key_id: ENV["AWS_ACCESS_KEY_ID"],

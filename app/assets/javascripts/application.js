@@ -15,10 +15,10 @@
 //= require filterrific/filterrific-jquery
 //= require mobile-nav
 //= require eligibility
+//= require hub-maps
 //= require delete
 //= require validate
 //= require clients-needing-appointment
 //= require form-helper
 //= require upload
 //= require public
-
