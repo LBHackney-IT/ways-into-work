@@ -37,8 +37,8 @@
             %span.select
               = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
 
-          .column.has-text-right
-            = link_to('Reset filters & show all', reset_filterrific_url, class: "button is-danger")
+          .column.has-text-right#fix-line-hieght-dbl
+            = link_to('Reset filters & show all', reset_filterrific_url, class: "button is-danger add-top")
 
     = render partial: 'filtered_table', locals: { clients: @filtered_clients }
 
