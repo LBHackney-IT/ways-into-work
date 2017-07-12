@@ -21,6 +21,8 @@ class Client < ApplicationRecord
 
   has_many :file_uploads, dependent: :destroy
 
+  has_many :action_plan_tasks
+
   validate do
     valid_postcode?
   end

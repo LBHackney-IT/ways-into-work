@@ -1,22 +1,11 @@
 .column.is-10.is-offset-1
-  = simple_form_for [@client, @meeting], url: advisor_client_meetings_path(client_id: @client.id) do |form|
+  %h3.subtitle Meeting arrangements
+  %hr
+  %p Please record the date your meeting
 
-    %fieldset
-      %h3.subtitle Meeting arrangements
-      %hr
-      %p Please record the date your meeting
+  = simple_form_for [client, new_meeting], url: advisor_client_meetings_path(client_id: client.id) do |form|
 
-      = render 'shared/form_errors', object: form.object
+    = render partial: 'form_fields', locals: {form: form}
 
-      .convert_radio
-        =form.input :agenda, as: :radio_buttons, collection: MeetingAgendaOption.all, :label => 'What is the agenda of this meeting?', include_hidden: false
-        .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_agenda }
+    = form.submit I18n.t('clients.buttons.save'), :class => 'button is-primary'
 
-      =form.input :start_datetime, label: 'Appointment time', as: :datetime, start_year: Date.today.year, end_year: Date.today.year + 1, minute_step: 10, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: 'Select'
-
-      =form.input :notes, as: :text
-
-
-      =form.input :advisor_id, as: :select, collection: Advisor.all, include_blank: false, input_wrapper_html: {class: 'select'}
-
-      = form.submit 'Save', :class => 'button is-primary'

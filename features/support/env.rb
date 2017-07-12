@@ -5,6 +5,7 @@
 # files.
 ENV["RAILS_ENV"] ||= "test"
 require 'simplecov'
+SimpleCov.start 'rails'
 
 require 'cucumber/rails'
 require "email_spec"

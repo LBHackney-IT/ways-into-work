@@ -1,16 +1,33 @@
 class Advisor::MeetingsController < Advisor::BaseController
 
+  expose :client
+  expose :meeting
+  expose :new_meeting, -> { client.meetings.build(advisor_id: current_advisor.id) }
+
+  def index
+  end
+
   def new
-    @client = Client.find_by(id: params[:client_id])
-    @meeting = @client.meetings.build(advisor_id: current_advisor.id)
-    @meeting.agenda = 'initial_assessment' if @client.meetings.count == 0
+    new_meeting.agenda = 'initial_assessment' if client.meetings.empty?
+  end
+
+  def edit
   end
 
 
   def create
-    @client = current_advisor.clients.find_by(id: params[:client_id])
-    if @meeting = @client.meetings.create(meeting_params)
+    if meeting.save
+      flash[:success] = "Meeting saved"
       redirect_to :advisor_my_clients
+    else
+      render :new
+    end
+  end
+
+  def update
+    if meeting.update(meeting_params)
+      flash[:success] = "Meeting updated"
+      redirect_to advisor_client_meetings_path(client_id: meeting.client_id)
     else
       render :new
     end
@@ -26,10 +43,10 @@ class Advisor::MeetingsController < Advisor::BaseController
       'start_datetime(4i)',
       'start_datetime(5i)',
       :advisor_id,
+      :client_id,
       :notes,
       :agenda,
-      :other_agenda
-      )
+      :other_agenda)
   end
 
 end
