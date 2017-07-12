@@ -1,4 +1,4 @@
-#filterrific_results
+#filterrific_results.clients
   -if clients.any?
     %table.table
       %thead
@@ -7,6 +7,7 @@
           %th Registered
           / %th Assigned Hub
           %th Current Advisor
+          %th Status
           %th
       %tbody
         = render partial: 'client', collection: clients
