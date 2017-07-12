@@ -1,13 +1,13 @@
 .column.is-10-widescreen.is-offset-1-widescreen
-  =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(@client), method: :get, class: "button is-primary is-small"
+  =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary is-small"
 
   .head.level
     .level-left
       %h2 Ongoing Actions
       %span
-        =@client.action_plan_tasks.ongoing.count
+        =client.action_plan_tasks.ongoing.count
 
-  - if @client.action_plan_tasks.ongoing.any?
+  - if client.action_plan_tasks.ongoing.any?
     %section
       %table.table
         %thead
@@ -17,15 +17,15 @@
             %th Action for
             %th
         %tbody
-          = render partial: 'ongoing_action', collection: @client.action_plan_tasks.ongoing, as: 'action_plan_task'
+          = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
 
   .head.level
     .level-left
       %h2 Completed Actions
       %span
-        =@client.action_plan_tasks.completed.count
+        =client.action_plan_tasks.completed.count
 
-  - if @client.action_plan_tasks.completed.any?
+  - if client.action_plan_tasks.completed.any?
     %section
       %table.table
         %thead
@@ -35,4 +35,4 @@
             %th Action for
             %th
         %tbody
-          = render partial: 'completed_action', collection: @client.action_plan_tasks.completed, as: 'action_plan_task'
+          = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'

@@ -1,8 +1,8 @@
 %section.column.is-10.is-offset-1
   %h2= "Add a task to the action plan"
-  = simple_form_for [@client, @action_plan], url: advisor_client_action_plan_tasks_path(client_id: @client.id) do |form|
+  = simple_form_for [client, new_action_plan_task], url: advisor_client_action_plan_tasks_path(client_id: client.id) do |form|
     = render partial: 'form_fields', locals: {form: form}
 
-    = link_to I18n.t('clients.buttons.cancel'), advisor_client_action_plan_tasks_path(client_id: @client.id), method: :get, class: "button is-primary"
+    = link_to I18n.t('clients.buttons.cancel'), advisor_client_action_plan_tasks_path(client_id: client.id), method: :get, class: "button is-primary"
     = form.submit I18n.t('clients.buttons.save'), class: "button is-primary", id: 'save_and_exit'
     = form.submit I18n.t('clients.buttons.create_next_task'), class: "button is-primary", id: 'save_and_next'

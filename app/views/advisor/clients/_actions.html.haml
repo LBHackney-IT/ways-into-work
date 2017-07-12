@@ -14,4 +14,4 @@
     .column
       =@client.decorate_meetings_action
 %section
-  = button_to I18n.t('clients.buttons.action_plan'), advisor_client_action_plan_tasks_path(client_id: @client.id), method: :get, class: "button is-primary is-small"
+  = link_to I18n.t('clients.buttons.action_plan'), advisor_client_action_plan_tasks_path(client_id: @client.id), class: "button is-primary is-small"
