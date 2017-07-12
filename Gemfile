@@ -39,6 +39,8 @@ gem 'ffaker'
 
 gem 'appsignal'
 
+gem 'decent_exposure'
+
 group :development do
   gem 'bullet'
   gem 'better_errors'

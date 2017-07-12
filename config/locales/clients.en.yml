@@ -30,7 +30,7 @@ en:
         short: "Details"
     buttons:
       upload_cv: 'Upload CV'
-      replace_cv: 'Replace CV'
+      delete: 'Delete'
       arrange_meeting: "Schedule meeting"
       arrange_first_meeting: "Schedule initial meeting"
       assign_to_me: 'Assign to me'

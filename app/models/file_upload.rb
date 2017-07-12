@@ -6,6 +6,8 @@ class FileUpload < ApplicationRecord
 
   validates_with AttachmentPresenceValidator, :attributes => :attachment
 
+  validates :client, presence: true
+
   belongs_to :client
 
   def file_type

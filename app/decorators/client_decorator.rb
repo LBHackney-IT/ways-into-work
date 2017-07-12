@@ -64,6 +64,10 @@ class ClientDecorator < Draper::Decorator
     standard_wrapper("Hours per week:", client.working_hours_per_week)
   end
 
+  def new_file_button
+    # h.link_to I18n.t('clients.buttons.upload_cv'), h.new_client_file_upload_path(client), class: "button is-primary is-small"
+  end
+
 
   def value_from(boolean)
     case boolean
