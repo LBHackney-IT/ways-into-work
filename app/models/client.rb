@@ -3,6 +3,8 @@ class Client < ApplicationRecord
   include PgSearch
 
   enum rag_status: [ :un_assessed, :red, :amber, :green ]
+  enum unemployed_status: [ :unknown, :less_than_1year, :over_1year, :never_worked ]
+
   # associations
   belongs_to :advisor
   has_one :hub, through: :advisor

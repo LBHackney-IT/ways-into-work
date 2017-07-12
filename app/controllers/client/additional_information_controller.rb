@@ -29,7 +29,7 @@ class Client::AdditionalInformationController < Client::BaseController
       :receive_benefits,
       :care_leaver,
       :has_children,
-      :lone_parent
+      :single_parent
       )
   end
 end
