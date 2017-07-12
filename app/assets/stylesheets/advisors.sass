@@ -56,24 +56,21 @@
   background-color: $red
   padding: 0.5rem 1.5rem
   margin-bottom: $size-2
-  &.open
-    .fa
-      transform: rotate(-180deg)
   #hidden-section
     display: none
   table
     margin-bottom: 0
-  .fa
-    vertical-align: initial
-    margin-left: 3px
-    -webkit-transition: all 0.3s
-    transition: all 0.3s
+    td.email a[data-icon='envelope']
+      // visibility: hidden
+      &::after
+        visibility: visible
+        content: '\f0e0'
+        font-family: 'FontAwesome'
+        margin-left: 0.5em
   h4
     text-align: center
     color: $white
     margin-bottom: 0.4em
-    &:hover
-      cursor: pointer
 
 #client_filters
   margin-bottom: $size-3
