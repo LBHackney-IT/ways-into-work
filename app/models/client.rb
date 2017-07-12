@@ -38,13 +38,17 @@ class Client < ApplicationRecord
       :search_query,
       :by_hub_id,
       :by_types_of_work,
-      :by_advisor_id
+      :by_advisor_id,
+      :by_age,
     ]
   )
 
   scope :by_hub_id, lambda { |hub_id| joins(:advisor).where('advisors.hub_id = ?', hub_id ) }
   scope :by_advisor_id, lambda { |advisor_id| where(advisor_id: advisor_id ) }
   scope :by_types_of_work, lambda { |type| where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
+  scope :by_age, lambda { |under_25s|
+    where('date_of_birth  > ?', Date.today - 25.years) if under_25s
+  }
 
   pg_search_scope :search_query, :against => [:first_name, :last_name]
 

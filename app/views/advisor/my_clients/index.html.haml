@@ -3,7 +3,7 @@
   .head.columns.level
     .level-left.column
       %h2 Your Clients
-      -if @clients_needing_appointment.count > 0
+      -if @clients_needing_appointment.any?
         %span.client_total="#{current_advisor.clients.count} Total (#{@clients_needing_appointment.count} need initial contact)"
       -else
         %span.client_total="#{current_advisor.clients.count} Total"

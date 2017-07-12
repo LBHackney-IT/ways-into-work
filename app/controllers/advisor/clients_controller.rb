@@ -33,13 +33,14 @@ class Advisor::ClientsController < Advisor::BaseController
         select_options: {
           by_hub_id: Hub.options_for_select,
           by_advisor_id: Advisor.options_for_select(selected_hub_id),
-          by_types_of_work: TypeOfWorkOption.options_for_select
+          by_types_of_work: TypeOfWorkOption.options_for_select,
+          by_age: [['Under 25', true] ]
         },
         default_filter_params: {
           by_hub_id: default_hub_id
         }
       ) or return
-      @clients = @filterrific.find.page(params[:page])
+      @filtered_clients = @filterrific.find.page(params[:page])
     end
 
     def default_hub_id
