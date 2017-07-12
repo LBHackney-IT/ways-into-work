@@ -5,10 +5,6 @@
   = render partial: 'shared/other_text', locals: {form: form, field: :other_personal_trait}
 %br
 
-= form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
-  =notes_form.input :content, label: 'What are your Strengths?', :input_html => { :class => "textarea" }
+= render partial: 'assessment_note', locals: {form: form, note: @strengths_notes, label: 'What are your Strengths?', type: :text }
 
-
-= form.simple_fields_for :assessment_notes, @strengths_notes  do |notes_form|
-  =notes_form.input :content, label: 'What would you like to get better at?', :input_html => { :class => "textarea" }
-
+= render partial: 'assessment_note', locals: {form: form, note: @get_better_at_notes, label: 'What would you like to get better at?', type: :text }

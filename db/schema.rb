@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712152144) do
+ActiveRecord::Schema.define(version: 20170712170819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170712152144) do
     t.integer "rag_status", default: 0
     t.string "bame"
     t.string "other_bame"
+    t.string "barriers", default: [], array: true
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
   end
 

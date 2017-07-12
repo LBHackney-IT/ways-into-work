@@ -1,0 +1,3 @@
+= form.simple_fields_for :assessment_notes, note  do |notes_form|
+  =notes_form.input :content, as: type, label: label, :input_html => { class: (type == :text ? 'textarea' : 'input' ) }
+  =notes_form.input :content_key, as: :hidden

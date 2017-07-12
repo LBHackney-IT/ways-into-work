@@ -4,5 +4,5 @@
     ="Registered: #{client.created_at.to_date.to_s(:short)}"
     %span.bold=number_of_days_waiting(client.created_at.to_date)
   %td.has-text-centered=client.phone_number
-  %td.has-text-centered.email=mail_to client.email, 'Email ' , data: {'icon': 'envelope'}, class: 'icon'
+  %td.has-text-centered.email=mail_to client.email, 'Email ', data: {'icon': 'envelope'}, class: 'icon'
   %td.has-text-right=button_to I18n.t('clients.buttons.arrange_first_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"

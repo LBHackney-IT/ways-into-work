@@ -19,7 +19,8 @@ class Advisor::ClientsController < Advisor::BaseController
       flash[:success] = I18n.t('clients.flashes.success.updated')
       redirect_back(fallback_location: root_path)
     else
-      # init_assessment_notes
+      @client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
+      init_assessment_notes
       render :edit
     end
   end
@@ -77,6 +78,7 @@ class Advisor::ClientsController < Advisor::BaseController
         :gender,
         :rag_status,
         qualifications: [],
+        barriers: [],
         objectives: [],
         support_priorities: [],
         types_of_work: [],
@@ -108,7 +110,9 @@ class Advisor::ClientsController < Advisor::BaseController
         'job_goal_1',
         'job_goal_2',
         'barriers',
-        'general'
+        'general',
+        'support',
+        'get_better_at'
       ]
     end
 
