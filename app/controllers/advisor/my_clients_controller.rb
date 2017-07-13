@@ -18,6 +18,7 @@ class Advisor::MyClientsController < Advisor::BaseController
         persistence_id: false,
         select_options: {
           by_types_of_work: TypeOfWorkOption.options_for_select,
+          by_training: TrainingCourseOption.options_for_select,
           by_age: [['Under 25', :under_25s]]
         }
       ) or return

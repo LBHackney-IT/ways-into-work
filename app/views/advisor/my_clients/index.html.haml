@@ -36,6 +36,12 @@
           .column
             %label.label Search client names:
             = f.text_field(:search_query, class: 'input auto-width')
+
+          .column.has-text-centered
+            %label.label Training Course
+            %span.select
+              = f.select(:by_training, @filterrific.select_options[:by_training], { include_blank: '- Any -' })
+
           .column.has-text-centered
             %label.label Industry preference
             %span.select

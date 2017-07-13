@@ -24,6 +24,10 @@ class TrainingCourseOption
     ids.collect{|id| find(id).name}.join(', ')
   end
 
+  def self.options_for_select
+    all.map { |e| [e.name, e.id] }
+  end
+
 end
 
 

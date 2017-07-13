@@ -22,6 +22,12 @@
             %label.label Assigned Advisor
             %span.select
               = f.select(:by_advisor_id, @filterrific.select_options[:by_advisor_id], { include_blank: '- Any -' })
+
+          .column.has-text-centered
+            %label.label Training Course
+            %span.select
+              = f.select(:by_training, @filterrific.select_options[:by_training], { include_blank: '- Any -' })
+
           .column.has-text-right
             %label.label Industry preference
             %span.select

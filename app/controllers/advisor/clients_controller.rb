@@ -35,6 +35,7 @@ class Advisor::ClientsController < Advisor::BaseController
           by_hub_id: Hub.options_for_select,
           by_advisor_id: Advisor.options_for_select(selected_hub_id),
           by_types_of_work: TypeOfWorkOption.options_for_select,
+          by_training: TrainingCourseOption.options_for_select,
           by_age: [['Under 25', true] ]
         },
         default_filter_params: {
