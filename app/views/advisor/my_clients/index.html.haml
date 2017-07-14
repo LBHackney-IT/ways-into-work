@@ -16,8 +16,15 @@
             ="You have #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
 
           %table.table
+            %thead
+              %tr
+                %th Client
+                %th Registered
+                %th Tried to contact
+                %th Last contact
+                %th
             %tbody
-              = render partial: 'needing_appointment', collection: @clients_needing_appointment.shift(2), as: 'client'
+              = render partial: 'awaiting_contact', collection: @clients_needing_appointment.shift(2), as: 'client'
 
           -if @clients_needing_appointment.any?
             %h4#view_more
@@ -26,7 +33,7 @@
             #hidden-section
               %table.table
                 %tbody
-                  = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+                  = render partial: 'awaiting_contact', collection: @clients_needing_appointment, as: 'client'
 
 
   - if @filterrific.model_class.any?

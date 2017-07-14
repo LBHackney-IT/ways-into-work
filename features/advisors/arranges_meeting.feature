@@ -13,4 +13,8 @@ Feature: Advisor records meeting arrangement
     And I schedule a meeting for next week with notes
     Then I should see the meeting has been booked
 
+  Scenario: Advisor records tried calling but no answer
+    Given I am on the advisor my clients page
+    And I record I tried calling but no asnswer
+    Then I should see the client has had contact made
 

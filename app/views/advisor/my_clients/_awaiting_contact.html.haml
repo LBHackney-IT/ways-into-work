@@ -1,0 +1,10 @@
+%tr[client]
+  %td=link_to client.name, edit_advisor_client_path(client)
+  %td.has-text-centered
+    =client.created_at.to_date.to_s(:short)
+    %span.bold=number_of_days_waiting(client.created_at.to_date)
+  %td.has-text-centered
+    ="#{pluralize(client.contact_notes_count, 'time')}"
+  %td.has-text-centered
+    =client.contact_notes.last.try(:contact_date)
+  %td.has-text-right=button_to I18n.t('clients.buttons.make_contact'), new_advisor_client_contact_note_path(client), method: :get, class: "button is-primary is-small"

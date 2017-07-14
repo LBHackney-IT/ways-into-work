@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712170819) do
+ActiveRecord::Schema.define(version: 20170714110205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,19 @@ ActiveRecord::Schema.define(version: 20170712170819) do
     t.string "bame"
     t.string "other_bame"
     t.string "barriers", default: [], array: true
+    t.integer "contact_notes_count", default: 0
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
+  end
+
+  create_table "contact_notes", force: :cascade do |t|
+    t.text "content"
+    t.string "contact_method"
+    t.bigint "advisor_id"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advisor_id"], name: "index_contact_notes_on_advisor_id"
+    t.index ["client_id"], name: "index_contact_notes_on_client_id"
   end
 
   create_table "file_uploads", force: :cascade do |t|
