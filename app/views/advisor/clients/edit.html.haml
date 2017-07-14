@@ -14,8 +14,8 @@
 
       = render partial: 'shared/upper_tabs', locals: {the_client: @client}
 
-      .profile-tab.top-left-corner
-        .column.tabs.is-centered
+      .profile-tab.top-left-corner.columns
+        #tab-list.column.is-2
           %ul
             %li
               %a{href: "#tabs-1"}
@@ -72,17 +72,3 @@
           #tabs-8.tab
             = render partial: 'tab_notes', :locals => {:form => form}
 
-        #file_uploads
-          -if @client.file_uploads.any?
-            %table.table
-              %thead
-                %tr
-                  %th File name
-                  %th Uploaded by
-                  %th Date Uploaded
-                  %th
-              %tbody
-                = render partial: 'shared/file_upload', collection: @client.file_uploads
-          -else
-            %p.bold No CV uploaded yet. Upload a CV even if it's in draft form
-            =@client.new_file_button

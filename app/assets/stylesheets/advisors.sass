@@ -102,6 +102,19 @@
       &.red
         color: $color__red
 
+#tab-list
+  ul
+    margin-top: 0
+    margin-left: 0
+  li
+    list-style-type: none
+    margin-bottom: 20px
+    padding-bottom: 5px
+
+  .ui-tabs-active a, a:hover
+    border-bottom: 2px solid $blue
+  a:focus, li:focus
+    outline: none
 
 #upper-tabs
   margin-bottom: 0
@@ -111,7 +124,7 @@
     text-transform: uppercase
     font-weight: $weight-medium
   .single-tab
-    padding: 15px 30px 18px 30px
+    padding: 15px 45px 18px 45px
     opacity: 0.5
     &:hover
       opacity: 1
@@ -131,6 +144,8 @@
   padding: 30px
   border-radius: 5px
   margin-top: -1px
+  .tab
+    padding-left: 15px
 
 .top-left-corner
   border-top-left-radius: 0px
