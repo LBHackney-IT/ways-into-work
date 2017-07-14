@@ -1,6 +1,6 @@
 .column.is-12.has-text-centered
   = render partial: 'shared/profile_steps'
-.column.is-10.is-offset-1
+.column
   %h2.subtitle=I18n.t('clients.steps.about_you.long')
 
   = simple_form_for [current_client], url: :client_personal_traits do |form|

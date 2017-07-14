@@ -1,4 +1,4 @@
-%section.new_file_upload.column.is-10.is-offset-1
+%section.new_file_upload.column
   %h2= "Upload a file"
   = simple_form_for [client, new_file_upload], url: advisor_client_file_uploads_path(client) do |form|
     = render 'shared/form_errors', object: form.object

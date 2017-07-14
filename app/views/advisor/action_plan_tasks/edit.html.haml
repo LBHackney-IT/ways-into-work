@@ -1,4 +1,4 @@
-%section.column.is-10.is-offset-1
+%section.column
   %h2= "Update details"
   = simple_form_for [action_plan_task.client, action_plan_task], url: advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :put do |form|
 
