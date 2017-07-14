@@ -51,6 +51,21 @@
 
             = render partial: '/shared/client_profile_overview'
 
+            #file_uploads
+              -if @client.file_uploads.any?
+                %table.table
+                  %thead
+                    %tr
+                      %th File name
+                      %th Uploaded by
+                      %th Date Uploaded
+                      %th
+                  %tbody
+                    = render partial: 'shared/file_upload', collection: @client.file_uploads
+              -else
+                %p.bold No CV uploaded yet. Upload a CV even if it's in draft form
+                =@client.new_file_button
+
           #tabs-2.tab
             = render partial: 'tab_strengths', :locals => {:form => form}
 
