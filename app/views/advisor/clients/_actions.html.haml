@@ -10,8 +10,6 @@
   - elsif @client.advisor != current_advisor
     .column
       =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: @client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small"
-  -else
-    .column
-      =@client.decorate_meetings_action
+
 %section
   = link_to I18n.t('clients.buttons.action_plan'), advisor_client_action_plan_tasks_path(client_id: @client.id), class: "button is-primary is-small"

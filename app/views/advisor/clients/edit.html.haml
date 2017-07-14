@@ -1,8 +1,6 @@
-#tabs.container
-  .column.is-10.is-offset-1
-    = simple_form_for [@client.object], url: advisor_client_path(@client.object), method: :put do |form|
-
-
+= simple_form_for [@client.object], url: advisor_client_path(@client.object), method: :put do |form|
+  #tabs.container
+    .column
       .head.level
         .level-left
           %h2=@client.name
@@ -14,74 +12,77 @@
         .level-right
           = form.submit 'Save', :class => 'button is-primary'
 
-      .column.tabs.is-centered
-        %ul
-          %li
-            %a{href: "#tabs-1"}
-              %span Details
-          %li
-            %a{href: "#tabs-2"}
-              %span Strengths
-          %li
-            %a{href: "#tabs-3"}
-              %span Aspirations
-          %li
-            %a{href: "#tabs-4"}
-              %span Support
-          %li
-            %a{href: "#tabs-5"}
-              %span Education
-          %li
-            %a{href: "#tabs-6"}
-              %span Employment
-          %li
-            %a{href: "#tabs-7"}
-              %span Additional Info
-          %li
-            %a{href: "#tabs-8"}
-              %span Notes
+      = render partial: 'shared/upper_tabs', locals: {the_client: @client}
+
+      .profile-tab.top-left-corner
+        .column.tabs.is-centered
+          %ul
+            %li
+              %a{href: "#tabs-1"}
+                %span Details
+            %li
+              %a{href: "#tabs-2"}
+                %span Strengths
+            %li
+              %a{href: "#tabs-3"}
+                %span Aspirations
+            %li
+              %a{href: "#tabs-4"}
+                %span Support
+            %li
+              %a{href: "#tabs-5"}
+                %span Education
+            %li
+              %a{href: "#tabs-6"}
+                %span Employment
+            %li
+              %a{href: "#tabs-7"}
+                %span Additional Info
+            %li
+              %a{href: "#tabs-8"}
+                %span Notes
 
 
-      .column
-        #tabs-1.tab
-          %h3="#{@client.name}'s Details"
+        .column
+          #tabs-1.tab
+            %h3="#{@client.name}'s Details"
 
-          = render 'shared/form_errors', object: form.object
+            = render 'shared/form_errors', object: form.object
 
-          = render partial: '/shared/client_profile_overview'
+            = render partial: '/shared/client_profile_overview'
 
-        #tabs-2.tab
-          = render partial: 'tab_strengths', :locals => {:form => form}
+          #tabs-2.tab
+            = render partial: 'tab_strengths', :locals => {:form => form}
 
-        #tabs-3.tab
-          = render partial: 'tab_aspirations', :locals => {:form => form}
+          #tabs-3.tab
+            = render partial: 'tab_aspirations', :locals => {:form => form}
 
-        #tabs-4.tab
-          = render partial: 'tab_support', :locals => {:form => form}
+          #tabs-4.tab
+            = render partial: 'tab_support', :locals => {:form => form}
 
-        #tabs-5.tab
-          = render partial: 'tab_education', :locals => {:form => form}
+          #tabs-5.tab
+            = render partial: 'tab_education', :locals => {:form => form}
 
-        #tabs-6.tab
-          = render partial: 'tab_employment', :locals => {:form => form}
+          #tabs-6.tab
+            = render partial: 'tab_employment', :locals => {:form => form}
 
-        #tabs-7.tab
-          = render partial: 'tab_additional', :locals => {:form => form}
+          #tabs-7.tab
+            = render partial: 'tab_additional', :locals => {:form => form}
 
-        #tabs-8.tab
-          = render partial: 'tab_notes', :locals => {:form => form}
+          #tabs-8.tab
+            = render partial: 'tab_notes', :locals => {:form => form}
 
-    #file_uploads
-      -if @client.file_uploads.any?
-        %table.table
-          %thead
-            %tr
-              %th File name
-              %th Uploaded by
-              %th Date Uploaded
-              %th
-          %tbody
-            = render partial: 'shared/file_upload', collection: @client.file_uploads
-      -else
-        %p.bold No CV uploaded yet. Upload a CV even if it's in draft form
-        =@client.new_file_button
+        #file_uploads
+          -if @client.file_uploads.any?
+            %table.table
+              %thead
+                %tr
+                  %th File name
+                  %th Uploaded by
+                  %th Date Uploaded
+                  %th
+              %tbody
+                = render partial: 'shared/file_upload', collection: @client.file_uploads
+          -else
+            %p.bold No CV uploaded yet. Upload a CV even if it's in draft form
+            =@client.new_file_button
