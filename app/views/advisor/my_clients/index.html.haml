@@ -1,4 +1,4 @@
-#your_clients.column.is-10-widescreen.is-offset-1-widescreen
+#your_clients.column
 
   .head.columns.level
     .level-left.column
@@ -11,7 +11,7 @@
   -if @clients_needing_appointment.any?
     %section#clients_needing_appointment.hero.is-fullwidth.section
       .container.content.columns
-        .column.is-10.is-offset-1
+        .column
           %h4.bold
             ="You have #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
 

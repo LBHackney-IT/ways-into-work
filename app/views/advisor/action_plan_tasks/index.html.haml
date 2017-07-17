@@ -1,38 +1,44 @@
-.column.is-10-widescreen.is-offset-1-widescreen
-  =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary is-small"
-
+.column
   .head.level
     .level-left
-      %h2 Ongoing Actions
-      %span
-        =client.action_plan_tasks.ongoing.count
+      %h2="#{client.first_name}'s Ongoing Actions"
+      %span.client_total=client.action_plan_tasks.ongoing.count
 
-  - if client.action_plan_tasks.ongoing.any?
-    %section
-      %table.table
-        %thead
-          %tr
-            %th Agreed Action
-            %th Due Date
-            %th Action for
-            %th
-        %tbody
-          = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
+    .level-right
+      =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
-  .head.level
-    .level-left
-      %h2 Completed Actions
-      %span
-        =client.action_plan_tasks.completed.count
+  = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
-  - if client.action_plan_tasks.completed.any?
-    %section
-      %table.table
-        %thead
-          %tr
-            %th Agreed Action
-            %th Completion Date
-            %th Action for
-            %th
-        %tbody
-          = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'
+  .profile-tab
+    .column
+      - if client.action_plan_tasks.ongoing.any?
+        %table.table
+          %thead
+            %tr
+              %th Agreed Action
+              %th Due Date
+              %th Action for
+              %th
+          %tbody
+            = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
+      - else
+        %p="#{client.name} has no actions yet"
+
+        =button_to "Create first task", new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
+
+
+      - if client.action_plan_tasks.completed.any?
+        .head.level
+          .level-left
+            %h2 Completed Actions
+            %span
+              =client.action_plan_tasks.completed.count
+        %table.table
+          %thead
+            %tr
+              %th Agreed Action
+              %th Completion Date
+              %th Action for
+              %th
+          %tbody
+            = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'
