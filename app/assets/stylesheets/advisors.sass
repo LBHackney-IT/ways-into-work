@@ -32,7 +32,6 @@
         font-size: 13px
     td, th
       border: none
-      padding-left: 0
     button.button, input[type="submit"].button
       padding-bottom: 0.35em
 
@@ -72,6 +71,9 @@ a[data-icon='envelope']
     text-align: center
     color: $white
     margin-bottom: 0.4em
+    margin-top: 0.4em
+  thead th
+    color: white
 
 #client_filters
   margin-bottom: $size-3
@@ -148,11 +150,19 @@ a[data-icon='envelope']
   margin-top: -1px
   .tab
     padding-left: 15px
-  .action-section.completed
-    padding-top: 2em
+  .action-section
+    .table td, .table th
+      padding-left: 0
+    &.completed
+      padding-top: 2em
 
 .form-action
   margin-top: 2em
+
+body.admin.my_clients.index
+  main.main.section
+    padding-left: 0
+
 
 .top-left-corner
   border-top-left-radius: 0px
