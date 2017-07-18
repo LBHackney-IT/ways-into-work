@@ -8,6 +8,14 @@ class ClientDecorator < Draper::Decorator
     'Your Profile'
   end
 
+  def decorate_name
+    standard_wrapper('Name:', client.name)
+  end
+
+  def decorate_date_registered
+    standard_wrapper('Date regstiered:', client.created_at.to_formatted_s(:long))
+  end
+
   def decorate_email
     standard_wrapper('Email account:', client.email)
   end
@@ -38,6 +46,22 @@ class ClientDecorator < Draper::Decorator
 
   def decorate_other_objective
     standard_wrapper("Other:", client.other_objective)
+  end
+
+  def decorate_support_priorities
+    standard_wrapper("Support priorities:", client.support_priorities)
+  end
+
+  def decorate_types_of_work
+    standard_wrapper("Industry preference:", client.types_of_work)
+  end
+
+  def decorate_barriers
+    standard_wrapper("Barriers:", client.barriers)
+  end
+
+  def decorate_rag_status
+    standard_wrapper("Status:", client.rag_status)
   end
 
   def decorate_studying
