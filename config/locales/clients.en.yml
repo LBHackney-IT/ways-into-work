@@ -30,7 +30,7 @@ en:
         short: "Details"
     buttons:
       upload_cv: 'Upload CV'
-      upload_another_cv: 'Upload another CV'
+      manage_cvs: 'Manage CVs'
       delete: 'Delete'
       make_contact: "Make contact"
       arrange_meeting: "Schedule meeting"

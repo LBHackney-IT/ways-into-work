@@ -1,5 +1,5 @@
 When(/^I upload a cv file$/) do
-  click_on I18n.t('clients.buttons.upload_cv')
+  click_on I18n.t('clients.buttons.manage_cvs')
   @file_name = 'CV.doc'
   page.attach_file(:file_upload_attachment, Rails.root.join('features', 'upload_files', @file_name))
   click_on I18n.t('clients.buttons.upload_cv')

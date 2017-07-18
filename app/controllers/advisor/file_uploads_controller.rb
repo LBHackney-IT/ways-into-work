@@ -2,14 +2,15 @@ class Advisor::FileUploadsController < Advisor::BaseController
 
   expose :file_upload
   expose :client
-  expose :new_file_upload, -> { client.file_uploads.build(uploaded_by: current_advisor.name) }
 
   def new
+    file_upload.client = client
+    file_upload.uploaded_by = current_advisor.name
   end
 
   def create
     if file_upload.save
-      redirect_to edit_advisor_client_path(id: file_upload.client_id)
+      redirect_to new_advisor_client_file_upload_path(client)
     else
       render 'new'
     end
@@ -18,7 +19,7 @@ class Advisor::FileUploadsController < Advisor::BaseController
   def destroy
     file_upload.destroy
     flash[:success] = 'File deleted'
-    redirect_to edit_advisor_client_path(id: params[:client_id])
+    redirect_to new_advisor_client_file_upload_path(client)
   end
 
   def file_upload_params
