@@ -1,0 +1,28 @@
+.column.is-10.is-offset-1
+
+  %h3.subtitle="Contacting #{client.name}"
+  %p=client.decorate_preferred_contact
+  %hr
+
+  %p If you scheduled a meeting click here instead
+  =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
+
+  %br
+
+  %p Or make a note that you made contact or tried contacting your client
+
+  = simple_form_for [client, contact_note], url: advisor_client_contact_notes_path(client_id: client.id) do |form|
+
+    = render 'shared/form_errors', object: form.object
+
+    %fieldset
+      .convert_radio
+        =form.input :contact_method, as: :radio_buttons, collection: ContactMethodOption.all, :label => 'How did you communicate with them?', include_hidden: false
+
+      =form.input :content, as: :text, :input_html => { :class => "textarea" }
+
+      =form.input :client_id, as: :hidden
+      =form.input :advisor_id, as: :hidden
+
+    .control
+      = form.submit I18n.t('clients.buttons.save'), :class => 'button is-primary'

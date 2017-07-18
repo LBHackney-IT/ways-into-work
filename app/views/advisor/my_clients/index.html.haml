@@ -3,30 +3,37 @@
   .head.columns.level
     .level-left.column
       %h2 Your Clients
-      -if @clients_needing_appointment.any?
-        %span.client_total="#{current_advisor.clients.count} Total (#{@clients_needing_appointment.count} need initial contact)"
+      -if @clients_requiring_contact.any?
+        %span.client_total="#{current_advisor.clients.count} Total (#{@clients_requiring_contact.count} need initial contact)"
       -else
         %span.client_total="#{current_advisor.clients.count} Total"
 
-  -if @clients_needing_appointment.any?
+  -if @clients_requiring_contact.any?
     %section#clients_needing_appointment.hero.is-fullwidth.section
       .container.content.columns
         .column
           %h4.bold
-            ="You have #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
+            ="You have #{pluralize(@clients_requiring_contact.count, 'client')} that still require initial contact"
 
           %table.table
+            %thead
+              %tr
+                %th Client
+                %th Registered
+                %th Tried to contact
+                %th Last contact
+                %th
             %tbody
-              = render partial: 'needing_appointment', collection: @clients_needing_appointment.shift(2), as: 'client'
+              = render partial: 'awaiting_contact', collection: @clients_requiring_contact.shift(2), as: 'client'
 
-          -if @clients_needing_appointment.any?
+          -if @clients_requiring_contact.any?
             %h4#view_more
-              ="View other #{pluralize((@clients_needing_appointment.count), 'client')}"
+              ="View other #{pluralize((@clients_requiring_contact.count), 'client')}"
               %i.fa.fa-chevron-down
             #hidden-section
               %table.table
                 %tbody
-                  = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+                  = render partial: 'awaiting_contact', collection: @clients_requiring_contact, as: 'client'
 
 
   - if @filterrific.model_class.any?

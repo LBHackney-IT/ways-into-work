@@ -16,7 +16,10 @@ class Client < ApplicationRecord
 
   has_many :meetings
 
-  scope :needing_appointment, -> { where(meetings_count: 0).order(created_at: :asc) }
+  scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
+
+  scope :needing_appointment, -> { where(meetings_count: 0) }
+
   scope :with_appointment, -> { where('meetings_count > 0') }
 
   accepts_nested_attributes_for :login
@@ -33,6 +36,7 @@ class Client < ApplicationRecord
   validates_plausible_phone :phone, country_code: 'GB'
 
   has_many :assessment_notes
+  has_many :contact_notes
 
   accepts_nested_attributes_for :assessment_notes, reject_if: :all_blank
 

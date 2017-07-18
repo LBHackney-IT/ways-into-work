@@ -3,7 +3,7 @@
   %hr
   %p Please record the date your meeting
 
-  = simple_form_for [client, new_meeting], url: advisor_client_meetings_path(client_id: client.id) do |form|
+  = simple_form_for [client, meeting], url: advisor_client_meetings_path(client_id: client.id) do |form|
 
     = render partial: 'form_fields', locals: {form: form}
 

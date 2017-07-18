@@ -64,6 +64,22 @@ class ClientDecorator < Draper::Decorator
     standard_wrapper("Hours per week:", client.working_hours_per_week)
   end
 
+  def decorate_preferred_contact
+    if client.preferred_contact_method
+      h.content_tag(:span, "(Client prefers to be contacted by #{ContactMethodOption.find(client.preferred_contact_method)})") << phone_span << email_link
+    else
+      phone_span << email_link
+    end
+  end
+
+  def phone_span
+    h.content_tag(:p, client.phone_number)
+  end
+
+  def email_link
+    h.content_tag(:p, h.mail_to(client.email, 'Email ', data: {'icon': 'envelope'}))
+  end
+
   def new_file_button
     # h.link_to I18n.t('clients.buttons.upload_cv'), h.new_client_file_upload_path(client), class: "button is-primary is-small"
   end

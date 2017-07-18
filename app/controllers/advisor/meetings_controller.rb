@@ -2,13 +2,14 @@ class Advisor::MeetingsController < Advisor::BaseController
 
   expose :client
   expose :meeting
-  expose :new_meeting, -> { client.meetings.build(advisor_id: current_advisor.id) }
 
   def index
   end
 
   def new
-    new_meeting.agenda = 'initial_assessment' if client.meetings.empty?
+    meeting.agenda = 'initial_assessment' if client.meetings.empty?
+    meeting.advisor_id = current_advisor.id
+    meeting.client_id = params[:client_id]
   end
 
   def edit
