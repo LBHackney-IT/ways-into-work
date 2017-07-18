@@ -16,10 +16,11 @@ class Client < ApplicationRecord
 
   has_many :meetings
 
-  scope :needing_contact, -> { needing_appointment.where('contact_notes_count < 0 ').order(contact_notes_count: :asc) }
+  scope :needing_contact, -> { needing_appointment.where('contact_notes_count < 3 ').order(contact_notes_count: :asc, created_at: :asc) }
 
-  scope :needing_appointment, -> { where(meetings_count: 0).order(created_at: :asc) }
-  scope :with_appointment, -> { where('meetings_count > 0') }
+  scope :needing_appointment, -> { where(meetings_count: 0) }
+
+  scope :with_appointment, -> { where('meetings_count > 0 OR contact_notes_count > 3') }
 
   accepts_nested_attributes_for :login
 

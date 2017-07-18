@@ -1,7 +1,7 @@
 class Advisor::MyClientsController < Advisor::BaseController
 
   def index
-    @clients_needing_appointment = current_advisor.clients.needing_appointment.to_a
+    @clients_requiring_contact = current_advisor.clients.needing_contact.to_a
     init_filtered_clients
     respond_to do |format|
       format.html
