@@ -28,9 +28,6 @@
 
       =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }
 
-    / .convert_checkbox.single_option.is-hidden.on-false
-    /   =form.input :past_education, as: :string, :label => "What was the highest level of education you studied for? eg. GCSE, A-Levels, Degree", :input_html => { :class => 'input' }
-
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
       = form.submit 'Save and Exit', :class => 'button'

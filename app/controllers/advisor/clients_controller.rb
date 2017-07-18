@@ -108,6 +108,8 @@ class Advisor::ClientsController < Advisor::BaseController
         'strengths',
         'not_good_at',
         'driving_force',
+        'past_education',
+        'work_experience',
         'job_goal_1',
         'job_goal_2',
         'barriers',
