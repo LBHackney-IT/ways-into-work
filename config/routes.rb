@@ -31,6 +31,7 @@ WaysIntoWork::Application.routes.draw do
 
 
   namespace :client do
+    resources :file_uploads, only: [:create, :new, :destroy]
     resource :password, only: [:edit]
     resource :profile, only: [:show]
     resource :personal_traits, only: [:edit, :update]

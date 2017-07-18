@@ -1,12 +1,12 @@
 .columns
   - if current_advisor.team_leader
     .column
-      = simple_form_for @client.object, url: advisor_client_assign_path(client_id: @client.id) do |form|
+      = simple_form_for client.object, url: advisor_client_assign_path(client_id: client.id) do |form|
         = render 'shared/form_errors', object: form.object
         = form.input :advisor_id, as: :select, collection: current_advisor.hub.advisors, include_blank: false
         = form.submit I18n.t('clients.buttons.assign_advisor'), class: "step button is-primary"
     .column
-      =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(@client), method: :get, class: "button is-primary is-small"
-  - elsif @client.advisor != current_advisor
+      =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
+  - elsif client.advisor != current_advisor
     .column
-      =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: @client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small"
+      =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small"

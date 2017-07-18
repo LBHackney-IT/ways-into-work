@@ -1,5 +1,7 @@
 class Advisor::ClientsController < Advisor::BaseController
 
+  expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
+
   def index
     init_filterrific_table
     respond_to do |format|
@@ -9,17 +11,15 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   def edit
-    @client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
     init_assessment_notes
   end
 
   def update
-    @client = Client.find(params[:id])
-    if @client.update_attributes(client_params)
+    if client.update_attributes(client_params)
       flash[:success] = I18n.t('clients.flashes.success.updated')
       redirect_back(fallback_location: root_path)
     else
-      @client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
+      client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
       init_assessment_notes
       render :edit
     end
@@ -97,7 +97,7 @@ class Advisor::ClientsController < Advisor::BaseController
       assessment_note_keys.each do |key|
         self.instance_variable_set(
           "@#{key}_notes",
-          @client.assessment_notes.find_or_initialize_by(content_key: key)
+          client.assessment_notes.find_or_initialize_by(content_key: key)
           )
       end
     end

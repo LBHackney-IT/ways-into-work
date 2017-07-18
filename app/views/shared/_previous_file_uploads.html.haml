@@ -1,0 +1,12 @@
+%section.column
+  %h2= "Previous file uploads"
+  #file_uploads
+    %table.table
+      %thead
+        %tr
+          %th File name
+          %th Uploaded by
+          %th Date Uploaded
+          %th
+      %tbody
+        = render partial: 'shared/file_upload', collection: client.file_uploads

@@ -1,18 +1,18 @@
-= simple_form_for [@client.object], url: advisor_client_path(@client.object), method: :put do |form|
+= simple_form_for [client.object], url: advisor_client_path(client.object), method: :put do |form|
   #tabs.container
     .column
       .head.level
         .level-left
-          %h2=@client.name
-          - if @client.advisor == current_advisor
-            %span.client_total="You are #{@client.first_name}'s advisor"
+          %h2=client.name
+          - if client.advisor == current_advisor
+            %span.client_total="You are #{client.first_name}'s advisor"
           - else
-            %span.client_total="#{@client.advisor.name} is #{@client.first_name}'s advisor"
+            %span.client_total="#{client.advisor.name} is #{client.first_name}'s advisor"
 
         .level-right
           = form.submit 'Save', :class => 'button is-primary'
 
-      = render partial: 'shared/upper_tabs', locals: {the_client: @client}
+      = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
       .profile-tab.top-left-corner.columns
         #tab-list.column.is-2
@@ -45,12 +45,11 @@
 
         .column
           #tabs-1.tab
-            %h3="#{@client.name}'s Details"
+            %h3="#{client.name}'s Details"
 
             = render 'shared/form_errors', object: form.object
 
             = render partial: '/shared/client_profile_overview'
-            = render partial: '/shared/latest_file_upload'
 
           #tabs-2.tab
             = render partial: 'tab_strengths', :locals => {:form => form}
