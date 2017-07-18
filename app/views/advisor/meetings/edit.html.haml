@@ -1,7 +1,6 @@
 .column
   %h3.subtitle Meeting arrangements
   %hr
-  %p Please record the date your meeting
 
   = simple_form_for [client, meeting], url: advisor_client_meeting_path(client_id: client.id, id: meeting.id), method: :put do |form|
 
