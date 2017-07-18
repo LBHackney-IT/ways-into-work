@@ -8,6 +8,14 @@ class AdvisorClientDecorator < ClientDecorator
     h.link_to I18n.t('clients.buttons.manage_cvs'), h.new_advisor_client_file_upload_path(client), class: "button is-primary is-small"
   end
 
+  def post_file_to
+    h.advisor_client_file_uploads_path(client)
+  end
+
+  def delete_file_button(file)
+    h.button_to(I18n.t('clients.buttons.delete'), h.advisor_client_file_upload_path(client_id: id, id: file.id), class: 'button is-primary is-small', method: :delete)
+  end
+
   def decorate_meetings_action
     if client.meetings.any?
       h.link_to I18n.t('clients.buttons.view_meetings'), h.advisor_client_meetings_path(client), method: :get, class: "button is-primary is-small"

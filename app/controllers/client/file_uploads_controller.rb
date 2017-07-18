@@ -1,11 +1,10 @@
 class Client::FileUploadsController < Client::BaseController
 
   expose :file_upload
-  expose :client, -> { current_client }
-  expose :post_file_to, -> { client_file_uploads_path }
+  expose :client, -> { current_client.decorate }
 
   def new
-    file_upload.client = client
+    file_upload.client_id = client.id
     file_upload.uploaded_by = client.name
     render 'shared/file_uploads/new'
   end

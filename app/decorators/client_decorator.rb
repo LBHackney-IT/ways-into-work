@@ -84,6 +84,13 @@ class ClientDecorator < Draper::Decorator
     h.link_to I18n.t('clients.buttons.manage_cvs'), h.new_client_file_upload_path, class: "button is-primary is-small"
   end
 
+  def post_file_to
+    h.client_file_uploads_path
+  end
+
+  def delete_file_button(file)
+    h.button_to(I18n.t('clients.buttons.delete'), h.client_file_upload_path(client_id: id, id: file.id), class: 'button is-primary is-small', method: :delete)
+  end
 
   def value_from(boolean)
     case boolean

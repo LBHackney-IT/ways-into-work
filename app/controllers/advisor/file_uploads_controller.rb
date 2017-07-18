@@ -1,11 +1,10 @@
 class Advisor::FileUploadsController < Advisor::BaseController
 
   expose :file_upload
-  expose :client
-  expose :post_file_to, -> { advisor_client_file_uploads_path(client)}
+  expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
 
   def new
-    file_upload.client = client
+    file_upload.client_id = client.id
     file_upload.uploaded_by = current_advisor.name
     render 'shared/file_uploads/new'
   end

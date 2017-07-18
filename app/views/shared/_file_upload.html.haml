@@ -4,4 +4,4 @@
     %td=file_upload.uploaded_by
     %td=file_upload.created_at.to_date.to_s(:short)
     %td.has-text-right
-      =button_to(I18n.t('clients.buttons.delete'), advisor_client_file_upload_path(client_id: file_upload.client_id, id: file_upload.id), class: 'button is-primary is-small', method: :delete)
+      =client.delete_file_button(file_upload)
