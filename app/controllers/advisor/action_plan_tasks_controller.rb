@@ -1,13 +1,14 @@
 class Advisor::ActionPlanTasksController < Advisor::BaseController
 
   expose :client
-  expose :new_action_plan_task, -> { client.action_plan_tasks.build }
   expose :action_plan_task
+
 
   def index
   end
 
   def new
+    action_plan_task.client_id = client.id
   end
 
   def edit
@@ -44,7 +45,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
     if params[:commit] == 'Save'
       advisor_client_action_plan_tasks_path(client_id: client.id)
     else
-      new_advisor_client_action_plan_tasks_path(client_id: client.id)
+      new_advisor_client_action_plan_task_path(client_id: client.id)
     end
   end
 
