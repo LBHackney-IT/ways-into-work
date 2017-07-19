@@ -2,6 +2,8 @@ class Client < ApplicationRecord
 
   include PgSearch
 
+  acts_as_paranoid
+
   enum rag_status: [ :un_assessed, :red, :amber, :green ]
   enum unemployed_status: [ :unknown, :less_than_1year, :over_1year, :never_worked ]
 

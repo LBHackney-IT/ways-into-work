@@ -4,6 +4,10 @@
   %p=client.decorate_preferred_contact
   %hr
 
+  %p If your client is no longer interested and doesn't want to be contacted
+  =button_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-primary is-small"
+  %br
+
   %p If you scheduled a meeting click here instead
   =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
 

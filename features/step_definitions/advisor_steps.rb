@@ -7,6 +7,17 @@ module AdvisorSH
 end
 World AdvisorSH
 
+When(/^I archive the client$/) do
+  click_on I18n.t('clients.buttons.make_contact')
+  click_on I18n.t('clients.buttons.archive_client')
+end
+
+Then(/^the client should be removed from view$/) do
+  within '#your_clients' do
+    expect(page).not_to have_content(@client.name)
+  end
+end
+
 Given(/^I am an advisor$/) do
   @i = Fabricate(:advisor)
 end

@@ -25,6 +25,12 @@ class Advisor::ClientsController < Advisor::BaseController
     end
   end
 
+  def destroy
+    client.destroy
+    flash[:success] = I18n.t('clients.flashes.success.archived')
+    redirect_to advisor_my_clients_path
+  end
+
   private
     def init_filterrific_table
       @filterrific = initialize_filterrific(

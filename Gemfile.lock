@@ -214,6 +214,8 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    paranoia (2.3.1)
+      activerecord (>= 4.0, < 5.2)
     pg (0.21.0)
     pg_search (2.0.1)
       activerecord (>= 4.2)
@@ -374,6 +376,7 @@ DEPENDENCIES
   kaminari
   launchy
   paperclip
+  paranoia
   pg
   pg_search
   phony_rails

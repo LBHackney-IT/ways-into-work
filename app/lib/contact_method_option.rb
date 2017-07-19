@@ -11,7 +11,7 @@ class ContactMethodOption
     [
       new('Email'),
       new('Phone call'),
-      new('Hub visit')
+      # new('Hub visit')
     ]
   end
 

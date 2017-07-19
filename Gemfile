@@ -41,6 +41,8 @@ gem 'appsignal'
 
 gem 'decent_exposure'
 
+gem 'paranoia'
+
 group :development do
   gem 'bullet'
   gem 'better_errors'
