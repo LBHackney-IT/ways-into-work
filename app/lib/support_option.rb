@@ -22,4 +22,8 @@ class SupportOption
     all.detect{|x| x.id == id}
   end
 
+  def self.display(ids = [])
+    ids.collect{|id| find(id).name}.join(', ')
+  end
+
 end

@@ -23,13 +23,15 @@
         %article.tile.is-child.box
           %h3 Aspirations & Goals
           = client.decorate_objectives
+          = client.decorate_job_goal1
+          = client.decorate_job_goal2
           -# Aspirations
           -# Goals
           = client.decorate_barriers
     .tile.is-parent.is-vertical
       .tile.is-child.box
         %h3 Files
-        %p To be shifted up here still
+        = render partial: '/shared/latest_file_upload'
 
 %br
 #actions= render partial: 'actions'

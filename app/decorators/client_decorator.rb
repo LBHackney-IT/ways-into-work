@@ -49,11 +49,11 @@ class ClientDecorator < Draper::Decorator
   end
 
   def decorate_support_priorities
-    standard_wrapper("Support priorities:", client.support_priorities)
+    standard_wrapper("Support priorities:", SupportOption.display(client.support_priorities))
   end
 
   def decorate_types_of_work
-    standard_wrapper("Industry preference:", client.types_of_work)
+    standard_wrapper("Industry preference:", TypeOfWorkOption.display(client.types_of_work))
   end
 
   def decorate_barriers
@@ -83,6 +83,16 @@ class ClientDecorator < Draper::Decorator
   def decorate_job_title
     standard_wrapper("Job title:", client.job_title)
   end
+
+
+  def decorate_job_goal1
+    standard_wrapper("Job Goal 1:", client.assessment_notes.where(content_key: 'job_goal_1').pluck(:content).join)
+  end
+
+  def decorate_job_goal2
+    standard_wrapper("Job Goal 2:", client.assessment_notes.where(content_key: 'job_goal_2').pluck(:content).join)
+  end
+
 
   def decorate_hours_per_week
     standard_wrapper("Hours per week:", client.working_hours_per_week)
