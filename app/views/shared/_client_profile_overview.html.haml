@@ -5,25 +5,24 @@
         %article.tile.is-child.box
           %h3 Details & Contact
           = client.decorate_name
-          %i.fa.fa-circle{class: client.rag_status}
           = client.decorate_age
           = client.decorate_date_registered
           = client.decorate_email
           = client.decorate_phone
           = client.decorate_address
         %article.tile.is-child.box
-          %h3 Support & Employment
-          -# Support needed
+          %h3
+            \ Support & Work
+            %i.fa.fa-circle{class: client.rag_status}
           = client.decorate_past_education
           = client.decorate_currently_employed
           = client.decorate_studying
           = client.decorate_types_of_work
-          -# Currently studying
+          = client.decorate_support_priorities
       .tile.is-parent
         %article.tile.is-child.box
           %h3 Aspirations & Goals
           = client.decorate_objectives
-          = client.decorate_support_priorities
           -# Aspirations
           -# Goals
           = client.decorate_barriers
@@ -34,6 +33,3 @@
 
 %br
 #actions= render partial: 'actions'
-
-%br
-= render partial: '/shared/latest_file_upload'
