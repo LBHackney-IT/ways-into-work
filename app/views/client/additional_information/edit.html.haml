@@ -7,7 +7,13 @@
   = simple_form_for [current_client], url: :client_additional_information do |form|
     = render 'shared/form_errors', object: form.object
 
-    = render partial: '/advisor/clients/tab_additional', locals: {form: form}
+    .convert_radio
+      =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
+      .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
+
+    .convert_radio
+      =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
+      .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
 
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
