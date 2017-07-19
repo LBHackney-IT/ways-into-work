@@ -1,8 +1,7 @@
 .column
   .head.level
     .level-left
-      %h2="#{client.first_name}'s Ongoing Actions"
-      %span.client_total=client.action_plan_tasks.ongoing.count
+      %h2="#{client.first_name}'s Action Plan"
 
     .level-right
       =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
@@ -11,34 +10,39 @@
 
   .profile-tab
     .column
-      - if client.action_plan_tasks.ongoing.any?
-        %table.table
-          %thead
-            %tr
-              %th Agreed Action
-              %th Due Date
-              %th Action for
-              %th
-          %tbody
-            = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
-      - else
-        %p="#{client.name} has no actions yet"
+      .action-section.ongoing
+        - if client.action_plan_tasks.ongoing.any?
+          .head.level
+            .level-left
+              %h2 Ongoing Actions
+              %span="#{client.action_plan_tasks.ongoing.count} Ongoing"
+          %table.table
+            %thead
+              %tr
+                %th Agreed Action
+                %th Due Date
+                %th Assigned to
+                %th
+            %tbody
+              = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
+        - else
+          %p="#{client.name} has no actions yet"
 
-        =button_to "Create first task", new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
+          =button_to "Create first task", new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
 
       - if client.action_plan_tasks.completed.any?
-        .head.level
-          .level-left
-            %h2 Completed Actions
-            %span
-              =client.action_plan_tasks.completed.count
-        %table.table
-          %thead
-            %tr
-              %th Agreed Action
-              %th Completion Date
-              %th Action for
-              %th
-          %tbody
-            = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'
+        .action-section.completed
+          .head.level
+            .level-left
+              %h2 Completed Actions
+              %span="#{client.action_plan_tasks.completed.count} Completed"
+          %table.table
+            %thead
+              %tr
+                %th Agreed Action
+                %th Completion Date
+                %th Assigned to
+                %th
+            %tbody
+              = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'

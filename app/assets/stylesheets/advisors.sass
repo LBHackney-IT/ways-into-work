@@ -1,3 +1,12 @@
+=assessment-circle
+  color: $color__grey
+  &.amber
+    color: $color__amber
+  &.green
+    color: $color__green
+  &.red
+    color: $color__red
+
 .admin
   background-color: $background
 
@@ -71,6 +80,9 @@ a[data-icon='envelope']
     text-align: center
     color: $white
     margin-bottom: 0.4em
+    margin-top: 0.4em
+  thead th
+    color: white
 
 #client_filters
   margin-bottom: $size-3
@@ -94,14 +106,7 @@ a[data-icon='envelope']
   .client
     td i.fa-circle
       font-size: 24px
-      &.un_assessed
-        color: $color__grey
-      &.amber
-        color: $color__amber
-      &.green
-        color: $color__green
-      &.red
-        color: $color__red
+      +assessment-circle
 
 #tab-list
   ul
@@ -147,6 +152,26 @@ a[data-icon='envelope']
   margin-top: -1px
   .tab
     padding-left: 15px
+  .action-section
+    .table td, .table th
+      padding-left: 0
+    &.completed
+      padding-top: 2em
+  .tile
+    label.label
+      text-transform: uppercase
+    h3 i.fa-circle
+      +assessment-circle
+      font-size: 1.1em
+      margin-left: 0.5em
+
+.form-action
+  margin-top: 2em
+
+body.admin.my_clients.index
+  main.main.section
+    padding-left: 0
+
 
 .top-left-corner
   border-top-left-radius: 0px
