@@ -1,0 +1,33 @@
+=background-image-gradient($color, $url)
+  background-image: linear-gradient(to right, rgba($color, 0.8), rgba($color, 0.5)), url($url)
+
+body.welcome.show
+  .main.section#main 
+    padding-top: 0
+
+.services
+  margin-top: 60px
+  margin-bottom: 30px
+  .column
+    padding: 4em
+    text-align: center
+    color: white
+    background-size: cover
+    img 
+      width: 50%
+      display: block
+      margin: 0 auto 30px auto
+    p 
+      margin-bottom: 2em
+    +mobile
+      padding: 2em
+      img
+        width: 80%
+    &.works
+      +background-image-gradient($color__hackney-works, 'town-hall.png')
+    &.hundred
+      +background-image-gradient($color__hackney-100, 'town-hall.png')
+    &.apprentices
+      +background-image-gradient($color__hackney-apprentices, 'town-hall.png')
+    &.support
+      +background-image-gradient($color__hackney-support, 'town-hall.png')

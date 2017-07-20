@@ -1,3 +1,27 @@
-.column
-  %h2 Page with four options
-  %a{:href => "/hackney_works"} Option for Hackney Works
+.full-width.info
+  .container.columns
+    .column.is-half.is-offset-one-quarter
+      %p.lead Welcome to Hackney Opportunities
+      %p Do you want to learn new skills, get experience in the workplace, start your career or find a new job?
+      %p Whatever your goal, Hackney council provides a range of programmes and services to help you reach your potential. 
+
+.services
+  .columns
+    .column.works
+      =image_tag('hackney-works-white.svg', :alt => 'Hackney Works')
+      %p If you are unemployed or on a low income, the council’s employment service can help you find work or get a better job.
+      %a.button{:href => "/hackney_works"} Hackney Works
+    .column.hundred
+      =image_tag('hackney-100-white.svg', :alt => 'Hackney 100')
+      %p If you are aged 16-19 and passionate about success, you could be one of the Hackney 100, doing a paid work placement in a local business.
+      %a.button{:href => "#"} Hackney 100
+
+  .columns
+    .column.apprentices
+      =image_tag('hackney-apprentices-white.svg', :alt => 'Hackney Apprentices')
+      %p The council and its partners offer a range of high quality opportunities to help you take the first step in your career.
+      %a.button{:href => "#"} Hackney Apprentices
+    .column.support
+      =image_tag('hackney-support-white.svg', :alt => 'Hackney Support')
+      %p The Adult Learning Service provides a range of courses to help you learn new skills. Courses include English, Maths, ICT, ESOL and vocational training.
+      %a.button{:href => "#"} Hackney Support
