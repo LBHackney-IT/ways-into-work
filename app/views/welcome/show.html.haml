@@ -1,36 +1,3 @@
 .column
-  %h2.subtitle Welcome to Ways Into Work
-
-  %p We support Hackney residents who are looking for jobs, apprenticeships, training or volunteering opportunities.
-
-  %p We will support any Hackney resident who is out of work or currently earning less than £18,000.
-
-  %p We can help:
-  %ul
-    %li People who have been out of work for a long time.
-    %li Young people looking for their first job or apprenticeship.
-    %li People in low paid or insecure work who want to find a better job.
-    %li People who want to retrain or upskill.
-    %li Parents who want to find work they can fit around childcare.
-
-  %p Whatever your situation, our team of our experienced advisors will work with you to plan out your next steps. We will help you to find the right opportunities for you so that you can achieve your goals.
-
-
-  %br
-  %br
-  %p other elements needed: meet the team / see latest opportunities / register for the service
-  %p= link_to "Meet the team", hubs_path
-
-  %p our success stories
-
-  %ul
-    %li Andre was looking to start a career in construction...
-    %li Sarah wanted to find part time work to fit around childcare...
-    %li Pamela had recently lost her job and wanted to find work as a receptionist...
-    %li Hayel had been unemployed for five years and wanted support...
-
-
-
-  - unless user_login_signed_in?
-    = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Ways into Work service", class: 'button is-primary'
-
+  %h2 Page with four options
+  %a{:href => "/hackney_works"} Option for Hackney Works
