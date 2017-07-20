@@ -1,36 +1,27 @@
-.column
-  %h2.subtitle Welcome to Ways Into Work
+.full-width.info
+  .container.columns
+    .column.is-half.is-offset-one-quarter
+      %p.lead Welcome to Hackney Opportunities
+      %p Do you want to learn new skills, get experience in the workplace, start your career or find a new job?
+      %p Whatever your goal, Hackney council provides a range of programmes and services to help you reach your potential. 
 
-  %p We support Hackney residents who are looking for jobs, apprenticeships, training or volunteering opportunities.
+.services
+  .columns
+    .column.works
+      =image_tag('hackney-works-white.svg', :alt => 'Hackney Works')
+      %p If you are unemployed or on a low income, the council’s employment service can help you find work or get a better job.
+      %a.button{:href => "/hackney_works"} Hackney Works
+    .column.hundred
+      =image_tag('hackney-100-white.svg', :alt => 'Hackney 100')
+      %p If you are aged 16-19 and passionate about success, you could be one of the Hackney 100, doing a paid work placement in a local business.
+      %a.button{:href => "#"} Hackney 100
 
-  %p We will support any Hackney resident who is out of work or currently earning less than £18,000.
-
-  %p We can help:
-  %ul
-    %li People who have been out of work for a long time.
-    %li Young people looking for their first job or apprenticeship.
-    %li People in low paid or insecure work who want to find a better job.
-    %li People who want to retrain or upskill.
-    %li Parents who want to find work they can fit around childcare.
-
-  %p Whatever your situation, our team of our experienced advisors will work with you to plan out your next steps. We will help you to find the right opportunities for you so that you can achieve your goals.
-
-
-  %br
-  %br
-  %p other elements needed: meet the team / see latest opportunities / register for the service
-  %p= link_to "Meet the team", hubs_path
-
-  %p our success stories
-
-  %ul
-    %li Andre was looking to start a career in construction...
-    %li Sarah wanted to find part time work to fit around childcare...
-    %li Pamela had recently lost her job and wanted to find work as a receptionist...
-    %li Hayel had been unemployed for five years and wanted support...
-
-
-
-  - unless user_login_signed_in?
-    = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Ways into Work service", class: 'button is-primary'
-
+  .columns
+    .column.apprentices
+      =image_tag('hackney-apprentices-white.svg', :alt => 'Hackney Apprentices')
+      %p The council and its partners offer a range of high quality opportunities to help you take the first step in your career.
+      %a.button{:href => "#"} Hackney Apprentices
+    .column.support
+      =image_tag('hackney-support-white.svg', :alt => 'Hackney Support')
+      %p The Adult Learning Service provides a range of courses to help you learn new skills. Courses include English, Maths, ICT, ESOL and vocational training.
+      %a.button{:href => "#"} Hackney Support

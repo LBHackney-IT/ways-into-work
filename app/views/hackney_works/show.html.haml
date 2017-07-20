@@ -1,0 +1,53 @@
+.full-width.hero
+  .container.columns.main
+    .column.is-half.is-offset-one-quarter
+      =image_tag('hackney-works-white.svg', :alt => 'Hackney Works')
+      %h1 Find your opportunity
+      %p We support Hackney residents looking for jobs, apprenticeships, training or volunteering.
+      = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+  .content
+    .container.columns
+      .column.is-half.is-offset-one-quarter
+        If you are a Hackney resident and currently out of work or earning less than £18,000, our free service can help you.
+
+.container.points
+  %h2 We can help when
+  .columns
+    .column.point
+      .img-container
+        =image_tag('icons/calendar.svg', :alt => 'Calendar icon')
+      %p You've been out of work for a little while
+    .column.point
+      .img-container
+        =image_tag('icons/signs.svg', :alt => 'Signs icon')
+      %p You're making your first steps
+    .column.point
+      .img-container
+        =image_tag('icons/network.svg', :alt => 'Network icon')
+      %p You want to find a better job
+    .column.point
+      .img-container
+        =image_tag('icons/education.svg', :alt => 'Education icon')
+      %p You want to retrain or upskill
+    .column.point
+      .img-container
+        =image_tag('icons/share.svg', :alt => 'Share icon')
+      %p You want to find work around childcare
+
+.full-width.info.dark
+  .container.columns
+    .column.is-half.is-offset-one-quarter
+      %h2 What people say about us
+
+.full-width.columns.testimonials
+  .column
+    %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, eligendi nostrum id totam magni quia nam ad assumenda perferendis earum? Praesentium molestiae iusto, sapiente maxime nobis error natus corporis possimus."
+  .column
+    %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque praesentium nesciunt provident iure nulla! Nam dolorum voluptatibus ipsum vel dolores delectus. Enim rerum dolorum ab voluptatem recusandae placeat sint. Odio."
+  .column
+    %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi facilis, ipsam nam odio quam sit magnam molestias, beatae tempora perspiciatis quas omnis quis hic cumque sed at impedit voluptate, ducimus."
+
+  -#%p= link_to "Meet the team", hubs_path
+  -# - unless user_login_signed_in?
+    -# = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Ways into Work service", class: 'button is-primary'
+

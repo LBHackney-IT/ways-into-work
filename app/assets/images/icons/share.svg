@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="38px" viewBox="0 0 51 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>WiW Homepage 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="WiW-Homepage-1" transform="translate(-928.000000, -1606.000000)">
+            <g id="Group-3" transform="translate(0.000000, 731.000000)" fill="#FFFFFF">
+                <polygon id="Fill-1" points="0 1862 1103 1862 1103 0 0 0"></polygon>
+                <polygon id="Fill-2" points="0 1862 1103 1862 1103 0 0 0"></polygon>
+            </g>
+            <g id="Group-51" transform="translate(0.000000, 909.000000)"></g>
+            <g id="Group-111" transform="translate(81.000000, 1517.000000)"></g>
+            <g id="Group-169" transform="translate(127.000000, 1595.000000)" stroke="#009CA6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M823.37014,26.049129 C823.37014,26.049129 820.16505,17.9997 813.75404,17.9997 L801.9998,17.9997" id="Stroke-125"></path>
+                <path d="M851.15254,18 L839.39831,18 C828.71271,18.4842857 824.43983,42 813.75424,42 L802,42" id="Stroke-127"></path>
+                <path d="M828.7131,35.7765 C828.7131,35.7765 832.987676,42.260786 839.39869,42.000214 L851.15293,42.000214" id="Stroke-129"></path>
+                <polyline id="Stroke-131" points="846.9153 12 851.152588 18 846.9153 24"></polyline>
+                <polyline id="Stroke-133" points="846.9153 36 851.152588 42 846.9153 48"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

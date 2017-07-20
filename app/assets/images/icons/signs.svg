@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="51px" viewBox="0 0 51 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>WiW Homepage 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="WiW-Homepage-1" transform="translate(-333.000000, -1597.000000)">
+            <g id="Group-3" transform="translate(0.000000, 731.000000)" fill="#FFFFFF">
+                <polygon id="Fill-1" points="0 1862 1103 1862 1103 0 0 0"></polygon>
+                <polygon id="Fill-2" points="0 1862 1103 1862 1103 0 0 0"></polygon>
+            </g>
+            <g id="Group-51" transform="translate(0.000000, 909.000000)"></g>
+            <g id="Group-111" transform="translate(81.000000, 1517.000000)"></g>
+            <g id="Group-169" transform="translate(127.000000, 1595.000000)" stroke="#009CA6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M230.6552,38.4828 L230.6552,52.00004" id="Stroke-157"></path>
+                <path d="M230.6552,3 L230.6552,6.37931" id="Stroke-159"></path>
+                <path d="M230.6552,19.8966 L230.6552,24.965566" id="Stroke-161"></path>
+                <polygon id="Stroke-163" points="249.24141 19.89654 212.069 19.89654 212.069 6.3793 249.24141 6.3793 256.00003 13.137921"></polygon>
+                <polygon id="Stroke-165" points="213.758621 38.48274 250.93103 38.48274 250.93103 24.9655 213.758621 24.9655 207 31.724121"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

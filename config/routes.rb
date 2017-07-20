@@ -4,6 +4,8 @@ WaysIntoWork::Application.routes.draw do
 
   root to: 'welcome#show'
 
+  get 'hackney_works' => 'hackney_works#show'
+
   get 'outside_hackney' => 'eligibility#outside_hackney'
   get 'just_registered' => 'just_registered#show'
 

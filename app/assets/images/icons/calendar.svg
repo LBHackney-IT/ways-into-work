@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>WiW Homepage 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.25 8.25 6.25 8.25 6.25 0.75 0.25 0.75"></polygon>
+        <polygon id="path-3" points="0.75 8.25 6.75 8.25 6.75 0.75 0.75 0.75"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="WiW-Homepage-1" transform="translate(-127.000000, -1602.000000)">
+            <g id="Group-3" transform="translate(0.000000, 731.000000)" fill="#FFFFFF">
+                <polygon id="Fill-1" points="0 1862 1103 1862 1103 0 0 0"></polygon>
+                <polygon id="Fill-2" points="0 1862 1103 1862 1103 0 0 0"></polygon>
+            </g>
+            <g id="Group-51" transform="translate(0.000000, 909.000000)"></g>
+            <g id="Group-111" transform="translate(81.000000, 1517.000000)"></g>
+            <g id="Group-169" transform="translate(127.000000, 1595.000000)" stroke-linecap="round" stroke-width="1.5" stroke="#009CA6" stroke-linejoin="round">
+                <polygon id="Stroke-167" points="8.31515 12.25 36.7499 12.25 44.2499 12.25 44.2499 51.25 0.7499 51.25 0.7499 12.25"></polygon>
+            </g>
+            <g id="Group-180" transform="translate(135.000000, 1602.000000)">
+                <g id="Group-172">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-171"></g>
+                    <polygon id="Fill-170" fill="#FFFFFF" mask="url(#mask-2)" points="-4.75 13.25 11.25 13.25 11.25 -4.25 -4.75 -4.25"></polygon>
+                </g>
+                <polygon id="Stroke-173" stroke="#009CA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="0.25 8.25 6.25 8.25 6.25 0.75 0.25 0.75"></polygon>
+                <g id="Group-177" transform="translate(22.000000, 0.000000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-176"></g>
+                    <polygon id="Fill-175" fill="#FFFFFF" mask="url(#mask-4)" points="-4.25 13.25 11.75 13.25 11.75 -4.25 -4.25 -4.25"></polygon>
+                </g>
+                <polygon id="Stroke-178" stroke="#009CA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="22.75 8.25 28.75 8.25 28.75 0.75 22.75 0.75"></polygon>
+            </g>
+            <g id="Group-194" transform="translate(127.000000, 1607.000000)" stroke="#009CA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.25,0.25 L30.75,0.25" id="Stroke-181"></path>
+                <path d="M0.75,9.25 L44.25,9.25" id="Stroke-183"></path>
+                <polyline id="Stroke-185" points="17.25 31.68485 17.25 16.7501 13.5 20.5001"></polyline>
+                <path d="M13.5,31.75 L21,31.75" id="Stroke-187"></path>
+                <polyline id="Stroke-189" points="26.2826 31.68485 32.2496 16.7501 23.2496 16.7501 23.2496 18.44585"></polyline>
+                <path d="M25.3366,24.25 L31.0111,24.25" id="Stroke-191"></path>
+            </g>
+        </g>
+    </g>
+</svg>
