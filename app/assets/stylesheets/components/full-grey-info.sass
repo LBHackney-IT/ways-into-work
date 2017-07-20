@@ -1,14 +1,16 @@
 .full-width
   width: 100vw
-  position: relative
-  left: 50%
-  right: 50%
-  margin-left: -50vw
-  margin-right: -50vw
+  margin-left: calc(50% - 50vw)
+  margin-right: calc(50% - 50vw)
   &.info
     background: $white-ter
-    padding: 5em 1em
+    padding: 3em 1em
     text-align: center
+    &.dark
+      background: $black-ter
+      *
+        color: white
+        font-weight: normal
   p.lead
     text-transform: uppercase
     font-weight: bold
