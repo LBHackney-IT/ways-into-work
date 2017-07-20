@@ -20,7 +20,7 @@
         .column
           =form.input :phone, as: :tel, :input_html => { :class => 'input' }
 
-      = form.input :preferred_contact_method, as: :radio_buttons, collection: ContactMethodOption.all, label: 'Do you have a preffered contact method?',  wrapper_html: { class: "convert_radio" }
+      = form.input :preferred_contact_method, as: :radio_buttons, collection: ContactMethodOption.all, label: 'Do you have a preferred contact method?',  wrapper_html: { class: "convert_radio" }
 
       .columns
         .column
