@@ -1,11 +1,11 @@
 .nav-left
-  = link_to I18n.t('header.title'), root_url, class: 'nav-item is-brand bold'
+  = link_to I18n.t('header.title'), :hackney_works, class: 'nav-item is-brand bold'
 %span.nav-toggle
   %span
   %span
   %span
 .nav-right.nav-menu
-  = link_to "Home", root_url, class: "nav-item is-tab #{cp(root_url)}"
+  = link_to "Home", :hackney_works, class: "nav-item is-tab #{cp(root_url)}"
   = link_to "Meet the team", hubs_path, class: "nav-item is-tab #{cp(hubs_path)}"
   -if cp(user_login_session_path) == "current"
     = link_to "Sign Up", new_client_path, class: "nav-item is-tab #{cp(new_client_path)}"
