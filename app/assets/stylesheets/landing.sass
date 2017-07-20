@@ -1,7 +1,8 @@
 =background-image-gradient($color, $url)
   background-image: linear-gradient(to right, rgba($color, 0.8), rgba($color, 0.5)), url($url)
 
-body.welcome.show
+body.welcome.show,
+.hackney_works.show
   .main.section#main 
     padding-top: 0
 
@@ -31,3 +32,26 @@ body.welcome.show
       +background-image-gradient($color__hackney-apprentices, 'town-hall.png')
     &.support
       +background-image-gradient($color__hackney-support, 'town-hall.png')
+
+.full-width.hero
+  +background-image-gradient($color__hackney-works, 'town-hall.png')
+  background-size: cover
+  background-position: bottom
+  padding: 4em 0 0 0
+  text-align: center
+  color: white
+  h1 
+    text-transform: uppercase
+    color: white
+    font-weight: bold
+  p 
+    font-size: 1.25em
+    margin-bottom: 1.25em
+  .button.is-primary
+    border: 1px solid white
+  .content
+    margin-top: 30px
+    background: $white-ter
+    width: 100%
+    padding: 2em 1em 2.5em 1em
+    text-align: center
