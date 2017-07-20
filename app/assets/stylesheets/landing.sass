@@ -5,6 +5,8 @@ body.welcome.show,
 .hackney_works.show
   .main.section#main 
     padding-top: 0
+    @media screen and (max-width: 960px)
+      padding-top: 12px
 
 .services
   margin-top: 60px
@@ -44,6 +46,8 @@ body.welcome.show,
   padding: 4em 0 0 0
   text-align: center
   color: white
+  .main
+    padding: 0 1em
   h1 
     text-transform: uppercase
     color: white
@@ -83,9 +87,12 @@ body.welcome.show,
       display: block
       margin: 0 auto
       text-align: center
-      font-size: 1.25
       color: white
       padding-bottom: 2em
+      +mobile
+        width: 100%
+        padding-left: 1em
+        padding-right: 1em
     &:nth-child(1)
       +background-image-gradient(0deg, $black-ter, 'people/1.png', 0.5)
     &:nth-child(2)
