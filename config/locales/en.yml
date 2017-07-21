@@ -4,6 +4,7 @@
 en:
   header:
     title: "Hackney Works"
+    root_title: "Hackney Opportunities"
   buttons:
     all_clients: "View all clients"
     my_clients: "View my clients"

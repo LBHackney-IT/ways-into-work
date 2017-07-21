@@ -1,9 +1,9 @@
 =background-image-gradient($angle, $color, $url, $amount: 0.8)
-  background-image: linear-gradient($angle, rgba($color, $amount), rgba($color, $amount - 0.2)), url($url)
+  background-image: linear-gradient($angle, rgba($color, $amount), rgba($color, $amount - 0.2)), image-url($url)
 
 body.welcome.show,
 .hackney_works.show
-  .main.section#main 
+  .main.section#main
     padding-top: 0
     @media screen and (max-width: 960px)
       padding-top: 12px
@@ -16,11 +16,11 @@ body.welcome.show,
     text-align: center
     color: white
     background-size: cover
-    img 
+    img
       width: 50%
       display: block
       margin: 0 auto 30px auto
-    p 
+    p
       margin-bottom: 2em
     .button
       background: transparent
@@ -48,11 +48,11 @@ body.welcome.show,
   color: white
   .main
     padding: 0 1em
-  h1 
+  h1
     text-transform: uppercase
     color: white
     font-weight: bold
-  p 
+  p
     font-size: 1.25em
     margin-bottom: 1.25em
   .button.is-primary
