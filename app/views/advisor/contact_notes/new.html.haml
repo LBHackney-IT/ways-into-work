@@ -7,13 +7,16 @@
 
   .box
     %h2 Scheduled new meeting
-    %p If you scheduled a meeting click here 
+    %p Use if: you successfully booked a meeting with the client
     =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
 
   .box
     %h2 Contacted client
     
-    %p Make a note that you contacted the client - even if it was unsuccessful. If you only arranged a meeting, you do not need to also fill this out.
+    %p Use if
+    %ul
+      %li You contacted the client, but did not book a meeting
+      %li You tried to contact the client and was unsuccessful
 
     = simple_form_for [client, contact_note], url: advisor_client_contact_notes_path(client_id: client.id) do |form|
 
@@ -34,5 +37,5 @@
 
   .box
     %h2 Archive client and opt-out
-    %p If your client is no longer interested and doesn't want to be contacted
+    %p Use if: your client is no longer interested and doesn't want to be contacted
     =button_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-danger is-small"
