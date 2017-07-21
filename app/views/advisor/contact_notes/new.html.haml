@@ -1,32 +1,38 @@
 .column.is-10.is-offset-1
 
-  %h3.subtitle="Contacting #{client.name}"
+  %h1.name="#{client.name}"
   %p=client.decorate_preferred_contact
+
   %hr
 
-  %p If your client is no longer interested and doesn't want to be contacted
-  =button_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-primary is-small"
-  %br
+  .box
+    %h2 Scheduled new meeting
+    %p If you scheduled a meeting click here 
+    =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
 
-  %p If you scheduled a meeting click here instead
-  =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
+  .box
+    %h2 Contacted client
+    
+    %p Make a note that you contacted the client - even if it was unsuccessful. If you only arranged a meeting, you do not need to also fill this out.
 
-  %br
+    = simple_form_for [client, contact_note], url: advisor_client_contact_notes_path(client_id: client.id) do |form|
 
-  %p Or make a note that you made contact or tried contacting your client
+      = render 'shared/form_errors', object: form.object
 
-  = simple_form_for [client, contact_note], url: advisor_client_contact_notes_path(client_id: client.id) do |form|
+      %fieldset
+        .convert_radio.field
+          =form.input :contact_method, as: :radio_buttons, collection: ContactMethodOption.all, :label => 'How did you communicate with them?', include_hidden: false
+        
+        .field
+          =form.input :content, as: :text, :input_html => { :class => "textarea" }
 
-    = render 'shared/form_errors', object: form.object
+        =form.input :client_id, as: :hidden
+        =form.input :advisor_id, as: :hidden
 
-    %fieldset
-      .convert_radio
-        =form.input :contact_method, as: :radio_buttons, collection: ContactMethodOption.all, :label => 'How did you communicate with them?', include_hidden: false
+      .control
+        = form.submit I18n.t('clients.buttons.save'), :class => 'button is-primary'
 
-      =form.input :content, as: :text, :input_html => { :class => "textarea" }
-
-      =form.input :client_id, as: :hidden
-      =form.input :advisor_id, as: :hidden
-
-    .control
-      = form.submit I18n.t('clients.buttons.save'), :class => 'button is-primary'
+  .box
+    %h2 Archive client and opt-out
+    %p If your client is no longer interested and doesn't want to be contacted
+    =button_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-danger is-small"
