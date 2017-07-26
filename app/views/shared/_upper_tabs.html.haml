@@ -5,5 +5,5 @@
     %span="#{the_client.first_name}'s Meetings"
   = link_to advisor_client_action_plan_tasks_path(client_id: the_client.id), class: "single-tab #{cp(advisor_client_action_plan_tasks_path(client_id: the_client.id))}" do
     %span="#{the_client.first_name}'s Action Plan"
-  %a.single-tab{href: "#"}
-    %span="#{the_client.first_name}'s Timeline"
+  = link_to advisor_client_contact_notes_path(client_id: the_client.id), class: "single-tab #{cp(new_advisor_client_contact_note_path(client_id: the_client.id))}" do
+    %span="#{the_client.first_name}'s Contact Timeline"

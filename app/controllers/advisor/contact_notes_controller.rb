@@ -4,6 +4,10 @@ class Advisor::ContactNotesController < Advisor::BaseController
 
   expose :contact_note
 
+  def index
+    init_contact_note
+  end
+
   def new
     init_contact_note
   end

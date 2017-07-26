@@ -22,7 +22,9 @@ class ClientsController < ApplicationController
   private
 
   def init_client
-    if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
+    if client_params[:postcode].blank?
+      client.errors.add(:postcode, "can't be blank")
+    elsif ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
       client.assign_team_leader(ward_mapit_code)
       client.login.generate_default_password
     else

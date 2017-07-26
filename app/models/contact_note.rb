@@ -6,6 +6,6 @@ class ContactNote < ApplicationRecord
   validates :client_id, :advisor_id, :content, presence: true
 
   def contact_date
-    self.created_at.to_date.to_s(:short)
+    self.created_at.to_date.to_s(:short) if self.created_at
   end
 end

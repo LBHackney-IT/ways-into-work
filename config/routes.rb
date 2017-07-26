@@ -15,7 +15,7 @@ WaysIntoWork::Application.routes.draw do
       resources :file_uploads, only: [:create, :new, :destroy]
       resources :meetings
       resources :action_plan_tasks
-      resources :contact_notes, only: [:create, :new]
+      resources :contact_notes, only: [:create, :new, :index]
     end
 
     resources :my_clients, only: :index
