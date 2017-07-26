@@ -1,6 +1,21 @@
 class Advisor::ClientsController < Advisor::BaseController
 
   expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
+  before_action :init_client, only: :create
+
+  def new
+    client.build_login
+  end
+
+  def create
+    if client.save
+      # client.login.send_reset_password_instructions if client.login
+      redirect_to edit_advisor_client_path(client)
+    else
+      render :new
+    end
+  end
+
 
   def index
     init_filterrific_table
@@ -15,7 +30,7 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   def update
-    if client.update_attributes(client_params)
+    if client.update_attributes(edit_client_params)
       flash[:success] = I18n.t('clients.flashes.success.updated')
       redirect_back(fallback_location: root_path)
     else
@@ -32,6 +47,15 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   private
+    def init_client
+      if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
+        client.assign_team_leader(ward_mapit_code)
+        client.login.generate_default_password
+      else
+        redirect_to :outside_hackney
+      end
+    end
+
     def init_filterrific_table
       @filterrific = initialize_filterrific(
         Client,
@@ -62,6 +86,20 @@ class Advisor::ClientsController < Advisor::BaseController
 
     def client_params
       params.require(:client).permit(
+        :title,
+        :first_name,
+        :last_name,
+        :phone,
+        :preferred_contact_method,
+        :address_line_1,
+        :address_line_2,
+        :postcode,
+        login_attributes: [ :email ]
+        )
+    end
+
+    def edit_client_params
+      params.require(:client).permit(
         :other_objective,
         :other_support_priority,
         :other_type_of_work,
@@ -70,6 +108,7 @@ class Advisor::ClientsController < Advisor::BaseController
         :other_personal_trait,
         :other_gender,
         :other_bame,
+        :date_of_birth,
         :bame,
         :studying,
         :studying_part_time,
@@ -77,11 +116,8 @@ class Advisor::ClientsController < Advisor::BaseController
         :current_education,
         :care_leaver,
         :employed,
-        :has_children,
         :job_title,
-        :single_parent,
         :working_hours_per_week,
-        :below_living_wage,
         :health_conditions,
         :affected_by_welfare,
         :funded,

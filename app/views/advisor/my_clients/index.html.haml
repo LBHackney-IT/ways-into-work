@@ -7,6 +7,7 @@
         %span.client_total="#{current_advisor.clients.count} Total (#{@clients_requiring_contact.count} need initial contact)"
       -else
         %span.client_total="#{current_advisor.clients.count} Total"
+      = link_to 'New', :new_advisor_client, class: "button"
 
   -if @clients_requiring_contact.any?
     %section#clients_needing_appointment.hero.section

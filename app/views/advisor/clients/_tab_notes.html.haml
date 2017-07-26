@@ -1,5 +1,3 @@
 %h3 Notes
 
 = render partial: 'assessment_note', locals: {form: form, note: @general_notes, label: 'General notes', type: :text }
-
-=form.input :rag_status, as: :radio_buttons, label: 'Assessment status:', collection: [["Red",:red], ["Amber", :amber], ["Green", :green]], wrapper_html: { class: "convert_radio" }

@@ -5,7 +5,6 @@
 .is-hidden.on-true
   =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
   =form.input :working_hours_per_week, as: :integer, :label => 'How many hours per week do you currently work?', :input_html => { :class => 'input' }
-  =form.input :below_living_wage, as: :radio_buttons, :label => 'Are the earnings from your job below the living wage?', wrapper_html: { class: "convert_radio" }
 
 = render partial: 'assessment_note', locals: {form: form, note: @work_experience_notes, label: 'Details of past work experience', type: :text }
 

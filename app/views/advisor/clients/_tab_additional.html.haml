@@ -4,6 +4,12 @@
   =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
   .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
 
+=form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input'}, placeholder: "dd/mm/yyyy"
+
+.convert_radio
+  =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
+  .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
+
 =form.input :receive_benefits, as: :radio_buttons, :label => 'Do you receive any work related benefits?', wrapper_html: { class: "convert_radio" }
 
 =form.input :funded, as: :radio_buttons, :label => 'Are you being funded by the FSF program or similar funding stream?', wrapper_html: { class: "convert_radio" }
@@ -14,11 +20,4 @@
 
 =form.input :care_leaver, as: :radio_buttons, :label => 'Have you recently left care?', wrapper_html: { class: "convert_radio" }
 
-=form.input :has_children, as: :radio_buttons, :label => 'Do you have any children?', wrapper_html: { class: "convert_radio has_child" }
-
-.is-hidden.on-true
-  =form.input :single_parent, as: :radio_buttons, :label => 'Are you a single parent?', :wrapper_html => { class: 'convert_radio' }
-
-.convert_radio
-  =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
-  .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
+=form.input :rag_status, as: :radio_buttons, label: 'Assessment status:', collection: [["Red",:red], ["Amber", :amber], ["Green", :green]], wrapper_html: { class: "convert_radio" }

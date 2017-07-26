@@ -1,19 +1,21 @@
 .column.is-12.has-text-centered
   = render partial: 'shared/profile_steps'
 
-.column
+.column.reg-flow
   %h2.subtitle=I18n.t('clients.steps.additional_information.long')
 
   = simple_form_for [current_client], url: :client_additional_information do |form|
     = render 'shared/form_errors', object: form.object
 
     .convert_radio
-      =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
-      .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
+      =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender'
+      .convert_checkbox.additional= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
 
     .convert_radio
       =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
-      .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
+      .convert_checkbox.additional= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
+
+    =form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input'}, placeholder: "dd/mm/yyyy"
 
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
