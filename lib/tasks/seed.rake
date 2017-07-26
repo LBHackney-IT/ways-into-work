@@ -1,6 +1,8 @@
 require "#{Rails.root}/db/fixtures/seed_helper.rb"
+require "#{Rails.root}/lib/seeders/client_seeder.rb"
 
 namespace :db do
+
   desc "Loads seed data from db/fixtures for the current environment."
   task :seed => :environment do
     # Dir[File.join(Rails.root, fixture_path, Rails.env, '*.rb')].sort.each { |fixture|
@@ -10,4 +12,12 @@ namespace :db do
       puts "=" * 60 + "\n"
     }
   end
+
+  desc "Create client data"
+  task :import_clients => :environment do
+    filepath = "#{Rails.root}/lib/assets/Woodberry_Down_Active_Caseload.csv"
+    puts "importing from #{filepath}"
+    ClientSeeder.new(filepath).import
+  end
+
 end
