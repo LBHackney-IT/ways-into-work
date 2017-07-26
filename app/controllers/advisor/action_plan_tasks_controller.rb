@@ -56,7 +56,8 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
       :advisor_id,
       :client_id,
       :due_date,
-      :status
+      :status,
+      :outcome
       ])
   end
 
