@@ -1,5 +1,9 @@
 = simple_form_for [client.object], url: advisor_client_path(client.object), method: :put do |form|
   #tabs.container
+    - if client.advisor == current_advisor
+      = link_to "Back to your clients", user_root, class: "back admin"
+    - else
+      = link_to "Back to all clients", :advisor_clients, class: "back admin"
     .column
       .head.level
         .level-left
@@ -10,7 +14,7 @@
             %span.client_total="#{client.advisor.name} is #{client.first_name}'s advisor"
 
         .level-right
-          = form.submit 'Save', :class => 'button is-primary'
+          = form.submit 'Save profile', :class => 'button is-primary'
 
       = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
