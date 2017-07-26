@@ -1,25 +1,26 @@
 .column.is-12.has-text-centered
   = render partial: 'shared/profile_steps'
-.column
+
+.column.reg-flow
   %h2.subtitle=I18n.t('clients.steps.objectives.long')
 
   = simple_form_for [current_client], url: :client_objectives do |form|
     = render 'shared/form_errors', object: form.object
     %p.help Choose as many options that apply to you in all three questions below.
 
-    .convert_checkbox
+    .convert_checkbox.full
       =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with us?', include_hidden: false
 
       = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 
     %br
-    .convert_checkbox
+    .convert_checkbox.full
       =form.input :support_priorities, as: :check_boxes, collection: SupportOption.all, :label => 'What would you like support with?', include_hidden: false
 
       = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
     %br
-    .convert_checkbox
+    .convert_checkbox.full
       =form.input :types_of_work, as: :check_boxes, collection: TypeOfWorkOption.all, :label => 'What types of work are you looking for?', include_hidden: false
 
       = render partial: 'shared/other_text', locals: { form: form, field: :other_type_of_work }
