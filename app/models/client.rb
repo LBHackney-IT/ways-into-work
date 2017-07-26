@@ -12,7 +12,7 @@ class Client < ApplicationRecord
   has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
 
-  validates :login, :first_name, :last_name, :phone, :date_of_birth, :postcode, :advisor, :hub, presence: true
+  validates :login, :first_name, :last_name, :phone, :postcode, :advisor, :hub, presence: true
 
   delegate :email, to: :login
 

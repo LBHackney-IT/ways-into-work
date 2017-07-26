@@ -15,20 +15,20 @@ body
 
 
 #profile_steps
-  margin-bottom: $size-3
+  margin-top: 1em
   .button_to
     display: inline
-    transform: rotate(-5deg)
-    .button.is-white
-      background-color: rgba($primary, 0.05)
-      &:hover
-        background-color: rgba($primary, 0.1)
-      &:disabled
-        background-color: transparent
     input
-      +mobile
-        width: 49%
-        margin-bottom: 0.25rem
+      background: $hackney-brand
+      border-radius: 50%
+      width: 10px
+      height: 10px
+      display: inline
+      padding: 0
+      margin-left: 0.5em
+      margin-right: 0.5em
+      &[disabled]
+        background: $grey-light
 
 
 #watermark

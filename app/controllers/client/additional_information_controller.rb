@@ -25,11 +25,10 @@ class Client::AdditionalInformationController < Client::BaseController
   def client_params
     params.require(:client).permit(
       :gender,
+      :date_of_birth,
       :other_gender,
       :receive_benefits,
       :care_leaver,
-      :has_children,
-      :single_parent
       )
   end
 end
