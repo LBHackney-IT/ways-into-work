@@ -1,5 +1,5 @@
 .column.is-10.is-offset-1
-
+  = render partial: 'navigation_back', locals: {client: client}
   %h3.subtitle="Contacting #{client.name}"
   %p=client.decorate_preferred_contact
   %hr
