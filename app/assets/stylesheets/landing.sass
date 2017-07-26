@@ -1,4 +1,4 @@
-=background-image-gradient($angle, $color, $url, $amount: 0.8)
+=background-image-gradient($angle, $color, $url, $amount: 0.75)
   background-image: linear-gradient($angle, rgba($color, $amount), rgba($color, $amount - 0.2)), image-url($url)
 
 body.welcome.show,
@@ -35,9 +35,15 @@ body.welcome.show,
     &.hundred
       +background-image-gradient(90deg, $color__hackney-100, 'town-hall.png')
     &.apprentices
-      +background-image-gradient(90deg, $color__hackney-apprentices, 'town-hall.png')
+      +background-image-gradient(90deg, $color__hackney-apprentices, 'apprentice-graphic.jpg')
     &.support
-      +background-image-gradient(90deg, $color__hackney-support, 'town-hall.png')
+      +background-image-gradient(90deg, $color__hackney-support, 'support-graphic.jpg')
+      * 
+        color: black
+      .button
+        border-color: black
+      h2
+        padding: 75px 1em
 
 .full-width.hero
   +background-image-gradient(90deg, $color__hackney-works, 'town-hall.png')
@@ -76,6 +82,8 @@ body.welcome.show,
       height: 51px
     p
       margin-top: 1em
+  .button
+    margin-bottom: 2em
 
 .testimonials
   .column
