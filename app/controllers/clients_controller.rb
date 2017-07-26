@@ -33,7 +33,6 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(
       :title,
-      :date_of_birth,
       :first_name,
       :last_name,
       :phone,
