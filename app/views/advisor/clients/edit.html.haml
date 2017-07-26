@@ -10,10 +10,7 @@
             %span.client_total="#{client.advisor.name} is #{client.first_name}'s advisor"
 
         .level-right
-          - if client.advisor == current_advisor
-            = link_to "Back to your clients", user_root, class: "button nav-back"
-          - else
-            = link_to "Back to all clients", :advisor_clients, class: "button nav-back"
+          = link_to "Back to my clients", :advisor_my_clients, class: "button nav-back"
           = form.submit 'Save profile', :class => 'button is-primary'
 
       = render partial: 'shared/upper_tabs', locals: {the_client: client}
