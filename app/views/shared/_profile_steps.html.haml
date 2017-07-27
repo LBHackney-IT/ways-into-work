@@ -1,3 +1,4 @@
 #profile_steps
   = profile_steps.decorated do |decorated_step|
-    = button_to "", decorated_step.href, decorated_step.properties
+    = link_to decorated_step.href, decorated_step.properties do
+      %span #{decorated_step.name}
