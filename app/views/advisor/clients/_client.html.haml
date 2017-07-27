@@ -6,4 +6,8 @@
   %td
     %i.fa.fa-circle{class: client.rag_status}
   %td.has-text-right
-    =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small" unless client.advisor == current_advisor
+    -if client.advisor == current_advisor
+      =button_to 'View details', edit_advisor_client_path(client), method: :get, class: "button is-small"
+    -else
+      =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small" 
+    
