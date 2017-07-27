@@ -7,7 +7,8 @@
         %span.client_total="#{current_advisor.clients.count} Total (#{@clients_requiring_contact.count} need initial contact)"
       -else
         %span.client_total="#{current_advisor.clients.count} Total"
-      = link_to 'New', :new_advisor_client, class: "button"
+    .level-right.column
+      = link_to 'Create new client', :new_advisor_client, class: "button"
 
   -if @clients_requiring_contact.any?
     %section#clients_needing_appointment.hero.section
@@ -60,7 +61,7 @@
               = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
 
           .column.has-text-right#fix-line-hieght
-            = link_to('Reset filters', reset_filterrific_url, class: "button is-danger")
+            = link_to('Reset filters', reset_filterrific_url, class: "button")
 
     = render partial: 'filtered_table', locals: { clients: @filtered_clients }
 
