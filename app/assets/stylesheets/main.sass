@@ -16,19 +16,22 @@ body
 
 #profile_steps
   margin-top: 1em
-  .button_to
-    display: inline
-    input
-      background: $hackney-brand
-      border-radius: 50%
-      width: 10px
+  a[selected]
+    background: $hackney-brand
+    margin: 0 0.25em 1em 0.25em
+    &.disabled
+      background: $grey-lighter
+    &.done
+      background: darken($hackney-brand, 20%)
+      color: white
+    +mobile
       height: 10px
-      display: inline
+      width: 10px
       padding: 0
-      margin-left: 0.5em
-      margin-right: 0.5em
-      &[disabled]
-        background: $grey-light
+      border-radius: 50%
+      margin-bottom: 0
+      span
+        display: none
 
 
 #watermark
