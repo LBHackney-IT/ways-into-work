@@ -1,28 +1,10 @@
-.column
+.column.is-half.is-offset-one-quarter.info-with-icon
   %h2.subtitle Welcome to Hackney Works!
-
-  %h3 You First Meeting
-
-  %p What to expect:
-  %p This is a chance for us to get to know you and for you to get to know us. You and your advisor will talk through your goals and how the service can support you. Together, you will make an action plan setting out your next steps.
-  %p What you need to bring:
-  %ul
-    %li Photo ID, e.g. passport or driving license
-    %li CV, if you have one (don’t worry if you don’t!)
-
-
-  %p Before you first meet with us, it would be really helpful to find out some more about you, your goals and the kind of support you would like from the service.
-  %p You can skip any questions that you don’t want to answer. If you’d prefer not to create a profile at all at this stage, that’s fine too.
-
-
-
+  =image_tag('icons/comment.svg', :alt => 'Speech Bubble Icon')
+  %h3 Tell us a little about yourself
   - if current_client.profile_complete?
-    %p Thanks for giving us some more information. If you want to make any edits to your profile click the link below:
-
-    = link_to I18n.t('clients.buttons.edit_profile'), edit_client_personal_traits_path, :class => "step button is-primary"
+    %p Thanks for giving us some more information. If you want to make any edits to your profile click the link below
+    =link_to I18n.t('clients.buttons.edit_profile'), edit_client_personal_traits_path, :class => "step button is-primary"
   - else
-    %p If you have time it would help us get some more information. Please could you follow the link below and answer a couple more questions:
-
+    %p Before your first meeting, tell us about you, your goals and the kind of support you would like from the service.
     =link_to I18n.t('clients.buttons.complete_profile'), edit_client_personal_traits_path, class: 'button is-primary'
-
-  = link_to "Meet the team", hubs_path, class: 'button'
