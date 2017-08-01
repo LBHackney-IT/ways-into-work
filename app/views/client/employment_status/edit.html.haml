@@ -2,6 +2,7 @@
   = render partial: 'shared/profile_steps'
 
 .column.reg-flow
+  =image_tag('icons/employment.svg', :alt => 'Employment Icon')
   %h2.subtitle=I18n.t('clients.steps.employment.long')
 
   = simple_form_for [current_client.decorate], url: :client_employment_status do |form|
