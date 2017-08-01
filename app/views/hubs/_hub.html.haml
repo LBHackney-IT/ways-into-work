@@ -1,8 +1,7 @@
 .box
   %h2= hub.name
   %p=hub.address_to_s
-  %p Team leader: 
-  = team_leader_name(hub.name)
+  %p Team leader: #{team_leader_name(hub.name)}
   .columns
     .map.column.is-two-thirds{id: "hub_map_#{hub.id}"}
     .image.column.is-one-third{id: "hub_staff_#{hub.id}"}
