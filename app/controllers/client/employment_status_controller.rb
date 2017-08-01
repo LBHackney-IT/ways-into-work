@@ -6,9 +6,9 @@ class Client::EmploymentStatusController < Client::BaseController
   def update
     if current_client.update_attributes(client_params)
       if params[:commit] == 'Next Step'
-        redirect_to profile_steps.next_step.url
-      elsif params[:commit] == 'Save and Exit'
-        redirect_to :client_profile
+        redirect_to profile_steps.next_step.url   
+      elsif params[:commit] == 'Come back later'    
+        redirect_to :client_profile   
       end
     else
       render :edit

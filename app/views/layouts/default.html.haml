@@ -7,11 +7,9 @@
       .site-header{ :role => "banner"}
         %nav.nav.container
           = render current_header
+        .lines
 
       = render "layouts/alerts"
-      -# -if !user_login_signed_in? || current_user_login.user_type != 'Advisor'
-      -#   #watermark.hackney-logo.container
-      -#     =image_tag('hackney_opportunities_logo@2x.png', :alt => 'Hackney Works')
 
       %main{:class => "main section", :id => "main", :role => "main"}
         .container.content.columns.is-multiline
