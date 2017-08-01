@@ -1,12 +1,5 @@
-.column
-  %h2.subtitle Thank you for registering with Hackney Works!
-
-  %p To confirm your identity you will soon receive an email with a link to create a password for your account. You don’t have to do this but it helps our advisors to prepare for your meeting, and it means you will be able to access and edit your account details in the future.
-
-  %p Your personal advisor will be in touch shortly to arrange a meeting at one of our hubs.
-
-  %br
-
-  %p To find out more about our team and hubs in Hackney have a look at our meet the team page:
-
-  =link_to "Meet the team", hubs_path, class: 'button is-primary'
+.column.is-half.is-offset-one-quarter.info-with-icon
+  %h2.subtitle Thanks for registering.
+  =image_tag('icons/email.svg', :alt => 'Email Icon')
+  %h3 Check your email
+  %p To confirm your identity you will soon receive an email with a link to create a password for your account.

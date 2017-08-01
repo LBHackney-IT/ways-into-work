@@ -15,4 +15,4 @@
     = render partial: '/shared/latest_file_upload', as: :client, object: form.object
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
-      = form.submit 'Save and Exit', :class => 'button'
+      = form.submit I18n.t('clients.buttons.onboarding_skip'), :class => 'button'

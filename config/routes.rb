@@ -33,6 +33,7 @@ WaysIntoWork::Application.routes.draw do
 
 
   namespace :client do
+    get 'next_steps' => 'next_steps#show'
     resources :file_uploads, only: [:create, :new, :destroy]
     resource :password, only: [:edit]
     resource :profile, only: [:show]
