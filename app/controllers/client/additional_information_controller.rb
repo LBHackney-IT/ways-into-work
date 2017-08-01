@@ -5,7 +5,7 @@ class Client::AdditionalInformationController < Client::BaseController
 
   def update
     if current_client.update_attributes(client_params)
-      redirect_to :client_profile
+      redirect_to :client_next_steps
     else
       render :edit
     end
