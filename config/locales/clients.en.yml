@@ -50,6 +50,7 @@ en:
       delete: "Delete"
       create_next_task: "Save and Create Another"
       new_action_plan_task: "New task"
+      onboarding_skip: "Come back later"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."
