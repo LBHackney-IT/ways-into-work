@@ -114,8 +114,8 @@ class ClientDecorator < Draper::Decorator
     h.content_tag(:p, h.mail_to(client.email, 'Email ', data: {'icon': 'envelope'}))
   end
 
-  def new_file_button
-    h.link_to I18n.t('clients.buttons.manage_cvs'), h.new_client_file_upload_path, class: "button is-primary is-small"
+  def new_file_button(label)
+    h.link_to label, h.new_client_file_upload_path, class: "button is-primary is-small"
   end
 
   def post_file_to

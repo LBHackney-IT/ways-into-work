@@ -4,8 +4,8 @@ class AdvisorClientDecorator < ClientDecorator
     "#{client.name}'s Profile"
   end
 
-  def new_file_button
-    h.link_to I18n.t('clients.buttons.manage_cvs'), h.new_advisor_client_file_upload_path(client), class: "button is-primary is-small"
+  def new_file_button(label)
+    h.link_to label, h.new_advisor_client_file_upload_path(client), class: "button is-primary is-small"
   end
 
   def post_file_to
