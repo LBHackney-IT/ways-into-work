@@ -29,23 +29,29 @@ class ClientSeeder
 
     puts "importing #{client.name}"
     puts "updating existing record" if client.id
-    begin
-      client.tap do |c|
-        c.advisor_id = row["Advisor"]
-        c.phone = row['Contact Number']
-        c.login = UserLogin.new(email: row['Email Address']) if (row['Email Address'] && c.login.blank?)
-        c.funded = row["Claim stream (ESF, FSF, TF, LBH, Other)"]
-        c.rag_status = row['Current Status (RAGG)'].try(:downcase) || :un_assessed
-        c.assessment_notes = c.assessment_notes.reject{ |goal| goal.content_key == 'job_goal_1' || goal.content_key == 'job_goal_2' }
-        c.assessment_notes << generate_job_goals(row['Job Goals'])
+
+    if row[:email]
+      begin
+        client.tap do |c|
+          c.advisor_id = row["Advisor"]
+          c.phone = row['Contact Number']
+          c.postcode = row['Postcode'] || 'N4 2HF'
+          c.login = UserLogin.new(email: row['Email Address']) if (row['Email Address'] && c.login.blank?)
+          c.funded = row["Claim stream (ESF, FSF, TF, LBH, Other)"]
+          c.rag_status = row['Current Status (RAGG)'].try(:downcase) || :un_assessed
+          c.assessment_notes = c.assessment_notes.reject{ |goal| goal.content_key == 'job_goal_1' || goal.content_key == 'job_goal_2' }
+          c.assessment_notes << generate_job_goals(row['Job Goals'])
+        end
+
+        # not all have email addresses
+        client.save!
+
+      rescue ActiveRecord::RecordInvalid => e
+        puts "\nerror thrown importing #{client.name} #{e}\n"
+        client.save(validate: false)
       end
-
-      # not all have email addresses
-      client.save!
-
-    rescue ActiveRecord::RecordInvalid => e
-      puts "\nerror thrown importing #{client.name} #{e}\n"
-      client.save(validate: false)
+    else
+      puts "Not importing #{row['First Name']} #{row['Surname']} without an email address"
     end
   end
 
