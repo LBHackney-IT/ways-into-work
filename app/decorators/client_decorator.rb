@@ -36,17 +36,9 @@ class ClientDecorator < Draper::Decorator
     standard_wrapper("Strengths:", PersonalTraitOption.display(client.personal_traits))
   end
 
-  # def decorate_other_personal_trait
-  #   standard_wrapper("Other:", client.other_personal_trait)
-  # end
-
   def decorate_objectives
     standard_wrapper("Objectives:", ObjectiveOption.display(client.objectives))
   end
-
-  # def decorate_other_objective
-  #   standard_wrapper("Other:", client.other_objective)
-  # end
 
   def decorate_support_priorities
     standard_wrapper("Support priorities:", SupportOption.display(client.support_priorities))
