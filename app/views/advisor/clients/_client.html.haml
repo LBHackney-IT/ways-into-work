@@ -1,7 +1,6 @@
 %tr[client]
   %td=link_to client.name, edit_advisor_client_path(client)
-  %td=client.created_at.to_date.to_s(:short)
-  -# %td=client.advisor.hub.name
+  %td=client.last_meeting_or_contact
   %td=client.advisor.name
   %td
     %i.fa.fa-circle{class: client.rag_status}
@@ -9,5 +8,5 @@
     -if client.advisor == current_advisor
       =button_to 'View details', edit_advisor_client_path(client), method: :get, class: "button is-small"
     -else
-      =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small" 
-    
+      =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small"
+

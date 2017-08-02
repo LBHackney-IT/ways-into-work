@@ -64,6 +64,24 @@ class Client < ApplicationRecord
 
   pg_search_scope :search_query, :against => [:first_name, :last_name]
 
+  def next_meeting_date
+    upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
+  end
+
+  def last_meeting_or_contact
+    last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
+  end
+
+  def upcoming_meetings
+    @upcoming_meetings ||= meetings.where('meetings.start_datetime > ?', Time.now).order(:start_datetime)
+  end
+
+  def last_communication_events
+    @past_contacts ||= meetings.where('meetings.start_datetime < ?', Time.now).pluck(:start_datetime) +
+              contact_notes.where('contact_notes.created_at < ?', Time.now).pluck(:created_at)
+  end
+
+
   def name
    "#{first_name} #{last_name}"
   end
