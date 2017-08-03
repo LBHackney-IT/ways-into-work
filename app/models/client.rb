@@ -14,6 +14,7 @@ class Client < ApplicationRecord
   validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
   delegate :email, to: :login
+  delegate :sign_in_count, to: :login
 
   has_many :meetings
 
@@ -94,10 +95,6 @@ class Client < ApplicationRecord
       errors[:postcode] << I18n.t('clients.validation.postcode_error')
     end
     errors[:postcode].empty?
-  end
-
-  def profile_complete?
-    !self.un_assessed?
   end
 
   def devise_mailer
