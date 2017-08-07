@@ -8,6 +8,10 @@ class ClientDecorator < Draper::Decorator
     'Your Profile'
   end
 
+  def return_to_client_button
+    h.link_to I18n.t('clients.buttons.back'), h.edit_client_employment_status_path, class: "button pull-right"
+  end
+
   def decorate_name
     standard_wrapper('Name:', client.name)
   end
