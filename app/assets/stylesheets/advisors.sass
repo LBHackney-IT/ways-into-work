@@ -45,6 +45,10 @@
         font-size: 13px
     td, th
       border: none
+      &.third
+        width: 33%
+      &.one-fifth
+        width: 20%
     button.button, input[type="submit"].button
       padding-bottom: 0.35em
 
@@ -52,6 +56,11 @@
     tbody
       tr
         background-color: rgba($white, 0.95)
+    i.fa
+      transition: 0.25s ease-in-out all
+    &.open i.fa
+      transition: 0.25s ease-in-out all
+      transform: rotate(180deg)
 
 
   .clients_list
@@ -129,6 +138,8 @@ a[data-icon='envelope']
 #upper-tabs
   margin-bottom: 0
   margin-top: 50px
+  margin-left: 0
+  margin-right: 0
   a
     color: $black
     text-transform: uppercase
@@ -147,6 +158,10 @@ a[data-icon='envelope']
       border-bottom: none
       &:hover
         cursor: default
+    &:first-child.current
+      margin-left: -0.75em
+    &:last-child.current
+      margin-right: -1px
 
 .profile-tab
   border: 1px rgba(29, 29, 27, 0.15) solid
@@ -182,10 +197,24 @@ a[data-icon='envelope']
   fieldset
     margin-bottom: 0
 
-.admin.clients.edit 
+.admin.clients.edit
   .nav-back
     margin-right: 10px
 
+.admin.meetings,
+.admin.action_plan_tasks,
+.admin.contact_notes,
+body.file_uploads
+  .content h3
+    margin-bottom: 0
+
+body.contact_notes .table
+  tr.note
+    td, th
+      padding-left: 0
+
+.previous_files
+  padding: 0
 
 .top-left-corner
   border-top-left-radius: 0px

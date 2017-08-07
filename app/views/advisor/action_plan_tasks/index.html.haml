@@ -7,7 +7,6 @@
       =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
   = render partial: 'shared/upper_tabs', locals: {the_client: client}
-
   .profile-tab
     .column
       .action-section.ongoing
@@ -27,8 +26,7 @@
               = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
         - else
           %p="#{client.name} has no actions yet"
-
-          =button_to "Create first task", new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
+          =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
 
       - if client.action_plan_tasks.completed.any?

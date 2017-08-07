@@ -1,4 +1,8 @@
 .reg-flow
+  img
+    display: block
+    margin: 0 auto
+    height: 4em
   h2.subtitle
     text-align: center
     font-size: 1.25em
@@ -27,8 +31,10 @@
     color: white
     &.disabled
       background: $grey-lighter
-    &.done
+    &.is-primary
       background: darken($hackney-brand, 20%)
+    &.done
+      background: $hackney-brand
     +mobile
       height: 10px
       width: 10px
