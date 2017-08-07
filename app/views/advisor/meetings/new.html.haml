@@ -3,7 +3,7 @@
     .level-left.column
       %h3.subtitle Meeting arrangements
     .level-right.column
-      =link_to I18n.t('clients.buttons.back_to_profile'), edit_advisor_client_path(id: params[:client_id]), class: 'button pull-right'
+      =link_to I18n.t('clients.buttons.back_to_meetings'), advisor_client_meetings_path, class: 'button pull-right'
   %hr
 
   = simple_form_for [client, meeting], url: advisor_client_meetings_path(client_id: client.id) do |form|
