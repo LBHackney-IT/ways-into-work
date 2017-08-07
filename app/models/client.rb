@@ -11,9 +11,10 @@ class Client < ApplicationRecord
   has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
 
-  validates :login, :first_name, :last_name, :phone, :advisor, :hub, presence: true
+  validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
   delegate :email, to: :login
+  delegate :sign_in_count, to: :login
 
   has_many :meetings
 
@@ -64,6 +65,24 @@ class Client < ApplicationRecord
 
   pg_search_scope :search_query, :against => [:first_name, :last_name]
 
+  def next_meeting_date
+    upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
+  end
+
+  def last_meeting_or_contact
+    last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
+  end
+
+  def upcoming_meetings
+    @upcoming_meetings ||= meetings.where('meetings.start_datetime > ?', Time.now).order(:start_datetime)
+  end
+
+  def last_communication_events
+    @past_contacts ||= meetings.where('meetings.start_datetime < ?', Time.now).pluck(:start_datetime) +
+              contact_notes.where('contact_notes.created_at < ?', Time.now).pluck(:created_at)
+  end
+
+
   def name
    "#{first_name} #{last_name}"
   end
@@ -76,10 +95,6 @@ class Client < ApplicationRecord
       errors[:postcode] << I18n.t('clients.validation.postcode_error')
     end
     errors[:postcode].empty?
-  end
-
-  def profile_complete?
-    !self.un_assessed?
   end
 
   def devise_mailer

@@ -109,6 +109,7 @@ class Advisor::ClientsController < Advisor::BaseController
         :other_gender,
         :other_bame,
         :date_of_birth,
+        :advisor_id,
         :bame,
         :studying,
         :studying_part_time,

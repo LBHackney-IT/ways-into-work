@@ -2,8 +2,8 @@
   %h2.subtitle Welcome to Hackney Works!
   =image_tag('icons/comment.svg', :alt => 'Speech Bubble Icon')
   %h3 Tell us a little about yourself
-  - if current_client.profile_complete?
-    %p Thanks for giving us some more information. If you want to make any edits to your profile click the link below
+  - if current_client.sign_in_count > 1 && current_client.updated_at > current_client.created_at
+    %p If you want to make any edits to your profile click the link below
     =link_to I18n.t('clients.buttons.edit_profile'), edit_client_personal_traits_path, :class => "step button is-primary"
   - else
     %p Before your first meeting, tell us about you, your goals and the kind of support you would like from the service.

@@ -48,9 +48,10 @@ end
 
 Given(/^when I navigate through all the profile steps$/) do
   click_on(I18n.t('clients.buttons.complete_profile'))
-  ProfileSteps::STEPS.count.times do |n|
+  (ProfileSteps::STEPS.count - 1).times do |n|
     click_on('Next Step')
   end
+  click_on('Complete Profile')
 end
 
 Then(/^I should be asked to start creating my profile$/) do

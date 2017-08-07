@@ -36,17 +36,9 @@ class ClientDecorator < Draper::Decorator
     standard_wrapper("Strengths:", PersonalTraitOption.display(client.personal_traits))
   end
 
-  # def decorate_other_personal_trait
-  #   standard_wrapper("Other:", client.other_personal_trait)
-  # end
-
   def decorate_objectives
     standard_wrapper("Objectives:", ObjectiveOption.display(client.objectives))
   end
-
-  # def decorate_other_objective
-  #   standard_wrapper("Other:", client.other_objective)
-  # end
 
   def decorate_support_priorities
     standard_wrapper("Support priorities:", SupportOption.display(client.support_priorities))
@@ -114,8 +106,8 @@ class ClientDecorator < Draper::Decorator
     h.content_tag(:p, h.mail_to(client.email, 'Email ', data: {'icon': 'envelope'}))
   end
 
-  def new_file_button
-    h.link_to I18n.t('clients.buttons.manage_cvs'), h.new_client_file_upload_path, class: "button is-primary is-small"
+  def new_file_button(label)
+    h.link_to label, h.new_client_file_upload_path, class: "button is-primary is-small"
   end
 
   def new_file_button_first
