@@ -51,7 +51,7 @@ en:
       create_next_task: "Save and Create Another"
       new_action_plan_task: "New task"
       onboarding_skip: "Come back later"
-      back_to_profile: "Back to profile"
+      back_to_meetings: "Back to meetings"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."
