@@ -5,8 +5,4 @@
   =client.new_file_button(I18n.t('clients.buttons.manage_cvs'))
 -else
   %p.bold No CV uploaded yet. Upload a CV even if it's in draft form
-
-- if client.file_uploads.count == 0
-  =client.new_file_button_first
-- else
-  =client.new_file_button
+  =client.new_file_button(I18n.t('clients.buttons.upload_cv'))
