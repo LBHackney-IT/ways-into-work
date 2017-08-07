@@ -22,6 +22,9 @@ body.hackney_works.show
     text-align: center
     color: white
     background-size: cover
+    background-position: right
+    @media screen and (max-width: $tablet)
+      background-position: 100%
     img
       width: 50%
       display: block
@@ -39,17 +42,15 @@ body.hackney_works.show
       img
         width: 80%
     &.works
-      +background-image-gradient(90deg, $color__hackney-works, 'town-hall.png')
+      +background-image-gradient(90deg, $color__hackney-works, 'service/works.jpg')
     &.hundred
-      +background-image-gradient(90deg, $color__hackney-100, '100-graphic.jpg')
+      +background-image-gradient(90deg, $color__hackney-100, 'service/100.jpg')
     &.apprentices
-      +background-image-gradient(90deg, $color__hackney-apprentices, 'apprentice-graphic.jpg')
+      +background-image-gradient(90deg, $color__hackney-apprentices, 'service/apprentices.jpg')
     &.support
-      +background-image-gradient(90deg, $color__hackney-support, 'support-graphic.jpg')
-      * 
-        color: black
-      .button
-        border-color: black
+      +background-image-gradient(90deg, $color__hackney-support, 'service/learning.jpg')
+      *
+        color: white
       h2
         padding: 75px 1em 0 1em
       h3
