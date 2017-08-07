@@ -118,6 +118,10 @@ class ClientDecorator < Draper::Decorator
     h.link_to I18n.t('clients.buttons.manage_cvs'), h.new_client_file_upload_path, class: "button is-primary is-small"
   end
 
+  def new_file_button_first
+    h.link_to I18n.t('clients.buttons.upload_cv'), h.new_client_file_upload_path, class: "button is-primary is-small"
+  end
+
   def post_file_to
     h.client_file_uploads_path
   end
