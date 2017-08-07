@@ -1,9 +1,9 @@
 .column
   .columns.head.level
     .level-left.column
-      %h3.subtitle="Upload a file for #{client.first_name}"
+      %h3.subtitle Upload a file
     .level-right.column
-      =link_to I18n.t('clients.buttons.cancel'), "/", class: 'button pull-right'
+      = client.return_to_client_button
   %hr
   = simple_form_for [client.object, file_upload], url: client.post_file_to do |form|
     = render 'shared/form_errors', object: form.object

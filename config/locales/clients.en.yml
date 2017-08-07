@@ -48,6 +48,7 @@ en:
       update: "Update"
       cancel: "Cancel"
       delete: "Delete"
+      back: "Back"
       create_next_task: "Save and Create Another"
       new_action_plan_task: "New task"
       onboarding_skip: "Come back later"
