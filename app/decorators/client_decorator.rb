@@ -8,12 +8,16 @@ class ClientDecorator < Draper::Decorator
     'Your Profile'
   end
 
+  def return_to_client_button
+    h.link_to I18n.t('clients.buttons.back'), h.edit_client_employment_status_path, class: "button pull-right"
+  end
+
   def decorate_name
     standard_wrapper('Name:', client.name)
   end
 
   def decorate_date_registered
-    standard_wrapper('Date regstiered:', client.created_at.to_formatted_s(:long))
+    standard_wrapper('Date registered:', client.created_at.to_formatted_s(:long))
   end
 
   def decorate_email

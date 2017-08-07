@@ -8,6 +8,10 @@ class AdvisorClientDecorator < ClientDecorator
     h.link_to label, h.new_advisor_client_file_upload_path(client), class: "button is-primary is-small"
   end
 
+  def return_to_client_button
+    h.link_to I18n.t('clients.buttons.back'), h.edit_advisor_client_path(client), class: "button pull-right"
+  end
+
   def post_file_to
     h.advisor_client_file_uploads_path(client)
   end
