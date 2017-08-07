@@ -13,7 +13,7 @@ class ClientDecorator < Draper::Decorator
   end
 
   def decorate_date_registered
-    standard_wrapper('Date regstiered:', client.created_at.to_formatted_s(:long))
+    standard_wrapper('Date registered:', client.created_at.to_formatted_s(:long))
   end
 
   def decorate_email
