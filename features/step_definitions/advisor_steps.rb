@@ -54,6 +54,7 @@ Then(/^I should see the new client listed$/) do
 end
 
 When(/^I assign the client to myself$/) do
+  click_on 'View details'
   click_on I18n.t('clients.buttons.assign_to_me')
 end
 

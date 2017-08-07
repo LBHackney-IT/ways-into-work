@@ -14,4 +14,4 @@ Feature: Client signs in and can tell story
   Scenario: client skips through all information with out adding
     Given I am on the client dashboard page
     And when I navigate through all the profile steps
-    Then I should be on the client profile page
+    Then I should be on the client next steps page
