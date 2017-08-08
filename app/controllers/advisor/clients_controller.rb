@@ -9,6 +9,7 @@ class Advisor::ClientsController < Advisor::BaseController
 
   def create
     if client.save
+      flash[:success] = "#{client.name} saved."
       # client.login.send_reset_password_instructions if client.login
       redirect_to edit_advisor_client_path(client)
     else
