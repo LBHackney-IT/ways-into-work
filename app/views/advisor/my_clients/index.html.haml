@@ -12,7 +12,7 @@
 
   -if @clients_requiring_contact.any?
     %section#clients_needing_appointment.hero.section
-      .container.content.columns
+      .container.content.columns.flex
         .column
           %h4.bold
             ="You have #{pluralize(@clients_requiring_contact.count, 'client')} that still require initial contact"

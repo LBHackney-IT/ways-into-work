@@ -1,0 +1,28 @@
+html[data-useragent*='MSIE 10.0']
+  .admin
+    .flex
+      width: 100%
+    .site-header
+      .nav-container
+        overflow: auto
+      .nav-left, .nav-right
+        float: left
+        width: 50%
+      .nav-left
+        text-align: left
+      .nav-right
+        text-align: right
+        form
+          display: inline
+      .lines
+        display: none
+
+    &.meetings,
+    &.action_plan_tasks,
+    &.contact_notes,
+    &.file_uploads
+      .content h3
+        margin-bottom: 0
+      .head .level-right
+        margin-top: -3.5em
+        padding-bottom: 2em
