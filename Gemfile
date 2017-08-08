@@ -33,15 +33,16 @@ gem 'filterrific'
 gem 'kaminari'
 gem 'pg_search'
 
-# TODO - move to staging group (not needed in production)
-gem 'fabrication'
-gem 'ffaker'
-
 gem 'appsignal'
 
 gem 'decent_exposure'
 
 gem 'paranoia'
+
+group :development, :staging, :test do
+  gem 'fabrication'
+  gem 'ffaker'
+end
 
 group :development do
   gem 'bullet'
