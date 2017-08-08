@@ -7,7 +7,7 @@
         %span.client_total="#{current_advisor.clients.count} Total (#{@clients_requiring_contact.count} need initial contact)"
       -else
         %span.client_total="#{current_advisor.clients.count} Total"
-    .level-right.column
+    .level-right.column.home
       = link_to 'Create new client', :new_advisor_client, class: "button"
 
   -if @clients_requiring_contact.any?
@@ -41,6 +41,7 @@
   - if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
       #client_filters
+        %h3.ie-only Filter clients
         .columns
           .column
             %label.label Search client names
