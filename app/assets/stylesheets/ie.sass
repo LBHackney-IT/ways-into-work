@@ -1,4 +1,6 @@
 html[data-useragent*='MSIE 10.0']
+  .ie-only
+    display: block
   .admin
     .flex
       width: 100%
@@ -16,6 +18,21 @@ html[data-useragent*='MSIE 10.0']
           display: inline
       .lines
         display: none
+
+    .head
+      margin-top: 1em
+      .level-right.home
+        float: right
+        margin-top: -3em
+
+    #client_filters
+      .columns
+        overflow: auto
+      .column
+        float: left
+        width: 50%
+      .has-text-right
+        text-align: left
 
     &.meetings,
     &.action_plan_tasks,
