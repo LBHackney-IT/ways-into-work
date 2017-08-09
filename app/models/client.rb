@@ -118,7 +118,8 @@ class Client < ApplicationRecord
   end
 
   def assign_team_leader(ward_mapit_code)
-    self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first
+    self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
+      Advisor.where(team_leader: true).first
   end
 
 end
