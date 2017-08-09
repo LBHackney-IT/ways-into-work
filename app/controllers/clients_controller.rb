@@ -11,7 +11,6 @@ class ClientsController < ApplicationController
   def create
     if client.save
       client.login.send_reset_password_instructions
-      # flash[:alert] = I18n.t('devise.confirmations.send_instructions')
       redirect_to just_registered_path
       AdvisorMailer.notify_client_signed_up(client).deliver_now
     else
