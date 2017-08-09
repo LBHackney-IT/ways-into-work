@@ -2,7 +2,7 @@
   .head.level
     .level-left
       %h2="#{client.first_name}'s Contact Timeline"
-    .level-right
+    .level-right.home.single
       =button_to I18n.t('clients.buttons.new_contact_note'), new_advisor_client_contact_note_path, method: :get, class: "button is-primary"
 
 

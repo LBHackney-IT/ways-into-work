@@ -4,7 +4,7 @@
       %h2="#{client.first_name}'s Meetings"
       %span.client_total="#{client.meetings_count} scheduled"
 
-    .level-right
+    .level-right.home.single
       =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary"
 
   = render partial: 'shared/upper_tabs', locals: {the_client: client}
