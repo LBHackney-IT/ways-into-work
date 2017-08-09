@@ -28,8 +28,4 @@ $(document).ready(function() {
   $("#clients_needing_appointment").clients_needing_appointment();
 
   $('#hubs').handleMaps();
-
-  var doc = document.documentElement;
-  doc.setAttribute('data-useragent', navigator.userAgent);
-
 });

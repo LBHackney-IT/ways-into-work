@@ -1,23 +1,25 @@
-html[data-useragent*='MSIE 10.0']
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
   .ie-only
     display: block
+
+  .site-header
+    .nav-container
+      overflow: auto
+    .nav-left, .nav-right
+      float: left
+      width: 50%
+    .nav-left
+      text-align: left
+    .nav-right
+      text-align: right
+      form
+        display: inline
+    .lines
+      display: none
+
   .admin
     .flex
       width: 100%
-    .site-header
-      .nav-container
-        overflow: auto
-      .nav-left, .nav-right
-        float: left
-        width: 50%
-      .nav-left
-        text-align: left
-      .nav-right
-        text-align: right
-        form
-          display: inline
-      .lines
-        display: none
 
     .head
       margin-top: 1em
@@ -33,6 +35,11 @@ html[data-useragent*='MSIE 10.0']
         width: 50%
       .has-text-right
         text-align: left
+
+    .profile-tab #tab-list
+      width: 100%
+      ul li
+        display: inline
 
     &.meetings,
     &.action_plan_tasks,

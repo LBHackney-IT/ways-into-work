@@ -12,22 +12,23 @@
   -if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
       #client_filters
+        %h3.ie-only Filter clients
         .columns
           .column
             %label.label Hub
             %span.select
               = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' })
-          .column.has-text-centered
+          .column
             %label.label Assigned Advisor
             %span.select
               = f.select(:by_advisor_id, @filterrific.select_options[:by_advisor_id], { include_blank: '- Any -' })
 
-          .column.has-text-centered
+          .column
             %label.label Training Course
             %span.select
               = f.select(:by_training, @filterrific.select_options[:by_training], { include_blank: '- Any -' })
 
-          .column.has-text-right
+          .column
             %label.label Industry preference
             %span.select
               = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' })
@@ -37,7 +38,7 @@
             %label.label Search client names:
             = f.text_field(:search_query, class: 'input auto-width')
 
-          .column.has-text-centered
+          .column
             %label.label Age
             %span.select
               = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
