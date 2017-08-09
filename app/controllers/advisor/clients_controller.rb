@@ -10,7 +10,6 @@ class Advisor::ClientsController < Advisor::BaseController
   def create
     if client.save
       flash[:success] = "#{client.name} saved."
-      # client.login.send_reset_password_instructions if client.login
       redirect_to edit_advisor_client_path(client)
     else
       render :new
@@ -50,7 +49,7 @@ class Advisor::ClientsController < Advisor::BaseController
   private
     def init_client
       if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
-        client.assign_team_leader(ward_mapit_code)
+        client.advisor = current_advisor
         client.login.generate_default_password
       else
         redirect_to :outside_hackney
