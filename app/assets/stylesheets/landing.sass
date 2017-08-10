@@ -12,8 +12,14 @@ body.hackney_works.show
     margin-top: -0.75em
   #main-site-wrapper .site-header .lines,
   footer .lines
-    background-image: image-url("hackney-lines.png")
+    border-top-color: #0A624A
+    border-bottom-color: #7CB736
+    &:after
+      background-color: #17A34F
 
+  footer .lines
+    border-bottom-color: #0A624A
+    border-top-color: #7CB736
 .services
   margin-top: 60px
   margin-bottom: 30px

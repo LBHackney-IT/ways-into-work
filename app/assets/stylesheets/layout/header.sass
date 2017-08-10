@@ -1,10 +1,21 @@
 #main-site-wrapper .site-header
   .lines
     display: block
+    position: relative
     width: 100%
-    height: 1em
-    background-image: image-url("hackney-lines-teal.png")
-    background-size: contain
+    height: 15px
+    border-top: #005F61 solid 4px
+    border-bottom: #B1E4E3 solid 2px
+    &:after
+      content: ""
+      background: #009CA6
+      top: 3px
+      display: block
+      height: 3px
+      left: 0
+      position: absolute
+      right: 0
+      width: 100%
 
 .header, .site-header, header
   background-color: $white
