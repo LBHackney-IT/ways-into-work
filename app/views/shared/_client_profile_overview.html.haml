@@ -23,7 +23,7 @@
       .tile.is-parent
         %article.tile.is-child.box
           %h3 Aspirations & Goals
-          - if client.decorate_objectives.nil? && client.decorate_objectives.nil? && client.decorate_job_goal1.nil? && client.decorate_job_goal2.nil? && client.decorate_barriers.nil?
+          - if client.decorate_objectives.nil? && client.decorate_job_goal1.nil? && client.decorate_job_goal2.nil? && client.decorate_barriers.nil?
             ="You have not completed any aspirations or goals yet in your profile."
           = client.decorate_objectives
           = client.decorate_job_goal1
