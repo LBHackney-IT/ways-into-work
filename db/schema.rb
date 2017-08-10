@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801121859) do
+ActiveRecord::Schema.define(version: 20170810105654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170801121859) do
     t.boolean "affected_by_welfare"
     t.boolean "funded"
     t.datetime "deleted_at"
+    t.boolean "imported", default: false
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
   end
 
