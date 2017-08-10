@@ -20,9 +20,9 @@ class Client < ApplicationRecord
 
   scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
 
-  scope :needing_appointment, -> { where(meetings_count: 0) }
+  scope :needing_appointment, -> { where(meetings_count: 0, imported: false) }
 
-  scope :with_appointment, -> { where('meetings_count > 0') }
+  scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
 
   accepts_nested_attributes_for :login
 
