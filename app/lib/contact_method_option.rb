@@ -10,7 +10,8 @@ class ContactMethodOption
   def self.all
     [
       new('Email'),
-      new('Phone call')
+      new('Phone call'),
+      # new('Hub visit')
     ]
   end
 

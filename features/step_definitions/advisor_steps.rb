@@ -1,3 +1,23 @@
+module AdvisorSH
+  def my_client_listed(client = @client)
+    within '.my_clients' do
+      expect(page).to have_content(client.name)
+    end
+  end
+end
+World AdvisorSH
+
+When(/^I archive the client$/) do
+  click_on I18n.t('clients.buttons.make_contact')
+  click_on I18n.t('clients.buttons.archive_client')
+end
+
+Then(/^the client should be removed from view$/) do
+  within '#your_clients' do
+    expect(page).not_to have_content(@client.name)
+  end
+end
+
 Given(/^I am an advisor$/) do
   @i = Fabricate(:advisor)
 end
@@ -34,12 +54,10 @@ Then(/^I should see the new client listed$/) do
 end
 
 When(/^I assign the client to myself$/) do
+  click_on 'View details'
   click_on I18n.t('clients.buttons.assign_to_me')
 end
 
-Given(/^the client is assigned to me$/) do
-  @i.clients << @client
-end
 
 Then(/^the client should be part of my case load$/) do
   expect(@i.reload.clients).to include(@client)
@@ -54,4 +72,12 @@ end
 
 Given(/^there is an advisor Dave in my hub$/) do
   @dave = Fabricate(:advisor, name: 'Dave Donald', hub: @i.hub)
+end
+
+When(/^I filter by to Retail as types of work$/) do
+  select TypeOfWorkOption.find('retail').name, from: 'filterrific_by_types_of_work'
+end
+
+Then(/^I should see my client in the filtered list$/) do
+  my_client_listed
 end

@@ -156,6 +156,8 @@ $input-radius:              $radius !default
       right: 0.625em
       top: 0.625em
       transform: none
+  &.advisor:after
+    margin-top: 1.625em
 
 .with_multi_select .simple_input
   select
@@ -165,7 +167,7 @@ $input-radius:              $radius !default
   color: $input
   display: block
   font-size: $size-normal
-  font-weight: $weight-medium
+  font-weight: bold
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
@@ -387,7 +389,7 @@ abbr
   .button
     +mobile
       margin-bottom: $size-5
-      width: 100%
+      width: 48%
 
 #client_date_of_birth
   max-width: 190px

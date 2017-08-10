@@ -1,26 +1,23 @@
 .column.is-12.has-text-centered
   = render partial: 'shared/profile_steps'
 
-.column.is-10.is-offset-1
+.column.reg-flow
+  =image_tag('icons/monitoring.svg', :alt => 'Monitoring Icon')
   %h2.subtitle=I18n.t('clients.steps.additional_information.long')
 
   = simple_form_for [current_client], url: :client_additional_information do |form|
     = render 'shared/form_errors', object: form.object
 
-    .columns
-      =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:', wrapper_html: { class: "convert_radio" }
-      =form.input :gender, as: :string, label: 'If you prefer to use your own term, please describe it here:', :input_html => { :class => "input" }
+    .convert_radio
+      =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'What is your gender?'
+      .convert_checkbox.additional= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
 
-    =form.input :receive_benefits, as: :radio_buttons, :label => 'Are you recieving any benefits?', wrapper_html: { class: "convert_radio" }
+    .convert_radio
+      =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'What is your ethnicity?', include_hidden: false
+      .convert_checkbox.additional= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
 
-    =form.input :care_leaver, as: :radio_buttons, :label => 'Have you recently left care?', wrapper_html: { class: "convert_radio" }
-
-    =form.input :has_children, as: :radio_buttons, :label => 'Do you have any children?', wrapper_html: { class: "convert_radio" }
-
-    .is-hidden.on-true
-      =form.input :lone_parent, as: :radio_buttons, :label => 'Are you an only parent?', :wrapper_html => { class: 'convert_radio' }
-
+    =form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input'}, placeholder: "dd/mm/yyyy", label: 'Whati is your date of birth?'
 
     .actions
-      = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
-      = form.submit 'Save and Exit', :class => 'button'
+      = form.submit 'Complete Profile', :class => 'button is-primary is-pulled-right'
+      = form.submit I18n.t('clients.buttons.onboarding_skip'), :class => 'button'

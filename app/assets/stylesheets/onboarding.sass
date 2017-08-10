@@ -1,0 +1,45 @@
+.reg-flow
+  img
+    display: block
+    margin: 0 auto
+    height: 4em
+  h2.subtitle
+    text-align: center
+    font-size: 1.25em
+    border-bottom: 1px solid $grey-light
+    padding-bottom: 2em
+  .additional label
+    height: 2.25em !important
+  .convert_radio
+    margin-bottom: 2em
+
+.info-with-icon
+  text-align: center
+  img
+    height: 5em
+    display: block
+    margin: 3em auto 0 auto
+  li
+    list-style: none
+    color: $hackney-brand
+
+#profile_steps
+  margin-top: 1em
+  a[selected]
+    background: $hackney-brand
+    margin: 0 0.25em 1em 0.25em
+    color: white
+    &.disabled
+      background: $grey-lighter
+    &.is-primary
+      background: darken($hackney-brand, 20%)
+    &.done
+      background: $hackney-brand
+    +mobile
+      height: 10px
+      width: 10px
+      padding: 0
+      border-radius: 50%
+      margin-bottom: 0
+      span
+        display: none

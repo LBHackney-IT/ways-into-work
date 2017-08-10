@@ -6,7 +6,6 @@ module RegistrationSH
     fill_in 'client_phone', with: client.phone
     fill_in 'client_address_line_1', with: client.address_line_1
     fill_in 'client_postcode', with: client.postcode
-    fill_in 'client_date_of_birth', with: client.date_of_birth
   end
 
   def save
@@ -15,7 +14,10 @@ module RegistrationSH
 end
 World RegistrationSH
 
-When(/^I follow the link to register for the service$/) do
+When(/^I navigate to register for the service$/) do
+  within '.services' do
+    click_link 'Hackney Works'
+  end
   click_link I18n.t('devise.buttons.register')
 end
 
@@ -44,6 +46,13 @@ When(/^I register my self as "([^"]*)"$/) do |email|
   save
 end
 
+Given(/^when I navigate through all the profile steps$/) do
+  click_on(I18n.t('clients.buttons.complete_profile'))
+  (ProfileSteps::STEPS.count - 1).times do |n|
+    click_on('Next Step')
+  end
+  click_on('Complete Profile')
+end
 
 Then(/^I should be asked to start creating my profile$/) do
   expect(page).to have_css("input#client_first_name")
@@ -63,14 +72,6 @@ end
 Then(/^my client details should be saved against my user login$/) do
   expect(Client.count).to eq(1)
   expect(Client.last.login).to eq(@user_login)
-end
-
-Given(/^there is a client who just registered$/) do
-  @client = Fabricate.create(:client)
-end
-
-Given(/^I have just signed up as a client$/) do
-  @i = Fabricate.create(:client)
 end
 
 Then(/^I should be asked to provide more information$/) do

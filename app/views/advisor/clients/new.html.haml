@@ -1,0 +1,4 @@
+.column
+  = simple_form_for [client.object], url: :advisor_clients do |form|
+    = render partial: '/clients/form_fields', locals: {form: form}
+    = form.submit 'Save', :class => 'button is-primary'

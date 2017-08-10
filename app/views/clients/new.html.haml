@@ -1,35 +1,4 @@
-.column.is-10.is-offset-1
-  = simple_form_for [@client] do |form|
-
-    %fieldset
-      %h3.subtitle Register for the service
-      %hr
-      %p Please complete the details below. Once you have registered, you will receive an email to verify your account.
-
-      = render 'shared/form_errors', object: form.object
-      .columns
-        .column
-          =form.input :first_name, as: :string, :input_html => { :class => 'input' }
-        .column
-          =form.input :last_name, as: :string, :input_html => { :class => 'input' }
-
-      .columns
-        .column
-          =form.simple_fields_for :login do |login_form|
-            =login_form.input :email, :required => true, as: :email, :input_html => { :class => 'input' }
-        .column
-          =form.input :phone, as: :tel, :input_html => { :class => 'input' }
-
-      = form.input :preferred_contact_method, as: :radio_buttons, collection: ContactMethodOption.all, label: 'Do you have a preffered contact method?',  wrapper_html: { class: "convert_radio" }
-
-      .columns
-        .column
-          =form.input :address_line_1, as: :string, :input_html => { :class => 'input' }
-        .column
-          =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
-        .column
-          =form.input :postcode, as: :string, :input_html => { :class => 'input' }
-
-      =form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input'}, placeholder: "dd/mm/yyyy"
-
+.column
+  = simple_form_for [client] do |form|
+    = render partial: 'form_fields', locals: {form: form}
     = form.submit 'Register', :class => 'button is-primary'

@@ -1,6 +1,8 @@
 .column.is-12.has-text-centered
   = render partial: 'shared/profile_steps'
-.column.is-10.is-offset-1
+
+.column.reg-flow
+  =image_tag('icons/about-you.svg', :alt => 'About You Icon')
   %h2.subtitle=I18n.t('clients.steps.about_you.long')
 
   = simple_form_for [current_client], url: :client_personal_traits do |form|
@@ -12,4 +14,4 @@
 
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
-      = form.submit 'Save and Exit', :class => 'button'
+      = form.submit I18n.t('clients.buttons.onboarding_skip'), :class => 'button'

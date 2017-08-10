@@ -1,17 +1,38 @@
-= @client.decorate_email
-= @client.decorate_phone
-= @client.decorate_address
-= @client.decorate_age
-= @client.decorate_personal_traits
-= @client.decorate_other_personal_trait
-= @client.decorate_objectives
-= @client.decorate_other_objective
-= @client.decorate_studying
-= @client.decorate_current_education
-= @client.decorate_past_education
-= @client.decorate_currently_employed
-= @client.decorate_job_title
-= @client.decorate_hours_per_week
+#actions.has-text-right= render partial: 'actions'
+%br
+
+.tile.is-ancestor
+  .tile.is-vertical.is-12
+    .tile
+      .tile.is-parent.is-vertical
+        %article.tile.is-child.box
+          %h3 Details & Contact
+          = client.decorate_name
+          = client.decorate_age
+          = client.decorate_date_registered
+          = client.decorate_email
+          = client.decorate_phone
+          = client.decorate_address
+        %article.tile.is-child.box
+          %h3 Support & Work
+          = client.decorate_past_education
+          = client.decorate_currently_employed
+          = client.decorate_studying
+          = client.decorate_types_of_work
+          = client.decorate_support_priorities
+      .tile.is-parent
+        %article.tile.is-child.box
+          %h3 Aspirations & Goals
+          - if client.decorate_objectives.nil? && client.decorate_objectives.nil? && client.decorate_job_goal1.nil? && client.decorate_job_goal2.nil? && client.decorate_barriers.nil?
+            ="You have not completed any aspirations or goals yet in your profile."
+          = client.decorate_objectives
+          = client.decorate_job_goal1
+          = client.decorate_job_goal2
+          = client.decorate_barriers
+    .tile.is-parent.is-vertical
+      .tile.is-child.box
+        %h3 Files
+        = render partial: '/shared/latest_file_upload'
 
 %br
-#actions= render partial: 'actions'
+#actions.has-text-right= render partial: 'actions'

@@ -1,0 +1,7 @@
+- unless file_upload.new_record?
+  %tr[file_upload]
+    %td=link_to file_upload.attachment_file_name, file_upload.attachment.try(:url), title: file_upload.attachment_file_name, target: :blank
+    %td=file_upload.uploaded_by
+    %td=file_upload.created_at.to_date.to_s(:short)
+    %td.has-text-right
+      =client.delete_file_button(file_upload)

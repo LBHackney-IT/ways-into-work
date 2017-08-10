@@ -2,24 +2,33 @@ class Client < ApplicationRecord
 
   include PgSearch
 
+  acts_as_paranoid
+
   enum rag_status: [ :un_assessed, :red, :amber, :green ]
+
   # associations
   belongs_to :advisor
   has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
 
-  validates :login, :first_name, :last_name, :phone, :date_of_birth, :postcode, :advisor, :hub, presence: true
+  validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
   delegate :email, to: :login
+  delegate :sign_in_count, to: :login
 
   has_many :meetings
 
+  scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
+
   scope :needing_appointment, -> { where(meetings_count: 0) }
+
   scope :with_appointment, -> { where('meetings_count > 0') }
 
   accepts_nested_attributes_for :login
 
   has_many :file_uploads, dependent: :destroy
+
+  has_many :action_plan_tasks
 
   validate do
     valid_postcode?
@@ -29,6 +38,7 @@ class Client < ApplicationRecord
   validates_plausible_phone :phone, country_code: 'GB'
 
   has_many :assessment_notes
+  has_many :contact_notes
 
   accepts_nested_attributes_for :assessment_notes, reject_if: :all_blank
 
@@ -38,15 +48,40 @@ class Client < ApplicationRecord
       :search_query,
       :by_hub_id,
       :by_types_of_work,
-      :by_advisor_id
+      :by_advisor_id,
+      :by_training,
+      :by_age,
     ]
   )
 
   scope :by_hub_id, lambda { |hub_id| joins(:advisor).where('advisors.hub_id = ?', hub_id ) }
   scope :by_advisor_id, lambda { |advisor_id| where(advisor_id: advisor_id ) }
-  scope :by_types_of_work, lambda { |advisor_id| where(advisor_id: advisor_id ) }
+  scope :by_types_of_work, lambda { |type| where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
+  scope :by_training, lambda { |type| where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
+
+  scope :by_age, lambda { |under_25s|
+    where('date_of_birth  > ?', Date.today - 25.years) if under_25s
+  }
 
   pg_search_scope :search_query, :against => [:first_name, :last_name]
+
+  def next_meeting_date
+    upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
+  end
+
+  def last_meeting_or_contact
+    last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
+  end
+
+  def upcoming_meetings
+    @upcoming_meetings ||= meetings.where('meetings.start_datetime > ?', Time.now).order(:start_datetime)
+  end
+
+  def last_communication_events
+    @past_contacts ||= meetings.where('meetings.start_datetime < ?', Time.now).pluck(:start_datetime) +
+              contact_notes.where('contact_notes.created_at < ?', Time.now).pluck(:created_at)
+  end
+
 
   def name
    "#{first_name} #{last_name}"
@@ -60,10 +95,6 @@ class Client < ApplicationRecord
       errors[:postcode] << I18n.t('clients.validation.postcode_error')
     end
     errors[:postcode].empty?
-  end
-
-  def profile_complete?
-    !self.un_assessed?
   end
 
   def devise_mailer

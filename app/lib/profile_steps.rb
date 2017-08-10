@@ -22,9 +22,9 @@ class ProfileSteps
       4
     elsif @client.qualifications.any? || @client.training_courses.any? || !@client.studying.nil?
       3
-    elsif @client.personal_traits.any?
+    elsif @client.objectives.any? || @client.types_of_work.any? || @client.support_priorities.any?
       2
-    elsif @client.objectives.any?
+    elsif @client.personal_traits.any?
       1
     else
       0

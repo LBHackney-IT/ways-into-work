@@ -66,6 +66,9 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   +mobile
     text-align: center !important
 
+.auto-width
+  width: auto !important
+
 @each $name, $pair in $colors
   $color: nth($pair, 1)
   .has-text-#{$name}
@@ -123,4 +126,4 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   font-weight: $weight-medium
 
 .bold
-  font-weight: $weight-semibold
+  font-weight: $weight-semibold !important

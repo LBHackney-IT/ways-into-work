@@ -4,14 +4,18 @@ WaysIntoWork::Application.routes.draw do
 
   root to: 'welcome#show'
 
+  get 'hackney_works' => 'hackney_works#show'
+
   get 'outside_hackney' => 'eligibility#outside_hackney'
   get 'just_registered' => 'just_registered#show'
 
   namespace :advisor do
-    resources :clients, only: [:index, :edit, :update] do
-      resources :meetings, only: [:new, :create]
+    resources :clients do
       resource :assign, only: :update, controller: 'assign_client'
       resources :file_uploads, only: [:create, :new, :destroy]
+      resources :meetings
+      resources :action_plan_tasks
+      resources :contact_notes, only: [:create, :new, :index]
     end
 
     resources :my_clients, only: :index
@@ -29,6 +33,8 @@ WaysIntoWork::Application.routes.draw do
 
 
   namespace :client do
+    get 'next_steps' => 'next_steps#show'
+    resources :file_uploads, only: [:create, :new, :destroy]
     resource :password, only: [:edit]
     resource :profile, only: [:show]
     resource :personal_traits, only: [:edit, :update]

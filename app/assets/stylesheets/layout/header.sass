@@ -1,9 +1,32 @@
+#main-site-wrapper .site-header
+  .lines
+    display: block
+    position: relative
+    width: 100%
+    height: 15px
+    border-top: #005F61 solid 4px
+    border-bottom: #B1E4E3 solid 2px
+    &:after
+      content: ""
+      background: #009CA6
+      top: 3px
+      display: block
+      height: 3px
+      left: 0
+      position: absolute
+      right: 0
+      width: 100%
+
 .header, .site-header, header
   background-color: $white
-  border-bottom: 1px rgba($black, 0.15) solid
+
+.nav-left
+  padding-top: 4px
 
 .nav-item a.is-brand, a.nav-item.is-brand
   padding-left: 1.5rem
+  text-transform: uppercase
+  color: black
 
 @media screen and (min-width: $desktop)
   .nav-item a.is-brand, a.nav-item.is-brand

@@ -45,16 +45,18 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    appsignal (2.3.0)
+      rack
     archive-zip (0.7.0)
       io-like (~> 0.3.0)
     arel (8.0.0)
-    aws-sdk (2.10.7)
-      aws-sdk-resources (= 2.10.7)
-    aws-sdk-core (2.10.7)
+    aws-sdk (2.10.8)
+      aws-sdk-resources (= 2.10.8)
+    aws-sdk-core (2.10.8)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.10.7)
-      aws-sdk-core (= 2.10.7)
+    aws-sdk-resources (2.10.8)
+      aws-sdk-core (= 2.10.8)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -67,7 +69,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
-    capybara (2.14.3)
+    capybara (2.14.4)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -107,6 +109,8 @@ GEM
       railties (>= 4, < 5.2)
     cucumber-wire (0.0.1)
     database_cleaner (1.6.1)
+    decent_exposure (3.0.2)
+      activesupport (>= 4.0)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -114,6 +118,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    docile (1.1.5)
     dotenv (2.2.1)
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
@@ -128,7 +133,7 @@ GEM
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
       mail (~> 2.6)
-    erubi (1.6.0)
+    erubi (1.6.1)
     erubis (2.7.0)
     execjs (2.7.0)
     fabrication (2.16.1)
@@ -170,6 +175,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.1.0)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -208,6 +214,8 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    paranoia (2.3.1)
+      activerecord (>= 4.0, < 5.2)
     pg (0.21.0)
     pg_search (2.0.1)
       activerecord (>= 4.2)
@@ -297,6 +305,11 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
+    simplecov (0.14.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.1)
     sorcerer (1.0.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -336,6 +349,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appsignal
   aws-sdk
   better_errors
   bullet
@@ -345,6 +359,7 @@ DEPENDENCIES
   coderay
   cucumber-rails
   database_cleaner
+  decent_exposure
   devise
   dotenv-rails
   draper
@@ -361,6 +376,7 @@ DEPENDENCIES
   kaminari
   launchy
   paperclip
+  paranoia
   pg
   pg_search
   phony_rails
@@ -371,6 +387,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   simple_form
+  simplecov
   uglifier
   vcr
   web-console

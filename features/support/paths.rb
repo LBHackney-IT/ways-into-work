@@ -8,8 +8,8 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the advisor dashboard/
-      advisor_cases_path
+    when /the my clients/
+      advisor_my_clients_path
 
     when /the client dashboard/
       client_dashboard_path
@@ -22,9 +22,6 @@ module NavigationHelpers
 
     when /the advisors edit client/
       edit_advisor_client_path(@client)
-
-    when /the advisor client/
-      advisor_client_path(@client)
 
 
     else

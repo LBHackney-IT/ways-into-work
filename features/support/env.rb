@@ -3,12 +3,15 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
+ENV["RAILS_ENV"] ||= "test"
+require 'simplecov'
+SimpleCov.start 'rails'
 
 require 'cucumber/rails'
 require "email_spec"
 require 'email_spec/cucumber'
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

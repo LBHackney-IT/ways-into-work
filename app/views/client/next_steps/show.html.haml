@@ -1,0 +1,9 @@
+.column.is-half.is-offset-one-quarter.info-with-icon
+  %h2.subtitle Your profile got submitted.
+  =image_tag('icons/profile.svg', :alt => 'Profile Icon')
+  %h3 Prepare for the meeting
+  %p Thank you for taking interest in our service. For the first meeting please bring the following documents:
+  %ul
+    %li Photo ID (e.g. passport or driving license)
+    %li CV (Only if you have one!)
+  =link_to "View profile", :client_profile, class: 'button is-primary'

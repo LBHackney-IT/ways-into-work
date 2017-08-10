@@ -69,10 +69,10 @@ $.fn.handleFormElements = function() {
     function clear_other_option(radio_button) {
       other_option =  $(radio_button).parents('.convert_radio').find('.other')
       if(other_option.length) {
-        other_option.find('input[type="checkbox"]').checked = false
-        other_option.find('.checkbox label').removeClass('is-primary is-outlined')
-        other_option.find('input[type="text"]').val('')
-        other_option.find('.other_text').addClass('is-hidden')
+        other_option.find('input[type="checkbox"]').checked = false;
+        other_option.find('.checkbox label').removeClass('is-primary is-outlined');
+        other_option.find('input[type="text"]').val('');
+        other_option.find('.other_text').addClass('is-hidden');
       }
     }
 

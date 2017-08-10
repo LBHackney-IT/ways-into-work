@@ -4,18 +4,27 @@ class AdvisorClientDecorator < ClientDecorator
     "#{client.name}'s Profile"
   end
 
-  def decorate_file_action
-    if latest_cv.present?
-      h.link_to(latest_cv.attachment_file_name, latest_cv.attachment.try(:url), title: latest_cv.attachment_file_name, target: :blank) <<
-      h.content_tag(:p, "CV uploaded by: #{latest_cv.uploaded_by} on #{latest_cv.created_at.to_date.to_s(:short)}") <<
-      h.button_to(I18n.t('clients.buttons.replace_cv'), h.advisor_client_file_upload_path(client, latest_cv), method: :delete, class: 'button is-primary')
-    else
-      h.link_to I18n.t('clients.buttons.upload_cv'), h.new_advisor_client_file_upload_path(client), class: "button is-primary"
-    end
+  def new_file_button(label)
+    h.link_to label, h.new_advisor_client_file_upload_path(client), class: "button is-primary is-small"
   end
 
+  def return_to_client_button
+    h.link_to I18n.t('clients.buttons.back'), h.edit_advisor_client_path(client), class: "button pull-right"
+  end
 
-  def latest_cv
-    @latest_cv ||= client.file_uploads.first
+  def post_file_to
+    h.advisor_client_file_uploads_path(client)
+  end
+
+  def delete_file_button(file)
+    h.button_to(I18n.t('clients.buttons.delete'), h.advisor_client_file_upload_path(client_id: id, id: file.id), class: 'button is-primary is-small', method: :delete)
+  end
+
+  def decorate_meetings_action
+    if client.meetings.any?
+      h.link_to I18n.t('clients.buttons.view_meetings'), h.advisor_client_meetings_path(client), method: :get, class: "button is-primary is-small"
+    else
+      h.button_to I18n.t('clients.buttons.arrange_meeting'), h.new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
+    end
   end
 end

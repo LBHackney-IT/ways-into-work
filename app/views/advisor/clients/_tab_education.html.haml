@@ -5,8 +5,10 @@
   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
 %br
 
+= render partial: 'assessment_note', locals: {form: form, note: @past_education_notes, label: 'Details of past education', type: :text }
+
 .convert_checkbox
-  =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'have you completed any of the following training courses?', include_hidden: false
+  =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'Have you completed any of the following training courses?', include_hidden: false
   = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
 %br
 

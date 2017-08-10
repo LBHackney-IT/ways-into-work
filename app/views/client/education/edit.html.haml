@@ -1,12 +1,13 @@
 .column.is-12.has-text-centered
   = render partial: 'shared/profile_steps'
-.column.is-10.is-offset-1
+.column.reg-flow
+  =image_tag('icons/education.svg', :alt => 'Education Icon')
   %h2.subtitle=I18n.t('clients.steps.education.long')
 
   = simple_form_for [current_client], url: :client_education do |form|
     = render 'shared/form_errors', object: form.object
 
-    .convert_checkbox
+    .convert_checkbox.full
       =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
       = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
       %p.help Choose as many options that apply to you.
@@ -14,8 +15,8 @@
     %br
 
 
-    .convert_checkbox
-      =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'have you completed any of the following training courses?', include_hidden: false
+    .convert_checkbox.full
+      =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'Have you completed any of the following training courses?', include_hidden: false
       = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
       %p.help Choose as many options that apply to you.
 
@@ -28,9 +29,6 @@
 
       =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }
 
-    / .convert_checkbox.single_option.is-hidden.on-false
-    /   =form.input :past_education, as: :string, :label => "What was the highest level of education you studied for? eg. GCSE, A-Levels, Degree", :input_html => { :class => 'input' }
-
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'
-      = form.submit 'Save and Exit', :class => 'button'
+      = form.submit I18n.t('clients.buttons.onboarding_skip'), :class => 'button'

@@ -1,21 +1,12 @@
 %h3 Aspirations
 
-= form.simple_fields_for :assessment_notes, @aspirations_notes  do |notes_form|
-  =notes_form.input :content, label: 'What are your Aspirations?', :input_html => { :class => "textarea" }
-  =notes_form.input :content_key, as: :hidden
+= render partial: 'assessment_note', locals: {form: form, note: @aspirations_notes, label: 'What are your Aspirations? (long/medium/short term)', type: :text }
 
-= form.simple_fields_for :assessment_notes, @driving_force_notes  do |notes_form|
-  =notes_form.input :content, label: 'What is driving you?', :input_html => { :class => "textarea" }
-  =notes_form.input :content_key, as: :hidden
+.convert_checkbox
+  =form.input :types_of_work, as: :check_boxes, collection: TypeOfWorkOption.all, :label => 'What types of work are you looking for?', include_hidden: false
 
-= form.simple_fields_for :assessment_notes, @barriers_notes  do |notes_form|
-  =notes_form.input :content, label: 'What are your barriers?', :input_html => { :class => "textarea" }
-  =notes_form.input :content_key, as: :hidden
+  = render partial: 'shared/other_text', locals: { form: form, field: :other_type_of_work }
 
-= form.simple_fields_for :assessment_notes, @job_goal_1_notes  do |notes_form|
-  =notes_form.input :content, label: 'Job Goal 1', :input_html => { :class => "textarea" }
-  =notes_form.input :content_key, as: :hidden
+= render partial: 'assessment_note', locals: {form: form, note: @job_goal_1_notes, label: 'Job Goal 1', type: :string }
 
-= form.simple_fields_for :assessment_notes, @job_goal_2_notes  do |notes_form|
-  =notes_form.input :content, label: 'Job Goal 2', :input_html => { :class => "textarea" }
-  =notes_form.input :content_key, as: :hidden
+= render partial: 'assessment_note', locals: {form: form, note: @job_goal_2_notes, label: 'Job Goal 2', type: :string }

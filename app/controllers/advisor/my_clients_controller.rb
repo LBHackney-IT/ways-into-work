@@ -1,20 +1,29 @@
 class Advisor::MyClientsController < Advisor::BaseController
 
   def index
-    @clients_needing_appointment = current_advisor.clients.needing_appointment
-    @filterrific = initialize_filterrific(
-      default_clients_with_appointment,
-      params[:filterrific],
-      select_options: {
-        by_types_of_work: TypeOfWorkOption.options_for_select
-      }
-    ) or return
-
-    @filtered_clients = @filterrific.find.page(params[:page])
+    @clients_requiring_contact = current_advisor.clients.needing_contact.to_a
+    init_filtered_clients
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
-  def default_clients_with_appointment
-    @clients_with_appointment ||= current_advisor.clients.with_appointment
-  end
+  private
+
+    def init_filtered_clients
+      @filterrific = initialize_filterrific(
+        current_advisor.clients.with_appointment,
+        params[:filterrific],
+        persistence_id: false,
+        select_options: {
+          by_types_of_work: TypeOfWorkOption.options_for_select,
+          by_training: TrainingCourseOption.options_for_select,
+          by_age: [['Under 25', :under_25s]]
+        }
+      ) or return
+      @filtered_clients = @filterrific.find.page(params[:page])
+
+    end
 
 end

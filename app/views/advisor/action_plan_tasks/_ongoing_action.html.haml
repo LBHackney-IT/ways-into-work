@@ -1,0 +1,5 @@
+%tr[action_plan_task]
+  %td=link_to action_plan_task.title, edit_advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id)
+  %td=action_plan_task.due_date.to_date.to_s(:short)
+  %td=action_plan_task.task_owner_name
+  %td.has-text-right=button_to 'View details', edit_advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :get, class: "button is-primary is-small"

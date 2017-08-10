@@ -5,14 +5,19 @@
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 
-%br
 .convert_checkbox
   =form.input :support_priorities, as: :check_boxes, collection: SupportOption.all, :label => 'What would you like support with?', include_hidden: false
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
 %br
-.convert_checkbox
-  =form.input :types_of_work, as: :check_boxes, collection: TypeOfWorkOption.all, :label => 'What types of work are you looking for?', include_hidden: false
 
-  = render partial: 'shared/other_text', locals: { form: form, field: :other_type_of_work }
+= render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
+
+
+.convert_checkbox
+  =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you have any barriers to overcome?', include_hidden: false
+
+%br
+
+= render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }

@@ -1,42 +1,71 @@
-#your_clients.column.is-10.is-offset-1
+#your_clients.column
+
   .head.columns.level
     .level-left.column
       %h2 Your Clients
-      %span.client_total="#{current_advisor.clients.count} Total"
+      -if @clients_requiring_contact.any?
+        %span.client_total="#{current_advisor.clients.count} Total (#{@clients_requiring_contact.count} need initial contact)"
+      -else
+        %span.client_total="#{current_advisor.clients.count} Total"
+    .level-right.column
+      = link_to 'Create new client', :new_advisor_client, class: "button"
 
-  -if @clients_needing_appointment.any?
-    %section#clients_needing_appointment.hero.is-fullwidth.section
-      .container.content.columns
-        .column.is-10.is-offset-1
-          %h4
-            ="View #{pluralize(@clients_needing_appointment.count, 'client')} that still require initial contact"
-            %i.fa.fa-chevron-down
-          #hidden-section
-            %table.table
-              %tbody
-                = render partial: 'needing_appointment', collection: @clients_needing_appointment, as: 'client'
+  -if @clients_requiring_contact.any?
+    %section#clients_needing_appointment.hero.section
+      .columns.content
+        .column
+          %h4.bold
+            ="You have #{pluralize(@clients_requiring_contact.count, 'client')} that still require initial contact"
 
-  - if @clients_with_appointment.any?
+          %table.table
+            %thead
+              %tr
+                %th Client
+                %th Registered
+                %th Contacted
+                %th Previous
+                %th
+            %tbody
+              = render partial: 'awaiting_contact', collection: @clients_requiring_contact.shift(2), as: 'client'
+
+          -if @clients_requiring_contact.any?
+            %h4#view_more
+              %span.line
+                %span#swap-word See
+                ="#{@clients_requiring_contact.count} more clients"
+              %i.fa.fa-chevron-down
+            #hidden-section
+              %table.table
+                %tbody
+                  = render partial: 'awaiting_contact', collection: @clients_requiring_contact, as: 'client'
+
+
+  - if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
-      %label Industry interest
-      = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' }, onchange: "$(this).parents('form').submit()" )
-      %label Name Search
-      = f.text_field(:search_query, class: 'filterrific-periodically-observed')
-      = link_to('Reset filters', reset_filterrific_url)
+      #client_filters
+        .columns.is-multiline
+          .column
+            %label.label Search client names
+            = f.text_field(:search_query, class: 'input auto-width')
 
-    #filterrific_results
-      %div
-        = page_entries_info @filtered_clients # provided by kaminari
-      %table.table#clients_with_initial_appointment
-        %thead
-          %tr
-            %th Client
-            %th Meeting date
-            %th Date Created
-            %th
-        %tbody
-          = render partial: 'with_meeting', collection: @filtered_clients, as: 'client'
-      = paginate @filtered_clients # provided by kaminari
+          .column
+            %label.label Training Course
+            %span.select
+              = f.select(:by_training, @filterrific.select_options[:by_training], { include_blank: '- Any -' })
+
+          .column
+            %label.label Industry preference
+            %span.select
+              = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' } )
+          .column
+            %label.label Age
+            %span.select
+              = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
+
+          .column.has-text-right#fix-line-hieght
+            = link_to('Reset filters', reset_filterrific_url, class: "button")
+
+    = render partial: 'filtered_table', locals: { clients: @filtered_clients }
 
   - unless current_advisor.clients.any?
     %h4=I18n.t('advisors.headers.no_clients')

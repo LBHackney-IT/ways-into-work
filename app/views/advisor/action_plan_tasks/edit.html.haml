@@ -1,0 +1,22 @@
+%section.column
+  .columns.head.level
+    .level-left.column
+      %h3.subtitle= "Edit task"
+    .level-right.column
+      =link_to I18n.t('clients.buttons.back_to_action_plan'), advisor_client_action_plan_tasks_path, class: 'button pull-right'
+  %hr
+
+  = simple_form_for [action_plan_task.client, action_plan_task], url: advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :put do |form|
+
+    = render partial: 'form_fields', locals: {form: form}
+
+    .convert_radio
+      = form.input :status, as: :radio_buttons, label: "Status:", collection: [['In Progress', :ongoing], ['Completed', :completed]]
+
+    .form-action
+      = form.submit I18n.t('clients.buttons.update'), class: "button is-primary", id: 'save_and_exit'
+
+      = link_to I18n.t('clients.buttons.cancel'), advisor_client_action_plan_tasks_path(client_id: action_plan_task.client_id), method: :get, class: "button"
+
+  .form-action
+    = button_to I18n.t('clients.buttons.delete'), advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :delete, class: "button is-danger"

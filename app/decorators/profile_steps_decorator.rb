@@ -22,16 +22,16 @@ class ProfileStepsDecorator < SimpleDelegator
   end
 
   def enabled?
-    index <= profile.latest_index
+    index <= [profile.latest_index, profile.current_index].max
   end
 
   private
 
   def decorated_class
     d_class = "step button "
-    d_class << "disabled " if !enabled?
+    d_class << "disabled " unless enabled?
     d_class << "is-primary " if profile.current_step?(self)
-    d_class << "is-white " if !profile.current_step?(self)
+    d_class << "is-white " unless profile.current_step?(self)
     d_class << "done " if profile.prior_step?(self)
     d_class.strip
   end

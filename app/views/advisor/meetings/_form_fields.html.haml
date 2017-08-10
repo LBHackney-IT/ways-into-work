@@ -1,0 +1,15 @@
+%fieldset
+  .field
+    .convert_radio
+      =form.input :agenda, as: :radio_buttons, collection: MeetingAgendaOption.all, :label => 'What is the agenda of this meeting?', include_hidden: false
+      .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_agenda }
+  .field
+    =form.input :start_datetime, label: 'Appointment date and time', as: :datetime, start_year: Date.today.year, end_year: Date.today.year + 1, minute_step: 10, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
+
+  .field
+    =form.input :notes, as: :text, :input_html => { :class => "textarea" }
+
+  .field
+    %span.select.advisor
+      =form.input :advisor_id, as: :select, collection: Advisor.all, include_blank: false, input_wrapper_html: {class: 'select'}
+  = form.input :client_id, as: :hidden

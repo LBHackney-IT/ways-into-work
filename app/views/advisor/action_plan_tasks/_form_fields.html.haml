@@ -1,0 +1,13 @@
+= render 'shared/form_errors', object: form.object
+%fieldset
+  = form.input :title, as: :string, label: "Agreed action:", :input_html => { :class => "input" }
+
+  .convert_radio
+    =form.input :outcome, as: :radio_buttons, collection: OutcomeOption.all, label: 'Action Outcome', include_hidden: false
+
+  = form.input :notes, as: :text, label: "Notes", :input_html => { :class => "textarea" }
+  .convert_radio
+    = form.input :advisor_id, as: :radio_buttons, label: "Action to be completed by:", collection: [['Client', ''], ['Advisor', current_advisor.id]]
+
+  = form.input :client_id, as: :hidden
+  = form.input :due_date, as: :string, input_html: {type: :date, :class => 'input', :value => form.object.try(:due_date).try(:to_date)}, placeholder: "dd/mm/yyyy"

@@ -8,6 +8,8 @@ en:
         advisor_assignment: "Advisor could not be notified for some reason. Maybe an issue with clients or advisor."
       success:
         advisor_assigned: "Advisor has now been assigned to manage this client and has been notified."
+        updated: 'Client updates have been saved'
+        archived: "Client has been archived"
     mail:
       subject:
         welcome: "Welcome to Ways Into Work"
@@ -28,15 +30,32 @@ en:
         long: "For monitoring purposes please provide us with some details about you"
         short: "Details"
     buttons:
+      archive_client: 'Archive client record'
       upload_cv: 'Upload CV'
-      replace_cv: 'Replace CV'
+      manage_cvs: 'Manage CVs'
+      delete: 'Delete'
+      make_contact: "Contact"
       arrange_meeting: "Schedule meeting"
       arrange_first_meeting: "Schedule initial meeting"
       assign_to_me: 'Assign to me'
       assign_advisor: 'Assign Advisor'
       edit_profile: "Edit Profile"
-      complete_profile: "Complete my profile"
+      complete_profile: "Get started"
       start_assessment: "Add details"
+      action_plan: "View action plan"
+      view_meetings: "View meetings"
+      save: "Save"
+      update: "Update"
+      cancel: "Cancel"
+      delete: "Delete"
+      back: "Back"
+      create_next_task: "Save and Create Another"
+      new_action_plan_task: "New task"
+      onboarding_skip: "Come back later"
+      back_to_meetings: "Back to meetings"
+      back_to_action_plan: "Back to action plan"
+      back_to_contact_notes: "Back to contact notes"
+      new_contact_note: "New contact note"
     validation:
       outside_borough: "This postcode appears to be outside the borough of Hackney."
       postcode_error: "The postcode you provided is invalid."

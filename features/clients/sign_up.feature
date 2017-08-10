@@ -10,7 +10,7 @@ Feature: Client signs up for the service
   @outside_hackney_postcode
   Scenario: client outside borough can't register
     Given I am on the home page
-    When I follow the link to register for the service
+    When I navigate to register for the service
     And I try and register with a postcode outside the borough
     Then I should be on the outside hackney page
 

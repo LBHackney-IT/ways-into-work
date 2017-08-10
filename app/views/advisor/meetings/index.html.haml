@@ -1,0 +1,27 @@
+.column
+  .head.level
+    .level-left
+      %h2="#{client.first_name}'s Meetings"
+      %span.client_total="#{client.meetings_count} scheduled"
+
+    .level-right
+      =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary"
+
+  = render partial: 'shared/upper_tabs', locals: {the_client: client}
+
+  .profile-tab
+    .column
+      -if client.meetings.any?
+        %table.table
+          %thead
+            %tr
+              %th Scheduled For Date
+              %th Agenda
+              %th Advisor
+              %th
+          %tbody
+            = render partial: 'meeting', collection: client.meetings
+      - else
+        %p No current meetings
+
+        =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary"
