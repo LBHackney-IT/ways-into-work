@@ -12,7 +12,7 @@
   -if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
       #client_filters
-        .columns
+        .columns.is-multiline
           .column
             %label.label Hub
             %span.select
