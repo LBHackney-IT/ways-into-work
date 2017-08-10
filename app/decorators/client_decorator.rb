@@ -111,7 +111,7 @@ class ClientDecorator < Draper::Decorator
   end
 
   def new_file_button(label)
-    h.link_to label, h.new_client_file_upload_path, class: "button is-primary is-small"
+    h.link_to label, h.new_client_file_upload_path, class: "button is-primary"
   end
 
   def post_file_to

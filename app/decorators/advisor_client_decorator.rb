@@ -5,7 +5,7 @@ class AdvisorClientDecorator < ClientDecorator
   end
 
   def new_file_button(label)
-    h.link_to label, h.new_advisor_client_file_upload_path(client), class: "button is-primary is-small"
+    h.link_to label, h.new_advisor_client_file_upload_path(client), class: "button is-primary"
   end
 
   def return_to_client_button

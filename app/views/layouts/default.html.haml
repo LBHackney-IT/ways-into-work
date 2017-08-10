@@ -2,6 +2,7 @@
 %html{:lang => "en"}
   %head
     = render 'layouts/html_head'
+  %title= page_title
   %body{:class => (user_login_signed_in? && current_user_login.user_type == 'Advisor') ? "admin #{page_class}" : page_class}
     #main-site-wrapper
       .site-header{ :role => "banner"}
