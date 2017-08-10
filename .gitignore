@@ -13,6 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+lib/assets
 public/assets
 public/system
 config/database.yml
