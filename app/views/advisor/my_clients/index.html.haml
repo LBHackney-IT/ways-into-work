@@ -12,7 +12,7 @@
 
   -if @clients_requiring_contact.any?
     %section#clients_needing_appointment.hero.section
-      .container.content.columns
+      .columns.content
         .column
           %h4.bold
             ="You have #{pluralize(@clients_requiring_contact.count, 'client')} that still require initial contact"
@@ -22,15 +22,17 @@
               %tr
                 %th Client
                 %th Registered
-                %th Tried to contact
-                %th Last contact
+                %th Contacted
+                %th Previous
                 %th
             %tbody
               = render partial: 'awaiting_contact', collection: @clients_requiring_contact.shift(2), as: 'client'
 
           -if @clients_requiring_contact.any?
             %h4#view_more
-              %span.line See more clients
+              %span.line
+                %span#swap-word See
+                ="#{@clients_requiring_contact.count} more clients"
               %i.fa.fa-chevron-down
             #hidden-section
               %table.table
@@ -41,7 +43,7 @@
   - if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
       #client_filters
-        .columns
+        .columns.is-multiline
           .column
             %label.label Search client names
             = f.text_field(:search_query, class: 'input auto-width')
