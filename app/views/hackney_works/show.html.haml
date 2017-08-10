@@ -3,8 +3,8 @@
     .column.is-half.is-offset-one-quarter
       =image_tag('hackney-works-white.svg', :alt => 'Hackney Works')
       %h1 Find your opportunity
-      %p We support Hackney residents looking for jobs, apprenticeships, training or volunteering.
-      = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+      %p We support Hackney residents who are looking for jobs, apprenticeships, training or volunteering.
+      = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary is-large'
   .content
     .container.columns
       .column.is-half.is-offset-one-quarter
@@ -20,7 +20,7 @@
     .column.point
       .img-container
         =image_tag('icons/signs.svg', :alt => 'Signs icon')
-      %p You're making your first steps
+      %p You want to start your career
     .column.point
       .img-container
         =image_tag('icons/network.svg', :alt => 'Network icon')
@@ -32,7 +32,7 @@
     .column.point
       .img-container
         =image_tag('icons/share.svg', :alt => 'Share icon')
-      %p You want to find work around childcare
+      %p You need work that fits around childcare
   = link_to "Meet the team", hubs_path, class: 'button'
 
 .full-width.info.dark

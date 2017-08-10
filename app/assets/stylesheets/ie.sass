@@ -1,0 +1,71 @@
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+  .ie-only
+    display: block
+
+  .site-header
+    .nav-container
+      overflow: auto
+    .nav-left, .nav-right
+      float: left
+      width: 50%
+    .nav-left
+      text-align: left
+    .nav-right
+      text-align: right
+      form
+        display: inline
+    .lines
+      display: none
+
+  .admin
+    .flex
+      width: 100%
+
+    .head
+      margin-top: 1em
+      .level-right.home
+        float: right
+        margin-top: -3em
+        &.single
+          margin-top: -2em
+
+    .convert_checkbox,
+    .convert_radio
+      margin-bottom: 2em
+      span.radio,
+      span.checkbox
+        margin-top: 1em
+
+    #client_filters
+      .columns
+        overflow: auto
+      .column
+        float: left
+        width: 50%
+      .has-text-right
+        text-align: left
+
+    #upper-tabs
+      margin-bottom: 1em
+
+    .profile-tab
+      #tab-list
+        width: 100%
+        ul li
+          display: inline
+          margin-right: 2em
+      .tab
+        padding-left: 0
+
+    .with_multi_select .simple_input select
+      display: inline-block
+
+    &.meetings,
+    &.action_plan_tasks,
+    &.contact_notes,
+    &.file_uploads
+      .content h3
+        margin-bottom: 0
+      .head .level-right
+        margin-top: -3.5em
+        padding-bottom: 2em

@@ -9,7 +9,7 @@
           - else
             %span.client_total="#{client.advisor.name} is #{client.first_name}'s advisor"
 
-        .level-right
+        .level-right.home
           = link_to "Back to my clients", :advisor_my_clients, class: "button nav-back"
           = form.submit 'Save profile', :class => 'button is-primary'
 
