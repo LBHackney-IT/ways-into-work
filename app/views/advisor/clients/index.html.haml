@@ -8,6 +8,9 @@
         -else
           %span.bold="#{@filtered_clients.count} filtered clients"
           =" - from #{Client.all.count} total"
+    .level-right
+      =link_to 'Export Clients', "/clients_template.csv", class: 'button'
+
 
   -if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
