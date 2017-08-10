@@ -1,7 +1,7 @@
 hubs = [
   {
     id: 1,
-    name: 'Hoxton Opportunity Hub',
+    name: 'Opportunity Hub, Hoxton',
     address_line_1: '137-139 Bowling Green Walk',
     address_line_2: 'Corner of Pitfield Street',
     postcode: 'N1 6AL',
