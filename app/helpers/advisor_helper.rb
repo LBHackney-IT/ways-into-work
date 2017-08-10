@@ -1,8 +1,8 @@
 module AdvisorHelper
-  LEADER_NAMES = {    
-    'Hoxton Opportunity Hub' => 'Mohammed Jama',    
-    'Redmond Community Centre' => 'Caroline Modest',    
-    'Homerton Library' => 'Dujon Harvey'  
+  LEADER_NAMES = {
+    'Opportunity Hub, Hoxton' => 'Mohammed Jama',
+    'Redmond Community Centre' => 'Caroline Modest',
+    'Homerton Library' => 'Dujon Harvey'
   }
 
 
