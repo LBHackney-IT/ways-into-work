@@ -7,4 +7,6 @@
         = form.submit I18n.t('clients.buttons.assign_advisor'), class: "step button is-primary"
   - elsif client.advisor != current_advisor
     .column
-      =button_to I18n.t('clients.buttons.assign_to_me'), advisor_client_assign_path(client_id: client.id, client: {advisor_id: current_advisor.id }), method: :put, class: "button is-primary is-small"
+      = simple_form_for client.object, url: advisor_client_assign_path(client_id: client.id) do |form|
+        = form.input :advisor_id, as: :hidden, input_html: { value: current_advisor.id }
+        = form.submit I18n.t('clients.buttons.assign_to_me'), class: "step button is-primary"
