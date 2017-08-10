@@ -34,7 +34,7 @@ $nav-height: 3.25rem !default
 input.nav-item, .nav-item input
   background: transparent
   border: none
-  line-height: 1.75
+  line-height: 2
   &:focus
     outline: 0
   &:hover
@@ -47,15 +47,13 @@ input.nav-item, .nav-item input
   &.is-active
     color: $link-active
   &.is-tab
-    border-bottom: 1px solid transparent
-    border-top: 1px solid transparent
     padding-bottom: calc(0.75rem - 1px)
-    padding-left: 1rem
-    padding-right: 1rem
+    padding-left: 1.2rem
+    padding-right: 1.2rem
     padding-top: calc(0.75rem - 1px)
     &:hover, &.current
-      border-bottom-color: $primary
-      border-top-color: transparent
+      background-color: $primary
+      color: $white
     &.is-active
       border-bottom: 3px solid $primary
       color: $primary
