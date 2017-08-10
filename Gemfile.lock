@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/wearefuturegov/rails_service_check
+  revision: 678f75d650978dc43e1217c084151154bcc9859b
+  specs:
+    rails_service_check (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -383,6 +389,7 @@ DEPENDENCIES
   puma
   rails (= 5.1)
   rails_12factor
+  rails_service_check!
   rspec-given
   rspec-rails
   sass-rails
@@ -397,4 +404,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.1
+   1.15.3

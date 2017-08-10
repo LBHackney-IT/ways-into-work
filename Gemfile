@@ -39,6 +39,8 @@ gem 'decent_exposure'
 
 gem 'paranoia'
 
+gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service_check'
+
 group :development, :staging, :test do
   gem 'fabrication'
   gem 'ffaker'

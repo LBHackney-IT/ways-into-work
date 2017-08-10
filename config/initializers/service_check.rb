@@ -1,0 +1,1 @@
+RailsServiceCheck.add :smtp
