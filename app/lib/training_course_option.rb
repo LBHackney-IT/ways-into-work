@@ -11,8 +11,7 @@ class TrainingCourseOption
       new('first_aid', 'First aid'),
       new('health_and_saftey', 'Health and Safety'),
       new('cscs', 'CSCS (Construction Skills)'),
-      new('sia_trained', 'SIA (Security Training)'),
-      new('sia_licence', 'SIA (Security Licence)'),
+      new('sia', 'SIA (Security)'),
       new('driving_licence', 'Driving licence'),
     ]
   end
