@@ -16,7 +16,7 @@
       =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'What is your ethnicity?', include_hidden: false
       .convert_checkbox.additional= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
 
-    =form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input'}, placeholder: "dd/mm/yyyy", label: 'Whati is your date of birth?'
+    =form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input'}, placeholder: "dd/mm/yyyy", label: 'What is your date of birth?'
 
     .actions
       = form.submit 'Complete Profile', :class => 'button is-primary is-pulled-right'
