@@ -90,11 +90,11 @@ module WaysIntoWork
         storage: :s3,
         s3_credentials: s3_conf,
         bucket: ENV.fetch('S3_BUCKET_NAME'),
-        s3_region: 'eu-west-2',
+        s3_region: ENV['AWS_REGION'],
         s3_protocol: "https",
         path: "public/system/:attachment/:id/:style/:basename.:extension",
         url: ":s3_domain_url",
-        s3_host_name: "s3-eu-west-2.amazonaws.com"
+        s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com"
       }
     else
       config.paperclip_defaults = {
