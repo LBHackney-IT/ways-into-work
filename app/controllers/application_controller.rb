@@ -17,8 +17,6 @@ class ApplicationController < ActionController::Base
     case user_type
     when "Advisor"
       :advisor_my_clients
-    when "ServiceManager"
-      :service_manager_clients
     when 'Client'
       :client_dashboard
     else

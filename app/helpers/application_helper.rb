@@ -9,8 +9,6 @@ module ApplicationHelper
       'layouts/site_header_client'
     elsif current_user_login.user_type == 'Advisor'
       'layouts/site_header_advisor'
-    else
-      'layouts/site_header_service_manager'
     end
   end
 

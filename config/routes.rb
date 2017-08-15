@@ -21,13 +21,7 @@ WaysIntoWork::Application.routes.draw do
     resources :my_clients, only: :index
   end
 
-  namespace :service_manager do
-    resources :clients, only: [:index, :show] do
-    end
-  end
-
-  resources :clients, only: [:new, :create] do
-  end
+  resources :clients, only: [:new, :create]
 
   resources :hubs, only: :index
 

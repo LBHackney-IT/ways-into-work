@@ -45,7 +45,6 @@ When(/^I assign the client to dave$/) do
 end
 
 Then(/^the client should now appear in the assigned clients list$/) do
-  visit service_manager_clients_path
   within '#assigned_clients .client' do
     expect(page).to have_content(@client.name)
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810105654) do
+ActiveRecord::Schema.define(version: 20170815143654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,12 +140,6 @@ ActiveRecord::Schema.define(version: 20170810105654) do
     t.index ["client_id"], name: "index_meetings_on_client_id"
   end
 
-  create_table "service_managers", force: :cascade do |t|
-    t.string "name"
-    t.bigint "hub_id"
-    t.index ["hub_id"], name: "index_service_managers_on_hub_id"
-  end
-
   create_table "user_logins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -167,5 +161,4 @@ ActiveRecord::Schema.define(version: 20170810105654) do
 
   add_foreign_key "advisors", "hubs"
   add_foreign_key "clients", "advisors"
-  add_foreign_key "service_managers", "hubs"
 end
