@@ -30,13 +30,10 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   def update
-    if client.update_attributes(edit_client_params)
-      flash[:success] = I18n.t('clients.flashes.success.updated')
-      redirect_back(fallback_location: root_path)
+    if params[:commit] == "Assign Advisor"
+      assign_advisor
     else
-      client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
-      init_assessment_notes
-      render :edit
+      update_client
     end
   end
 
@@ -47,6 +44,29 @@ class Advisor::ClientsController < Advisor::BaseController
   end
 
   private
+
+    def assign_advisor
+      client.advisor = Advisor.find(edit_client_params[:advisor_id])
+      if client.advisor && client.save(validate: false)
+        AdvisorMailer.notify_assigned(client).deliver_now unless current_advisor == client.advisor
+        flash[:success] = I18n.t('clients.flashes.success.advisor_assigned')
+      else
+        flash[:error] = I18n.t('clients.flashes.error.advisor_assignment')
+      end
+      redirect_back(fallback_location: edit_advisor_client_path(client))
+    end
+
+    def update_client
+      if client.update_attributes(edit_client_params)
+        flash[:success] = I18n.t('clients.flashes.success.updated')
+        redirect_back(fallback_location: root_path)
+      else
+        client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
+        init_assessment_notes
+        render :edit
+      end
+    end
+
     def init_client
       if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
         client.advisor = current_advisor
