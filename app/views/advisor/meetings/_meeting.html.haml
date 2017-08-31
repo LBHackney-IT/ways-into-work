@@ -1,5 +1,5 @@
 %tr[meeting]
   %td=meeting.start_datetime.to_date.to_s(:short)
-  %td=MeetingAgendaOption.find(meeting.agenda).name
+  %td=MeetingAgendaOption.find(meeting.agenda).try(:name) || meeting.other_agenda
   %td=meeting.advisor.name
   %td.has-text-right=button_to 'View details', edit_advisor_client_meeting_path(client_id: client.id, id: meeting.id), method: :get, class: "button is-primary is-small"
