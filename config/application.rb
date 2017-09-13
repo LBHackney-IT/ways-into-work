@@ -67,7 +67,6 @@ module WaysIntoWork
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.secret_token = ENV['SECRET_TOKEN']
     config.secret_key_base = ENV['SECRET_KEY_BASE']
     config.devise_secret_key = ENV['DEVISE_SECRET_KEY']
     config.devise_pepper = ENV['DEVISE_PEPPER']
