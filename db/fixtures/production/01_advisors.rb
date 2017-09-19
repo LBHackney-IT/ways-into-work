@@ -6,7 +6,7 @@ advisors = [
     hub_id: 2
   }, {
     email: "richard.allen@hackney.gov.uk",
-    name: 'Richard Alle',
+    name: 'Richard Allen',
     phone: "020 8356 2497",
     hub_id: 2
   },{
