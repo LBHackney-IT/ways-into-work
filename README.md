@@ -1,4 +1,15 @@
-# Hackney Works README
+# Hackney Works
+
+This code base has been developed for a project we delivered for Hackney Council. We are currently in an alpha phase testing with one of Hackneys Hubs. This is the site's url: 
+
+https://hackney-opportunities.herokuapp.com/
+
+The result was based on extensive research with the Council's employees and Hackney residents. We have put some of the core Research insights on the wiki.
+
+https://github.com/wearefuturegov/ways-into-work/wiki/Research-Insights
+
+We hope we can develop this into the next phase with some of our more aspirational ideas.
+
 ==========
 
 ## Caveats to the code base
