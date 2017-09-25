@@ -1,5 +1,7 @@
 class Client::AdditionalInformationController < Client::BaseController
 
+  expose :client, -> { current_client.decorate }
+
   def edit
   end
 

@@ -4,6 +4,10 @@ class ClientDecorator < Draper::Decorator
 
   decorates :client
 
+  def date_of_birth_value
+    date_of_birth.try(:to_date)
+  end
+
   def client_profile_header
     'Your Profile'
   end

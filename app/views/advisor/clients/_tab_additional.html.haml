@@ -4,7 +4,7 @@
   =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
   .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
 
-=form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input'}, placeholder: "dd/mm/yyyy"
+=form.input :date_of_birth, as: :string, input_html: {type: :date, :class => 'input', value: client.date_of_birth_value}
 
 .convert_radio
   =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
