@@ -60,8 +60,8 @@ class ClientSeeder
 
         # not all have email addresses
         client.save!
-
-        client.update_attribute(:created_at, row['Registration Date']) if row['Registration Date']
+        puts row['Date of Registration']
+        client.update_attribute(:created_at, row['Date of Registration']) if row['Date of Registration']
 
       rescue ActiveRecord::RecordInvalid => e
         @failures << "error thrown importing #{client.name} #{e}\n"
