@@ -1,6 +1,6 @@
 class Hub < ApplicationRecord
 
-  validates :name, :address_line_1, :postcode, presence: true
+  validates :name, presence: true
 
   has_many :advisors
 
