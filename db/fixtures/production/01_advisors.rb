@@ -1,5 +1,21 @@
 advisors = [
   {
+    email: "george.belle@hackney.gov.uk",
+    name: "George Belle",
+    phone: "020 8356 1024",
+    hub_id: 1
+  },{
+    email: "dapo.adesina@hackney.gov.uk",
+    name: 'Dapo Adesina',
+    phone: "020 8356 3331",
+    hub_id: 1
+  },{
+    email: "mohammed.jama@hackney.gov.uk",
+    name: "Mohammed Jama",
+    team_leader: true,
+    phone: "020 8356 6471",
+    hub_id: 1
+  }, {
     email: "adeniran.omifisoye@hackney.gov.uk",
     name: "Abdul Omifisoye",
     phone: "020 8356 5934",
@@ -21,22 +37,6 @@ advisors = [
     phone: "020 8356 8189",
     hub_id: 2
   },{
-    email: "george.belle@hackney.gov.uk",
-    name: "George Belle",
-    phone: "020 8356 1024",
-    hub_id: 1
-  },{
-    email: "dapo.adesina@hackney.gov.uk",
-    name: 'Dapo Adesina',
-    phone: "020 8356 3331",
-    hub_id: 1
-  },{
-    email: "mohammed.jama@hackney.gov.uk",
-    name: "Mohammed Jama",
-    team_leader: true,
-    phone: "020 8356 6471",
-    hub_id: 1
-  }, {
     email: "ryan.bates@hackney.gov.uk",
     name: 'Ryan Bates',
     phone: "020 8356 8154",
