@@ -25,6 +25,14 @@ hubs = [
     longitude: -0.0438469,
     latitude: 51.5488747,
     ward_mapit_codes: ['144385', '144386', '144389', '144395', '144394', '144383', '144393' ]
+  },{
+    id: 4,
+    name: 'Supported Employment'
+    # address_line_1: 'Homerton High Road',
+    # postcode: 'E9 6AS',
+    # longitude: -0.0438469,
+    # latitude: 51.5488747,
+    # ward_mapit_codes: ['144385', '144386', '144389', '144395', '144394', '144383', '144393' ]
   }
 ]
 

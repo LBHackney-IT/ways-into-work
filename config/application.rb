@@ -71,7 +71,7 @@ module WaysIntoWork
     config.devise_secret_key = ENV['DEVISE_SECRET_KEY']
     config.devise_pepper = ENV['DEVISE_PEPPER']
 
-    config.action_mailer.default_url_options = { host: 'localost:3000'}
+    config.action_mailer.default_url_options = { host: 'localhost:3000'}
 
     config.support_email = ENV.fetch('SUPPORT_EMAIL', 'no-reply@example.com')
 
