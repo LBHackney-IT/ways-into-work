@@ -8,10 +8,13 @@ WaysIntoWork::Application.load_tasks
 
 begin
   require 'rspec/core/rake_task'
-
+  require 'coveralls/rake/task'
+  
+  Coveralls::RakeTask.new
   RSpec::Core::RakeTask.new(:spec)
+  
   task(:default).clear
-  task :default => [:cucumber, :spec]
+  task :default => [:cucumber, :spec, 'coveralls:push']
 rescue LoadError
   # no rspec available
 end

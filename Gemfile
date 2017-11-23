@@ -66,6 +66,7 @@ group :test do
   gem "webmock", require: false
   gem "vcr", require: false
   gem 'simplecov', require: false
+  gem 'coveralls', require: false
 end
 
 group :development, :test do
