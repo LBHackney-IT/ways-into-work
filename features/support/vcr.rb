@@ -1,11 +1,13 @@
 require 'vcr'
 
+dotenv = File.join(Rails.root, '.env')
+filter_vars = File.exists?(dotenv) ? Dotenv::Environment.new(dotenv) : ENV
+  
 VCR.configure do |c|
   c.hook_into :webmock
   c.ignore_localhost = true
   c.cassette_library_dir = 'features/support/cassettes'
-  # Filter out anything in the .env file
-  Dotenv::Environment.new(File.join Rails.root, '.env').each do |key, value|
+  filter_vars.each do |key, value|
     c.filter_sensitive_data("<#{key}>") { value }
   end
 end
