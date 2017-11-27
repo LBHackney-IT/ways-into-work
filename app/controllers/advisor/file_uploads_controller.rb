@@ -1,5 +1,4 @@
 class Advisor::FileUploadsController < Advisor::BaseController
-
   expose :file_upload
   expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
 
@@ -25,10 +24,9 @@ class Advisor::FileUploadsController < Advisor::BaseController
 
   def file_upload_params
     params.require(:file_upload).permit(
-        :client_id,
-        :attachment,
-        :uploaded_by
-      )
+      :client_id,
+      :attachment,
+      :uploaded_by
+    )
   end
-
 end

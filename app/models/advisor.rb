@@ -10,9 +10,9 @@ class Advisor < ApplicationRecord
 
   has_many :clients
 
-  scope :by_hub_id, lambda { |hub_id| where(hub_id: hub_id) }
+  scope :by_hub_id, ->(hub_id) { where(hub_id: hub_id) }
 
-  scope :team_leader, lambda { |hub| where(hub: hub, team_leader: true) }
+  scope :team_leader, ->(hub) { where(hub: hub, team_leader: true) }
 
   def devise_mailer
     Devise::Mailer
@@ -25,5 +25,4 @@ class Advisor < ApplicationRecord
       by_hub_id(hub_id).order('LOWER(name)')
     end.map { |e| [e.name, e.id] }
   end
-
 end

@@ -2,16 +2,16 @@ class ProfileSteps
   # include Enumerable
   include Rails.application.routes.url_helpers
 
-  STEPS = [
-    :about_you,
-    :objectives,
-    :education,
-    :employment,
-    :additional_information
-  ]
+  STEPS = %i[
+    about_you
+    objectives
+    education
+    employment
+    additional_information
+  ].freeze
 
   def initialize(client, step_key)
-    raise "Invalid step key!" unless STEPS.include?(step_key)
+    raise 'Invalid step key!' unless STEPS.include?(step_key)
 
     @client = client
     @step_key = step_key
@@ -40,7 +40,7 @@ class ProfileSteps
   end
 
   def on_final_step?
-    next_step == nil
+    next_step.nil?
   end
 
   def next_step

@@ -1,5 +1,4 @@
 class ProfileStepsDecorator < SimpleDelegator
-
   attr_reader :profile
 
   def initialize(profile, step)
@@ -9,7 +8,7 @@ class ProfileStepsDecorator < SimpleDelegator
 
   def properties
     result = {
-      "selected" => (profile.current_step?(self) ? "true" : "false"),
+      'selected' => (profile.current_step?(self) ? 'true' : 'false'),
       method: 'get',
       class: decorated_class
     }
@@ -18,7 +17,7 @@ class ProfileStepsDecorator < SimpleDelegator
   end
 
   def href
-     enabled? ? url : '#'
+    enabled? ? url : '#'
   end
 
   def enabled?
@@ -28,12 +27,11 @@ class ProfileStepsDecorator < SimpleDelegator
   private
 
   def decorated_class
-    d_class = "step button "
-    d_class << "disabled " unless enabled?
-    d_class << "is-primary " if profile.current_step?(self)
-    d_class << "is-white " unless profile.current_step?(self)
-    d_class << "done " if profile.prior_step?(self)
+    d_class = 'step button '
+    d_class << 'disabled ' unless enabled?
+    d_class << 'is-primary ' if profile.current_step?(self)
+    d_class << 'is-white ' unless profile.current_step?(self)
+    d_class << 'done ' if profile.prior_step?(self)
     d_class.strip
   end
-
 end

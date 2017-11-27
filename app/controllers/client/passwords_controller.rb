@@ -1,5 +1,4 @@
 class Client::PasswordsController < ApplicationController
-
   before_action :assert_reset_token_passed, only: :edit
 
   def edit
@@ -8,13 +7,11 @@ class Client::PasswordsController < ApplicationController
     @user_login.reset_password_token = params[:reset_password_token]
   end
 
-
-    # Check if a reset_password_token is provided in the request
+  # Check if a reset_password_token is provided in the request
   def assert_reset_token_passed
     if params[:reset_password_token].blank?
       set_flash_message(:alert, :no_token)
       redirect_to new_user_login_session_path
     end
   end
-
 end

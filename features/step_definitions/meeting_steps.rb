@@ -1,5 +1,4 @@
 module MeetingSH
-
   def double_digit(unit)
     if unit.to_s.size == 1
       "0#{unit}"
@@ -22,7 +21,6 @@ Given(/^I schedule a meeting for next week with notes$/) do
   click_on 'Save'
 end
 
-
 Then(/^I should see the meeting has been booked$/) do
   expect(page).not_to have_css('#clients_needing_appointment')
   within '#clients_with_initial_appointment' do
@@ -32,8 +30,8 @@ end
 
 Given(/^I record I tried calling but no asnswer$/) do
   click_on I18n.t('clients.buttons.make_contact')
-  choose "contact_note_contact_method_phone_call"
-  fill_in 'contact_note_content', with: "tried calling and left a message"
+  choose 'contact_note_contact_method_phone_call'
+  fill_in 'contact_note_content', with: 'tried calling and left a message'
   click_on 'Save'
 end
 

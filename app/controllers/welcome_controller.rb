@@ -1,9 +1,5 @@
 class WelcomeController < ApplicationController
-
   def show
-    if user_login_signed_in?
-      redirect_to user_root
-    end
+    redirect_to user_root if user_login_signed_in?
   end
-
 end

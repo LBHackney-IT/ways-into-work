@@ -1,6 +1,5 @@
 class Advisor::ContactNotesController < Advisor::BaseController
-
-  expose :client, decorate: ->(client){ client.decorate }
+  expose :client, decorate: ->(client) { client.decorate }
 
   expose :contact_note
 
@@ -17,7 +16,7 @@ class Advisor::ContactNotesController < Advisor::BaseController
       flash[:success] = "Saved details of your contact with #{client.name}"
       redirect_to :advisor_my_clients
     else
-      flash[:error] = "Failed to save contact details"
+      flash[:error] = 'Failed to save contact details'
       render :new
     end
   end
@@ -29,7 +28,8 @@ class Advisor::ContactNotesController < Advisor::BaseController
       :advisor_id,
       :client_id,
       :content,
-      :contact_method)
+      :contact_method
+    )
   end
 
   def init_contact_note
@@ -37,5 +37,4 @@ class Advisor::ContactNotesController < Advisor::BaseController
     contact_note.client_id = params[:client_id]
     contact_note.contact_method = client.preferred_contact_method
   end
-
 end

@@ -12,22 +12,19 @@ class TrainingCourseOption
       new('health_and_saftey', 'Health and Safety'),
       new('cscs', 'CSCS (Construction Skills)'),
       new('sia', 'SIA (Security)'),
-      new('driving_licence', 'Driving licence'),
+      new('driving_licence', 'Driving licence')
     ]
   end
 
   def self.find(id)
-    all.detect{|x| x.id == id}
+    all.detect { |x| x.id == id }
   end
 
   def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(', ')
+    ids.collect { |id| find(id).name }.join(', ')
   end
 
   def self.options_for_select
     all.map { |e| [e.name, e.id] }
   end
-
 end
-
-

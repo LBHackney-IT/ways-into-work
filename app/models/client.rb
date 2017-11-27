@@ -1,10 +1,9 @@
 class Client < ApplicationRecord
-
   include PgSearch
 
   acts_as_paranoid
 
-  enum rag_status: [ :un_assessed, :red, :amber, :green ]
+  enum rag_status: %i[un_assessed red amber green]
 
   # associations
   belongs_to :advisor
@@ -44,26 +43,26 @@ class Client < ApplicationRecord
 
   filterrific(
     # default_filter_params: { sorted_by: 'created_at_desc' },
-    available_filters: [
-      :search_query,
-      :by_hub_id,
-      :by_types_of_work,
-      :by_advisor_id,
-      :by_training,
-      :by_age,
+    available_filters: %i[
+      search_query
+      by_hub_id
+      by_types_of_work
+      by_advisor_id
+      by_training
+      by_age
     ]
   )
 
-  scope :by_hub_id, lambda { |hub_id| joins(:advisor).where('advisors.hub_id = ?', hub_id ) }
-  scope :by_advisor_id, lambda { |advisor_id| where(advisor_id: advisor_id ) }
-  scope :by_types_of_work, lambda { |type| where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
-  scope :by_training, lambda { |type| where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
+  scope :by_hub_id, ->(hub_id) { joins(:advisor).where('advisors.hub_id = ?', hub_id) }
+  scope :by_advisor_id, ->(advisor_id) { where(advisor_id: advisor_id) }
+  scope :by_types_of_work, ->(type) { where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
+  scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
 
   scope :by_age, lambda { |under_25s|
     where('date_of_birth  > ?', Date.today - 25.years) if under_25s
   }
 
-  pg_search_scope :search_query, :against => [:first_name, :last_name]
+  pg_search_scope :search_query, against: %i[first_name last_name]
 
   def next_meeting_date
     upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
@@ -79,16 +78,15 @@ class Client < ApplicationRecord
 
   def last_communication_events
     @past_contacts ||= meetings.where('meetings.start_datetime < ?', Time.now).pluck(:start_datetime) +
-              contact_notes.where('contact_notes.created_at < ?', Time.now).pluck(:created_at)
+                       contact_notes.where('contact_notes.created_at < ?', Time.now).pluck(:created_at)
   end
 
-
   def name
-   "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def valid_postcode?
-    return false if self.postcode.blank?
+    return false if postcode.blank?
     if better_postcode = GoingPostal.postcode?(postcode, 'GB')
       self.postcode = better_postcode
     else
@@ -102,24 +100,23 @@ class Client < ApplicationRecord
   end
 
   def phone_number
-    self.phone.phony_formatted
+    phone.phony_formatted
   end
 
   def address_to_s
-    address_to_a.join(", ")
+    address_to_a.join(', ')
   end
 
   def address_to_a
-    [address_line_1, address_line_2, postcode].select{|s| s.present?}
+    [address_line_1, address_line_2, postcode].select(&:present?)
   end
 
   def age_in_years
-    @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd)/365 if date_of_birth
+    @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
 
   def assign_team_leader(ward_mapit_code)
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
-      Advisor.where(team_leader: true).first
+                   Advisor.where(team_leader: true).first
   end
-
 end

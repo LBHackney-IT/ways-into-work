@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
     user_root(resource_or_scope.user_type)
   end
 
-  def after_sign_out_path_for(resource_or_scope)
+  def after_sign_out_path_for(_resource_or_scope)
     :hackney_works
   end
 
   def user_root(user_type = current_user_login.try(:user_type))
     case user_type
-    when "Advisor"
+    when 'Advisor'
       :advisor_my_clients
     when 'Client'
       :client_dashboard
@@ -28,5 +28,4 @@ class ApplicationController < ActionController::Base
     flash[:alert] = t('flash.errors.not_authorized')
     redirect_to request.referrer || user_root
   end
-
 end

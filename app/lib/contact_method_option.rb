@@ -16,7 +16,6 @@ class ContactMethodOption
   end
 
   def self.find(id)
-    all.detect{|x| x.id == id}
+    all.detect { |x| x.id == id }
   end
-
 end

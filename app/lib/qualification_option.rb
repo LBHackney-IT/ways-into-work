@@ -22,13 +22,10 @@ class QualificationOption
   end
 
   def self.find(id)
-    all.detect{|x| x.id == id}
+    all.detect { |x| x.id == id }
   end
 
   def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(', ')
+    ids.collect { |id| find(id).name }.join(', ')
   end
-
 end
-
-

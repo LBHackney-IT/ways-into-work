@@ -4,20 +4,17 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  Bundler.require(*Rails.groups(assets: %w[development test]))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
 
 module WaysIntoWork
-
   def self.config
     Application.config
   end
 
   class Application < Rails::Application
-
-
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
@@ -48,7 +45,7 @@ module WaysIntoWork
     # config.i18n.default_locale = :de
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
@@ -71,7 +68,7 @@ module WaysIntoWork
     config.devise_secret_key = ENV['DEVISE_SECRET_KEY']
     config.devise_pepper = ENV['DEVISE_PEPPER']
 
-    config.action_mailer.default_url_options = { host: 'localhost:3000'}
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
     config.support_email = ENV.fetch('SUPPORT_EMAIL', 'no-reply@example.com')
 
@@ -79,10 +76,10 @@ module WaysIntoWork
 
     config.mapbox_access_token = ENV['MAPBOX_ACCESS_TOKEN']
 
-    if ENV["AWS_SECRET_ACCESS_KEY"]
+    if ENV['AWS_SECRET_ACCESS_KEY']
       s3_conf = {
-        access_key_id: ENV["AWS_ACCESS_KEY_ID"],
-        secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
+        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
         bucket: ENV.fetch('S3_BUCKET_NAME')
       }
       config.paperclip_defaults = {
@@ -90,16 +87,15 @@ module WaysIntoWork
         s3_credentials: s3_conf,
         bucket: ENV.fetch('S3_BUCKET_NAME'),
         s3_region: ENV['AWS_REGION'],
-        s3_protocol: "https",
-        path: "public/system/:attachment/:id/:style/:basename.:extension",
-        url: ":s3_domain_url",
+        s3_protocol: 'https',
+        path: 'public/system/:attachment/:id/:style/:basename.:extension',
+        url: ':s3_domain_url',
         s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com"
       }
     else
       config.paperclip_defaults = {
-        storage: :filesystem,
+        storage: :filesystem
       }
     end
-
   end
 end

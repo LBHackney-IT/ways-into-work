@@ -1,11 +1,10 @@
 class ActionPlanTask < ApplicationRecord
-
   validates :due_date, :title, :client, presence: true
 
-  enum status: [ :ongoing, :completed ]
+  enum status: %i[ongoing completed]
 
   belongs_to :client
-  belongs_to :advisor #optional
+  belongs_to :advisor # optional
 
   before_save :check_completion
 
@@ -14,7 +13,6 @@ class ActionPlanTask < ApplicationRecord
   end
 
   def check_completion
-    self.ended_at = (self.completed? ? Time.now : nil)
+    self.ended_at = (completed? ? Time.now : nil)
   end
-
 end

@@ -1,14 +1,12 @@
 class Client::EducationController < Client::BaseController
-
-  def edit
-  end
+  def edit; end
 
   def update
     if current_client.update_attributes(client_params)
       if params[:commit] == 'Next Step'
-        redirect_to profile_steps.next_step.url   
-      elsif params[:commit] == 'Come back later'    
-        redirect_to :client_profile   
+        redirect_to profile_steps.next_step.url
+      elsif params[:commit] == 'Come back later'
+        redirect_to :client_profile
       end
     else
       render :edit
@@ -20,8 +18,8 @@ class Client::EducationController < Client::BaseController
   end
   helper_method :profile_steps
 
-
   private
+
   def client_params
     params.require(:client).permit(
       :studying,
@@ -31,6 +29,7 @@ class Client::EducationController < Client::BaseController
       :other_qualification,
       :other_training_course,
       qualifications:  [],
-      training_courses:  [])
+      training_courses:  []
+    )
   end
 end

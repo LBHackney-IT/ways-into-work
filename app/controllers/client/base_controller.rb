@@ -1,5 +1,4 @@
 class Client::BaseController < ApplicationController
-
   before_action :authenticate_user_login!
   before_action :authenticate_client!
 
@@ -12,5 +11,4 @@ class Client::BaseController < ApplicationController
   def authenticate_client!
     not_authorised unless current_client.present?
   end
-
 end

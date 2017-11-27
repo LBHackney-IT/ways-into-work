@@ -1,12 +1,10 @@
 module UserLoginSH
-
   def sign_in(login)
     visit new_user_login_session_path
     fill_in 'user_login_email', with: login.email
     fill_in 'user_login_password', with: login.password
     click_on I18n.t('devise.buttons.login')
   end
-
 end
 World UserLoginSH
 
