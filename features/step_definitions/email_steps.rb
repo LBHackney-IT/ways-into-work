@@ -32,7 +32,7 @@ module EmailHelpers
     last_email_address || 'example@example.com'
   end
 
-  def has_link(email, link)
+  def link?(email, link)
     expect(links_in_email(email).grep(link)).to be_present
   end
 end

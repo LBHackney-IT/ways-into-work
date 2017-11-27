@@ -20,7 +20,7 @@ class ClientSeeder
     puts "@failures #{@failures}"
   end
 
-  def is_number?(obj)
+  def number?(obj)
     obj.to_s == obj.to_i.to_s
   end
 
