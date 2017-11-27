@@ -4,7 +4,7 @@ class SeedHelper
   def make_advisors(user_attrs)
     user_attrs.each do |attrs|
       email = attrs.delete(:email)
-      if login = UserLogin.find_by_email(email)
+      if login = UserLogin.find_by(email: email)
         login.user.update_attributes(attrs)
       else
         advisor = Advisor.new(attrs)

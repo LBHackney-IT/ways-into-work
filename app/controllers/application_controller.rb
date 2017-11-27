@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
 
   def not_authorised
     flash[:alert] = t('flash.errors.not_authorized')
-    redirect_to request.referrer || user_root
+    redirect_to request.referer || user_root
   end
 end

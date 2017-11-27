@@ -9,6 +9,6 @@ class Client::BaseController < ApplicationController
   end
 
   def authenticate_client!
-    not_authorised unless current_client.present?
+    not_authorised if current_client.blank?
   end
 end
