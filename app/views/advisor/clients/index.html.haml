@@ -20,7 +20,7 @@
           .column
             %label.label Hub
             %span.select
-              = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' })
+              = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' }, onchange: '$(form).submit()')
           .column
             %label.label Assigned Advisor
             %span.select
