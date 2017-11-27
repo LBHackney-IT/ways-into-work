@@ -72,7 +72,7 @@ module WaysIntoWork
 
     config.support_email = ENV.fetch('SUPPORT_EMAIL', 'no-reply@example.com')
 
-    config.action_mailer.preview_path = "#{Rails.root}/lib/mail_previews"
+    config.action_mailer.preview_path = Rails.root.join('lib', 'mail_previews')
 
     config.mapbox_access_token = ENV['MAPBOX_ACCESS_TOKEN']
 
