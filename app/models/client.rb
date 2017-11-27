@@ -112,7 +112,7 @@ class Client < ApplicationRecord
   end
 
   def age_in_years
-    @age ||= (DateTime.zone.now.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
+    @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
 
   def assign_team_leader(ward_mapit_code)
