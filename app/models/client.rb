@@ -73,12 +73,12 @@ class Client < ApplicationRecord
   end
 
   def upcoming_meetings
-    @upcoming_meetings ||= meetings.where('meetings.start_datetime > ?', Time.now).order(:start_datetime)
+    @upcoming_meetings ||= meetings.where('meetings.start_datetime > ?', Time.zone.now).order(:start_datetime)
   end
 
   def last_communication_events
-    @past_contacts ||= meetings.where('meetings.start_datetime < ?', Time.now).pluck(:start_datetime) +
-                       contact_notes.where('contact_notes.created_at < ?', Time.now).pluck(:created_at)
+    @past_contacts ||= meetings.where('meetings.start_datetime < ?', Time.zone.now).pluck(:start_datetime) +
+                       contact_notes.where('contact_notes.created_at < ?', Time.zone.now).pluck(:created_at)
   end
 
   def name
@@ -112,7 +112,7 @@ class Client < ApplicationRecord
   end
 
   def age_in_years
-    @age ||= (DateTime.now.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
+    @age ||= (DateTime.zone.now.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
 
   def assign_team_leader(ward_mapit_code)

@@ -13,6 +13,6 @@ class ActionPlanTask < ApplicationRecord
   end
 
   def check_completion
-    self.ended_at = (completed? ? Time.now : nil)
+    self.ended_at = (completed? ? Time.zone.now : nil)
   end
 end
