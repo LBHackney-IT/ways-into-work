@@ -68,7 +68,7 @@ class ProfileSteps
   end
 
   def first?(step)
-    step.index == 0
+    step.index.zero? 
   end
 
   def last?(step)
