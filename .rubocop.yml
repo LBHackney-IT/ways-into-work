@@ -1,3 +1,5 @@
+inherit_from:
+  - .rubocop_todo.yml
 Documentation:
   Enabled: false
 Layout/TrailingWhitespace:
@@ -21,3 +23,21 @@ Layout/EmptyLinesAroundBlockBody:
 Lint/AmbiguousRegexpLiteral:
   Exclude:
     - features/**/*
+Style/RegexpLiteral:
+  Exclude:
+    - features/**/*
+    - 'app/models/file_upload.rb'
+Lint/Debugger:
+  Exclude:
+    - 'features/step_definitions/debug_steps.rb'
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'app/controllers/advisor/clients_controller.rb'
+    - 'app/controllers/clients_controller.rb'
+    - 'app/models/client.rb'
+    - 'db/fixtures/seed_helper.rb'
+Lint/ScriptPermission:
+  Exclude:
+    - 'Rakefile'
+Style/ClassAndModuleChildren:
+  Enabled: false
