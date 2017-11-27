@@ -7,7 +7,6 @@ class Hub < ApplicationRecord
   has_many :clients, through: :advisors
 
   scope :covering_ward, lambda { |code| where('? = ANY (ward_mapit_codes)', code) }
-  scope :team_leader, -> { advisors.where(team_leader: true)}
 
   def address_to_s
     address_to_a.join(", ")
@@ -19,6 +18,10 @@ class Hub < ApplicationRecord
 
   def self.options_for_select
     order('LOWER(name)').map { |e| [e.name, e.id] }
+  end
+
+  def team_leader
+    self.advisors.find_by(team_leader: true)
   end
 
 end
