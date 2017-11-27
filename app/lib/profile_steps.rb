@@ -9,6 +9,8 @@ class ProfileSteps
     employment
     additional_information
   ].freeze
+  
+  Step = Struct.new(:index, :name, :url)
 
   def initialize(client, step_key)
     raise 'Invalid step key!' unless STEPS.include?(step_key)
@@ -68,7 +70,7 @@ class ProfileSteps
   end
 
   def first?(step)
-    step.index.zero? 
+    step.index.zero?
   end
 
   def last?(step)
@@ -114,6 +116,4 @@ class ProfileSteps
     STEPS.index(key)
   end
 
-  class Step < Struct.new(:index, :name, :url)
-  end
 end
