@@ -1,0 +1,23 @@
+Documentation:
+  Enabled: false
+Layout/TrailingWhitespace:
+  Enabled: false
+Metrics/LineLength:
+  Exclude:
+    - config/**/*
+    - db/**/*
+    - script/rails
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - db/**/*
+    - config/**/*
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - spec/**/*
+Lint/AmbiguousRegexpLiteral:
+  Exclude:
+    - features/**/*
