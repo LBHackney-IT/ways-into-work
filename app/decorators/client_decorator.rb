@@ -135,12 +135,10 @@ class ClientDecorator < Draper::Decorator
   end
 
   def standard_wrapper(label, value)
-    if value.present?
-      h.content_tag(:p, '') do
-        h.content_tag(:label, label, class: 'label') <<
+    return false if value.blank?
+    h.content_tag(:p, '') do
+      h.content_tag(:label, label, class: 'label') <<
         value
-      end
     end
   end
-
 end
