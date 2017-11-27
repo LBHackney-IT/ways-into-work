@@ -1,5 +1,5 @@
-require Rails.root.join('db', 'fixtures', 'seed_helper.rb')
-require Rails.root.join('db', 'fixtures', 'client_seeder.rb')
+require Rails.root.join('db', 'fixtures', 'seed_helper.rb').to_s
+require Rails.root.join('lib', 'seeders', 'client_seeder.rb').to_s
 
 namespace :db do
   desc 'Loads seed data from db/fixtures for the current environment.'
