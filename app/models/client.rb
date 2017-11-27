@@ -59,7 +59,7 @@ class Client < ApplicationRecord
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
 
   scope :by_age, lambda { |under_25s|
-    where('date_of_birth  > ?', Date.today - 25.years) if under_25s
+    where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
   }
 
   pg_search_scope :search_query, against: %i[first_name last_name]
