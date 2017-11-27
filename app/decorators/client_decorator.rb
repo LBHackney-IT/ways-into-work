@@ -1,5 +1,4 @@
 class ClientDecorator < Draper::Decorator
-
   delegate_all
 
   decorates :client
@@ -13,7 +12,7 @@ class ClientDecorator < Draper::Decorator
   end
 
   def return_to_client_button
-    h.link_to I18n.t('clients.buttons.back'), h.edit_client_employment_status_path, class: "button pull-right"
+    h.link_to I18n.t('clients.buttons.back'), h.edit_client_employment_status_path, class: 'button pull-right'
   end
 
   def decorate_name
@@ -29,35 +28,35 @@ class ClientDecorator < Draper::Decorator
   end
 
   def decorate_phone
-    standard_wrapper("Phone number:", client.phone_number)
+    standard_wrapper('Phone number:', client.phone_number)
   end
 
   def decorate_address
-    standard_wrapper("Address:", client.address_to_s)
+    standard_wrapper('Address:', client.address_to_s)
   end
 
   def decorate_age
-    standard_wrapper("Age:", client.age_in_years.to_s)
+    standard_wrapper('Age:', client.age_in_years.to_s)
   end
 
   def decorate_personal_traits
-    standard_wrapper("Strengths:", PersonalTraitOption.display(client.personal_traits))
+    standard_wrapper('Strengths:', PersonalTraitOption.display(client.personal_traits))
   end
 
   def decorate_objectives
-    standard_wrapper("Objectives:", ObjectiveOption.display(client.objectives))
+    standard_wrapper('Objectives:', ObjectiveOption.display(client.objectives))
   end
 
   def decorate_support_priorities
-    standard_wrapper("Support priorities:", SupportOption.display(client.support_priorities))
+    standard_wrapper('Support priorities:', SupportOption.display(client.support_priorities))
   end
 
   def decorate_types_of_work
-    standard_wrapper("Industry preference:", TypeOfWorkOption.display(client.types_of_work))
+    standard_wrapper('Industry preference:', TypeOfWorkOption.display(client.types_of_work))
   end
 
   def decorate_barriers
-    standard_wrapper("Barriers:", BarrierOption.display(client.barriers))
+    standard_wrapper('Barriers:', BarrierOption.display(client.barriers))
   end
 
   # def decorate_rag_status
@@ -65,37 +64,35 @@ class ClientDecorator < Draper::Decorator
   # end
 
   def decorate_studying
-    standard_wrapper("Currently studying:", value_from(client.studying))
+    standard_wrapper('Currently studying:', value_from(client.studying))
   end
 
   def decorate_current_education
-    standard_wrapper("Current education course title:", client.current_education )
+    standard_wrapper('Current education course title:', client.current_education)
   end
 
   def decorate_past_education
-    standard_wrapper("Past education:", client.past_education)
+    standard_wrapper('Past education:', client.past_education)
   end
 
   def decorate_currently_employed
-    standard_wrapper("Currently employed:", value_from(client.employed))
+    standard_wrapper('Currently employed:', value_from(client.employed))
   end
 
   def decorate_job_title
-    standard_wrapper("Job title:", client.job_title)
+    standard_wrapper('Job title:', client.job_title)
   end
 
-
   def decorate_job_goal1
-    standard_wrapper("Job Goal 1:", client.assessment_notes.where(content_key: 'job_goal_1').pluck(:content).join)
+    standard_wrapper('Job Goal 1:', client.assessment_notes.where(content_key: 'job_goal_1').pluck(:content).join)
   end
 
   def decorate_job_goal2
-    standard_wrapper("Job Goal 2:", client.assessment_notes.where(content_key: 'job_goal_2').pluck(:content).join)
+    standard_wrapper('Job Goal 2:', client.assessment_notes.where(content_key: 'job_goal_2').pluck(:content).join)
   end
 
-
   def decorate_hours_per_week
-    standard_wrapper("Hours per week:", client.working_hours_per_week)
+    standard_wrapper('Hours per week:', client.working_hours_per_week)
   end
 
   def decorate_preferred_contact
@@ -111,11 +108,11 @@ class ClientDecorator < Draper::Decorator
   end
 
   def email_link
-    h.content_tag(:p, h.mail_to(client.email, 'Email ', data: {'icon': 'envelope'}))
+    h.content_tag(:p, h.mail_to(client.email, 'Email ', data: { icon: 'envelope' }))
   end
 
   def new_file_button(label)
-    h.link_to label, h.new_client_file_upload_path, class: "button is-primary"
+    h.link_to label, h.new_client_file_upload_path, class: 'button is-primary'
   end
 
   def post_file_to
