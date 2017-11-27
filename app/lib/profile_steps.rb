@@ -115,5 +115,4 @@ class ProfileSteps
   def index_of_step(key)
     STEPS.index(key)
   end
-
 end
