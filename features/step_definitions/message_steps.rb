@@ -55,6 +55,6 @@ Then /^I not should see the (.+) alert message$/ do |text|
   check_for_no_flash_message('alert', text)
 end
 
-Then (/^I not should see (?:a|an) (.+) message$/) do |text|
+Then /^I not should see (?:a|an) (.+) message$/ do |text|
   check_for_no_content(text)
 end
