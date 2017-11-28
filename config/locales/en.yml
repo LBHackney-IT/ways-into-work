@@ -11,3 +11,20 @@ en:
   flash:
     errors:
       not_authorized: "Appears you are trying to access a page without authorization"
+  hackney_works:
+    hero:
+      title: "Find your opportunity"
+      info: "We support Hackney residents who are looking for jobs, apprenticeships, training or volunteering."
+      extra: "If you are a Hackney resident and currently out of work or earning less than £18,000, our free service can help you."
+    points:
+      title: "We can help when"
+      point_a: "You've been out of work for a little while"
+      point_b: "You want to start your career"
+      point_c: "You want to find a better job"
+      point_d: "You want to retrain or upskill"
+      point_e: "You need work that fits around childcare"
+    testimonials:
+      title: "What people say about us"
+      testimonial_a: '"I came away feeling like I was valued... I have gained confidence in myself and I have now gained part time employment."'
+      testimonial_b: '"My advisor is awesome! She is friendly and she is trying to help me. You can really feel it - and she is always smiling."'
+      testimonial_c: '"After my first meeting I felt quite positive. My advisor really wanted to help me to find work in what I want to do."'
