@@ -3,8 +3,8 @@ Fabricator(:hub) do
   address_line_1 'A High Road'
   postcode 'E9 6AS'
   ward_mapit_codes ['00000']
-  longitude 51.21323
-  latitude -1.3455
+  longitude '51.21323'
+  latitude '-1.3455'
 end
 
 Fabricator(:homerton_hub, from: :hub) do
