@@ -22,9 +22,13 @@ en:
       point_b: "You want to start your career"
       point_c: "You want to find a better job"
       point_d: "You want to retrain or upskill"
-      point_e: "You need work that fits around childcare"
+      point_e: "You need work that is flexible"
     testimonials:
       title: "What people say about us"
       testimonial_a: '"I came away feeling like I was valued... I have gained confidence in myself and I have now gained part time employment."'
       testimonial_b: '"My advisor is awesome! She is friendly and she is trying to help me. You can really feel it - and she is always smiling."'
       testimonial_c: '"After my first meeting I felt quite positive. My advisor really wanted to help me to find work in what I want to do."'
+    hubs:
+      title: "Hackney advisors in your area"
+      info: "If you would like to contact the Hackney Works team, you can reach us on:"
+      extra: "0208 356 5700"

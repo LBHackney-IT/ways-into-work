@@ -1,7 +1,7 @@
 hubs = [
   {
     id: 1,
-    name: 'Opportunity Hub, Hoxton',
+    name: 'Hoxton Hub',
     address_line_1: '137-139 Bowling Green Walk',
     address_line_2: 'Corner of Pitfield Street',
     postcode: 'N1 6AL',
@@ -10,7 +10,7 @@ hubs = [
     ward_mapit_codes: ['144396', '144392', '144382', '144381', '144380', '144391', '144379' ]
   },{
     id: 2,
-    name: 'Redmond Community Centre',
+    name: 'Woodberry Down Hub',
     address_line_1: 'Kayani Avenue',
     address_line_2: 'Woodberry Down',
     postcode: 'N4 2HF',
@@ -19,7 +19,7 @@ hubs = [
     ward_mapit_codes: ['144398', '144388', '144399', '144387', '144397', '144384', '144390']
   },{
     id: 3,
-    name: 'Homerton Library',
+    name: 'Homerton Hub',
     address_line_1: 'Homerton High Road',
     postcode: 'E9 6AS',
     longitude: -0.0438469,

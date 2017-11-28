@@ -1,9 +1,12 @@
 .column
-  %h3 Hackney advisors in your area
+  %h3 
+    = t('hackney_works.hubs.title')
   %br
   #hubs= render partial: 'hub', collection: Hub.all
 
   .box.top.hubs
-    %p If you would like to contact the Hackney Works team, you can reach us on:
-    %p 0208 356 5700
+    %p
+      = t('hackney_works.hubs.info')
+    %p
+      = t('hackney_works.hubs.extra')
     %p=mail_to 'hackneyworks@hackney.gov.uk'
