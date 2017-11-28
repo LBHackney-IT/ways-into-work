@@ -1,18 +1,14 @@
 class Advisor::ActionPlanTasksController < Advisor::BaseController
-
   expose :client
   expose :action_plan_task
 
-
-  def index
-  end
+  def index; end
 
   def new
     action_plan_task.client_id = client.id
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     if action_plan_task.save
@@ -38,7 +34,6 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
     redirect_to advisor_client_action_plan_tasks_path(client_id: params[:client_id])
   end
 
-
   private
 
   def redirect_path_from_commit
@@ -50,15 +45,14 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
   end
 
   def action_plan_task_params
-    params.require(:action_plan_task).permit([
-      :title,
-      :notes,
-      :advisor_id,
-      :client_id,
-      :due_date,
-      :status,
-      :outcome
-      ])
+    params.require(:action_plan_task).permit(%i[
+                                               title
+                                               notes
+                                               advisor_id
+                                               client_id
+                                               due_date
+                                               status
+                                               outcome
+                                             ])
   end
-
 end

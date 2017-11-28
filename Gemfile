@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
-ruby "2.4.1"
+ruby '2.4.1'
 gem 'rails', '5.1'
 
 # UI
+gem 'devise'
 gem 'draper'
+gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
-gem 'devise'
-gem 'font-awesome-rails'
 
 gem 'simple_form'
 
@@ -19,15 +19,15 @@ gem 'uglifier'
 # DB
 gem 'pg'
 
+gem 'httparty'
 gem 'puma'
-gem "httparty"
 
 # validation tools
-gem 'phony_rails'
 gem 'going_postal'
+gem 'phony_rails'
 
-gem 'paperclip'
 gem 'aws-sdk'
+gem 'paperclip'
 
 gem 'filterrific'
 gem 'kaminari'
@@ -47,27 +47,28 @@ group :development, :staging, :test do
 end
 
 group :development do
-  gem 'bullet'
   gem 'better_errors'
+  gem 'bullet'
   gem 'web-console'
   # gem 'binding_of_caller'
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
-  gem 'rspec-given',  :require => false
-  gem 'rspec-rails', require: false
-  gem 'email_spec', require: false
-  gem 'database_cleaner'
-  gem 'chromedriver-helper'
-  gem 'capybara-selenium'
-  gem 'launchy'
-  gem 'coderay'
-  gem "webmock", require: false
-  gem "vcr", require: false
-  gem 'simplecov', require: false
-  gem 'coveralls', require: false
   gem 'brakeman', require: false
+  gem 'capybara-selenium'
+  gem 'chromedriver-helper'
+  gem 'coderay'
+  gem 'coveralls', require: false
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'email_spec', require: false
+  gem 'launchy'
+  gem 'rspec-given', require: false
+  gem 'rspec-rails', require: false
+  gem 'rubocop', require: false
+  gem 'simplecov', require: false
+  gem 'vcr', require: false
+  gem 'webmock', require: false
 end
 
 group :development, :test do

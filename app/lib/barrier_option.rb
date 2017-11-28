@@ -23,16 +23,15 @@ class BarrierOption
       new('functional_skills', 'Functional skills '),
       new('no_experience', 'Lack of relevant experience'),
       new('overqualified', 'Overqualified'),
-      new('where_to_begin', 'Unclear about what to do and where to begin.'),
+      new('where_to_begin', 'Unclear about what to do and where to begin.')
     ]
   end
 
   def self.find(id)
-    all.detect{|x| x.id == id}
+    all.detect { |x| x.id == id }
   end
 
   def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(', ')
+    ids.collect { |id| find(id).name }.join(', ')
   end
-
 end

@@ -1,7 +1,7 @@
 require 'vcr'
 
-dotenv = File.join(Rails.root, '.env')
-filter_vars = File.exists?(dotenv) ? Dotenv::Environment.new(dotenv) : ENV
+dotenv = Rails.root.join('.env')
+filter_vars = File.exist?(dotenv) ? Dotenv::Environment.new(dotenv) : ENV
   
 VCR.configure do |c|
   c.hook_into :webmock

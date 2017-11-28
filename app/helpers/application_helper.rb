@@ -1,8 +1,7 @@
 module ApplicationHelper
-
   def current_header
     if !user_login_signed_in?
-       is_home? ? 'layouts/site_header_hackney_opportunities' : 'layouts/site_header_base'
+      home? ? 'layouts/site_header_hackney_opportunities' : 'layouts/site_header_base'
     elsif current_user_login.user_id.blank?
       'layouts/site_header_client_registration'
     elsif current_user_login.user_type == 'Client'
@@ -13,18 +12,16 @@ module ApplicationHelper
   end
 
   def cp(path)
-    "current" if current_page?(path)
+    'current' if current_page?(path)
   end
 
   def page_title
-    is_home? ? 'Hackney Opportunities' : 'Hackney Works'
+    home? ? 'Hackney Opportunities' : 'Hackney Works'
   end
-
 
   private
 
-  def is_home?
+  def home?
     request.path == '/'
   end
-
 end

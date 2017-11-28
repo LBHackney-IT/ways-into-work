@@ -1,5 +1,4 @@
 class ClientsController < ApplicationController
-
   expose :client
 
   before_action :init_client, only: :create
@@ -41,7 +40,7 @@ class ClientsController < ApplicationController
       :address_line_1,
       :address_line_2,
       :postcode,
-      login_attributes: [ :email ]
-      )
+      login_attributes: [:email]
+    )
   end
 end

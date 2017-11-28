@@ -1,19 +1,18 @@
 class Hub < ApplicationRecord
-
   validates :name, presence: true
 
   has_many :advisors
 
   has_many :clients, through: :advisors
 
-  scope :covering_ward, lambda { |code| where('? = ANY (ward_mapit_codes)', code) }
+  scope :covering_ward, ->(code) { where('? = ANY (ward_mapit_codes)', code) }
 
   def address_to_s
-    address_to_a.join(", ")
+    address_to_a.join(', ')
   end
 
   def address_to_a
-    [name, address_line_1, address_line_2, postcode].select{|s| s.present?}
+    [name, address_line_1, address_line_2, postcode].select(&:present?)
   end
 
   def self.options_for_select
@@ -21,7 +20,6 @@ class Hub < ApplicationRecord
   end
 
   def team_leader
-    self.advisors.find_by(team_leader: true)
+    advisors.find_by(team_leader: true)
   end
-
 end

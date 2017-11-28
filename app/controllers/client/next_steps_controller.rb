@@ -1,4 +1,3 @@
 class Client::NextStepsController < Client::BaseController
-  def show
-  end
+  def show; end
 end

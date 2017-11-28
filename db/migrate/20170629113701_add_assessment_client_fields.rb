@@ -5,7 +5,7 @@ class AddAssessmentClientFields < ActiveRecord::Migration[5.1]
       t.string :content_key
       t.belongs_to :client
     end
-    add_index :assessment_notes, [:content_key, :client_id], unique: true
+    add_index :assessment_notes, %i[content_key client_id], unique: true
 
     add_column :clients, :rag_status, :integer, default: 0
     remove_column :clients, :time_since_last_job, :string

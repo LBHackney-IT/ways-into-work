@@ -14,7 +14,7 @@ begin
   RSpec::Core::RakeTask.new(:spec)
   
   task(:default).clear
-  task :default => [:cucumber, :spec, 'coveralls:push']
+  task default: [:cucumber, :spec, 'coveralls:push']
 rescue LoadError
   # no rspec available
 end

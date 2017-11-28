@@ -1,5 +1,4 @@
 class AdvisorMailer < ApplicationMailer
-
   def notify_client_signed_up(client)
     @client = client
     mail(

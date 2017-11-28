@@ -11,14 +11,12 @@ require 'rspec/rails'
 require 'devise'
 require 'database_cleaner'
 
-
 RSpec.configure do |config|
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(
       :truncation,
-      except: %w(ar_internal_metadata)
+      except: %w[ar_internal_metadata]
     )
   end
 
@@ -35,7 +33,7 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   # # rspec-expectations config goes here. You can use an alternate
   # # assertion/expectation library such as wrong or the stdlib/minitest
@@ -59,5 +57,4 @@ RSpec.configure do |config|
   #   # `true` in RSpec 4.
   #   mocks.verify_partial_doubles = true
   # end
-
 end

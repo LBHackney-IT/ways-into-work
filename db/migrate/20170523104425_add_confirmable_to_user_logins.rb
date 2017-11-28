@@ -4,7 +4,7 @@ class AddConfirmableToUserLogins < ActiveRecord::Migration[5.1]
     add_column :user_logins, :confirmed_at, :datetime
     add_column :user_logins, :confirmation_sent_at, :datetime
     add_column :user_logins, :unconfirmed_email, :string
-    add_index :user_logins, :confirmation_token, :unique => true
+    add_index :user_logins, :confirmation_token, unique: true
   end
 
   def self.down

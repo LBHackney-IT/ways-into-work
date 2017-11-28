@@ -1,9 +1,7 @@
 class Client::AdditionalInformationController < Client::BaseController
-
   expose :client, -> { current_client.decorate }
 
-  def edit
-  end
+  def edit; end
 
   def update
     if current_client.update_attributes(client_params)
@@ -18,15 +16,15 @@ class Client::AdditionalInformationController < Client::BaseController
   end
   helper_method :profile_steps
 
-
   private
+
   def client_params
     params.require(:client).permit(
       :gender,
       :date_of_birth,
       :other_gender,
       :receive_benefits,
-      :care_leaver,
-      )
+      :care_leaver
+    )
   end
 end

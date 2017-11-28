@@ -8,11 +8,10 @@ begin
   # the db can be left in a dirty state following a debugging session)
   DatabaseCleaner.clean_with(
     :truncation,
-    except: %w(ar_internal_metadata)
+    except: %w[ar_internal_metadata]
   )
-
 rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
 Before do

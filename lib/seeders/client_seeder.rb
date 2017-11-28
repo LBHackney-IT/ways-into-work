@@ -3,10 +3,9 @@
 # We have discussed the potential of regulalry updating our services from a remote service
 # It is important to make these scripts testable and robust for future use.
 class ClientSeeder
-
   def initialize(filepath)
     @csv_data = begin
-      CSV.readlines(filepath, {:headers => :first_row, :encoding => 'UTF-8'})
+      CSV.readlines(filepath, headers: :first_row, encoding: 'UTF-8')
     rescue Errno::ENOENT
       puts "Didn't find file"
       []
@@ -21,7 +20,7 @@ class ClientSeeder
     puts "@failures #{@failures}"
   end
 
-  def is_number?(obj)
+  def number?(obj)
     obj.to_s == obj.to_i.to_s
   end
 
@@ -30,7 +29,7 @@ class ClientSeeder
     client = Client.find_or_initialize_by(first_name: row['First Name'], last_name: row['Surname'], imported: true)
 
     puts "importing #{client.name}"
-    puts "updating existing record" if client.id
+    puts 'updating existing record' if client.id
     email = row['Email Address']
 
     if row['Email Address'].blank?
@@ -41,7 +40,7 @@ class ClientSeeder
       puts "email #{email}"
       begin
         client.tap do |c|
-          c.advisor_id = row["Advisor"]
+          c.advisor_id = row['Advisor']
           c.phone = row['Contact Number']
           c.address_line_1 = row['Address line 1']
           c.address_line_2 = row['Address line 2']
@@ -62,14 +61,12 @@ class ClientSeeder
         client.save!
         puts row['Date of Registration']
         client.update_attribute(:created_at, row['Date of Registration']) if row['Date of Registration']
-
       rescue ActiveRecord::RecordInvalid => e
         @failures << "error thrown importing #{client.name} #{e}\n"
         # client.save(validate: false)
       end
     end
   end
-
 
   private
 
@@ -94,10 +91,8 @@ class ClientSeeder
   def generate_job_goals(cell)
     return [] if cell.blank?
     job_goals = cell.split(',')
-    return [ AssessmentNote.new(content_key: 'job_goal_1', content: job_goals[0]) ] if job_goals.size == 1
-    [ AssessmentNote.new(content_key: 'job_goal_1', content: job_goals.shift),
-      AssessmentNote.new(content_key: 'job_goal_2', content: job_goals.join(','))
-    ]
+    return [AssessmentNote.new(content_key: 'job_goal_1', content: job_goals[0])] if job_goals.size == 1
+    [AssessmentNote.new(content_key: 'job_goal_1', content: job_goals.shift),
+     AssessmentNote.new(content_key: 'job_goal_2', content: job_goals.join(','))]
   end
-
 end

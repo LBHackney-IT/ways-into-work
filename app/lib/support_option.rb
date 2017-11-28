@@ -14,16 +14,15 @@ class SupportOption
       new('start_career', 'Getting my career started'),
       new('confidence', 'Increasing my confidence'),
       new('more_qualifications', 'Getting more qualifications'),
-      new('employability', 'Interview / CV help'),
+      new('employability', 'Interview / CV help')
     ]
   end
 
   def self.find(id)
-    all.detect{|x| x.id == id}
+    all.detect { |x| x.id == id }
   end
 
   def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(', ')
+    ids.collect { |id| find(id).name }.join(', ')
   end
-
 end

@@ -1,5 +1,3 @@
 class EligibilityController < ApplicationController
-
-  def outside_hackney
-  end
+  def outside_hackney; end
 end

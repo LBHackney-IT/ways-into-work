@@ -6,7 +6,7 @@ SimpleForm.setup do |config|
   # stack. The options given below are used to wrap the
   # whole input.
   config.wrappers :default, class: 'field',
-    hint_class: :field_with_hint, error_class: :field_with_errors do |b|
+                            hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
     # given input by passing: `f.input EXTENSION_NAME => false`.
@@ -42,7 +42,6 @@ SimpleForm.setup do |config|
 
     # Calculates readonly automatically from readonly attributes
     b.optional :readonly
-
 
     ## Inputs
     b.use :label, class: 'label'
@@ -103,7 +102,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_class = 'control'
 
   # How the label text should be generated altogether with the required text.
-  config.label_text = lambda { |label, required, explicit_label| "#{label}#{required} " }
+  config.label_text = ->(label, required, _explicit_label) { "#{label}#{required} " }
 
   # You can define the class to use on all labels. Default is nil.
   # config.label_class = 'label'
