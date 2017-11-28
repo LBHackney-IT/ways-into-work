@@ -1,3 +1,4 @@
+@advisor_cv
 Feature: Advisor uploads file for information page
   So that I can upload CV documents of clients
   As an Advisor
