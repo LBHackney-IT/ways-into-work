@@ -4,6 +4,10 @@ Fabricator(:advisor) do
   login(fabricator: :user_login)
 end
 
+Fabricator(:advisor_without_hub, from: :advisor) do
+  hub nil
+end
+
 Fabricator(:team_leader, from: :advisor) do
   team_leader true
 end
