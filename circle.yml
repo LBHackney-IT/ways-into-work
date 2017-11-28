@@ -11,5 +11,5 @@ test:
   override:
     - bundle exec rake
   post:
-    - bundle exec brakeman -z -q 
-    - bundle exec rubocop
+    - bundle exec brakeman -z -q
+    - bundle exec rubocop -c .rubocop.yml 
