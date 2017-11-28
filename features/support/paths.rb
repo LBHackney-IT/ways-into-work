@@ -22,6 +22,9 @@ module NavigationHelpers
 
     when /the advisors edit client/
       edit_advisor_client_path(@client)
+      
+    when /the edit action plan task page/
+      edit_advisor_client_action_plan_task_path(@client, @action_plan_task)
 
     else
       begin
