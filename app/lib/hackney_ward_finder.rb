@@ -17,7 +17,7 @@ class HackneyWardFinder
   end
 
   def borough_from(response)
-    response['areas'].select { |area| response['areas'][area]['type'] == 'LBO' && response['areas'][area]['id'] == 2508 } if response['areas']
+    response['areas']&.select { |area| response['areas'][area]['type'] == 'LBO' && response['areas'][area]['id'] == 2508 }
   end
 
   def ward_from(response)
