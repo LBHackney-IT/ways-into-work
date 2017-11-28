@@ -44,3 +44,5 @@ Style/ClassAndModuleChildren:
 Lint/HandleExceptions:
   Exclude:
     - Rakefile
+Style/FrozenStringLiteralComment:
+  Enabled: false
