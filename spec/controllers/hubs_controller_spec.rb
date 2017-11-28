@@ -14,7 +14,7 @@ RSpec.describe HubsController, type: :controller do
     it 'gets all hubs' do
       get :index
       
-      expect(assigns(:hubs)).to eq(hubs)
+      expect(controller.hubs).to eq(hubs)
     end
     
     it 'lists hubs as geojson' do
