@@ -41,3 +41,6 @@ Lint/ScriptPermission:
     - 'Rakefile'
 Style/ClassAndModuleChildren:
   Enabled: false
+Lint/HandleExceptions:
+  Exclude:
+    - Rakefile

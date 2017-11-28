@@ -54,9 +54,11 @@ group :development do
 end
 
 group :test do
+  gem 'brakeman', require: false
   gem 'capybara-selenium'
   gem 'chromedriver-helper'
   gem 'coderay'
+  gem 'coveralls', require: false
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'email_spec', require: false
@@ -65,8 +67,6 @@ group :test do
   gem 'rspec-rails', require: false
   gem 'rubocop', require: false
   gem 'simplecov', require: false
-  gem 'coveralls', require: false
-  gem 'brakeman', require: false
   gem 'vcr', require: false
   gem 'webmock', require: false
 end
