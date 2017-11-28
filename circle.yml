@@ -9,4 +9,4 @@ dependencies:
     - rm google-chrome.deb
 test:
   override:
-    - bundle exec rake && bundle exec brakeman -z -q
+    - bundle exec rake && bundle exec brakeman -z -q && rubocop
