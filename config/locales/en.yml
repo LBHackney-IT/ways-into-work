@@ -8,6 +8,7 @@ en:
   buttons:
     all_clients: "View all clients"
     my_clients: "View my clients"
+    advisors: "Meet advisors in your area"
   flash:
     errors:
       not_authorized: "Appears you are trying to access a page without authorization"
