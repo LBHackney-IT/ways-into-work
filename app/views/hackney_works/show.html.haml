@@ -18,7 +18,7 @@
   .columns
     .column.point
       .img-container
-        =image_tag('icons/calendar.svg', :alt => 'Calendar icon')
+        =image_tag('icons/hourglass.svg', :alt => 'Hourglass icon')
       %p
         = t('hackney_works.points.point_a')
     .column.point
@@ -28,7 +28,7 @@
         = t('hackney_works.points.point_b')
     .column.point
       .img-container
-        =image_tag('icons/network.svg', :alt => 'Network icon')
+        =image_tag('icons/id.svg', :alt => 'Id icon')
       %p 
         = t('hackney_works.points.point_c')
     .column.point
@@ -38,10 +38,10 @@
         = t('hackney_works.points.point_d')
     .column.point
       .img-container
-        =image_tag('icons/share.svg', :alt => 'Share icon')
+        =image_tag('icons/calendar.svg', :alt => 'Calendar icon')
       %p
         = t('hackney_works.points.point_e')
-  = link_to "Meet the team", hubs_path, class: 'button'
+  = link_to I18n.t('buttons.advisors'), hubs_path, class: 'button'
 
 .full-width.info.dark
   .container.columns
@@ -60,7 +60,7 @@
     %p
       = t('hackney_works.testimonials.testimonial_c')
 
-  -#%p= link_to "Meet the team", hubs_path
+  -#%p= link_to I18n.t('buttons.advisors'), hubs_path
   -# - unless user_login_signed_in?
     -# = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Ways into Work service", class: 'button is-primary'
 
