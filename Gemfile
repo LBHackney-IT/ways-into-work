@@ -77,6 +77,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
+  gem 'pry'
 end
 
 # IF HEROKU

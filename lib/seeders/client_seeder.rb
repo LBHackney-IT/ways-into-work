@@ -7,7 +7,7 @@ class ClientSeeder
     @csv_data = begin
       CSV.readlines(filepath, headers: :first_row, encoding: 'UTF-8')
     rescue Errno::ENOENT
-      puts "Didn't find file"
+      puts 'Didn\'t find file'
       []
     end
   end
@@ -86,13 +86,5 @@ class ClientSeeder
     notes << AssessmentNote.new(content_key: 'job_goal_2', content: row['Job Goal 2']) if row['Job Goal 2'].present?
     notes << AssessmentNote.new(content_key: 'general', content: row['Notes']) if row['Notes'].present?
     notes
-  end
-
-  def generate_job_goals(cell)
-    return [] if cell.blank?
-    job_goals = cell.split(',')
-    return [AssessmentNote.new(content_key: 'job_goal_1', content: job_goals[0])] if job_goals.size == 1
-    [AssessmentNote.new(content_key: 'job_goal_1', content: job_goals.shift),
-     AssessmentNote.new(content_key: 'job_goal_2', content: job_goals.join(','))]
   end
 end

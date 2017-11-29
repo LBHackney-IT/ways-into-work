@@ -11,6 +11,8 @@ require 'rspec/rails'
 require 'devise'
 require 'database_cleaner'
 
+require Rails.root.join('spec', 'helpers', 'client_seeder_helper')
+
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -25,6 +27,20 @@ RSpec.configure do |config|
       example.run
     end
   end
+  
+  original_stderr = $stderr
+  original_stdout = $stdout
+  
+  config.before(:all, cli: true) do
+    # Redirect stderr and stdout
+    $stderr = File.open(File::NULL, 'w')
+    $stdout = File.open(File::NULL, 'w')
+  end
+  
+  config.after(:all, cli: true) do
+    $stderr = original_stderr
+    $stdout = original_stdout
+  end
 
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
@@ -34,6 +50,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ClientSeederHelper
 
   # # rspec-expectations config goes here. You can use an alternate
   # # assertion/expectation library such as wrong or the stdlib/minitest

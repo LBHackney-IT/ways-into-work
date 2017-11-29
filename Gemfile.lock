@@ -251,6 +251,10 @@ GEM
       activesupport (>= 3.0)
       phony (> 2.15)
     powerpack (0.1.1)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
@@ -350,6 +354,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.1)
+    slop (3.6.0)
     sorcerer (1.0.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -427,6 +432,7 @@ DEPENDENCIES
   pg
   pg_search
   phony_rails
+  pry
   puma
   rails (= 5.1)
   rails-controller-testing
