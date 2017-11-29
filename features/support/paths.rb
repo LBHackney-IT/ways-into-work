@@ -25,6 +25,9 @@ module NavigationHelpers
       
     when /the edit action plan task page/
       edit_advisor_client_action_plan_task_path(@client, @action_plan_task)
+      
+    when /my profile page/
+      client_profile_path
 
     else
       begin
