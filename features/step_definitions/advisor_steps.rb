@@ -78,3 +78,9 @@ end
 Then(/^I should see my client in the filtered list$/) do
   my_client_listed
 end
+
+Given(/^I register a client as "([^"]*)"$/) do |email|
+  visit new_advisor_client_path
+  fill_in_registration_form(email)
+  click_button 'Save'
+end

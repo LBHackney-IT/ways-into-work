@@ -19,3 +19,8 @@ Given(/^the client is looking to work in Retail$/) do
   @client.types_of_work << type
   @client.save
 end
+
+Then(/^the client should be assigned to me$/) do
+  client = Client.last
+  expect(client.advisor).to eq(@i)
+end
