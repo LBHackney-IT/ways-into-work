@@ -1,11 +1,4 @@
-class TypeOfWorkOption
-  attr_reader :id, :name
-
-  def initialize(id, name)
-    @id = id
-    @name = name
-  end
-
+class TypeOfWorkOption < Option
   def self.all
     [
       new('admin', 'Administration'),
@@ -30,17 +23,5 @@ class TypeOfWorkOption
       new('travel', 'Travel and transport'),
       new('youth', 'Youth work')
     ]
-  end
-
-  def self.find(id)
-    all.detect { |x| x.id == id }
-  end
-
-  def self.display(ids = [])
-    ids.collect { |id| find(id).name }.join(', ')
-  end
-
-  def self.options_for_select
-    all.map { |e| [e.name, e.id] }
   end
 end

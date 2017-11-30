@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Advisor::ActionPlanTasksController, type: :controller do
+RSpec.describe Advisor::ActionPlanTasksController, :vcr, type: :controller do
   describe 'GET index' do
     it "Doesn't allow access to those not logged in" do
       get :index, params: { client_id: '1' }

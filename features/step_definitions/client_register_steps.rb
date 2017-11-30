@@ -76,3 +76,9 @@ end
 Then(/^I should be asked to provide more information$/) do
   expect(page).to have_link(I18n.t('clients.buttons.complete_profile'))
 end
+
+Then(/^I should see my profile details$/) do
+  expect(page).to have_content(@i.name)
+  expect(page).to have_content(@i.age_in_years)
+  expect(page).to have_content(@i.email)
+end

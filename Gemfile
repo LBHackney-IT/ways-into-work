@@ -41,6 +41,8 @@ gem 'paranoia'
 
 gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service_check'
 
+gem 'active_model_serializers'
+
 group :development, :staging, :test do
   gem 'fabrication'
   gem 'ffaker'
@@ -63,6 +65,7 @@ group :test do
   gem 'database_cleaner'
   gem 'email_spec', require: false
   gem 'launchy'
+  gem 'rails-controller-testing'
   gem 'rspec-given', require: false
   gem 'rspec-rails', require: false
   gem 'rubocop', require: false
@@ -74,6 +77,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
+  gem 'pry'
 end
 
 # IF HEROKU
