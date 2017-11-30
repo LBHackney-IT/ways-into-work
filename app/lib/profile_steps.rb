@@ -6,8 +6,8 @@ class ProfileSteps
     :about_you,
     :objectives,
     :education,
-    :employment,
-    :additional_information
+    :employment
+    # :additional_information
   ]
 
   def initialize(client, step_key)
@@ -18,9 +18,10 @@ class ProfileSteps
   end
 
   def latest_index
-    if !@client.employed.nil?
-      4
-    elsif @client.qualifications.any? || @client.training_courses.any? || !@client.studying.nil?
+    # if !@client.employed.nil?
+    #   4
+    # els
+    if @client.qualifications.any? || @client.training_courses.any? || !@client.studying.nil?
       3
     elsif @client.objectives.any? || @client.types_of_work.any? || @client.support_priorities.any?
       2
@@ -53,6 +54,10 @@ class ProfileSteps
     return nil if @step_key == STEPS.first
 
     step(STEPS[index_of_step(@step_key) - 1])
+  end
+
+  def enabled?(step)
+    step.index <= [latest_index, current_index].max
   end
 
   def future?(step)
