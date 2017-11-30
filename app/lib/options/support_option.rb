@@ -1,11 +1,4 @@
-class SupportOption
-  attr_reader :id, :name
-
-  def initialize(id, name)
-    @id = id
-    @name = name
-  end
-
+class SupportOption < Option
   def self.all
     [
       new('new_skills', 'Learning new skills'),
@@ -16,13 +9,5 @@ class SupportOption
       new('more_qualifications', 'Getting more qualifications'),
       new('employability', 'Interview / CV help')
     ]
-  end
-
-  def self.find(id)
-    all.detect { |x| x.id == id }
-  end
-
-  def self.display(ids = [])
-    ids.collect { |id| find(id).name }.join(', ')
   end
 end
