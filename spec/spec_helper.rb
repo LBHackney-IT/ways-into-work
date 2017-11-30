@@ -12,6 +12,7 @@ require 'devise'
 require 'database_cleaner'
 
 require Rails.root.join('spec', 'helpers', 'client_seeder_helper')
+require Rails.root.join('spec', 'helpers', 'vcr')
 
 RSpec.configure do |config|
   config.before(:suite) do
