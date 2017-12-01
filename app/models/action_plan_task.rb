@@ -7,6 +7,11 @@ class ActionPlanTask < ApplicationRecord
   belongs_to :advisor # optional
 
   before_save :check_completion
+  
+  scope :completed, -> { where(status: 'completed') }
+  scope :for_hub, ->(hub) { joins(:client).where('clients.advisor' => hub.advisors) }
+  scope :completed_with_outcome, ->(outcome) { completed.where(outcome: outcome) }
+  scope :ended_in_month, ->(date) { where('ended_at BETWEEN ? AND ?', date.beginning_of_month, date.end_of_month) }
 
   def task_owner_name
     (advisor || client).name
