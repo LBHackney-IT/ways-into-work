@@ -30,8 +30,8 @@ RSpec.describe ActionPlanTask, type: :model do
       
       let(:hub1) { Fabricate(:homerton_hub) }
       let(:hub2) { Fabricate(:hub) }
-      let(:hub1_clients) { Fabricate.times(5, :client, advisor: Fabricate(:advisor, hub: hub1) ) }
-      let(:hub2_clients) { Fabricate.times(5, :client, advisor: Fabricate(:advisor, hub: hub2) ) }
+      let(:hub1_clients) { Fabricate.times(5, :client, advisor: Fabricate(:advisor, hub: hub1)) }
+      let(:hub2_clients) { Fabricate.times(5, :client, advisor: Fabricate(:advisor, hub: hub2)) }
       
       let!(:hub1_tasks) do
         Fabricate.times(5, :action_plan_task, client: hub1_clients.sample)
@@ -45,7 +45,6 @@ RSpec.describe ActionPlanTask, type: :model do
         expect(ActionPlanTask.for_hub(hub1)).to eq(hub1_tasks)
         expect(ActionPlanTask.for_hub(hub2)).to eq(hub2_tasks)
       end
-
     end
     
   end
