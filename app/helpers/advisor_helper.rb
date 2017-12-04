@@ -5,7 +5,7 @@ module AdvisorHelper
     'Woodberry Down Hub' => 'Caroline Modest',
     'Homerton Hub' => 'Dujon Harvey',
     'Supported Employment' => 'Anna-Renee Paisley'
-  }
+  }.freeze
 
   def number_of_days_waiting(date)
     if date != Time.zone.today
