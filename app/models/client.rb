@@ -62,7 +62,11 @@ class Client < ApplicationRecord
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
   }
 
-  pg_search_scope :search_query, against: %i[first_name last_name]
+  pg_search_scope :search_query, against: %i[first_name last_name], using: {
+    trigram: {
+      threshold: 0.1
+    }
+  }
 
   def next_meeting_date
     upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
