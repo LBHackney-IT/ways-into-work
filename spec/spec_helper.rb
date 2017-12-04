@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear_merged!
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
@@ -8,18 +11,36 @@ require 'rspec/rails'
 require 'devise'
 require 'database_cleaner'
 
+require Rails.root.join('spec', 'helpers', 'client_seeder_helper')
+require Rails.root.join('spec', 'helpers', 'vcr')
 
 RSpec.configure do |config|
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with(
+      :truncation,
+      except: %w[ar_internal_metadata]
+    )
   end
 
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run
     end
+  end
+  
+  original_stderr = $stderr
+  original_stdout = $stdout
+  
+  config.before(:all, cli: true) do
+    # Redirect stderr and stdout
+    $stderr = File.open(File::NULL, 'w')
+    $stdout = File.open(File::NULL, 'w')
+  end
+  
+  config.after(:all, cli: true) do
+    $stderr = original_stderr
+    $stdout = original_stdout
   end
 
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -29,7 +50,8 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ClientSeederHelper
 
   # # rspec-expectations config goes here. You can use an alternate
   # # assertion/expectation library such as wrong or the stdlib/minitest
@@ -53,5 +75,4 @@ RSpec.configure do |config|
   #   # `true` in RSpec 4.
   #   mocks.verify_partial_doubles = true
   # end
-
 end

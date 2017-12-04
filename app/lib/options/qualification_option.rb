@@ -1,11 +1,4 @@
-class QualificationOption
-  attr_reader :id, :name
-
-  def initialize(id, name)
-    @id = id
-    @name = name
-  end
-
+class QualificationOption < Option
   def self.all
     [
       new('btec', 'BTEC'),
@@ -20,15 +13,4 @@ class QualificationOption
       new('persuasive', 'ESOL qualifications')
     ]
   end
-
-  def self.find(id)
-    all.detect{|x| x.id == id}
-  end
-
-  def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(', ')
-  end
-
 end
-
-

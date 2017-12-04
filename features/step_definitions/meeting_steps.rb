@@ -1,5 +1,4 @@
 module MeetingSH
-
   def double_digit(unit)
     if unit.to_s.size == 1
       "0#{unit}"
@@ -13,7 +12,7 @@ World MeetingSH
 Given(/^I schedule a meeting for next week with notes$/) do
   click_on I18n.t('clients.buttons.make_contact')
   click_on I18n.t('clients.buttons.arrange_meeting')
-  meeting_date = Time.now + 3.days
+  meeting_date = Time.zone.now + 3.days
   select meeting_date.year, from: 'meeting_start_datetime_1i'
   select Date::MONTHNAMES[meeting_date.month], from: 'meeting_start_datetime_2i'
   select meeting_date.day, from: 'meeting_start_datetime_3i'
@@ -21,7 +20,6 @@ Given(/^I schedule a meeting for next week with notes$/) do
   select '00', from: 'meeting_start_datetime_5i'
   click_on 'Save'
 end
-
 
 Then(/^I should see the meeting has been booked$/) do
   expect(page).not_to have_css('#clients_needing_appointment')
@@ -32,8 +30,8 @@ end
 
 Given(/^I record I tried calling but no asnswer$/) do
   click_on I18n.t('clients.buttons.make_contact')
-  choose "contact_note_contact_method_phone_call"
-  fill_in 'contact_note_content', with: "tried calling and left a message"
+  choose 'contact_note_contact_method_phone_call'
+  fill_in 'contact_note_content', with: 'tried calling and left a message'
   click_on 'Save'
 end
 

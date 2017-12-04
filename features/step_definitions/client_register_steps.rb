@@ -1,6 +1,6 @@
 module RegistrationSH
   def fill_in_registration_form(email, client = Fabricate.build(:client))
-    fill_in('Email', :with => email)
+    fill_in('Email', with: email)
     fill_in 'client_first_name', with: client.first_name
     fill_in 'client_last_name', with: client.last_name
     fill_in 'client_phone', with: client.phone
@@ -22,14 +22,14 @@ When(/^I navigate to register for the service$/) do
 end
 
 Then(/^I should be asked to accept the eligibility criteria$/) do
-  expect(page).to have_css("input#resident")
-  expect(page).to have_css("input#unemployed")
+  expect(page).to have_css('input#resident')
+  expect(page).to have_css('input#unemployed')
   expect(find('#register_link input[disabled="disabled"]').value).to eq(I18n.t('devise.buttons.accept_terms'))
 end
 
 When(/^I create a new password$/) do
-  fill_in 'user_login_password', :with => "SomeLongPassword"
-  fill_in('user_login_password_confirmation', :with => "SomeLongPassword")
+  fill_in 'user_login_password', with: 'SomeLongPassword'
+  fill_in('user_login_password_confirmation', with: 'SomeLongPassword')
   click_button 'Create my password'
 end
 
@@ -39,7 +39,6 @@ When(/^I try and register with a postcode outside the borough$/) do
   save
 end
 
-
 When(/^I register my self as "([^"]*)"$/) do |email|
   visit new_client_path
   fill_in_registration_form(email)
@@ -48,14 +47,14 @@ end
 
 Given(/^when I navigate through all the profile steps$/) do
   click_on(I18n.t('clients.buttons.complete_profile'))
-  (ProfileSteps::STEPS.count - 1).times do |n|
+  (ProfileSteps::STEPS.count - 1).times do |_n|
     click_on('Next Step')
   end
   click_on('Complete Profile')
 end
 
 Then(/^I should be asked to start creating my profile$/) do
-  expect(page).to have_css("input#client_first_name")
+  expect(page).to have_css('input#client_first_name')
 end
 
 When(/^I register my client details$/) do
@@ -76,4 +75,10 @@ end
 
 Then(/^I should be asked to provide more information$/) do
   expect(page).to have_link(I18n.t('clients.buttons.complete_profile'))
+end
+
+Then(/^I should see my profile details$/) do
+  expect(page).to have_content(@i.name)
+  expect(page).to have_content(@i.age_in_years)
+  expect(page).to have_content(@i.email)
 end

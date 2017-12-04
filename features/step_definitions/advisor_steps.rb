@@ -34,7 +34,6 @@ Then(/^I should be auto assigned to homerton$/) do
   expect(Client.last.advisor).to eq(@team_leader)
 end
 
-
 Then(/^I should not see the client in my case load$/) do
   within '.my_clients' do
     expect(page).to have_content(I18n.t('advisors.headers.no_clients'))
@@ -58,13 +57,11 @@ When(/^I assign the client to myself$/) do
   click_on I18n.t('clients.buttons.assign_to_me')
 end
 
-
 Then(/^the client should be part of my case load$/) do
   expect(@i.reload.clients).to include(@client)
   visit advisor_my_clients_path
   expect(page).to have_content(@client.name)
 end
-
 
 Given(/^there is an advisor Dave$/) do
   @dave = Fabricate(:advisor, name: 'Dave Donald')
@@ -80,4 +77,10 @@ end
 
 Then(/^I should see my client in the filtered list$/) do
   my_client_listed
+end
+
+Given(/^I register a client as "([^"]*)"$/) do |email|
+  visit new_advisor_client_path
+  fill_in_registration_form(email)
+  click_button 'Save'
 end

@@ -1,10 +1,8 @@
 class Advisor::MeetingsController < Advisor::BaseController
-
   expose :client
   expose :meeting
 
-  def index
-  end
+  def index; end
 
   def new
     meeting.agenda = 'initial_assessment' if client.meetings.empty?
@@ -12,13 +10,11 @@ class Advisor::MeetingsController < Advisor::BaseController
     meeting.client_id = params[:client_id]
   end
 
-  def edit
-  end
-
+  def edit; end
 
   def create
     if meeting.save
-      flash[:success] = "Meeting saved"
+      flash[:success] = 'Meeting saved'
       redirect_to :advisor_my_clients
     else
       render :new
@@ -27,7 +23,7 @@ class Advisor::MeetingsController < Advisor::BaseController
 
   def update
     if meeting.update(meeting_params)
-      flash[:success] = "Meeting updated"
+      flash[:success] = 'Meeting updated'
       redirect_to advisor_client_meetings_path(client_id: meeting.client_id)
     else
       render :new
@@ -47,7 +43,7 @@ class Advisor::MeetingsController < Advisor::BaseController
       :client_id,
       :notes,
       :agenda,
-      :other_agenda)
+      :other_agenda
+    )
   end
-
 end

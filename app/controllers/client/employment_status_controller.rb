@@ -1,7 +1,5 @@
 class Client::EmploymentStatusController < Client::BaseController
-
-  def edit
-  end
+  def edit; end
 
   def update
     if current_client.update_attributes(client_params)
@@ -20,13 +18,13 @@ class Client::EmploymentStatusController < Client::BaseController
   end
   helper_method :profile_steps
 
-
   private
+
   def client_params
     params.require(:client).permit(
       :employed,
       :working_hours_per_week,
       :job_title
-      )
+    )
   end
 end

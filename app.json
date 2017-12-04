@@ -1,0 +1,81 @@
+{
+  "name": "ways-into-work",
+  "scripts": {
+  },
+  "env": {
+    "APPSIGNAL_APP_NAME": {
+      "required": true
+    },
+    "APPSIGNAL_PUSH_API_KEY": {
+      "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_REGION": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "DEFAULT_PASSWORD": {
+      "required": true
+    },
+    "DEVISE_PEPPER": {
+      "generator": "secret"
+    },
+    "DEVISE_SECRET_KEY": {
+      "generator": "secret"
+    },
+    "HOST_URL": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "MAPBOX_ACCESS_TOKEN": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "S3_BUCKET_NAME": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    },
+    "SECRET_TOKEN": {
+      "generator": "secret"
+    },
+    "SENDGRID_PASSWORD": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    },
+    "SUPPORT_EMAIL": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql",
+    "sendgrid"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}

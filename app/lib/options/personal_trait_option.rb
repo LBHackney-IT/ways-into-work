@@ -1,11 +1,4 @@
-class PersonalTraitOption
-  attr_reader :id, :name
-
-  def initialize(id, name)
-    @id = id
-    @name = name
-  end
-
+class PersonalTraitOption < Option
   def self.all
     [
       new('creative', I18n.t('clients.personal_trait.creative')),
@@ -19,15 +12,4 @@ class PersonalTraitOption
       new('outgoing', I18n.t('clients.personal_trait.outgoing'))
     ]
   end
-
-  def self.find(id)
-    all.detect{|x| x.id == id}
-  end
-
-  def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(', ')
-  end
-
 end
-
-

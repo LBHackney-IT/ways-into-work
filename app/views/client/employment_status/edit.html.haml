@@ -8,7 +8,7 @@
   = simple_form_for [current_client.decorate], url: :client_employment_status do |form|
     = render 'shared/form_errors', object: form.object
 
-    =form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio has_child" }
+    =form.input :employed, as: :radio_buttons, :label => I18n.t('clients.steps.employment.employed'), wrapper_html: { class: "convert_radio has_child" }
 
     .is-hidden.on-true
       =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }

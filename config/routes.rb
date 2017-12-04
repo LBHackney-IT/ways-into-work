@@ -1,5 +1,4 @@
 WaysIntoWork::Application.routes.draw do
-
   devise_for :user_logins
 
   root to: 'welcome#show'
@@ -11,31 +10,29 @@ WaysIntoWork::Application.routes.draw do
 
   namespace :advisor do
     resources :clients do
-      resources :file_uploads, only: [:create, :new, :destroy]
+      resources :file_uploads, only: %i[create new destroy]
       resources :meetings
       resources :action_plan_tasks
-      resources :contact_notes, only: [:create, :new, :index]
+      resources :contact_notes, only: %i[create new index]
     end
 
     resources :my_clients, only: :index
   end
 
-  resources :clients, only: [:new, :create]
+  resources :clients, only: %i[new create]
 
   resources :hubs, only: :index
 
-
   namespace :client do
     get 'next_steps' => 'next_steps#show'
-    resources :file_uploads, only: [:create, :new, :destroy]
+    resources :file_uploads, only: %i[create new destroy]
     resource :password, only: [:edit]
     resource :profile, only: [:show]
-    resource :personal_traits, only: [:edit, :update]
-    resource :objectives, only: [:edit, :update]
-    resource :education, only: [:edit, :update], controller: 'education'
-    resource :employment_status, only: [:edit, :update], controller: 'employment_status'
-    resource :additional_information, only: [:edit, :update], controller: 'additional_information'
+    resource :personal_traits, only: %i[edit update]
+    resource :objectives, only: %i[edit update]
+    resource :education, only: %i[edit update], controller: 'education'
+    resource :employment_status, only: %i[edit update], controller: 'employment_status'
+    resource :additional_information, only: %i[edit update], controller: 'additional_information'
     resource :dashboard, only: :show
   end
-
 end

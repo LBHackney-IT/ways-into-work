@@ -28,8 +28,7 @@ Then /^pending (.+)/ do |msg|
   pending msg
 end
 
-Then "debug" do
+Then 'debug' do
   debugger
   1
 end
-

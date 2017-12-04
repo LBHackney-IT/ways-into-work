@@ -2,16 +2,17 @@ class ProfileSteps
   # include Enumerable
   include Rails.application.routes.url_helpers
 
-  STEPS = [
-    :about_you,
-    :objectives,
-    :education,
-    :employment
-    # :additional_information
-  ]
+  STEPS = %i[
+    about_you
+    objectives
+    education
+    employment
+  ].freeze
+  
+  Step = Struct.new(:index, :name, :url)
 
   def initialize(client, step_key)
-    raise "Invalid step key!" unless STEPS.include?(step_key)
+    raise 'Invalid step key!' unless STEPS.include?(step_key)
 
     @client = client
     @step_key = step_key
@@ -41,7 +42,7 @@ class ProfileSteps
   end
 
   def on_final_step?
-    next_step == nil
+    next_step.nil?
   end
 
   def next_step
@@ -73,7 +74,7 @@ class ProfileSteps
   end
 
   def first?(step)
-    step.index == 0
+    step.index.zero?
   end
 
   def last?(step)
@@ -117,8 +118,5 @@ class ProfileSteps
 
   def index_of_step(key)
     STEPS.index(key)
-  end
-
-  class Step < Struct.new(:index, :name, :url)
   end
 end

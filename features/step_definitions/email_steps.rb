@@ -29,13 +29,12 @@ module EmailHelpers
     # Replace with your a way to find your current email. e.g @current_user.email
     # last_email_address will return the last email address used by email spec to find an email.
     # Note that last_email_address will be reset after each Scenario.
-    last_email_address || "example@example.com"
+    last_email_address || 'example@example.com'
   end
 
-  def has_link(email, link)
+  def link?(email, link)
     expect(links_in_email(email).grep(link)).to be_present
   end
-
 end
 
 World(EmailHelpers)
@@ -54,14 +53,12 @@ Then(/^dave should receive a client asssigned notification$/) do
   expect(current_email).to have_subject(I18n.t('advisors.mail.subject.assigned'))
 end
 
-
 When(/^I click the opt\-in email confirmation link$/) do
   address = UserLogin.last.email
   expect(unread_emails_for(address).size).to eq(1)
   open_email(address)
   visit request_uri(links_in_email(current_email).first)
 end
-
 
 #
 # Reset the e-mail queue within a scenario.
@@ -85,7 +82,7 @@ Then(/^"(.*?)" receive an email asking to confirm address$/) do |address|
 end
 
 Then(/^(?:I|they|"([^"]*?)") should receive an email with the following body:$/) do |address, expected_body|
-  open_email(address, :with_text => expected_body)
+  open_email(address, with_text: expected_body)
 end
 
 #
@@ -98,11 +95,11 @@ When(/^(?:I|they|"([^"]*?)") opens? the email$/) do |address|
 end
 
 When(/^(?:I|they|"([^"]*?)") opens? the email with subject "([^"]*?)"$/) do |address, subject|
-  open_email(address, :with_subject => subject)
+  open_email(address, with_subject: subject)
 end
 
 When(/^(?:I|they|"([^"]*?)") opens? the email with subject \/([^"]*?)\/$/) do |address, subject|
-  open_email(address, :with_subject => Regexp.new(subject))
+  open_email(address, with_subject: Regexp.new(subject))
 end
 #
 # Inspect the Email Contents
@@ -154,20 +151,19 @@ Then /^(?:I|they) should see \/([^\"]*)\/ in the email "([^"]*?)" header$/ do |t
 end
 
 Then /^I should see it is a multi\-part email$/ do
-    expect(current_email).to be_multipart
+  expect(current_email).to be_multipart
 end
 
 Then /^(?:I|they) should see "([^"]*?)" in the email html part body$/ do |text|
-    expect(current_email.html_part.body.to_s).to include(text)
+  expect(current_email.html_part.body.to_s).to include(text)
 end
 
 Then /^(?:I|they) should see "([^"]*?)" in the email text part body$/ do |text|
-    expect(current_email.text_part.body.to_s).to include(text)
+  expect(current_email.text_part.body.to_s).to include(text)
 end
 
-
 Then /^show me a list of email attachments$/ do
-  EmailSpec::EmailViewer::save_and_open_email_attachments_list(current_email)
+  EmailSpec::EmailViewer.save_and_open_email_attachments_list(current_email)
 end
 
 #
@@ -185,17 +181,17 @@ end
 #
 
 Then /^save and open current email$/ do
-  EmailSpec::EmailViewer::save_and_open_email(current_email)
+  EmailSpec::EmailViewer.save_and_open_email(current_email)
 end
 
 Then /^save and open all text emails$/ do
-  EmailSpec::EmailViewer::save_and_open_all_text_emails
+  EmailSpec::EmailViewer.save_and_open_all_text_emails
 end
 
 Then /^save and open all html emails$/ do
-  EmailSpec::EmailViewer::save_and_open_all_html_emails
+  EmailSpec::EmailViewer.save_and_open_all_html_emails
 end
 
 Then /^save and open all raw emails$/ do
-  EmailSpec::EmailViewer::save_and_open_all_raw_emails
+  EmailSpec::EmailViewer.save_and_open_all_raw_emails
 end

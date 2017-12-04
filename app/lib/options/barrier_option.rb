@@ -1,11 +1,4 @@
-class BarrierOption
-  attr_reader :id, :name
-
-  def initialize(id, name)
-    @id = id
-    @name = name
-  end
-
+class BarrierOption < Option
   def self.all
     [
       new('childcare', 'Childcare'),
@@ -23,16 +16,7 @@ class BarrierOption
       new('functional_skills', 'Functional skills '),
       new('no_experience', 'Lack of relevant experience'),
       new('overqualified', 'Overqualified'),
-      new('where_to_begin', 'Unclear about what to do and where to begin.'),
+      new('where_to_begin', 'Unclear about what to do and where to begin.')
     ]
   end
-
-  def self.find(id)
-    all.detect{|x| x.id == id}
-  end
-
-  def self.display(ids = [])
-    ids.collect{|id| find(id).name}.join(', ')
-  end
-
 end

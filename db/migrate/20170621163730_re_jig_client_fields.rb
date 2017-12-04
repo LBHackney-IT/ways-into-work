@@ -20,6 +20,5 @@ class ReJigClientFields < ActiveRecord::Migration[5.1]
     add_column :clients, :below_living_wage, :boolean, default: nil
     add_column :clients, :affected_by_welfare_reform, :boolean, default: nil
     add_column :clients, :care_leaver, :boolean, default: nil
-
   end
 end

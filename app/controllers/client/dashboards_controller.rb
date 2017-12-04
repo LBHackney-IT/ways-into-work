@@ -1,6 +1,3 @@
 class Client::DashboardsController < Client::BaseController
-
-  def show
-
-  end
+  def show; end
 end

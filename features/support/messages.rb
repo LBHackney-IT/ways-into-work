@@ -13,10 +13,9 @@ module FlashMessageHelpers
     when /advisor assigned/
       I18n.t('clients.flashes.success.advisor_assigned')
 
-
     else
-      raise "Can't find mapping from \"#{message_name}\" to a flash message.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+      raise "Can't find mapping from \"#{message_name}\" to a flash message.\n" \
+            "Now, go and add a mapping in #{__FILE__}"
     end
   end
 end
