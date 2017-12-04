@@ -1,6 +1,6 @@
 class HubsController < ApplicationController
-  expose :hubs, -> { Hub.all }
-  
+  expose :hubs, -> { Hub.order(name: :desc) }
+
   def index
     respond_to do |format|
       format.html

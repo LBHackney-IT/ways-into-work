@@ -8,10 +8,10 @@
   = simple_form_for [client.object, file_upload], url: client.post_file_to do |form|
     = render 'shared/form_errors', object: form.object
     %fieldset
-      = form.input :attachment, as: :file, label: "Choose a file to upload for your CV"
+      = form.input :attachment, as: :file, label: "Choose a file to upload"
       = form.input :uploaded_by, as: :hidden
       = form.input :client_id, as: :hidden
       %br
-      = form.submit I18n.t('clients.buttons.upload_cv'), class: "button is-primary is-disabled", disabled: true, id: 'submit_file'
+      = form.submit I18n.t('clients.buttons.upload'), class: "button is-primary is-disabled", disabled: true, id: 'submit_file'
 
   = render partial: 'shared/previous_file_uploads' if client.file_uploads.count > 0

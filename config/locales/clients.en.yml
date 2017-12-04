@@ -20,6 +20,8 @@ en:
       employment:
         long: "Tell us about your employment status"
         short: "Employment"
+        employed: "Are you currently employed?"
+        upload: "Nothing uploaded. Upload a CV, cover letter or draft documents"
       objectives:
         long: "What can we help you with?"
         short: "Goals"
@@ -32,7 +34,9 @@ en:
     buttons:
       archive_client: 'Archive client record'
       upload_cv: 'Upload CV'
+      upload: 'Upload'
       manage_cvs: 'Manage CVs'
+      manage_uploads: 'Manage files'
       delete: 'Delete'
       make_contact: "Contact"
       arrange_meeting: "Schedule meeting"

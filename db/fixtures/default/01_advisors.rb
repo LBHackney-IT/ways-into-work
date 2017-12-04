@@ -38,11 +38,14 @@ advisors = [
     name: 'Jan Team Leader',
     team_leader: true,
     hub_id: 3
-  },
-  {
+  }, {
     email: 'jrae@wearefuturegov.com',
     name: 'Jason Rae',
     hub_id: 2
+  }, {
+    email: 'martin@wearefuturegov.com',
+    name: 'Martin J Thompson',
+    hub_id: 1
   }
 ]
 
