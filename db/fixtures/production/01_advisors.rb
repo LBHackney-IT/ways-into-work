@@ -51,8 +51,8 @@ advisors = [
     name: 'Nasima Begum',
     phone: '020 8356 7634',
     hub_id: 3
-  }, {
-    email: 'olayinka.aremtau@hackney.gov.uk',
+  },{
+    email: "olayinka.aremu@hackney.gov.uk",
     name: 'Olayinka Aremu',
     phone: '020 8356 3320',
     hub_id: 3
