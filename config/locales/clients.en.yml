@@ -36,6 +36,7 @@ en:
       upload_cv: 'Upload CV'
       upload: 'Upload'
       manage_cvs: 'Manage CVs'
+      manage_uploads: 'Manage files'
       delete: 'Delete'
       make_contact: "Contact"
       arrange_meeting: "Schedule meeting"
