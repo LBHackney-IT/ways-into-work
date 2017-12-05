@@ -20,5 +20,6 @@
 //= require validate
 //= require clients-needing-appointment
 //= require form-helper
+//= require warn-unsaved
 //= require upload
 //= require public

@@ -20,6 +20,8 @@ $(document).ready(function() {
   $(".validate").validate();
 
   $("form").handleFormElements();
+  
+  $("form").warnUnsaved();
 
   $("#tabs").tabs();
 
