@@ -41,6 +41,9 @@
                 %span Additional Info
             %li
               %a{href: "#tabs-8"}
+                %span Contact Details
+            %li
+              %a{href: "#tabs-9"}
                 %span Notes
 
 
@@ -67,7 +70,10 @@
 
           #tabs-7.tab
             = render partial: 'tab_additional', :locals => {:form => form}
-
+            
           #tabs-8.tab
-            = render partial: 'tab_notes', :locals => {:form => form}
+            = render partial: 'tab_contact', :locals => {:form => form}
 
+          #tabs-9.tab
+            = render partial: 'tab_notes', :locals => {:form => form}
+          
