@@ -8,11 +8,11 @@ class Client < ApplicationRecord
   # associations
   belongs_to :advisor
   has_one :hub, through: :advisor
-  has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
+  has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy, autosave: true
 
   validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
-  delegate :email, to: :login
+  delegate :email, :email=, to: :login
   delegate :sign_in_count, to: :login
 
   has_many :meetings
