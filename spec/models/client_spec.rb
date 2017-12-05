@@ -12,6 +12,7 @@ RSpec.describe Client, type: :model do
       expect(Client.search_query('Catherine')).to eq([client1])
       expect(Client.search_query('Robynson')).to eq([client2])
       expect(Client.search_query('Mohammed')).to eq([client3])
+      expect(Client.search_query('muhammad')).to eq([client3])
     end
     
   end
