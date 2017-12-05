@@ -116,7 +116,7 @@ class Advisor::ClientsController < Advisor::BaseController
     )
   end
 
-  def edit_client_params
+  def edit_client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
       :other_objective,
       :other_support_priority,
