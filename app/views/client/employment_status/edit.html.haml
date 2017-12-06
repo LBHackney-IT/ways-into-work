@@ -1,11 +1,11 @@
-.column.is-12.has-text-centered
-  = render partial: 'shared/profile_steps'
+= simple_form_for [current_client.decorate], url: :client_employment_status do |form|
+  .column.is-12.has-text-centered
+    = render partial: 'shared/profile_steps', locals: { form: form }
 
-.column.reg-flow
-  =image_tag('icons/employment.svg', :alt => 'Employment Icon')
-  %h2.subtitle=I18n.t('clients.steps.employment.long')
+  .column.reg-flow
+    =image_tag('icons/employment.svg', :alt => 'Employment Icon')
+    %h2.subtitle=I18n.t('clients.steps.employment.long')
 
-  = simple_form_for [current_client.decorate], url: :client_employment_status do |form|
     = render 'shared/form_errors', object: form.object
 
     =form.input :employed, as: :radio_buttons, :label => I18n.t('clients.steps.employment.employed'), wrapper_html: { class: "convert_radio has_child" }
