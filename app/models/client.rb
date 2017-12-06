@@ -123,4 +123,14 @@ class Client < ApplicationRecord
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
                    Advisor.where(team_leader: true).first
   end
+  
+  def assign_advisor(advisor_id, current_advisor)
+    if advisor = Advisor.find(advisor_id)
+      update_attribute(:advisor, advisor) # rubocop:disable Rails/SkipsModelValidations
+      AdvisorMailer.notify_assigned(self).deliver_now unless current_advisor == advisor
+    else
+      false
+    end
+  end
+  
 end

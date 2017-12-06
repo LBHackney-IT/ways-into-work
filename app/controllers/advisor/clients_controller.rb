@@ -44,9 +44,7 @@ class Advisor::ClientsController < Advisor::BaseController
   private
 
   def assign_advisor
-    client.advisor = Advisor.find(edit_client_params[:advisor_id])
-    if client.advisor && client.save(validate: false)
-      AdvisorMailer.notify_assigned(client).deliver_now unless current_advisor == client.advisor
+    if client.assign_advisor(edit_client_params[:advisor_id], current_advisor)
       flash[:success] = I18n.t('clients.flashes.success.advisor_assigned')
     else
       flash[:error] = I18n.t('clients.flashes.error.advisor_assignment')
