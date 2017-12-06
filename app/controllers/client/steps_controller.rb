@@ -3,15 +3,7 @@ class Client::StepsController < Client::BaseController
   
   def update
     if current_client.update_attributes(client_params) && params[:commit]
-      if params[:commit] == 'Next Step'
-        redirect_to profile_steps.next_step.url
-      elsif params[:commit] == 'Come back later'
-        redirect_to :client_profile
-      elsif params[:commit] == 'Complete Profile'
-        redirect_to :client_next_steps
-      else
-        redirect_to step_url(params[:commit])
-      end
+      redirect_to redirect_path(params[:commit])
     else
       render :edit
     end
@@ -26,6 +18,14 @@ class Client::StepsController < Client::BaseController
   
   def step_url(step)
     profile_steps.find_step(step).url
+  end
+  
+  def redirect_path(step)
+    {
+      'Next Step' => profile_steps.next_step&.url,
+      'Come back later' => :client_profile,
+      'Complete Profile' => :client_next_steps
+    }[step] || step_url(step)
   end
   
 end
