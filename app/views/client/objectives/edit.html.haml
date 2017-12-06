@@ -1,11 +1,12 @@
-.column.is-12.has-text-centered
-  = render partial: 'shared/profile_steps'
+= simple_form_for [current_client], url: :client_objectives do |form|
 
-.column.reg-flow
-  =image_tag('icons/help-with.svg', :alt => 'Help With Icon')
-  %h2.subtitle=I18n.t('clients.steps.objectives.long')
+  .column.is-12.has-text-centered
+    = render partial: 'shared/profile_steps', locals: { form: form }
 
-  = simple_form_for [current_client], url: :client_objectives do |form|
+  .column.reg-flow
+    =image_tag('icons/help-with.svg', :alt => 'Help With Icon')
+    %h2.subtitle=I18n.t('clients.steps.objectives.long')
+
     = render 'shared/form_errors', object: form.object
     %p.help Choose as many options that apply to you in all three questions below.
 

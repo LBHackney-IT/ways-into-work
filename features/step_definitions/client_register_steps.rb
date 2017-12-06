@@ -53,6 +53,25 @@ Given(/^when I navigate through all the profile steps$/) do
   click_on('Complete Profile')
 end
 
+Given(/^I fill out the first three profile steps$/) do
+  visit path_to('the client dashboard')
+  click_on(I18n.t('clients.buttons.complete_profile'))
+  2.times do
+    click_on('Next Step')
+  end
+  @options = %w[nvq_level2 nvq_level3 nvq_level4]
+  @options.each { |option| find("input[value=#{option}]", visible: false).set(true) }
+end
+
+Given(/^I go back to a previous step$/) do
+  click_on I18n.t('clients.steps.about_you.short')
+end
+
+Then(/^my options should be saved$/) do
+  @i.reload
+  expect(@i.qualifications).to eq(@options)
+end
+
 Then(/^I should be asked to start creating my profile$/) do
   expect(page).to have_css('input#client_first_name')
 end

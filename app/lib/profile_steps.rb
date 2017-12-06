@@ -92,6 +92,7 @@ class ProfileSteps
   def objectives_step
     Step.new(index_of_step(:objectives), I18n.t('clients.steps.objectives.short'), edit_client_objectives_path)
   end
+  alias goals_step objectives_step
 
   def education_step
     Step.new(index_of_step(:education), I18n.t('clients.steps.education.short'), edit_client_education_path)
@@ -104,6 +105,11 @@ class ProfileSteps
   def decorated(&block)
     decorated_steps.each(&block)
     nil
+  end
+  
+  def find_step(step_name)
+    step_key = step_name.parameterize.underscore
+    step(step_key)
   end
 
   private

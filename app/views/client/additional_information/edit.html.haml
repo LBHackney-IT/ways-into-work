@@ -1,11 +1,12 @@
-.column.is-12.has-text-centered
-  = render partial: 'shared/profile_steps'
+= simple_form_for [current_client], url: :client_additional_information do |form|
 
-.column.reg-flow
-  =image_tag('icons/monitoring.svg', :alt => 'Monitoring Icon')
-  %h2.subtitle=I18n.t('clients.steps.additional_information.long')
+  .column.is-12.has-text-centered
+    = render partial: 'shared/profile_steps'
 
-  = simple_form_for [current_client], url: :client_additional_information do |form|
+  .column.reg-flow
+    =image_tag('icons/monitoring.svg', :alt => 'Monitoring Icon')
+    %h2.subtitle=I18n.t('clients.steps.additional_information.long')
+
     = render 'shared/form_errors', object: form.object
 
     .convert_radio
