@@ -1,4 +1,4 @@
-class Advisor::ClientsController < Advisor::BaseController
+class Advisor::ClientsController < Advisor::BaseController # rubocop:disable ClassLength
   expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
   before_action :init_client, only: :create
 

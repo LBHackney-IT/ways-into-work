@@ -1,4 +1,4 @@
-class Client < ApplicationRecord
+class Client < ApplicationRecord # rubocop:disable ClassLength
   include PgSearch
 
   acts_as_paranoid
