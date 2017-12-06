@@ -59,4 +59,9 @@ Layout/EmptyLinesAroundBlockBody:
     - 'db/schema.rb'
 Style/WordArray:
   Exclude:
-    - 'db/schema.rb'    
+    - 'db/schema.rb'
+Metrics/AbcSize:
+  Exclude:
+    - 'features/support/*'
+    - 'lib/seeders/*'
+    - 'spec/helpers/*'
