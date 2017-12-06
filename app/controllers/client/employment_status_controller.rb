@@ -1,24 +1,9 @@
-class Client::EmploymentStatusController < Client::BaseController
-  def edit; end
-
-  def update
-    if current_client.update_attributes(client_params)
-      if params[:commit] == 'Complete Profile'
-        redirect_to :client_next_steps
-      elsif params[:commit] == 'Come back later'    
-        redirect_to :client_profile   
-      end
-    else
-      render :edit
-    end
-  end
-
-  def profile_steps
-    @profile_steps ||= ProfileSteps.new(current_client, :employment)
-  end
-  helper_method :profile_steps
-
+class Client::EmploymentStatusController < Client::StepsController
   private
+  
+  def step
+    :employment
+  end
 
   def client_params
     params.require(:client).permit(

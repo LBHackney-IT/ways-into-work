@@ -1,24 +1,9 @@
-class Client::ObjectivesController < Client::BaseController
-  def edit; end
-
-  def update
-    if current_client.update_attributes(client_params)
-      if params[:commit] == 'Next Step'
-        redirect_to profile_steps.next_step.url
-      elsif params[:commit] == 'Come back later'
-        redirect_to :client_profile
-      end
-    else
-      render :edit
-    end
-  end
-
-  def profile_steps
-    @profile_steps ||= ProfileSteps.new(current_client, :objectives)
-  end
-  helper_method :profile_steps
-
+class Client::ObjectivesController < Client::StepsController
   private
+  
+  def step
+    :objectives
+  end
 
   def client_params
     params.require(:client).permit(
