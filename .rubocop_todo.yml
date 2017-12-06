@@ -6,13 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 4
-Lint/UselessAssignment:
-  Exclude:
-    - 'app/controllers/advisor/clients_controller.rb'
-    - 'app/mailers/custom_devise_mailer.rb'
-    - 'features/support/paths.rb'
-
 # Offense count: 13
 Metrics/AbcSize:
   Max: 59

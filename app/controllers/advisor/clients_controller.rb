@@ -59,14 +59,14 @@ class Advisor::ClientsController < Advisor::BaseController
       flash[:success] = I18n.t('clients.flashes.success.updated')
       redirect_back(fallback_location: root_path)
     else
-      client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
+      AdvisorClientDecorator.decorate(Client.find(params[:id]))
       init_assessment_notes
       render :edit
     end
   end
 
   def init_client
-    if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
+    if HackneyWardFinder.new(client_params[:postcode]).lookup
       client.advisor = current_advisor
       client.login.generate_default_password
     else
