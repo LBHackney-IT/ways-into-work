@@ -123,5 +123,4 @@ RSpec.describe ClientSeeder, :cli, type: :model do
     end
         
   end
-
 end
