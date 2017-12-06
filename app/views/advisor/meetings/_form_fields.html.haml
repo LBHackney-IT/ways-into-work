@@ -10,6 +10,9 @@
     =form.input :notes, as: :text, :input_html => { :class => "textarea" }
 
   .field
+    = form.input :foo, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Did the client attend this meeting?',  wrapper_html: { class: "convert_radio has_child" }
+
+  .field
     %span.select.advisor
       =form.input :advisor_id, as: :select, collection: Advisor.all, include_blank: false, input_wrapper_html: {class: 'select'}
   = form.input :client_id, as: :hidden
