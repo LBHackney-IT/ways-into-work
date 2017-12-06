@@ -43,7 +43,8 @@ class Advisor::MeetingsController < Advisor::BaseController
       :client_id,
       :notes,
       :agenda,
-      :other_agenda
+      :other_agenda,
+      :client_attended
     )
   end
 end

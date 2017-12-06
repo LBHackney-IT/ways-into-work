@@ -3,5 +3,4 @@ class Meeting < ApplicationRecord
 
   belongs_to :client, counter_cache: true
   belongs_to :advisor
-  attr_accessor :foo
 end

@@ -48,3 +48,15 @@ Lint/HandleExceptions:
     - Rakefile
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/StringLiterals:
+  Exclude:
+    - 'db/schema.rb'
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'db/schema.rb'
+Style/WordArray:
+  Exclude:
+    - 'db/schema.rb'    
