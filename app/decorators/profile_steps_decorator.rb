@@ -8,19 +8,12 @@ class ProfileStepsDecorator < SimpleDelegator
 
   def properties
     result = {
-
       'selected' => (profile_step.current_step?(self) ? 'true' : 'false'),
-
-      method: 'get',
       class: decorated_class
     }
     result['disabled'] = 'disabled' unless profile_step.enabled?(self)
     result
   end
-
-  def href
-    profile_step.enabled?(self) ? url : '#'
-  end 
 
   private
 

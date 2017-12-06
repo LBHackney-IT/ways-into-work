@@ -15,3 +15,8 @@ Feature: Client signs in and can tell story
     Given I am on the client dashboard page
     And when I navigate through all the profile steps
     Then I should be on the client next steps page
+  
+  Scenario: details get saved when client goes back through the form
+    Given I fill out the first three profile steps
+    And I go back to a previous step
+    Then my options should be saved
