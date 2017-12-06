@@ -142,4 +142,16 @@ class Client < ApplicationRecord
     end
   end
   
+  def completed_education?
+    qualifications.any? || training_courses.any? || !studying.nil?
+  end
+  
+  def completed_objectives?
+    objectives.any? || types_of_work.any? || support_priorities.any?
+  end
+  
+  def completed_about_you?
+    personal_traits.any?
+  end
+  
 end
