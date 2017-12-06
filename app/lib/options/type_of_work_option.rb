@@ -1,5 +1,5 @@
 class TypeOfWorkOption < Option
-  def self.all
+  def self.all # rubocop:disable  Metrics/AbcSize
     [
       new('admin', 'Administration'),
       new('catering', 'Catering'),
