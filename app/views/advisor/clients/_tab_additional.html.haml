@@ -4,7 +4,7 @@
   =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
   .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
 
-=form.input :foe, label: 'Date of birth', as: :date, start_year: Time.zone.today.year, end_year: Time.zone.today.year - 70, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
+=form.input :date_of_birth, label: 'Date of birth', as: :date, start_year: Time.zone.today.year, end_year: Time.zone.today.year - 70, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
 
 .convert_radio
   =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
