@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
   include PgSearch
 
+  attr_accessor :foe
   acts_as_paranoid
 
   enum rag_status: %i[un_assessed red amber green]
