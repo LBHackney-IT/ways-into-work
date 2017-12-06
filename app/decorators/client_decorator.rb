@@ -3,14 +3,6 @@ class ClientDecorator < Draper::Decorator
 
   decorates :client
 
-  def date_of_birth_value
-    date_of_birth.try(:to_date)
-  end
-
-  def client_profile_header
-    'Your Profile'
-  end
-
   def return_to_client_button
     h.link_to I18n.t('clients.buttons.back'), h.edit_client_employment_status_path, class: 'button pull-right'
   end
@@ -39,10 +31,6 @@ class ClientDecorator < Draper::Decorator
     standard_wrapper('Age:', client.age_in_years.to_s)
   end
 
-  def decorate_personal_traits
-    standard_wrapper('Strengths:', PersonalTraitOption.display(client.personal_traits))
-  end
-
   def decorate_objectives
     standard_wrapper('Objectives:', ObjectiveOption.display(client.objectives))
   end
@@ -66,11 +54,7 @@ class ClientDecorator < Draper::Decorator
   def decorate_studying
     standard_wrapper('Currently studying:', value_from(client.studying))
   end
-
-  def decorate_current_education
-    standard_wrapper('Current education course title:', client.current_education)
-  end
-
+  
   def decorate_past_education
     standard_wrapper('Past education:', client.past_education)
   end
@@ -79,20 +63,12 @@ class ClientDecorator < Draper::Decorator
     standard_wrapper('Currently employed:', value_from(client.employed))
   end
 
-  def decorate_job_title
-    standard_wrapper('Job title:', client.job_title)
-  end
-
   def decorate_job_goal1
     standard_wrapper('Job Goal 1:', client.assessment_notes.where(content_key: 'job_goal_1').pluck(:content).join)
   end
 
   def decorate_job_goal2
     standard_wrapper('Job Goal 2:', client.assessment_notes.where(content_key: 'job_goal_2').pluck(:content).join)
-  end
-
-  def decorate_hours_per_week
-    standard_wrapper('Hours per week:', client.working_hours_per_week)
   end
 
   def decorate_preferred_contact
