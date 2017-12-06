@@ -1,4 +1,3 @@
 #profile_steps
   = profile_steps.decorated do |decorated_step|
-    = link_to decorated_step.href, decorated_step.properties do
-      %span #{decorated_step.name}
+    = form.submit decorated_step.name, decorated_step.properties
