@@ -133,4 +133,13 @@ class Client < ApplicationRecord
     end
   end
   
+  def assign_area(postcode)
+    if ward_mapit_code = HackneyWardFinder.new(postcode).lookup
+      assign_team_leader(ward_mapit_code)
+      login.generate_default_password
+    else
+      false
+    end
+  end
+  
 end
