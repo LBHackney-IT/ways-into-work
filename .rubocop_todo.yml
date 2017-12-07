@@ -12,9 +12,7 @@
 
 
 # Offense count: 1
-Rails/OutputSafety:
-  Exclude:
-    - 'config/environment.rb'
+
 
 # Offense count: 1
 # Configuration parameters: Blacklist.

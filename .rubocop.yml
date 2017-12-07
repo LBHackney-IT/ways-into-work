@@ -73,3 +73,6 @@ Rails/Output:
     - 'lib/seeders/client_seeder.rb'
 Metrics/LineLength:
   Max: 166
+Rails/OutputSafety:
+  Exclude:
+    - 'config/environment.rb'
