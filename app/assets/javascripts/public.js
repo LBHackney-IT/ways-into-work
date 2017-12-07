@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   $("form").handleFormElements();
   
-  $("form").warnUnsaved();
+  $("form[method=post]").warnUnsaved();
 
   $("#tabs").tabs();
 
