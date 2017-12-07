@@ -76,3 +76,6 @@ Metrics/LineLength:
 Rails/OutputSafety:
   Exclude:
     - 'config/environment.rb'
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'lib/seeders/client_seeder.rb'
