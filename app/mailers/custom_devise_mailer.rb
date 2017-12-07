@@ -12,7 +12,7 @@ class CustomDeviseMailer < Devise::Mailer
   def welcome_set_password(record, token)
     @user_login = record
     @url = edit_client_password_url(user_login_id: @user_login.id, reset_password_token: token)
-    puts @url
+    logger.info @url
     mail(
       to: record.email,
       subject: I18n.t('clients.mail.subject.welcome'),
