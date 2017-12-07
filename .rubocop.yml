@@ -68,3 +68,6 @@ Metrics/AbcSize:
 Rails/FilePath:
   Exclude:
     - 'lib/tasks/cucumber.rake'
+Rails/Output:
+  Exclude:
+    - 'lib/seeders/client_seeder.rb'

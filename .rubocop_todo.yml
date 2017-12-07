@@ -12,14 +12,6 @@
 Metrics/LineLength:
   Max: 166
 
-# Offense count: 7
-# Configuration parameters: Include.
-# Include: app/**/*.rb, config/**/*.rb, db/**/*.rb, lib/**/*.rb
-Rails/Output:
-  Exclude:
-    - 'app/mailers/custom_devise_mailer.rb'
-    - 'lib/seeders/client_seeder.rb'
-
 # Offense count: 1
 Rails/OutputSafety:
   Exclude:
