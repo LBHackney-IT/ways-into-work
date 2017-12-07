@@ -65,3 +65,6 @@ Metrics/AbcSize:
     - 'features/support/*'
     - 'lib/seeders/*'
     - 'spec/helpers/*'
+Rails/FilePath:
+  Exclude:
+    - 'lib/tasks/cucumber.rake'
