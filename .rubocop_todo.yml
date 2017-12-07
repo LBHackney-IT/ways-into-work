@@ -9,8 +9,7 @@
 # Offense count: 109
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
-Metrics/LineLength:
-  Max: 166
+
 
 # Offense count: 1
 Rails/OutputSafety:

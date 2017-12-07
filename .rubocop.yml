@@ -71,3 +71,5 @@ Rails/FilePath:
 Rails/Output:
   Exclude:
     - 'lib/seeders/client_seeder.rb'
+Metrics/LineLength:
+  Max: 166
