@@ -7,7 +7,7 @@ module RegistrationSH
     fill_in 'client_address_line_1', with: client.address_line_1
     fill_in 'client_postcode', with: client.postcode
   end
-
+  
   def save
     click_button 'Register'
   end
@@ -37,6 +37,16 @@ When(/^I try and register with a postcode outside the borough$/) do
   client = Fabricate.build(:client, postcode: 'GU1 1YF')
   fill_in_registration_form(FFaker::Internet.email, client)
   save
+end
+
+When(/^I try and register without a postcode$/) do
+  client = Fabricate.build(:client, postcode: nil)
+  fill_in_registration_form(FFaker::Internet.email, client)
+  save
+end
+
+Then(/^I should see an error telling me I need a postcode$/) do
+  expect(page).to have_content('Postcode can\'t be blank')
 end
 
 When(/^I register my self as "([^"]*)"$/) do |email|

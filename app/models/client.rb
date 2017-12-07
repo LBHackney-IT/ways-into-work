@@ -90,13 +90,12 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   end
 
   def valid_postcode?
-    return false if postcode.blank?
     if better_postcode = GoingPostal.postcode?(postcode, 'GB')
       self.postcode = better_postcode
     else
       errors[:postcode] << I18n.t('clients.validation.postcode_error')
+      false
     end
-    errors[:postcode].empty?
   end
 
   def devise_mailer
@@ -134,6 +133,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   end
   
   def assign_area(postcode)
+    return if postcode.blank?
     if ward_mapit_code = HackneyWardFinder.new(postcode).lookup
       assign_team_leader(ward_mapit_code)
       login.generate_default_password

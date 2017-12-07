@@ -13,6 +13,12 @@ Feature: Client signs up for the service
     When I navigate to register for the service
     And I try and register with a postcode outside the borough
     Then I should be on the outside hackney page
+  
+  Scenario: client must enter a postcode
+    Given I am on the home page
+    When I navigate to register for the service
+    And I try and register without a postcode
+    Then I should see an error telling me I need a postcode
 
   @homerton_postcode
   Scenario: team leader receives notification
@@ -27,4 +33,3 @@ Feature: Client signs up for the service
     When I click the opt-in email confirmation link
     And I create a new password
     Then I should see a password updated notice message
-
