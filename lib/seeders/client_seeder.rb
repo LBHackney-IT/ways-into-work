@@ -24,7 +24,7 @@ class ClientSeeder
     obj.to_s == obj.to_i.to_s
   end
 
-  def import_client(row) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def import_client(row) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     # OK for 100 or so clients
     client = Client.find_or_initialize_by(first_name: row['First Name'], last_name: row['Surname'], imported: true)
 
