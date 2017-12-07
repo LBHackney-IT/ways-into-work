@@ -1,6 +1,6 @@
 module ClientSeederHelper
   
-  def stub_rows(number_of_rows = 1, overrides = {})
+  def stub_rows(number_of_rows = 1, overrides = {}) # rubocop:disable Metrics/MethodLength
     rows = []
     number_of_rows.times do
       rows << {

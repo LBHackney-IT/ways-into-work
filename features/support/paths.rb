@@ -5,7 +5,7 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
-  def path_to(page_name) # rubocop:disable Metrics/CyclomaticComplexity
+  def path_to(page_name) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     case page_name
 
     when /the my clients/

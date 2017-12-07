@@ -1,5 +1,5 @@
 class PersonalTraitOption < Option
-  def self.all # rubocop:disable  Metrics/AbcSize
+  def self.all # rubocop:disable  Metrics/AbcSize, Metrics/MethodLength
     [
       new('creative', I18n.t('clients.personal_trait.creative')),
       new('active', I18n.t('clients.personal_trait.active')),

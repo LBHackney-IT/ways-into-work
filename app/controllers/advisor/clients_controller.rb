@@ -77,18 +77,22 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       Client,
       params[:filterrific],
       persistence_id: false,
-      select_options: {
-        by_hub_id: Hub.options_for_select,
-        by_advisor_id: Advisor.options_for_select(selected_hub_id),
-        by_types_of_work: TypeOfWorkOption.options_for_select,
-        by_training: TrainingCourseOption.options_for_select,
-        by_age: [['Under 25', true]]
-      },
+      select_options: filterrific_options,
       default_filter_params: {
         by_hub_id: default_hub_id
       }
     )) || return
     @filtered_clients = @filterrific.find.page(params[:page])
+  end
+  
+  def filterrific_options
+    {
+      by_hub_id: Hub.options_for_select,
+      by_advisor_id: Advisor.options_for_select(selected_hub_id),
+      by_types_of_work: TypeOfWorkOption.options_for_select,
+      by_training: TrainingCourseOption.options_for_select,
+      by_age: [['Under 25', true]]
+    }
   end
 
   def default_hub_id
@@ -100,7 +104,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     params[:filterrific][:by_hub_id]
   end
 
-  def client_params
+  def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
       :title,
       :first_name,
@@ -169,7 +173,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     end
   end
 
-  def assessment_note_keys
+  def assessment_note_keys # rubocop:disable Metrics/MethodLength
     %w[
       aspirations
       strengths

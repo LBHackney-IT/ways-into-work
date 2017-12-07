@@ -1,5 +1,5 @@
 class BarrierOption < Option
-  def self.all # rubocop:disable  Metrics/AbcSize
+  def self.all # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     [
       new('childcare', 'Childcare'),
       new('carer', 'Carer'),

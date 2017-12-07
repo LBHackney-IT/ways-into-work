@@ -1,7 +1,7 @@
 include ActionView::Helpers::TagHelper
 
 module FlashMessageHelpers
-  def message_content_for(message_name)
+  def message_content_for(message_name) # rubocop:disable Metrics/MethodLength
     case message_name
 
     when /client email confirmed/

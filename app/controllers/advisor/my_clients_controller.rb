@@ -15,12 +15,16 @@ class Advisor::MyClientsController < Advisor::BaseController
       current_advisor.clients.with_appointment,
       params[:filterrific],
       persistence_id: false,
-      select_options: {
-        by_types_of_work: TypeOfWorkOption.options_for_select,
-        by_training: TrainingCourseOption.options_for_select,
-        by_age: [['Under 25', :under_25s]]
-      }
+      select_options: filterrific_options
     )) || return
     @filtered_clients = @filterrific.find.page(params[:page])
+  end
+  
+  def filterrific_options
+    {
+      by_types_of_work: TypeOfWorkOption.options_for_select,
+      by_training: TrainingCourseOption.options_for_select,
+      by_age: [['Under 25', :under_25s]]
+    }
   end
 end
