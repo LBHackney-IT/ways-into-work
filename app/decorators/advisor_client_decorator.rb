@@ -20,10 +20,20 @@ class AdvisorClientDecorator < ClientDecorator
   end
 
   def decorate_meetings_action
-    if client.meetings.any?
-      h.link_to I18n.t('clients.buttons.view_meetings'), h.advisor_client_meetings_path(client), method: :get, class: 'button is-primary is-small'
-    else
-      h.button_to I18n.t('clients.buttons.arrange_meeting'), h.new_advisor_client_meeting_path(client), method: :get, class: 'button is-primary is-small'
-    end
+    client.meetings.any? ? view_meetings : arrange_meeting
+  end
+  
+  private
+  
+  def meetings_link(text, link)
+    h.link_to text, link, method: :get, class: 'button is-primary is-small'
+  end
+  
+  def view_meetings
+    meetings_link I18n.t('clients.buttons.view_meetings'), h.advisor_client_meetings_path(client)
+  end
+  
+  def arrange_meeting
+    meetings_link I18n.t('clients.buttons.arrange_meeting'), h.new_advisor_client_meeting_path(client)
   end
 end

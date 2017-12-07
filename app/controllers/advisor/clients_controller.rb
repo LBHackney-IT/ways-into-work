@@ -1,4 +1,4 @@
-class Advisor::ClientsController < Advisor::BaseController
+class Advisor::ClientsController < Advisor::BaseController # rubocop:disable ClassLength
   expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
   before_action :init_client, only: :create
 
@@ -44,9 +44,7 @@ class Advisor::ClientsController < Advisor::BaseController
   private
 
   def assign_advisor
-    client.advisor = Advisor.find(edit_client_params[:advisor_id])
-    if client.advisor && client.save(validate: false)
-      AdvisorMailer.notify_assigned(client).deliver_now unless current_advisor == client.advisor
+    if client.assign_advisor(edit_client_params[:advisor_id], current_advisor)
       flash[:success] = I18n.t('clients.flashes.success.advisor_assigned')
     else
       flash[:error] = I18n.t('clients.flashes.error.advisor_assignment')
@@ -59,14 +57,14 @@ class Advisor::ClientsController < Advisor::BaseController
       flash[:success] = I18n.t('clients.flashes.success.updated')
       redirect_back(fallback_location: root_path)
     else
-      client = AdvisorClientDecorator.decorate(Client.find(params[:id]))
+      AdvisorClientDecorator.decorate(Client.find(params[:id]))
       init_assessment_notes
       render :edit
     end
   end
 
   def init_client
-    if ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
+    if HackneyWardFinder.new(client_params[:postcode]).lookup
       client.advisor = current_advisor
       client.login.generate_default_password
     else
@@ -79,18 +77,22 @@ class Advisor::ClientsController < Advisor::BaseController
       Client,
       params[:filterrific],
       persistence_id: false,
-      select_options: {
-        by_hub_id: Hub.options_for_select,
-        by_advisor_id: Advisor.options_for_select(selected_hub_id),
-        by_types_of_work: TypeOfWorkOption.options_for_select,
-        by_training: TrainingCourseOption.options_for_select,
-        by_age: [['Under 25', true]]
-      },
+      select_options: filterrific_options,
       default_filter_params: {
         by_hub_id: default_hub_id
       }
     )) || return
     @filtered_clients = @filterrific.find.page(params[:page])
+  end
+  
+  def filterrific_options
+    {
+      by_hub_id: Hub.options_for_select,
+      by_advisor_id: Advisor.options_for_select(selected_hub_id),
+      by_types_of_work: TypeOfWorkOption.options_for_select,
+      by_training: TrainingCourseOption.options_for_select,
+      by_age: [['Under 25', true]]
+    }
   end
 
   def default_hub_id
@@ -102,7 +104,7 @@ class Advisor::ClientsController < Advisor::BaseController
     params[:filterrific][:by_hub_id]
   end
 
-  def client_params
+  def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
       :title,
       :first_name,
@@ -171,7 +173,7 @@ class Advisor::ClientsController < Advisor::BaseController
     end
   end
 
-  def assessment_note_keys
+  def assessment_note_keys # rubocop:disable Metrics/MethodLength
     %w[
       aspirations
       strengths

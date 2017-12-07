@@ -1,4 +1,4 @@
-class Client < ApplicationRecord
+class Client < ApplicationRecord # rubocop:disable ClassLength
   include PgSearch
 
   acts_as_paranoid
@@ -121,6 +121,37 @@ class Client < ApplicationRecord
 
   def assign_team_leader(ward_mapit_code)
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
-                   Advisor.where(team_leader: true).first
+                   Advisor.find_by(team_leader: true)
   end
+  
+  def assign_advisor(advisor_id, current_advisor)
+    if advisor = Advisor.find(advisor_id)
+      update_attribute(:advisor, advisor) # rubocop:disable Rails/SkipsModelValidations
+      AdvisorMailer.notify_assigned(self).deliver_now unless current_advisor == advisor
+    else
+      false
+    end
+  end
+  
+  def assign_area(postcode)
+    if ward_mapit_code = HackneyWardFinder.new(postcode).lookup
+      assign_team_leader(ward_mapit_code)
+      login.generate_default_password
+    else
+      false
+    end
+  end
+  
+  def completed_education?
+    qualifications.any? || training_courses.any? || !studying.nil?
+  end
+  
+  def completed_objectives?
+    objectives.any? || types_of_work.any? || support_priorities.any?
+  end
+  
+  def completed_about_you?
+    personal_traits.any?
+  end
+  
 end

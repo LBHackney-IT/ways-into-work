@@ -1,5 +1,3 @@
-inherit_from:
-  - .rubocop_todo.yml
 AllCops:
   TargetRubyVersion: 2.4.1
 Documentation:
@@ -59,4 +57,23 @@ Layout/EmptyLinesAroundBlockBody:
     - 'db/schema.rb'
 Style/WordArray:
   Exclude:
-    - 'db/schema.rb'    
+    - 'db/schema.rb'
+Metrics/AbcSize:
+  Exclude:
+    - 'features/support/*'
+    - 'lib/seeders/*'
+    - 'spec/helpers/*'
+Rails/FilePath:
+  Exclude:
+    - 'lib/tasks/cucumber.rake'
+Rails/Output:
+  Exclude:
+    - 'lib/seeders/client_seeder.rb'
+Metrics/LineLength:
+  Max: 166
+Rails/OutputSafety:
+  Exclude:
+    - 'config/environment.rb'
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'lib/seeders/client_seeder.rb'

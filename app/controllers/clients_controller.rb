@@ -22,15 +22,12 @@ class ClientsController < ApplicationController
   def init_client
     if client_params[:postcode].blank?
       client.errors.add(:postcode, "can't be blank")
-    elsif ward_mapit_code = HackneyWardFinder.new(client_params[:postcode]).lookup
-      client.assign_team_leader(ward_mapit_code)
-      client.login.generate_default_password
     else
-      redirect_to :outside_hackney
+      redirect_to :outside_hackney unless client.assign_area(client_params[:postcode])
     end
   end
 
-  def client_params
+  def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
       :title,
       :first_name,

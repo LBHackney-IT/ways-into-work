@@ -5,7 +5,7 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
-  def path_to(page_name)
+  def path_to(page_name) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     case page_name
 
     when /the my clients/
@@ -34,7 +34,7 @@ module NavigationHelpers
         page_name =~ /the (.*) page/
         path_components = Regexp.last_match(1).split(/\s+/)
         send(path_components.push('path').join('_').to_sym)
-      rescue Object => e
+      rescue Object
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" \
               "Now, go and add a mapping in #{__FILE__}"
       end

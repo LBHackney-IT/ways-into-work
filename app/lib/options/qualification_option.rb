@@ -1,5 +1,5 @@
 class QualificationOption < Option
-  def self.all
+  def self.all # rubocop:disable Metrics/MethodLength
     [
       new('btec', 'BTEC'),
       new('nvq_level2', 'NVQ Level 2'),

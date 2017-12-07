@@ -1,4 +1,5 @@
 class ProfileSteps
+  
   # include Enumerable
   include Rails.application.routes.url_helpers
 
@@ -18,19 +19,11 @@ class ProfileSteps
     @step_key = step_key
   end
 
-  def latest_index
-    # if !@client.employed.nil?
-    #   4
-    # els
-    if @client.qualifications.any? || @client.training_courses.any? || !@client.studying.nil?
-      3
-    elsif @client.objectives.any? || @client.types_of_work.any? || @client.support_priorities.any?
-      2
-    elsif @client.personal_traits.any?
-      1
-    else
-      0
-    end
+  def last_possible_index
+    return 3 if @client.completed_education?
+    return 2 if @client.completed_objectives?
+    return 1 if @client.completed_about_you?
+    0
   end
 
   def current_step
@@ -41,28 +34,14 @@ class ProfileSteps
     @current_index ||= current_step.index
   end
 
-  def on_final_step?
-    next_step.nil?
-  end
-
   def next_step
     return nil if @step_key == STEPS.last
 
     step(STEPS[index_of_step(@step_key) + 1])
   end
 
-  def previous_step
-    return nil if @step_key == STEPS.first
-
-    step(STEPS[index_of_step(@step_key) - 1])
-  end
-
   def enabled?(step)
-    step.index <= [latest_index, current_index].max
-  end
-
-  def future?(step)
-    step.index > current_index
+    step.index <= [last_possible_index, current_index].max
   end
 
   def prior_step?(step)
@@ -71,14 +50,6 @@ class ProfileSteps
 
   def current_step?(step)
     step.index == current_index
-  end
-
-  def first?(step)
-    step.index.zero?
-  end
-
-  def last?(step)
-    step.index == (STEPS.count - 1)
   end
 
   def about_you_step
