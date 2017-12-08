@@ -7,6 +7,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   # associations
   belongs_to :advisor
+  belongs_to :referrer
   has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy, autosave: true
 

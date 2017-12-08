@@ -17,6 +17,12 @@ RSpec.describe Client, type: :model do
     
   end
   
+  it 'can have a referrer' do
+    referrer = Fabricate.create(:referrer)
+    client = Fabricate.create(:client, referrer: referrer)
+    expect(client.referrer).to eq(referrer)
+  end
+  
 
   
 end
