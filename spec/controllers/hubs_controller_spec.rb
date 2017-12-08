@@ -17,21 +17,6 @@ RSpec.describe HubsController, type: :controller do
       expect(controller.hubs).to eq(hubs)
     end
     
-    it 'lists hubs as geojson' do
-      get :index, format: :json
-      
-      json = JSON.parse(response.body)
-      
-      expect(json['maps'].count).to eq(5)
-      json['maps'].each_with_index do |map, i|
-        expect(map['lon']).to eq(hubs[i].longitude)
-        expect(map['lat']).to eq(hubs[i].latitude)
-        expect(map['hub_id']).to eq(hubs[i].id)
-        expect(map['name']).to eq(hubs[i].name)
-        expect(map['street']).to eq(hubs[i].address_line_1)
-      end
-    end
-    
   end
   
   
