@@ -47,7 +47,7 @@ class ClientSeeder
           c.postcode = row['Postcode']
           c.login = UserLogin.new(email: email.downcase, password: Devise.friendly_token.first(20)) if c.login.blank?
           # c.funded = row["Claim stream (ESF, FSF, TF, LBH, Other)"].present? && (row["Claim stream (ESF, FSF, TF, LBH, Other)"] != 'LBH')
-          c.rag_status = row['Current Status (RAGG)'].try(:downcase) || :un_assessed
+          c.rag_status = row['Current Status (RAGG)'].try(:downcase).try(:strip) || :un_assessed
           c.gender = row['Gender']
           c.receive_benefits = work_out_boolean(row['Receiving benefits?'])
           c.studying = work_out_boolean(row['Currently studying?'])
