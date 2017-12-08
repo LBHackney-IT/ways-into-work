@@ -13,6 +13,8 @@ RSpec.describe Advisor::ClientsController, type: :controller do
       put :update, params: {
         id: client.id,
         client: {
+          first_name: 'New',
+          last_name: 'Name',
           email: 'something@somewhere.com',
           phone: '01213539609',
           address_line_1: '123 Fake Street',
@@ -23,6 +25,8 @@ RSpec.describe Advisor::ClientsController, type: :controller do
       
       client.reload
       
+      expect(client.first_name).to eq('New')
+      expect(client.last_name).to eq('Name')
       expect(client.email).to eq('something@somewhere.com')
       expect(client.phone).to eq('+441213539609')
       expect(client.address_line_1).to eq('123 Fake Street')

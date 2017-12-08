@@ -144,6 +144,8 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :funded,
       :gender,
       :rag_status,
+      :first_name,
+      :last_name,
       :email,
       :phone,
       :address_line_1,
