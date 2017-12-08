@@ -1,6 +1,6 @@
 module ClientSeederHelper
   
-  def stub_rows(number_of_rows = 1, overrides = {}) # rubocop:disable Metrics/MethodLength
+  def stub_rows(instance, number_of_rows = 1, overrides = {}) # rubocop:disable Metrics/MethodLength
     rows = []
     number_of_rows.times do
       rows << {
@@ -25,7 +25,7 @@ module ClientSeederHelper
         'Notes' => FFaker::HipsterIpsum.phrase
       }.merge(overrides)
     end
-    expect(CSV).to receive(:readlines) { rows }
+    instance.instance_variable_set(:@csv_data, rows)
     rows
   end
   

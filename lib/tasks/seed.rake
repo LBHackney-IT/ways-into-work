@@ -17,8 +17,7 @@ namespace :db do
 
   desc 'Create client data'
   task import_clients: :environment do
-    filepath = Rails.root.join('lib', 'assets', ENV['filename'])
-    puts "importing from #{filepath}"
-    ClientSeeder.new(filepath).import
+    puts "importing from #{ENV['filename']}"
+    ClientSeeder.new(ENV['filename']).import
   end
 end

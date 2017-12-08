@@ -21,7 +21,7 @@ RSpec.describe ClientSeeder, :cli, type: :model do
           
   context 'with a new client' do
     
-    let!(:rows) { stub_rows }
+    let!(:rows) { stub_rows(subject) }
     
     it 'imports a client successfully' do
       subject.import
@@ -67,8 +67,8 @@ RSpec.describe ClientSeeder, :cli, type: :model do
     let(:client) { Fabricate(:client, imported: true) }
     
     before do
-      stub_rows(1, 'First Name' => client.first_name,
-                   'Surname' => client.last_name)
+      stub_rows(subject, 1, 'First Name' => client.first_name,
+                            'Surname' => client.last_name)
     end
     
     it 'updates an existing client' do
@@ -85,9 +85,9 @@ RSpec.describe ClientSeeder, :cli, type: :model do
   context 'without an email' do
     
     before do
-      stub_rows(1, 'First Name' => 'Ian',
-                   'Surname' => 'Noemail',
-                   'Email Address' => nil)
+      stub_rows(subject, 1, 'First Name' => 'Ian',
+                            'Surname' => 'Noemail',
+                            'Email Address' => nil)
     end
     
     it 'does not import the client' do
@@ -106,9 +106,9 @@ RSpec.describe ClientSeeder, :cli, type: :model do
   context 'without a telephone number' do
     
     before do
-      stub_rows(1, 'First Name' => 'Bridget',
-                   'Surname' => 'Nophone',
-                   'Contact Number' => nil)
+      stub_rows(subject, 1, 'First Name' => 'Bridget',
+                            'Surname' => 'Nophone',
+                            'Contact Number' => nil)
     end
     
     it 'does not import the client' do

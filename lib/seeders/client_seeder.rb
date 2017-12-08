@@ -1,3 +1,4 @@
+require 'open-uri'
 
 # This seeding process was wrapped in a class to make it testable
 # We have discussed the potential of regulalry updating our services from a remote service
@@ -5,7 +6,8 @@
 class ClientSeeder
   def initialize(filepath)
     @csv_data = begin
-      CSV.readlines(filepath, headers: :first_row, encoding: 'UTF-8')
+      body = open(filepath).read
+      CSV.parse(body, headers: :first_row, encoding: 'UTF-8')
     rescue Errno::ENOENT
       puts 'Didn\'t find file'
       []
