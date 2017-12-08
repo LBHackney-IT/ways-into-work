@@ -23,6 +23,4 @@
             = render partial: 'contact_note', collection: client.contact_notes
 
     .box
-      %h2 Archive client and opt-out
-      %p Use if: your client is no longer interested and doesn't want to be contacted
       =button_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-danger is-small"
