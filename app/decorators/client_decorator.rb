@@ -111,7 +111,7 @@ class ClientDecorator < Draper::Decorator
   end
 
   def standard_wrapper(label, value)
-    return false if value.blank?
+    return nil if value.blank?
     h.content_tag(:p, '') do
       h.content_tag(:label, label, class: 'label') <<
         value
