@@ -23,3 +23,8 @@ Feature: Client is referred via another agency
   Scenario: client receives email confirmation
     When I refer a client as "client@example.com"
     Then "client@example.com" receive an email asking to confirm address
+    
+  @outside_hackney_postcode
+  Scenario: client outside borough can't be referred
+    When I refer a client with a postcode outside the borough
+    Then I should be on the outside hackney page

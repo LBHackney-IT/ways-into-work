@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = t('flash.errors.not_authorized')
     redirect_to request.referer || user_root
   end
+  
+  def check_postcode(client, postcode)
+    redirect_to(:outside_hackney) && return if client.assign_area(postcode) == false
+  end
 end

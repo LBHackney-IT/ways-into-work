@@ -44,3 +44,10 @@ end
 Then(/^the client should be auto assigned to homerton$/) do
   expect(Referrer.last.client.advisor).to eq(@team_leader)
 end
+
+When(/^I refer a client with a postcode outside the borough$/) do
+  client = Fabricate.build(:client, postcode: 'GU1 1YF')
+  visit new_client_referrers_path
+  fill_in_referrer_form Fabricate.build(:referrer), client
+  save
+end

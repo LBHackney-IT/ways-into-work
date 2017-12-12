@@ -2,12 +2,14 @@ class Client::ReferrersController < ApplicationController
   expose :referrer
   expose :client, -> { referrer.build_client(login: UserLogin.new) }
   
+  before_action only: [:create] do
+    check_postcode referrer.client, referrer_params[:client_attributes][:postcode]
+  end
+  
   def new; end
   
   def create
-    if referrer.client.assign_area(referrer_params[:client_attributes][:postcode]) == false
-      redirect_to(:outside_hackney) && return
-    elsif referrer.save
+    if referrer.save
       referrer.client.send_emails
       redirect_to just_registered_path
     else

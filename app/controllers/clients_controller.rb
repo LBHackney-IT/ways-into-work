@@ -1,14 +1,16 @@
 class ClientsController < ApplicationController
   expose :client
+  
+  before_action only: [:create] do
+    check_postcode client, client_params[:postcode]
+  end
 
   def new
     client.build_login
   end
 
   def create
-    if client.assign_area(client_params[:postcode]) == false
-      redirect_to(:outside_hackney) && return
-    elsif client.save
+    if client.save
       client.send_emails
       redirect_to just_registered_path
     else
