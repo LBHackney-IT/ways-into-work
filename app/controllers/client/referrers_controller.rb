@@ -8,6 +8,7 @@ class Client::ReferrersController < ApplicationController
     if referrer.client.assign_area(referrer_params[:client_attributes][:postcode]) == false
       redirect_to(:outside_hackney) && return
     elsif referrer.save
+      referrer.client.send_emails
       redirect_to just_registered_path
     else
       render :new

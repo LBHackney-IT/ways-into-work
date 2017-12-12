@@ -9,7 +9,7 @@ class ClientsController < ApplicationController
     if client.assign_area(client_params[:postcode]) == false
       redirect_to(:outside_hackney) && return
     elsif client.save
-      setup_client(client)
+      client.send_emails
       redirect_to just_registered_path
     else
       render :new
@@ -17,11 +17,6 @@ class ClientsController < ApplicationController
   end
 
   private
-  
-  def setup_client(client)
-    client.login.send_reset_password_instructions
-    AdvisorMailer.notify_client_signed_up(client).deliver_now
-  end
 
   def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(

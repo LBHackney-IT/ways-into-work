@@ -155,4 +155,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     personal_traits.any?
   end
   
+  def send_emails
+    login.send_reset_password_instructions
+    AdvisorMailer.notify_client_signed_up(self).deliver_now
+  end
+  
 end

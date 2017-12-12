@@ -12,3 +12,14 @@ Feature: Client is referred via another agency
     Given I am on the client referral page
     And I fill in the referral form
     Then a new client should be created in the database
+
+  @homerton_postcode
+  Scenario: team leader receives notification
+    When I refer a client
+    Then the team leader should receive a new client notification
+    And the client should be auto assigned to homerton
+
+  @homerton_postcode
+  Scenario: client receives email confirmation
+    When I refer a client as "client@example.com"
+    Then "client@example.com" receive an email asking to confirm address
