@@ -1,5 +1,5 @@
 class FundedOption < Option
-  def self.all # rubocop:disable Metrics/MethodLength
+  def self.all
     [
       new('troubled_families', 'TF (Troubled Families)'),
       new('flexible_support_fund', 'FSF (Flexible Support Fund)'),
