@@ -43,6 +43,10 @@ class ClientDecorator < ApplicationDecorator
     standard_wrapper('Industry preference:', TypeOfWorkOption.display(client.types_of_work))
   end
 
+  def decorate_funded
+    standard_wrapper('Funding streams:', client.funded)
+  end
+
   def decorate_barriers
     standard_wrapper('Barriers:', BarrierOption.display(client.barriers))
   end
