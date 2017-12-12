@@ -13,10 +13,6 @@
     .is-hidden.on-true
       =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
 
-    .convert_checkbox.full.convert_radio
-      =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Are you being funded by any of the following funding streams?'
-      = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
-
     = render partial: '/shared/latest_file_upload', as: :client, object: form.object
     .actions
       = form.submit 'Complete Profile', :class => 'button is-primary is-pulled-right'

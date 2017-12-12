@@ -8,8 +8,4 @@
 
 = render partial: 'assessment_note', locals: {form: form, note: @work_experience_notes, label: 'Details of past work experience', type: :text }
 
-.convert_checkbox.full.field
-  =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Are you being funded by any of the following funding streams?'
-  = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
-
 = render partial: '/shared/latest_file_upload'
