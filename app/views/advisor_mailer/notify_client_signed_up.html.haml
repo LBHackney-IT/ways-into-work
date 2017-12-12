@@ -1,4 +1,11 @@
-%p="#{@client.name} has just registered."
+- if @client.referrer
+  %p
+    #{@client.name} has just been referred to Hackney Works by #{@client.referrer.name}
+    - if @client.referrer.organisation
+      at #{@client.referrer.organisation}
+    \.
+- else
+  %p="#{@client.name} has just registered."
 
 %p= link_to 'View your cases here', advisor_clients_url
 
