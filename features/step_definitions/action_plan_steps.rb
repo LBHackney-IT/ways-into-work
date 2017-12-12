@@ -1,6 +1,6 @@
 Given(/^I assign a new action plan task to them$/) do
   click_on @client.name
-  click_on "#{@client.first_name}'s Action Plan"
+  click_on 'Action Plan'
   click_on I18n.t('clients.buttons.new_action_plan_task'), match: :first
   @task_title = 'Do Something'
   @due_date = DateTime.now.utc + 7.days

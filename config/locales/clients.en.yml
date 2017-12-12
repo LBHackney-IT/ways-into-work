@@ -13,6 +13,9 @@ en:
     mail:
       subject:
         welcome: "Welcome to Hackney Works"
+    onboarding:
+      employment:
+        upload: "Upload a CV. Don’t worry if you don’t have one!"
     steps:
       about_you:
         long: "Tell us a little about yourself"
@@ -21,7 +24,7 @@ en:
         long: "Tell us about your employment status"
         short: "Employment"
         employed: "Are you currently employed?"
-        upload: "Nothing uploaded. Upload a CV, cover letter or draft documents"
+        upload: "Upload a CV, cover letter or draft documents"
       objectives:
         long: "What can we help you with?"
         short: "Goals"
@@ -32,11 +35,11 @@ en:
         long: "For monitoring purposes please provide us with some details about you"
         short: "Details"
     buttons:
-      archive_client: 'Archive client record'
+      archive_client: 'Archive client record and opt-out'
       upload_cv: 'Upload CV'
       upload: 'Upload'
       manage_cvs: 'Manage CVs'
-      manage_uploads: 'Manage files'
+      manage_uploads: 'Manage uploads'
       delete: 'Delete'
       make_contact: "Contact"
       arrange_meeting: "Schedule meeting"

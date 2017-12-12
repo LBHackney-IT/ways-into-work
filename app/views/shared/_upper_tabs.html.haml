@@ -1,9 +1,9 @@
 #upper-tabs.columns.level
   = link_to edit_advisor_client_path(the_client), class: "single-tab #{cp(edit_advisor_client_path(the_client))}" do
-    %span="#{the_client.first_name}'s Profile"
+    %span="Profile"
   = link_to advisor_client_meetings_path(the_client), class: "single-tab #{cp(advisor_client_meetings_path(the_client))}" do
-    %span="#{the_client.first_name}'s Meetings"
+    %span="Meetings"
   = link_to advisor_client_action_plan_tasks_path(client_id: the_client.id), class: "single-tab #{cp(advisor_client_action_plan_tasks_path(client_id: the_client.id))}" do
-    %span="#{the_client.first_name}'s Action Plan"
+    %span="Action Plan"
   = link_to advisor_client_contact_notes_path(client_id: the_client.id), class: "single-tab #{cp(advisor_client_contact_notes_path(client_id: the_client.id))}" do
-    %span="#{the_client.first_name}'s Contact Timeline"
+    %span="Contact"
