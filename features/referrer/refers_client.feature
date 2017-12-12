@@ -11,7 +11,8 @@ Feature: Client is referred via another agency
   Scenario: Referral creates a new client
     Given I am on the client referral page
     And I fill in the referral form
-    Then a new client should be created in the database
+    Then I should see that the client has been referred
+    And a new client should be created in the database
 
   @homerton_postcode
   Scenario: team leader receives notification

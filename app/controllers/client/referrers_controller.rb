@@ -11,7 +11,6 @@ class Client::ReferrersController < ApplicationController
   def create
     if referrer.save
       referrer.client.send_emails
-      redirect_to just_registered_path
     else
       render :new
     end

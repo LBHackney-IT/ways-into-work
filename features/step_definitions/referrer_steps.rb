@@ -51,3 +51,7 @@ When(/^I refer a client with a postcode outside the borough$/) do
   fill_in_referrer_form Fabricate.build(:referrer), client
   save
 end
+
+Then(/^I should see that the client has been referred$/) do
+  expect(page).to have_content('Thanks for referring this client')
+end
