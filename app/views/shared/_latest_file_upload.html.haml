@@ -1,5 +1,5 @@
 -if client.file_uploads.any?
-  %p Latest upload:
+  %label.label Latest upload:
   %p=link_to client.file_uploads.last.attachment_file_name, client.file_uploads.last.attachment.try(:url), title: client.file_uploads.first.attachment_file_name, target: :blank
   %p="Uploaded by: #{client.file_uploads.last.uploaded_by} on #{client.file_uploads.last.created_at.to_date.to_s(:short)}"
   =client.new_file_button(I18n.t('clients.buttons.manage_uploads'))
