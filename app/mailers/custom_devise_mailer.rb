@@ -11,6 +11,7 @@ class CustomDeviseMailer < Devise::Mailer
 
   def welcome_set_password(record, token)
     @user_login = record
+    @user = record.user
     @url = edit_client_password_url(user_login_id: @user_login.id, reset_password_token: token)
     logger.info @url
     mail(
