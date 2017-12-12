@@ -1,11 +1,11 @@
 module RegistrationSH
-  def fill_in_registration_form(email, client = Fabricate.build(:client))
+  def fill_in_registration_form(email, client = Fabricate.build(:client), prefix = 'client')
     fill_in('Email', with: email)
-    fill_in 'client_first_name', with: client.first_name
-    fill_in 'client_last_name', with: client.last_name
-    fill_in 'client_phone', with: client.phone
-    fill_in 'client_address_line_1', with: client.address_line_1
-    fill_in 'client_postcode', with: client.postcode
+    fill_in "#{prefix}_first_name", with: client.first_name
+    fill_in "#{prefix}_last_name", with: client.last_name
+    fill_in "#{prefix}_phone", with: client.phone
+    fill_in "#{prefix}_address_line_1", with: client.address_line_1
+    fill_in "#{prefix}_postcode", with: client.postcode
   end
   
   def save

@@ -1,0 +1,15 @@
+.columns
+  .column
+    =form.input :name, as: :string, required: true, :input_html => { :class => 'input' }
+  .column
+    =form.input :organisation, as: :string, :input_html => { :class => 'input' }
+
+.columns
+  .column
+    =form.input :phone, as: :tel, :input_html => { :class => 'input' }
+  .column
+    =form.input :email, as: :email, required: true, :input_html => { :class => 'input' }
+    
+.columns
+  .column
+    =form.input :reason, as: :text, required: true, :input_html => { :class => 'input', :rows => 4 }
