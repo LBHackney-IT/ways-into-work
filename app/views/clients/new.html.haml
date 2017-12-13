@@ -1,4 +1,10 @@
 .column
   = simple_form_for [client] do |form|
-    = render partial: 'form_fields', locals: {form: form}
-    = form.submit 'Register', :class => 'button is-primary'
+    %fieldset
+      %h3.subtitle Register for the service
+      %hr
+      %p Please complete the details below. Once you have registered, you will receive an email to verify your account.
+
+      = render 'shared/form_errors', object: form.object
+      = render partial: 'form_fields', locals: {form: form}
+      = form.submit 'Register', :class => 'button is-primary'

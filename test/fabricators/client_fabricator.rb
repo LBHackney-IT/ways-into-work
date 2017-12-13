@@ -9,6 +9,10 @@ Fabricator(:client) do
   advisor { Fabricate(:team_leader) }
 end
 
+Fabricator(:client_with_referrer, from: :client) do
+  referrer { Fabricate.build(:referrer) }
+end
+
 Fabricator(:partial_reg_client, from: :client) do
   personal_traits { [PersonalTraitOption.all.sample.id, PersonalTraitOption.all.sample.id].uniq }
   objectives { [ObjectiveOption.all.sample.id, ObjectiveOption.all.sample.id].uniq }

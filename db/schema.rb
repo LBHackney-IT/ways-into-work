@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206143330) do
+ActiveRecord::Schema.define(version: 20171208141345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,7 +93,9 @@ ActiveRecord::Schema.define(version: 20171206143330) do
     t.boolean "funded"
     t.datetime "deleted_at"
     t.boolean "imported", default: false
+    t.bigint "referrer_id"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
+    t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end
 
   create_table "contact_notes", force: :cascade do |t|
@@ -142,6 +144,14 @@ ActiveRecord::Schema.define(version: 20171206143330) do
     t.index ["client_id"], name: "index_meetings_on_client_id"
   end
 
+  create_table "referrers", force: :cascade do |t|
+    t.string "name"
+    t.string "organisation"
+    t.string "phone"
+    t.string "email"
+    t.text "reason"
+  end
+
   create_table "user_logins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -163,4 +173,5 @@ ActiveRecord::Schema.define(version: 20171206143330) do
 
   add_foreign_key "advisors", "hubs"
   add_foreign_key "clients", "advisors"
+  add_foreign_key "clients", "referrers"
 end

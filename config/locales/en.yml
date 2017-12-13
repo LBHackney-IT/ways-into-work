@@ -33,3 +33,15 @@ en:
       title: "Hackney advisors in your area"
       info: "If you would like to contact the Hackney Works team, you can reach us on:"
       extra: "0208 356 5700"
+  simple_form:
+    labels:
+      referrer:
+        name: "Your name"
+        organisation: "Your orgaisation"
+        phone: "Your phone number"
+        email: "Your email"
+        reason: "Reason for referral"
+        client:
+          preferred_contact_method: "Does the client have a preferred contact method?"
+      client:
+        preferred_contact_method: "Do you have a preferred contact method?"

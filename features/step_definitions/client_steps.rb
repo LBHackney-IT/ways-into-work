@@ -24,3 +24,19 @@ Then(/^the client should be assigned to me$/) do
   client = Client.last
   expect(client.advisor).to eq(@i)
 end
+
+Given(/^I have been referred$/) do
+  @referrer = Fabricate.create(:referrer)
+  @i.referrer = @referrer
+  @i.save
+end
+
+Given(/^the client has a referrer$/) do
+  @referrer = Fabricate.create(:referrer)
+  @client.referrer = @referrer
+  @client.save
+end
+
+Then(/^I should not see my referrer's details$/) do
+  expect(page).to_not have_content(@referrer.name)
+end

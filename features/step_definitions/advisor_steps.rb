@@ -84,3 +84,7 @@ Given(/^I register a client as "([^"]*)"$/) do |email|
   fill_in_registration_form(email)
   click_button 'Save'
 end
+
+Then(/^I should see the referrer's details$/) do
+  expect(page).to have_content(@referrer.name)
+end

@@ -29,6 +29,16 @@
           = client.decorate_job_goal1
           = client.decorate_job_goal2
           = client.decorate_barriers
+    - if client.referrer && current_user_login.user_type == 'Advisor'
+      .tile.is-parent.is-vertical
+        .tile.is-child.box
+          %h3 Referrer
+          = referrer.decorate_name
+          = referrer.decorate_organisation
+          = referrer.decorate_email
+          = referrer.decorate_phone
+          = referrer.decorate_reason
+
     .tile.is-parent.is-vertical
       .tile.is-child.box
         %h3 Files

@@ -7,6 +7,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   # associations
   belongs_to :advisor
+  belongs_to :referrer
   has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy, autosave: true
 
@@ -152,6 +153,11 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   
   def completed_about_you?
     personal_traits.any?
+  end
+  
+  def send_emails
+    login.send_reset_password_instructions
+    AdvisorMailer.notify_client_signed_up(self).deliver_now
   end
   
 end

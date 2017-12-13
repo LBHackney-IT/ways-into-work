@@ -51,6 +51,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'bullet'
+  gem 'i18n-debug'
   gem 'web-console'
   # gem 'binding_of_caller'
 end

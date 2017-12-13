@@ -25,6 +25,7 @@ WaysIntoWork::Application.routes.draw do
 
   namespace :client do
     get 'next_steps' => 'next_steps#show'
+    resource :referrers, only: %i[new create]
     resources :file_uploads, only: %i[create new destroy]
     resource :password, only: [:edit]
     resource :profile, only: [:show]

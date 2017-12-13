@@ -1,0 +1,24 @@
+.column
+  = simple_form_for [client, referrer], url: client_referrers_path do |form|
+    %fieldset
+      %h3.subtitle Refer someone to Hackney Works
+      
+      %p
+        Please complete the details of the person you want to refer. They will
+        then receive an email allowing them to create an account.
+      
+      %hr
+      
+      = render 'shared/form_errors', object: form.object
+      
+      %h3.subtitle Your Details
+      
+      = render partial: 'form_fields', locals: {form: form}
+      
+      %hr
+      
+      %h3.subtitle Client's Details
+      
+      = form.fields_for :client do |builder|
+        = render partial: 'clients/form_fields', locals: {form: builder}
+      = form.submit 'Register', :class => 'button is-primary'

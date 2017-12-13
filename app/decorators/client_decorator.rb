@@ -1,4 +1,4 @@
-class ClientDecorator < Draper::Decorator
+class ClientDecorator < ApplicationDecorator
   delegate_all
 
   decorates :client
@@ -97,24 +97,5 @@ class ClientDecorator < Draper::Decorator
 
   def delete_file_button(file)
     h.button_to(I18n.t('clients.buttons.delete'), h.client_file_upload_path(client_id: id, id: file.id), class: 'button is-primary is-small', method: :delete)
-  end
-
-  def value_from(boolean)
-    case boolean
-    when true
-      'Yes'
-    when false
-      'No'
-    else
-      'Unknown'
-    end
-  end
-
-  def standard_wrapper(label, value)
-    return nil if value.blank?
-    h.content_tag(:p, '') do
-      h.content_tag(:label, label, class: 'label') <<
-        value
-    end
   end
 end

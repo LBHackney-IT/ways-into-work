@@ -28,6 +28,9 @@ module NavigationHelpers
       
     when /my profile page/
       client_profile_path
+      
+    when /client referral/
+      new_client_referrers_path
 
     else
       begin
