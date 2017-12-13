@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208141345) do
+ActiveRecord::Schema.define(version: 20171213113417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,10 +90,10 @@ ActiveRecord::Schema.define(version: 20171208141345) do
     t.integer "contact_notes_count", default: 0
     t.boolean "health_conditions"
     t.boolean "affected_by_welfare"
-    t.boolean "funded"
     t.datetime "deleted_at"
     t.boolean "imported", default: false
     t.bigint "referrer_id"
+    t.string "funded", default: [], array: true
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end
