@@ -29,6 +29,7 @@ WaysIntoWork::Application.routes.draw do
     resources :file_uploads, only: %i[create new destroy]
     resource :password, only: [:edit]
     resource :profile, only: [:show]
+    resources :action_plan_tasks, only: [:show]
     resource :personal_traits, only: %i[edit update]
     resource :objectives, only: %i[edit update]
     resource :education, only: %i[edit update], controller: 'education'

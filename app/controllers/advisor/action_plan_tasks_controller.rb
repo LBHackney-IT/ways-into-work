@@ -3,6 +3,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
   expose :action_plan_task
 
   def index; end
+  def show; end
 
   def new
     action_plan_task.client_id = client.id
@@ -55,4 +56,5 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
                                                outcome
                                              ])
   end
+
 end
