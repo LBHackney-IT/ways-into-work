@@ -126,11 +126,15 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   
   def assign_advisor(advisor_id, current_advisor)
     if advisor = Advisor.find(advisor_id)
-      update_attribute(:advisor, advisor) # rubocop:disable Rails/SkipsModelValidations
-      AdvisorMailer.notify_assigned(self).deliver_now unless current_advisor == advisor
+      update_advisor(advisor, current_advisor)
     else
       false
     end
+  end
+  
+  def update_advisor(advisor, current_advisor)
+    update_attribute(:advisor, advisor) # rubocop:disable Rails/SkipsModelValidations
+    AdvisorMailer.notify_assigned(self).deliver_now unless current_advisor == advisor
   end
   
   def assign_area(postcode)

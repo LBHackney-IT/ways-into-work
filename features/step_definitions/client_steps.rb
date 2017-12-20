@@ -14,6 +14,15 @@ Given(/^the client is assigned to me$/) do
   @i.clients << @client
 end
 
+Given(/^the client is not assigned to me$/) do
+  expect(@client.advisor).to_not eq(@i)
+end
+
+Then(/^the client should not be assigned to me$/) do
+  client = Client.last
+  expect(client.advisor).to_not eq(@i)
+end
+
 Given(/^the client is looking to work in Retail$/) do
   type = TypeOfWorkOption.find('retail').id # cross checking
   @client.types_of_work << type
@@ -39,4 +48,8 @@ end
 
 Then(/^I should not see my referrer's details$/) do
   expect(page).to_not have_content(@referrer.name)
+end
+
+Given(/^I update the client's details$/) do
+  click_on 'Save profile'
 end

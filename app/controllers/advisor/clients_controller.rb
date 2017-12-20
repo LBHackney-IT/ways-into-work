@@ -29,10 +29,12 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def update
-    if params[:commit] == 'Assign Advisor'
-      assign_advisor
+    if params[:commit] == 'Assign Advisor' ? assign_advisor : update_client
+      redirect_back(fallback_location: @fallback_location)
     else
-      update_client
+      AdvisorClientDecorator.decorate(Client.find(params[:id]))
+      init_assessment_notes
+      render :edit
     end
   end
 
@@ -45,22 +47,22 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   private
 
   def assign_advisor
-    if client.assign_advisor(edit_client_params[:advisor_id], current_advisor)
+    if client.assign_advisor(params[:client][:advisor_id], current_advisor)
       flash[:success] = I18n.t('clients.flashes.success.advisor_assigned')
     else
       flash[:error] = I18n.t('clients.flashes.error.advisor_assignment')
     end
-    redirect_back(fallback_location: edit_advisor_client_path(client))
+    @fallback_location = edit_advisor_client_path(client)
   end
 
   def update_client
     if client.update_attributes(edit_client_params)
+      client.update_advisor(current_advisor, current_advisor) if params[:commit] == 'Assign to me'
       flash[:success] = I18n.t('clients.flashes.success.updated')
-      redirect_back(fallback_location: root_path)
+      @fallback_location = root_path
+      true
     else
-      AdvisorClientDecorator.decorate(Client.find(params[:id]))
-      init_assessment_notes
-      render :edit
+      false
     end
   end
 
@@ -130,7 +132,6 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :other_gender,
       :other_bame,
       :date_of_birth,
-      :advisor_id,
       :bame,
       :studying,
       :studying_part_time,
