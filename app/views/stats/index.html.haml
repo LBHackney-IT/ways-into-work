@@ -1,0 +1,33 @@
+#tabs.container
+  .column
+    .head.level
+      %h3 Dashboard
+    
+    = form_tag nil, method: :get do
+      .tile.is-ancestor
+        .tile.is-vertical.is-parent.is-12
+          .tile.is-child.box
+            .columns.is-multiline
+              .column
+                %label.label Hub
+                %span.select.is-fullwidth
+                  = select_tag(:hub, options_for_select(Hub.options_for_select, @hub), { include_blank: '- All -' })
+              
+              .column
+                %label.label Month
+                %span.select.is-fullwidth
+                  = select_tag(:month, options_for_select((1..12).map { |m| [Date.new(2016, m).strftime('%B'), m] }, @month))
+
+              .column
+                %label.label Year
+                %span.select.is-fullwidth
+                  = select_tag(:year, options_for_select((Date.new(2016).year..Time.zone.now.year).to_a, @year))
+                  
+            = submit_tag 'Submit', class: 'button is-fullwidth is-primary'
+        
+  
+    .tile.is-ancestor
+      .columns.is-multiline
+        = render partial: 'stat', locals: { stat: @registered, title: 'Clients Registered' }
+        - OutcomeOption.all.each do |outcome|
+          = render partial: 'stat', locals: { stat: instance_variable_get("@#{outcome.id}"), title: t("stats.titles.#{outcome.id}") }
