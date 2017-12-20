@@ -1,19 +1,19 @@
 %h3
   = t('client.tab_a.tab_4')
 
-.convert_checkbox
+.convert_checkbox.field
   =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with us?', include_hidden: false
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 
-.convert_checkbox
+.convert_checkbox.field
   =form.input :support_priorities, as: :check_boxes, collection: SupportOption.all, :label => 'What would you like support with?', include_hidden: false
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
-%br
 
-= render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
+.convert_checkbox.field
+  = render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
 
 
 .convert_checkbox

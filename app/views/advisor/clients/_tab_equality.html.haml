@@ -5,7 +5,7 @@
   =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
   .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
 
-.convert_radio
+.convert_radio.field
   =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
   .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
 

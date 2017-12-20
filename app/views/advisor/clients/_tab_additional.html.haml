@@ -9,7 +9,7 @@
   =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Funding code'
   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
 
-  =form.input :national_insurance_number, as: :tel, :input_html => { :class => 'input' }
+=form.input :national_insurance_number, as: :tel, :input_html => { :class => 'input' }
 
 =form.input :affected_by_welfare, as: :radio_buttons, :label => 'Are you affected by welfare reform?', wrapper_html: { class: "convert_radio has_child" }
 
