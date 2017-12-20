@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe StatsController, type: :controller do
+RSpec.describe Advisor::DashboardController, type: :controller do
+  let(:advisor) { Fabricate(:advisor) }
+  before { sign_in(advisor.login) }
   
   let(:hub1) { Fabricate(:homerton_hub) }
   let(:hub2) { Fabricate(:hub) }

@@ -1,4 +1,4 @@
-class StatsController < ApplicationController
+class Advisor::DashboardController < Advisor::BaseController
   
   before_action :fetch_filter_params
   

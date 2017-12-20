@@ -8,8 +8,6 @@ WaysIntoWork::Application.routes.draw do
   get 'outside_hackney' => 'eligibility#outside_hackney'
   get 'just_registered' => 'just_registered#show'
   
-  get 'stats' => 'stats#index'
-
   namespace :advisor do
     resources :clients do
       resources :file_uploads, only: %i[create new destroy]
@@ -19,6 +17,7 @@ WaysIntoWork::Application.routes.draw do
     end
 
     resources :my_clients, only: :index
+    resources :dashboard, only: :index
   end
 
   resources :clients, only: %i[new create]
