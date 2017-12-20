@@ -7,6 +7,8 @@ WaysIntoWork::Application.routes.draw do
 
   get 'outside_hackney' => 'eligibility#outside_hackney'
   get 'just_registered' => 'just_registered#show'
+  
+  get 'stats' => 'stats#index'
 
   namespace :advisor do
     resources :clients do
