@@ -57,7 +57,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     ]
   )
 
-  scope :by_hub_id, ->(hub_id) { joins(:advisor).where('advisors.hub_id = ?', hub_id) }
+  scope :by_hub_id, ->(hub_id) { hub_id.blank? ? all : joins(:advisor).where('advisors.hub_id = ?', hub_id) }
   scope :by_advisor_id, ->(advisor_id) { where(advisor_id: advisor_id) }
   scope :by_types_of_work, ->(type) { where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
