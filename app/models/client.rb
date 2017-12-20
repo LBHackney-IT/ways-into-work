@@ -1,5 +1,8 @@
 class Client < ApplicationRecord # rubocop:disable ClassLength
   include PgSearch
+  attr_reader :national_insurance_number
+  attr_reader :affected_by_benefit_cap
+  attr_reader :assigned_supported_employment
 
   acts_as_paranoid
 

@@ -1,4 +1,5 @@
-%h3 Strengths
+%h3
+  = t('client.tab_a.tab_2')
 
 .convert_checkbox
   =form.input :personal_traits, as: :check_boxes, collection: PersonalTraitOption.all, :label => 'Which words best describe you?', include_hidden: false

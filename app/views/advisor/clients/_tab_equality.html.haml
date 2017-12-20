@@ -1,0 +1,15 @@
+%h3
+  = t('client.tab_a.tab_8')
+
+.convert_radio.field
+  =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
+  .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
+
+.convert_radio
+  =form.input :bame, as: :radio_buttons, collection: BameOption.all, label: 'Ethnicity', include_hidden: false
+  .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_bame }
+
+=form.input :health_conditions, as: :radio_buttons, :label => 'Do you have a mental or physical health condition that affects your ability to do normal daily activities?', wrapper_html: { class: "convert_radio" }
+
+
+=form.input :care_leaver, as: :radio_buttons, :label => 'Are you a care leaver?', wrapper_html: { class: "convert_radio" }

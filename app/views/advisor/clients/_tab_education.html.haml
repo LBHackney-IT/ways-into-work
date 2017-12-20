@@ -1,4 +1,5 @@
-%h3 Education
+%h3
+  = t('client.tab_a.tab_5')
 
 .convert_checkbox
   =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false

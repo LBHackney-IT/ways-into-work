@@ -1,4 +1,5 @@
-%h3 Support
+%h3
+  = t('client.tab_a.tab_4')
 
 .convert_checkbox
   =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with us?', include_hidden: false
@@ -21,3 +22,6 @@
 %br
 
 = render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
+
+
+=form.input :receive_benefits, as: :radio_buttons, :label => 'Do you receive any work related benefits?', wrapper_html: { class: "convert_radio" }
