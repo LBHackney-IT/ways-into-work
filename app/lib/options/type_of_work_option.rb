@@ -7,6 +7,7 @@ class TypeOfWorkOption < Option
       new('voluntary', 'Charities / Voluntary sector'),
       new('cleaning', 'Cleaning'),
       new('media', 'Creative / media'),
+      new('customer_service', 'Customer Service'),
       new('engineering_construction', 'Engineering / construction'),
       new('finance', 'Finance / accounting'),
       new('health_social_care', 'Health and social care'),
