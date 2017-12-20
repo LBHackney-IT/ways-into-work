@@ -11,7 +11,12 @@
               .column
                 %label.label Hub
                 %span.select.is-fullwidth
-                  = select_tag(:hub, options_for_select(Hub.options_for_select, @hub), { include_blank: '- All -' })
+                  = select_tag(:hub, options_for_select(Hub.options_for_select, @hub), { include_blank: '- All -', id: 'dashboard_hubs' })
+
+              .column
+                %label.label Advisor
+                %span.select.is-fullwidth
+                  = select_tag(:advisor, options_for_select(Advisor.all.map { |a| [a.name, a.id, {'data-hub-id' => a.hub.id}] }, @advisor), { include_blank: '- All -' })
               
               .column
                 %label.label Month

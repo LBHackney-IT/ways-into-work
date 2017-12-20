@@ -1,14 +1,16 @@
 require 'spec_helper'
 
 RSpec.describe Advisor::DashboardController, type: :controller do
-  let(:advisor) { Fabricate(:advisor) }
-  before { sign_in(advisor.login) }
-  
   let(:hub1) { Fabricate(:homerton_hub) }
   let(:hub2) { Fabricate(:hub) }
+  let(:advisor) { Fabricate(:advisor, hub: hub1) }
+  let(:advisor2) { Fabricate(:advisor, hub: hub1) }
+  
+  before { sign_in(advisor.login) }
   
   before do
-    Fabricate.times(1, :client, advisor: Fabricate(:advisor, hub: hub1))
+    Fabricate.times(1, :client, advisor: advisor)
+    Fabricate.times(1, :client, advisor: advisor2)
     Fabricate.times(2, :client, advisor: Fabricate(:advisor, hub: hub2))
     Fabricate.times(3, :client,
                     advisor: Fabricate(:advisor, hub: hub1),
@@ -37,7 +39,7 @@ RSpec.describe Advisor::DashboardController, type: :controller do
       end
       
       it 'gets a registered count' do
-        expect(assigns(:registered)).to eq(3)
+        expect(assigns(:registered)).to eq(4)
       end
       
     end
@@ -45,6 +47,16 @@ RSpec.describe Advisor::DashboardController, type: :controller do
     context 'with hub set' do
       
       let!(:subject) { get :index, params: { hub: hub1.id } }
+
+      it 'gets a registered count' do
+        expect(assigns(:registered)).to eq(2)
+      end
+      
+    end
+    
+    context 'with advisor set' do
+      
+      let!(:subject) { get :index, params: { advisor: advisor.id } }
 
       it 'gets a registered count' do
         expect(assigns(:registered)).to eq(1)
