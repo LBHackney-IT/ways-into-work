@@ -61,5 +61,4 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
                                                outcome
                                              ])
   end
-
 end
