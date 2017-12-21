@@ -8,7 +8,7 @@ class ReferrerDecorator < ApplicationDecorator
   end
   
   def decorate_organisation
-    standard_wrapper 'Organisation:', referrer.organisation
+    standard_wrapper 'Organisation:', OrganisationOption.display([referrer.organisation])
   end
   
   def decorate_email
