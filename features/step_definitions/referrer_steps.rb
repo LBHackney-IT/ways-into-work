@@ -1,7 +1,7 @@
 module ReferrerSH
   def fill_in_referrer_form(referrer = Fabricate.build(:referrer), client = Fabricate.build(:client), email = FFaker::Internet.email)
     fill_in 'referrer_name', with: referrer.name
-    fill_in 'referrer_organisation', with: referrer.organisation
+    find("#referrer_organisation option[value='#{referrer.organisation}']").click
     fill_in 'referrer_phone', with: referrer.phone
     fill_in 'referrer_email', with: referrer.email
     fill_in 'referrer_reason', with: referrer.reason

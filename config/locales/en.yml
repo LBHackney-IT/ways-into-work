@@ -37,7 +37,7 @@ en:
     labels:
       referrer:
         name: "Your name"
-        organisation: "Your orgaisation"
+        organisation: "Your organisation or service"
         phone: "Your phone number"
         email: "Your email"
         reason: "Reason for referral"
