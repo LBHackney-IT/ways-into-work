@@ -61,6 +61,12 @@ RSpec.describe Client, type: :model do
         expect(Client.registered_on(1.month.ago)).to eq(old_clients)
       end
       
+      it 'gets clients registered within a date range' do
+        expect(
+          Client.registered_on(old_date.beginning_of_day, new_date.end_of_day)
+        ).to match(new_clients + old_clients)
+      end
+      
     end
     
     describe 'with_outcome' do
