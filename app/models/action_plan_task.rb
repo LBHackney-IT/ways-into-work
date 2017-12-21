@@ -12,10 +12,6 @@ class ActionPlanTask < ApplicationRecord
     (advisor || client).name
   end
 
-  def notes
-    notes
-  end
-
   def check_completion
     self.ended_at = (completed? ? Time.zone.now : nil)
   end

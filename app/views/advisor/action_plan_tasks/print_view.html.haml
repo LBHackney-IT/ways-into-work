@@ -4,6 +4,9 @@ Show view advisor
 
 // = action_plan_tasks.decorate_notes
 
+- client.action_plan_tasks.each do |task|
+  %h1= task.title
+
 %h1 Some H1 text Action plan view
 %h2 Some H2 text
 %h3 Some H3 text
