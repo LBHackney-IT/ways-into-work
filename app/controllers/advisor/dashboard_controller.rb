@@ -4,6 +4,10 @@ class Advisor::DashboardController < Advisor::BaseController
   
   def index
     @stats = DashboardStats.new(@from, @to, @options)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @stats.csv, type: 'text/csv', disposition: 'attachment; filename=stats.csv' }
+    end
   end
   
   private

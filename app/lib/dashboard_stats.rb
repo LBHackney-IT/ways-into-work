@@ -16,4 +16,19 @@ class DashboardStats
     @base_query.with_outcome(id, @from, @to).count
   end
   
+  def csv_header
+    ['From date', 'To date', 'Registered', OutcomeOption.all.map { |outcome| I18n.t("stats.titles.#{outcome.id}") }].flatten
+  end
+  
+  def csv_row
+    [@from.strftime('%Y-%m-%d'), @to.strftime('%Y-%m-%d'), registered, OutcomeOption.all.map { |outcome| with_outcome(outcome.id) }].flatten
+  end
+  
+  def csv
+    CSV.generate do |csv|
+      csv << csv_header
+      csv << csv_row
+    end
+  end
+  
 end

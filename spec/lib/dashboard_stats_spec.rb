@@ -102,4 +102,47 @@ RSpec.describe DashboardStats, type: :model do
     
   end
   
+  it 'generates a CSV header' do
+    expect(subject.csv_header).to eq(
+      [
+        'From date',
+        'To date',
+        'Registered',
+        'CVs completed',
+        'Interviews',
+        'Work placements',
+        'Job applications',
+        'Training',
+        'Job starts',
+        'Sustainments'
+      ]
+    )
+  end
+  
+  it 'generates a csv row' do
+    expect(subject.csv_row).to eq(
+      [
+        from_date.strftime('%Y-%m-%d'),
+        to_date.strftime('%Y-%m-%d'),
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    )
+  end
+  
+  it 'generates a CSV' do
+    expect(subject.csv).to eq(
+      [
+        subject.csv_header.to_csv,
+        subject.csv_row.to_csv
+      ].join
+    )
+  end
+  
 end

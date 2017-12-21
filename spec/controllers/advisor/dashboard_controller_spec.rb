@@ -72,5 +72,11 @@ RSpec.describe Advisor::DashboardController, type: :controller do
       
     end
     
+    it 'generates a csv' do
+      get :index, format: :csv
+      csv = CSV.parse(response.body)
+      expect(csv.count).to eq(2)
+    end
+    
   end
 end
