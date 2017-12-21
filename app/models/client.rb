@@ -24,7 +24,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
   
-  scope :with_outcome, ->(outcome, date) { where(id: ActionPlanTask.completed_with_outcome(outcome).ended_in_month(date).pluck(:client_id)) }
+  scope :with_outcome, ->(outcome, from, to) { where(id: ActionPlanTask.completed_with_outcome(outcome).ended_in_period(from, to).pluck(:client_id)) }
   
   accepts_nested_attributes_for :login
 

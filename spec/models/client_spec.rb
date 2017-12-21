@@ -102,8 +102,13 @@ RSpec.describe Client, type: :model do
       
       
       it 'gets clients with a job start' do
-        expect(Client.with_outcome('job_apprenticeship', Time.zone.now)).to eq(job_start_clients)
-        expect(Client.with_outcome('job_apprenticeship', 1.month.ago)).to eq(old_job_start_clients)
+        expect(
+          Client.with_outcome('job_apprenticeship', Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
+        ).to eq(job_start_clients)
+        
+        expect(
+          Client.with_outcome('job_apprenticeship', 1.month.ago.beginning_of_month, 1.month.ago.end_of_month)
+        ).to eq(old_job_start_clients)
       end
     end
     

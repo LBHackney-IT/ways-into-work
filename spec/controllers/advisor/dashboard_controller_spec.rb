@@ -89,6 +89,38 @@ RSpec.describe Advisor::DashboardController, type: :controller do
       
     end
     
+    context 'with quarter set' do
+      
+      {
+        'Q1' => [
+          Time.zone.parse('2017-01-01'),
+          Time.zone.parse('2017-03-31')
+        ],
+        'Q2' => [
+          Time.zone.parse('2017-04-01'),
+          Time.zone.parse('2017-06-30')
+        ],
+        'Q3' => [
+          Time.zone.parse('2017-07-01'),
+          Time.zone.parse('2017-09-30')
+        ],
+        'Q4' => [
+          Time.zone.parse('2017-10-01'),
+          Time.zone.parse('2017-12-31')
+        ]
+      }.each do |quarter, dates|
+        it "sets the right from and to dates for #{quarter}" do
+          get :index, params: {
+            month: quarter,
+            year: 2017
+          }
+          expect(assigns(:from)).to eq(dates[0])
+          expect(assigns(:to)).to eq(dates[1])
+        end
+      end
+      
+    end
+    
     it 'sets outcome counts' do
       get :index
       

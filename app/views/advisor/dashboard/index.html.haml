@@ -19,9 +19,9 @@
                   = select_tag(:advisor, options_for_select(@advisors, @advisor), { include_blank: '- All -' })
               
               .column
-                %label.label Month
+                %label.label Month / Quarter
                 %span.select.is-fullwidth
-                  = select_tag(:month, options_for_select(@months, @month))
+                  = select_tag(:month, grouped_options_for_select(@months, @month))
 
               .column
                 %label.label Year

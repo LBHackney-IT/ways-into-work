@@ -1,13 +1,12 @@
 class Advisor::DashboardController < Advisor::BaseController
   
-  before_action :fetch_filter_params, :initialize_options
+  before_action :fetch_filter_params, :initialize_options, :setup_date_range
   
   def index
-    date = Date.new(@year.to_i, @month.to_i)
     base_query = Client.by_hub_id(@hub).by_advisor_id(@advisor)
-    @registered = base_query.registered_on(date).count
+    @registered = base_query.registered_on(@from, @to).count
     OutcomeOption.all.each do |o|
-      instance_variable_set("@#{o.id}", base_query.with_outcome(o.id, date).count)
+      instance_variable_set("@#{o.id}", base_query.with_outcome(o.id, @from, @to).count)
     end
   end
   
@@ -23,8 +22,38 @@ class Advisor::DashboardController < Advisor::BaseController
   def initialize_options
     @hubs = Hub.options_for_select
     @advisors = Advisor.options_for_select(@hub)
-    @months = (1..12).map { |m| [Date.new(2016, m).strftime('%B'), m] }
+    @months = month_options
     @years = (Date.new(2016).year..Time.zone.now.year).to_a
+  end
+  
+  def month_options
+    [
+      [
+        'Month',
+        (1..12).map { |m| [Date.new(2016, m).strftime('%B'), m] }
+      ],
+      [
+        'Quarter',
+        %w[Q1 Q2 Q3 Q4]
+      ]
+    ]
+  end
+  
+  def setup_date_range
+    if @month.to_s.match?(/Q/)
+      setup_quarter
+    else
+      date = Date.new(@year.to_i, @month.to_i)
+      @from = date.beginning_of_month
+      @to = date.end_of_month
+    end
+  end
+  
+  def setup_quarter
+    quarter = @month[1].to_i
+    date = Date.new(@year.to_i, quarter * 3)
+    @from = date.beginning_of_quarter
+    @to = date.end_of_quarter
   end
   
 end
