@@ -17,19 +17,18 @@ RSpec.describe Advisor::ActionPlanTasksController, :vcr, type: :controller do
     end
     
     context 'when logged in' do
-      render_views
       before { sign_in(Fabricate(:advisor).login) }
       
       it 'renders the index by default' do
         expect(
-          get: :index, params: { client_id: Fabricate(:client).id }
+          (get :index, params: { client_id: Fabricate(:client).id })
         ).to render_template(:index)
       end
       
       it 'renders the index by default' do
         expect(
-          get: :index, params: { client_id: Fabricate(:client).id, print_view: 1 }
-        ).to render_template(:index)
+          (get :index, params: { client_id: Fabricate(:client).id, print_view: 1 })
+        ).to render_template(:print_view)
       end
       
     end
