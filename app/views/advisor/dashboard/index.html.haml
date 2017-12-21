@@ -22,23 +22,23 @@
               .column
                 %label.label Hub
                 %span.select.is-fullwidth
-                  = select_tag(:hub, options_for_select(@hubs, @hub), { include_blank: '- All -', id: 'dashboard_hubs' })
+                  = select_tag(:hub, options_for_select(@hubs, @options[:hub]), { include_blank: '- All -', id: 'dashboard_hubs' })
 
               .column
                 %label.label Advisor
                 %span.select.is-fullwidth
-                  = select_tag(:advisor, options_for_select(@advisors, @advisor), { include_blank: '- All -' })
+                  = select_tag(:advisor, options_for_select(@advisors, @options[:advisor]), { include_blank: '- All -' })
 
               .column
                 %label.label Funding Code
                 %span.select.is-fullwidth
-                  = select_tag(:funding_code, options_for_select(@funding_codes, @funding_code), { include_blank: '- All -' })
+                  = select_tag(:funding_code, options_for_select(@funding_codes, @options[:funding_code]), { include_blank: '- All -' })
                   
             = submit_tag 'Submit', class: 'button is-fullwidth is-primary'
         
   
     .tile.is-ancestor
       .columns.is-multiline
-        = render partial: 'stat', locals: { stat: @registered, title: 'Clients Registered' }
+        = render partial: 'stat', locals: { stat: @stats.registered, title: 'Clients Registered' }
         - OutcomeOption.all.each do |outcome|
-          = render partial: 'stat', locals: { stat: instance_variable_get("@#{outcome.id}"), title: t("stats.titles.#{outcome.id}") }
+          = render partial: 'stat', locals: { stat: @stats.with_outcome(outcome.id), title: t("stats.titles.#{outcome.id}") }

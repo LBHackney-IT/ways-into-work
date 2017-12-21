@@ -3,20 +3,17 @@ class Advisor::DashboardController < Advisor::BaseController
   before_action :fetch_filter_params, :initialize_options
   
   def index
-    base_query = Client.by_hub_id(@hub).by_advisor_id(@advisor).by_funding_code(@funding_code)
-    @registered = base_query.registered_on(@from, @to).count
-    OutcomeOption.all.each do |o|
-      instance_variable_set("@#{o.id}", base_query.with_outcome(o.id, @from, @to).count)
-    end
+    @stats = DashboardStats.new(@from, @to, @options)
   end
   
   private
   
   def fetch_filter_params
     fetch_dates
-    @hub = params[:hub]
-    @advisor = params[:advisor]
-    @funding_code = params[:funding_code]
+    @options = {}
+    @options[:hub] = params[:hub]
+    @options[:advisor] = params[:advisor]
+    @options[:funding_code] = params[:funding_code]
   end
   
   def fetch_dates

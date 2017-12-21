@@ -38,68 +38,6 @@ RSpec.describe Advisor::DashboardController, type: :controller do
         expect(assigns(:hub)).to be_nil
       end
       
-      it 'gets a registered count' do
-        expect(assigns(:registered)).to eq(4)
-      end
-      
-    end
-    
-    context 'with hub set' do
-      
-      let!(:subject) { get :index, params: { hub: hub1.id } }
-
-      it 'gets a registered count' do
-        expect(assigns(:registered)).to eq(2)
-      end
-      
-    end
-    
-    context 'with advisor set' do
-      
-      let!(:subject) { get :index, params: { advisor: advisor.id } }
-
-      it 'gets a registered count' do
-        expect(assigns(:registered)).to eq(1)
-      end
-      
-    end
-    
-    context 'with month set' do
-      
-      let!(:subject) { get :index, params: { month: 1.month.ago.month } }
-      
-      it 'gets a registered count' do
-        expect(assigns(:registered)).to eq(7)
-      end
-      
-      context 'with hub set' do
-        
-        let!(:subject) do
-          get :index, params: {
-            month: 1.month.ago.month,
-            hub: hub1.id
-          }
-        end
-        
-        it 'gets a registered count' do
-          expect(assigns(:registered)).to eq(3)
-        end
-        
-      end
-      
-      context 'with funding code set' do
-        
-        it 'gets the correct count' do
-          Fabricate.times(3, :client, funded: %w[troubled_families supported_employment])
-          Fabricate.times(2, :client, funded: %w[troubled_families])
-          get :index, params: {
-            funding_code: 'supported_employment'
-          }
-          expect(assigns(:registered)).to eq(3)
-        end
-        
-      end
-      
     end
     
     context 'with quarter set' do
@@ -132,18 +70,6 @@ RSpec.describe Advisor::DashboardController, type: :controller do
         end
       end
       
-    end
-    
-    it 'sets outcome counts' do
-      get :index
-      
-      expect(assigns(:cv)).to eq(0)
-      expect(assigns(:interview)).to eq(0)
-      expect(assigns(:work_volunteering_experience)).to eq(0)
-      expect(assigns(:job_application)).to eq(0)
-      expect(assigns(:training)).to eq(0)
-      expect(assigns(:job_apprenticeship)).to eq(0)
-      expect(assigns(:sustain_job)).to eq(0)
     end
     
   end
