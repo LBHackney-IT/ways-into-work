@@ -2,7 +2,8 @@
   .column
     =form.input :name, as: :string, required: true, :input_html => { :class => 'input' }
   .column
-    =form.input :organisation, as: :string, :input_html => { :class => 'input' }
+    %span.select.advisor
+      =form.input :organisation, as: :select, collection: OrganisationOption.all, :input_html => { :class => 'input select' }
 
 .columns
   .column
