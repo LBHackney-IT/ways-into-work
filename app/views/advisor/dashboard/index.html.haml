@@ -9,6 +9,17 @@
           .tile.is-child.box
             .columns.is-multiline
               .column
+                %label.label Month / Quarter
+                %span.select.is-fullwidth
+                  = select_tag(:month, grouped_options_for_select(@months, @month))
+
+              .column
+                %label.label Year
+                %span.select.is-fullwidth
+                  = select_tag(:year, options_for_select(@years, @year))
+                  
+            .columns.is-vertical
+              .column
                 %label.label Hub
                 %span.select.is-fullwidth
                   = select_tag(:hub, options_for_select(@hubs, @hub), { include_blank: '- All -', id: 'dashboard_hubs' })
@@ -22,16 +33,6 @@
                 %label.label Funding Code
                 %span.select.is-fullwidth
                   = select_tag(:funding_code, options_for_select(@funding_codes, @funding_code), { include_blank: '- All -' })
-              
-              .column
-                %label.label Month / Quarter
-                %span.select.is-fullwidth
-                  = select_tag(:month, grouped_options_for_select(@months, @month))
-
-              .column
-                %label.label Year
-                %span.select.is-fullwidth
-                  = select_tag(:year, options_for_select(@years, @year))
                   
             = submit_tag 'Submit', class: 'button is-fullwidth is-primary'
         
