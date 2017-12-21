@@ -112,6 +112,22 @@ RSpec.describe Client, type: :model do
       end
     end
     
+    describe 'by_funding_code' do
+      
+      let!(:clients) { Fabricate.times(5, :client, funded: %w[troubled_families supported_employment]) }
+      let!(:other_clients) { Fabricate.times(5, :client, funded: %w[supported_employment]) }
+      
+      it 'gets the correct clients' do
+        expect(Client.by_funding_code('troubled_families')).to eq(clients)
+        expect(Client.by_funding_code('supported_employment')).to eq(clients + other_clients)
+      end
+      
+      it 'gets all by default' do
+        expect(Client.by_funding_code(nil)).to eq(clients + other_clients)
+      end
+      
+    end
+    
   end
   
   it 'can have a referrer' do

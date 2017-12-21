@@ -87,6 +87,19 @@ RSpec.describe Advisor::DashboardController, type: :controller do
         
       end
       
+      context 'with funding code set' do
+        
+        it 'gets the correct count' do
+          Fabricate.times(3, :client, funded: %w[troubled_families supported_employment])
+          Fabricate.times(2, :client, funded: %w[troubled_families])
+          get :index, params: {
+            funding_code: 'supported_employment'
+          }
+          expect(assigns(:registered)).to eq(3)
+        end
+        
+      end
+      
     end
     
     context 'with quarter set' do

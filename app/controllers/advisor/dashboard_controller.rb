@@ -1,9 +1,9 @@
 class Advisor::DashboardController < Advisor::BaseController
   
-  before_action :fetch_filter_params, :initialize_options, :setup_date_range
+  before_action :fetch_filter_params, :initialize_options
   
   def index
-    base_query = Client.by_hub_id(@hub).by_advisor_id(@advisor)
+    base_query = Client.by_hub_id(@hub).by_advisor_id(@advisor).by_funding_code(@funding_code)
     @registered = base_query.registered_on(@from, @to).count
     OutcomeOption.all.each do |o|
       instance_variable_set("@#{o.id}", base_query.with_outcome(o.id, @from, @to).count)
@@ -13,15 +13,22 @@ class Advisor::DashboardController < Advisor::BaseController
   private
   
   def fetch_filter_params
-    @month = params[:month] || Time.zone.today.month
-    @year = params[:year] || Time.zone.today.year
+    fetch_dates
     @hub = params[:hub]
     @advisor = params[:advisor]
+    @funding_code = params[:funding_code]
+  end
+  
+  def fetch_dates
+    @month = params[:month] || Time.zone.today.month
+    @year = params[:year] || Time.zone.today.year
+    setup_date_range
   end
   
   def initialize_options
     @hubs = Hub.options_for_select
     @advisors = Advisor.options_for_select(@hub)
+    @funding_codes = FundedOption.all.map { |f| [f.name, f.id] }
     @months = month_options
     @years = (Date.new(2016).year..Time.zone.now.year).to_a
   end

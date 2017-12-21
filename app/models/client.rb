@@ -60,6 +60,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :by_advisor_id, ->(advisor_id) { advisor_id.blank? ? all : where(advisor_id: advisor_id) }
   scope :by_types_of_work, ->(type) { where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
+  scope :by_funding_code, ->(code) { code.blank? ? all : where('funded @> ARRAY[?]::varchar[]', [code]) }
 
   scope :by_age, lambda { |under_25s|
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s

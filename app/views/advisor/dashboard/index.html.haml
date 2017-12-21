@@ -17,6 +17,11 @@
                 %label.label Advisor
                 %span.select.is-fullwidth
                   = select_tag(:advisor, options_for_select(@advisors, @advisor), { include_blank: '- All -' })
+
+              .column
+                %label.label Funding Code
+                %span.select.is-fullwidth
+                  = select_tag(:funding_code, options_for_select(@funding_codes, @funding_code), { include_blank: '- All -' })
               
               .column
                 %label.label Month / Quarter
