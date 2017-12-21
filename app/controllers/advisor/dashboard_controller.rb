@@ -1,6 +1,6 @@
 class Advisor::DashboardController < Advisor::BaseController
   
-  before_action :fetch_filter_params
+  before_action :fetch_filter_params, :initialize_options
   
   def index
     date = Date.new(@year.to_i, @month.to_i)
@@ -18,6 +18,13 @@ class Advisor::DashboardController < Advisor::BaseController
     @year = params[:year] || Time.zone.today.year
     @hub = params[:hub]
     @advisor = params[:advisor]
+  end
+  
+  def initialize_options
+    @hubs = Hub.options_for_select
+    @advisors = Advisor.options_for_select(@hub)
+    @months = (1..12).map { |m| [Date.new(2016, m).strftime('%B'), m] }
+    @years = (Date.new(2016).year..Time.zone.now.year).to_a
   end
   
 end

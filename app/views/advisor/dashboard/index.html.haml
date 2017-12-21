@@ -11,22 +11,22 @@
               .column
                 %label.label Hub
                 %span.select.is-fullwidth
-                  = select_tag(:hub, options_for_select(Hub.options_for_select, @hub), { include_blank: '- All -', id: 'dashboard_hubs' })
+                  = select_tag(:hub, options_for_select(@hubs, @hub), { include_blank: '- All -', id: 'dashboard_hubs' })
 
               .column
                 %label.label Advisor
                 %span.select.is-fullwidth
-                  = select_tag(:advisor, options_for_select(Advisor.all.map { |a| [a.name, a.id, {'data-hub-id' => a.hub.id}] }, @advisor), { include_blank: '- All -' })
+                  = select_tag(:advisor, options_for_select(@advisors, @advisor), { include_blank: '- All -' })
               
               .column
                 %label.label Month
                 %span.select.is-fullwidth
-                  = select_tag(:month, options_for_select((1..12).map { |m| [Date.new(2016, m).strftime('%B'), m] }, @month))
+                  = select_tag(:month, options_for_select(@months, @month))
 
               .column
                 %label.label Year
                 %span.select.is-fullwidth
-                  = select_tag(:year, options_for_select((Date.new(2016).year..Time.zone.now.year).to_a, @year))
+                  = select_tag(:year, options_for_select(@years, @year))
                   
             = submit_tag 'Submit', class: 'button is-fullwidth is-primary'
         
