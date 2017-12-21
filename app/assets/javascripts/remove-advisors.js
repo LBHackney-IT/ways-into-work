@@ -12,6 +12,7 @@ $.fn.removeAdvisors = function() {
   hideAdvisors(id);
   
   $(this).change(function() {
+    $('#advisor').val('');
     hideAdvisors($(this).val());
   });
 
