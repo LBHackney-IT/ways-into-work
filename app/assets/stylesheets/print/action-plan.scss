@@ -14,9 +14,34 @@ body {
   color: $black;
 }
 
+.nav.container{
+  padding-bottom: $baseline*0.5;
+  border-bottom: 2px solid #005F61;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.lines {
+  border-top: 2px solid #009CA6;
+  height: 4px;
+  border-bottom: 2px solid #B1E4E3;
+}
+
+.site-header {
+  margin-bottom: $baseline*2;
+}
+
+label.label {
+  font-weight: 600;
+  float: left;
+  width: 100%;
+  margin-top: $baseline;
+  margin-bottom: $baseline*0.25;
+}
+
 section.section,
 .notes {
-  margin-bottom: $baseline*4;
+  margin-bottom: $baseline*2;
 }
 
 header nav,
@@ -25,11 +50,11 @@ footer.site-footer.footer {
   display: none;
 }
 
-a.nav-item.is-brand, label.label {
+a.nav-item.is-brand {
   text-transform: uppercase;
   font-weight: 600;
 }
 
 h2 {
-  margin-bottom: $baseline*2;
+  margin-bottom: $baseline;
 }
