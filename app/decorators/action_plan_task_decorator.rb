@@ -18,7 +18,7 @@ class ActionPlanTaskDecorator < ApplicationDecorator
   end
   
   def decorate_action_completed_by
-    standard_wrapper('Action to be completed by', action_plan_task.advisor_id.nil? ? 'Client' : 'Advisor')
+    standard_wrapper('Action to be completed by', action_plan_task.task_owner_name)
   end
   
 end
