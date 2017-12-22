@@ -1,3 +1,35 @@
-header nav, footer.site-footer.footer {
-  display: none !important;
+$stack-1: "Arial", sans-serif;
+$body: 16px;
+$black: #000;
+$baseline: 20px;
+
+a {
+  color: $black;
+  text-decoration: none;
+}
+
+body {
+  font-size: $body;
+  font-family: $stack-1;
+  color: $black;
+}
+
+section.section,
+.notes {
+  margin-bottom: $baseline*4;
+}
+
+header nav,
+.nav-right.nav-menu,
+footer.site-footer.footer {
+  display: none;
+}
+
+a.nav-item.is-brand, label.label {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+h2 {
+  margin-bottom: $baseline*2;
 }
