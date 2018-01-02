@@ -12,7 +12,7 @@ World MeetingSH
 Given(/^I schedule a meeting for next week with notes$/) do
   click_on I18n.t('clients.buttons.make_contact')
   click_on I18n.t('clients.buttons.arrange_meeting')
-  meeting_date = Time.zone.now + 3.days
+  meeting_date = (Time.zone.now + 3.days).change(hour: rand(8..18))
   select meeting_date.year, from: 'meeting_start_datetime_1i'
   select Date::MONTHNAMES[meeting_date.month], from: 'meeting_start_datetime_2i'
   select meeting_date.day, from: 'meeting_start_datetime_3i'
