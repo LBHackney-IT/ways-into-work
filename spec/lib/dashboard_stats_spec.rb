@@ -137,12 +137,10 @@ RSpec.describe DashboardStats, type: :model do
   end
   
   it 'generates a CSV' do
-    expect(subject.csv).to eq(
-      [
-        subject.csv_header.to_csv,
-        subject.csv_row.to_csv
-      ].join
-    )
+    csv = CSV.parse(subject.csv)
+    expect(csv.count).to eq(13)
+    expect(csv[0]).to eq(subject.csv_header)
+    expect(csv.find { |r| r[0] == from_date.strftime('%Y-%m-%d') }.map(&:to_s)).to eq(subject.csv_row.map(&:to_s))
   end
   
 end

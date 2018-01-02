@@ -1,11 +1,19 @@
 class DashboardStats
-  
+    
   def initialize(from, to, options = {})
-    @base_query = Client.by_hub_id(options[:hub])
-                        .by_advisor_id(options[:advisor])
-                        .by_funding_code(options[:funding_code])
+    @options = options
     @from = from
     @to = to
+    @base_query = Client.by_hub_id(@options[:hub])
+                        .by_advisor_id(@options[:advisor])
+                        .by_funding_code(@options[:funding_code])
+  end
+  
+  def self.stats_for_year(date, options = {})
+    (1..12).map do |month|
+      date = date.change(month: month)
+      new(date.beginning_of_month, date.end_of_month, options)
+    end
   end
   
   def registered
@@ -27,7 +35,9 @@ class DashboardStats
   def csv
     CSV.generate do |csv|
       csv << csv_header
-      csv << csv_row
+      DashboardStats.stats_for_year(@from, @options).each do |month|
+        csv << month.csv_row
+      end
     end
   end
   
