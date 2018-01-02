@@ -80,7 +80,7 @@ GEM
     bullet (5.7.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
-    byebug (9.0.6)
+    byebug (9.1.0)
     capybara (2.14.4)
       addressable
       mime-types (>= 1.16)
