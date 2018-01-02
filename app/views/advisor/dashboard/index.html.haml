@@ -44,4 +44,4 @@
           = render partial: 'stat', locals: { stat: @stats.with_outcome(outcome.id), title: t("stats.titles.#{outcome.id}") }
 
     %p
-      = link_to 'Download as CSV', { format: :csv }, { class: 'button' }
+      = link_to 'Download as CSV', params.permit(:hub, :advisor, :funding_code, :month, :year).merge({ format: :csv }), { class: 'button' }
