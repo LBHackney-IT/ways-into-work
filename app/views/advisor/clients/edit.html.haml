@@ -20,31 +20,40 @@
           %ul
             %li
               %a{href: "#tabs-1"}
-                %span Details
+                %span
+                  = t('client.tab_a.tab_1')
             %li
               %a{href: "#tabs-2"}
-                %span Strengths
+                %span
+                  = t('client.tab_a.tab_2')
             %li
               %a{href: "#tabs-3"}
-                %span Aspirations
+                %span
+                  = t('client.tab_a.tab_3')
             %li
               %a{href: "#tabs-4"}
-                %span Support
+                %span
+                  = t('client.tab_a.tab_4')
             %li
               %a{href: "#tabs-5"}
-                %span Education
+                %span
+                  = t('client.tab_a.tab_5')
             %li
               %a{href: "#tabs-6"}
-                %span Employment
+                %span
+                  = t('client.tab_a.tab_6')
             %li
               %a{href: "#tabs-7"}
-                %span Additional Info
+                %span
+                  = t('client.tab_a.tab_7')
             %li
               %a{href: "#tabs-8"}
-                %span Contact Details
+                %span
+                  = t('client.tab_a.tab_8')
             %li
               %a{href: "#tabs-9"}
-                %span Notes
+                %span
+                  = t('client.tab_a.tab_9')
 
 
         .column
@@ -72,8 +81,7 @@
             = render partial: 'tab_additional', :locals => {:form => form}
             
           #tabs-8.tab
-            = render partial: 'tab_contact', :locals => {:form => form}
-
+            = render partial: 'tab_equality', :locals => {:form => form}
           #tabs-9.tab
-            = render partial: 'tab_notes', :locals => {:form => form}
+            = render partial: 'tab_contact', :locals => {:form => form}
           

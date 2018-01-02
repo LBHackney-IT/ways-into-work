@@ -45,3 +45,20 @@ en:
           preferred_contact_method: "Does the client have a preferred contact method?"
       client:
         preferred_contact_method: "Do you have a preferred contact method?"
+  client:
+    upper_tabs:
+      tab_a: "Profile"
+      tab_b: "Meetings"
+      tab_c: "Action Plan"
+      tab_d: "Contact"
+    tab_a:
+      tab_1: "Overview"
+      tab_2: "Strengths"
+      tab_3: "Aspirations"
+      tab_4: "Support"
+      tab_5: "Education"
+      tab_6: "Employment"
+      tab_7: "Additional Info"
+      tab_8: "Equality"
+      tab_9: "Details"
+
