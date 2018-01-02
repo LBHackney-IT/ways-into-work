@@ -1,9 +1,15 @@
 class Advisor::ActionPlanTasksController < Advisor::BaseController
-  expose :client
+  expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
   expose :action_plan_task
-
-  def index; end
-
+  
+  def index
+    if params[:print_view]
+      render :print_view
+    else
+      render :index
+    end
+  end
+  
   def new
     action_plan_task.client_id = client.id
   end

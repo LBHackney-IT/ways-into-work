@@ -1,0 +1,60 @@
+$stack-1: "Arial", sans-serif;
+$body: 16px;
+$black: #000;
+$baseline: 20px;
+
+a {
+  color: $black;
+  text-decoration: none;
+}
+
+body {
+  font-size: $body;
+  font-family: $stack-1;
+  color: $black;
+}
+
+.nav.container{
+  padding-bottom: $baseline*0.5;
+  border-bottom: 2px solid #005F61;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.lines {
+  border-top: 2px solid #009CA6;
+  height: 4px;
+  border-bottom: 2px solid #B1E4E3;
+}
+
+.site-header {
+  margin-bottom: $baseline*2;
+}
+
+label.label {
+  font-weight: 600;
+  float: left;
+  width: 100%;
+  margin-top: $baseline;
+  margin-bottom: $baseline*0.25;
+}
+
+section.section,
+.notes {
+  margin-bottom: $baseline*2;
+}
+
+header nav,
+.nav-right.nav-menu,
+footer.site-footer.footer {
+  display: none;
+}
+
+a.nav-item.is-brand {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+h2 {
+  margin-bottom: $baseline;
+}

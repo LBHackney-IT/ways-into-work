@@ -22,4 +22,5 @@
 //= require form-helper
 //= require warn-unsaved
 //= require upload
+//= require print-page
 //= require public

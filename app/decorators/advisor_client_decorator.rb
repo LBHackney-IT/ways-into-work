@@ -23,6 +23,10 @@ class AdvisorClientDecorator < ClientDecorator
     client.meetings.any? ? view_meetings : arrange_meeting
   end
   
+  def decorate_action_plan_tasks
+    action_plan_tasks.map { |t| ActionPlanTaskDecorator.decorate(t) }
+  end
+  
   private
   
   def meetings_link(text, link)

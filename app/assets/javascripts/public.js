@@ -30,4 +30,6 @@ $(document).ready(function() {
   $("#clients_needing_appointment").clients_needing_appointment();
 
   $('#hubs').handleMaps();
+  
+  $('#print_page').printPage();
 });
