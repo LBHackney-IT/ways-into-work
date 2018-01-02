@@ -4,7 +4,7 @@ class HackneyWardFinder
   end
 
   def lookup
-    find_hackney_ward_from_postcode
+    find_hackney_ward_from_postcode.present?
   end
 
   private
@@ -13,7 +13,7 @@ class HackneyWardFinder
     # This validation is captured at the active_record level
     return if @postcode.blank? || GoingPostal.postcode?(@postcode, 'GB').blank?
     response = HTTParty.get("https://mapit.mysociety.org/postcode/#{@postcode.gsub(/\s+/, '')}", headers: { 'ContentType' => 'application/json' }).parsed_response
-    borough_from(response) && ward_from(response)
+    ward_from(response) && borough_from(response)
   end
 
   def borough_from(response)
