@@ -6,7 +6,7 @@
 =form.input :rag_status, as: :radio_buttons, label: 'Assessment status:', collection: [["Red",:red], ["Amber", :amber], ["Green", :green]], wrapper_html: { class: "convert_radio" }
 
 .convert_checkbox.full.field
-  =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Funding code'
+  =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Funding Code'
   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
 
 =form.input :national_insurance_number, label: 'National Insurance Number', as: :tel, :input_html => { :class => 'input' }
