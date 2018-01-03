@@ -1,6 +1,6 @@
 = render 'shared/form_errors', object: form.object
 %fieldset
-  = form.input :title, as: :string, label: "Agreed action:", :input_html => { :class => "input" }
+  = form.input :title, as: :text, label: "Agreed action:", :input_html => { :class => "input" }
 
   .convert_radio
     =form.input :outcome, as: :radio_buttons, collection: OutcomeOption.all, label: 'Action Outcome', include_hidden: false
