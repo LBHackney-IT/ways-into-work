@@ -18,6 +18,7 @@ class Advisor::DashboardController < Advisor::BaseController
     @options[:hub] = params[:hub]
     @options[:advisor] = params[:advisor]
     @options[:funding_code] = params[:funding_code]
+    @options[:equalities] = params[:equalities]
   end
   
   def fetch_dates
@@ -30,6 +31,7 @@ class Advisor::DashboardController < Advisor::BaseController
     @hubs = Hub.options_for_select
     @advisors = Advisor.options_for_select(@hub)
     @funding_codes = FundedOption.all.map { |f| [f.name, f.id] }
+    @equalities = EqualitiesOption.all.map { |f| [f.name, f.id] }
     @months = month_options
     @years = (Date.new(2016).year..Time.zone.now.year).to_a
   end
