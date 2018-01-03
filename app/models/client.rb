@@ -62,6 +62,16 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_funding_code, ->(code) { code.blank? ? all : where('funded @> ARRAY[?]::varchar[]', [code]) }
 
+  scope :workless_on_benefits, -> { where(receive_benefits: true, employed: true) }
+  scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
+  scope :welfare_reform, -> { where(affected_by_welfare: true) }
+  scope :under_25, -> { where('date_of_birth > ?', Time.zone.today - 25.years) }
+  scope :over_50, -> { where('date_of_birth < ?', Time.zone.today - 50.years) }
+  scope :care_leavers, -> { where(care_leaver: true) }
+  scope :health_conditions, -> { where(health_conditions: true) }
+  scope :female, -> { where(gender: 'Female') }
+  scope :bame, -> { where('bame != ?', 'white_british') }
+
   scope :by_age, lambda { |under_25s|
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
   }
