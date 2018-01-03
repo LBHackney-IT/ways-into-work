@@ -4,7 +4,7 @@
       =form.input :agenda, as: :radio_buttons, collection: MeetingAgendaOption.all, :label => 'What is the agenda of this meeting?', include_hidden: false
       .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_agenda }
   .field
-    =form.input :start_datetime, label: 'Appointment date and time', as: :datetime, start_year: Time.zone.today.year, end_year: Time.zone.today.year + 1, minute_step: 15, start_hour: 8, end_hour: 18, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
+    =form.input :start_datetime, label: 'Appointment date and time', as: :datetime, start_year: Time.zone.today.year - 1, end_year: Time.zone.today.year + 1, minute_step: 15, start_hour: 8, end_hour: 18, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
 
   .field
     =form.input :notes, as: :text, :input_html => { :class => "textarea" }
