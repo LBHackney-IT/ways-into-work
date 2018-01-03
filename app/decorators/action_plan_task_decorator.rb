@@ -10,7 +10,7 @@ class ActionPlanTaskDecorator < ApplicationDecorator
   end
   
   def decorate_outcome
-    standard_wrapper('Outcome', OutcomeOption.find(action_plan_task.outcome).name)
+    standard_wrapper('Outcome', OutcomeOption.find(action_plan_task.outcome)&.name)
   end
   
   def decorate_due_date
