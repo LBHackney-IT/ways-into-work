@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mapit.mysociety.org/postcode/B743UD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Contenttype:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 03 Jan 2018 09:49:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4260'
+      Connection:
+      - keep-alive
+      Content-Language:
+      - en-gb
+      Vary:
+      - Accept-Language,Cookie,Accept-Encoding
+      Cache-Control:
+      - max-age=2419200
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '61239'
+      - '61239'
+      X-Url:
+      - "/postcode/B743UD"
+      Accept-Ranges:
+      - bytes
+      X-Quota-Limit:
+      - '50'
+      X-Quota-Current:
+      - '10'
+    body:
+      encoding: UTF-8
+      string: '{"wgs84_lat": 52.60206037885955, "coordsyst": "G", "shortcuts": {"WMC":
+        65880, "ward": {"county": 143829, "district": 145396}, "council": {"county":
+        2240, "district": 2434}}, "wgs84_lon": -1.8594088208255135, "postcode": "B74
+        3UD", "easting": 409619, "areas": {"2240": {"parent_area": null, "generation_high":
+        32, "all_names": {}, "id": 2240, "codes": {"ons": "41", "gss": "E10000028",
+        "unit_id": "15052", "local-authority-eng": "STS"}, "name": "Staffordshire
+        County Council", "country": "E", "type_name": "County council", "generation_low":
+        1, "country_name": "England", "type": "CTY"}, "11809": {"parent_area": null,
+        "generation_high": 32, "all_names": {}, "id": 11809, "codes": {"ons": "05",
+        "gss": "E15000005", "unit_id": "41426"}, "name": "West Midlands", "country":
+        "E", "type_name": "European region", "generation_low": 1, "country_name":
+        "England", "type": "EUR"}, "2434": {"parent_area": null, "generation_high":
+        32, "all_names": {}, "id": 2434, "codes": {"ons": "41UD", "gss": "E07000194",
+        "unit_id": "14797", "local-authority-eng": "LIF"}, "name": "Lichfield District
+        Council", "country": "E", "type_name": "District council", "generation_low":
+        1, "country_name": "England", "type": "DIS"}, "40035": {"parent_area": null,
+        "generation_high": 32, "all_names": {}, "id": 40035, "codes": {"ons": "E02006156"},
+        "name": "Lichfield 011", "country": "E", "type_name": "2001 Middle Layer Super
+        Output Area (Full)", "generation_low": 13, "country_name": "England", "type":
+        "OMF"}, "95654": {"parent_area": null, "generation_high": 32, "all_names":
+        {}, "id": 95654, "codes": {"ons": "E01029513"}, "name": "Lichfield 011A",
+        "country": "E", "type_name": "2001 Lower Layer Super Output Area (Full)",
+        "generation_low": 13, "country_name": "England", "type": "OLF"}, "900001":
+        {"parent_area": null, "generation_high": 32, "all_names": {}, "id": 900001,
+        "codes": {}, "name": "European Parliament", "country": "", "type_name": "European
+        Parliament", "generation_low": 1, "country_name": "-", "type": "EUP"}, "130032":
+        {"parent_area": null, "generation_high": 32, "all_names": {}, "id": 130032,
+        "codes": {"ons": "E01029513"}, "name": "Lichfield 011A", "country": "E", "type_name":
+        "2001 Lower Layer Super Output Area (Generalised)", "generation_low": 13,
+        "country_name": "England", "type": "OLG"}, "53329": {"parent_area": 2434,
+        "generation_high": 32, "all_names": {}, "id": 53329, "codes": {"ons": "41UD021",
+        "gss": "E04008935", "unit_id": "14796"}, "name": "Shenstone", "country": "E",
+        "type_name": "Civil parish/community", "generation_low": 12, "country_name":
+        "England", "type": "CPC"}, "145396": {"parent_area": 2434, "generation_high":
+        32, "all_names": {}, "id": 145396, "codes": {"gss": "E05010665", "unit_id":
+        "14798"}, "name": "Little Aston & Stonnall", "country": "E", "type_name":
+        "District council ward", "generation_low": 24, "country_name": "England",
+        "type": "DIW"}, "143829": {"parent_area": 2240, "generation_high": 32, "all_names":
+        {}, "id": 143829, "codes": {"unit_id": "14794"}, "name": "Lichfield Rural
+        South", "country": "E", "type_name": "County council electoral division",
+        "generation_low": 20, "country_name": "England", "type": "CED"}, "65880":
+        {"parent_area": null, "generation_high": 32, "all_names": {}, "id": 65880,
+        "codes": {"gss": "E14000986", "unit_id": "24642"}, "name": "Tamworth", "country":
+        "E", "type_name": "UK Parliament constituency", "generation_low": 13, "country_name":
+        "England", "type": "WMC"}, "148859": {"parent_area": null, "generation_high":
+        32, "all_names": {}, "id": 148859, "codes": {"nhse": "05Q"}, "name": "South
+        East Staffs & Seisdon Peninsular", "country": "E", "type_name": "Clinical
+        Commissioning Group", "generation_low": 29, "country_name": "England", "type":
+        "CCG"}, "47229": {"parent_area": null, "generation_high": 32, "all_names":
+        {}, "id": 47229, "codes": {"ons": "E02006156"}, "name": "Lichfield 011", "country":
+        "E", "type_name": "2001 Middle Layer Super Output Area (Generalised)", "generation_low":
+        13, "country_name": "England", "type": "OMG"}, "900000": {"parent_area": null,
+        "generation_high": 19, "all_names": {}, "id": 900000, "codes": {}, "name":
+        "House of Commons", "country": "", "type_name": "UK Parliament", "generation_low":
+        1, "country_name": "-", "type": "WMP"}}, "northing": 300484}'
+    http_version: 
+  recorded_at: Wed, 03 Jan 2018 09:49:41 GMT
+recorded_with: VCR 4.0.0

@@ -67,7 +67,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def init_client
-    if HackneyWardFinder.new(client_params[:postcode]).lookup
+    if HackneyWardFinder.new(client_params[:postcode]).in_hackney?
       client.advisor = current_advisor
       client.login.generate_default_password
     else

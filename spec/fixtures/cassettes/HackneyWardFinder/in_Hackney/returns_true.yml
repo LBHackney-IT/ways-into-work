@@ -17,7 +17,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 02 Jan 2018 16:51:59 GMT
+      - Wed, 03 Jan 2018 09:49:42 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -33,8 +33,8 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Age:
-      - '22400'
-      - '22400'
+      - '83463'
+      - '83463'
       X-Url:
       - "/postcode/E58DA"
       Accept-Ranges:
@@ -42,7 +42,7 @@ http_interactions:
       X-Quota-Limit:
       - '50'
       X-Quota-Current:
-      - '10'
+      - '8'
     body:
       encoding: UTF-8
       string: '{"wgs84_lat": 51.55602736423322, "coordsyst": "G", "shortcuts": {"WMC":
@@ -101,5 +101,5 @@ http_interactions:
         region", "generation_low": 1, "country_name": "England", "type": "EUR"}},
         "northing": 185917}'
     http_version: 
-  recorded_at: Tue, 02 Jan 2018 16:51:59 GMT
+  recorded_at: Wed, 03 Jan 2018 09:49:40 GMT
 recorded_with: VCR 4.0.0

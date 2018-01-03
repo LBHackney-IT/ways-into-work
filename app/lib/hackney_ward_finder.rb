@@ -4,16 +4,23 @@ class HackneyWardFinder
   end
 
   def lookup
-    find_hackney_ward_from_postcode.present?
+    return nil unless in_hackney?
+    ward_from(response)
+  end
+  
+  def in_hackney?
+    borough_from(response).present?
   end
 
   private
-
-  def find_hackney_ward_from_postcode
-    # This validation is captured at the active_record level
+  
+  def response
     return if @postcode.blank? || GoingPostal.postcode?(@postcode, 'GB').blank?
-    response = HTTParty.get("https://mapit.mysociety.org/postcode/#{@postcode.gsub(/\s+/, '')}", headers: { 'ContentType' => 'application/json' }).parsed_response
-    ward_from(response) && borough_from(response)
+    @response ||= HTTParty.get(url, headers: { 'ContentType' => 'application/json' }).parsed_response
+  end
+  
+  def url
+    "https://mapit.mysociety.org/postcode/#{@postcode.gsub(/\s+/, '')}"
   end
 
   def borough_from(response)
