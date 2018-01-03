@@ -33,7 +33,12 @@
                 %label.label Funding Code
                 %span.select.is-fullwidth
                   = select_tag(:funding_code, options_for_select(@funding_codes, @options[:funding_code]), { include_blank: '- All -' })
-                  
+              
+              .column
+                %label.label Equalities
+                %span.select.is-fullwidth
+                  = select_tag(:equalities, options_for_select(@equalities, @options[:equalities]), { include_blank: '- All -' })
+  
             = submit_tag 'Submit', class: 'button is-fullwidth is-primary'
         
   
