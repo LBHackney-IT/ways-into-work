@@ -27,7 +27,7 @@ class Advisor::DashboardController < Advisor::BaseController
     setup_date_range
   end
   
-  def initialize_options
+  def initialize_options # rubocop:disable Metrics/AbcSize
     @hubs = Hub.options_for_select
     @advisors = Advisor.options_for_select(@hub)
     @funding_codes = FundedOption.all.map { |f| [f.name, f.id] }
