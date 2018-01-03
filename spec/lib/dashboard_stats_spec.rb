@@ -81,6 +81,45 @@ RSpec.describe DashboardStats, type: :model do
         
   end
   
+  context 'with equalities set' do
+    
+    let(:workless_on_benefits) { Fabricate.times(rand(1..10), :client, receive_benefits: true, employed: true) }
+    let(:workless_off_benefits) { Fabricate.times(rand(1..10), :client, receive_benefits: false, employed: false) }
+    let(:welfare_reform) { Fabricate.times(rand(1..10), :client, affected_by_welfare: true) }
+    let(:under_25) { Fabricate.times(rand(1..10), :client, date_of_birth: Time.zone.today - 20.years) }
+    let(:over_50) { Fabricate.times(rand(1..10), :client, date_of_birth: Time.zone.today - 55.years) }
+    let(:care_leavers) { Fabricate.times(rand(1..10), :client, care_leaver: true) }
+    let(:health_conditions) { Fabricate.times(rand(1..10), :client, health_conditions: true) }
+    let(:female) { Fabricate.times(rand(1..10), :client, gender: 'Female') }
+    let(:bame) { Fabricate.times(rand(1..10), :client, bame: 'black') }
+    
+    %w[
+      workless_on_benefits
+      workless_off_benefits
+      welfare_reform
+      under_25
+      over_50
+      care_leavers
+      health_conditions
+      female
+      bame
+    ].each do |option|
+      
+      context "with #{option}" do
+        
+        let(:options) { { equalities: option } }
+        
+        it 'gets a registered count' do
+          send(option)
+          expect(subject.registered).to eq(send(option).count)
+        end
+        
+      end
+      
+    end
+    
+  end
+  
   context 'outcomes' do
     
     let!(:job_start_clients) do

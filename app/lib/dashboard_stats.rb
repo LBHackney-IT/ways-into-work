@@ -7,6 +7,12 @@ class DashboardStats
     @base_query = Client.by_hub_id(@options[:hub])
                         .by_advisor_id(@options[:advisor])
                         .by_funding_code(@options[:funding_code])
+    apply_equalities if @options[:equalities]
+  end
+  
+  def apply_equalities
+    option = EqualitiesOption.find(@options[:equalities])
+    @base_query = @base_query.send(option.id.to_sym) if option
   end
   
   def self.stats_for_year(date, options = {})
