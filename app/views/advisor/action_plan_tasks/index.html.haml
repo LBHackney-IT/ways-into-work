@@ -21,9 +21,8 @@
             %thead
               %tr
                 %th Agreed Action
-                %th Due Date
-                %th Assigned to
-                %th
+                %th Due
+                %th Assigned
             %tbody
               = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
         - else
