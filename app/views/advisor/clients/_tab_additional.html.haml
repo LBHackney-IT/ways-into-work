@@ -1,7 +1,17 @@
 %h3
   = t('client.tab_a.tab_7')
 
-=form.input :date_of_birth, label: 'DOB', as: :date, start_year: Time.zone.today.year, end_year: Time.zone.today.year - 70, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
+/* =form.input :date_of_birth, label: 'DOB', as: :date, start_year: Time.zone.today.year, end_year: Time.zone.today.year - 70, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
+
+.convert_checkbox.full.field
+  = label :client, :date_of_birth, class: 'label' do
+    DOB
+    %span
+      01/12/1999
+  .simple_input
+    = text_field :client, :date_of_birth, maxlength: 2, class: 'input numeric no-spinner'
+    = text_field :client, :date_of_birth, maxlength: 2, class: 'input numeric no-spinner'
+    = text_field :client, :date_of_birth, maxlength: 4, class: 'input numeric no-spinner'
 
 =form.input :rag_status, as: :radio_buttons, label: 'Assessment status:', collection: [["Red",:red], ["Amber", :amber], ["Green", :green]], wrapper_html: { class: "convert_radio" }
 

@@ -67,6 +67,15 @@ $input-radius:              $radius !default
   &.is-inline
     display: inline
     width: auto
+  &.numeric
+    width: 80px
+
+input.input.no-spinner[type=number]::-webkit-inner-spin-button,
+input.input.no-spinner[type=number]::-webkit-outer-spin-button
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  margin: 0
 
 .textarea
   display: block
@@ -177,6 +186,8 @@ $input-radius:              $radius !default
     font-size: $size-medium
   &.is-large
     font-size: $size-large
+  span
+    font-size: 0.7em
 
 .help
   display: block
