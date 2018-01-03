@@ -9,6 +9,8 @@ http_interactions:
     headers:
       Contenttype:
       - application/json
+      X-Api-Key:
+      - "<MAPIT_API_KEY>"
   response:
     status:
       code: 200
@@ -17,7 +19,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 03 Jan 2018 09:49:43 GMT
+      - Wed, 03 Jan 2018 10:25:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -33,16 +35,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Age:
-      - '217'
-      - '217'
+      - '2387'
+      - '2387'
       X-Url:
       - "/postcode/SW1A1AA"
       Accept-Ranges:
       - bytes
       X-Quota-Limit:
-      - '50'
+      - '10000'
       X-Quota-Current:
-      - '12'
+      - '555'
     body:
       encoding: UTF-8
       string: '{"wgs84_lat": 51.50100893647978, "coordsyst": "G", "shortcuts": {"WMC":
@@ -102,5 +104,5 @@ http_interactions:
         "generation_low": 13, "country_name": "England", "type": "WMC"}}, "northing":
         179645}'
     http_version: 
-  recorded_at: Wed, 03 Jan 2018 09:49:41 GMT
+  recorded_at: Wed, 03 Jan 2018 10:25:53 GMT
 recorded_with: VCR 4.0.0

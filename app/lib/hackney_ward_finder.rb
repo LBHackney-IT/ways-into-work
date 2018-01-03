@@ -16,7 +16,14 @@ class HackneyWardFinder
   
   def response
     return if @postcode.blank? || GoingPostal.postcode?(@postcode, 'GB').blank?
-    @response ||= HTTParty.get(url, headers: { 'ContentType' => 'application/json' }).parsed_response
+    @response ||= HTTParty.get(url, headers: headers).parsed_response
+  end
+  
+  def headers
+    {
+      'ContentType' => 'application/json',
+      'X-Api-Key' => ENV['MAPIT_API_KEY']
+    }
   end
   
   def url

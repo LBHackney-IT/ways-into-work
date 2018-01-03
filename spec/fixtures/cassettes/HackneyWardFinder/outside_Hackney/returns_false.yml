@@ -9,6 +9,8 @@ http_interactions:
     headers:
       Contenttype:
       - application/json
+      X-Api-Key:
+      - "<MAPIT_API_KEY>"
   response:
     status:
       code: 200
@@ -17,7 +19,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 03 Jan 2018 09:49:42 GMT
+      - Wed, 03 Jan 2018 10:25:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -33,16 +35,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Age:
-      - '61239'
-      - '61239'
+      - '63410'
+      - '63410'
       X-Url:
       - "/postcode/B743UD"
       Accept-Ranges:
       - bytes
       X-Quota-Limit:
-      - '50'
+      - '10000'
       X-Quota-Current:
-      - '10'
+      - '553'
     body:
       encoding: UTF-8
       string: '{"wgs84_lat": 52.60206037885955, "coordsyst": "G", "shortcuts": {"WMC":
@@ -101,5 +103,5 @@ http_interactions:
         "House of Commons", "country": "", "type_name": "UK Parliament", "generation_low":
         1, "country_name": "-", "type": "WMP"}}, "northing": 300484}'
     http_version: 
-  recorded_at: Wed, 03 Jan 2018 09:49:41 GMT
+  recorded_at: Wed, 03 Jan 2018 10:25:53 GMT
 recorded_with: VCR 4.0.0

@@ -65,6 +65,9 @@
     },
     "SUPPORT_EMAIL": {
       "required": true
+    },
+    "MAPIT_API_KEY": {
+      "required": true
     }
   },
   "formation": {
