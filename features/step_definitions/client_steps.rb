@@ -53,3 +53,12 @@ end
 Given(/^I update the client's details$/) do
   click_on 'Save profile'
 end
+
+Given(/^there are (\d+) clients from my hub$/) do |i|
+  @hub_clients = Fabricate.times(i.to_i, :client, hub: @i.hub)
+end
+
+Given(/^there are (\d+) clients from another hub$/) do |i|
+  hub = Fabricate(:hub, name: 'Other Hub')
+  @other_clients = Fabricate.times(i.to_i, :client, hub: hub)
+end

@@ -99,7 +99,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def default_hub_id
-    @default_hub_id ||= @default_hub_id
+    @default_hub_id ||= current_advisor.default_hub_id
   end
 
   def selected_hub_id
