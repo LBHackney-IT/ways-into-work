@@ -17,6 +17,10 @@ class Advisor < ApplicationRecord
   def devise_mailer
     Devise::Mailer
   end
+  
+  def default_hub_id
+    options['show_all_hubs'] == true ? nil : hub_id
+  end
 
   def self.options_for_select(hub_id)
     if hub_id.blank?

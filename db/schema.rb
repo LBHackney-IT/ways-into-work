@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222100933) do
+ActiveRecord::Schema.define(version: 20180105110044) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "pg_trgm"
+  enable_extension "plpgsql"
 
   create_table "action_plan_tasks", force: :cascade do |t|
     t.string "title"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171222100933) do
     t.bigint "hub_id"
     t.boolean "team_leader", default: false
     t.string "phone"
+    t.json "options", default: {}
     t.index ["hub_id"], name: "index_advisors_on_hub_id"
   end
 
