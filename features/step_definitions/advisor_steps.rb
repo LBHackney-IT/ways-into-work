@@ -88,3 +88,32 @@ end
 Then(/^I should see the referrer's details$/) do
   expect(page).to have_content(@referrer.name)
 end
+
+Then(/^my hub should be selected by default$/) do
+  expect(page).to have_select('filterrific_by_hub_id', selected: @i.hub.name)
+end
+
+Then(/^the any hub option should be selected by default$/) do
+  expect(page).to have_select('filterrific_by_hub_id', selected: nil)
+end
+
+Then(/^I should only see clients from my hub$/) do
+  @hub_clients.each do |client|
+    expect(page.body).to match(client.name)
+  end
+  
+  @other_clients.each do |client|
+    expect(page.body).to_not match(client.name)
+  end
+end
+
+Given(/^I have the show_all_hubs option set$/) do
+  @i.options['show_all_hubs'] = true
+  @i.save
+end
+
+Then(/^I should see all clients$/) do
+  (@hub_clients + @other_clients).each do |client|
+    expect(page.body).to match(client.name)
+  end
+end
