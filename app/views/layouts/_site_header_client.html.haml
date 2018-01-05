@@ -5,8 +5,8 @@
   %span
   %span
 .nav-right.nav-menu
-  = link_to "Home", user_root, class: "nav-item is-tab #{cp(user_root)}"
-  = link_to "My Profile", client_profile_path, class: "nav-item is-tab #{cp(client_profile_path)}"
-  = link_to "Meet the team", hubs_path, class: "nav-item is-tab #{cp(hubs_path)}"
-  = button_to "Log Out", destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
+  = link_to I18n.t('header.nav.hackney_works'), user_root, class: "nav-item is-tab #{cp(user_root)}"
+  = link_to I18n.t('header.nav.profile'), client_profile_path, class: "nav-item is-tab #{cp(client_profile_path)}"
+  = link_to I18n.t('header.nav.hubs'), hubs_path, class: "nav-item is-tab #{cp(hubs_path)}"
+  = button_to I18n.t('header.nav.sign_out'), destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
 
