@@ -5,6 +5,15 @@ en:
   header:
     title: "Hackney Works"
     root_title: "Hackney Opportunities"
+    nav:
+      hackney_works: "Home"
+      hubs: "Local Advisors"
+      referrers: "Refer someone"
+      profile: "My profile"
+      sign_up: "Sign Up"
+      sign_in: "Log In"
+      sign_out: "Log Out"
+
   buttons:
     all_clients: "View all clients"
     my_clients: "View my clients"
