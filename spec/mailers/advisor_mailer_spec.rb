@@ -21,7 +21,8 @@ RSpec.describe AdvisorMailer, type: :mailer do
       let(:client) { Fabricate.create(:client_with_referrer) }
 
       it 'sends the correct body' do
-        expect(mail.body.encoded).to match(/#{client.name} has just been referred to Hackney Works by #{client.referrer.name}/)
+        expect(mail.body.encoded).to match(/#{ERB::Util.html_escape client.name} has just/)
+        expect(mail.body.encoded).to match(/been referred to Hackney Works by #{ERB::Util.html_escape client.referrer.name}/)
       end
       
     end
