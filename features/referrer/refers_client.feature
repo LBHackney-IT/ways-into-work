@@ -29,3 +29,9 @@ Feature: Client is referred via another agency
   Scenario: client outside borough can't be referred
     When I refer a client with a postcode outside the borough
     Then I should be on the outside hackney page
+  
+  @javascript @homerton_postcode
+  Scenario: Referral with other organisation
+    When I refer a client with the organisation "Team Awesome"
+    Then the referrer should have the correct referral organisation
+    And the notifications should contain my organisation name

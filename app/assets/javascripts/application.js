@@ -24,4 +24,5 @@
 //= require upload
 //= require print-page
 //= require remove-advisors
+//= require show-others
 //= require public
