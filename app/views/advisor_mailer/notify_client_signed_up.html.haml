@@ -1,8 +1,8 @@
 - if @client.referrer
   %p
     #{@client.name} has just been referred to Hackney Works by #{@client.referrer.name}
-    - if @client.referrer.organisation
-      at #{@client.referrer.organisation}
+    - if @client.referrer.organisation != 'other'
+      in the #{OrganisationOption.display([@client.referrer.organisation])} team
     \.
 - else
   %p="#{@client.name} has just registered."
