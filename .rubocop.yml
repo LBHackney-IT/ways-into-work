@@ -9,9 +9,11 @@ Metrics/LineLength:
     - config/**/*
     - db/**/*
     - script/rails
+    - features/step_definitions/referrer_steps.rb
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
+    - features/step_definitions/referrer_steps.rb
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
@@ -77,3 +79,6 @@ Rails/OutputSafety:
 Rails/SkipsModelValidations:
   Exclude:
     - 'lib/seeders/client_seeder.rb'
+Metrics/AbcSize:
+  Exclude:
+    - features/step_definitions/referrer_steps.rb
