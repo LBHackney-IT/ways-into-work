@@ -4,7 +4,7 @@ Fabricator(:client) do
   phone '07000 123456'
   address_line_1  'London'
   postcode 'E8 1EA'
-  date_of_birth { Time.zone.now - rand(18..35).years }
+  date_of_birth { Time.zone.now - rand(30..35).years }
   login { Fabricate.build(:user_login) }
   advisor { Fabricate(:team_leader) }
 end

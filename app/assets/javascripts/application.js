@@ -23,4 +23,5 @@
 //= require warn-unsaved
 //= require upload
 //= require print-page
+//= require remove-advisors
 //= require public

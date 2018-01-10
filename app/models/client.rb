@@ -23,7 +23,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :needing_appointment, -> { where(meetings_count: 0, imported: false) }
 
   scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
-
+  
+  scope :with_outcome, ->(outcome, from, to) { where(id: ActionPlanTask.completed_with_outcome(outcome).ended_in_period(from, to).pluck(:client_id)) }
+  
   accepts_nested_attributes_for :login
 
   has_many :file_uploads, dependent: :destroy
@@ -54,10 +56,21 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     ]
   )
 
-  scope :by_hub_id, ->(hub_id) { joins(:advisor).where('advisors.hub_id = ?', hub_id) }
-  scope :by_advisor_id, ->(advisor_id) { where(advisor_id: advisor_id) }
+  scope :by_hub_id, ->(hub_id) { hub_id.blank? ? all : joins(:advisor).where('advisors.hub_id = ?', hub_id) }
+  scope :by_advisor_id, ->(advisor_id) { advisor_id.blank? ? all : where(advisor_id: advisor_id) }
   scope :by_types_of_work, ->(type) { where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
+  scope :by_funding_code, ->(code) { code.blank? ? all : where('funded @> ARRAY[?]::varchar[]', [code]) }
+
+  scope :workless_on_benefits, -> { where(receive_benefits: true, employed: true) }
+  scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
+  scope :welfare_reform, -> { where(affected_by_welfare: true) }
+  scope :under_25, -> { where('date_of_birth > ?', Time.zone.today - 25.years) }
+  scope :over_50, -> { where('date_of_birth < ?', Time.zone.today - 50.years) }
+  scope :care_leavers, -> { where(care_leaver: true) }
+  scope :health_conditions, -> { where(health_conditions: true) }
+  scope :female, -> { where(gender: 'Female') }
+  scope :bame, -> { where('bame != ?', 'white_british') }
 
   scope :by_age, lambda { |under_25s|
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
@@ -68,6 +81,14 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       threshold: 0.1
     }
   }
+  
+  def self.registered_on(from, to = nil)
+    if to.nil?
+      from = from.beginning_of_month
+      to = from.end_of_month
+    end
+    where('created_at BETWEEN ? AND ?', from, to)
+  end
 
   def next_meeting_date
     upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?

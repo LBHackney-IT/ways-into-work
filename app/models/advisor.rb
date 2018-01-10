@@ -27,6 +27,6 @@ class Advisor < ApplicationRecord
       order('LOWER(name)')
     else
       by_hub_id(hub_id).order('LOWER(name)')
-    end.map { |e| [e.name, e.id] }
+    end.map { |e| [e.name, e.id, { 'data-hub-id' => e&.hub&.id }] }
   end
 end

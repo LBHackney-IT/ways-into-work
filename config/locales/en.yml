@@ -71,3 +71,12 @@ en:
       tab_8: "Equalities Info"
       tab_9: "Details"
 
+  stats:
+    titles:
+      cv: CVs completed
+      interview: Interviews
+      work_volunteering_experience: Work placements
+      job_application: Job applications
+      training: Training
+      job_apprenticeship: Job starts
+      sustain_job: Sustainments

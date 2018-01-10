@@ -32,4 +32,6 @@ $(document).ready(function() {
   $('#hubs').handleMaps();
   
   $('#print_page').printPage();
+
+  $('#dashboard_hubs').removeAdvisors();
 });
