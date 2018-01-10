@@ -2,9 +2,10 @@
   .column
     =form.input :name, as: :string, required: true, :input_html => { :class => 'input' }
   .column
-    %span.select.advisor
+    %span.select.advisor.organisation
       =form.input :organisation, as: :select, collection: OrganisationOption.all, include_blank: false, :input_html => { :class => 'input select' }
-
+    %span.other-organisation.is-hidden
+      =form.input :organisation, as: :string, :input_html => { :class => 'input', disabled: true, id: 'referrer_organisation_other' }
 .columns
   .column
     =form.input :phone, as: :tel, :input_html => { :class => 'input' }

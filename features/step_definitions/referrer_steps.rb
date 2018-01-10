@@ -1,7 +1,12 @@
 module ReferrerSH
   def fill_in_referrer_form(referrer = Fabricate.build(:referrer), client = Fabricate.build(:client), email = FFaker::Internet.email)
     fill_in 'referrer_name', with: referrer.name
-    find("#referrer_organisation option[value='#{referrer.organisation}']").click
+    if @organisation
+      find("#referrer_organisation option[value='other']").click
+      fill_in 'referrer_organisation_other', with: @organisation
+    else
+      find("#referrer_organisation option[value='#{referrer.organisation}']").click
+    end
     fill_in 'referrer_phone', with: referrer.phone
     fill_in 'referrer_email', with: referrer.email
     fill_in 'referrer_reason', with: referrer.reason
@@ -19,6 +24,13 @@ Given(/^I fill in the referral form$/) do
   @referrer = Fabricate.build(:referrer)
   @client = Fabricate.build(:client)
   fill_in_referrer_form @referrer, @client
+  save
+end
+
+When(/^I refer a client with the organisation "([^"]*)"$/) do |organisation|
+  @organisation = organisation
+  visit new_client_referrers_path
+  fill_in_referrer_form
   save
 end
 
@@ -54,4 +66,9 @@ end
 
 Then(/^I should see that the client has been referred$/) do
   expect(page).to have_content('Thanks for referring this client')
+end
+
+Then(/^the referrer should have the correct referral organisation$/) do
+  client = Client.last
+  expect(client.referrer.organisation).to eq(@organisation)
 end

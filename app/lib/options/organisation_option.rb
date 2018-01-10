@@ -9,4 +9,8 @@ class OrganisationOption < Option
       new('other', 'Other')
     ]
   end
+  
+  def self.display(id)
+    find(id)&.name || id
+  end
 end

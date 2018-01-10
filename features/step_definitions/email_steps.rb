@@ -53,6 +53,14 @@ Then(/^dave should receive a client asssigned notification$/) do
   expect(current_email).to have_subject(I18n.t('advisors.mail.subject.assigned'))
 end
 
+Then(/^the notifications should contain my organisation name$/) do
+  client = Client.last 
+  open_email(client.advisor.login.email)
+  expect(current_email.default_part_body.to_s).to include(@organisation)
+  open_email(client.email)
+  expect(current_email.default_part_body.to_s).to include(@organisation)
+end
+
 When(/^I click the opt\-in email confirmation link$/) do
   address = UserLogin.last.email
   expect(unread_emails_for(address).size).to eq(1)
