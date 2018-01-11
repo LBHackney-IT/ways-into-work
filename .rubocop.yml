@@ -65,6 +65,7 @@ Metrics/AbcSize:
     - 'features/support/*'
     - 'lib/seeders/*'
     - 'spec/helpers/*'
+    - features/step_definitions/referrer_steps.rb
 Rails/FilePath:
   Exclude:
     - 'lib/tasks/cucumber.rake'
@@ -79,6 +80,3 @@ Rails/OutputSafety:
 Rails/SkipsModelValidations:
   Exclude:
     - 'lib/seeders/client_seeder.rb'
-Metrics/AbcSize:
-  Exclude:
-    - features/step_definitions/referrer_steps.rb
