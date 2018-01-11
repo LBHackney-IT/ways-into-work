@@ -99,11 +99,11 @@ end
 
 Then(/^I should only see clients from my hub$/) do
   @hub_clients.each do |client|
-    expect(page.body).to match(client.name)
+    expect(page.body).to match(ERB::Util.html_escape(client.name))
   end
   
   @other_clients.each do |client|
-    expect(page.body).to_not match(client.name)
+    expect(page.body).to_not match(ERB::Util.html_escape(client.name))
   end
 end
 
@@ -114,6 +114,6 @@ end
 
 Then(/^I should see all clients$/) do
   (@hub_clients + @other_clients).each do |client|
-    expect(page.body).to match(client.name)
+    expect(page.body).to match(ERB::Util.html_escape(client.name))
   end
 end

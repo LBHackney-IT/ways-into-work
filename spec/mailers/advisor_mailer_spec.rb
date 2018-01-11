@@ -11,7 +11,7 @@ RSpec.describe AdvisorMailer, type: :mailer do
       let(:client) { Fabricate.create(:client) }
       
       it 'sends the correct body' do
-        expect(mail.body.encoded).to match(/#{client.name} has just registered/)
+        expect(mail.body.encoded).to match(/#{ERB::Util.html_escape(client.name)} has just registered/)
       end
       
     end
