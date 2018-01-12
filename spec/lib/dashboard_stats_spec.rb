@@ -147,12 +147,15 @@ RSpec.describe DashboardStats, type: :model do
         'To date',
         'Registered',
         'CVs completed',
-        'Interviews',
-        'Work placements',
         'Job applications',
-        'Training',
+        'Interviews attended',
+        'Placements attended',
+        'Courses started',
+        'Courses completed',
         'Job starts',
-        'Sustainments'
+        'Job sustainments',
+        'BOCs completed',
+        '13 week sustainments'
       ]
     )
   end
@@ -163,6 +166,9 @@ RSpec.describe DashboardStats, type: :model do
         from_date.strftime('%Y-%m-%d'),
         to_date.strftime('%Y-%m-%d'),
         4,
+        0,
+        0,
+        0,
         0,
         0,
         0,
