@@ -25,4 +25,5 @@
 //= require print-page
 //= require remove-advisors
 //= require show-others
+//= require show-acheivement
 //= require public

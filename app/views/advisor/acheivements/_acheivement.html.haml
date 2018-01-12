@@ -1,0 +1,6 @@
+.acheivement-container{ 'class' => acheivements.collect(&:name).include?(option.id) ? 'acheived' : '' }
+  %a.show_acheivement{ 'data-target-id' => option.id }
+    = option.name
+    
+  .is-hidden{id: "acheivement_#{option.id}"}
+    = render partial: 'form', locals: { option: option }
