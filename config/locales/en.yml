@@ -74,10 +74,13 @@ en:
 
   stats:
     titles:
-      cv: CVs completed
-      interview: Interviews
-      work_volunteering_experience: Work placements
+      cv_completed: CVs completed
       job_application: Job applications
-      training: Training
-      job_apprenticeship: Job starts
-      sustain_job: Sustainments
+      interview: Interviews attended
+      placement_volunteering: Placements attended
+      training_started: Courses started
+      course_completed: Courses completed
+      job_start: Job starts
+      job_sustained: Job sustainments
+      boc_completed: BOCs completed
+      13_week_sustainment: 13 week sustainments
