@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-RSpec.describe Acheivement, type: :model do
+RSpec.describe Achievement, type: :model do
   
   let(:client) { Fabricate(:client) }
   let(:notes) { FFaker::Lorem.sentence }
   let(:date) { Time.zone.today }
   let(:subject) do
-    Fabricate(:acheivement,
+    Fabricate(:achievement,
               name: 'placement_volunteering',
               client: client,
               date_acheived: date,

@@ -1,4 +1,4 @@
-= simple_form_for [client, Acheivement.new(name: option.id)], url: advisor_client_acheivements_path(client_id: client.id) do |f|
+= simple_form_for [client, Achievement.new(name: option.id)], url: advisor_client_achievements_path(client_id: client.id) do |f|
   
   =f.hidden_field :name
   =f.input :date_acheived, as: :date, label: 'Date acheived', input_html: { class: 'input' }

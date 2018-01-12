@@ -1,4 +1,4 @@
-class AcheivementOption < Option
+class AchievementOption < Option
   def self.all # rubocop:disable Metrics/MethodLength
     [
       new('cv_completed', 'CV completed'),

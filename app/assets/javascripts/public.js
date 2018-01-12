@@ -37,5 +37,5 @@ $(document).ready(function() {
   
   $('#referrer_organisation').showOthers();
   
-  $('.show_acheivement').showAcheivement();
+  $('.show_achievement').showAchievement();
 });
