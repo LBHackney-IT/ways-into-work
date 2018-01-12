@@ -1,0 +1,10 @@
+.column
+  .head.level
+    .level-left
+      %h2="#{client.first_name}'s Acheivements"
+
+  = render partial: 'shared/upper_tabs', locals: {the_client: client}
+  .profile-tab
+    .column
+      = render partial: 'acheivement', collection: AcheivementOption.all, as: :option
+          
