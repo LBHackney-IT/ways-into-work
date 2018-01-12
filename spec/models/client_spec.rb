@@ -9,10 +9,10 @@ RSpec.describe Client, type: :model do
     let(:client3) { Fabricate.create(:client, first_name: 'Muhammad') }
 
     it 'is not fussy about spellings' do
-      expect(Client.search_query('Catherine')).to eq([client1])
-      expect(Client.search_query('Robynson')).to eq([client2])
-      expect(Client.search_query('Mohammed')).to eq([client3])
-      expect(Client.search_query('muhammad')).to eq([client3])
+      expect(Client.search_query('Catherine')).to match_array([client1])
+      expect(Client.search_query('Robynson')).to match_array([client2])
+      expect(Client.search_query('Mohammed')).to match_array([client3])
+      expect(Client.search_query('muhammad')).to match_array([client3])
     end
   
   end
@@ -104,11 +104,11 @@ RSpec.describe Client, type: :model do
       it 'gets clients with a job start' do
         expect(
           Client.with_outcome('job_apprenticeship', Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
-        ).to eq(job_start_clients)
+        ).to match_array(job_start_clients)
         
         expect(
           Client.with_outcome('job_apprenticeship', 1.month.ago.beginning_of_month, 1.month.ago.end_of_month)
-        ).to eq(old_job_start_clients)
+        ).to match_array(old_job_start_clients)
       end
     end
     
