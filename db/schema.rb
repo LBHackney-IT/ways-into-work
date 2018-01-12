@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 20180111165522) do
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
 
-  create_table "acheivements", force: :cascade do |t|
+  create_table "achievements", force: :cascade do |t|
     t.string "name"
     t.bigint "client_id"
     t.date "date_acheived"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_acheivements_on_client_id"
+    t.index ["client_id"], name: "index_achievements_on_client_id"
   end
 
   create_table "action_plan_tasks", force: :cascade do |t|
@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 20180111165522) do
     t.index ["user_type", "user_id"], name: "index_user_logins_on_user_type_and_user_id"
   end
 
-  add_foreign_key "acheivements", "clients"
+  add_foreign_key "achievements", "clients"
   add_foreign_key "advisors", "hubs"
   add_foreign_key "clients", "advisors"
   add_foreign_key "clients", "referrers"

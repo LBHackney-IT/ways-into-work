@@ -17,7 +17,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   delegate :sign_in_count, to: :login
 
   has_many :meetings
-  has_many :acheivements
+  has_many :achievements
 
   scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
 
