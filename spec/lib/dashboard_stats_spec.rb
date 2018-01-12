@@ -124,12 +124,11 @@ RSpec.describe DashboardStats, type: :model do
     
     let!(:job_start_clients) do
       Fabricate.times(4, :client) do
-        action_plan_tasks do
+        achievements do
           [
-            Fabricate(:action_plan_task,
-                      outcome: 'job_apprenticeship',
-                      status: 'completed',
-                      ended_at: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
+            Fabricate(:achievement,
+                      name: 'job_apprenticeship',
+                      date_acheived: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
           ]
         end
       end
