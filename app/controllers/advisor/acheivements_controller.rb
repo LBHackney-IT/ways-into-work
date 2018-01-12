@@ -7,6 +7,7 @@ class Advisor::AcheivementsController < Advisor::BaseController
   
   def create
     acheivement.save
+    redirect_to advisor_client_acheivements_url(client)
   end
   
   protected

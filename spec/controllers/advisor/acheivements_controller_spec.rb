@@ -42,6 +42,10 @@ RSpec.describe Advisor::AcheivementsController, type: :controller do
       expect(Acheivement.last.client).to eq(client)
     end
     
+    it 'redirects to the acheivements page' do
+      expect(subject).to redirect_to(advisor_client_acheivements_url(client))
+    end
+    
   end
   
 end
