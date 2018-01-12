@@ -45,7 +45,7 @@
     .tile.is-ancestor
       .columns.is-multiline
         = render partial: 'stat', locals: { stat: @stats.registered, title: 'Clients Registered' }
-        - OutcomeOption.all.each do |outcome|
+        - AchievementOption.all.each do |outcome|
           = render partial: 'stat', locals: { stat: @stats.with_outcome(outcome.id), title: t("stats.titles.#{outcome.id}") }
 
     %p
