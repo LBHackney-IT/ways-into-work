@@ -8,7 +8,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def create
-    if client.save
+    if client.save && client.generate_initial_meeting
       flash[:success] = "#{client.name} saved."
       redirect_to edit_advisor_client_path(client)
     else
