@@ -1,5 +1,20 @@
-/* achievements */
+/* achievements temp code so I can think clearly */
 
-.achieved {
+.achievable-container.achieved,
+.achievement-container {
   display: none;
+  .is-hidden {
+    // display: none;
+  }
+}
+
+.achievement-container.achieved {
+  display: block;
+  a {
+    color: green;
+  }
+}
+
+.achievable-container a {
+  color: red;
 }
