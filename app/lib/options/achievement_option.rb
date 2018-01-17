@@ -1,16 +1,16 @@
 class AchievementOption < Option
   def self.all # rubocop:disable Metrics/MethodLength
     [
-      new('cv_completed', 'CV completed'),
-      new('job_application', 'Job application submitted'),
-      new('interview', 'Interview attended'),
-      new('placement_volunteering', 'Work placement or volunteering (would need a start and finish date)'),
-      new('training_started', 'Training (start and finish date)'),
-      new('course_completed', 'Complete education course for e.g. college courses or degree'),
-      new('job_start', 'Job/apprenticeship start'),
-      new('job_sustained', 'Sustained job (>6 months)'),
-      new('boc_completed', 'BOCs completed'),
-      new('13_week_sustainment', '13 week sustainment')
+      new('cv_completed', I18n.t('advisors.achievement.cv.complete')),
+      new('job_application', I18n.t('advisors.achievement.job.complete')),
+      new('interview', I18n.t('advisors.achievement.interview.complete')),
+      new('placement_volunteering', I18n.t('advisors.achievement.placement.complete')),
+      new('training_started', I18n.t('advisors.achievement.training.complete')),
+      new('course_completed', I18n.t('advisors.achievement.course.complete')),
+      new('job_start', I18n.t('advisors.achievement.job_start.complete')),
+      new('job_sustained', I18n.t('advisors.achievement.job_sustained.complete')),
+      new('boc_completed', I18n.t('advisors.achievement.boc.complete')),
+      new('13_week_sustainment', I18n.t('advisors.achievement.13_week.complete'))
     ]
   end
 end

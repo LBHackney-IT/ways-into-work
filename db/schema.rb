@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 20180111165522) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "achievements", force: :cascade do |t|
     t.string "name"
