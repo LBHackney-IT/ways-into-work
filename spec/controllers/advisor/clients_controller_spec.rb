@@ -5,6 +5,20 @@ RSpec.describe Advisor::ClientsController, type: :controller do
   let(:advisor) { Fabricate(:advisor) }
   before { sign_in(advisor.login) }
   
+  describe '#index' do
+    
+    let!(:clients) { Fabricate.times(10, :client) }
+        
+    it 'generates a csv' do
+      get :index, format: :csv
+      csv = CSV.parse response.body
+      expect(csv.count).to eq(11)
+      expect(csv.shift).to eq(Client.csv_header)
+      expect(csv).to eq(clients.map(&:csv_row))
+    end
+    
+  end
+  
   describe '#update' do
     
     let(:client) { Fabricate(:client) }
