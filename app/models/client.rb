@@ -82,6 +82,30 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     }
   }
   
+  def self.csv(clients)
+    CSV.generate do |csv|
+      csv << csv_header
+      clients.each do |c|
+        csv << c.csv_row
+      end
+    end
+  end
+  
+  def self.csv_header # rubocop:disable Rails/MethodLength
+    [
+      'First Name',
+      'Last Name',
+      'Email',
+      'Tel',
+      'Advisor',
+      'Address 1',
+      'Address 2',
+      'Postcode',
+      'RAG Status',
+      'Gender'
+    ]
+  end
+  
   def self.registered_on(from, to = nil)
     if to.nil?
       from = from.beginning_of_month
@@ -138,6 +162,21 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def age_in_years
     @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
+  end
+  
+  def csv_row # rubocop:disable Rails/MethodLength
+    [
+      first_name,
+      last_name,
+      login.email,
+      phone,
+      advisor.name,
+      address_line_1,
+      address_line_2,
+      postcode,
+      rag_status,
+      gender
+    ]
   end
 
   def assign_team_leader(ward_mapit_code)

@@ -9,12 +9,54 @@ RSpec.describe Client, type: :model do
     let(:client3) { Fabricate.create(:client, first_name: 'Muhammad') }
 
     it 'is not fussy about spellings' do
-      expect(Client.search_query('Catherine')).to eq([client1])
-      expect(Client.search_query('Robynson')).to eq([client2])
-      expect(Client.search_query('Mohammed')).to eq([client3])
-      expect(Client.search_query('muhammad')).to eq([client3])
+      expect(Client.search_query('Catherine')).to match_array([client1])
+      expect(Client.search_query('Robynson')).to match_array([client2])
+      expect(Client.search_query('Mohammed')).to match_array([client3])
+      expect(Client.search_query('muhammad')).to match_array([client3])
     end
   
+  end
+  
+  context 'csv' do
+    let(:client) { Fabricate.create(:client) }
+    let(:clients) { Fabricate.times(10, :client) }
+
+    it 'generates a CSV row' do
+      expect(client.csv_row).to eq([
+        client.first_name,
+        client.last_name,
+        client.login.email,
+        client.phone,
+        client.advisor.name,
+        client.address_line_1,
+        client.address_line_2,
+        client.postcode,
+        client.rag_status,
+        client.gender
+      ])
+    end
+    
+    it 'generates a csv header' do
+      expect(Client.csv_header).to eq([
+        'First Name',
+        'Last Name',
+        'Email',
+        'Tel',
+        'Advisor',
+        'Address 1',
+        'Address 2',
+        'Postcode',
+        'RAG Status',
+        'Gender'
+      ])
+    end
+    
+    it 'generates an entire CSV' do
+      csv = CSV.parse Client.csv(clients)
+      expect(csv.count).to eq(11)
+      expect(csv.shift).to eq(Client.csv_header)
+      expect(csv).to eq(clients.map(&:csv_row))
+    end
   end
 
   describe 'scopes' do
