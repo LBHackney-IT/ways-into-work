@@ -1,4 +1,4 @@
-.achievement-container{ 'class' => achievements.collect(&:name).include?(option.id) ? 'acheived' : '' }
+.achievement-container{ 'class' => achievements.collect(&:name).include?(option.id) ? '' : 'achieved' }
   %a.show_achievement{ 'data-target-id' => option.id }
     = option.name
     

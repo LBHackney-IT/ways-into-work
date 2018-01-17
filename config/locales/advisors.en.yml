@@ -10,3 +10,35 @@ en:
     headers:
       no_clients: "Your case load is currently empty. You can assign yourself cases from the unassigned client list."
       no_clients_yet: "There are currently clients in the system yet."
+    achievement:
+      cv:
+        task: "task.incentive"
+        complete: "Achieved message"
+      job:
+        task: "task.incentive"
+        complete: "Achieved message"
+      interview:
+        task: "task.incentive"
+        complete: "Achieved message"
+      placement:
+        task: "task.incentive"
+        complete: "Achieved message"
+      training:
+        task: "task.incentive"
+        complete: "Achieved message"
+      course:
+        task: "task.incentive"
+        complete: "Achieved message"
+      job_start:
+        task: "task.incentive"
+        complete: "Achieved message"
+      job_sustained:
+        task: "task.incentive"
+        complete: "Achieved message"
+      boc:
+        task: "task.incentive"
+        complete: "Achieved message"
+      13_week:
+        task: "task.incentive"
+        complete: "Achieved message"
+
