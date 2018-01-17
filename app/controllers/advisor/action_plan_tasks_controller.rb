@@ -52,13 +52,13 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
 
   def action_plan_task_params
     params.require(:action_plan_task).permit(%i[
-                                               title
-                                               notes
-                                               advisor_id
-                                               client_id
-                                               due_date
-                                               status
-                                               outcome
-                                             ])
+      title
+      notes
+      advisor_id
+      client_id
+      due_date
+      status
+      outcome
+    ])
   end
 end
