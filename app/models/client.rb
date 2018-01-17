@@ -185,4 +185,13 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     AdvisorMailer.notify_client_signed_up(self).deliver_now
   end
   
+  def generate_initial_meeting
+    meetings.create(
+      start_datetime: Time.zone.now,
+      advisor: advisor,
+      client_attended: true,
+      agenda: 'initial_assessment'
+    )
+  end
+  
 end
