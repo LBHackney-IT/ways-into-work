@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 20180105110044) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "action_plan_tasks", force: :cascade do |t|
     t.string "title"
