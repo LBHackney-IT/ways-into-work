@@ -202,6 +202,17 @@ RSpec.describe Client, type: :model do
       
     end
     
+    describe 'by_rag_status' do
+      
+      let!(:green_clients) { Fabricate.times(5, :client, rag_status: 'green') }
+      let!(:red_clients) { Fabricate.times(3, :client, rag_status: 'red') }
+      
+      it 'filters by rag status' do
+        expect(Client.by_rag_status('green')).to eq(green_clients)
+        expect(Client.by_rag_status('red')).to eq(red_clients)
+      end
+    end
+    
   end
   
   it 'can have a referrer' do
