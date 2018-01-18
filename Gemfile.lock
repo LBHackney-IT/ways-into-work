@@ -187,6 +187,8 @@ GEM
     htmlentities (4.3.4)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
+    humanize_boolean (0.0.2)
+      i18n
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     i18n-debug (1.1.0)
@@ -432,6 +434,7 @@ DEPENDENCIES
   going_postal
   haml-rails
   httparty
+  humanize_boolean
   i18n-debug
   jquery-rails
   jquery-ui-rails

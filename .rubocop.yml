@@ -4,6 +4,8 @@ Documentation:
   Enabled: false
 Layout/TrailingWhitespace:
   Enabled: false
+Layout/IndentArray:
+  EnforcedStyle: consistent
 Metrics/LineLength:
   Exclude:
     - config/**/*
