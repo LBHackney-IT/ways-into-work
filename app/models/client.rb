@@ -93,16 +93,23 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   
   def self.csv_header # rubocop:disable Rails/MethodLength
     [
-      'First Name',
-      'Last Name',
+      'Registation date',
+      'Advisor Name',
+      'Client Name',
       'Email',
-      'Tel',
-      'Advisor',
-      'Address 1',
-      'Address 2',
-      'Postcode',
-      'RAG Status',
-      'Gender'
+      'Funding Code',
+      'Types of Work Interested In',
+      'RAG Rating',
+      'Industry Preference',
+      'Ethnicity',
+      'Gender',
+      'Date of birth',
+      'Affected by Beneft Cap?',
+      'Assigned to Supported Employment?',
+      'Health Condition or Disability?',
+      'Claiming Benefits?',
+      'Care leaver?',
+      'Referrer Email'
     ]
   end
   
@@ -164,19 +171,30 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
   
-  def csv_row # rubocop:disable Rails/MethodLength
+  def csv_row # rubocop:disable Rails/MethodLength, Metrics/AbcSize
     [
-      first_name,
-      last_name,
-      login.email,
-      phone,
+      created_at.to_date,
       advisor.name,
-      address_line_1,
-      address_line_2,
-      postcode,
+      name,
+      login.email,
+      funded.join(', '),
+      objectives.join(', '),
       rag_status,
-      gender
+      types_of_work.join(', '),
+      ethnicity,
+      gender,
+      date_of_birth&.to_date,
+      affected_by_benefit_cap?.humanize,
+      assigned_supported_employment?.humanize,
+      health_conditions?.humanize,
+      receive_benefits?.humanize,
+      care_leaver?.humanize,
+      referrer&.email
     ]
+  end
+  
+  def ethnicity
+    other_bame || BameOption.find(bame)&.name
   end
 
   def assign_team_leader(ward_mapit_code)
