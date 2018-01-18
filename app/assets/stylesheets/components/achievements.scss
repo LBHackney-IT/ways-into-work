@@ -1,5 +1,9 @@
 /* achievements temp code so I can think clearly */
 
+.achievement {
+  margin-bottom: $baseline;
+}
+
 .achievable-container.achieved,
 .achievement-container {
   display: none;
@@ -10,11 +14,9 @@
 
 .achievement-container.achieved {
   display: block;
-  a {
-    color: green;
-  }
+  color: green;
 }
 
-.achievable-container a {
-  color: red;
+.achievable-container {
+  display: inline-block;
 }

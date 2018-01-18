@@ -6,6 +6,11 @@
   = render partial: 'shared/upper_tabs', locals: {the_client: client}
   .profile-tab
     .column
-      = render partial: 'achievement', collection: AchievementOption.all, as: :option
+      %label.label
+        = I18n.t('advisors.achievement.achieved')
       = render partial: 'achievable', collection: AchievableOption.all, as: :option
+
+      %label.label
+        = I18n.t('advisors.achievement.achievable')
+      = render partial: 'achievement', collection: AchievementOption.all, as: :option
           
