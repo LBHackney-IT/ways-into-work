@@ -23,8 +23,8 @@ en:
         task: "Attend job interview"
         complete: "Job interview attended"
       placement:
-        task: "Find a job placement"
-        complete: "Found a job placement"
+        task: "Gain a job placement"
+        complete: "Gained a job placement"
       training:
         task: "Register for a training course"
         complete: "Registered for training course"
