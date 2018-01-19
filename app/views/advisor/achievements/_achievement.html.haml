@@ -1,0 +1,3 @@
+.achievement-container{ 'class' => achievements.collect(&:name).include?(option.id) ? 'achieved' : '' }
+  .achievement.box{ 'data-target-id' => option.id }
+    = option.name

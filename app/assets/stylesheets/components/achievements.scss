@@ -1,0 +1,22 @@
+/* achievements temp code so I can think clearly */
+
+.achievement {
+  margin-bottom: $baseline;
+}
+
+.achievable-container.achieved,
+.achievement-container {
+  display: none;
+  .is-hidden {
+    // display: none;
+  }
+}
+
+.achievement-container.achieved {
+  display: block;
+  color: green;
+}
+
+.achievable-container {
+  display: inline-block;
+}

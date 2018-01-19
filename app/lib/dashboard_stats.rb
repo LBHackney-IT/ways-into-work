@@ -31,11 +31,11 @@ class DashboardStats
   end
   
   def csv_header
-    ['From date', 'To date', 'Registered', OutcomeOption.all.map { |outcome| I18n.t("stats.titles.#{outcome.id}") }].flatten
+    ['From date', 'To date', 'Registered', AchievementOption.all.map { |outcome| I18n.t("stats.titles.#{outcome.id}") }].flatten
   end
   
   def csv_row
-    [@from.strftime('%Y-%m-%d'), @to.strftime('%Y-%m-%d'), registered, OutcomeOption.all.map { |outcome| with_outcome(outcome.id) }].flatten
+    [@from.strftime('%Y-%m-%d'), @to.strftime('%Y-%m-%d'), registered, AchievementOption.all.map { |outcome| with_outcome(outcome.id) }].flatten
   end
   
   def csv

@@ -14,6 +14,7 @@ WaysIntoWork::Application.routes.draw do
       resources :meetings
       resources :action_plan_tasks
       resources :contact_notes, only: %i[create new index]
+      resources :achievements
     end
 
     resources :my_clients, only: :index

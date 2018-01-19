@@ -10,3 +10,37 @@ en:
     headers:
       no_clients: "Your case load is currently empty. You can assign yourself cases from the unassigned client list."
       no_clients_yet: "There are currently clients in the system yet."
+    achievement:
+      achieved: "Select the things you have achieved"
+      achievable: "All your achievements so far"
+      cv:
+        task: "Updated your CV"
+        complete: "CV complete."
+      job:
+        task: "Applyed for a job"
+        complete: "Job application sent."
+      interview:
+        task: "Attended job interview"
+        complete: "Job interview attended."
+      placement:
+        task: "Got a job placement"
+        complete: "You gained a job placement."
+      training:
+        task: "Registered for a training course"
+        complete: "Registered for training course."
+      course:
+        task: "Applyed for education course"
+        complete: "Sent education course application."
+      job_start:
+        task: "Started a new job"
+        complete: "New job started."
+      job_sustained:
+        task: "Stayed in a job over 6 months"
+        complete: "Job held over 6 months."
+      boc:
+        task: "Completed Better Off Calculator"
+        complete: "Better Off Calculator completed."
+      13_week:
+        task: "Stayed in job over 13 weeks"
+        complete: "Job held over 13 weeks."
+

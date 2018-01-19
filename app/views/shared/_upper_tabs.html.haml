@@ -11,3 +11,6 @@
   = link_to advisor_client_contact_notes_path(client_id: the_client.id), class: "single-tab #{cp(advisor_client_contact_notes_path(client_id: the_client.id))}" do
     %span
       = t('client.upper_tabs.tab_d')
+  = link_to advisor_client_achievements_path(client_id: the_client.id), class: "single-tab #{cp(advisor_client_achievements_path(client_id: the_client.id))}" do
+    %span
+      = t('client.upper_tabs.tab_e')

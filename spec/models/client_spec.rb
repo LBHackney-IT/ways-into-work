@@ -149,12 +149,11 @@ RSpec.describe Client, type: :model do
       
       let!(:job_start_clients) do
         Fabricate.times(4, :client) do
-          action_plan_tasks do
+          achievements do
             [
-              Fabricate(:action_plan_task,
-                        outcome: 'job_apprenticeship',
-                        status: 'completed',
-                        ended_at: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
+              Fabricate(:achievement,
+                        name: 'job_apprenticeship',
+                        date_acheived: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
             ]
           end
         end
@@ -163,12 +162,11 @@ RSpec.describe Client, type: :model do
       let!(:old_job_start_clients) do
         ActionPlanTask.skip_callback(:save, :before, :check_completion)
         clients = Fabricate.times(8, :client) do
-          action_plan_tasks do
+          achievements do
             [
-              Fabricate(:action_plan_task,
-                        outcome: 'job_apprenticeship',
-                        status: 'completed',
-                        ended_at: rand(1.month.ago.beginning_of_month..1.month.ago.end_of_month))
+              Fabricate(:achievement,
+                        name: 'job_apprenticeship',
+                        date_acheived: rand(1.month.ago.beginning_of_month..1.month.ago.end_of_month))
             ]
           end
         end
@@ -180,11 +178,11 @@ RSpec.describe Client, type: :model do
       it 'gets clients with a job start' do
         expect(
           Client.with_outcome('job_apprenticeship', Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
-        ).to eq(job_start_clients)
+        ).to match_array(job_start_clients)
         
         expect(
           Client.with_outcome('job_apprenticeship', 1.month.ago.beginning_of_month, 1.month.ago.end_of_month)
-        ).to eq(old_job_start_clients)
+        ).to match_array(old_job_start_clients)
       end
     end
     
