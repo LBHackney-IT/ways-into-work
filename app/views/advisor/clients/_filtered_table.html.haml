@@ -3,11 +3,14 @@
     %table.table
       %thead
         %tr
-          %th Client
+          %th
+            = filterrific_sorting_link(@filterrific, 'first_name', label: 'Client')
           %th Last Meeting / Contact
           / %th Assigned Hub
-          %th Current Advisor
-          %th Status
+          %th
+            = filterrific_sorting_link(@filterrific, 'advisor')
+          %th
+            = filterrific_sorting_link(@filterrific, 'rag_status')
           %th
       %tbody
         = render partial: 'client', collection: clients
