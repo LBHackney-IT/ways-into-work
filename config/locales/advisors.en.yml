@@ -17,7 +17,7 @@ en:
         task: "Updated your CV"
         complete: "CV complete."
       job:
-        task: "Applyed for a job"
+        task: "Applied for a job"
         complete: "Job application sent."
       interview:
         task: "Attended job interview"
@@ -29,7 +29,7 @@ en:
         task: "Registered for a training course"
         complete: "Registered for training course."
       course:
-        task: "Applyed for education course"
+        task: "Applied for education course"
         complete: "Sent education course application."
       job_start:
         task: "Started a new job"
