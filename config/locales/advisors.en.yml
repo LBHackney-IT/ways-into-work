@@ -23,8 +23,8 @@ en:
         task: "Attended job interview"
         complete: "Job interview attended."
       placement:
-        task: "Got a job placement"
-        complete: "You gained a job placement."
+        task: "Gain a job placement"
+        complete: "Gained a job placement"
       training:
         task: "Registered for a training course"
         complete: "Registered for training course."
@@ -43,4 +43,3 @@ en:
       13_week:
         task: "Stayed in job over 13 weeks"
         complete: "Job held over 13 weeks."
-
