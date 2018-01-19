@@ -83,6 +83,37 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     }
   }
   
+  def self.csv(clients)
+    CSV.generate do |csv|
+      csv << csv_header
+      clients.each do |c|
+        csv << c.csv_row
+      end
+    end
+  end
+  
+  def self.csv_header # rubocop:disable Rails/MethodLength
+    [
+      'Registation date',
+      'Advisor Name',
+      'Client Name',
+      'Email',
+      'Funding Code',
+      'Types of Work Interested In',
+      'RAG Rating',
+      'Industry Preference',
+      'Ethnicity',
+      'Gender',
+      'Date of birth',
+      'Affected by Beneft Cap?',
+      'Assigned to Supported Employment?',
+      'Health Condition or Disability?',
+      'Claiming Benefits?',
+      'Care leaver?',
+      'Referrer Email'
+    ]
+  end
+  
   def self.registered_on(from, to = nil)
     if to.nil?
       from = from.beginning_of_month
@@ -140,6 +171,32 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def age_in_years
     @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
+  
+  def csv_row # rubocop:disable Rails/MethodLength, Metrics/AbcSize
+    [
+      created_at.to_date,
+      advisor.name,
+      name,
+      login.email,
+      funded.join(', '),
+      objectives.join(', '),
+      rag_status,
+      types_of_work.join(', '),
+      ethnicity,
+      gender,
+      date_of_birth&.to_date,
+      affected_by_benefit_cap?.humanize,
+      assigned_supported_employment?.humanize,
+      health_conditions?.humanize,
+      receive_benefits?.humanize,
+      care_leaver?.humanize,
+      referrer&.email
+    ]
+  end
+  
+  def ethnicity
+    other_bame || BameOption.find(bame)&.name
+  end
 
   def assign_team_leader(ward_mapit_code)
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
@@ -184,6 +241,15 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def send_emails
     login.send_reset_password_instructions
     AdvisorMailer.notify_client_signed_up(self).deliver_now
+  end
+  
+  def generate_initial_meeting
+    meetings.create(
+      start_datetime: Time.zone.now,
+      advisor: advisor,
+      client_attended: true,
+      agenda: 'initial_assessment'
+    )
   end
   
 end

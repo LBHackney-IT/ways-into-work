@@ -16,6 +16,82 @@ RSpec.describe Client, type: :model do
     end
   
   end
+  
+  context 'csv' do
+    let(:advisor) { Fabricate.create(:advisor, name: 'Advisor McAdvisorface') }
+    let(:client) do
+      Fabricate.create(:client,
+                       first_name: 'Client',
+                       last_name: 'McClientface',
+                       login: Fabricate.create(:user_login, email: 'login@example.com'),
+                       advisor: advisor,
+                       funded: %w[hackney_works_general troubled_families],
+                       objectives: %w[full_time_work],
+                       rag_status: 'amber',
+                       types_of_work: %w[catering],
+                       bame: 'mixed',
+                       gender: 'Male',
+                       date_of_birth: Time.zone.now - 25.years,
+                       affected_by_benefit_cap: true,
+                       assigned_supported_employment: false,
+                       health_conditions: nil,
+                       receive_benefits: true,
+                       care_leaver: false,
+                       referrer: Fabricate(:referrer, email: 'referrer@example.com'))
+    end
+    let(:clients) { Fabricate.times(10, :client) }
+
+    it 'generates a CSV row' do
+      expect(client.csv_row).to eq([
+        Time.zone.now.to_date,
+        'Advisor McAdvisorface',
+        'Client McClientface',
+        'login@example.com',
+        'hackney_works_general, troubled_families',
+        'full_time_work',
+        'amber',
+        'catering',
+        'Mixed',
+        'Male',
+        (Time.zone.now - 25.years).to_date,
+        'Yes',
+        'No',
+        'No',
+        'Yes',
+        'No',
+        'referrer@example.com'
+      ])
+    end
+    
+    it 'generates a csv header' do
+      expect(Client.csv_header).to eq([
+        'Registation date',
+        'Advisor Name',
+        'Client Name',
+        'Email',
+        'Funding Code',
+        'Types of Work Interested In',
+        'RAG Rating',
+        'Industry Preference',
+        'Ethnicity',
+        'Gender',
+        'Date of birth',
+        'Affected by Beneft Cap?',
+        'Assigned to Supported Employment?',
+        'Health Condition or Disability?',
+        'Claiming Benefits?',
+        'Care leaver?',
+        'Referrer Email'
+      ])
+    end
+    
+    it 'generates an entire CSV' do
+      csv = CSV.parse Client.csv(clients)
+      expect(csv.count).to eq(11)
+      expect(csv.shift).to eq(Client.csv_header)
+      expect(csv.count).to eq(10)
+    end
+  end
 
   describe 'scopes' do
     

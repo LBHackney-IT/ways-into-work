@@ -11,3 +11,4 @@ Feature: Advisor creates a new client
   Scenario: Create a new client
     Given I register a client as "client@example.com"
     Then the client should be assigned to me
+    And that client should have an initial meeting created

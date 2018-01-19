@@ -34,6 +34,13 @@ Then(/^the client should be assigned to me$/) do
   expect(client.advisor).to eq(@i)
 end
 
+Then(/^that client should have an initial meeting created$/) do
+  client = Client.last
+  expect(client.meetings.count).to eq(1)
+  meeting = client.meetings.first
+  expect(meeting.agenda).to eq('initial_assessment')
+end
+
 Given(/^I have been referred$/) do
   @referrer = Fabricate.create(:referrer)
   @i.referrer = @referrer
