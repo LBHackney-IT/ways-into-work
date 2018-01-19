@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119122521) do
+ActiveRecord::Schema.define(version: 20180119161524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20180119122521) do
   create_table "advisors", force: :cascade do |t|
     t.string "name"
     t.bigint "hub_id"
-    t.boolean "team_leader", default: false
     t.string "phone"
     t.json "options", default: {}
+    t.integer "role", default: 0
     t.index ["hub_id"], name: "index_advisors_on_hub_id"
   end
 

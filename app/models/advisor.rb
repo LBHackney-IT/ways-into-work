@@ -14,7 +14,7 @@ class Advisor < ApplicationRecord
 
   scope :by_hub_id, ->(hub_id) { where(hub_id: hub_id) }
 
-  scope :team_leader, ->(hub) { where(hub: hub, team_leader: true) }
+  scope :team_leader, ->(hub) { where(hub: hub, role: :team_leader) }
 
   def devise_mailer
     Devise::Mailer

@@ -6,7 +6,7 @@ advisors = [
   }, {
     email: 'kiran+tl@wearefuturegov.com',
     name: 'Kiran Team Leader',
-    team_leader: true,
+    role: :team_leader,
     hub_id: 1
   }, {
     email: 'chris@wearefuturegov.com',
@@ -15,7 +15,7 @@ advisors = [
   }, {
     email: 'chris+tl@wearefuturegov.com',
     name: 'Chris Team Leader',
-    team_leader: true,
+    role: :team_leader,
     hub_id: 2
   }, {
     email: 'benunsworth@wearefuturegov.com',
@@ -36,7 +36,7 @@ advisors = [
   }, {
     email: 'jan+tl@wearefuturegov.com',
     name: 'Jan Team Leader',
-    team_leader: true,
+    role: :team_leader,
     hub_id: 3
   }, {
     email: 'jrae@wearefuturegov.com',
