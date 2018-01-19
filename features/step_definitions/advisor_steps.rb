@@ -107,8 +107,13 @@ Then(/^I should only see clients from my hub$/) do
   end
 end
 
-Given(/^I have the show_all_hubs option set$/) do
-  @i.options['show_all_hubs'] = true
+Given(/^I am an admin$/) do
+  @i.role = :admin
+  @i.save
+end
+
+Given(/^I am in the employer engagement team$/) do
+  @i.role = :employer_engagement
   @i.save
 end
 
