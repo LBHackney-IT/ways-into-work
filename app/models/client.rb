@@ -55,6 +55,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       by_training
       by_age
       by_rag_status
+      sorted_by
     ]
   )
 
@@ -83,6 +84,18 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     trigram: {
       threshold: 0.1
     }
+  }
+  
+  scope :sorted_by, lambda { |sort_options|
+    direction = sort_options.match?(/desc$/) ? 'desc' : 'asc'
+    case sort_options.to_s
+    when /^first_name/
+      order("first_name #{direction}")
+    when /^advisor/
+      joins(:advisor).order("advisors.name #{direction}")
+    when /^rag_status/
+      order("rag_status #{direction}")
+    end
   }
   
   def self.csv(clients)
