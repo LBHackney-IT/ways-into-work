@@ -213,6 +213,84 @@ RSpec.describe Client, type: :model do
       end
     end
     
+    describe 'sorted_by' do
+      
+      let(:clients) { Client.all }
+      
+      describe 'name' do
+        
+        before do
+          Fabricate(:client, first_name: 'Adam')
+          Fabricate(:client, first_name: 'Zebedee')
+          Fabricate(:client, first_name: 'Clare')
+        end
+                
+        it 'sorts by name ascending' do
+          expect(clients.sorted_by('first_name_asc')[0].first_name).to eq('Adam')
+          expect(clients.sorted_by('first_name_asc')[1].first_name).to eq('Clare')
+          expect(clients.sorted_by('first_name_asc')[2].first_name).to eq('Zebedee')
+        end
+        
+        it 'sorts by name descending' do
+          expect(clients.sorted_by('first_name_desc')[0].first_name).to eq('Zebedee')
+          expect(clients.sorted_by('first_name_desc')[1].first_name).to eq('Clare')
+          expect(clients.sorted_by('first_name_desc')[2].first_name).to eq('Adam')
+        end
+        
+      end
+      
+      describe 'advisor' do
+        
+        before do
+          Fabricate(:client, advisor: Fabricate(:advisor, name: 'Adam'))
+          Fabricate(:client, advisor: Fabricate(:advisor, name: 'Zebedee'))
+          Fabricate(:client, advisor: Fabricate(:advisor, name: 'Clare'))
+        end
+        
+        it 'sorts by advisor ascending' do
+          expect(clients.sorted_by('advisor_asc')[0].advisor.name).to eq('Adam')
+          expect(clients.sorted_by('advisor_asc')[1].advisor.name).to eq('Clare')
+          expect(clients.sorted_by('advisor_asc')[2].advisor.name).to eq('Zebedee')
+        end
+        
+        it 'sorts by advisor descending' do
+          expect(clients.sorted_by('advisor_desc')[0].advisor.name).to eq('Zebedee')
+          expect(clients.sorted_by('advisor_desc')[1].advisor.name).to eq('Clare')
+          expect(clients.sorted_by('advisor_desc')[2].advisor.name).to eq('Adam')
+        end
+        
+      end
+      
+      describe 'rag status' do
+        
+        before do
+          Fabricate(:client, rag_status: 1)
+          Fabricate(:client, rag_status: 0)
+          Fabricate(:client, rag_status: 0)
+          Fabricate(:client, rag_status: 3)
+          Fabricate(:client, rag_status: 2)
+        end
+        
+        it 'sorts by rag status ascending' do
+          expect(clients.sorted_by('rag_status_asc')[0].rag_status).to eq('green')
+          expect(clients.sorted_by('rag_status_asc')[1].rag_status).to eq('amber')
+          expect(clients.sorted_by('rag_status_asc')[2].rag_status).to eq('red')
+          expect(clients.sorted_by('rag_status_asc')[3].rag_status).to eq('un_assessed')
+          expect(clients.sorted_by('rag_status_asc')[4].rag_status).to eq('un_assessed')
+        end
+        
+        it 'sorts by rag status descending' do
+          expect(clients.sorted_by('rag_status_desc')[0].rag_status).to eq('un_assessed')
+          expect(clients.sorted_by('rag_status_desc')[1].rag_status).to eq('un_assessed')
+          expect(clients.sorted_by('rag_status_desc')[2].rag_status).to eq('red')
+          expect(clients.sorted_by('rag_status_desc')[3].rag_status).to eq('amber')
+          expect(clients.sorted_by('rag_status_desc')[4].rag_status).to eq('green')
+        end
+        
+      end
+      
+    end
+    
   end
   
   it 'can have a referrer' do

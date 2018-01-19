@@ -94,7 +94,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     when /^advisor/
       joins(:advisor).order("advisors.name #{direction}")
     when /^rag_status/
-      order("rag_status #{direction}")
+      order("(rag_status=0, rag_status=1, rag_status=2, rag_status=3) #{direction}")
     end
   }
   
