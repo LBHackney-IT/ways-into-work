@@ -9,10 +9,6 @@ class ActionPlanTaskDecorator < ApplicationDecorator
     standard_wrapper('Task', action_plan_task.title)
   end
   
-  def decorate_outcome
-    standard_wrapper('Outcome', OutcomeOption.find(action_plan_task.outcome)&.name)
-  end
-  
   def decorate_due_date
     standard_wrapper('Due date', action_plan_task.due_date.to_date.to_s(:short))
   end
