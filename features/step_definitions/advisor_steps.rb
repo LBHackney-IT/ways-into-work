@@ -27,7 +27,7 @@ Given(/^there is an advisor$/) do
 end
 
 Given(/^there is a team leader for homerton$/) do
-  @team_leader = Fabricate(:advisor, team_leader: true, hub: @hub)
+  @team_leader = Fabricate(:advisor, role: :team_leader, hub: @hub)
 end
 
 Then(/^I should be auto assigned to homerton$/) do

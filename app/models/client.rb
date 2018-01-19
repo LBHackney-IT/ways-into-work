@@ -217,7 +217,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def assign_team_leader(ward_mapit_code)
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
-                   Advisor.find_by(team_leader: true)
+                   Advisor.find_by(role: :team_leader)
   end
   
   def assign_advisor(advisor_id, current_advisor)

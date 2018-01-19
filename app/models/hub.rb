@@ -20,6 +20,6 @@ class Hub < ApplicationRecord
   end
 
   def team_leader
-    advisors.find_by(team_leader: true)
+    advisors.find_by(role: :team_leader)
   end
 end
