@@ -21,7 +21,7 @@ class Advisor < ApplicationRecord
   end
   
   def default_hub_id
-    options['show_all_hubs'] == true ? nil : hub_id
+    admin? || employer_engagement? ? nil : hub_id
   end
 
   def self.options_for_select(hub_id)

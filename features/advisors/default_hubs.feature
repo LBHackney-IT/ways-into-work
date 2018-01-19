@@ -10,8 +10,14 @@ Feature: Default hubs on advisor page
     Then my hub should be selected by default
     And I should only see clients from my hub
     
-  Scenario: Advisor with flag set sees all clients
-    Given I have the show_all_hubs option set
+  Scenario: Admin sees all clients
+    Given I am an admin
+    And I am on the advisor clients page
+    Then the any hub option should be selected by default
+    And I should see all clients
+
+  Scenario: Employer Engagement team member sees all clients
+    Given I am in the employer engagement team
     And I am on the advisor clients page
     Then the any hub option should be selected by default
     And I should see all clients
