@@ -5,7 +5,6 @@ Given(/^I assign a new action plan task to them$/) do
   @task_title = 'Do Something'
   @due_date = DateTime.now.utc + 7.days
   fill_in 'action_plan_task_title', with: @task_title
-  first('#action_plan_task_outcome_cv').click
   fill_in 'action_plan_task_due_date', with: @due_date.strftime('%d/%m/%Y')
   click_on I18n.t('clients.buttons.save')
 end
