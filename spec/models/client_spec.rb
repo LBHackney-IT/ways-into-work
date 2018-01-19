@@ -213,6 +213,18 @@ RSpec.describe Client, type: :model do
       end
     end
     
+    describe 'by_objective' do
+      
+      let!(:apprenticeships) { Fabricate.times(5, :client, objectives: %w[apprenticeship training_qualification]) }
+      let!(:training_qualifications) { Fabricate.times(3, :client, objectives: %w[training_qualification]) }
+      
+      it 'filters by objective' do
+        expect(Client.by_objective('apprenticeship')).to match_array(apprenticeships)
+        expect(Client.by_objective('training_qualification')).to match_array(apprenticeships + training_qualifications)
+      end
+      
+    end
+    
     describe 'sorted_by' do
       
       let(:clients) { Client.all }

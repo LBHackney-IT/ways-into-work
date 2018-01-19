@@ -55,6 +55,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       by_training
       by_age
       by_rag_status
+      by_objective
       sorted_by
     ]
   )
@@ -65,6 +66,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_funding_code, ->(code) { code.blank? ? all : where('funded @> ARRAY[?]::varchar[]', [code]) }
   scope :by_rag_status, ->(status) { where(rag_status: status) }
+  scope :by_objective, ->(objective) { where('objectives @> ARRAY[?]::varchar[]', [objective]) }
 
   scope :workless_on_benefits, -> { where(receive_benefits: true, employed: true) }
   scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
