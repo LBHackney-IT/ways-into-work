@@ -9,6 +9,8 @@ class Advisor < ApplicationRecord
   belongs_to :hub
 
   has_many :clients
+  
+  enum role: %i[advisor team_leader]
 
   scope :by_hub_id, ->(hub_id) { where(hub_id: hub_id) }
 
