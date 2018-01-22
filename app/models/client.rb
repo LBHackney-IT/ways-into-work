@@ -54,6 +54,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       by_advisor_id
       by_training
       by_age
+      by_rag_status
+      by_objective
+      sorted_by
     ]
   )
 
@@ -62,6 +65,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :by_types_of_work, ->(type) { where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_funding_code, ->(code) { code.blank? ? all : where('funded @> ARRAY[?]::varchar[]', [code]) }
+  scope :by_rag_status, ->(status) { where(rag_status: status) }
+  scope :by_objective, ->(objective) { where('objectives @> ARRAY[?]::varchar[]', [objective]) }
 
   scope :workless_on_benefits, -> { where(receive_benefits: true, employed: true) }
   scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
@@ -81,6 +86,18 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     trigram: {
       threshold: 0.1
     }
+  }
+  
+  scope :sorted_by, lambda { |sort_options|
+    direction = sort_options.match?(/desc$/) ? 'desc' : 'asc'
+    case sort_options.to_s
+    when /^first_name/
+      order("first_name #{direction}")
+    when /^advisor/
+      joins(:advisor).order("advisors.name #{direction}")
+    when /^rag_status/
+      order("(rag_status=0, rag_status=1, rag_status=2, rag_status=3) #{direction}")
+    end
   }
   
   def self.csv(clients)

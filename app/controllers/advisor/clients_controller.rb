@@ -95,7 +95,9 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       by_advisor_id: Advisor.options_for_select(selected_hub_id),
       by_types_of_work: TypeOfWorkOption.options_for_select,
       by_training: TrainingCourseOption.options_for_select,
-      by_age: [['Under 25', true]]
+      by_age: [['Under 25', true]],
+      by_objective: ObjectiveOption.options_for_select,
+      by_rag_status: [['Red', :red], ['Amber', :amber], ['Green', :green]]
     }
   end
 
