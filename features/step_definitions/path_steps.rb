@@ -31,10 +31,10 @@ end
 
 Then(/^(?:|I )should see a link to (.+)$/) do |page_name|
   matcher = all(:css, "a[href='#{path_to(page_name)}']")
-  expect(matcher.count).to be > 0
+  expect(matcher.count.positive?).to eq true
 end
 
-Then(/^(?:|I )should not see a link to (.+)$/) do |page_name|  
+Then(/^(?:|I )should not see a link to (.+)$/) do |page_name|
   matcher = all(:css, "a[href='#{path_to(page_name)}']")
   expect(matcher.count).to eq 0
 end

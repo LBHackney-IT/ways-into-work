@@ -12,11 +12,13 @@ Feature: Advisor sign in roles
   Scenario: Admin role
     Given I am an admin
     When I sign in
+    Then I should be on the advisor clients page
     And I should see a link to the dashboard page
     And I should not see a link to the my clients page
   
   Scenario: Employer Engagement role
     Given I am an in the employer engagement team
     When I sign in
+    Then I should be on the advisor clients page
     And I should not see a link to the dashboard page
     And I should not see a link to the my clients page
