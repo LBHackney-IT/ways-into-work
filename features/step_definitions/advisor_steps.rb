@@ -112,6 +112,11 @@ Given(/^I am an admin$/) do
   @i.save
 end
 
+Given(/^I am an in the employer engagement team$/) do
+  @i.role = :employer_engagement
+  @i.save
+end
+
 Given(/^I am in the employer engagement team$/) do
   @i.role = :employer_engagement
   @i.save
