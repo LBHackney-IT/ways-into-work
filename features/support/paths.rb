@@ -31,6 +31,9 @@ module NavigationHelpers
       
     when /client referral/
       new_client_referrers_path
+    
+    when /dashboard/
+      advisor_dashboard_index_path
 
     else
       begin
