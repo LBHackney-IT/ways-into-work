@@ -189,6 +189,10 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
   
+  def root_page
+    :client_dashboard
+  end
+  
   def csv_row # rubocop:disable Rails/MethodLength, Metrics/AbcSize
     [
       created_at.to_date,
@@ -217,7 +221,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def assign_team_leader(ward_mapit_code)
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
-                   Advisor.find_by(team_leader: true)
+                   Advisor.find_by(role: :team_leader)
   end
   
   def assign_advisor(advisor_id, current_advisor)

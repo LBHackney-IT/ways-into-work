@@ -28,3 +28,13 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   # current_path += "?#{uri.query}" if uri.query
   expect(current_path).to eq path_to(page_name)
 end
+
+Then(/^(?:|I )should see a link to (.+)$/) do |page_name|
+  matcher = all(:css, "a[href='#{path_to(page_name)}']")
+  expect(matcher.count.positive?).to eq true
+end
+
+Then(/^(?:|I )should not see a link to (.+)$/) do |page_name|
+  matcher = all(:css, "a[href='#{path_to(page_name)}']")
+  expect(matcher.count).to eq 0
+end

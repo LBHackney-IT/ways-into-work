@@ -27,7 +27,7 @@ Given(/^there is an advisor$/) do
 end
 
 Given(/^there is a team leader for homerton$/) do
-  @team_leader = Fabricate(:advisor, team_leader: true, hub: @hub)
+  @team_leader = Fabricate(:advisor, role: :team_leader, hub: @hub)
 end
 
 Then(/^I should be auto assigned to homerton$/) do
@@ -107,8 +107,18 @@ Then(/^I should only see clients from my hub$/) do
   end
 end
 
-Given(/^I have the show_all_hubs option set$/) do
-  @i.options['show_all_hubs'] = true
+Given(/^I am an admin$/) do
+  @i.role = :admin
+  @i.save
+end
+
+Given(/^I am an in the employer engagement team$/) do
+  @i.role = :employer_engagement
+  @i.save
+end
+
+Given(/^I am in the employer engagement team$/) do
+  @i.role = :employer_engagement
   @i.save
 end
 

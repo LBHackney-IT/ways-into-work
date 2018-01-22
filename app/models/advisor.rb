@@ -9,17 +9,19 @@ class Advisor < ApplicationRecord
   belongs_to :hub
 
   has_many :clients
+  
+  enum role: %i[advisor team_leader admin employer_engagement]
 
   scope :by_hub_id, ->(hub_id) { where(hub_id: hub_id) }
 
-  scope :team_leader, ->(hub) { where(hub: hub, team_leader: true) }
+  scope :team_leader, ->(hub) { where(hub: hub, role: :team_leader) }
 
   def devise_mailer
     Devise::Mailer
   end
   
   def default_hub_id
-    options['show_all_hubs'] == true ? nil : hub_id
+    admin? || employer_engagement? ? nil : hub_id
   end
 
   def self.options_for_select(hub_id)
@@ -28,5 +30,17 @@ class Advisor < ApplicationRecord
     else
       by_hub_id(hub_id).order('LOWER(name)')
     end.map { |e| [e.name, e.id, { 'data-hub-id' => e&.hub&.id }] }
+  end
+  
+  def hackney_works_team?
+    advisor? || team_leader?
+  end
+  
+  def root_page
+    if hackney_works_team?
+      :advisor_my_clients
+    else
+      :advisor_clients
+    end
   end
 end

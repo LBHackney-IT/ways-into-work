@@ -63,4 +63,4 @@
 
   - else
     %h4=I18n.t('advisors.headers.no_clients_yet')
-    =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary'
+    =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary' if current_advisor.hackney_works_team?

@@ -117,8 +117,8 @@ RSpec.describe Client, type: :model do
       end
       
       it 'gets clients for a hub' do
-        expect(Client.by_hub_id(hub1.id)).to eq(hub1_clients)
-        expect(Client.by_hub_id(hub2.id)).to eq(hub2_clients)
+        expect(Client.by_hub_id(hub1.id)).to match_array(hub1_clients)
+        expect(Client.by_hub_id(hub2.id)).to match_array(hub2_clients)
       end
       
     end
@@ -130,11 +130,11 @@ RSpec.describe Client, type: :model do
       let!(:old_clients) { Fabricate.times(5, :client, created_at: old_date) }
       
       it 'gets clients registered this month' do
-        expect(Client.registered_on(Time.zone.now)).to eq(new_clients)
+        expect(Client.registered_on(Time.zone.now)).to match_array(new_clients)
       end
       
       it 'gets clients registered last month' do
-        expect(Client.registered_on(1.month.ago)).to eq(old_clients)
+        expect(Client.registered_on(1.month.ago)).to match_array(old_clients)
       end
       
       it 'gets clients registered within a date range' do

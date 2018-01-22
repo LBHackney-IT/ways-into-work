@@ -12,7 +12,7 @@ advisors = [
   }, {
     email: 'mohammed.jama@hackney.gov.uk',
     name: 'Mohammed Jama',
-    team_leader: true,
+    role: :team_leader,
     phone: '020 8356 6471',
     hub_id: 1
   }, {
@@ -33,7 +33,7 @@ advisors = [
   }, {
     email: 'caroline.modest@hackney.gov.uk',
     name: 'Caroline Modest',
-    team_leader: true,
+    role: :team_leader,
     phone: '020 8356 8189',
     hub_id: 2
   }, {
@@ -64,7 +64,7 @@ advisors = [
   }, {
     email: 'dujon.harvey@hackney.gov.uk',
     name: 'Dujon Harvey',
-    team_leader: true,
+    role: :team_leader,
     phone: '020 8356 7923',
     hub_id: 3
   }, {
@@ -80,7 +80,7 @@ advisors = [
   }, {
     email: 'anna-renee.paisley@hackney.gov.uk',
     name: 'Anna-Renee Paisley',
-    team_leader: true,
+    role: :team_leader,
     phone: '020 8356 1678',
     hub_id: 4
   }
