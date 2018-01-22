@@ -14,32 +14,32 @@ en:
       achieved: "Select the things you have achieved"
       achievable: "All your achievements so far"
       cv:
-        task: "Updated your CV"
-        complete: "CV complete."
+        task: "Update your CV"
+        complete: "CV completed"
       job:
-        task: "Applyed for a job"
-        complete: "Job application sent."
+        task: "Apply for a job"
+        complete: "Job application sent"
       interview:
-        task: "Attended job interview"
-        complete: "Job interview attended."
+        task: "Attend job interview"
+        complete: "Job interview attended"
       placement:
-        task: "Gain a job placement"
-        complete: "Gained a job placement"
+        task: "Find a job placement"
+        complete: "Found a job placement"
       training:
-        task: "Registered for a training course"
-        complete: "Registered for training course."
+        task: "Register for a training course"
+        complete: "Registered for training course"
       course:
-        task: "Applyed for education course"
-        complete: "Sent education course application."
+        task: "Apply for education course"
+        complete: "Sent education course application"
       job_start:
-        task: "Started a new job"
-        complete: "New job started."
+        task: "Start a new job"
+        complete: "New job started"
       job_sustained:
-        task: "Stayed in a job over 6 months"
-        complete: "Job held over 6 months."
+        task: "Stay in a job over 6 months"
+        complete: "Job held over 6 months"
       boc:
-        task: "Completed Better Off Calculator"
-        complete: "Better Off Calculator completed."
+        task: "Complete Better Off Calculator"
+        complete: "Better Off Calculator completed"
       13_week:
-        task: "Stayed in job over 13 weeks"
-        complete: "Job held over 13 weeks."
+        task: "Stay in job over 13 weeks"
+        complete: "Job held over 13 weeks"
