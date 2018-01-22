@@ -6,7 +6,7 @@ class UserLogin < ApplicationRecord
 
   belongs_to :user, polymorphic: true
 
-  delegate :name, :devise_mailer, to: :user
+  delegate :name, :devise_mailer, :root_page, to: :user
 
   def generate_default_password
     self.password = Devise.friendly_token.first(20)

@@ -31,4 +31,16 @@ class Advisor < ApplicationRecord
       by_hub_id(hub_id).order('LOWER(name)')
     end.map { |e| [e.name, e.id, { 'data-hub-id' => e&.hub&.id }] }
   end
+  
+  def hackney_works_team?
+    advisor? || team_leader?
+  end
+  
+  def root_page
+    if hackney_works_team?
+      :advisor_my_clients
+    else
+      :advisor_clients
+    end
+  end
 end

@@ -189,6 +189,10 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
   
+  def root_page
+    :client_dashboard
+  end
+  
   def csv_row # rubocop:disable Rails/MethodLength, Metrics/AbcSize
     [
       created_at.to_date,
