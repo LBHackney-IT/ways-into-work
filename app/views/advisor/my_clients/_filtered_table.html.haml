@@ -5,7 +5,8 @@
         %tr
           %th
             = filterrific_sorting_link(@filterrific, 'first_name', label: 'Client')
-          %th Next Meeting date
+          %th
+            = filterrific_sorting_link(@filterrific, 'next_meeting_date', label: 'Next Meeting date')
           %th Last Meeting / Contact
           %th Status
           %th
