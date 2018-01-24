@@ -127,8 +127,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       'Health Condition or Disability?',
       'Claiming Benefits?',
       'Care leaver?',
-      'Referrer Email'
-    ]
+      'Referrer Email',
+      AchievementOption.all.map(&:name)
+    ].flatten
   end
   
   def self.registered_on(from, to = nil)
@@ -211,8 +212,15 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       health_conditions?.humanize,
       receive_benefits?.humanize,
       care_leaver?.humanize,
-      referrer&.email
-    ]
+      referrer&.email,
+      achievement_counts
+    ].flatten
+  end
+  
+  def achievement_counts
+    AchievementOption.all.map do |option|
+      achievements.select { |a| a.name == option.id }.count
+    end
   end
   
   def ethnicity
