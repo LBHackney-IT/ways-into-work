@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119164328) do
+ActiveRecord::Schema.define(version: 20180124094931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20180119164328) do
     t.string "national_insurance_number"
     t.boolean "affected_by_benefit_cap"
     t.boolean "assigned_supported_employment"
+    t.datetime "next_meeting_date"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end

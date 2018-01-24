@@ -139,10 +139,6 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     where('created_at BETWEEN ? AND ?', from, to)
   end
 
-  def next_meeting_date
-    upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
-  end
-
   def last_meeting_or_contact
     last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
   end
