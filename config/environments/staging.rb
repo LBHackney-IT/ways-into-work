@@ -74,4 +74,6 @@ WaysIntoWork::Application.configure do
     domain: 'heroku.com',
     enable_starttls_auto: true
   }
+
+  config.action_mailer.show_previews = true
 end
