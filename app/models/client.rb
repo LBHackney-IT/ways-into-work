@@ -97,6 +97,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       joins(:advisor).order("advisors.name #{direction}")
     when /^rag_status/
       order("(rag_status=0, rag_status=1, rag_status=2, rag_status=3) #{direction}")
+    when /^next_meeting_date/
+      order("next_meeting_date #{direction}")
     end
   }
   
@@ -137,10 +139,6 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       to = from.end_of_month
     end
     where('created_at BETWEEN ? AND ?', from, to)
-  end
-
-  def next_meeting_date
-    upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
   end
 
   def last_meeting_or_contact

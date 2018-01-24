@@ -3,10 +3,13 @@
     %table.table#clients_with_initial_appointment
       %thead
         %tr
-          %th Client
-          %th Next Meeting date
+          %th
+            = filterrific_sorting_link(@filterrific, 'first_name', label: 'Client')
+          %th
+            = filterrific_sorting_link(@filterrific, 'next_meeting_date', label: 'Next Meeting date')
           %th Last Meeting / Contact
-          %th Status
+          %th
+            = filterrific_sorting_link(@filterrific, 'rag_status', label: 'Status')
           %th
       %tbody
         = render partial: 'with_meeting', collection: clients, as: 'client'
