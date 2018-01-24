@@ -8,7 +8,8 @@
           %th
             = filterrific_sorting_link(@filterrific, 'next_meeting_date', label: 'Next Meeting date')
           %th Last Meeting / Contact
-          %th Status
+          %th
+            = filterrific_sorting_link(@filterrific, 'rag_status', label: 'Status')
           %th
       %tbody
         = render partial: 'with_meeting', collection: clients, as: 'client'
