@@ -301,6 +301,36 @@ RSpec.describe Client, type: :model do
         
       end
       
+      describe 'next_meeting_date' do
+        
+        let!(:client_list) do
+          [
+            Fabricate(:client, next_meeting_date: Time.zone.now + 1.day),
+            Fabricate(:client, next_meeting_date: Time.zone.now + 10.days),
+            Fabricate(:client, next_meeting_date: Time.zone.now),
+            Fabricate(:client, next_meeting_date: Time.zone.now + 3.days),
+            Fabricate(:client, next_meeting_date: Time.zone.now + 4.days)
+          ]
+        end
+        
+        it 'sorts by next meeting date ascending' do
+          expect(clients.sorted_by('next_meeting_date_asc')[0]).to eq(client_list[2])
+          expect(clients.sorted_by('next_meeting_date_asc')[1]).to eq(client_list[0])
+          expect(clients.sorted_by('next_meeting_date_asc')[2]).to eq(client_list[3])
+          expect(clients.sorted_by('next_meeting_date_asc')[3]).to eq(client_list[4])
+          expect(clients.sorted_by('next_meeting_date_asc')[4]).to eq(client_list[1])
+        end
+        
+        it 'sorts by next meeting date descending' do
+          expect(clients.sorted_by('next_meeting_date_desc')[0]).to eq(client_list[1])
+          expect(clients.sorted_by('next_meeting_date_desc')[1]).to eq(client_list[4])
+          expect(clients.sorted_by('next_meeting_date_desc')[2]).to eq(client_list[3])
+          expect(clients.sorted_by('next_meeting_date_desc')[3]).to eq(client_list[0])
+          expect(clients.sorted_by('next_meeting_date_desc')[4]).to eq(client_list[2])
+        end
+        
+      end
+      
     end
     
   end
