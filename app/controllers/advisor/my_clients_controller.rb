@@ -5,6 +5,7 @@ class Advisor::MyClientsController < Advisor::BaseController
     respond_to do |format|
       format.html
       format.js
+      format.csv { send_data Client.csv(@filterrific.find), type: 'text/csv', disposition: 'attachment; filename=clients.csv' }
     end
   end
 

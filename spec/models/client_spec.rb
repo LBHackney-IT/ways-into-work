@@ -37,7 +37,11 @@ RSpec.describe Client, type: :model do
                        health_conditions: nil,
                        receive_benefits: true,
                        care_leaver: false,
-                       referrer: Fabricate(:referrer, email: 'referrer@example.com'))
+                       referrer: Fabricate(:referrer, email: 'referrer@example.com'),
+                       achievements: [Fabricate(:achievement, name: 'training_started'),
+                                      Fabricate.times(3, :achievement, name: 'interview'),
+                                      Fabricate.times(2, :achievement, name: 'job_start'),
+                                      Fabricate(:achievement, name: 'job_sustained')].flatten)
     end
     let(:clients) { Fabricate.times(10, :client) }
 
@@ -59,7 +63,17 @@ RSpec.describe Client, type: :model do
         'No',
         'Yes',
         'No',
-        'referrer@example.com'
+        'referrer@example.com',
+        0,
+        0,
+        3,
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        0
       ])
     end
     
@@ -81,7 +95,17 @@ RSpec.describe Client, type: :model do
         'Health Condition or Disability?',
         'Claiming Benefits?',
         'Care leaver?',
-        'Referrer Email'
+        'Referrer Email',
+        I18n.t('advisors.achievement.cv.complete'),
+        I18n.t('advisors.achievement.job.complete'),
+        I18n.t('advisors.achievement.interview.complete'),
+        I18n.t('advisors.achievement.placement.complete'),
+        I18n.t('advisors.achievement.training.complete'),
+        I18n.t('advisors.achievement.course.complete'),
+        I18n.t('advisors.achievement.job_start.complete'),
+        I18n.t('advisors.achievement.job_sustained.complete'),
+        I18n.t('advisors.achievement.boc.complete'),
+        I18n.t('advisors.achievement.13_week.complete')
       ])
     end
     
