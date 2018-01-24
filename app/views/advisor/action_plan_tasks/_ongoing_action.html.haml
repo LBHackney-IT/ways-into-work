@@ -1,4 +1,4 @@
-%tr[action_plan_task]
+%tr[action_plan_task]{ class: action_plan_task.due_date < Time.zone.now ? 'overdue' : ''}
   %td.task=link_to action_plan_task.title, edit_advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id)
   %td=action_plan_task.created_at.to_date.to_s(:short)
   %td=action_plan_task.due_date.to_date.to_s(:short)
