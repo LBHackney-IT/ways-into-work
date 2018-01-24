@@ -3,7 +3,8 @@
     %table.table#clients_with_initial_appointment
       %thead
         %tr
-          %th Client
+          %th
+            = filterrific_sorting_link(@filterrific, 'first_name', label: 'Client')
           %th Next Meeting date
           %th Last Meeting / Contact
           %th Status
