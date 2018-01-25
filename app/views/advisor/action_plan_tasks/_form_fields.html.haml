@@ -9,13 +9,5 @@
   = form.input :client_id, as: :hidden
   = form.input :due_date, as: :string, input_html: {type: :date, :class => 'input', :value => form.object.try(:due_date).try(:to_date)}, placeholder: "dd/mm/yyyy"
 
-
-.with_multi_select
-  %label.label Attach an achievement
-  %span.simple_input.buffer
-    %select.select
-      %option -
-      %option CV complete
-      %option Application sent
-      %option Interview attended
-      %option Training course
+  .with_multi_select
+    = form.input :achievement_name, as: :select, collection: AchievementOption.options_for_select

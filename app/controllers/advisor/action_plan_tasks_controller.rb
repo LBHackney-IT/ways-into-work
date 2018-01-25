@@ -59,6 +59,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
       due_date
       status
       outcome
+      achievement_name
     ])
   end
 end
