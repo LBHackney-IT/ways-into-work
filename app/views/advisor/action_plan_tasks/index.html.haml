@@ -15,12 +15,12 @@
         - if client.action_plan_tasks.ongoing.any?
           .head.level
             .level-left
-              %h2 Ongoing Actions
+              %h2 Ongoing Tasks
               %span="#{client.action_plan_tasks.ongoing.count} Ongoing"
           %table.table
             %thead
               %tr
-                %th Agreed Action
+                %th Agreed Task
                 %th Created
                 %th Due
                 %th Assigned
@@ -46,3 +46,67 @@
                 %th
             %tbody
               = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'
+      %section.achievements
+        %h2 Achievements
+
+        .achievement-container.achieved
+          / .achievement.box
+          /   %h4 First CV
+          /   .div.icon-center
+          /     = fa_icon 'file-pdf-o'
+          /   %p Uploaded your first CV
+          /   %p.small <strong>Complete: </strong>04 Jan, 2018
+          .achievement.box
+            %h4 CV complete
+            .icon-center
+              = fa_icon 'star'
+            %p <strong>5</strong> completed CV's
+            %p.small <strong>Complete: </strong>07 Jan, 2018
+          .achievement.box
+            %h4 Application sent
+            .icon-center
+              = fa_icon 'paper-plane'
+            %p Sent your first job application
+            %p.small <strong>Complete: </strong>12 Jan, 2018
+          .achievement.box
+            %h4 Interview attended
+            .icon-center
+              = fa_icon 'street-view'
+            %p Attended your first job interview
+            %p.small <strong>Complete: </strong>14 Jan, 2018
+          / .achievement.box
+          /   %h4 Found a job
+          /   .icon-center
+          /     = fa_icon 'handshake-o'
+          /   %p 2 jobs found
+          /   %p.small <strong>Complete: </strong>20 Jan, 2018
+          .achievement.box
+            %h4 Training course
+            .icon-center
+              = fa_icon 'graduation-cap'
+            %p 2 training courses attended
+            %p.small <strong>Complete: </strong>15 Dec, 2017
+          / .achievement.box
+          /   %h4 Education
+          /   .icon-center
+          /     = fa_icon 'graduation-cap'
+          /   %p 3 education courses attended
+          /   %p.small <strong>Complete: </strong>01 Dec, 2017
+          / .achievement.box
+          /   %h4 First job
+          /   .icon-center
+          /     = fa_icon 'id-badge'
+          /   %p Congrats, you started your first job!
+          /   %p.small <strong>Complete: </strong>20 Jan, 2018
+          / .achievement.box
+          /   %h4 Job held
+          /   .icon-center
+          /     = fa_icon 'shield'
+          /   %p 6 months or more in your job
+          /   %p.small <strong>Complete: </strong>20 July, 2018
+          / .achievement.box
+          /   %h4 Job held
+          /   .icon-center
+          /     = fa_icon 'shield'
+          /   %p 13 weeks in your job
+          /   %p.small <strong>Complete: </strong>20 Apr, 2018

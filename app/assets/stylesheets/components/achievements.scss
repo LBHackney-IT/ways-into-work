@@ -1,7 +1,42 @@
 /* achievements temp code so I can think clearly */
 
-.achievement {
+$brand: #009CA6;
+
+.achievements {
   margin-bottom: $baseline;
+}
+
+.achievement {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: $baseline;
+  float: left;
+  &.box {
+    float: left;
+    display: block;
+    box-shadow: none;
+    width: 22.525%;
+    margin-right: 3.3%;
+    border: 2px solid $brand;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+    .icon-center {
+      margin-top: $baseline;
+      margin-bottom: $baseline;
+      .fa {
+        color: $brand;
+        font-size: 2.5em;
+      }
+    }
+    p {
+      margin-bottom: $baseline*0.25 !important;
+    }
+    p.small {
+      font-size: 0.8em;
+    }
+  }
 }
 
 .achievable-container.achieved,
@@ -14,9 +49,18 @@
 
 .achievement-container.achieved {
   display: block;
-  color: green;
 }
 
 .achievable-container {
   display: inline-block;
+}
+
+/* temp */
+.profile-tab, .column {
+  float: left;
+  width: 100%;
+}
+
+.buffer {
+  margin-bottom: $baseline;
 }
