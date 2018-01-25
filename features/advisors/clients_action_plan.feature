@@ -15,6 +15,12 @@ Feature: Advisor records action plan item
 
   Scenario: Advisor marks action plan task as completed
     Given my client has an action plan task
-    Given I am on the edit action plan task page
+    And I am on the edit action plan task page
     And I mark the task as completed
     Then I should see the task has been completed
+    
+  Scenario: Action plan task with linked acheivement
+    Given my client has an action plan task with an achievement
+    And I am on the edit action plan task page
+    And I mark the task as completed
+    Then my client should have an achievement recorded
