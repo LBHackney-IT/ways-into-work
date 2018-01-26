@@ -48,11 +48,13 @@ $brand: #009CA6;
 }
 
 .achievement-container.achieved {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .achievable-container {
-  display: inline-block;
+  float: left;
+  width: 100%;
 }
 
 /* temp */

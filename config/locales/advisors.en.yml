@@ -12,14 +12,15 @@ en:
       no_clients_yet: "There are currently clients in the system yet."
     achievement:
       achieved: "All your achievements so far"
-      achievable: "Select the things you have achieved"
+      achievable: "Manual acheivement selection"
       cv_completed:
         title:
-          first: "First CV"
-          subsequent: "CV Complete"
+          first: "CV completed"
+          subsequent: "CV completed"
         description:
           first: "Uploaded your first CV"
           subsequent: "<strong>%count</strong> completed CV's"
+        manual: "CV completed"
       job_application:
         title:
           first: "First job application sent"
@@ -27,6 +28,7 @@ en:
         description:
           first: "Sent your first job application"
           subsequent: "<strong>%count</strong> job applications sent"
+        manual: "Job application submitted"
       interview:
         title:
           first: "First job interview"
@@ -34,13 +36,15 @@ en:
         description:
           first: "Attended your first job interview"
           subsequent: "<strong>%count</strong> interviews attended"
+        manual: "Interview attended"
       placement_volunteering:
         title:
-          first: "Found a job"
-          subsequent: "Found a job"
+          first: "Found a placement"
+          subsequent: "Found a placement"
         description:
-          first: "Found a job"
-          subsequent: "<strong>%count</strong> jobs found"
+          first: "Found a placement"
+          subsequent: "<strong>%count</strong> placements found"
+        manual: "Work placement or volunteering"
       training_started:
         title:
           first: "Training course started"
@@ -48,6 +52,7 @@ en:
         description:
           first: "Started your first training course"
           subsequent: "<strong>%count</strong> training courses started"
+        manual: "Training"
       course_completed:
         title:
           first: "Education"
@@ -55,6 +60,7 @@ en:
         description:
           first: "Completed your first course"
           subsequent: "<strong>%count</strong> courses completed"
+        manual: "Complete education course for e.g. college courses or degree"
       job_start:
         title:
           first: "First job"
@@ -62,6 +68,7 @@ en:
         description:
           first: "Congrats, you started your first job!V"
           subsequent: "<strong>%count</strong> jobs started"
+        manual: "Job/apprenticeship start"
       job_sustained:
         title:
           first: "Job held"
@@ -69,6 +76,7 @@ en:
         description:
           first: "6 months or more in your job"
           subsequent: "6 months or more in your job"
+        manual: "Sustained job (>6 months)"
       boc_completed:
         title:
           first: "Better off calculation complete"
@@ -76,6 +84,7 @@ en:
         description:
           first: "Completed a better off calculation"
           subsequent: "Completed a better off calculation"
+        manual: "'BOCs completed' (Better Off Calculation)"
       13_week_sustainment:
         title:
           first: "Job held"
@@ -83,35 +92,4 @@ en:
         description:
           first: "13 weeks in your job"
           subsequent: "13 weeks in your job"
-      
-      
-      cv:
-        task: "Update your CV"
-        complete: "CV completed"
-      job:
-        task: "Apply for a job"
-        complete: "Job application sent"
-      interview:
-        task: "Attend job interview"
-        complete: "Job interview attended"
-      placement:
-        task: "Find a job placement"
-        complete: "Found a job placement"
-      training:
-        task: "Register for a training course"
-        complete: "Registered for training course"
-      course:
-        task: "Apply for education course"
-        complete: "Sent education course application"
-      job_start:
-        task: "Start a new job"
-        complete: "New job started"
-      job_sustained:
-        task: "Stay in a job over 6 months"
-        complete: "Job held over 6 months"
-      boc:
-        task: "Complete Better Off Calculator"
-        complete: "Better Off Calculator completed"
-      13_week:
-        task: "Stay in job over 13 weeks"
-        complete: "Job held over 13 weeks"
+        manual: "13 week sustainment (relevant for TF)"

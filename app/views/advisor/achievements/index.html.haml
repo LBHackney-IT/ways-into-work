@@ -10,12 +10,13 @@
         = I18n.t('advisors.achievement.achieved')
       
       .achievement-container.achieved
-        - client.achievements.all.group_by(&:name).each do |id, achievements|
+        - client.achievements.all.group_by(&:name).each do |id, achievable|
           .achievement.box
             %h4=achievement_title id, achievements.count
             .div.icon-center
               = achievement_icon id
             %p.small <strong>Complete: </strong> #{achievements.last.created_at.to_date.to_s(:long)}
+            %p.small=achievement_description id, achievements.count
     
     .column
       %label.label

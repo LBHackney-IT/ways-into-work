@@ -24,4 +24,8 @@ module AchievementHelper
     }
   end
   
+  def achievement_description(id, count)
+    first_or_subsequent = count == 1 ? 'first' : 'subsequent'
+    I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent}", count: count)
+  end
 end
