@@ -8,9 +8,17 @@
     .column
       %label.label
         = I18n.t('advisors.achievement.achieved')
-      = render partial: 'achievable', collection: AchievableOption.all, as: :option
-
+      
+      .achievement-container.achieved
+        - client.achievements.all.group_by(&:name).each do |id, achievements|
+          .achievement.box
+            %h4=achievement_title id, achievements.count
+            .div.icon-center
+              = achievement_icon id
+            %p.small <strong>Complete: </strong> #{achievements.last.created_at.to_date.to_s(:long)}
+    
+    .column
       %label.label
         = I18n.t('advisors.achievement.achievable')
-      = render partial: 'achievement', collection: AchievementOption.all, as: :option
+      = render partial: 'achievable', collection: AchievementOption.all, as: :option
           

@@ -11,8 +11,80 @@ en:
       no_clients: "Your case load is currently empty. You can assign yourself cases from the unassigned client list."
       no_clients_yet: "There are currently clients in the system yet."
     achievement:
-      achieved: "Select the things you have achieved"
-      achievable: "All your achievements so far"
+      achieved: "All your achievements so far"
+      achievable: "Select the things you have achieved"
+      cv_completed:
+        title:
+          first: "First CV"
+          subsequent: "CV Complete"
+        description:
+          first: "Uploaded your first CV"
+          subsequent: "<strong>%count</strong> completed CV's"
+      job_application:
+        title:
+          first: "First job application sent"
+          subsequent: "Job application sent"
+        description:
+          first: "Sent your first job application"
+          subsequent: "<strong>%count</strong> job applications sent"
+      interview:
+        title:
+          first: "First job interview"
+          subsequent: "Interview attended"
+        description:
+          first: "Attended your first job interview"
+          subsequent: "<strong>%count</strong> interviews attended"
+      placement_volunteering:
+        title:
+          first: "Found a job"
+          subsequent: "Found a job"
+        description:
+          first: "Found a job"
+          subsequent: "<strong>%count</strong> jobs found"
+      training_started:
+        title:
+          first: "Training course started"
+          subsequent: "Training course started"
+        description:
+          first: "Started your first training course"
+          subsequent: "<strong>%count</strong> training courses started"
+      course_completed:
+        title:
+          first: "Education"
+          subsequent: "Education"
+        description:
+          first: "Completed your first course"
+          subsequent: "<strong>%count</strong> courses completed"
+      job_start:
+        title:
+          first: "First job"
+          subsequent: "Got a job"
+        description:
+          first: "Congrats, you started your first job!V"
+          subsequent: "<strong>%count</strong> jobs started"
+      job_sustained:
+        title:
+          first: "Job held"
+          subsequent: "Job held"
+        description:
+          first: "6 months or more in your job"
+          subsequent: "6 months or more in your job"
+      boc_completed:
+        title:
+          first: "Better off calculation complete"
+          subsequent: "Better off calculation complete"
+        description:
+          first: "Completed a better off calculation"
+          subsequent: "Completed a better off calculation"
+      13_week_sustainment:
+        title:
+          first: "Job held"
+          subsequent: "Job held"
+        description:
+          first: "13 weeks in your job"
+          subsequent: "13 weeks in your job"
+      
+      
       cv:
         task: "Update your CV"
         complete: "CV completed"
