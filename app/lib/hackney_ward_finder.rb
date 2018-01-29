@@ -15,7 +15,7 @@ class HackneyWardFinder
   private
   
   def response
-    return if @postcode.blank? || GoingPostal.postcode?(@postcode, 'GB').blank?
+    return {} if @postcode.blank? || GoingPostal.postcode?(@postcode, 'GB').blank?
     @response ||= HTTParty.get(url, headers: headers).parsed_response
   end
   
