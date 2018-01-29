@@ -17,7 +17,7 @@ en:
   buttons:
     all_clients: "View all clients"
     my_clients: "View my clients"
-    advisors: "Meet advisors in your area"
+    advisors: "Find your local hub"
   flash:
     errors:
       not_authorized: "Appears you are trying to access a page without authorization"
@@ -39,7 +39,7 @@ en:
       testimonial_b: '"My advisor is awesome! She is friendly and she is trying to help me. You can really feel it - and she is always smiling."'
       testimonial_c: '"After my first meeting I felt quite positive. My advisor really wanted to help me to find work in what I want to do."'
     hubs:
-      title: "Meet advisors in your area"
+      title: "Find your local hub"
       info: "If you would like to contact the Hackney Works team, you can reach us on:"
       extra: "0208 356 5700"
   simple_form:
