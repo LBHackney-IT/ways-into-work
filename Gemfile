@@ -27,7 +27,7 @@ gem 'going_postal'
 gem 'phony_rails'
 
 gem 'active_model_serializers'
-gem 'airbrake'
+gem 'airbrake', '~> 7.2'
 gem 'aws-sdk'
 gem 'paperclip'
 
