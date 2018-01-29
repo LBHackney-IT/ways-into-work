@@ -23,13 +23,17 @@
                 %span
                   = t('client.tab_a.tab_1')
             %li
-              %a{href: "#tabs-2"}
+              %a{href: "#tabs-9"}
                 %span
-                  = t('client.tab_a.tab_2')
+                  = t('client.tab_a.tab_9')
             %li
               %a{href: "#tabs-3"}
                 %span
                   = t('client.tab_a.tab_3')
+            %li
+              %a{href: "#tabs-2"}
+                %span
+                  = t('client.tab_a.tab_2')
             %li
               %a{href: "#tabs-4"}
                 %span
@@ -43,17 +47,15 @@
                 %span
                   = t('client.tab_a.tab_6')
             %li
-              %a{href: "#tabs-7"}
-                %span
-                  = t('client.tab_a.tab_7')
-            %li
               %a{href: "#tabs-8"}
                 %span
                   = t('client.tab_a.tab_8')
+
             %li
-              %a{href: "#tabs-9"}
+              %a{href: "#tabs-7"}
                 %span
-                  = t('client.tab_a.tab_9')
+                  = t('client.tab_a.tab_7')
+
 
 
         .column
@@ -79,9 +81,9 @@
 
           #tabs-7.tab
             = render partial: 'tab_additional', :locals => {:form => form}
-            
+
           #tabs-8.tab
             = render partial: 'tab_equality', :locals => {:form => form}
           #tabs-9.tab
             = render partial: 'tab_contact', :locals => {:form => form}
-          
+
