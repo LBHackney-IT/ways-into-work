@@ -1,10 +1,20 @@
 #hubs
   .map
     border: 1px solid $grey-lighter
+    border-top-left-radius: $radius-large
+    border-bottom-left-radius: $radius-large
+    +mobile
+      border-top-right-radius: $radius-large
+      border-bottom-left-radius: 0
   .columns
     margin: 0
     .image
       background-size: cover
+      border-top-right-radius: $radius-large
+      border-bottom-right-radius: $radius-large
+      +mobile
+        border-top-right-radius: 0
+        border-bottom-left-radius: $radius-large
       &#hub_staff_1
         background-image: image-url('people/staff-hoxton.jpg')
       &#hub_staff_2
