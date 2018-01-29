@@ -14,7 +14,7 @@ Then(/^I should see there are no achievements yet$/) do
   expect(page).not_to have_css('.achievment')
 end
 
-When(/^I add several acheivements manually$/) do
+When(/^I add several achievements manually$/) do
   @options = AchievementOption.all.sample(2)
   click_on @options.first.name
   (@achievements_count = 5).times do

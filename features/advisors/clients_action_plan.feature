@@ -19,7 +19,7 @@ Feature: Advisor records action plan item
     And I mark the task as completed
     Then I should see the task has been completed
 
-  Scenario: Action plan task with linked acheivement
+  Scenario: Action plan task with linked achievement
     Given my client has an action plan task with an achievement
     And I am on the edit action plan task page
     And I mark the task as completed
@@ -28,5 +28,5 @@ Feature: Advisor records action plan item
   Scenario: Advisor views empty achievements
     Given I am on the client achievements page
     Then I should see there are no achievements yet
-    When I add several acheivements manually
+    When I add several achievements manually
     Then I should see the counts are displayed correctly

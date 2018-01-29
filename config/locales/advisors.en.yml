@@ -12,7 +12,7 @@ en:
       no_clients_yet: "There are currently clients in the system yet."
     achievement:
       achieved: "All your achievements so far"
-      achievable: "Manual acheivement selection"
+      achievable: "Manual achievement selection"
       cv_completed:
         title:
           first: "CV completed"
