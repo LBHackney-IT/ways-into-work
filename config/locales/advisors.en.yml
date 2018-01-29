@@ -19,7 +19,7 @@ en:
           subsequent: "CV completed"
         description:
           first: "Uploaded your first CV"
-          subsequent: "<strong>%count</strong> completed CV's"
+          subsequent: "<strong>%{count}</strong> completed CV's"
         achieved: "CV completed"
       job_application:
         title:
@@ -27,7 +27,7 @@ en:
           subsequent: "Job application sent"
         description:
           first: "Sent your first job application"
-          subsequent: "<strong>%count</strong> job applications sent"
+          subsequent: "<strong>%{count}</strong> job applications sent"
         achieved: "Job application submitted"
       interview:
         title:
@@ -35,7 +35,7 @@ en:
           subsequent: "Interview attended"
         description:
           first: "Attended your first job interview"
-          subsequent: "<strong>%count</strong> interviews attended"
+          subsequent: "<strong>%{count}</strong> interviews attended"
         achieved: "Interview attended"
       placement_volunteering:
         title:
@@ -43,7 +43,7 @@ en:
           subsequent: "Found a placement"
         description:
           first: "Found a placement"
-          subsequent: "<strong>%count</strong> placements found"
+          subsequent: "<strong>%{count}</strong> placements found"
         achieved: "Work placement or volunteering"
       training_started:
         title:
@@ -51,7 +51,7 @@ en:
           subsequent: "Training course started"
         description:
           first: "Started your first training course"
-          subsequent: "<strong>%count</strong> training courses started"
+          subsequent: "<strong>%{count}</strong> training courses started"
         achieved: "Training"
       course_completed:
         title:
@@ -59,7 +59,7 @@ en:
           subsequent: "Education"
         description:
           first: "Completed your first course"
-          subsequent: "<strong>%count</strong> courses completed"
+          subsequent: "<strong>%{count}</strong> courses completed"
         achieved: "Complete education course for e.g. college courses or degree"
       job_start:
         title:
@@ -67,7 +67,7 @@ en:
           subsequent: "Got a job"
         description:
           first: "Congrats, you started your first job!V"
-          subsequent: "<strong>%count</strong> jobs started"
+          subsequent: "<strong>%{count}</strong> jobs started"
         achieved: "Job/apprenticeship start"
       job_sustained:
         title:
