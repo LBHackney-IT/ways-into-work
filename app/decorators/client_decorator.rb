@@ -8,7 +8,15 @@ class ClientDecorator < ApplicationDecorator
   end
 
   def decorate_name
-    standard_wrapper('Name:', client.name)
+    standard_wrapper('Name:', client.first_name)
+  end
+
+  def decorate_first_name
+    standard_wrapper('First Name:', client.first_name)
+  end
+
+  def decorate_last_name
+    standard_wrapper('Last Name:', client.last_name)
   end
 
   def decorate_date_registered
@@ -54,7 +62,7 @@ class ClientDecorator < ApplicationDecorator
   def decorate_studying
     standard_wrapper('Currently studying:', value_from(client.studying))
   end
-  
+
   def decorate_past_education
     standard_wrapper('Past education:', client.past_education)
   end
