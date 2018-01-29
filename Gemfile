@@ -42,6 +42,7 @@ gem 'paranoia'
 gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service_check'
 
 gem 'active_model_serializers'
+gem 'airbrake'
 
 group :development, :staging, :test do
   gem 'fabrication'

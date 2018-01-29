@@ -55,6 +55,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    airbrake (4.3.8)
+      builder
+      multi_json
     appsignal (2.4.3)
       rack
     archive-zip (0.7.0)
@@ -408,6 +411,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  airbrake
   appsignal
   aws-sdk
   better_errors
