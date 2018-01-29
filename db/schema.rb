@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124094931) do
+ActiveRecord::Schema.define(version: 20180129185759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180124094931) do
   create_table "achievements", force: :cascade do |t|
     t.string "name"
     t.bigint "client_id"
-    t.date "date_acheived"
+    t.date "date_achieved"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180124094931) do
     t.bigint "advisor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "achievement_name"
     t.index ["advisor_id"], name: "index_action_plan_tasks_on_advisor_id"
     t.index ["client_id"], name: "index_action_plan_tasks_on_client_id"
   end

@@ -24,9 +24,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :needing_appointment, -> { where(meetings_count: 0, imported: false) }
 
   scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
-  
-  scope :with_outcome, ->(outcome, from, to) { where(id: Achievement.with_name(outcome).acheived_in_period(from, to).pluck(:client_id)) }
-  
+
+  scope :with_outcome, ->(outcome, from, to) { where(id: Achievement.with_name(outcome).achieved_in_period(from, to).pluck(:client_id)) }
+
   accepts_nested_attributes_for :login
 
   has_many :file_uploads, dependent: :destroy
@@ -87,7 +87,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       threshold: 0.1
     }
   }
-  
+
   scope :sorted_by, lambda { |sort_options|
     direction = sort_options.match?(/desc$/) ? 'desc' : 'asc'
     case sort_options.to_s
@@ -101,7 +101,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       order("next_meeting_date #{direction}")
     end
   }
-  
+
   def self.csv(clients)
     CSV.generate do |csv|
       csv << csv_header
@@ -110,7 +110,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       end
     end
   end
-  
+
   def self.csv_header # rubocop:disable Rails/MethodLength
     [
       'Registation date',
@@ -133,7 +133,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       AchievementOption.all.map(&:name)
     ].flatten
   end
-  
+
   def self.registered_on(from, to = nil)
     if to.nil?
       from = from.beginning_of_month
@@ -187,11 +187,11 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def age_in_years
     @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
-  
+
   def root_page
     :client_dashboard
   end
-  
+
   def csv_row # rubocop:disable Rails/MethodLength, Metrics/AbcSize
     [
       created_at.to_date,
@@ -214,13 +214,13 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       achievement_counts
     ].flatten
   end
-  
+
   def achievement_counts
     AchievementOption.all.map do |option|
       achievements.select { |a| a.name == option.id }.count
     end
   end
-  
+
   def ethnicity
     other_bame || BameOption.find(bame)&.name
   end
@@ -229,7 +229,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
                    Advisor.find_by(role: :team_leader)
   end
-  
+
   def assign_advisor(advisor_id, current_advisor)
     if advisor = Advisor.find(advisor_id)
       update_advisor(advisor, current_advisor)
@@ -237,12 +237,12 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       false
     end
   end
-  
+
   def update_advisor(advisor, current_advisor)
     update_attribute(:advisor, advisor) # rubocop:disable Rails/SkipsModelValidations
     AdvisorMailer.notify_assigned(self).deliver_now unless current_advisor == advisor
   end
-  
+
   def assign_area(postcode)
     return if postcode.blank?
     if ward_mapit_code = HackneyWardFinder.new(postcode).lookup
@@ -252,24 +252,24 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       false
     end
   end
-  
+
   def completed_education?
     qualifications.any? || training_courses.any? || !studying.nil?
   end
-  
+
   def completed_objectives?
     objectives.any? || types_of_work.any? || support_priorities.any?
   end
-  
+
   def completed_about_you?
     personal_traits.any?
   end
-  
+
   def send_emails
     login.send_reset_password_instructions
     AdvisorMailer.notify_client_signed_up(self).deliver_now
   end
-  
+
   def generate_initial_meeting
     meetings.create(
       start_datetime: Time.zone.now,
@@ -278,5 +278,4 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       agenda: 'initial_assessment'
     )
   end
-  
 end
