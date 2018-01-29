@@ -8,18 +8,18 @@
     .column
       %label.label
         = I18n.t('advisors.achievement.achieved')
-      
+
       .achievement-container.achieved
         - client.achievements.all.group_by(&:name).each do |id, achievable|
           .achievement.box
-            %h4=achievement_title id, achievements.count
+            %h4=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(count)}", count: count)
             .div.icon-center
-              = achievement_icon id
+              = fa_icon AchievementOption.find(id).icon
             %p.small <strong>Complete: </strong> #{achievements.last.created_at.to_date.to_s(:long)}
-            %p.small=achievement_description id, achievements.count
-    
+            %p.small=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(count)}", count: count)
+
     .column
       %label.label
         = I18n.t('advisors.achievement.achievable')
       = render partial: 'achievable', collection: AchievementOption.all, as: :option
-          
+

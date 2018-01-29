@@ -20,7 +20,7 @@ en:
         description:
           first: "Uploaded your first CV"
           subsequent: "<strong>%count</strong> completed CV's"
-        manual: "CV completed"
+        achieved: "CV completed"
       job_application:
         title:
           first: "First job application sent"
@@ -28,7 +28,7 @@ en:
         description:
           first: "Sent your first job application"
           subsequent: "<strong>%count</strong> job applications sent"
-        manual: "Job application submitted"
+        achieved: "Job application submitted"
       interview:
         title:
           first: "First job interview"
@@ -36,7 +36,7 @@ en:
         description:
           first: "Attended your first job interview"
           subsequent: "<strong>%count</strong> interviews attended"
-        manual: "Interview attended"
+        achieved: "Interview attended"
       placement_volunteering:
         title:
           first: "Found a placement"
@@ -44,7 +44,7 @@ en:
         description:
           first: "Found a placement"
           subsequent: "<strong>%count</strong> placements found"
-        manual: "Work placement or volunteering"
+        achieved: "Work placement or volunteering"
       training_started:
         title:
           first: "Training course started"
@@ -52,7 +52,7 @@ en:
         description:
           first: "Started your first training course"
           subsequent: "<strong>%count</strong> training courses started"
-        manual: "Training"
+        achieved: "Training"
       course_completed:
         title:
           first: "Education"
@@ -60,7 +60,7 @@ en:
         description:
           first: "Completed your first course"
           subsequent: "<strong>%count</strong> courses completed"
-        manual: "Complete education course for e.g. college courses or degree"
+        achieved: "Complete education course for e.g. college courses or degree"
       job_start:
         title:
           first: "First job"
@@ -68,7 +68,7 @@ en:
         description:
           first: "Congrats, you started your first job!V"
           subsequent: "<strong>%count</strong> jobs started"
-        manual: "Job/apprenticeship start"
+        achieved: "Job/apprenticeship start"
       job_sustained:
         title:
           first: "Job held"
@@ -76,7 +76,7 @@ en:
         description:
           first: "6 months or more in your job"
           subsequent: "6 months or more in your job"
-        manual: "Sustained job (>6 months)"
+        achieved: "Sustained job (>6 months)"
       boc_completed:
         title:
           first: "Better off calculation complete"
@@ -84,7 +84,7 @@ en:
         description:
           first: "Completed a better off calculation"
           subsequent: "Completed a better off calculation"
-        manual: "'BOCs completed' (Better Off Calculation)"
+        achieved: "'BOCs completed' (Better Off Calculation)"
       13_week_sustainment:
         title:
           first: "Job held"
@@ -92,4 +92,4 @@ en:
         description:
           first: "13 weeks in your job"
           subsequent: "13 weeks in your job"
-        manual: "13 week sustainment (relevant for TF)"
+        achieved: "13 week sustainment (relevant for TF)"
