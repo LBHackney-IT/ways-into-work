@@ -1,8 +1,8 @@
 module AdvisorHelper
-  
+
   LEADER_NAMES = {
     'Hoxton Hub' => 'Mohammed Jama',
-    'Woodberry Down Hub' => 'Caroline Modest',
+    'Redmond Community Centre' => 'Caroline Modest',
     'Homerton Hub' => 'Dujon Harvey',
     'Supported Employment' => 'Anna-Renee Paisley'
   }.freeze
