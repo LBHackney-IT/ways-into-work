@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Client, type: :model do
-  
   context 'search by name' do
-    
     let(:client1) { Fabricate.create(:client, first_name: 'Katherine') }
     let(:client2) { Fabricate.create(:client, last_name: 'Robynson') }
     let(:client3) { Fabricate.create(:client, first_name: 'Muhammad') }
@@ -14,9 +12,8 @@ RSpec.describe Client, type: :model do
       expect(Client.search_query('Mohammed')).to match_array([client3])
       expect(Client.search_query('muhammad')).to match_array([client3])
     end
-  
   end
-  
+
   context 'csv' do
     let(:advisor) { Fabricate.create(:advisor, name: 'Advisor McAdvisorface') }
     let(:client) do
@@ -76,7 +73,7 @@ RSpec.describe Client, type: :model do
         0
       ])
     end
-    
+
     it 'generates a csv header' do
       expect(Client.csv_header).to eq([
         'Registation date',
@@ -95,20 +92,10 @@ RSpec.describe Client, type: :model do
         'Health Condition or Disability?',
         'Claiming Benefits?',
         'Care leaver?',
-        'Referrer Email',
-        I18n.t('advisors.achievement.cv.complete'),
-        I18n.t('advisors.achievement.job.complete'),
-        I18n.t('advisors.achievement.interview.complete'),
-        I18n.t('advisors.achievement.placement.complete'),
-        I18n.t('advisors.achievement.training.complete'),
-        I18n.t('advisors.achievement.course.complete'),
-        I18n.t('advisors.achievement.job_start.complete'),
-        I18n.t('advisors.achievement.job_sustained.complete'),
-        I18n.t('advisors.achievement.boc.complete'),
-        I18n.t('advisors.achievement.13_week.complete')
-      ])
+        'Referrer Email'
+      ] + AchievementOption.all.collect(&:name))
     end
-    
+
     it 'generates an entire CSV' do
       csv = CSV.parse Client.csv(clients)
       expect(csv.count).to eq(11)
@@ -118,17 +105,15 @@ RSpec.describe Client, type: :model do
   end
 
   describe 'scopes' do
-    
     let(:new_date) do
       rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
     end
-    
+
     let(:old_date) do
       rand(1.month.ago.beginning_of_month..1.month.ago.end_of_month)
     end
-    
+
     describe 'by_hub_id' do
-      
       let(:hub1) { Fabricate(:homerton_hub) }
       let(:hub2) { Fabricate(:hub) }
       let!(:hub1_clients) do
@@ -139,38 +124,34 @@ RSpec.describe Client, type: :model do
         Fabricate.times(5, :client,
                         advisor: Fabricate(:advisor, hub: hub2))
       end
-      
+
       it 'gets clients for a hub' do
         expect(Client.by_hub_id(hub1.id)).to match_array(hub1_clients)
         expect(Client.by_hub_id(hub2.id)).to match_array(hub2_clients)
       end
-      
     end
-    
+
     describe 'registered_on' do
-      
       let!(:new_clients) { Fabricate.times(5, :client, created_at: new_date) }
-      
+
       let!(:old_clients) { Fabricate.times(5, :client, created_at: old_date) }
-      
+
       it 'gets clients registered this month' do
         expect(Client.registered_on(Time.zone.now)).to match_array(new_clients)
       end
-      
+
       it 'gets clients registered last month' do
         expect(Client.registered_on(1.month.ago)).to match_array(old_clients)
       end
-      
+
       it 'gets clients registered within a date range' do
         expect(
           Client.registered_on(old_date.beginning_of_day, new_date.end_of_day)
         ).to match(new_clients + old_clients)
       end
-      
     end
-    
+
     describe 'with_outcome' do
-      
       let!(:job_start_clients) do
         Fabricate.times(4, :client) do
           achievements do
@@ -182,7 +163,7 @@ RSpec.describe Client, type: :model do
           end
         end
       end
-      
+
       let!(:old_job_start_clients) do
         ActionPlanTask.skip_callback(:save, :before, :check_completion)
         clients = Fabricate.times(8, :client) do
@@ -197,108 +178,96 @@ RSpec.describe Client, type: :model do
         ActionPlanTask.set_callback(:save, :before, :check_completion)
         clients
       end
-      
-      
+
       it 'gets clients with a job start' do
         expect(
           Client.with_outcome('job_apprenticeship', Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
         ).to match_array(job_start_clients)
-        
+
         expect(
           Client.with_outcome('job_apprenticeship', 1.month.ago.beginning_of_month, 1.month.ago.end_of_month)
         ).to match_array(old_job_start_clients)
       end
     end
-    
+
     describe 'by_funding_code' do
-      
       let!(:clients) { Fabricate.times(5, :client, funded: %w[troubled_families supported_employment]) }
       let!(:other_clients) { Fabricate.times(5, :client, funded: %w[supported_employment]) }
-      
+
       it 'gets the correct clients' do
         expect(Client.by_funding_code('troubled_families')).to eq(clients)
         expect(Client.by_funding_code('supported_employment')).to eq(clients + other_clients)
       end
-      
+
       it 'gets all by default' do
         expect(Client.by_funding_code(nil)).to eq(clients + other_clients)
       end
-      
     end
-    
+
     describe 'by_rag_status' do
-      
       let!(:green_clients) { Fabricate.times(5, :client, rag_status: 'green') }
       let!(:red_clients) { Fabricate.times(3, :client, rag_status: 'red') }
-      
+
       it 'filters by rag status' do
         expect(Client.by_rag_status('green')).to eq(green_clients)
         expect(Client.by_rag_status('red')).to eq(red_clients)
       end
     end
-    
+
     describe 'by_objective' do
-      
       let!(:apprenticeships) { Fabricate.times(5, :client, objectives: %w[apprenticeship training_qualification]) }
       let!(:training_qualifications) { Fabricate.times(3, :client, objectives: %w[training_qualification]) }
-      
+
       it 'filters by objective' do
         expect(Client.by_objective('apprenticeship')).to match_array(apprenticeships)
         expect(Client.by_objective('training_qualification')).to match_array(apprenticeships + training_qualifications)
       end
-      
     end
-    
+
     describe 'sorted_by' do
-      
       let(:clients) { Client.all }
-      
+
       describe 'name' do
-        
         before do
           Fabricate(:client, first_name: 'Adam')
           Fabricate(:client, first_name: 'Zebedee')
           Fabricate(:client, first_name: 'Clare')
         end
-                
+
         it 'sorts by name ascending' do
           expect(clients.sorted_by('first_name_asc')[0].first_name).to eq('Adam')
           expect(clients.sorted_by('first_name_asc')[1].first_name).to eq('Clare')
           expect(clients.sorted_by('first_name_asc')[2].first_name).to eq('Zebedee')
         end
-        
+
         it 'sorts by name descending' do
           expect(clients.sorted_by('first_name_desc')[0].first_name).to eq('Zebedee')
           expect(clients.sorted_by('first_name_desc')[1].first_name).to eq('Clare')
           expect(clients.sorted_by('first_name_desc')[2].first_name).to eq('Adam')
         end
-        
       end
-      
+
       describe 'advisor' do
-        
         before do
           Fabricate(:client, advisor: Fabricate(:advisor, name: 'Adam'))
           Fabricate(:client, advisor: Fabricate(:advisor, name: 'Zebedee'))
           Fabricate(:client, advisor: Fabricate(:advisor, name: 'Clare'))
         end
-        
+
         it 'sorts by advisor ascending' do
           expect(clients.sorted_by('advisor_asc')[0].advisor.name).to eq('Adam')
           expect(clients.sorted_by('advisor_asc')[1].advisor.name).to eq('Clare')
           expect(clients.sorted_by('advisor_asc')[2].advisor.name).to eq('Zebedee')
         end
-        
+
         it 'sorts by advisor descending' do
           expect(clients.sorted_by('advisor_desc')[0].advisor.name).to eq('Zebedee')
           expect(clients.sorted_by('advisor_desc')[1].advisor.name).to eq('Clare')
           expect(clients.sorted_by('advisor_desc')[2].advisor.name).to eq('Adam')
         end
-        
       end
-      
+
       describe 'rag status' do
-        
         before do
           Fabricate(:client, rag_status: 1)
           Fabricate(:client, rag_status: 0)
@@ -306,7 +275,7 @@ RSpec.describe Client, type: :model do
           Fabricate(:client, rag_status: 3)
           Fabricate(:client, rag_status: 2)
         end
-        
+
         it 'sorts by rag status ascending' do
           expect(clients.sorted_by('rag_status_asc')[0].rag_status).to eq('green')
           expect(clients.sorted_by('rag_status_asc')[1].rag_status).to eq('amber')
@@ -314,7 +283,7 @@ RSpec.describe Client, type: :model do
           expect(clients.sorted_by('rag_status_asc')[3].rag_status).to eq('un_assessed')
           expect(clients.sorted_by('rag_status_asc')[4].rag_status).to eq('un_assessed')
         end
-        
+
         it 'sorts by rag status descending' do
           expect(clients.sorted_by('rag_status_desc')[0].rag_status).to eq('un_assessed')
           expect(clients.sorted_by('rag_status_desc')[1].rag_status).to eq('un_assessed')
@@ -322,11 +291,9 @@ RSpec.describe Client, type: :model do
           expect(clients.sorted_by('rag_status_desc')[3].rag_status).to eq('amber')
           expect(clients.sorted_by('rag_status_desc')[4].rag_status).to eq('green')
         end
-        
       end
-      
+
       describe 'next_meeting_date' do
-        
         let!(:client_list) do
           [
             Fabricate(:client, next_meeting_date: Time.zone.now + 1.day),
@@ -336,7 +303,7 @@ RSpec.describe Client, type: :model do
             Fabricate(:client, next_meeting_date: Time.zone.now + 4.days)
           ]
         end
-        
+
         it 'sorts by next meeting date ascending' do
           expect(clients.sorted_by('next_meeting_date_asc')[0]).to eq(client_list[2])
           expect(clients.sorted_by('next_meeting_date_asc')[1]).to eq(client_list[0])
@@ -344,7 +311,7 @@ RSpec.describe Client, type: :model do
           expect(clients.sorted_by('next_meeting_date_asc')[3]).to eq(client_list[4])
           expect(clients.sorted_by('next_meeting_date_asc')[4]).to eq(client_list[1])
         end
-        
+
         it 'sorts by next meeting date descending' do
           expect(clients.sorted_by('next_meeting_date_desc')[0]).to eq(client_list[1])
           expect(clients.sorted_by('next_meeting_date_desc')[1]).to eq(client_list[4])
@@ -352,13 +319,10 @@ RSpec.describe Client, type: :model do
           expect(clients.sorted_by('next_meeting_date_desc')[3]).to eq(client_list[0])
           expect(clients.sorted_by('next_meeting_date_desc')[4]).to eq(client_list[2])
         end
-        
       end
-      
     end
-    
   end
-  
+
   it 'can have a referrer' do
     referrer = Fabricate.create(:referrer)
     client = Fabricate.create(:client, referrer: referrer)

@@ -6,7 +6,7 @@ Given(/^I assign a new action plan task to them$/) do
   @due_date = DateTime.now.utc + 7.days
   fill_in 'action_plan_task_title', with: @task_title
   fill_in 'action_plan_task_due_date', with: @due_date.strftime('%d/%m/%Y')
-  @achievement_name = I18n.t('advisors.achievement.job.complete')
+  @achievement_name = I18n.t('advisors.achievement.job_application.achieved')
   select @achievement_name, from: 'action_plan_task_achievement_name'
   click_on I18n.t('clients.buttons.save')
 end
