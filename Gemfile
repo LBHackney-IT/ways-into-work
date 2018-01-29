@@ -26,10 +26,14 @@ gem 'puma'
 gem 'going_postal'
 gem 'phony_rails'
 
+gem 'active_model_serializers'
+gem 'airbrake'
 gem 'aws-sdk'
 gem 'paperclip'
 
 gem 'filterrific'
+gem 'humanize_boolean'
+
 gem 'kaminari'
 gem 'pg_search'
 
@@ -40,9 +44,6 @@ gem 'decent_exposure'
 gem 'paranoia'
 
 gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service_check'
-
-gem 'active_model_serializers'
-gem 'humanize_boolean'
 
 group :development, :staging, :test do
   gem 'fabrication'

@@ -71,6 +71,9 @@
     },
     "MAPIT_API_KEY": {
       "required": true
+    },
+    "ERRBIT_API_KEY": {
+      "required": true
     }
   },
   "formation": {
