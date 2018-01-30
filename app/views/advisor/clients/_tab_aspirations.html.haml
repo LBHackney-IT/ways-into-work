@@ -1,16 +1,12 @@
 %h3
   = t('client.tab_a.tab_3')
 
-// @pezholio
-
-// this checkbox has been moved over from the support tab - does it need to be moved in the database to link more to this tab or is that alright?
-
 .convert_checkbox.field
   =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What are you looking for?', include_hidden: false
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 
-// NEW TEXTAERA - 'Additional info:'
+  = render partial: 'assessment_note', locals: {form: form, note: @objectives_notes, label: 'Additional info:', type: :text }
 
 .convert_checkbox.field
   =form.input :types_of_work, as: :check_boxes, collection: TypeOfWorkOption.all, :label => 'What types of work are you looking for?', include_hidden: false
