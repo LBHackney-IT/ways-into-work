@@ -4,6 +4,10 @@
   %p="Uploaded by: #{client.file_uploads.last.uploaded_by} on #{client.file_uploads.last.created_at.to_date.to_s(:short)}"
   =client.new_file_button(I18n.t('clients.buttons.manage_uploads'))
 -else
-  %p.bold
+  .bold
     = t('clients.steps.employment.upload')
+  //remove this hint once fixing the save bug
+  .hint= t('clients.steps.employment.upload_hint')
+  %br
+
   =client.new_file_button(I18n.t('clients.buttons.upload'))

@@ -1,21 +1,49 @@
 %h3
-  = t('client.tab_a.tab_5')
+  = t('client.tab_a.tab_5b')
 
-.convert_checkbox
-  =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
-  = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
+// pezholio
+
+// remove this completely from database then delete from here:
+
+/ .convert_checkbox
+/   =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
+/   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
+
+
+
+// remove this completely from database then delete from here:
+
+/ = render partial: 'assessment_note', locals: {form: form, note: @past_education_notes, label: 'Details of past education', type: :text }
+
+= form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio has_child" }
+
+.is-hidden.on-true
+  = form.input :studying_part_time, as: :radio_buttons, collection: [['Part time', true], ['Full time', false]], label: 'Full or part time?',  wrapper_html: { class: "convert_radio" }
+
+  =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }
+
+
 %br
 
-= render partial: 'assessment_note', locals: {form: form, note: @past_education_notes, label: 'Details of past education', type: :text }
+
+=form.input :employed, as: :radio_buttons, :label => 'Are you currently employed?', wrapper_html: { class: "convert_radio has_child has_child_2" }
+
+.is-hidden.on-true_2
+  =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
+  =form.input :working_hours_per_week, as: :integer, :label => 'How many hours per week do you currently work?', :input_html => { :class => 'input' }
+
+%br
+
+// this is changed to be both for work and education is it ok staying as '@work_experience_notes'?
+= render partial: 'assessment_note', locals: {form: form, note: @work_experience_notes, label: 'Additional information about work or education experience:', type: :text }
 
 .convert_checkbox
   =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'Have you completed any of the following training courses?', include_hidden: false
   = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
 %br
 
-= form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio has_child" }
 
-.is-hidden.on-true
-  = form.input :studying_part_time, as: :radio_buttons, collection: [['Part time', true], ['Full time', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
 
-  =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }
+
+// I noticed that if you try to upload a file when you have edits in the form above it warns you - can we save it automatically when clicking this button? For now I have just added a hint in the partial below warning to save
+= render partial: '/shared/latest_file_upload'

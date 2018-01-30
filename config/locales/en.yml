@@ -65,10 +65,12 @@ en:
       tab_2: "Strengths"
       tab_3: "Goals"
       tab_4: "Support"
-      tab_5: "Education"
-      tab_6: "Employment"
+      tab_5b: "Education & Employment"
+      tab_5a: "Experience"
       tab_7: "Additional Info"
       tab_8: "Equalities Info"
+      tab_8_about: "Hackney Council promotes being fair and treating people equally. We collect information on certain things about you - such as gender and ethnicity. This is so we can understand who accesses our service. This information will not be used by advisors or passed on to any employers or other organisations. If there are any questions you don’t want to answer, you can select ‘prefer not to say’.
+Thank you"
       tab_9: "Details"
 
   stats:

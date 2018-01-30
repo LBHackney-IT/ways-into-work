@@ -25,6 +25,7 @@ en:
         short: "Employment"
         employed: "Are you currently employed?"
         upload: "Upload a CV, cover letter or draft documents"
+        upload_hint: "Ensure you save before uploading new document"
       objectives:
         long: "What can we help you with?"
         short: "Goals"

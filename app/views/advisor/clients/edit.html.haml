@@ -41,16 +41,11 @@
             %li
               %a{href: "#tabs-5"}
                 %span
-                  = t('client.tab_a.tab_5')
-            %li
-              %a{href: "#tabs-6"}
-                %span
-                  = t('client.tab_a.tab_6')
+                  = t('client.tab_a.tab_5a')
             %li
               %a{href: "#tabs-8"}
                 %span
                   = t('client.tab_a.tab_8')
-
             %li
               %a{href: "#tabs-7"}
                 %span
@@ -75,9 +70,6 @@
 
           #tabs-5.tab
             = render partial: 'tab_education', :locals => {:form => form}
-
-          #tabs-6.tab
-            = render partial: 'tab_employment', :locals => {:form => form}
 
           #tabs-7.tab
             = render partial: 'tab_additional', :locals => {:form => form}
