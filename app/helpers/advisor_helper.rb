@@ -1,5 +1,4 @@
 module AdvisorHelper
-
   LEADER_NAMES = {
     'Hoxton Hub' => 'Mohammed Jama',
     'Redmond Community Centre' => 'Caroline Modest',

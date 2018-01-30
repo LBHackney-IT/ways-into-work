@@ -23,9 +23,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :needing_appointment, -> { where(meetings_count: 0, imported: false) }
 
   scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
-  
+
   scope :with_outcome, ->(outcome, from, to) { where(id: ActionPlanTask.completed_with_outcome(outcome).ended_in_period(from, to).pluck(:client_id)) }
-  
+
   accepts_nested_attributes_for :login
 
   has_many :file_uploads, dependent: :destroy
@@ -64,7 +64,6 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :workless_on_benefits, -> { where(receive_benefits: true, employed: true) }
   scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
-  scope :welfare_reform, -> { where(affected_by_welfare: true) }
   scope :under_25, -> { where('date_of_birth > ?', Time.zone.today - 25.years) }
   scope :over_50, -> { where('date_of_birth < ?', Time.zone.today - 50.years) }
   scope :care_leavers, -> { where(care_leaver: true) }
@@ -81,7 +80,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       threshold: 0.1
     }
   }
-  
+
   def self.registered_on(from, to = nil)
     if to.nil?
       from = from.beginning_of_month
@@ -144,7 +143,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
                    Advisor.find_by(team_leader: true)
   end
-  
+
   def assign_advisor(advisor_id, current_advisor)
     if advisor = Advisor.find(advisor_id)
       update_advisor(advisor, current_advisor)
@@ -152,12 +151,12 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       false
     end
   end
-  
+
   def update_advisor(advisor, current_advisor)
     update_attribute(:advisor, advisor) # rubocop:disable Rails/SkipsModelValidations
     AdvisorMailer.notify_assigned(self).deliver_now unless current_advisor == advisor
   end
-  
+
   def assign_area(postcode)
     return if postcode.blank?
     if ward_mapit_code = HackneyWardFinder.new(postcode).lookup
@@ -167,22 +166,21 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       false
     end
   end
-  
+
   def completed_education?
     qualifications.any? || training_courses.any? || !studying.nil?
   end
-  
+
   def completed_objectives?
     objectives.any? || types_of_work.any? || support_priorities.any?
   end
-  
+
   def completed_about_you?
     personal_traits.any?
   end
-  
+
   def send_emails
     login.send_reset_password_instructions
     AdvisorMailer.notify_client_signed_up(self).deliver_now
   end
-  
 end

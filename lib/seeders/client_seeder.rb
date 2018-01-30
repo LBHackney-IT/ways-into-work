@@ -55,7 +55,6 @@ class ClientSeeder
           c.studying = work_out_boolean(row['Currently studying?'])
           c.employed = work_out_boolean(row['Currently employed?'])
           c.health_conditions = work_out_boolean(row['Any health conditions?'])
-          c.affected_by_welfare = work_out_boolean(row['Affected by welfare reform?'])
           c.assessment_notes = generate_assessment_notes(row) if c.assessment_notes.empty?
         end
 

@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180105110044) do
+ActiveRecord::Schema.define(version: 20180130223305) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "action_plan_tasks", force: :cascade do |t|
     t.string "title"
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 20180105110044) do
     t.string "barriers", default: [], array: true
     t.integer "contact_notes_count", default: 0
     t.boolean "health_conditions"
-    t.boolean "affected_by_welfare"
     t.datetime "deleted_at"
     t.boolean "imported", default: false
     t.bigint "referrer_id"
@@ -98,6 +97,7 @@ ActiveRecord::Schema.define(version: 20180105110044) do
     t.string "national_insurance_number"
     t.boolean "affected_by_benefit_cap"
     t.boolean "assigned_supported_employment"
+    t.boolean "welfare_calculation_completed"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end

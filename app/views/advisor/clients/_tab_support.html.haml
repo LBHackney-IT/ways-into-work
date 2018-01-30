@@ -35,9 +35,6 @@
 // JSA, ESA, IB, UC, None, Other
 =form.input :receive_benefits, as: :radio_buttons, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }
 
+=form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Is the client affected by the benefits cap?', wrapper_html: { class: "convert_radio" }
 
-// 2 new yes/no additions:
-// Are you affected by the benefit cap? (Y/N)
-
-// Better Off Calculation completed? (Y/N)
-
+=form.input :welfare_calculation_completed, as: :radio_buttons, :label => 'Better Off Calculation completed?', wrapper_html: { class: "convert_radio" }

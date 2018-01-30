@@ -111,5 +111,4 @@ Then(/^I should see my profile details$/) do
   expect(page).to have_content(@i.last_name)
   expect(page).to have_content(strip_tags(@i.decorate.decorate_age))
   expect(page).to have_content(@i.email)
-
 end

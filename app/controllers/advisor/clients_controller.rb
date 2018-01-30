@@ -87,7 +87,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     )) || return
     @filtered_clients = @filterrific.find.page(params[:page])
   end
-  
+
   def filterrific_options
     {
       by_hub_id: Hub.options_for_select,
@@ -145,7 +145,6 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :job_title,
       :working_hours_per_week,
       :health_conditions,
-      :affected_by_welfare,
       :gender,
       :rag_status,
       :first_name,
@@ -183,10 +182,10 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   def assessment_note_keys # rubocop:disable Metrics/MethodLength
     %w[
       aspirations
+      objectives
       strengths
       not_good_at
       driving_force
-      past_education
       work_experience
       job_goal_1
       job_goal_2
@@ -194,6 +193,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       general
       support
       get_better_at
+      additional_info
     ]
   end
 end

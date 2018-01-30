@@ -3,17 +3,13 @@
 
 // pezholio
 
-// remove this completely from database then delete from here:
+// remove this completely from database then delete from here
+
+// jrae - before removing double check we are removing from client sign up too?
 
 / .convert_checkbox
 /   =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
 /   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
-
-
-
-// remove this completely from database then delete from here:
-
-/ = render partial: 'assessment_note', locals: {form: form, note: @past_education_notes, label: 'Details of past education', type: :text }
 
 = form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio has_child" }
 
@@ -34,7 +30,6 @@
 
 %br
 
-// this is changed to be both for work and education is it ok staying as '@work_experience_notes'?
 = render partial: 'assessment_note', locals: {form: form, note: @work_experience_notes, label: 'Additional information about work or education experience:', type: :text }
 
 .convert_checkbox
@@ -42,8 +37,7 @@
   = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
 %br
 
-
-
+// pezholio
 
 // I noticed that if you try to upload a file when you have edits in the form above it warns you - can we save it automatically when clicking this button? For now I have just added a hint in the partial below warning to save
 = render partial: '/shared/latest_file_upload'
