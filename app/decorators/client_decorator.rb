@@ -40,7 +40,8 @@ class ClientDecorator < ApplicationDecorator
   end
 
   def decorate_age
-    standard_wrapper('Date of Birth:', client.date_of_birth.to_date.to_formatted_s(:long) + " ("+client.age_in_years.to_s+" years old)")
+    return unless client.date_of_birth
+    standard_wrapper('Date of Birth:', "#{client.date_of_birth.to_date.to_formatted_s(:long)} (#{client.age_in_years} years old)")
   end
 
   def decorate_objectives

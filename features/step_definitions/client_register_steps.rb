@@ -7,7 +7,7 @@ module RegistrationSH
     fill_in "#{prefix}_address_line_1", with: client.address_line_1
     fill_in "#{prefix}_postcode", with: client.postcode
   end
-  
+
   def save
     click_button 'Register'
   end
@@ -107,7 +107,9 @@ Then(/^I should be asked to provide more information$/) do
 end
 
 Then(/^I should see my profile details$/) do
-  expect(page).to have_content(@i.name)
-  expect(page).to have_content(@i.age_in_years)
+  expect(page).to have_content(@i.first_name)
+  expect(page).to have_content(@i.last_name)
+  expect(page).to have_content(strip_tags(@i.decorate.decorate_age))
   expect(page).to have_content(@i.email)
+
 end
