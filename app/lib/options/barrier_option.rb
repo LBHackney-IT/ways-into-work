@@ -16,7 +16,8 @@ class BarrierOption < Option
       new('functional_skills', 'Functional skills '),
       new('no_experience', 'Lack of relevant experience'),
       new('overqualified', 'Overqualified'),
-      new('where_to_begin', 'Unclear about what to do and where to begin.')
+      new('where_to_begin', 'Unclear about what to do and where to begin.'),
+      new('applying_for_benefits', 'Applying for benefits')
     ]
   end
 end

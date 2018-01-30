@@ -15,8 +15,6 @@
 // add another aditional notes for the above select box - will this one do?
 = render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
 
-
-// add ‘applying for benefits’ to the checkbox below
 .convert_checkbox
   =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you need support with any of the following?', include_hidden: false
 
