@@ -3,8 +3,12 @@
 
 // @pezholio
 
-// NEW checkbox selector - 'What are you looking for?'
-// (multiple choices - Full time work, Part time work, Training or qualifications, Apprenticeship, Work experience, Volunteering, Other)
+// this checkbox has been moved over from the support tab - does it need to be moved in the database to link more to this tab or is that alright?
+
+.convert_checkbox.field
+  =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What are you looking for?', include_hidden: false
+
+  = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 
 // NEW TEXTAERA - 'Additional info:'
 
