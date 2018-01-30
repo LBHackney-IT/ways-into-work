@@ -1,10 +1,29 @@
 %h3
   = t('client.tab_a.tab_4')
 
-.convert_checkbox.field
-  =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with us?', include_hidden: false
+.bold For supported employment clients only.
 
-  = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
+%br
+
+
+// pezholio
+
+// add checkbox for 'Please select the option that best describes your health condition or learning difficulty:'
+// choices:
+// Learning disability, Autism, Depression/Bipolar Disorder, Schizophrenia, Anxiety, Personality Disorder, Alcohol/Substance misuse issues, Visual impairment, Hearing impairment, Physical/long-term health conditions
+
+// add another aditional notes for the above select box - will this one do?
+= render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
+
+
+// add ‘applying for benefits’ to the checkbox below
+.convert_checkbox
+  =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you need support with any of the following?', include_hidden: false
+
+%br
+
+= render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
+
 
 .convert_checkbox.field
   =form.input :support_priorities, as: :check_boxes, collection: SupportOption.all, :label => 'What would you like support with?', include_hidden: false
@@ -12,16 +31,15 @@
   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
 
-.convert_checkbox.field
-  = render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
 
-
-.convert_checkbox
-  =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you have any barriers to overcome?', include_hidden: false
-
-%br
-
-= render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
-
-
+// this needs to change to be a checbox option
+// options:
+// JSA, ESA, IB, UC, None, Other
 =form.input :receive_benefits, as: :radio_buttons, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }
+
+
+// 2 new yes/no additions:
+// Are you affected by the benefit cap? (Y/N)
+
+// Better Off Calculation completed? (Y/N)
+
