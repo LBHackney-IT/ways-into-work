@@ -42,7 +42,7 @@ gem 'paranoia'
 gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service_check'
 
 gem 'active_model_serializers'
-gem 'airbrake', '~> 7.2'
+gem 'airbrake', require: false
 
 group :development, :staging, :test do
   gem 'fabrication'

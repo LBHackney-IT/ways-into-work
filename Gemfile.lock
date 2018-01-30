@@ -411,7 +411,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  airbrake (~> 7.2)
+  airbrake
   appsignal
   aws-sdk
   better_errors
@@ -467,4 +467,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.4
+   1.16.0
