@@ -19,6 +19,10 @@ class ClientDecorator < ApplicationDecorator
     standard_wrapper('Last Name:', client.last_name)
   end
 
+  def decorate_national_insurance_number
+    standard_wrapper('National Insurance Number:', client.national_insurance_number)
+  end
+
   def decorate_date_registered
     standard_wrapper('Date registered:', client.created_at.to_date.to_formatted_s(:long))
   end
