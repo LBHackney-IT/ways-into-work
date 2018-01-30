@@ -1,6 +1,13 @@
 %h3
   = t('client.tab_a.tab_8')
 
+%p= t('client.tab_a.tab_8_about')
+
+
+// pezholio
+
+// add extra option to each option below for 'Prefer not to say'
+
 .convert_radio.field
   =form.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], :label => 'Gender:'
   .convert_checkbox= render partial: 'shared/other_text', locals: {form: form, field: :other_gender}
