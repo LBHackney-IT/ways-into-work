@@ -1,7 +1,7 @@
 %tr[client]
   %td=link_to client.name, edit_advisor_client_path(client)
-  %td=client.next_meeting_date&.to_date&.to_s(:short)
-  %td=client.last_meeting_or_contact&.to_date&.to_s(:short)
+  %td=client.next_meeting_date&.to_date&.to_s(:long)
+  %td=client.last_meeting_or_contact&.to_date&.to_s(:long)
   %td
     %i.fa.fa-circle{class: client.rag_status}
   %td.has-text-right=button_to 'View details', edit_advisor_client_path(client), method: :get, class: "button is-primary is-small"
