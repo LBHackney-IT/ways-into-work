@@ -1,6 +1,6 @@
 = render 'shared/form_errors', object: form.object
 %fieldset
-  = form.input :title, label: "Task title (update cv, attend training)", :input_html => { :class => "input" }
+  = form.input :title, label: "Agreed Task (i.e. complete CV, attend training)", :input_html => { :class => "input" }
 
   = form.input :notes, as: :text, label: "Notes", :input_html => { :class => "textarea" }
   .convert_radio
