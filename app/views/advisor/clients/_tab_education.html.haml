@@ -1,16 +1,6 @@
 %h3
   = t('client.tab_a.tab_5b')
 
-// pezholio
-
-// remove this completely from database then delete from here
-
-// jrae - before removing double check we are removing from client sign up too?
-
-/ .convert_checkbox
-/   =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
-/   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
-
 = form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio has_child" }
 
 .is-hidden.on-true

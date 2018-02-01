@@ -168,7 +168,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   end
 
   def completed_education?
-    qualifications.any? || training_courses.any? || !studying.nil?
+    training_courses.any? || !studying.nil?
   end
 
   def completed_objectives?

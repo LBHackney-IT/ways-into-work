@@ -69,7 +69,7 @@ Given(/^I fill out the first three profile steps$/) do
   2.times do
     click_on('Next Step')
   end
-  @options = %w[nvq_level2 nvq_level3 nvq_level4]
+  @options = TrainingCourseOption.all.sample(3).collect(&:id)
   @options.each { |option| find("input[value=#{option}]", visible: false).set(true) }
 end
 
@@ -78,8 +78,7 @@ Given(/^I go back to a previous step$/) do
 end
 
 Then(/^my options should be saved$/) do
-  @i.reload
-  expect(@i.qualifications).to eq(@options)
+  expect(@i.reload.training_courses.sort).to eq(@options.sort)
 end
 
 Then(/^I should be asked to start creating my profile$/) do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130223305) do
+ActiveRecord::Schema.define(version: 20180201170420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20180130223305) do
     t.boolean "studying_part_time"
     t.bigint "advisor_id"
     t.string "preferred_contact_method"
-    t.string "qualifications", default: [], array: true
     t.string "other_qualification"
     t.string "training_courses", default: [], array: true
     t.string "other_training_course"

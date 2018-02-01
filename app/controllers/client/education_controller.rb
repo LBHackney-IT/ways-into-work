@@ -1,6 +1,6 @@
 class Client::EducationController < Client::StepsController
   private
-  
+
   def step
     :education
   end
@@ -13,8 +13,7 @@ class Client::EducationController < Client::StepsController
       :current_education,
       :other_qualification,
       :other_training_course,
-      qualifications:  [],
-      training_courses:  []
+      training_courses: []
     )
   end
 end

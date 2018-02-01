@@ -155,7 +155,6 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :address_line_2,
       :postcode,
       funded: [],
-      qualifications: [],
       barriers: [],
       objectives: [],
       support_priorities: [],
