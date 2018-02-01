@@ -75,8 +75,8 @@ RSpec.describe DashboardStats, type: :model do
     let(:workless_off_benefits) { Fabricate.times(rand(1..10), :client, receive_benefits: false, employed: false) }
     let(:under_25) { Fabricate.times(rand(1..10), :client, date_of_birth: Time.zone.today - 20.years) }
     let(:over_50) { Fabricate.times(rand(1..10), :client, date_of_birth: Time.zone.today - 55.years) }
-    let(:care_leavers) { Fabricate.times(rand(1..10), :client, care_leaver: true) }
-    let(:health_conditions) { Fabricate.times(rand(1..10), :client, health_conditions: true) }
+    let(:care_leavers) { Fabricate.times(rand(1..10), :client, care_leaver: 'Yes') }
+    let(:health_conditions) { Fabricate.times(rand(1..10), :client, health_condition: 'Yes') }
     let(:female) { Fabricate.times(rand(1..10), :client, gender: 'Female') }
     let(:bame) { Fabricate.times(rand(1..10), :client, bame: 'black') }
 

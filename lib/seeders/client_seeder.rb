@@ -54,7 +54,7 @@ class ClientSeeder
           c.receive_benefits = work_out_boolean(row['Receiving benefits?'])
           c.studying = work_out_boolean(row['Currently studying?'])
           c.employed = work_out_boolean(row['Currently employed?'])
-          c.health_conditions = work_out_boolean(row['Any health conditions?'])
+          c.health_condition = row['Any health conditions?']&.capitalize
           c.assessment_notes = generate_assessment_notes(row) if c.assessment_notes.empty?
         end
 

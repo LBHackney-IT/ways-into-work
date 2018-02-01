@@ -66,8 +66,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
   scope :under_25, -> { where('date_of_birth > ?', Time.zone.today - 25.years) }
   scope :over_50, -> { where('date_of_birth < ?', Time.zone.today - 50.years) }
-  scope :care_leavers, -> { where(care_leaver: true) }
-  scope :health_conditions, -> { where(health_conditions: true) }
+  scope :care_leavers, -> { where(care_leaver: 'Yes') }
+  scope :health_conditions, -> { where(health_condition: 'Yes') }
   scope :female, -> { where(gender: 'Female') }
   scope :bame, -> { where('bame != ?', 'white_british') }
 

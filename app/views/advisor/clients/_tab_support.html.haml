@@ -5,15 +5,15 @@
 
 %br
 
-
 // pezholio
 
-// add checkbox for 'Please select the option that best describes your health condition or learning difficulty:'
-// choices:
-// Learning disability, Autism, Depression/Bipolar Disorder, Schizophrenia, Anxiety, Personality Disorder, Alcohol/Substance misuse issues, Visual impairment, Hearing impairment, Physical/long-term health conditions
+.convert_checkbox.field
+  =form.input :health_barriers, as: :check_boxes, collection: HealthBarrierOption.all, :label => 'Please select the option that best describes your health condition or learning difficulty:', include_hidden: false
+
+  = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
 // add another aditional notes for the above select box - will this one do?
-= render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
+= render partial: 'assessment_note', locals: {form: form, note: @health_barriers_notes, label: 'Additional notes', type: :text }
 
 .convert_checkbox
   =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you need support with any of the following?', include_hidden: false

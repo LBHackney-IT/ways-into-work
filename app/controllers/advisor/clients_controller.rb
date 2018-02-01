@@ -144,7 +144,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :employed,
       :job_title,
       :working_hours_per_week,
-      :health_conditions,
+      :health_condition,
       :gender,
       :rag_status,
       :first_name,
@@ -189,8 +189,8 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       job_goal_1
       job_goal_2
       barriers
+      health_barriers
       general
-      support
       get_better_at
       additional_info
     ]

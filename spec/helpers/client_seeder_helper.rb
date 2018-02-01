@@ -1,5 +1,4 @@
 module ClientSeederHelper
-  
   def stub_rows(instance, number_of_rows = 1, overrides = {}) # rubocop:disable Metrics/MethodLength
     rows = []
     number_of_rows.times do
@@ -28,5 +27,4 @@ module ClientSeederHelper
     instance.instance_variable_set(:@csv_data, rows)
     rows
   end
-  
 end

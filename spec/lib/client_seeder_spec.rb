@@ -37,7 +37,7 @@ RSpec.describe ClientSeeder, :cli, type: :model do
       expect(client.receive_benefits).to eq(true)
       expect(client.studying).to eq(false)
       expect(client.employed).to eq(false)
-      expect(client.health_conditions).to eq(false)
+      expect(client.health_condition).to eq('No')
       expect(client.assessment_notes.count).to eq(3)
       expect(client.assessment_notes.find_by(content_key: 'job_goal_1').content).to eq(row['Job Goal 1'])
       expect(client.assessment_notes.find_by(content_key: 'job_goal_2').content).to eq(row['Job Goal 2'])
