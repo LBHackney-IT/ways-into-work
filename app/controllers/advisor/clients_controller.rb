@@ -139,6 +139,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :studying,
       :studying_part_time,
       :receive_benefits,
+      :welfare_calculation_completed,
       :current_education,
       :care_leaver,
       :employed,
