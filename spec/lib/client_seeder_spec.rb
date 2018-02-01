@@ -34,7 +34,7 @@ RSpec.describe ClientSeeder, :cli, type: :model do
       expect(client.address_line_2).to eq(row['Address line 2'])
       expect(client.rag_status).to eq(row['Current Status (RAGG)'])
       expect(client.gender).to eq(row['Gender'])
-      expect(client.receive_benefits).to eq(true)
+      expect(client.receive_benefits).to eq('jsa')
       expect(client.studying).to eq(false)
       expect(client.employed).to eq(false)
       expect(client.health_condition).to eq('No')

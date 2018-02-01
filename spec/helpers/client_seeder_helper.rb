@@ -13,7 +13,7 @@ module ClientSeederHelper
         'Postcode' => 'SW1A 1AA',
         'Current Status (RAGG)' => 'amber',
         'Gender' => 'f',
-        'Receiving benefits?' => 'yes',
+        'Receiving benefits?' => 'jsa',
         'Currently studying?' => 'no',
         'Currently employed?' => 'no',
         'Any health conditions?' => 'no',

@@ -10,9 +10,6 @@
   =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Funding Code'
   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
 
-.is-hidden.on-true
-  =form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Is the client affected by Benefit Cap?', wrapper_html: { class: "convert_radio" }
-
 =form.input :assigned_supported_employment, as: :radio_buttons, :label => 'Is the client assigned to supported employment?', wrapper_html: { class: "convert_radio" }
 
 = render partial: 'assessment_note', locals: {form: form, note: @additional_info_notes, label: 'Add any more information about the client here', type: :text }

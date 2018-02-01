@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201180258) do
+ActiveRecord::Schema.define(version: 20180201195151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20180201180258) do
     t.string "types_of_work", default: [], array: true
     t.string "other_type_of_work"
     t.string "gender"
-    t.boolean "receive_benefits"
+    t.string "receive_benefits"
     t.string "care_leaver"
     t.string "other_gender"
     t.string "support_priorities", default: [], array: true
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20180201180258) do
     t.boolean "assigned_supported_employment"
     t.boolean "welfare_calculation_completed"
     t.string "health_barriers", default: [], array: true
+    t.string "other_receive_benefits"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end

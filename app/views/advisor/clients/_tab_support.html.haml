@@ -5,14 +5,11 @@
 
 %br
 
-// pezholio
-
 .convert_checkbox.field
   =form.input :health_barriers, as: :check_boxes, collection: HealthBarrierOption.all, :label => 'Please select the option that best describes your health condition or learning difficulty:', include_hidden: false
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
-// add another aditional notes for the above select box - will this one do?
 = render partial: 'assessment_note', locals: {form: form, note: @health_barriers_notes, label: 'Additional notes', type: :text }
 
 .convert_checkbox
@@ -29,11 +26,9 @@
   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
 
-
-// this needs to change to be a checbox option
-// options:
-// JSA, ESA, IB, UC, None, Other
-=form.input :receive_benefits, as: :radio_buttons, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }
+.convert_checkbox.field
+  =form.input :receive_benefits, as: :radio_buttons, collection: BenefitsOption.all, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }
+  = render partial: 'shared/other_text', locals: { form: form, field: :other_receive_benefits }
 
 =form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Is the client affected by the benefits cap?', wrapper_html: { class: "convert_radio" }
 
