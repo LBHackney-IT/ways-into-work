@@ -1,0 +1,5 @@
+= simple_form_for [client, Achievement.new(name: option.id)], url: advisor_client_achievements_path(client_id: client.id) do |f|
+  
+  =f.hidden_field :name
+
+  =f.submit option.name, class: 'text'

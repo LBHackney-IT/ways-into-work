@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20180201195151) do
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
 
+  create_table "achievements", force: :cascade do |t|
+    t.string "name"
+    t.bigint "client_id"
+    t.date "date_achieved"
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_achievements_on_client_id"
+  end
+
   create_table "action_plan_tasks", force: :cascade do |t|
     t.string "title"
     t.text "notes"
@@ -26,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180201195151) do
     t.bigint "advisor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "outcome"
+    t.string "achievement_name"
     t.index ["advisor_id"], name: "index_action_plan_tasks_on_advisor_id"
     t.index ["client_id"], name: "index_action_plan_tasks_on_client_id"
   end
@@ -34,9 +44,8 @@ ActiveRecord::Schema.define(version: 20180201195151) do
   create_table "advisors", force: :cascade do |t|
     t.string "name"
     t.bigint "hub_id"
-    t.boolean "team_leader", default: false
     t.string "phone"
-    t.json "options", default: {}
+    t.integer "role", default: 0
     t.index ["hub_id"], name: "index_advisors_on_hub_id"
   end
 
@@ -99,6 +108,7 @@ ActiveRecord::Schema.define(version: 20180201195151) do
     t.boolean "welfare_calculation_completed"
     t.string "health_barriers", default: [], array: true
     t.string "other_receive_benefits"
+    t.datetime "next_meeting_date"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end
@@ -176,6 +186,7 @@ ActiveRecord::Schema.define(version: 20180201195151) do
     t.index ["user_type", "user_id"], name: "index_user_logins_on_user_type_and_user_id"
   end
 
+  add_foreign_key "achievements", "clients"
   add_foreign_key "advisors", "hubs"
   add_foreign_key "clients", "advisors"
   add_foreign_key "clients", "referrers"

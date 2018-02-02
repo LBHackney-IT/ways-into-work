@@ -35,6 +35,12 @@ module NavigationHelpers
     when /the client's upload new file/
       new_advisor_client_file_upload_path(@client)
 
+    when /dashboard/
+      advisor_dashboard_index_path
+
+    when /the client achievements/
+      advisor_client_achievements_path(@client)
+
     else
       begin
         page_name =~ /the (.*) page/

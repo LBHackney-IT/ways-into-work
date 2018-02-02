@@ -8,9 +8,6 @@
         -else
           %span.bold="#{@filtered_clients.count} filtered clients"
           =" - from #{Client.all.count} total"
-    / .level-right
-    /   =link_to 'Export Clients', "/clients_template.csv", class: 'button'
-
 
   -if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
@@ -45,12 +42,25 @@
             %label.label Age
             %span.select
               = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
+          
+          .column
+            %label.label Objective
+            %span.select
+              = f.select(:by_objective, @filterrific.select_options[:by_objective], { include_blank: '- Any -' })
+          
+          .column
+            %label.label Rag status
+            %span.select
+              = f.select(:by_rag_status, @filterrific.select_options[:by_rag_status], { include_blank: '- Any -' })
 
           .column.has-text-right#fix-line-hieght-dbl
+            = f.button :format, name: :format, value: 'csv', class: 'button' do
+              Export clients
+            &nbsp;
             = link_to('Reset filters & show all', reset_filterrific_url, class: "button add-top")
 
     = render partial: 'filtered_table', locals: { clients: @filtered_clients }
 
   - else
     %h4=I18n.t('advisors.headers.no_clients_yet')
-    =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary'
+    =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary' if current_advisor.hackney_works_team?

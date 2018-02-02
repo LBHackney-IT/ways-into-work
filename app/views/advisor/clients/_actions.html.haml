@@ -1,7 +1,7 @@
 .columns
   = simple_form_for client.object, url: advisor_client_path(client_id: client.id) do |form|
     .column
-      - if current_advisor.team_leader
+      - if current_advisor.team_leader?
         = render 'shared/form_errors', object: form.object
         = form.input :advisor_id, as: :select, collection: Advisor.all, include_blank: false
         = form.submit I18n.t('clients.buttons.assign_advisor'), class: "step button is-primary"

@@ -1,13 +1,13 @@
 #your_clients.column
 
-  .head.columns.level
-    .level-left.column
+  .head.level
+    .level-left
       %h2 Your Clients
       -if @clients_requiring_contact.any?
         %span.client_total="#{current_advisor.clients.count} Total (#{@clients_requiring_contact.count} need initial contact)"
       -else
         %span.client_total="#{current_advisor.clients.count} Total"
-    .level-right.column.home
+    .level-right.home
       = link_to 'Create new client', :new_advisor_client, class: "button"
 
   -if @clients_requiring_contact.any?
@@ -65,6 +65,9 @@
 
           .column.has-text-right#fix-line-hieght
             = link_to('Reset filters', reset_filterrific_url, class: "button")
+            &nbsp;
+            = f.button :format, name: :format, value: 'csv', class: 'button' do
+              Export clients
 
     = render partial: 'filtered_table', locals: { clients: @filtered_clients }
 

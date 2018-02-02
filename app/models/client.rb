@@ -17,6 +17,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   delegate :sign_in_count, to: :login
 
   has_many :meetings
+  has_many :achievements
 
   scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
 
@@ -24,7 +25,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
 
-  scope :with_outcome, ->(outcome, from, to) { where(id: ActionPlanTask.completed_with_outcome(outcome).ended_in_period(from, to).pluck(:client_id)) }
+  scope :with_outcome, ->(outcome, from, to) { where(id: Achievement.with_name(outcome).achieved_in_period(from, to).pluck(:client_id)) }
 
   accepts_nested_attributes_for :login
 
@@ -53,6 +54,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       by_advisor_id
       by_training
       by_age
+      by_rag_status
+      by_objective
+      sorted_by
     ]
   )
 
@@ -62,8 +66,12 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_funding_code, ->(code) { code.blank? ? all : where('funded @> ARRAY[?]::varchar[]', [code]) }
 
+  scope :by_rag_status, ->(status) { where(rag_status: status) }
+  scope :by_objective, ->(objective) { where('objectives @> ARRAY[?]::varchar[]', [objective]) }
+
   scope :workless_on_benefits, -> { where(receive_benefits: true, employed: true) }
   scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
+
   scope :under_25, -> { where('date_of_birth > ?', Time.zone.today - 25.years) }
   scope :over_50, -> { where('date_of_birth < ?', Time.zone.today - 50.years) }
   scope :care_leavers, -> { where(care_leaver: 'Yes') }
@@ -81,16 +89,58 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     }
   }
 
+  scope :sorted_by, lambda { |sort_options|
+    direction = sort_options.match?(/desc$/) ? 'desc' : 'asc'
+    case sort_options.to_s
+    when /^first_name/
+      order("first_name #{direction}")
+    when /^advisor/
+      joins(:advisor).order("advisors.name #{direction}")
+    when /^rag_status/
+      order("(rag_status=0, rag_status=1, rag_status=2, rag_status=3) #{direction}")
+    when /^next_meeting_date/
+      order("next_meeting_date #{direction}")
+    end
+  }
+
+  def self.csv(clients)
+    CSV.generate do |csv|
+      csv << csv_header
+      clients.each do |c|
+        csv << c.csv_row
+      end
+    end
+  end
+
+  def self.csv_header # rubocop:disable Rails/MethodLength
+    [
+      'Registation date',
+      'Advisor Name',
+      'Client Name',
+      'Email',
+      'Funding Code',
+      'Types of Work Interested In',
+      'RAG Rating',
+      'Industry Preference',
+      'Ethnicity',
+      'Gender',
+      'Date of birth',
+      'Affected by Beneft Cap?',
+      'Assigned to Supported Employment?',
+      'Health Condition or Disability?',
+      'Claiming Benefits?',
+      'Care leaver?',
+      'Referrer Email',
+      AchievementOption.all.map(&:name)
+    ].flatten
+  end
+
   def self.registered_on(from, to = nil)
     if to.nil?
       from = from.beginning_of_month
       to = from.end_of_month
     end
     where('created_at BETWEEN ? AND ?', from, to)
-  end
-
-  def next_meeting_date
-    upcoming_meetings.first.start_datetime.to_date.to_s(:long) if upcoming_meetings.any?
   end
 
   def last_meeting_or_contact
@@ -139,9 +189,46 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     @age ||= (DateTime.current.mjd - date_of_birth.to_date.mjd) / 365 if date_of_birth
   end
 
+  def root_page
+    :client_dashboard
+  end
+
+  def csv_row # rubocop:disable Rails/MethodLength, Metrics/AbcSize
+    [
+      created_at.to_date,
+      advisor.name,
+      name,
+      login.email,
+      funded.join(', '),
+      objectives.join(', '),
+      rag_status,
+      types_of_work.join(', '),
+      ethnicity,
+      gender,
+      date_of_birth&.to_date,
+      affected_by_benefit_cap?.humanize,
+      assigned_supported_employment?.humanize,
+      health_condition,
+      receive_benefits?.humanize,
+      care_leaver,
+      referrer&.email,
+      achievement_counts
+    ].flatten
+  end
+
+  def achievement_counts
+    AchievementOption.all.map do |option|
+      achievements.select { |a| a.name == option.id }.count
+    end
+  end
+
+  def ethnicity
+    other_bame || BameOption.find(bame)&.name
+  end
+
   def assign_team_leader(ward_mapit_code)
     self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
-                   Advisor.find_by(team_leader: true)
+                   Advisor.find_by(role: :team_leader)
   end
 
   def assign_advisor(advisor_id, current_advisor)
@@ -182,5 +269,14 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def send_emails
     login.send_reset_password_instructions
     AdvisorMailer.notify_client_signed_up(self).deliver_now
+  end
+
+  def generate_initial_meeting
+    meetings.create(
+      start_datetime: Time.zone.now,
+      advisor: advisor,
+      client_attended: true,
+      agenda: 'initial_assessment'
+    )
   end
 end

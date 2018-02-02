@@ -15,12 +15,13 @@
         - if client.action_plan_tasks.ongoing.any?
           .head.level
             .level-left
-              %h2 Ongoing Actions
+              %h2 Ongoing Tasks
               %span="#{client.action_plan_tasks.ongoing.count} Ongoing"
           %table.table
             %thead
               %tr
-                %th Agreed Action
+                %th Agreed Task
+                %th Created
                 %th Due
                 %th Assigned
             %tbody

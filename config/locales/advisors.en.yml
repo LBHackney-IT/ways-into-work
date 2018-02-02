@@ -10,3 +10,86 @@ en:
     headers:
       no_clients: "Your case load is currently empty. You can assign yourself cases from the unassigned client list."
       no_clients_yet: "There are currently clients in the system yet."
+    achievement:
+      achieved: "All your achievements so far"
+      achievable: "Manual achievement selection"
+      cv_completed:
+        title:
+          first: "CV completed"
+          subsequent: "CV completed"
+        description:
+          first: "Uploaded your first CV"
+          subsequent: "<strong>%{count}</strong> completed CV's"
+        achieved: "CV completed"
+      job_application:
+        title:
+          first: "First job application sent"
+          subsequent: "Job application sent"
+        description:
+          first: "Sent your first job application"
+          subsequent: "<strong>%{count}</strong> job applications sent"
+        achieved: "Job application submitted"
+      interview:
+        title:
+          first: "First job interview"
+          subsequent: "Interview attended"
+        description:
+          first: "Attended your first job interview"
+          subsequent: "<strong>%{count}</strong> interviews attended"
+        achieved: "Interview attended"
+      placement_volunteering:
+        title:
+          first: "Found a placement"
+          subsequent: "Found a placement"
+        description:
+          first: "Found a placement"
+          subsequent: "<strong>%{count}</strong> placements found"
+        achieved: "Work placement or volunteering"
+      training_started:
+        title:
+          first: "Training course started"
+          subsequent: "Training course started"
+        description:
+          first: "Started your first training course"
+          subsequent: "<strong>%{count}</strong> training courses started"
+        achieved: "Training"
+      course_completed:
+        title:
+          first: "Education"
+          subsequent: "Education"
+        description:
+          first: "Completed your first course"
+          subsequent: "<strong>%{count}</strong> courses completed"
+        achieved: "Complete education course for e.g. college courses or degree"
+      job_start:
+        title:
+          first: "First job"
+          subsequent: "Got a job"
+        description:
+          first: "Congrats, you started your first job!V"
+          subsequent: "<strong>%{count}</strong> jobs started"
+        achieved: "Job/apprenticeship start"
+      job_sustained:
+        title:
+          first: "Job held"
+          subsequent: "Job held"
+        description:
+          first: "6 months or more in your job"
+          subsequent: "6 months or more in your job"
+        achieved: "Sustained job (>6 months)"
+      boc_completed:
+        title:
+          first: "Better off calculation complete"
+          subsequent: "Better off calculation complete"
+        description:
+          first: "Completed a better off calculation"
+          subsequent: "Completed a better off calculation"
+        achieved: "'BOCs completed' (Better Off Calculation)"
+      13_week_sustainment:
+        title:
+          first: "Job held"
+          subsequent: "Job held"
+        description:
+          first: "13 weeks in your job"
+          subsequent: "13 weeks in your job"
+        achieved: "13 week sustainment (relevant for TF)"

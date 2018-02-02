@@ -8,7 +8,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def create
-    if client.save
+    if client.save && client.generate_initial_meeting
       flash[:success] = "#{client.name} saved."
       redirect_to edit_advisor_client_path(client)
     else
@@ -21,6 +21,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     respond_to do |format|
       format.html
       format.js
+      format.csv { send_data Client.csv(@filterrific.find), type: 'text/csv', disposition: 'attachment; filename=clients.csv' }
     end
   end
 
@@ -104,7 +105,9 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       by_advisor_id: Advisor.options_for_select(selected_hub_id),
       by_types_of_work: TypeOfWorkOption.options_for_select,
       by_training: TrainingCourseOption.options_for_select,
-      by_age: [['Under 25', true]]
+      by_age: [['Under 25', true]],
+      by_objective: ObjectiveOption.options_for_select,
+      by_rag_status: [['Red', :red], ['Amber', :amber], ['Green', :green]]
     }
   end
 

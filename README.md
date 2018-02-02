@@ -63,4 +63,4 @@ DEFAULT_PASSWORD=SomePassword
 * rake db:migrate
 * rake db:seed # creates a test admin user and adds some schemas and documents
 
-Try 'rails s'. Good luck!
+Try 'rails s'. Good luck!!

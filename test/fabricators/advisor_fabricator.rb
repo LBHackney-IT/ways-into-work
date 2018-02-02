@@ -9,5 +9,5 @@ Fabricator(:advisor_without_hub, from: :advisor) do
 end
 
 Fabricator(:team_leader, from: :advisor) do
-  team_leader true
+  role :team_leader
 end

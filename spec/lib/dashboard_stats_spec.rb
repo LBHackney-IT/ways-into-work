@@ -105,12 +105,11 @@ RSpec.describe DashboardStats, type: :model do
   context 'outcomes' do
     let!(:job_start_clients) do
       Fabricate.times(4, :client) do
-        action_plan_tasks do
+        achievements do
           [
-            Fabricate(:action_plan_task,
-                      outcome: 'job_apprenticeship',
-                      status: 'completed',
-                      ended_at: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
+            Fabricate(:achievement,
+                      name: 'job_apprenticeship',
+                      date_achieved: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
           ]
         end
       end
@@ -128,12 +127,15 @@ RSpec.describe DashboardStats, type: :model do
         'To date',
         'Registered',
         'CVs completed',
-        'Interviews',
-        'Work placements',
         'Job applications',
-        'Training',
+        'Interviews attended',
+        'Placements attended',
+        'Courses started',
+        'Courses completed',
         'Job starts',
-        'Sustainments'
+        'Job sustainments',
+        'BOCs completed',
+        '13 week sustainments'
       ]
     )
   end
@@ -144,6 +146,9 @@ RSpec.describe DashboardStats, type: :model do
         from_date.strftime('%Y-%m-%d'),
         to_date.strftime('%Y-%m-%d'),
         4,
+        0,
+        0,
+        0,
         0,
         0,
         0,

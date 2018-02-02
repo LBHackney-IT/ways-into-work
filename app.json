@@ -1,7 +1,7 @@
 {
   "name": "ways-into-work",
   "scripts": {
-    "postdeploy": "if [[ $RAILS_ENV = 'development' ]]; then rake db:seed; fi"
+    "postdeploy": "if [[ $RAILS_ENV = 'staging' ]]; then rake db:seed; fi"
   },
   "env": {
     "APPSIGNAL_APP_NAME": {
@@ -39,11 +39,11 @@
     },
     "RACK_ENV": {
       "required": true,
-      "value": "development"
+      "value": "staging"
     },
     "RAILS_ENV": {
       "required": true,
-      "value": "development"
+      "value": "staging"
     },
     "RAILS_LOG_TO_STDOUT": {
       "required": true

@@ -1,0 +1,5 @@
+.achievable-container
+  %a.show_achievement{ 'data-target-id' => option.id }
+    
+  .achievement{id: "achievement_#{option.id}"}
+    = render partial: 'form', locals: { option: option }

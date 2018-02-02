@@ -7,7 +7,7 @@ RSpec.describe HubsController, type: :controller do
     
     let!(:hubs) do
       Fabricate.times(5, :hub) do
-        advisors(count: 1) { Fabricate(:advisor_without_hub, team_leader: true) }
+        advisors(count: 1) { Fabricate(:advisor_without_hub, role: :team_leader) }
       end
     end
     

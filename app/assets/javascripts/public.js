@@ -36,4 +36,7 @@ $(document).ready(function() {
   $('#dashboard_hubs').removeAdvisors();
   
   $('#referrer_organisation').showOthers();
+
+  $('.show_achievement').showAchievement();
+
 });
