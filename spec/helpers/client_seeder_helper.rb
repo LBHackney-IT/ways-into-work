@@ -15,7 +15,7 @@ module ClientSeederHelper
         'Gender' => 'f',
         'Receiving benefits?' => 'jsa',
         'Currently studying?' => 'no',
-        'Currently employed?' => 'no',
+        'Currently employed?' => 'yes',
         'Any health conditions?' => 'no',
         'Affected by welfare reform?' => 'yes',
         'Date of Registration' => '2016-04-10',
