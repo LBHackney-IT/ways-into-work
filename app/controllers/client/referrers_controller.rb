@@ -1,13 +1,11 @@
 class Client::ReferrersController < ApplicationController
   expose :referrer
-  expose :client, -> { referrer.build_client(login: UserLogin.new) }
-  
-  before_action only: [:create] do
-    check_postcode referrer.client, referrer_params[:client_attributes][:postcode]
-  end
-  
+  expose :client, -> { referrer.client || referrer.build_client(login: UserLogin.new) }
+
+  before_action :init_client, only: :create
+
   def new; end
-  
+
   def create
     if referrer.save
       referrer.client.send_emails
@@ -15,9 +13,19 @@ class Client::ReferrersController < ApplicationController
       render :new
     end
   end
-  
+
   private
-  
+
+  def init_client
+    return if client.postcode.blank?
+    if (ward_code = client.hackney_ward_code).present?
+      client.auto_assign_advisor(ward_code)
+      client.login.generate_default_password
+    else
+      redirect_to(:outside_hackney)
+    end
+  end
+
   def referrer_params # rubocop:disable Metrics/MethodLength
     params.require(:referrer).permit(
       :name,
@@ -38,5 +46,4 @@ class Client::ReferrersController < ApplicationController
       ]
     )
   end
-  
 end

@@ -10,11 +10,11 @@ module ReferrerSH
     fill_in 'referrer_phone', with: referrer.phone
     fill_in 'referrer_email', with: referrer.email
     fill_in 'referrer_reason', with: referrer.reason
-            
+
     fill_in_registration_form(email, client, 'referrer_client_attributes')
   end
-  
-  def save
+
+  def register
     click_button 'Register'
   end
 end
@@ -24,14 +24,14 @@ Given(/^I fill in the referral form$/) do
   @referrer = Fabricate.build(:referrer)
   @client = Fabricate.build(:client)
   fill_in_referrer_form @referrer, @client
-  save
+  register
 end
 
 When(/^I refer a client with the organisation "([^"]*)"$/) do |organisation|
   @organisation = organisation
   visit new_client_referrers_path
   fill_in_referrer_form
-  save
+  register
 end
 
 Then(/^a new client should be created in the database$/) do
@@ -44,13 +44,13 @@ end
 When(/^I refer a client$/) do
   visit new_client_referrers_path
   fill_in_referrer_form
-  save
+  register
 end
 
 When(/^I refer a client as "([^"]*)"$/) do |email|
   visit new_client_referrers_path
   fill_in_referrer_form Fabricate.build(:referrer), Fabricate.build(:client), email
-  save
+  register
 end
 
 Then(/^the client should be auto assigned to homerton$/) do
@@ -61,7 +61,7 @@ When(/^I refer a client with a postcode outside the borough$/) do
   client = Fabricate.build(:client, postcode: 'GU1 1YF')
   visit new_client_referrers_path
   fill_in_referrer_form Fabricate.build(:referrer), client
-  save
+  register
 end
 
 Then(/^I should see that the client has been referred$/) do

@@ -2,7 +2,7 @@ require 'vcr'
 
 dotenv = Rails.root.join('.env')
 filter_vars = File.exist?(dotenv) ? Dotenv::Environment.new(dotenv) : ENV
-  
+
 VCR.configure do |c|
   c.hook_into :webmock
   c.ignore_localhost = true
@@ -13,5 +13,5 @@ VCR.configure do |c|
 end
 
 VCR.cucumber_tags do |t|
-  t.tags '@homerton_postcode', '@validate_postcode', '@outside_hackney_postcode', '@client_cv', '@advisor_cv'
+  t.tags '@homerton_postcode', '@validate_postcode', '@outside_hackney_postcode', '@client_cv', '@advisor_cv', '@haringey_postcode'
 end

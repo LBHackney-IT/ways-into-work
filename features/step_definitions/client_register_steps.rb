@@ -9,7 +9,7 @@ module RegistrationSH
   end
 
   def save
-    click_button 'Register'
+    click_button 'Save'
   end
 end
 World RegistrationSH
@@ -36,13 +36,13 @@ end
 When(/^I try and register with a postcode outside the borough$/) do
   client = Fabricate.build(:client, postcode: 'GU1 1YF')
   fill_in_registration_form(FFaker::Internet.email, client)
-  save
+  register
 end
 
 When(/^I try and register without a postcode$/) do
   client = Fabricate.build(:client, postcode: nil)
   fill_in_registration_form(FFaker::Internet.email, client)
-  save
+  register
 end
 
 Then(/^I should see an error telling me I need a postcode$/) do
@@ -52,7 +52,7 @@ end
 When(/^I register my self as "([^"]*)"$/) do |email|
   visit new_client_path
   fill_in_registration_form(email)
-  save
+  register
 end
 
 Given(/^when I navigate through all the profile steps$/) do

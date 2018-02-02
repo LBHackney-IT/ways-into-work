@@ -82,7 +82,20 @@ end
 Given(/^I register a client as "([^"]*)"$/) do |email|
   visit new_advisor_client_path
   fill_in_registration_form(email)
-  click_button 'Save'
+  save
+end
+
+Given(/^I try and register a client from Haringey$/) do
+  visit new_advisor_client_path
+  client = Fabricate.build(:client, postcode: 'N15 5EN')
+  fill_in_registration_form(FFaker::Internet.email, client)
+  save
+end
+
+Then(/^I should see that the client must have a hackney postcode$/) do
+  # expect(page).to have_css('#flash_error', text: I18n.t('clients.flashes.error.outside_borough'))
+  expect(current_path).to eq(advisor_clients_path)
+  expect(page).to have_content(I18n.t('clients.validation.outside_borough'))
 end
 
 Then(/^I should see the referrer's details$/) do
@@ -101,7 +114,7 @@ Then(/^I should only see clients from my hub$/) do
   @hub_clients.each do |client|
     expect(page.body).to match(ERB::Util.html_escape(client.name))
   end
-  
+
   @other_clients.each do |client|
     expect(page.body).to_not match(ERB::Util.html_escape(client.name))
   end

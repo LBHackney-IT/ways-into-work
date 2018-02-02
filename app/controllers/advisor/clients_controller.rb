@@ -1,6 +1,7 @@
 class Advisor::ClientsController < Advisor::BaseController # rubocop:disable ClassLength
   expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
   expose :referrer, -> { ReferrerDecorator.decorate(client.referrer) }
+
   before_action :init_client, only: :create
 
   def new
@@ -70,7 +71,6 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     if client.update_attributes(edit_client_params)
       client.update_advisor(current_advisor, current_advisor) if params[:commit] == 'Assign to me'
       flash[:success] = I18n.t('clients.flashes.success.updated')
-      @fallback_location = root_path
       true
     else
       false
@@ -78,11 +78,12 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def init_client
-    if HackneyWardFinder.new(client_params[:postcode]).in_hackney?
+    return if client.postcode.blank?
+    if client.hackney_ward_code.present?
       client.advisor = current_advisor
       client.login.generate_default_password
     else
-      redirect_to :outside_hackney
+      render :new
     end
   end
 

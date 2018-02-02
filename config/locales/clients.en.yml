@@ -5,6 +5,7 @@ en:
   clients:
     flashes:
       error:
+        outside_borough: "This postcode doesn't appear to be within the borough of Hackney. Please check."
         advisor_assignment: "Advisor could not be notified for some reason. Maybe an issue with clients or advisor."
       success:
         advisor_assigned: "Advisor has now been assigned to manage this client and has been notified."
@@ -63,7 +64,7 @@ en:
       back_to_contact_notes: "Back to contact notes"
       new_contact_note: "New contact note"
     validation:
-      outside_borough: "This postcode appears to be outside the borough of Hackney."
+      outside_borough: "The postcode you provided is invalid."
       postcode_error: "The postcode you provided is invalid."
     information:
       registered_date: "Registered on %{created}"

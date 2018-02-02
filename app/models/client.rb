@@ -226,11 +226,6 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     other_bame || BameOption.find(bame)&.name
   end
 
-  def assign_team_leader(ward_mapit_code)
-    self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
-                   Advisor.find_by(role: :team_leader)
-  end
-
   def assign_advisor(advisor_id, current_advisor)
     if advisor = Advisor.find(advisor_id)
       update_advisor(advisor, current_advisor)
@@ -244,14 +239,16 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     AdvisorMailer.notify_assigned(self).deliver_now unless current_advisor == advisor
   end
 
-  def assign_area(postcode)
-    return if postcode.blank?
-    if ward_mapit_code = HackneyWardFinder.new(postcode).lookup
-      assign_team_leader(ward_mapit_code)
-      login.generate_default_password
-    else
-      false
-    end
+  def auto_assign_advisor(ward_mapit_code)
+    self.advisor = Advisor.team_leader(Hub.covering_ward(ward_mapit_code)).first ||
+                   Advisor.find_by(role: :team_leader)
+  end
+
+  def hackney_ward_code
+    ward_code = HackneyWardFinder.new(postcode).lookup
+    return ward_code if ward_code.present?
+    errors.add(:postcode, I18n.t('clients.validation.outside_borough'))
+    nil
   end
 
   def completed_education?

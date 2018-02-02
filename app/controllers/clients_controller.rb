@@ -1,9 +1,7 @@
 class ClientsController < ApplicationController
   expose :client
-  
-  before_action only: [:create] do
-    check_postcode client, client_params[:postcode]
-  end
+
+  before_action :init_client, only: :create
 
   def new
     client.build_login
@@ -19,6 +17,16 @@ class ClientsController < ApplicationController
   end
 
   private
+
+  def init_client
+    return if client.postcode.blank?
+    if (ward_code = client.hackney_ward_code).present?
+      client.auto_assign_advisor(ward_code)
+      client.login.generate_default_password
+    else
+      redirect_to(:outside_hackney)
+    end
+  end
 
   def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
