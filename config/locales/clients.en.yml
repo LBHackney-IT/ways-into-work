@@ -37,9 +37,7 @@ en:
         short: "Details"
     buttons:
       archive_client: 'Archive client record and opt-out'
-      upload_cv: 'Upload CV'
       upload: 'Upload'
-      manage_cvs: 'Manage CVs'
       manage_uploads: 'Manage uploads'
       delete: 'Delete'
       make_contact: "Contact"
