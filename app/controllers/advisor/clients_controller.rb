@@ -30,7 +30,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
 
   def update
     if params[:commit] == 'Assign Advisor' ? assign_advisor : update_client
-      redirect_back(fallback_location: @fallback_location)
+      successful_redirect
     else
       AdvisorClientDecorator.decorate(Client.find(params[:id]))
       init_assessment_notes
@@ -46,13 +46,23 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
 
   private
 
+  def successful_redirect
+    case params[:commit]
+    when I18n.t('clients.buttons.assign_advisor')
+      redirect_back(fallback_location: edit_advisor_client_path(client))
+    when I18n.t('clients.buttons.upload') || I18n.t('clients.buttons.manage_uploads')
+      redirect_to new_advisor_client_file_upload_path(client)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def assign_advisor
     if client.assign_advisor(params[:client][:advisor_id], current_advisor)
       flash[:success] = I18n.t('clients.flashes.success.advisor_assigned')
     else
       flash[:error] = I18n.t('clients.flashes.error.advisor_assignment')
     end
-    @fallback_location = edit_advisor_client_path(client)
   end
 
   def update_client

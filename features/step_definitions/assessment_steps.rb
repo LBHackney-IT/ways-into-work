@@ -1,5 +1,24 @@
+module AssesmentSH
+  def select_tab(name)
+    find('a span', text: name).click
+  end
+end
+World AssesmentSH
+
+Given(/^I indicate the client is employed for (\d+) hours a week$/) do |num|
+  select_tab 'Experience'
+  expect(find("li.ui-tab[aria-selected='true']").text).to eq('Experience')
+  find("label[for='client_employed_true']").click
+  fill_in 'client_working_hours_per_week', with: num
+end
+
+Then(/^the number of hours a week should be saved as (\d+)$/) do |num|
+  expect(@client.reload.working_hours_per_week).to eq(num.to_i)
+end
+
 When(/^I indicate my client is looking to work in Retail$/) do
-  find('a span', text: 'Support').click
+  select_tab 'Support'
+
   find('input#client_types_of_work_retail').click
   click_on 'Save'
 end

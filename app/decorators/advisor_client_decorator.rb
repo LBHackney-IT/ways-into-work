@@ -4,7 +4,7 @@ class AdvisorClientDecorator < ClientDecorator
   end
 
   def new_file_button(label)
-    h.link_to label, h.new_advisor_client_file_upload_path(client), class: 'button is-primary'
+    h.submit_tag label, href: h.advisor_client_path(client), class: 'button is-primary'
   end
 
   def return_to_client_button
@@ -22,21 +22,21 @@ class AdvisorClientDecorator < ClientDecorator
   def decorate_meetings_action
     client.meetings.any? ? view_meetings : arrange_meeting
   end
-  
+
   def decorate_action_plan_tasks
     action_plan_tasks.map { |t| ActionPlanTaskDecorator.decorate(t) }
   end
-  
+
   private
-  
+
   def meetings_link(text, link)
     h.link_to text, link, method: :get, class: 'button is-primary is-small'
   end
-  
+
   def view_meetings
     meetings_link I18n.t('clients.buttons.view_meetings'), h.advisor_client_meetings_path(client)
   end
-  
+
   def arrange_meeting
     meetings_link I18n.t('clients.buttons.arrange_meeting'), h.new_advisor_client_meeting_path(client)
   end

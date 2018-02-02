@@ -5,9 +5,7 @@
   =client.new_file_button(I18n.t('clients.buttons.manage_uploads'))
 -else
   .bold
-    = t('clients.steps.employment.upload')
-  //remove this hint once fixing the save bug
-  .hint= t('clients.steps.employment.upload_hint')
+    = I18n.t('clients.steps.employment.upload')
   %br
 
   =client.new_file_button(I18n.t('clients.buttons.upload'))

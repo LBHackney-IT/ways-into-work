@@ -5,6 +5,10 @@ When(/^I upload a cv file$/) do
   click_on I18n.t('clients.buttons.upload')
 end
 
+When(/^I navigate to upload a file$/) do
+  click_on I18n.t('clients.buttons.upload')
+end
+
 Then(/^a cv upload reference should be saved$/) do
   expect(FileUpload.count).to eq(1)
   expect(FileUpload.last.attachment_file_name).to eq(@file_name)
