@@ -2,12 +2,8 @@
   .head.level
     .level-left
       %h2 All Clients
-      %span.client_total
-        -if @filtered_clients.count == Client.all.count
-          ="#{Client.all.count} Total"
-        -else
-          %span.bold="#{@filtered_clients.count} filtered clients"
-          =" - from #{Client.all.count} total"
+      %span.client_total#filtered_count
+        =render partial: 'filtered_count', locals: { clients: @filtered_clients }
 
   -if @filterrific.model_class.any?
     = form_for_filterrific @filterrific do |f|
@@ -42,12 +38,12 @@
             %label.label Age
             %span.select
               = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
-          
+
           .column
             %label.label Objective
             %span.select
               = f.select(:by_objective, @filterrific.select_options[:by_objective], { include_blank: '- Any -' })
-          
+
           .column
             %label.label Rag status
             %span.select

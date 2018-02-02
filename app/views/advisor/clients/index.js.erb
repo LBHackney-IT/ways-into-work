@@ -1,4 +1,11 @@
 <% js = escape_javascript(
   render partial: 'filtered_table', locals: { clients: @filtered_clients }
 ) %>
+
 $("#filterrific_results").html("<%= js %>");
+
+<% count = escape_javascript(
+  render partial: 'filtered_count', locals: { clients: @filtered_clients }
+) %>
+
+$("#filtered_count").html("<%= count %>");
