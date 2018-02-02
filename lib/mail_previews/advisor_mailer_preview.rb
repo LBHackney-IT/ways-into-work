@@ -5,7 +5,7 @@ class AdvisorMailerPreview < ActionMailer::Preview
   end
 
   def notify_assigned
-    AdvisorMailer.notify_assigned(Fabricate.build(:client))
+    AdvisorMailer.notify_assigned(Fabricate.build(:client), 'Jason')
   end
 end
 # :nocov:

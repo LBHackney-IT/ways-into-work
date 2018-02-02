@@ -7,8 +7,9 @@ class AdvisorMailer < ApplicationMailer
     )
   end
 
-  def notify_assigned(client)
+  def notify_assigned(client, assigned_by)
     @client = client
+    @assigned_by = assigned_by
     mail(
       to: client.advisor.email,
       subject: I18n.t('advisors.mail.subject.assigned')
