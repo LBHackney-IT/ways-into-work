@@ -1,10 +1,24 @@
 %h3
   = t('client.tab_a.tab_4')
 
-.convert_checkbox.field
-  =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What would you like to discuss with us?', include_hidden: false
+.bold For supported employment clients only.
 
-  = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
+%br
+
+.convert_checkbox.field
+  =form.input :health_barriers, as: :check_boxes, collection: HealthBarrierOption.all, :label => 'Please select the option that best describes your health condition or learning difficulty:', include_hidden: false
+
+  = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
+
+= render partial: 'assessment_note', locals: {form: form, note: @health_barriers_notes, label: 'Additional notes', type: :text }
+
+.convert_checkbox
+  =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you need support with any of the following?', include_hidden: false
+
+%br
+
+= render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
+
 
 .convert_checkbox.field
   =form.input :support_priorities, as: :check_boxes, collection: SupportOption.all, :label => 'What would you like support with?', include_hidden: false
@@ -13,15 +27,9 @@
 
 
 .convert_checkbox.field
-  = render partial: 'assessment_note', locals: {form: form, note: @support_notes, label: 'Additional notes', type: :text }
+  =form.input :receive_benefits, as: :radio_buttons, collection: BenefitsOption.all, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }
+  = render partial: 'shared/other_text', locals: { form: form, field: :other_receive_benefits }
 
+=form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Is the client affected by the benefits cap?', wrapper_html: { class: "convert_radio" }
 
-.convert_checkbox
-  =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you have any barriers to overcome?', include_hidden: false
-
-%br
-
-= render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
-
-
-=form.input :receive_benefits, as: :radio_buttons, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }
+=form.input :welfare_calculation_completed, as: :radio_buttons, :label => 'Better Off Calculation completed?', wrapper_html: { class: "convert_radio" }

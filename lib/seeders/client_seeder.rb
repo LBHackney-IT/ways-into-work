@@ -22,10 +22,6 @@ class ClientSeeder
     puts "@failures #{@failures}"
   end
 
-  def number?(obj)
-    obj.to_s == obj.to_i.to_s
-  end
-
   def import_client(row) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     # OK for 100 or so clients
     client = Client.find_or_initialize_by(first_name: row['First Name'], last_name: row['Surname'], imported: true)
@@ -48,14 +44,12 @@ class ClientSeeder
           c.address_line_2 = row['Address line 2']
           c.postcode = row['Postcode']
           c.login = UserLogin.new(email: email.downcase, password: Devise.friendly_token.first(20)) if c.login.blank?
-          # c.funded = row["Claim stream (ESF, FSF, TF, LBH, Other)"].present? && (row["Claim stream (ESF, FSF, TF, LBH, Other)"] != 'LBH')
           c.rag_status = row['Current Status (RAGG)'].try(:downcase).try(:strip) || :un_assessed
           c.gender = row['Gender']
-          c.receive_benefits = work_out_boolean(row['Receiving benefits?'])
+          c.receive_benefits = row['Receiving benefits?']
           c.studying = work_out_boolean(row['Currently studying?'])
           c.employed = work_out_boolean(row['Currently employed?'])
-          c.health_conditions = work_out_boolean(row['Any health conditions?'])
-          c.affected_by_welfare = work_out_boolean(row['Affected by welfare reform?'])
+          c.health_condition = row['Any health conditions?']&.capitalize
           c.assessment_notes = generate_assessment_notes(row) if c.assessment_notes.empty?
         end
 

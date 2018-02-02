@@ -4,6 +4,8 @@
   %p="Uploaded by: #{client.file_uploads.last.uploaded_by} on #{client.file_uploads.last.created_at.to_date.to_s(:short)}"
   =client.new_file_button(I18n.t('clients.buttons.manage_uploads'))
 -else
-  %p.bold
-    = t('clients.steps.employment.upload')
+  .bold
+    = I18n.t('clients.steps.employment.upload')
+  %br
+
   =client.new_file_button(I18n.t('clients.buttons.upload'))

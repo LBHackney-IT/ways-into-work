@@ -21,7 +21,6 @@ Fabricator(:partial_reg_client, from: :client) do
 end
 
 Fabricator(:fully_reg_client, from: :partial_reg_client) do
-  qualifications { [QualificationOption.all.sample.id, QualificationOption.all.sample.id].uniq }
   training_courses { [TrainingCourseOption.all.sample.id, TrainingCourseOption.all.sample.id].uniq }
   employed true
   gender 'Male'

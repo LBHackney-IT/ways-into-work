@@ -1,19 +1,15 @@
 %h3
   = t('client.tab_a.tab_7')
 
-=form.input :date_of_birth, label: 'DOB', as: :date, start_year: Time.zone.today.year, end_year: Time.zone.today.year - 70, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
-
 =form.input :rag_status, as: :radio_buttons, label: 'Assessment status:', collection: [["Red",:red], ["Amber", :amber], ["Green", :green]], wrapper_html: { class: "convert_radio" }
+
+.bold Project managers to complete:
+%br
 
 .convert_checkbox.full.field
   =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Funding Code'
   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
 
-=form.input :national_insurance_number, label: 'National Insurance Number', as: :tel, :input_html => { :class => 'input' }
-
-=form.input :affected_by_welfare, as: :radio_buttons, :label => 'Is the client affected by welfare reform?', wrapper_html: { class: "convert_radio has_child" }
-
-.is-hidden.on-true
-  =form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Is the client affected by Benefit Cap?', wrapper_html: { class: "convert_radio" }
-
 =form.input :assigned_supported_employment, as: :radio_buttons, :label => 'Is the client assigned to supported employment?', wrapper_html: { class: "convert_radio" }
+
+= render partial: 'assessment_note', locals: {form: form, note: @additional_info_notes, label: 'Add any more information about the client here', type: :text }

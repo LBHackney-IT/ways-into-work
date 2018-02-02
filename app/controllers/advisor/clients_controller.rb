@@ -31,7 +31,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
 
   def update
     if params[:commit] == 'Assign Advisor' ? assign_advisor : update_client
-      redirect_back(fallback_location: @fallback_location)
+      successful_redirect
     else
       AdvisorClientDecorator.decorate(Client.find(params[:id]))
       init_assessment_notes
@@ -47,13 +47,23 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
 
   private
 
+  def successful_redirect
+    case params[:commit]
+    when I18n.t('clients.buttons.assign_advisor')
+      redirect_back(fallback_location: edit_advisor_client_path(client))
+    when I18n.t('clients.buttons.upload') || I18n.t('clients.buttons.manage_uploads')
+      redirect_to new_advisor_client_file_upload_path(client)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def assign_advisor
     if client.assign_advisor(params[:client][:advisor_id], current_advisor)
       flash[:success] = I18n.t('clients.flashes.success.advisor_assigned')
     else
       flash[:error] = I18n.t('clients.flashes.error.advisor_assignment')
     end
-    @fallback_location = edit_advisor_client_path(client)
   end
 
   def update_client
@@ -88,7 +98,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     )) || return
     @filtered_clients = @filterrific.find.page(params[:page])
   end
-  
+
   def filterrific_options
     {
       by_hub_id: Hub.options_for_select,
@@ -142,13 +152,13 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :studying,
       :studying_part_time,
       :receive_benefits,
+      :welfare_calculation_completed,
       :current_education,
       :care_leaver,
       :employed,
       :job_title,
       :working_hours_per_week,
-      :health_conditions,
-      :affected_by_welfare,
+      :health_condition,
       :gender,
       :rag_status,
       :first_name,
@@ -159,7 +169,6 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :address_line_2,
       :postcode,
       funded: [],
-      qualifications: [],
       barriers: [],
       objectives: [],
       support_priorities: [],
@@ -186,17 +195,18 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   def assessment_note_keys # rubocop:disable Metrics/MethodLength
     %w[
       aspirations
+      objectives
       strengths
       not_good_at
       driving_force
-      past_education
       work_experience
       job_goal_1
       job_goal_2
       barriers
+      health_barriers
       general
-      support
       get_better_at
+      additional_info
     ]
   end
 end

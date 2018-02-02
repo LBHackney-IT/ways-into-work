@@ -25,6 +25,7 @@ en:
         short: "Employment"
         employed: "Are you currently employed?"
         upload: "Upload a CV, cover letter or draft documents"
+        upload_hint: "Ensure you save before uploading new document"
       objectives:
         long: "What can we help you with?"
         short: "Goals"
@@ -36,9 +37,7 @@ en:
         short: "Details"
     buttons:
       archive_client: 'Archive client record and opt-out'
-      upload_cv: 'Upload CV'
       upload: 'Upload'
-      manage_cvs: 'Manage CVs'
       manage_uploads: 'Manage uploads'
       delete: 'Delete'
       make_contact: "Contact"

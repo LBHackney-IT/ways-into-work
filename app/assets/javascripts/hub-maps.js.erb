@@ -6,14 +6,14 @@ $.fn.handleMaps = function() {
   var map, lat, lng, hub_map;
 
   L.mapbox.accessToken = '<%= ENV['MAPBOX_ACCESS_TOKEN'] %>';
-  
+
   hubs.each(function() {
     map = $(this).find('.map');
-    
+
     lat = map.data('lat');
     lng = map.data('lng');
     hub_map = L.mapbox.map(map.attr('id'), 'mapbox.streets').setView([lat, lng], 15);
-    
+
     hub_map.featureLayer.setGeoJSON(
       [{
         type: 'Feature',
@@ -32,4 +32,7 @@ $.fn.handleMaps = function() {
     );
   })
 
+  if (map.scrollWheelZoom) {
+    map.scrollWheelZoom.disable();
+  }
 };

@@ -12,3 +12,8 @@ Feature: Advisor updates client fields in assessment
     Given I am on the advisors edit client page
     When I indicate my client is looking to work in Retail
     Then my client should be updated with looking for Retail work
+
+  Scenario: Advisor uploads pdf
+    Given I am on the advisors edit client page
+    When I that my client would prefer not to give equality details
+    Then my client should be updated with prefer not to say for all

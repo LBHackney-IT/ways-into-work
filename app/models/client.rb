@@ -65,16 +65,17 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :by_types_of_work, ->(type) { where('types_of_work  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_training, ->(type) { where('training_courses  @> ARRAY[?]::varchar[]', [type]) }
   scope :by_funding_code, ->(code) { code.blank? ? all : where('funded @> ARRAY[?]::varchar[]', [code]) }
+
   scope :by_rag_status, ->(status) { where(rag_status: status) }
   scope :by_objective, ->(objective) { where('objectives @> ARRAY[?]::varchar[]', [objective]) }
 
   scope :workless_on_benefits, -> { where(receive_benefits: true, employed: true) }
   scope :workless_off_benefits, -> { where(receive_benefits: false, employed: false) }
-  scope :welfare_reform, -> { where(affected_by_welfare: true) }
+
   scope :under_25, -> { where('date_of_birth > ?', Time.zone.today - 25.years) }
   scope :over_50, -> { where('date_of_birth < ?', Time.zone.today - 50.years) }
-  scope :care_leavers, -> { where(care_leaver: true) }
-  scope :health_conditions, -> { where(health_conditions: true) }
+  scope :care_leavers, -> { where(care_leaver: 'Yes') }
+  scope :health_conditions, -> { where(health_condition: 'Yes') }
   scope :female, -> { where(gender: 'Female') }
   scope :bame, -> { where('bame != ?', 'white_british') }
 
@@ -207,9 +208,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       date_of_birth&.to_date,
       affected_by_benefit_cap?.humanize,
       assigned_supported_employment?.humanize,
-      health_conditions?.humanize,
+      health_condition,
       receive_benefits?.humanize,
-      care_leaver?.humanize,
+      care_leaver,
       referrer&.email,
       achievement_counts
     ].flatten
@@ -254,7 +255,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   end
 
   def completed_education?
-    qualifications.any? || training_courses.any? || !studying.nil?
+    training_courses.any? || !studying.nil?
   end
 
   def completed_objectives?

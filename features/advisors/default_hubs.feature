@@ -9,7 +9,7 @@ Feature: Default hubs on advisor page
     Given I am on the advisor clients page
     Then my hub should be selected by default
     And I should only see clients from my hub
-    
+
   Scenario: Admin sees all clients
     Given I am an admin
     And I am on the advisor clients page

@@ -78,11 +78,22 @@ $.fn.handleFormElements = function() {
 
     function runThroughRadios(theRadio){
       if (theRadio.val() == 'true') {
-        $('.on-true').removeClass('is-hidden');
-        clearAllInputs($('.on-false').addClass('is-hidden').find('input'));
+        console.log(theRadio.parents('.convert_radio').hasClass('has_child_2'))
+        if(theRadio.parents('.convert_radio').hasClass('has_child_2')) {
+          $('.on-true_2').removeClass('is-hidden');
+          clearAllInputs($('.on-false_2').addClass('is-hidden').find('input'));
+        } else {
+          $('.on-true').removeClass('is-hidden');
+          clearAllInputs($('.on-false').addClass('is-hidden').find('input'));
+        }
       } else {
-        $('.on-false').removeClass('is-hidden');
-        clearAllInputs($('.on-true').addClass('is-hidden').find('input'));
+        if(theRadio.parents('.convert_radio').hasClass('has_child_2')) {
+          $('.on-false_2').removeClass('is-hidden');
+          clearAllInputs($('.on-true_2').addClass('is-hidden').find('input'));
+        } else {
+          $('.on-false').removeClass('is-hidden');
+          clearAllInputs($('.on-true').addClass('is-hidden').find('input'));
+        }
       }
     }
 

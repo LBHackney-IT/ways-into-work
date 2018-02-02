@@ -14,7 +14,5 @@ RSpec.describe ActionPlanTask, type: :model do
       end
       
     end
-    
   end
-  
 end

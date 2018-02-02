@@ -10,7 +10,7 @@ hubs = [
     ward_mapit_codes: %w[144396 144392 144382 144381 144380 144391 144379]
   }, {
     id: 2,
-    name: 'Woodberry Down Hub',
+    name: 'Redmond Community Centre',
     address_line_1: 'Kayani Avenue',
     address_line_2: 'Woodberry Down',
     postcode: 'N4 2HF',

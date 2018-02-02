@@ -1,4 +1,4 @@
-= simple_form_for [current_client.decorate], url: :client_employment_status do |form|
+= simple_form_for [client], url: :client_employment_status do |form|
   .column.is-12.has-text-centered
     = render partial: 'shared/profile_steps', locals: { form: form }
 
@@ -6,14 +6,18 @@
     =image_tag('icons/employment.svg', :alt => 'Employment Icon')
     %h2.subtitle=I18n.t('clients.steps.employment.long')
 
-    = render 'shared/form_errors', object: form.object
+    = render 'shared/form_errors', object: client
 
     =form.input :employed, as: :radio_buttons, :label => I18n.t('clients.steps.employment.employed'), wrapper_html: { class: "convert_radio has_child" }
 
     .is-hidden.on-true
       =form.input :job_title, as: :string, :label => 'What is your current job title?', :input_html => { :class => 'input' }
 
-    = render partial: '/shared/latest_file_upload', as: :client, object: form.object
+    // TODO I noticed that if you try to upload a file when you have edits in the form above
+    / it warns you.. Would be good if we save it automatically when clicking this button as we
+    / do for advisors. Trouble is this same partial is on the profile show page where there's
+    / no need to save
+    = render partial: '/shared/latest_file_upload'
     .actions
       = form.submit 'Complete Profile', :class => 'button is-primary is-pulled-right'
       = form.submit I18n.t('clients.buttons.onboarding_skip'), :class => 'button'

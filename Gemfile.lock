@@ -55,9 +55,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    airbrake (7.2.0)
-      airbrake-ruby (~> 2.5)
-    airbrake-ruby (2.8.0)
     appsignal (2.4.3)
       rack
     archive-zip (0.7.0)
@@ -413,7 +410,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  airbrake (~> 7.2)
   appsignal
   aws-sdk
   better_errors
@@ -470,4 +466,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.4
+   1.16.0

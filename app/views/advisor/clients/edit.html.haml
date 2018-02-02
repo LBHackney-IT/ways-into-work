@@ -23,13 +23,17 @@
                 %span
                   = t('client.tab_a.tab_1')
             %li
-              %a{href: "#tabs-2"}
+              %a{href: "#tabs-9"}
                 %span
-                  = t('client.tab_a.tab_2')
+                  = t('client.tab_a.tab_9')
             %li
               %a{href: "#tabs-3"}
                 %span
                   = t('client.tab_a.tab_3')
+            %li
+              %a{href: "#tabs-2"}
+                %span
+                  = t('client.tab_a.tab_2')
             %li
               %a{href: "#tabs-4"}
                 %span
@@ -37,23 +41,16 @@
             %li
               %a{href: "#tabs-5"}
                 %span
-                  = t('client.tab_a.tab_5')
-            %li
-              %a{href: "#tabs-6"}
-                %span
-                  = t('client.tab_a.tab_6')
-            %li
-              %a{href: "#tabs-7"}
-                %span
-                  = t('client.tab_a.tab_7')
+                  = t('client.tab_a.tab_5a')
             %li
               %a{href: "#tabs-8"}
                 %span
                   = t('client.tab_a.tab_8')
             %li
-              %a{href: "#tabs-9"}
+              %a{href: "#tabs-7"}
                 %span
-                  = t('client.tab_a.tab_9')
+                  = t('client.tab_a.tab_7')
+
 
 
         .column
@@ -63,25 +60,22 @@
             = render partial: '/shared/client_profile_overview'
 
           #tabs-2.tab
-            = render partial: 'tab_strengths', :locals => {:form => form}
+            = render partial: 'tab_strengths', locals: {form: form}
 
           #tabs-3.tab
-            = render partial: 'tab_aspirations', :locals => {:form => form}
+            = render partial: 'tab_aspirations', locals: {form: form}
 
           #tabs-4.tab
-            = render partial: 'tab_support', :locals => {:form => form}
+            = render partial: 'tab_support', locals: {form: form}
 
           #tabs-5.tab
-            = render partial: 'tab_education', :locals => {:form => form}
-
-          #tabs-6.tab
-            = render partial: 'tab_employment', :locals => {:form => form}
+            = render partial: 'tab_education', locals: {form: form}
 
           #tabs-7.tab
-            = render partial: 'tab_additional', :locals => {:form => form}
-            
+            = render partial: 'tab_additional', locals: {form: form}
+
           #tabs-8.tab
-            = render partial: 'tab_equality', :locals => {:form => form}
+            = render partial: 'tab_equality', locals: {form: form}
           #tabs-9.tab
-            = render partial: 'tab_contact', :locals => {:form => form}
-          
+            = render partial: 'tab_contact', locals: {form: form}
+

@@ -1,4 +1,4 @@
-= simple_form_for [current_client], url: :client_education do |form|
+= simple_form_for [client], url: :client_education do |form|
   .column.is-12.has-text-centered
     = render partial: 'shared/profile_steps', locals: { form: form }
   .column.reg-flow
@@ -7,27 +7,17 @@
 
     = render 'shared/form_errors', object: form.object
 
-    .convert_checkbox.full
-      =form.input :qualifications, as: :check_boxes, collection: QualificationOption.all, :label => 'Do you have any of the following qualifications?', include_hidden: false
-      = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
-      %p.help Choose as many options that apply to you.
-
-    %br
-
-
-    .convert_checkbox.full
-      =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'Have you completed any of the following training courses?', include_hidden: false
-      = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
-      %p.help Choose as many options that apply to you.
-
-    %br
-
     = form.input :studying, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio has_child" }
 
     .is-hidden.on-true
       = form.input :studying_part_time, as: :radio_buttons, collection: [['Part time', true], ['Full time', false]], label: 'Are you currently studying?',  wrapper_html: { class: "convert_radio" }
 
       =form.input :current_education, as: :string, :label => 'What is the name of your course?', :input_html => { :class => 'input' }
+
+    .convert_checkbox.full
+      =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'Have you completed any of the following training courses?', include_hidden: false
+      = render partial: 'shared/other_text', locals: {form: form, field: :other_training_course}
+      %p.help Choose as many options that apply to you.
 
     .actions
       = form.submit 'Next Step', :class => 'button is-primary is-pulled-right'

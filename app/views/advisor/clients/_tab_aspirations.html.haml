@@ -1,7 +1,12 @@
 %h3
   = t('client.tab_a.tab_3')
 
-= render partial: 'assessment_note', locals: {form: form, note: @aspirations_notes, label: 'What are your Aspirations? (long/medium/short term)', type: :text }
+.convert_checkbox.field
+  =form.input :objectives, as: :check_boxes, collection: ObjectiveOption.all, :label => 'What are you looking for?', include_hidden: false
+
+  = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
+
+  = render partial: 'assessment_note', locals: {form: form, note: @objectives_notes, label: 'Additional info:', type: :text }
 
 .convert_checkbox.field
   =form.input :types_of_work, as: :check_boxes, collection: TypeOfWorkOption.all, :label => 'What types of work are you looking for?', include_hidden: false
@@ -13,3 +18,5 @@
 
 .convert_checkbox.field
   = render partial: 'assessment_note', locals: {form: form, note: @job_goal_2_notes, label: 'Job Goal 2', type: :string }
+
+= render partial: 'assessment_note', locals: {form: form, note: @aspirations_notes, label: 'More detail, e.g. short and long term goals', type: :text }

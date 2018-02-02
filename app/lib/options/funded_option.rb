@@ -6,7 +6,7 @@ class FundedOption < Option
       new('supported_employment', 'SE (Supported Employment)'),
       new('hackney_works_general', 'HW (Hackney Works - General)'),
       new('european_social_fund', 'ESF (European Social Fund)'),
-      new('unlocking_opportunities', 'UO (Unlocking Opportunities)')
+      new('integrated_communities', 'IC (Integrated Communities)')
     ]
   end
 end
