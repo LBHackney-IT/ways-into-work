@@ -8,7 +8,7 @@ class ClientDecorator < ApplicationDecorator
   end
 
   def decorate_name
-    standard_wrapper('Name:', client.first_name)
+    standard_wrapper('Name:', client.name)
   end
 
   def decorate_first_name

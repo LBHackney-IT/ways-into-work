@@ -6,10 +6,10 @@
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_objective }
 
-  = render partial: 'assessment_note', locals: {form: form, note: @objectives_notes, label: 'Additional info:', type: :text }
+= render partial: 'assessment_note', locals: {form: form, note: @objectives_notes, label: 'Additional info:', type: :text }
 
 .convert_checkbox.field
-  =form.input :types_of_work, as: :check_boxes, collection: TypeOfWorkOption.all, :label => 'What types of work are you looking for?', include_hidden: false
+  =form.input :types_of_work, as: :check_boxes, collection: TypeOfWorkOption.all, :label => 'What kind of work are you interested in?', include_hidden: false
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_type_of_work }
 
