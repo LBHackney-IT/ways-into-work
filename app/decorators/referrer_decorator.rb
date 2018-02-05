@@ -22,5 +22,4 @@ class ReferrerDecorator < ApplicationDecorator
   def decorate_reason
     standard_wrapper 'Reason for referral:', referrer.reason
   end
-
 end
