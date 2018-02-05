@@ -4,10 +4,10 @@ class TypeOfWorkOption < Option
       new('admin', 'Administration'),
       new('catering', 'Catering'),
       new('childcare', 'Childcare'),
-      new('voluntary', 'Charities / Voluntary sector'),
+      new('voluntary', 'Charities / voluntary sector'),
       new('cleaning', 'Cleaning'),
       new('media', 'Creative / media'),
-      new('customer_service', 'Customer Service'),
+      new('customer_service', 'Customer service'),
       new('engineering_construction', 'Engineering / construction'),
       new('finance', 'Finance / accounting'),
       new('health_social_care', 'Health and social care'),
@@ -21,7 +21,7 @@ class TypeOfWorkOption < Option
       new('sport_leisure', 'Sport / leisure'),
       new('teaching', 'Teaching / teaching assistant'),
       new('tech_it', 'Tech / IT'),
-      new('travel', 'Travel and transport'),
+      new('travel', 'Travel and logistics'),
       new('youth', 'Youth work')
     ]
   end
