@@ -15,12 +15,12 @@ $(document).ready(function() {
 
   $('.nav-toggle').mobileNav();
 
-  $('.delete').hideDelete();
+  $('#alerts').alerts();
 
   $(".validate").validate();
 
   $("form").handleFormElements();
-  
+
   $("form[method=post]").warnUnsaved();
 
   $("#tabs").tabs();
@@ -30,11 +30,11 @@ $(document).ready(function() {
   $("#clients_needing_appointment").clients_needing_appointment();
 
   $('#hubs').handleMaps();
-  
+
   $('#print_page').printPage();
 
   $('#dashboard_hubs').removeAdvisors();
-  
+
   $('#referrer_organisation').showOthers();
 
   $('.show_achievement').showAchievement();

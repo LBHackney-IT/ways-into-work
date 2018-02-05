@@ -1,29 +1,58 @@
-.notification
-  +block
-  background-color: $background
-  //border-radius: $radius
-  padding: 1rem 1.5rem 1rem 1.5rem
-  position: relative
-  a:not(.button)
-    color: currentColor
-    text-decoration: underline
-  code,
-  pre
-    background: $white
-  pre code
-    background: transparent
-  & > .delete
-    position: absolute
-    right: 0.5em
-    top: 0.5em
-  .title,
-  .subtitle,
-  .content
-    color: inherit
-  // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
-    &.is-#{$name}
-      background-color: $color
-      color: $color-invert
+// .notification
+//   +block
+//   background-color: $background
+//   //border-radius: $radius
+//   padding: 1rem 1.5rem 1rem 1.5rem
+//   position: relative
+//   a:not(.button)
+//     color: currentColor
+//     text-decoration: underline
+//   code,
+//   pre
+//     background: $white
+//   pre code
+//     background: transparent
+//   & > .delete
+//     position: absolute
+//     right: 0.5em
+//     top: 0.5em
+//   .title,
+//   .subtitle,
+//   .content
+//     color: inherit
+//   // Colors
+//   @each $name, $pair in $colors
+//     $color: nth($pair, 1)
+//     $color-invert: nth($pair, 2)
+//     &.is-#{$name}
+//       background-color: $color
+//       color: $color-invert
+
+.alert, #alerts
+  background-color: $hackney-brand
+  color: $white
+
+  .container
+    padding-top: 15px
+    padding-bottom: 15px
+
+
+  #flash_alert, #flash_notice, #flash_success, #flash_error
+    float: left
+
+  #alert_close
+    float: right
+
+    &:hover
+      cursor: pointer
+
+
+  &.alert-alert, &.alert-error
+    background-color: $red
+
+  &.alert-success
+    background-color: $hackney-brand
+
+  &.alert-notice
+    background-color: rgba($hackney-brand, 0.25)
+    color: rgba($black, 0.75)
