@@ -1,7 +1,7 @@
 require 'spec_helper'
 require Rails.root.join('lib', 'seeders', 'client_seeder')
 
-RSpec.describe ClientSeeder, :cli, type: :model do
+RSpec.describe ClientSeeder, type: :model do
   let(:subject) { ClientSeeder.new('valid.csv') }
 
   context 'if a CSV is not found' do
