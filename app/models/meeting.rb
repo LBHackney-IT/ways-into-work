@@ -16,7 +16,7 @@ class Meeting < ApplicationRecord
     within(from, from + 1.day)
   }
 
-  scope :within, -> (from, to) { where('start_datetime > ? AND start_datetime < ?', from, to) }
+  scope :within, ->(from, to) { where('start_datetime > ? AND start_datetime < ?', from, to) }
 
   private
 
