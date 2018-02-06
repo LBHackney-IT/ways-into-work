@@ -203,6 +203,7 @@ GEM
       railties (>= 3.2.16)
     json (2.1.0)
     jsonapi-renderer (0.2.0)
+    jwt (2.1.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -235,6 +236,8 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    notifications-ruby-client (2.6.0)
+      jwt (>= 1.5, < 3)
     orm_adapter (0.5.0)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
@@ -440,6 +443,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   launchy
+  notifications-ruby-client
   paperclip
   paranoia
   pg
