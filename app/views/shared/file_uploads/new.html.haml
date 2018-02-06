@@ -2,8 +2,6 @@
   .head.level
     .level-left
       %h2="#{client.first_name}'s File Uploads"
-    .level-right
-      = client.return_to_client_button
   = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
   .profile-tab
