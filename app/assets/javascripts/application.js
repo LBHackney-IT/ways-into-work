@@ -16,7 +16,7 @@
 //= require mobile-nav
 //= require eligibility
 //= require hub-maps
-//= require delete
+//= require alerts
 //= require validate
 //= require clients-needing-appointment
 //= require form-helper
