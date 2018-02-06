@@ -1,7 +1,7 @@
 class Advisor::ActionPlanTasksController < Advisor::BaseController
   expose :client, decorate: ->(client) { AdvisorClientDecorator.decorate(client) }
   expose :action_plan_task
-  
+
   def index
     if params[:print_view]
       render :print_view
@@ -9,7 +9,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
       render :index
     end
   end
-  
+
   def new
     action_plan_task.client_id = client.id
   end
@@ -18,7 +18,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
 
   def create
     if action_plan_task.save
-      flash[:success] = "Agreed Action: #{action_plan_task.title} saved"
+      flash[:success] = "Agreed Task: #{action_plan_task.title} saved"
       redirect_to redirect_path_from_commit
     else
       render :new
@@ -27,7 +27,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
 
   def update
     if action_plan_task.update(action_plan_task_params)
-      flash[:success] = "Agreed Action: #{action_plan_task.title} saved"
+      flash[:success] = "Agreed Task: #{action_plan_task.title} saved"
       redirect_to advisor_client_action_plan_tasks_path(client_id: action_plan_task.client_id)
     else
       render :new
@@ -35,7 +35,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
   end
 
   def destroy
-    flash[:success] = "Agreed Action: #{action_plan_task.title} deleted"
+    flash[:success] = "Agreed Task: #{action_plan_task.title} deleted"
     action_plan_task.destroy!
     redirect_to advisor_client_action_plan_tasks_path(client_id: params[:client_id])
   end
