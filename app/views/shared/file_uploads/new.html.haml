@@ -1,17 +1,23 @@
 .column
-  .columns.head.level
-    .level-left.column
-      %h3.subtitle Upload a file
-    .level-right.column
-      = client.return_to_client_button
-  %hr
-  = simple_form_for [client.object, file_upload], url: client.post_file_to do |form|
-    = render 'shared/form_errors', object: form.object
-    %fieldset
-      = form.input :attachment, as: :file, label: "Choose a file to upload"
-      = form.input :uploaded_by, as: :hidden
-      = form.input :client_id, as: :hidden
-      %br
-      = form.submit I18n.t('clients.buttons.upload'), class: "button is-primary is-disabled", disabled: true, id: 'submit_file'
+  .head.level
+    .level-left
+      %h2="#{client.first_name}'s File Uploads"
+  = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
-  = render partial: 'shared/previous_file_uploads' if client.file_uploads.count > 0
+  .profile-tab
+    .column
+      .columns.head.level
+        .level-left.column
+          %h3.subtitle Upload a file
+
+      %hr
+      = simple_form_for [client.object, file_upload], url: client.post_file_to do |form|
+        = render 'shared/form_errors', object: form.object
+        %fieldset
+          = form.input :attachment, as: :file, label: "Choose a file to upload"
+          = form.input :uploaded_by, as: :hidden
+          = form.input :client_id, as: :hidden
+          %br
+          = form.submit I18n.t('clients.buttons.upload'), class: "button is-primary is-disabled", disabled: true, id: 'submit_file'
+
+      = render partial: 'shared/previous_file_uploads' if client.file_uploads.count > 0
