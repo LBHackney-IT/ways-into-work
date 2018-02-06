@@ -23,7 +23,42 @@ $(document).ready(function() {
 
   $("form[method=post]").warnUnsaved();
 
-  $("#tabs").tabs();
+  // $("#tabs").tabs({
+  //     activate: function(event, ui) {
+  //         window.location.hash = ui.newPanel.attr('id');
+  //     },
+  //     fx: { opacity: 'toggle' },
+  //     select: function(event, ui) {
+  //         $(this).css('height', $(this).height());
+  //         $(this).css('overflow', 'hidden');
+  //     },
+  //     show: function(event, ui) {
+  //         $(this).css('height', 'auto');
+  //         $(this).css('overflow', 'visible');
+  //     }
+  // });
+
+  $("#tabs").tabs({
+    beforeActivate: function(event, ui) {
+        $(this).data('scrollTop', $(window).scrollTop());
+    },
+    activate: function(event, ui) {
+        if (!$(this).data('scrollTop')) {
+            jQuery('html').css('height', 'auto');
+            window.location.hash = ui.newPanel.attr('id');
+        }
+
+        if ($(window).scrollTop() == $(this).data('scrollTop'))
+            window.location.hash = ui.newPanel.attr('id');
+        var min_height = $(this).data('scrollTop') + $(window).height();
+        if ($('html').outerHeight() < min_height) {
+            $('html').height(min_height -
+                 ($('html').outerHeight() - $('html').height()));
+            window.location.hash = ui.newPanel.attr('id');
+        }
+        $(window).scrollTop($(this).data('scrollTop'));
+    }
+});
 
   $("#new_file_upload").uploadFile();
 

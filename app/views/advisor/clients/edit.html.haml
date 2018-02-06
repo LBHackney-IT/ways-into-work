@@ -19,63 +19,63 @@
         #tab-list.column.is-2
           %ul
             %li
-              %a{href: "#tabs-1"}
+              %a{href: "#tabs-overview"}
                 %span
                   = t('client.tab_a.tab_1')
             %li
-              %a{href: "#tabs-9"}
+              %a{href: "#tabs-details"}
                 %span
                   = t('client.tab_a.tab_9')
             %li
-              %a{href: "#tabs-3"}
+              %a{href: "#tabs-goals"}
                 %span
                   = t('client.tab_a.tab_3')
             %li
-              %a{href: "#tabs-2"}
+              %a{href: "#tabs-strengths"}
                 %span
                   = t('client.tab_a.tab_2')
             %li
-              %a{href: "#tabs-4"}
+              %a{href: "#tabs-support"}
                 %span
                   = t('client.tab_a.tab_4')
             %li
-              %a{href: "#tabs-5"}
+              %a{href: "#tabs-experience"}
                 %span
                   = t('client.tab_a.tab_5a')
             %li
-              %a{href: "#tabs-8"}
+              %a{href: "#tabs-equality"}
                 %span
                   = t('client.tab_a.tab_8')
             %li
-              %a{href: "#tabs-7"}
+              %a{href: "#tabs-additional"}
                 %span
                   = t('client.tab_a.tab_7')
 
 
 
         .column
-          #tabs-1.tab
+          #tabs-overview.tab
             = render 'shared/form_errors', object: form.object
 
             = render partial: '/shared/client_profile_overview'
 
-          #tabs-2.tab
+          #tabs-strengths.tab
             = render partial: 'tab_strengths', locals: {form: form}
 
-          #tabs-3.tab
+          #tabs-goals.tab
             = render partial: 'tab_aspirations', locals: {form: form}
 
-          #tabs-4.tab
+          #tabs-support.tab
             = render partial: 'tab_support', locals: {form: form}
 
-          #tabs-5.tab
+          #tabs-experience.tab
             = render partial: 'tab_education', locals: {form: form}
 
-          #tabs-7.tab
+          #tabs-additional.tab
             = render partial: 'tab_additional', locals: {form: form}
 
-          #tabs-8.tab
+          #tabs-equality.tab
             = render partial: 'tab_equality', locals: {form: form}
-          #tabs-9.tab
+          #tabs-details.tab
             = render partial: 'tab_contact', locals: {form: form}
 
