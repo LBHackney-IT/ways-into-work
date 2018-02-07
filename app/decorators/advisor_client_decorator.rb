@@ -24,7 +24,7 @@ class AdvisorClientDecorator < ClientDecorator
   end
 
   def decorate_action_plan_tasks
-    action_plan_tasks.map { |t| ActionPlanTaskDecorator.decorate(t) }
+    action_plan_tasks.ongoing.map { |t| ActionPlanTaskDecorator.decorate(t) }
   end
 
   private
