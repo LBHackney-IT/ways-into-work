@@ -4,7 +4,7 @@
 =form.input :rag_status, as: :radio_buttons, label: 'Assessment status:', collection: [["Red",:red], ["Amber", :amber], ["Green", :green]], wrapper_html: { class: "convert_radio" }
 
 .convert_checkbox.full.field
-  =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Project managers to complete - Funding Code:'
+  =form.input :funded, as: :check_boxes, collection: FundedOption.all, :label => 'Funding Code (Project managers to complete):'
   = render partial: 'shared/other_text', locals: {form: form, field: :other_qualification}
 
 =form.input :assigned_supported_employment, as: :radio_buttons, :label => 'Is the client assigned to supported employment?', wrapper_html: { class: "convert_radio" }

@@ -20,10 +20,10 @@
           %table.table
             %thead
               %tr
-                %th Agreed Task
-                %th Created
-                %th Due
-                %th Assigned
+                %th Agreed Task:
+                %th Created:
+                %th Due:
+                %th Assigned:
             %tbody
               = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
         - else
@@ -42,9 +42,9 @@
           %table.table
             %thead
               %tr
-                %th Agreed Task
-                %th Completion Date
-                %th Assigned to
+                %th Agreed Task:
+                %th Completed on:
+                %th Assigned to:
                 %th
             %tbody
               = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'

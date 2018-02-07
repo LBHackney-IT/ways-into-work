@@ -2,7 +2,7 @@
   = t('client.tab_a.tab_4')
 
 .convert_checkbox.field
-  =form.input :health_barriers, as: :check_boxes, collection: HealthBarrierOption.all, :label => 'For supported employment clients only - Please select the option that best describes your health condition or learning difficulty:', include_hidden: false
+  =form.input :health_barriers, as: :check_boxes, collection: HealthBarrierOption.all, :label => 'Please select the option that best describes your health condition or learning difficulty (For supported employment clients only):', include_hidden: false
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
