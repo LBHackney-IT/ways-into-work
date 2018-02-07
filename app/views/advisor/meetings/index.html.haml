@@ -10,12 +10,12 @@
   = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
   .profile-tab
-    .column
+    .column#meeting_table
       -if client.meetings.any?
         %table.table
           %thead
             %tr
-              %th Scheduled For Date
+              %th Meeting Scheduled
               %th Agenda
               %th Advisor
               %th

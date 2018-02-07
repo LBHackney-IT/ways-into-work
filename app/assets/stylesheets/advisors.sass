@@ -49,6 +49,7 @@
         text-transform: uppercase
         font-weight: 500
         font-size: 13px
+        color: rgba($black, 0.7)
     td, th
       border: none
       &.quarter
@@ -185,7 +186,7 @@ a[data-icon='envelope']
   margin-top: 0px
   .tab
     padding-left: 15px
-  .action-section
+  .action-section, #meeting_table
     .table td, .table th
       padding-left: 0
     &.completed
@@ -200,6 +201,7 @@ a[data-icon='envelope']
       text-transform: uppercase
       color: rgba($black, 0.5)
       font-weight: normal
+      font-size: 13px
     h3 i.fa-circle
       +assessment-circle
       font-size: 1.1em
@@ -241,3 +243,7 @@ body.contact_notes .table
   border-top-left-radius: 0px
 .top-right-corner
   border-top-right-radius: 0px
+
+
+.button#print_page
+  margin-right: 10px
