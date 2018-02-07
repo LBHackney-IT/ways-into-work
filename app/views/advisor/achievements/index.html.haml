@@ -1,25 +1,24 @@
-.column
-  .head.level
-    .level-left
-      %h2="#{client.first_name}'s Achievements"
+.head.level
+  .level-left
+    %h2="#{client.first_name}'s Achievements"
 
-  = render partial: 'shared/upper_tabs', locals: {the_client: client}
-  .profile-tab
-    .column
-      %label.label
-        = I18n.t('advisors.achievement.achieved')
+= render partial: 'shared/upper_tabs', locals: {the_client: client}
+.profile-tab
+  .column
+    %label.label
+      = I18n.t('advisors.achievement.achieved')
 
-      .achievement-container.achieved
-        - client.achievements.all.group_by(&:name).each do |id, group|
-          .achievement.box
-            %h4=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(group.size)}")
-            .div.icon-center
-              = fa_icon AchievementOption.find(id).icon
-            %p.small <strong>Complete: </strong> #{achievements.last.created_at.to_date.to_s(:long)}
-            %p.small=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
+    .achievement-container.achieved
+      - client.achievements.all.group_by(&:name).each do |id, group|
+        .achievement.box
+          %h4=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(group.size)}")
+          .div.icon-center
+            = fa_icon AchievementOption.find(id).icon
+          %p.small <strong>Complete: </strong> #{achievements.last.created_at.to_date.to_s(:long)}
+          %p.small=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
 
-    .column
-      %label.label
-        = I18n.t('advisors.achievement.achievable')
-      = render partial: 'achievable', collection: AchievementOption.all, as: :option
+  .column
+    %label.label
+      = I18n.t('advisors.achievement.achievable')
+    = render partial: 'achievable', collection: AchievementOption.all, as: :option
 

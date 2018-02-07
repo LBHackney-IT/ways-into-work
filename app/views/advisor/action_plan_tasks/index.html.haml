@@ -1,50 +1,49 @@
-.column
-  .head.level
-    .level-left
-      %h2="#{client.first_name}'s Action Plan"
+.head.level
+  .level-left
+    %h2="#{client.first_name}'s Action Plan"
 
-    .level-right.home.single
-      =link_to 'Print Action Plan', { print_view: 1 }, { class: 'button', id: 'print_page' }
-      &nbsp;
-      =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
+  .level-right.home.single
+    =link_to 'Print Action Plan', { print_view: 1 }, { class: 'button', id: 'print_page' }
+    &nbsp;
+    =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
-  = render partial: 'shared/upper_tabs', locals: {the_client: client}
-  .profile-tab
-    .column
-      .action-section.ongoing
-        - if client.action_plan_tasks.ongoing.any?
-          .head.level
-            .level-left
-              %h2 Ongoing Tasks
-              %span="#{client.action_plan_tasks.ongoing.count} Ongoing"
-          %table.table
-            %thead
-              %tr
-                %th Agreed Task:
-                %th Created:
-                %th Due:
-                %th Assigned:
-            %tbody
-              = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
-        - else
-          %p="#{client.name} has no tasks yet"
-          =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
-
+= render partial: 'shared/upper_tabs', locals: {the_client: client}
+.profile-tab
+  .column
+    .action-section.ongoing
+      - if client.action_plan_tasks.ongoing.any?
+        .head.level
+          .level-left
+            %h2 Ongoing Tasks
+            %span="#{client.action_plan_tasks.ongoing.count} Ongoing"
+        %table.table
+          %thead
+            %tr
+              %th Agreed Task:
+              %th Created:
+              %th Due:
+              %th Assigned:
+          %tbody
+            = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
+      - else
+        %p="#{client.name} has no tasks yet"
+        =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
 
-      - if client.action_plan_tasks.completed.any?
-        .action-section.completed
-          %hr
-          .head.level
-            .level-left
-              %h2 Completed Tasks
-              %span="#{client.action_plan_tasks.completed.count} Completed"
-          %table.table
-            %thead
-              %tr
-                %th Agreed Task:
-                %th Completed on:
-                %th Assigned to:
-                %th
-            %tbody
-              = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'
+
+    - if client.action_plan_tasks.completed.any?
+      .action-section.completed
+        %hr
+        .head.level
+          .level-left
+            %h2 Completed Tasks
+            %span="#{client.action_plan_tasks.completed.count} Completed"
+        %table.table
+          %thead
+            %tr
+              %th Agreed Task:
+              %th Completed on:
+              %th Assigned to:
+              %th
+          %tbody
+            = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'
