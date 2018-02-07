@@ -31,8 +31,10 @@
           =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
 
+
       - if client.action_plan_tasks.completed.any?
         .action-section.completed
+          %hr
           .head.level
             .level-left
               %h2 Completed Tasks
