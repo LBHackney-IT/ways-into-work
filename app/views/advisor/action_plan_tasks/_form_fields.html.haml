@@ -1,8 +1,8 @@
 = render 'shared/form_errors', object: form.object
 %fieldset
-  = form.input :title, label: "Agreed Task (i.e. complete CV, attend training)", :input_html => { :class => "input" }
+  = form.input :title, label: "Task Title (max 70 characters)", :input_html => { :class => "input", :maxlength => 70 }
 
-  = form.input :notes, as: :text, label: "Notes", :input_html => { :class => "textarea" }
+  = form.input :notes, as: :text, label: "Task Notes", :input_html => { :class => "textarea" }
   .convert_radio
     = form.input :advisor_id, as: :radio_buttons, label: "Task to be completed by:", collection: [['Client', ''], ['Advisor', current_advisor.id]]
 
