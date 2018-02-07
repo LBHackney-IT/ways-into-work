@@ -1,81 +1,80 @@
 = simple_form_for [client.object], url: advisor_client_path(client.object), method: :put do |form|
   #tabs.container
-    .column
-      .head.level
-        .level-left
-          %h2=client.name
-          - if client.advisor == current_advisor
-            %span.client_total="You are #{client.first_name}'s advisor"
-          - else
-            %span.client_total="#{client.advisor.name} is #{client.first_name}'s advisor"
+    .head.level
+      .level-left
+        %h2=client.name
+        - if client.advisor == current_advisor
+          %span.client_total="You are #{client.first_name}'s advisor"
+        - else
+          %span.client_total="#{client.advisor.name} is #{client.first_name}'s advisor"
 
-        .level-right.home
-          = link_to "Back to my clients", :advisor_my_clients, class: "button nav-back"
-          = form.submit 'Save profile', :class => 'button is-primary'
+      .level-right.home
+        = link_to "Back to my clients", :advisor_my_clients, class: "button nav-back"
+        = form.submit 'Save profile', :class => 'button is-primary'
 
-      = render partial: 'shared/upper_tabs', locals: {the_client: client}
+    = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
-      .profile-tab.top-left-corner.columns
-        #tab-list.column.is-2
-          %ul
-            %li
-              %a{href: "#tabs-overview"}
-                %span
-                  = t('client.tab_a.tab_1')
-            %li
-              %a{href: "#tabs-details"}
-                %span
-                  = t('client.tab_a.tab_9')
-            %li
-              %a{href: "#tabs-goals"}
-                %span
-                  = t('client.tab_a.tab_3')
-            %li
-              %a{href: "#tabs-strengths"}
-                %span
-                  = t('client.tab_a.tab_2')
-            %li
-              %a{href: "#tabs-support"}
-                %span
-                  = t('client.tab_a.tab_4')
-            %li
-              %a{href: "#tabs-experience"}
-                %span
-                  = t('client.tab_a.tab_5a')
-            %li
-              %a{href: "#tabs-equality"}
-                %span
-                  = t('client.tab_a.tab_8')
-            %li
-              %a{href: "#tabs-additional"}
-                %span
-                  = t('client.tab_a.tab_7')
-
+    .profile-tab.top-left-corner.columns#fix_alignment
+      #tab-list.column.is-2
+        %ul
+          %li
+            %a{href: "#tabs-overview"}
+              %span
+                = t('client.tab_a.tab_1')
+          %li
+            %a{href: "#tabs-details"}
+              %span
+                = t('client.tab_a.tab_9')
+          %li
+            %a{href: "#tabs-goals"}
+              %span
+                = t('client.tab_a.tab_3')
+          %li
+            %a{href: "#tabs-strengths"}
+              %span
+                = t('client.tab_a.tab_2')
+          %li
+            %a{href: "#tabs-support"}
+              %span
+                = t('client.tab_a.tab_4')
+          %li
+            %a{href: "#tabs-experience"}
+              %span
+                = t('client.tab_a.tab_5a')
+          %li
+            %a{href: "#tabs-equality"}
+              %span
+                = t('client.tab_a.tab_8')
+          %li
+            %a{href: "#tabs-additional"}
+              %span
+                = t('client.tab_a.tab_7')
 
 
-        .column
-          #tabs-overview.tab
-            = render 'shared/form_errors', object: form.object
 
-            = render partial: '/shared/client_profile_overview'
+      .column
+        #tabs-overview.tab
+          = render 'shared/form_errors', object: form.object
 
-          #tabs-strengths.tab
-            = render partial: 'tab_strengths', locals: {form: form}
+          = render partial: '/shared/client_profile_overview'
 
-          #tabs-goals.tab
-            = render partial: 'tab_aspirations', locals: {form: form}
+        #tabs-strengths.tab
+          = render partial: 'tab_strengths', locals: {form: form}
 
-          #tabs-support.tab
-            = render partial: 'tab_support', locals: {form: form}
+        #tabs-goals.tab
+          = render partial: 'tab_aspirations', locals: {form: form}
 
-          #tabs-experience.tab
-            = render partial: 'tab_education', locals: {form: form}
+        #tabs-support.tab
+          = render partial: 'tab_support', locals: {form: form}
 
-          #tabs-additional.tab
-            = render partial: 'tab_additional', locals: {form: form}
+        #tabs-experience.tab
+          = render partial: 'tab_education', locals: {form: form}
 
-          #tabs-equality.tab
-            = render partial: 'tab_equality', locals: {form: form}
-          #tabs-details.tab
-            = render partial: 'tab_contact', locals: {form: form}
+        #tabs-additional.tab
+          = render partial: 'tab_additional', locals: {form: form}
+
+        #tabs-equality.tab
+          = render partial: 'tab_equality', locals: {form: form}
+        #tabs-details.tab
+          = render partial: 'tab_contact', locals: {form: form}
 
