@@ -8,10 +8,25 @@
     =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
 = render partial: 'shared/upper_tabs', locals: {the_client: client}
+- if client.achievements.any?
+  .profile-tab.achievement-container
+    .column
+      .action-section.columns
+        - client.achievements.all.group_by(&:name).each do |id, group|
+          .achievement.column
+            .icon_cont
+              .icon= fa_icon AchievementOption.find(id).icon
+            .context
+              %p=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(group.size)}")
+              - if group.size > 1
+                %p.sub=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
+              - else
+                %p.sub=group.last.created_at.to_date.to_s(:long)
+
 .profile-tab
   .column
-    .action-section.ongoing
-      - if client.action_plan_tasks.ongoing.any?
+    - if client.action_plan_tasks.ongoing.any?
+      .action-section.ongoing
         .head.level
           .level-left
             %h2 Ongoing Tasks
@@ -25,9 +40,9 @@
               %th Assigned:
           %tbody
             = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
-      - else
-        %p="#{client.name} has no tasks yet"
-        =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
+    - else
+      %p="#{client.name} has no tasks yet"
+      =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
 
 

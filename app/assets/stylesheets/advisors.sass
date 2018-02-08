@@ -190,12 +190,15 @@ a[data-icon='envelope']
     .table td, .table th
       padding-left: 0
     &.completed
-      margin-top: 6em
       opacity: 0.5
       transition: 0.2s ease-in-out opacity
       &:hover
         opacity: 0.9
         transition: 0.2s ease-in-out opacity
+    &.ongoing
+      margin-bottom: 6em
+    hr
+      opacity: 0.6
   .tile
     label.label
       text-transform: uppercase
