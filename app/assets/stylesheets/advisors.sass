@@ -260,3 +260,16 @@ body.contact_notes .table
 #fix_alignment
   margin-left: 0
   margin-bottom: 15px
+
+.old_meeting
+  opacity: 0.7
+  font-style: italic
+  transition: 0.2s ease-in-out opacity
+  &:hover
+    opacity: 1
+    transition: 0.2s ease-in-out opacity
+
+#meeting_table .old_meeting td
+  padding-top: 100px
+#meeting_table .old_meeting ~ .old_meeting td
+  padding-top: 0px
