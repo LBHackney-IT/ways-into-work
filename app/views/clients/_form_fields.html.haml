@@ -11,7 +11,8 @@
   .column
     =form.input :phone, as: :tel, :input_html => { :class => 'input' }
 
-= form.input :preferred_contact_method, as: :radio_buttons, collection: ContactMethodOption.all, wrapper_html: { class: "convert_radio" }
+.convert_checkbox.field
+  = form.input :preferred_contact_methods, as: :check_boxes, collection: ContactMethodOption.all, include_hidden: false
 
 .columns
   .column

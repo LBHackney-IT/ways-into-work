@@ -20,11 +20,6 @@
 = render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
 
 
-/ .convert_checkbox.field
-/   =form.input :support_priorities, as: :check_boxes, collection: SupportOption.all, :label => 'What would you like support with?', include_hidden: false
-
-/   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
-
 
 .convert_checkbox.field
   =form.input :receive_benefits, as: :radio_buttons, collection: BenefitsOption.all, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }

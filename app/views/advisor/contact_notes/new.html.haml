@@ -15,7 +15,7 @@
     =client.decorate_preferred_contact
     =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
   .box
-    %h2 
+    %h2
       = "#{client.first_name}'s contact notes"
 
     = simple_form_for [client, contact_note], url: advisor_client_contact_notes_path(client_id: client.id) do |form|
@@ -24,7 +24,7 @@
 
       %fieldset
         .convert_radio.field
-          =form.input :contact_method, as: :radio_buttons, collection: ContactMethodOption.all, :label => 'How did you communicate with them?', include_hidden: false
+          =form.input :contact_method, as: :radio_buttons, collection: ['Email', 'Phone call'], :label => 'How did you communicate with them?', include_hidden: false
 
         .field
           =form.input :content, as: :text, label: 'Notes', :input_html => { :class => "textarea" }

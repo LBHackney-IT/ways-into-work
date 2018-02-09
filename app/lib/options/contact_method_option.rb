@@ -1,9 +1,9 @@
 class ContactMethodOption < Option
   def self.all
     [
-      new('Email'),
-      new('Phone call'),
-      # new('Hub visit')
+      new('email', 'Email'),
+      new('phone', 'Phone call'),
+      new('sms_reminder', 'SMS reminders (for meetings)')
     ]
   end
 end
