@@ -86,7 +86,7 @@ class ClientDecorator < ApplicationDecorator
 
   def decorate_preferred_contact
     if client.preferred_contact_methods
-      h.content_tag(:span, "(Client prefers to be contacted by #{ContactMethodOption.find(client.preferred_contact_methods)})") << phone_span << email_link
+      h.content_tag(:span, "(Client prefers to be contacted by #{ContactMethodOption.display(client.preferred_contact_methods)})") << phone_span << email_link
     else
       phone_span << email_link
     end
