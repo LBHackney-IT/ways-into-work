@@ -13,7 +13,7 @@
     %label.label
       = "#{client.first_name}'s contact details"
     =client.decorate_preferred_contact
-    =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
+    =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary"
   .box
     %h2
       = "#{client.first_name}'s contact notes"
