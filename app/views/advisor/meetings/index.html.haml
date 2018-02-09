@@ -23,6 +23,6 @@
           %tbody
             = render partial: 'meeting', collection: client.meetings.order("start_datetime DESC")
       - else
-        %p No current meetings
+        %p="#{client.first_name} doesn't have any meetings yet"
 
         =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary"
