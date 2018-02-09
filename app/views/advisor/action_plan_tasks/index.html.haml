@@ -11,6 +11,8 @@
 - if client.achievements.any?
   .profile-tab.achievement-container
     .column
+      %h3 Acheivements
+      %br
       .action-section.columns
         - client.achievements.all.group_by(&:name).each do |id, group|
           .achievement.column
@@ -29,8 +31,7 @@
       .action-section.ongoing
         .head.level
           .level-left
-            %h2 Ongoing Tasks
-            %span="#{client.action_plan_tasks.ongoing.count} Ongoing"
+            %h3=pluralize(client.action_plan_tasks.ongoing.count, 'Ongoing Task')
         %table.table
           %thead
             %tr
@@ -51,8 +52,7 @@
         %hr
         .head.level
           .level-left
-            %h2 Completed Tasks
-            %span="#{client.action_plan_tasks.completed.count} Completed"
+            %h3=pluralize(client.action_plan_tasks.completed.count, 'Completed Tasks')
         %table.table
           %thead
             %tr
