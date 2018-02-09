@@ -17,7 +17,7 @@ en:
         title:
           first: "CV completed"
           subsequent: "CV completed"
-          future: "Complete/update CV"
+          future: "Complete or update CV"
         description:
           first: "Uploaded your first CV"
           subsequent: "<strong>%{count}</strong> completed CV's"
@@ -44,34 +44,34 @@ en:
         title:
           first: "Started a placement"
           subsequent: "Started a placement"
-          future: "Start a work placement/volunteering"
+          future: "Start a work placement or volunteering"
         description:
           first: "Started a placement"
           subsequent: "<strong>%{count}</strong> placements started"
-        achieved: "Started work placement/volunteering"
+        achieved: "Started work or volunteering placement"
       training_started:
         title:
-          first: "Started training/education course"
-          subsequent: "Started training/education course"
-          future: "Start training/education course"
+          first: "Started training or education course"
+          subsequent: "Started training or education course"
+          future: "Start training or education course"
         description:
-          first: "Started your first training/education course"
+          first: "Started your first training or education course"
           subsequent: "<strong>%{count}</strong> training courses started"
-        achieved: "Started training/education course"
+        achieved: "Started training or education course"
       course_completed:
         title:
-          first: "Completed training/education course"
-          subsequent: "Completed training/education course"
-          future: "Complete training/education course"
+          first: "Completed training or education course"
+          subsequent: "Completed training or education course"
+          future: "Complete training or education course"
         description:
-          first: "Completed your first training/education course"
+          first: "Completed your first training or education course"
           subsequent: "<strong>%{count}</strong> courses completed"
-        achieved: "Completed training/education course"
+        achieved: "Completed training or education course"
       job_start:
         title:
           first: "Started new job"
           subsequent: "Started new job"
-          future: "Start job/apprenticeship"
+          future: "Start job or apprenticeship"
         description:
           first: "Congrats, you started your new job!"
           subsequent: "<strong>%{count}</strong> jobs started"
