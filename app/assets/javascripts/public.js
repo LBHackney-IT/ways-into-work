@@ -23,6 +23,8 @@ $(document).ready(function() {
 
   $("form[method=post]").warnUnsaved();
 
+  $(".clickable_row").clickableRow();
+
   // $("#tabs").tabs({
   //     activate: function(event, ui) {
   //         window.location.hash = ui.newPanel.attr('id');

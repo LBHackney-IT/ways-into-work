@@ -1,4 +1,4 @@
-%tr[meeting]{ class: meeting.start_datetime && meeting.start_datetime < DateTime.now ? 'old_meeting' : ''}
+%tr.clickable_row[meeting]{ class: meeting.start_datetime && meeting.start_datetime < DateTime.now ? 'old_meeting' : '', data: {"href" => edit_advisor_client_meeting_path(client_id: client.id, id: meeting.id)}}
   %td=meeting.start_datetime.to_date.to_s(:long)
   %td=MeetingAgendaOption.find(meeting.agenda).try(:name) || meeting.other_agenda
   %td=meeting.advisor.name

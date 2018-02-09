@@ -28,11 +28,20 @@
     background-color: transparent
     margin-bottom: 0
     .action_plan_task
+      a
+        color: #4a4a4a
+        &:hover
+          color: $black
       td.task
         width: 60%
+      .fa-exclamation-circle
+        display: none
       &.overdue
-        td, a
+        .fa-exclamation-circle
+          display: inline-block
+        td.due_date
           color: $red
+          font-weight: bold
     tbody
       tr
         background-color: rgba($white, 0.7)
@@ -273,3 +282,8 @@ body.contact_notes .table
   padding-top: 100px
 #meeting_table .old_meeting ~ .old_meeting td
   padding-top: 0px
+
+
+.clickable_row:hover
+  cursor: pointer
+  color: $black
