@@ -16,22 +16,15 @@ RSpec.describe Meeting, type: :model do
   end
 
   describe 'future scopes' do
-    let!(:meeting_in_two_hours) do
-      Fabricate(:meeting, client: client, start_datetime: Time.zone.now + 2.hours)
-    end
-    let!(:meeting_in_two_days) do
-      Fabricate(:meeting, client: client, start_datetime: Time.zone.now + 2.days)
-    end
-
-    it 'finds a meeting two hours from now' do
-      expect(Meeting.two_hours_from_now).to include(meeting_in_two_hours)
-      expect(Meeting.two_hours_from_now).not_to include(meeting)
-      expect(Meeting.two_hours_from_now.count).to eq(1)
+    let!(:meeting_tomorrow) do
+      Fabricate(:meeting, client: client, start_datetime: Time.zone.now + 1.day)
     end
 
     it 'finds a meeting two days from now' do
-      expect(Meeting.two_days_from_now).to include(meeting_in_two_days)
-      expect(Meeting.two_days_from_now.count).to eq(1)
+      meetings = Meeting.occurring_tomorrow
+      expect(meetings).not_to include(meeting)
+      expect(meetings).to include(meeting_tomorrow)
+      expect(meetings.count).to eq(1)
     end
   end
 end

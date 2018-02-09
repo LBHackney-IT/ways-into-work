@@ -6,14 +6,9 @@ class Meeting < ApplicationRecord
 
   before_save :add_upcoming_meeting_to_client
 
-  scope :two_hours_from_now, lambda {
-    from = (Time.zone.now + 2.hours).beginning_of_hour
-    within(from, from + 1.hour)
-  }
-
-  scope :two_days_from_now, lambda {
-    from = (Time.zone.now + 2.days).beginning_of_day
-    within(from, from + 1.day)
+  scope :occurring_tomorrow, lambda {
+    tomorrow = (Time.zone.now + 1.day).beginning_of_day
+    within(tomorrow, tomorrow + 1.day)
   }
 
   scope :within, ->(from, to) { where('start_datetime > ? AND start_datetime < ?', from, to) }

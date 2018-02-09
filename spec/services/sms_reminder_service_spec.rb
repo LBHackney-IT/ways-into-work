@@ -5,11 +5,11 @@ RSpec.describe SmsReminderService, type: :model do
     let!(:client) { Fabricate(:client, phone: '07557286509') }
 
     let!(:meeting) do
-      Fabricate(:meeting, client: client, start_datetime: Time.zone.now + 2.hours)
+      Fabricate(:meeting, client: client, start_datetime: Time.zone.now + 1.day)
     end
 
     it 'sends an sms reminder', :vcr do
-      response = SmsReminderService.new(:two_hours_from_now, Meeting.two_hours_from_now).perform
+      response = SmsReminderService.new(Meeting.occurring_tomorrow).perform
       expect(response).to include(meeting)
     end
   end
