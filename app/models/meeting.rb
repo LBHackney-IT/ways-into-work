@@ -6,6 +6,10 @@ class Meeting < ApplicationRecord
 
   before_save :add_upcoming_meeting_to_client
 
+  scope :needing_reminder_sms, lambda {
+    occurring_tomorrow.where(client_id: Client.contact_by_sms.pluck(:id))
+  }
+
   scope :occurring_tomorrow, lambda {
     tomorrow = (Time.zone.now + 1.day).beginning_of_day
     within(tomorrow, tomorrow + 1.day)
