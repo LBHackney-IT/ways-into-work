@@ -18,9 +18,10 @@
               %th Meeting Date:
               %th Agenda:
               %th Advisor:
+              %th Attended?
               %th
           %tbody
-            = render partial: 'meeting', collection: client.meetings
+            = render partial: 'meeting', collection: client.meetings.order("start_datetime DESC")
       - else
         %p No current meetings
 
