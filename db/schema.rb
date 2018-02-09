@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201195151) do
+ActiveRecord::Schema.define(version: 20180209190330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20180201195151) do
     t.boolean "studying"
     t.boolean "studying_part_time"
     t.bigint "advisor_id"
-    t.string "preferred_contact_method"
+    t.string "preferred_contact_methods", default: [], array: true
     t.string "other_qualification"
     t.string "training_courses", default: [], array: true
     t.string "other_training_course"
@@ -106,9 +106,9 @@ ActiveRecord::Schema.define(version: 20180201195151) do
     t.boolean "affected_by_benefit_cap"
     t.boolean "assigned_supported_employment"
     t.boolean "welfare_calculation_completed"
-    t.datetime "next_meeting_date"
     t.string "health_barriers", default: [], array: true
     t.string "other_receive_benefits"
+    t.datetime "next_meeting_date"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end

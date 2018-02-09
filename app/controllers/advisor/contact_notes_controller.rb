@@ -35,6 +35,6 @@ class Advisor::ContactNotesController < Advisor::BaseController
   def init_contact_note
     contact_note.advisor_id = current_advisor.id
     contact_note.client_id = params[:client_id]
-    contact_note.contact_method = client.preferred_contact_method
+    contact_note.contact_method = client.preferred_contact_methods
   end
 end

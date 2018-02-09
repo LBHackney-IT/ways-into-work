@@ -19,6 +19,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   has_many :meetings
   has_many :achievements
 
+  scope :contact_by_sms, -> { where("'sms_reminder' = ANY (preferred_contact_methods)") }
+
   scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
 
   scope :needing_appointment, -> { where(meetings_count: 0, imported: false) }

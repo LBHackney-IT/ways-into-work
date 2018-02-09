@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.notifications.service.gov.uk/v2/notifications/sms
+    body:
+      encoding: UTF-8
+      string: '{"phone_number":"+447557286509","template_id":"70f6abd0-5831-42b1-b8b4-5c749ef30de1","personalisation":{"first_name":"Chris","advisor_name":"Novella
+        Tromp","location_and_time":"The bestest hub, A High Road, E9 6AS, tomorrow
+        at 10:58pm","contact_url":"http://localhost:3000/hubs"}}'
+    headers:
+      User-Agent:
+      - NOTIFY-API-RUBY-CLIENT/2.6.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI0ZGMyMjExMy1mYzUxLTQxZWMtYjczZC1kMjUxNTVkODJmZmYiLCJpYXQiOjE1MTgyMTcxMzl9.AMpS46IdKvmd6E-q2zRgpwX9zFmndBRaG1S675picoI
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type,Authorization
+      Access-Control-Allow-Methods:
+      - GET,PUT,POST,DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 09 Feb 2018 22:59:00 GMT
+      Notifyrequestid:
+      - ac8e6b80-32a4-4b6f-ae9e-3415ced118e7
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Vcap-Request-Id:
+      - 00ff2d3c-a96f-4d1e-486a-6a121b95e669
+      Content-Length:
+      - '684'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n  \"content\": {\n    \"body\": \"Hello Chris. Reminder about your
+        meeting with Novella Tromp at The bestest hub, A High Road, E9 6AS, tomorrow
+        at 10:58pm. See http://localhost:3000/hubs for contact details.\", \n    \"from_number\":
+        \"GOVUK\"\n  }, \n  \"id\": \"1dfe0997-d554-49c5-b93f-22d01c9fd816\", \n  \"reference\":
+        null, \n  \"scheduled_for\": null, \n  \"template\": {\n    \"id\": \"70f6abd0-5831-42b1-b8b4-5c749ef30de1\",
+        \n    \"uri\": \"https://api.notifications.service.gov.uk/services/4dc22113-fc51-41ec-b73d-d25155d82fff/templates/70f6abd0-5831-42b1-b8b4-5c749ef30de1\",
+        \n    \"version\": 1\n  }, \n  \"uri\": \"https://api.notifications.service.gov.uk/v2/notifications/1dfe0997-d554-49c5-b93f-22d01c9fd816\"\n}\n"
+    http_version: 
+  recorded_at: Fri, 09 Feb 2018 22:59:00 GMT
+recorded_with: VCR 4.0.0
