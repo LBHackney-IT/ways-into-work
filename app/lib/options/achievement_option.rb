@@ -15,9 +15,7 @@ class AchievementOption < Option
       new('training_started', I18n.t('advisors.achievement.training_started.title.future'), 'book'),
       new('course_completed', I18n.t('advisors.achievement.course_completed.title.future'), 'graduation-cap'),
       new('job_start', I18n.t('advisors.achievement.job_start.title.future'), 'id-badge'),
-      new('job_sustained', I18n.t('advisors.achievement.job_sustained.title.future'), 'shield'),
-      # new('boc_completed', I18n.t('advisors.achievement.boc_completed.title.future'), 'money'),
-      # new('13_week_sustainment', I18n.t('advisors.achievement.13_week_sustainment.title.future'), 'shield')
+      new('job_sustained', I18n.t('advisors.achievement.job_sustained.title.future'), 'shield')
     ]
   end
 end
