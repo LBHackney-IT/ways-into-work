@@ -1,7 +1,9 @@
-.head.level
-  .level-left
-    %h2="#{client.first_name}'s File Uploads"
-= render partial: 'shared/upper_tabs', locals: {the_client: client}
+- if current_user_login.user_type == 'Advisor'
+  .head.level
+    .level-left
+      %h2="#{client.first_name}'s File Uploads"
+  = render partial: 'shared/upper_tabs', locals: {the_client: client}
+
 
 .profile-tab
   .column

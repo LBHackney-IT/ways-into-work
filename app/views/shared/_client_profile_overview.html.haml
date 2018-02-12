@@ -30,8 +30,8 @@
             .next_meeting
               %h4= client.decorate_meeting_date(next_meeting)
               =link_to edit_advisor_client_meeting_path(client_id: client.id, id: next_meeting.id) do
-                = next_meeting.start_datetime.to_date.to_s(:long)
-                = client.decorate_meeting_agenda(next_meeting)
+                %p= next_meeting.start_datetime.to_date.to_s(:long)
+                %p= client.decorate_meeting_agenda(next_meeting)
 
             =link_to "View all meetings", advisor_client_meetings_path(client.id), class: "button is-small is-primary"
           - else

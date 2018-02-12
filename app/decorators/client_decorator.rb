@@ -109,6 +109,15 @@ class ClientDecorator < ApplicationDecorator
     end
   end
 
+  def decorate_single_task_no_links
+    if client.action_plan_tasks.ongoing.any?
+      decorate_single_task_title + decorate_single_task_due_date
+    else
+      client.action_plan_tasks.completed.first.title
+    end
+  end
+
+
 
   def decorate_preferred_contact
     if client.preferred_contact_method
