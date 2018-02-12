@@ -1,5 +1,5 @@
--if clients.count == Client.all.count
-  ="#{Client.all.count} Total"
+-if clients.count == Client.count
+  ="#{Client.count} Total"
 -else
   %span.bold=pluralize(clients.count, ' filtered client')
-  =" - from #{Client.all.count} total"
+  =" - from #{Client.count} total"
