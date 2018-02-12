@@ -27,4 +27,5 @@
 //= require show-others
 //= require show-achievement
 //= require clickable-row
+//= require action-plans
 //= require public
