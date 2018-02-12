@@ -70,28 +70,28 @@ class ClientDecorator < ApplicationDecorator
 
   def decorate_meeting_date(meeting)
     if meeting.start_datetime && meeting.start_datetime < DateTime.now
-      "Last meeting:"
+      'Last meeting:'
     else
-      "Next meeting:"
+      'Next meeting:'
     end
   end
 
   def decorate_meeting_agenda(meeting)
-    string = "Agenda: "
+    string = 'Agenda: '
     string += MeetingAgendaOption.find(meeting.agenda).try(:name) || meeting.other_agenda
   end
 
   def decorate_task_title
     if client.action_plan_tasks.ongoing.any?
-      "Next task to complete:"
+      'Next task to complete:'
     else
-      "Most recently completed task:"
+      'Most recently completed task:'
     end
   end
 
   def decorate_single_task_due_date
     h.content_tag :p do
-      "Due date: " + client.action_plan_tasks.ongoing.first.due_date.to_date.to_s(:short)
+      'Due date: ' + client.action_plan_tasks.ongoing.first.due_date.to_date.to_s(:short)
     end
   end
 
@@ -115,11 +115,7 @@ class ClientDecorator < ApplicationDecorator
     else
       client.action_plan_tasks.completed.first.title
     end
-  end
-
-
-
-  def decorate_preferred_contact
+  end  def decorate_preferred_contact
     if client.preferred_contact_method
       h.content_tag(:span, "(Client prefers to be contacted by #{ContactMethodOption.find(client.preferred_contact_method)})") << phone_span << email_link
     else
