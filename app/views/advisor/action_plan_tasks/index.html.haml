@@ -3,8 +3,9 @@
     %h2="#{client.first_name}'s Action Plan"
 
   .level-right.home.single
-    =link_to 'Print Action Plan', { print_view: 1 }, { class: 'button', id: 'print_page' }
-    &nbsp;
+    - if client.action_plan_tasks.ongoing.any?
+      =link_to 'Print Action Plan', { print_view: 1 }, { class: 'button', id: 'print_page' }
+      &nbsp;
     =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
 
 = render partial: 'shared/upper_tabs', locals: {the_client: client}
