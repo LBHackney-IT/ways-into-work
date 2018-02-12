@@ -115,7 +115,9 @@ class ClientDecorator < ApplicationDecorator
     else
       client.action_plan_tasks.completed.first.title
     end
-  end  def decorate_preferred_contact
+  end
+
+  def decorate_preferred_contact
     if client.preferred_contact_method
       h.content_tag(:span, "(Client prefers to be contacted by #{ContactMethodOption.find(client.preferred_contact_method)})") << phone_span << email_link
     else
