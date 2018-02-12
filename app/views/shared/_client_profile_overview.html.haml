@@ -42,8 +42,13 @@
           %hr
 
           - if client.action_plan_tasks.any?
-            %h4=client.decorate_task_title
-            %p=client.decorate_single_task
+            - task = client.action_plan_tasks.ongoing.first
+            .action_plan_task{class: task.due_date < Time.zone.now ? 'overdue' : ''}
+              %h4=client.decorate_task_title
+              %p=client.decorate_single_task
+              .due_date
+                =fa_icon "exclamation-circle"
+                =task.due_date.to_date.to_s(:short)
 
             =link_to "View all tasks", advisor_client_action_plan_tasks_path(client.id), class: "button is-small is-primary"
           - else

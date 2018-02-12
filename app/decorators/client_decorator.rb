@@ -102,7 +102,7 @@ class ClientDecorator < ApplicationDecorator
   def decorate_single_task
     if client.action_plan_tasks.ongoing.any?
       h.link_to h.edit_advisor_client_action_plan_task_path(client_id: client.id, id: client.action_plan_tasks.ongoing.first.id) do
-        decorate_single_task_title + decorate_single_task_due_date
+        decorate_single_task_title
       end
     else
       h.link_to client.action_plan_tasks.completed.first.title, h.edit_advisor_client_action_plan_task_path(client_id: client.id, id: client.action_plan_tasks.completed.first.id)
@@ -111,7 +111,7 @@ class ClientDecorator < ApplicationDecorator
 
   def decorate_single_task_no_links
     if client.action_plan_tasks.ongoing.any?
-      decorate_single_task_title + decorate_single_task_due_date
+      decorate_single_task_title
     else
       client.action_plan_tasks.completed.first.title
     end

@@ -34,14 +34,6 @@
           color: $black
       td.task
         width: 60%
-      .fa-exclamation-circle
-        display: none
-      &.overdue
-        .fa-exclamation-circle
-          display: inline-block
-        td.due_date
-          color: $red
-          font-weight: bold
     tbody
       tr
         background-color: rgba($white, 0.7)
@@ -291,6 +283,15 @@ body.contact_notes .table
   cursor: pointer
   color: $black
 
+.action_plan_task
+  .fa-exclamation-circle
+    display: none
+  &.overdue
+    .fa-exclamation-circle
+      display: inline-block
+    .due_date
+      color: $red
+      font-weight: bold
 
 #misc_overview
   p
