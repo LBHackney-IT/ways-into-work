@@ -2,12 +2,10 @@ Given(/^I assign a new action plan task to them$/) do
   click_on @client.name
   click_on 'Action Plan'
   click_on I18n.t('clients.buttons.new_action_plan_task'), match: :first
-  @task_title = 'Do Something'
-  @due_date = DateTime.now.utc + 7.days
+  @task_title = AchievementOption.all.sample.name
+  @due_date = Time.zone.now.utc + 7.days
   fill_in 'action_plan_task_title', with: @task_title
   fill_in 'action_plan_task_due_date', with: @due_date.strftime('%d/%m/%Y')
-  @achievement_name = AchievementOption.all.sample.name
-  fill_in 'action_plan_task_achievement_name', with: @achievement_name
   click_on I18n.t('clients.buttons.save')
 end
 

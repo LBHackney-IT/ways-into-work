@@ -20,7 +20,7 @@ WaysIntoWork::Application.routes.draw do
     resources :my_clients, only: :index
     resources :dashboard, only: :index
 
-    resources :achievement_names, only: :index
+    resources :task_titles, only: :index
   end
 
   resources :clients, only: %i[new create]

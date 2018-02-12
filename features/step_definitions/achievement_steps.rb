@@ -1,11 +1,11 @@
 Given(/^my client has an action plan task with an achievement$/) do
-  @achievement = 'job_application'
-  @action_plan_task = Fabricate(:action_plan_task, client: @client, achievement_name: @achievement)
+  @achievement = AchievementOption.find('job_application').name
+  @action_plan_task = Fabricate(:action_plan_task, client: @client, title: @achievement)
 end
 
 Then(/^my client should have an achievement recorded$/) do
   expect(@client.achievements.count).to eq(1)
-  expect(@client.achievements.first.name).to eq(@achievement)
+  expect(@client.achievements.first.name).to eq(AchievementOption.find_by_name(@achievement).id)
   visit advisor_client_achievements_path(@client)
   I18n.t("advisors.achievement.#{@achievement}.title.first")
 end

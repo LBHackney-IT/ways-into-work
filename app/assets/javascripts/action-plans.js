@@ -2,14 +2,14 @@ $.fn.suggestNames = function() {
 
   if (this.length === 0) { return false; }
 
-  $names = $("#action_plan_task_achievement_name")
+  $names = $("#action_plan_task_title")
 
   $names.autocomplete({
     minLength: 0,
     disabled: false,
     source: function( request, response ) {
       $.ajax( {
-        url: "/advisor/achievement_names",
+        url: "/advisor/task_names",
         data: {
           term: request.term
         },

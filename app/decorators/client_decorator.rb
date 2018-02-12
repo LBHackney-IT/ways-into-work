@@ -1,11 +1,7 @@
-class ClientDecorator < ApplicationDecorator
+class ClientDecorator < ApplicationDecorator # rubocop:disable Metrics/ClassLength
   delegate_all
 
   decorates :client
-
-  def return_to_client_button
-    h.link_to I18n.t('clients.buttons.back'), h.edit_client_employment_status_path, class: 'button pull-right'
-  end
 
   def decorate_name
     standard_wrapper('Name:', client.name)
@@ -52,10 +48,6 @@ class ClientDecorator < ApplicationDecorator
     standard_wrapper('Industry preference:', TypeOfWorkOption.display(client.types_of_work))
   end
 
-  # def decorate_rag_status
-  #   standard_wrapper("Status:", client.rag_status)
-  # end
-
   def decorate_studying
     standard_wrapper('Currently studying:', value_from(client.studying))
   end
@@ -69,7 +61,7 @@ class ClientDecorator < ApplicationDecorator
   end
 
   def decorate_meeting_date(meeting)
-    if meeting.start_datetime && meeting.start_datetime < DateTime.now
+    if meeting.start_datetime && meeting.start_datetime < Time.zone.now
       'Last meeting:'
     else
       'Next meeting:'
@@ -77,8 +69,7 @@ class ClientDecorator < ApplicationDecorator
   end
 
   def decorate_meeting_agenda(meeting)
-    string = 'Agenda: '
-    string += MeetingAgendaOption.find(meeting.agenda).try(:name) || meeting.other_agenda
+    "Agenda: #{MeetingAgendaOption.find(meeting.agenda)&.name || meeting.other_agenda}"
   end
 
   def decorate_task_title
@@ -99,13 +90,16 @@ class ClientDecorator < ApplicationDecorator
     h.content_tag :p, client.action_plan_tasks.ongoing.first.title
   end
 
-  def decorate_single_task
+  def decorate_single_task # rubocop:disable Metrics/AbcSize
     if client.action_plan_tasks.ongoing.any?
       h.link_to h.edit_advisor_client_action_plan_task_path(client_id: client.id, id: client.action_plan_tasks.ongoing.first.id) do
         decorate_single_task_title
       end
     else
-      h.link_to client.action_plan_tasks.completed.first.title, h.edit_advisor_client_action_plan_task_path(client_id: client.id, id: client.action_plan_tasks.completed.first.id)
+      h.link_to client.action_plan_tasks.completed.first.title,
+                h.edit_advisor_client_action_plan_task_path(
+                  client_id: client.id, id: client.action_plan_tasks.completed.first.id
+                )
     end
   end
 
