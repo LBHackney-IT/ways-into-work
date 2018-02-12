@@ -18,7 +18,7 @@ describe Advisor::TaskTitlesController, type: :controller do
       expect(response.status).to eql(200)
       parsed_body = JSON.parse(response.body)
       expect(parsed_body.count).to eq(3)
-      expect(parsed_body).to eq(["Submit job application", "Start job or apprenticeship", "Stay in job more than 6 months"])
+      expect(parsed_body).to eq(['Submit job application', 'Start job or apprenticeship', 'Stay in job more than 6 months'])
     end
 
     it 'matches none based on typing 3 characters' do

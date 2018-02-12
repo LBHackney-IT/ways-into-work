@@ -21,13 +21,13 @@ class ActionPlanTask < ApplicationRecord
 
   def award_achievement
     return unless completed?
-    return if (achievement = AchievementOption.find_by_name(title)).blank?
+    return if (achievement = AchievementOption.named(title)).blank?
     client.achievements.create(name: achievement.id, action_plan_task_id: id)
   end
 
   # def remove_achievement
   #   TODO - now achievement is tied to tasks we should be able to remove on transition to ongoing
-  #   return unless completed? && AchievementOption.find_by_name(title).present?
+  #   return unless completed? && AchievementOption.named(title).present?
   #   client.achievements.where(name: title).first.destroy
   # end
 end

@@ -10,7 +10,7 @@ class Option
     all.detect { |x| x.id == id }
   end
 
-  def self.find_by_name(name)
+  def self.named(name)
     all.detect { |x| x.name == name }
   end
 
