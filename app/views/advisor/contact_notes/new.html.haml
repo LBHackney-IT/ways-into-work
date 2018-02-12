@@ -24,7 +24,7 @@
 
       %fieldset
         .convert_radio.field
-          =form.input :contact_method, as: :radio_buttons, collection: ContactMethodOption.all, :label => 'How did you communicate with them?', include_hidden: false
+          =form.input :contact_method, as: :radio_buttons, collection: ['Email', 'Phone call'], :label => 'How did you communicate with them?', include_hidden: false
 
         .field
           =form.input :content, as: :text, label: 'Notes', :input_html => { :class => "textarea" }

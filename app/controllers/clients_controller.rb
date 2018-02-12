@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
       :first_name,
       :last_name,
       :phone,
-      :preferred_contact_method,
+      :preferred_contact_methods,
       :address_line_1,
       :address_line_2,
       :postcode,

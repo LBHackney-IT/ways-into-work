@@ -6,6 +6,9 @@
 
 =form.input :date_of_birth, label: 'DOB', as: :date, start_year: Time.zone.today.year, end_year: Time.zone.today.year - 70, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
 
+.convert_checkbox.field
+  = form.input :preferred_contact_methods, as: :check_boxes, collection: ContactMethodOption.all, include_hidden: false
+
 =form.input :email, as: :email, :input_html => { :class => 'input' }
 =form.input :phone, as: :tel, :input_html => { :class => 'input' }
 

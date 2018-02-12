@@ -44,6 +44,8 @@ gem 'paranoia'
 
 gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service_check'
 
+gem 'notifications-ruby-client'
+
 group :development, :staging, :test do
   gem 'fabrication'
   gem 'ffaker'

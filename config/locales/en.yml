@@ -54,9 +54,9 @@ en:
         email: "Your email"
         reason: "Reason for referral"
         client:
-          preferred_contact_method: "Does the client have a preferred contact method?"
+          preferred_contact_methods: "Which contact methods are preferred by the client?"
       client:
-        preferred_contact_method: "Do you have a preferred contact method?"
+        preferred_contact_methods: "Please select the methods you would prefer us to contact you by:"
   client:
     upper_tabs:
       tab_a: "Profile"

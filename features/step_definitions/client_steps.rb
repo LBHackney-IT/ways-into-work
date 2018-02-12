@@ -67,3 +67,14 @@ Given(/^there are (\d+) clients from another hub$/) do |i|
   hub = Fabricate(:hub, name: 'Other Hub')
   @other_clients = Fabricate.times(i.to_i, :client, hub: hub)
 end
+
+Given(/^I update the client's preferred contact details to all$/) do
+  ContactMethodOption.all.each do |option|
+    check "client_preferred_contact_methods_#{option.id}"
+  end
+  click_on 'Save profile'
+end
+
+Then(/^the client should be contactable by sms reminder$/) do
+  expect(@client.reload.preferred_contact_methods.sort).to eq(ContactMethodOption.all.map(&:id).sort)
+end
