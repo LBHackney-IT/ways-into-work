@@ -1,13 +1,13 @@
 Given(/^there is a client who has been assessed$/) do
-  @client = Fabricate.create(:assessed_client)
+  @client = Fabricate(:assessed_client)
 end
 
 Given(/^there is a client who just registered$/) do
-  @client = Fabricate.create(:client)
+  @client = Fabricate(:client)
 end
 
 Given(/^I have just signed up as a client$/) do
-  @i = Fabricate.create(:client)
+  @i = Fabricate(:client)
 end
 
 Given(/^the client is assigned to me$/) do
@@ -19,8 +19,7 @@ Given(/^the client is not assigned to me$/) do
 end
 
 Then(/^the client should not be assigned to me$/) do
-  client = Client.last
-  expect(client.advisor).to_not eq(@i)
+  expect(@client.reload.advisor).to_not eq(@i)
 end
 
 Given(/^the client is looking to work in Retail$/) do
@@ -30,8 +29,7 @@ Given(/^the client is looking to work in Retail$/) do
 end
 
 Then(/^the client should be assigned to me$/) do
-  client = Client.last
-  expect(client.advisor).to eq(@i)
+  expect(Client.last.advisor).to eq(@i)
 end
 
 Then(/^that client should have an initial meeting created$/) do

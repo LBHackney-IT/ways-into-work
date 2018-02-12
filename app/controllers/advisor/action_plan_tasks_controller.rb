@@ -18,7 +18,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
 
   def create
     if action_plan_task.save
-      flash[:success] = "Agreed Task: #{action_plan_task.title} saved"
+      flash[:success] = I18n.t('flash.success.task_saved', title: action_plan_task.title)
       redirect_to redirect_path_from_commit
     else
       render :new
@@ -27,7 +27,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
 
   def update
     if action_plan_task.update(action_plan_task_params)
-      flash[:success] = "Agreed Task: #{action_plan_task.title} saved"
+      flash[:success] = I18n.t('flash.success.task_saved', title: action_plan_task.title)
       redirect_to advisor_client_action_plan_tasks_path(client_id: action_plan_task.client_id)
     else
       render :new
@@ -35,7 +35,7 @@ class Advisor::ActionPlanTasksController < Advisor::BaseController
   end
 
   def destroy
-    flash[:success] = "Agreed Task: #{action_plan_task.title} deleted"
+    flash[:success] = I18n.t('flash.success.task_deleted', title: action_plan_task.title)
     action_plan_task.destroy!
     redirect_to advisor_client_action_plan_tasks_path(client_id: params[:client_id])
   end

@@ -16,5 +16,4 @@ class ActionPlanTaskDecorator < ApplicationDecorator
   def decorate_action_completed_by
     standard_wrapper('Task to be completed by:', action_plan_task.task_owner_name)
   end
-
 end

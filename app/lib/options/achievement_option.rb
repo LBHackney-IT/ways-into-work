@@ -6,7 +6,7 @@ class AchievementOption < Option
     @icon = icon
   end
 
-  def self.all # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  def self.all # rubocop:disable Metrics/AbcSize
     [
       new('cv_completed', I18n.t('advisors.achievement.cv_completed.title.future'), 'file-pdf-o'),
       new('job_application', I18n.t('advisors.achievement.job_application.title.future'), 'paper-plane'),

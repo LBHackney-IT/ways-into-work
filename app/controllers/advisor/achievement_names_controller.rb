@@ -11,7 +11,7 @@ class Advisor::AchievementNamesController < ApplicationController
     if params[:term].blank? || params[:term].length < 2
       AchievementOption.all.collect(&:name)
     else
-      Achievement.where('name like ?', "%#{params[:term]}%").limit(8)
+      Achievement.where('name ILIKE ?', "%#{params[:term]}%").limit(8)
     end
   end
 end
