@@ -8,6 +8,7 @@ class Advisor::AdvisorController < Advisor::BaseController
     advisor.login.generate_default_password
     if advisor.save
       advisor.send_confirmation!
+      flash[:success] = "#{advisor.name} created."
       redirect_to user_root
     else
       render :new
