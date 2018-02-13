@@ -52,15 +52,13 @@ class Advisor::DashboardController < Advisor::BaseController
     if @month.to_s.match?(/Q/)
       setup_quarter(@month.to_sym)
     else
-      date = Date.new(@year.to_i, @month.to_i)
-      @from = date.beginning_of_month
-      @to = date.end_of_month
+      @from = Date.new(@year.to_i, @month.to_i)
+      @to = @from.end_of_month
     end
   end
 
   def setup_quarter(quarter)
-    mon = first_month[quarter]
-    @from = Date.new(@year.to_i, mon).beginning_of_quarter
+    @from = Date.new(@year.to_i, first_month[quarter])
     @to = @from.end_of_quarter
   end
 
