@@ -28,11 +28,12 @@
     background-color: transparent
     margin-bottom: 0
     .action_plan_task
+      a
+        color: #4a4a4a
+        &:hover
+          color: $black
       td.task
         width: 60%
-      &.overdue
-        td, a
-          color: #FF1919
     tbody
       tr
         background-color: rgba($white, 0.7)
@@ -49,6 +50,7 @@
         text-transform: uppercase
         font-weight: 500
         font-size: 13px
+        color: rgba($black, 0.7)
     td, th
       border: none
       &.quarter
@@ -174,7 +176,7 @@ a[data-icon='envelope']
       &:hover
         cursor: default
     &:first-child.current
-      margin-left: -0.75em
+      // margin-left: -0.75em
     &:last-child.current
 
 .profile-tab
@@ -185,16 +187,25 @@ a[data-icon='envelope']
   margin-top: 0px
   .tab
     padding-left: 15px
-  .action-section
+  .action-section, #meeting_table
     .table td, .table th
       padding-left: 0
     &.completed
-      padding-top: 2em
+      opacity: 0.5
+      transition: 0.2s ease-in-out opacity
+      &:hover
+        opacity: 0.9
+        transition: 0.2s ease-in-out opacity
+    &.ongoing
+      margin-bottom: 6em
+    hr
+      opacity: 0.6
   .tile
     label.label
       text-transform: uppercase
       color: rgba($black, 0.5)
       font-weight: normal
+      font-size: 13px
     h3 i.fa-circle
       +assessment-circle
       font-size: 1.1em
@@ -218,11 +229,12 @@ a[data-icon='envelope']
     margin-right: 10px
 
 .admin.meetings,
+.admin.clients,
 .admin.action_plan_tasks,
 .admin.contact_notes,
 body.file_uploads
   .content h3
-    margin-bottom: 0
+    // margin-bottom: 0
 
 body.contact_notes .table
   tr.note
@@ -236,3 +248,55 @@ body.contact_notes .table
   border-top-left-radius: 0px
 .top-right-corner
   border-top-right-radius: 0px
+
+
+.button#print_page
+  margin-right: 10px
+
+
+#actions
+  .field
+    margin-bottom: 0
+
+#fix_alignment
+  margin-left: 0
+  margin-bottom: 15px
+
+.old_meeting
+  opacity: 0.7
+  font-style: italic
+  transition: 0.2s ease-in-out opacity
+  &:hover
+    opacity: 1
+    transition: 0.2s ease-in-out opacity
+
+#meeting_table .meeting:first-child td
+  padding-top: 0px !important
+
+#meeting_table .old_meeting td
+  padding-top: 100px
+#meeting_table .old_meeting ~ .old_meeting td
+  padding-top: 0px
+
+
+.clickable_row:hover
+  cursor: pointer
+  color: $black
+
+.action_plan_task
+  .fa-exclamation-circle
+    display: none
+  &.overdue
+    .fa-exclamation-circle
+      display: inline-block
+    .due_date
+      color: $red
+      font-weight: bold
+
+#misc_overview
+  p
+    margin-bottom: 0px
+  h4
+    margin-bottom: 5px
+  .button.is-small
+    margin-top: 10px

@@ -2,14 +2,14 @@
 //   $("#flash-message").html('<div id="flash_'+type+'">'+msg+'</div>');
 // };
 
-// $(function(){
-//   $.ajaxSetup({
-//     beforeSend: function( xhr ) {
-//       var token = $('meta[name="csrf-token"]').attr('content');
-//       if (token) xhr.setRequestHeader('X-CSRF-Token', token);
-//     }
-//   });
-// });
+$(function(){
+  $.ajaxSetup({
+    beforeSend: function( xhr ) {
+      var token = $('meta[name="csrf-token"]').attr('content');
+      if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+    }
+  });
+});
 
 $(document).ready(function() {
 
@@ -23,20 +23,9 @@ $(document).ready(function() {
 
   $("form[method=post]").warnUnsaved();
 
-  // $("#tabs").tabs({
-  //     activate: function(event, ui) {
-  //         window.location.hash = ui.newPanel.attr('id');
-  //     },
-  //     fx: { opacity: 'toggle' },
-  //     select: function(event, ui) {
-  //         $(this).css('height', $(this).height());
-  //         $(this).css('overflow', 'hidden');
-  //     },
-  //     show: function(event, ui) {
-  //         $(this).css('height', 'auto');
-  //         $(this).css('overflow', 'visible');
-  //     }
-  // });
+  $(".clickable_row").clickableRow();
+
+  $(".admin.action_plan_tasks form").suggestNames();
 
   $("#tabs").tabs({
     beforeActivate: function(event, ui) {
@@ -58,7 +47,7 @@ $(document).ready(function() {
         }
         $(window).scrollTop($(this).data('scrollTop'));
     }
-});
+  });
 
   $("#new_file_upload").uploadFile();
 

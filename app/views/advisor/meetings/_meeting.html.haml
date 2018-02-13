@@ -1,5 +1,17 @@
-%tr[meeting]
-  %td=meeting.start_datetime.to_date.to_s(:short)
+%tr.clickable_row[meeting]{ class: meeting.start_datetime && meeting.start_datetime < Time.zone.now ? 'old_meeting' : '', data: {"href" => edit_advisor_client_meeting_path(client_id: client.id, id: meeting.id)}}
+  %td=meeting.start_datetime.to_date.to_s(:long)
   %td=MeetingAgendaOption.find(meeting.agenda).try(:name) || meeting.other_agenda
   %td=meeting.advisor.name
+  %td
+    - if meeting.start_datetime && meeting.start_datetime < Time.zone.now
+      - if meeting.client_attended == true
+        =fa_icon "check-circle"
+        Yes
+      - elsif meeting.client_attended == false
+        =fa_icon "times-circle"
+        No
+      - else
+        =fa_icon "exclamation-circle"
+        Update
+
   %td.has-text-right=button_to 'View details', edit_advisor_client_meeting_path(client_id: client.id, id: meeting.id), method: :get, class: "button is-primary is-small"

@@ -16,21 +16,62 @@
           = client.decorate_date_registered
 
         %article.tile.is-child.box
-          %h3 Support & Work
+          %h3 Previous Experience
           = client.decorate_past_education
           = client.decorate_currently_employed
           = client.decorate_studying
           = client.decorate_types_of_work
           = client.decorate_support_priorities
-      .tile.is-parent
+
+      .tile.is-parent#misc_overview
         %article.tile.is-child.box
-          %h3 Aspirations & Goals
-          - if client.decorate_objectives.nil? && client.decorate_job_goal1.nil? && client.decorate_job_goal2.nil? && client.decorate_barriers.nil?
-            ="You have not completed any aspirations or goals yet in your profile."
-          = client.decorate_objectives
-          = client.decorate_job_goal1
-          = client.decorate_job_goal2
-          = client.decorate_barriers
+          - if client.meetings.any?
+            - next_meeting = client.meetings.order("start_datetime DESC").first
+            .next_meeting
+              %h4= client.decorate_meeting_date(next_meeting)
+              =link_to edit_advisor_client_meeting_path(client_id: client.id, id: next_meeting.id) do
+                %p= next_meeting.start_datetime.to_date.to_s(:long)
+                %p= client.decorate_meeting_agenda(next_meeting)
+
+            =link_to "View all meetings", advisor_client_meetings_path(client.id), class: "button is-small is-primary"
+          - else
+            %h4 Meetings:
+            %p="#{client.first_name} doesn't have any meetings yet"
+            %p=link_to "Create a new meeting", new_advisor_client_meeting_path(client.id)
+
+          %hr
+
+          - if client.action_plan_tasks.any?
+            - task = client.action_plan_tasks.ongoing.first
+            .action_plan_task{class: task.due_date < Time.zone.now ? 'overdue' : ''}
+              %h4=client.decorate_task_title
+              %p=client.decorate_single_task
+              .due_date
+                =fa_icon "exclamation-circle"
+                =task.due_date.to_date.to_s(:short)
+
+            =link_to "View all tasks", advisor_client_action_plan_tasks_path(client.id), class: "button is-small is-primary"
+          - else
+            %h4 Action Plan:
+            %p="#{client.first_name} doesn't have any tasks yet"
+            %p=link_to "Create a new task", new_advisor_client_action_plan_task_path(client.id)
+
+          %hr
+
+          - if client.achievements.any?
+            %h4 Achievements:
+            - client.achievements.all.group_by(&:name).each do |id, group|
+              .achievement.column
+                .icon_cont
+                  .icon= fa_icon AchievementOption.find(id).icon
+                .context
+                  %p=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(group.size)}")
+                  - if group.size > 1
+                    %p.sub=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
+                  - else
+                    %p.sub=group.last.created_at.to_date.to_s(:long)
+
+
     - if client.referrer && current_user_login.user_type == 'Advisor'
       .tile.is-parent.is-vertical
         .tile.is-child.box

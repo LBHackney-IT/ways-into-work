@@ -1,5 +1,8 @@
--if clients.count == Client.all.count
-  ="#{Client.all.count} Total"
+-if clients.empty?
+  %span.bold='0 clients'
+-elsif clients.total_count == Client.count
+  %span.bold=filtered_range(clients, ' client')
+  =" - from #{clients.total_count} total" if clients.total_pages > 1
 -else
-  %span.bold=pluralize(clients.count, ' filtered client')
-  =" - from #{Client.all.count} total"
+  %span.bold=filtered_range(clients, ' filtered client')
+  =" - from #{clients.total_count} total (filtered count)" if clients.total_pages > 1

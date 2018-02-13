@@ -20,8 +20,9 @@ end
 
 Then(/^I should see the meeting has been booked$/) do
   expect(page).not_to have_css('#clients_needing_appointment')
-  within '#clients_with_initial_appointment' do
-    expect(page).to have_content(@client.name)
+  within '.clickable_row.meeting' do
+    expect(page).to have_content(@i.name)
+    expect(page).to have_content(MeetingAgendaOption.find(@client.meetings.first.agenda).name)
   end
 end
 

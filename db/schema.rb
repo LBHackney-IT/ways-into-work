@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209190330) do
+ActiveRecord::Schema.define(version: 20180212181740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20180209190330) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "action_plan_task_id"
+    t.index ["action_plan_task_id"], name: "index_achievements_on_action_plan_task_id"
     t.index ["client_id"], name: "index_achievements_on_client_id"
   end
 
@@ -36,7 +38,6 @@ ActiveRecord::Schema.define(version: 20180209190330) do
     t.bigint "advisor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "achievement_name"
     t.index ["advisor_id"], name: "index_action_plan_tasks_on_advisor_id"
     t.index ["client_id"], name: "index_action_plan_tasks_on_client_id"
   end

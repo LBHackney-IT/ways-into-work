@@ -15,7 +15,7 @@ class Advisor::MeetingsController < Advisor::BaseController
   def create
     if meeting.save
       flash[:success] = 'Meeting saved'
-      redirect_to :advisor_my_clients
+      redirect_to advisor_client_meetings_path(client_id: meeting.client_id)
     else
       render :new
     end

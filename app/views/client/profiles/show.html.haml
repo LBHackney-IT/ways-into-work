@@ -1,2 +1,76 @@
-.column
-  = render partial: '/shared/client_profile_overview'
+#actions.has-text-right= render partial: 'actions'
+%br
+
+.tile.is-ancestor
+  .tile.is-vertical.is-12
+    .tile
+      .tile.is-parent.is-vertical
+        %article.tile.is-child.box
+          %h3 Details & Contact
+          = client.decorate_name
+          = client.decorate_age
+          = client.decorate_email
+          = client.decorate_phone
+          = client.decorate_address
+          = client.decorate_national_insurance_number
+          = client.decorate_date_registered
+
+        %article.tile.is-child.box
+          %h3 Previous Experience
+          = client.decorate_past_education
+          = client.decorate_currently_employed
+          = client.decorate_studying
+          = client.decorate_types_of_work
+          = client.decorate_support_priorities
+
+      .tile.is-parent#misc_overview
+        %article.tile.is-child.box
+          - if client.meetings.any?
+            - next_meeting = client.meetings.order("start_datetime DESC").first
+            .next_meeting
+              %h4= client.decorate_meeting_date(next_meeting)
+              %p= next_meeting.start_datetime.to_date.to_s(:long)
+              %p= client.decorate_meeting_agenda(next_meeting)
+          - else
+            %h4 Meetings:
+            %p You don't have any meetings yet
+
+          %hr
+
+          - if client.action_plan_tasks.any?
+            %h4=client.decorate_task_title
+            %p=client.decorate_single_task_no_links
+          - else
+            %h4 Action Plan:
+            %p You don't have any tasks yet
+
+          %hr
+
+          - if client.achievements.any?
+            %h4 Achievements:
+            - client.achievements.all.group_by(&:name).each do |id, group|
+              .achievement.column
+                .icon_cont
+                  .icon= fa_icon AchievementOption.find(id).icon
+                .context
+                  %p=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(group.size)}")
+                  - if group.size > 1
+                    %p.sub=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
+                  - else
+                    %p.sub=group.last.created_at.to_date.to_s(:long)
+
+
+    - if client.referrer && current_user_login.user_type == 'Advisor'
+      .tile.is-parent.is-vertical
+        .tile.is-child.box
+          %h3 Referrer
+          = referrer.decorate_name
+          = referrer.decorate_organisation
+          = referrer.decorate_email
+          = referrer.decorate_phone
+          = referrer.decorate_reason
+
+    .tile.is-parent.is-vertical
+      .tile.is-child.box
+        %h3 Files
+        = render partial: '/shared/latest_file_upload'

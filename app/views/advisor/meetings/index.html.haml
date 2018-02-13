@@ -1,4 +1,4 @@
-.column
+%section
   .head.level
     .level-left
       %h2="#{client.first_name}'s Meetings"
@@ -10,18 +10,19 @@
   = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
   .profile-tab
-    .column
+    .column#meeting_table
       -if client.meetings.any?
         %table.table
           %thead
             %tr
-              %th Scheduled For Date
-              %th Agenda
-              %th Advisor
+              %th Meeting Date:
+              %th Agenda:
+              %th Advisor:
+              %th Attended?
               %th
           %tbody
-            = render partial: 'meeting', collection: client.meetings
+            = render partial: 'meeting', collection: client.meetings.order("start_datetime DESC")
       - else
-        %p No current meetings
+        %p="#{client.first_name} doesn't have any meetings yet"
 
         =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary"

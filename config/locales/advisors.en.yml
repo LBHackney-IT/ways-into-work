@@ -17,14 +17,16 @@ en:
         title:
           first: "CV completed"
           subsequent: "CV completed"
+          future: "Complete or update CV"
         description:
           first: "Uploaded your first CV"
           subsequent: "<strong>%{count}</strong> completed CV's"
-        achieved: "CV completed"
+        achieved: "Completed CV"
       job_application:
         title:
           first: "First job application sent"
           subsequent: "Job application sent"
+          future: "Submit job application"
         description:
           first: "Sent your first job application"
           subsequent: "<strong>%{count}</strong> job applications sent"
@@ -33,63 +35,53 @@ en:
         title:
           first: "First job interview"
           subsequent: "Interview attended"
+          future: "Attend Interview"
         description:
           first: "Attended your first job interview"
           subsequent: "<strong>%{count}</strong> interviews attended"
         achieved: "Interview attended"
       placement_volunteering:
         title:
-          first: "Found a placement"
-          subsequent: "Found a placement"
+          first: "Started a placement"
+          subsequent: "Started a placement"
+          future: "Start a work placement or volunteering"
         description:
-          first: "Found a placement"
-          subsequent: "<strong>%{count}</strong> placements found"
-        achieved: "Work placement or volunteering"
+          first: "Started a placement"
+          subsequent: "<strong>%{count}</strong> placements started"
+        achieved: "Started work or volunteering placement"
       training_started:
         title:
-          first: "Training course started"
-          subsequent: "Training course started"
+          first: "Started training or education course"
+          subsequent: "Started training or education course"
+          future: "Start training or education course"
         description:
-          first: "Started your first training course"
+          first: "Started your first training or education course"
           subsequent: "<strong>%{count}</strong> training courses started"
-        achieved: "Training"
+        achieved: "Started training or education course"
       course_completed:
         title:
-          first: "Education"
-          subsequent: "Education"
+          first: "Completed training or education course"
+          subsequent: "Completed training or education course"
+          future: "Complete training or education course"
         description:
-          first: "Completed your first course"
+          first: "Completed your first training or education course"
           subsequent: "<strong>%{count}</strong> courses completed"
-        achieved: "Complete education course for e.g. college courses or degree"
+        achieved: "Completed training or education course"
       job_start:
         title:
-          first: "First job"
-          subsequent: "Got a job"
+          first: "Started new job"
+          subsequent: "Started new job"
+          future: "Start job or apprenticeship"
         description:
-          first: "Congrats, you started your first job!V"
+          first: "Congrats, you started your new job!"
           subsequent: "<strong>%{count}</strong> jobs started"
-        achieved: "Job/apprenticeship start"
+        achieved: "Started new job"
       job_sustained:
         title:
           first: "Job held"
           subsequent: "Job held"
+          future: "Stay in job more than 6 months"
         description:
           first: "6 months or more in your job"
           subsequent: "6 months or more in your job"
-        achieved: "Sustained job (>6 months)"
-      boc_completed:
-        title:
-          first: "Better off calculation complete"
-          subsequent: "Better off calculation complete"
-        description:
-          first: "Completed a better off calculation"
-          subsequent: "Completed a better off calculation"
-        achieved: "'BOCs completed' (Better Off Calculation)"
-      13_week_sustainment:
-        title:
-          first: "Job held"
-          subsequent: "Job held"
-        description:
-          first: "13 weeks in your job"
-          subsequent: "13 weeks in your job"
-        achieved: "13 week sustainment (relevant for TF)"
+        achieved: "Still in work after 6 months"

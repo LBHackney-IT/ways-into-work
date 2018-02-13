@@ -7,10 +7,6 @@ class AdvisorClientDecorator < ClientDecorator
     h.submit_tag label, href: h.advisor_client_path(client), class: 'button is-primary'
   end
 
-  def return_to_client_button
-    h.link_to I18n.t('clients.buttons.back'), h.edit_advisor_client_path(client), class: 'button pull-right'
-  end
-
   def post_file_to
     h.advisor_client_file_uploads_path(client)
   end
@@ -24,7 +20,7 @@ class AdvisorClientDecorator < ClientDecorator
   end
 
   def decorate_action_plan_tasks
-    action_plan_tasks.map { |t| ActionPlanTaskDecorator.decorate(t) }
+    action_plan_tasks.ongoing.map { |t| ActionPlanTaskDecorator.decorate(t) }
   end
 
   private

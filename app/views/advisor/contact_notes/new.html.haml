@@ -1,8 +1,8 @@
-%section.column
-  .columns.head.level
-    .level-left.column
+%section
+  .head.level
+    .level-left
       %h3.subtitle= "New contact note for #{client.first_name}"
-    .level-right.column
+    .level-right
       =link_to I18n.t('clients.buttons.back_to_contact_notes'), advisor_client_contact_notes_path, class: 'button pull-right'
 
   %hr
@@ -13,7 +13,7 @@
     %label.label
       = "#{client.first_name}'s contact details"
     =client.decorate_preferred_contact
-    =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary is-small"
+    =button_to I18n.t('clients.buttons.arrange_meeting'), new_advisor_client_meeting_path(client), method: :get, class: "button is-primary"
   .box
     %h2
       = "#{client.first_name}'s contact notes"
