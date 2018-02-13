@@ -21,9 +21,7 @@ RSpec.describe Advisor::DashboardController, type: :controller do
   end
 
   describe '#index' do
-
     context 'with defaults' do
-
       let!(:subject) { get :index }
 
       it 'sets the month to this month' do
@@ -37,11 +35,9 @@ RSpec.describe Advisor::DashboardController, type: :controller do
       it 'does not set a hub' do
         expect(assigns(:hub)).to be_nil
       end
-
     end
 
     context 'with quarter set' do
-
       {
         'Q1' => [
           Time.zone.parse('2017-04-01'),
@@ -69,7 +65,6 @@ RSpec.describe Advisor::DashboardController, type: :controller do
           expect(assigns(:to)).to eq(dates[1])
         end
       end
-
     end
 
     it 'generates a csv' do
@@ -77,6 +72,5 @@ RSpec.describe Advisor::DashboardController, type: :controller do
       csv = CSV.parse(response.body)
       expect(csv.count).to eq(13)
     end
-
   end
 end

@@ -85,6 +85,10 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
   }
 
+  scope :registered_on, lambda { |from, to = from.end_of_month|
+    where('created_at BETWEEN ? AND ?', from, to)
+  }
+
   pg_search_scope :search_query, against: %i[first_name last_name], using: {
     trigram: {
       threshold: 0.1
@@ -135,14 +139,6 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       'Referrer Email',
       AchievementOption.all.map(&:name)
     ].flatten
-  end
-
-  def self.registered_on(from, to = nil)
-    if to.nil?
-      from = from.beginning_of_month
-      to = from.end_of_month
-    end
-    where('created_at BETWEEN ? AND ?', from, to)
   end
 
   def last_meeting_or_contact

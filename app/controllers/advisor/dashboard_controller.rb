@@ -1,5 +1,4 @@
 class Advisor::DashboardController < Advisor::BaseController
-
   before_action :fetch_filter_params, :initialize_options
 
   def index
@@ -70,8 +69,7 @@ class Advisor::DashboardController < Advisor::BaseController
       Q1: 4,
       Q2: 7,
       Q3: 10,
-      Q4: 1,
+      Q4: 1
     }
   end
-
 end
