@@ -34,6 +34,8 @@ RSpec.describe Client, type: :model do
                        health_condition: 'Prefer not to say',
                        receive_benefits: true,
                        care_leaver: 'No',
+                       employed: true,
+                       meetings: [Fabricate.build(:meeting, agenda: 'initial_assessment', client_attended: true)],
                        referrer: Fabricate(:referrer, email: 'referrer@example.com'),
                        achievements: [Fabricate(:achievement, name: 'training_started'),
                                       Fabricate.times(3, :achievement, name: 'interview'),
@@ -45,6 +47,7 @@ RSpec.describe Client, type: :model do
     it 'generates a CSV row' do
       expect(client.csv_row).to eq([
         Time.zone.now.to_date,
+        client.meetings.first.start_datetime.to_date,
         'Advisor McAdvisorface',
         'Client McClientface',
         'login@example.com',
@@ -60,6 +63,7 @@ RSpec.describe Client, type: :model do
         'Prefer not to say',
         'Yes',
         'No',
+        'Yes',
         'referrer@example.com',
         0,
         0,
@@ -72,26 +76,8 @@ RSpec.describe Client, type: :model do
       ])
     end
 
-    it 'generates a csv header' do
-      expect(Client.csv_header).to eq([
-        'Registation date',
-        'Advisor Name',
-        'Client Name',
-        'Email',
-        'Funding Code',
-        'Types of Work Interested In',
-        'RAG Rating',
-        'Industry Preference',
-        'Ethnicity',
-        'Gender',
-        'Date of birth',
-        'Affected by Beneft Cap?',
-        'Assigned to Supported Employment?',
-        'Health Condition or Disability?',
-        'Claiming Benefits?',
-        'Care leaver?',
-        'Referrer Email'
-      ] + AchievementOption.all.collect(&:name))
+    it 'generates a csv header with all the achievement options' do
+      expect(AchievementOption.all.collect(&:name) - Client.csv_header).to be_empty
     end
 
     it 'generates an entire CSV' do
