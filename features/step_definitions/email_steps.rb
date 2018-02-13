@@ -54,7 +54,7 @@ Then(/^dave should receive a client asssigned notification$/) do
 end
 
 Then(/^the notifications should contain my organisation name$/) do
-  client = Client.last 
+  client = Client.last
   open_email(client.advisor.login.email)
   expect(current_email.default_part_body.to_s).to include(@organisation)
   open_email(client.email)

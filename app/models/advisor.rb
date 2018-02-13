@@ -1,8 +1,10 @@
 class Advisor < ApplicationRecord
   # associations
   has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy
-
+  
   validates :login, :name, presence: true
+  
+  accepts_nested_attributes_for :login
 
   delegate :email, to: :login
 
@@ -15,9 +17,11 @@ class Advisor < ApplicationRecord
   scope :by_hub_id, ->(hub_id) { where(hub_id: hub_id) }
 
   scope :team_leader, ->(hub) { where(hub: hub, role: :team_leader) }
+  
+  after_create :send_confirmation!
 
   def devise_mailer
-    Devise::Mailer
+    CustomDeviseMailer
   end
   
   def default_hub_id
@@ -42,5 +46,12 @@ class Advisor < ApplicationRecord
     else
       :advisor_clients
     end
+  end
+  
+  private
+  
+  def send_confirmation!
+    login.send :set_reset_password_token
+    login.send_reset_password_instructions
   end
 end

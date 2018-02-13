@@ -48,6 +48,12 @@ RSpec.describe Advisor::AdvisorController, type: :controller do
         expect(created_advisor.login.email).to eq(params[:advisor][:login_attributes][:email])
       end
       
+      it 'sends an email to set a password' do
+        subject
+        expect(unread_emails_for(created_advisor.login.email).size).to eq(1)
+        open_email(created_advisor.login.email)
+        expect(current_email).to have_subject(I18n.t('advisors.mail.subject.welcome'))
+      end
       
     end
   end
