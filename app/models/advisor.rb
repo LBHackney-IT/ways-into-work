@@ -18,8 +18,6 @@ class Advisor < ApplicationRecord
 
   scope :team_leader, ->(hub) { where(hub: hub, role: :team_leader) }
   
-  after_create :send_confirmation!
-
   def devise_mailer
     CustomDeviseMailer
   end

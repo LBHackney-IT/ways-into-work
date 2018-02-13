@@ -41,13 +41,13 @@ World(EmailHelpers)
 
 Then(/^the team leader should receive a new client notification$/) do
   address = Advisor.team_leader(@hub).first.email
-  expect(unread_emails_for(address).size).to eq(2)
+  expect(unread_emails_for(address).size).to eq(1)
   open_email(address, with_subject: I18n.t('advisors.mail.subject.new_client'))
 end
 
 Then(/^dave should receive a client asssigned notification$/) do
   address = @dave.email
-  expect(unread_emails_for(address).size).to eq(2)
+  expect(unread_emails_for(address).size).to eq(1)
   open_email(address, with_subject: I18n.t('advisors.mail.subject.assigned'))
 end
 

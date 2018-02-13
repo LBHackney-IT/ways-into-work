@@ -7,6 +7,7 @@ class Advisor::AdvisorController < Advisor::BaseController
   def create
     advisor.login.generate_default_password
     if advisor.save
+      advisor.send_confirmation!
       redirect_to user_root
     else
       render :new
