@@ -6,11 +6,11 @@
       .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_agenda }
   .field
     %span.columns
-      .column
-        = form.input :start_date, as: :string, label: 'Appointment date', input_html: {type: :date, class: 'input', value: form.object.try(:start_datetime).try(:to_date)}, placeholder: "dd/mm/yyyy", required: true
+      .column.is-one-quarter
+        = form.input :start_date, as: :string, label: 'Meeting date', input_html: {type: :date, class: 'input', value: form.object.try(:start_datetime).try(:to_date)}, placeholder: "dd/mm/yyyy", required: true
 
-      .column
-        = form.input :start_time, as: :string, label: 'and time', input_html: {type: :time, class: 'input', value: form.object.try(:start_datetime)&.to_s(:time)}, placeholder: "--:--", required: true
+      .column.is-one-quarter
+        = form.input :start_time, as: :string, label: 'Meeting time', input_html: {type: :time, class: 'input', value: form.object.try(:start_datetime)&.to_s(:time)}, placeholder: "--:--", required: true
 
 
   .field

@@ -29,7 +29,7 @@
             - next_meeting = client.meetings.order("start_datetime DESC").first
             .next_meeting
               %h4= client.decorate_meeting_date(next_meeting)
-              %p= next_meeting.start_datetime.to_date.to_s(:long)
+              %p="#{next_meeting.start_datetime.to_date.to_s(:long)} #{next_meeting.start_datetime.to_time.to_s()}"
               %p= client.decorate_meeting_agenda(next_meeting)
           - else
             %h4 Meetings:
