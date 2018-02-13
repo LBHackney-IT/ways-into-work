@@ -1,7 +1,7 @@
 class UpdateNotificationSettings < ActiveRecord::Migration[5.1]
   def up
     Client.where('preferred_contact_method is not null').each do |cl|
-      cl.preferred_contact_method = cl.preferred_contact_method.split.first.downcase
+      cl.preferred_contact_method = cl.preferred_contact_method.split.first.try(:downcase)
       cl.save(validate: false)
     end
     rename_column :clients, :preferred_contact_method, :preferred_contact_methods
