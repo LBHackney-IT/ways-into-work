@@ -41,6 +41,17 @@ Then(/^a new client should be created in the database$/) do
   expect(client.referrer.name).to eq(@referrer.name)
 end
 
+When(/^I refer a client as needing supported employment$/) do
+  visit new_client_referrers_path
+  fill_in_referrer_form
+  check 'referrer_client_attributes_assigned_supported_employment'
+  register
+end
+
+Then(/^the client should be assigned to suported employment$/) do
+  expect(Client.last.assigned_supported_employment).to eq(true)
+end
+
 When(/^I refer a client$/) do
   visit new_client_referrers_path
   fill_in_referrer_form

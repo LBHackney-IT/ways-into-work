@@ -114,7 +114,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     end
   end
 
-  def self.csv_header # rubocop:disable Rails/MethodLength
+  def self.csv_header # rubocop:disable Metrics/MethodLength
     [
       'Registation date',
       'Advisor Name',
@@ -195,7 +195,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     :client_dashboard
   end
 
-  def csv_row # rubocop:disable Rails/MethodLength, Metrics/AbcSize
+  def csv_row # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     [
       created_at.to_date,
       advisor.name,

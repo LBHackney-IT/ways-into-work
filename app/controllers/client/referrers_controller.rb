@@ -42,6 +42,7 @@ class Client::ReferrersController < ApplicationController
         :address_line_1,
         :address_line_2,
         :postcode,
+        :assigned_supported_employment,
         login_attributes: [:email]
       ]
     )

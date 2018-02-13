@@ -6,14 +6,14 @@
 
   = render partial: 'shared/other_text', locals: { form: form, field: :other_support_priority }
 
-= render partial: 'assessment_note', locals: {form: form, note: @health_barriers_notes, label: 'Additional notes', type: :text }
+= render partial: 'shared/assessment_note', locals: {form: form, note: @health_barriers_notes, label: 'Additional notes', type: :text }
 
 .convert_checkbox
   =form.input :barriers, as: :check_boxes, collection: BarrierOption.all, :label => 'Do you need support with any of the following?', include_hidden: false
 
 %br
 
-= render partial: 'assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
+= render partial: 'shared/assessment_note', locals: {form: form, note: @barriers_notes, label: 'Additional notes', type: :text }
 
 
 

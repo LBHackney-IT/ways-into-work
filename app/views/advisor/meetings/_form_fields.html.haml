@@ -1,13 +1,21 @@
+= render 'shared/form_errors', object: form.object
 %fieldset
   .field
     .convert_radio
       =form.input :agenda, as: :radio_buttons, collection: MeetingAgendaOption.all, :label => 'What is the agenda of this meeting?', include_hidden: false
       .convert_checkbox= render partial: 'shared/other_text', locals: { form: form, field: :other_agenda }
   .field
-    =form.input :start_datetime, label: 'Appointment date and time', as: :datetime, start_year: Time.zone.today.year - 1, end_year: Time.zone.today.year + 1, minute_step: 15, start_hour: 8, end_hour: 18, :wrapper_html => { :class => 'with_multi_select' }, date_separator: '<span class="select"></span>', prompt: [], :order => [:day, :month, :year]
+    %span.columns
+      .column
+        = form.input :start_date, as: :string, label: 'Appointment date', input_html: {type: :date, class: 'input', value: form.object.try(:start_datetime).try(:to_date)}, placeholder: "dd/mm/yyyy", required: true
+
+      .column
+        = form.input :start_time, as: :string, label: 'and time', input_html: {type: :time, class: 'input', value: form.object.try(:start_datetime)&.to_s(:time)}, placeholder: "--:--", required: true
+
 
   .field
     =form.input :notes, as: :text, :input_html => { :class => "textarea" }
+
 
   - if meeting.start_datetime && meeting.start_datetime < Time.zone.now
     .field
