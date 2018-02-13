@@ -135,7 +135,7 @@ RSpec.describe Client, type: :model do
       let!(:old_clients) { Fabricate.times(5, :client, created_at: old_date) }
 
       it 'gets clients registered this month' do
-        expect(Client.registered_on(Time.zone.now)).to match_array(new_clients)
+        expect(Client.registered_on(Time.zone.now.beginning_of_month)).to match_array(new_clients)
       end
 
       it 'gets clients registered last month' do
