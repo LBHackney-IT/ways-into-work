@@ -19,7 +19,16 @@ $.fn.suggestNames = function() {
       } );
     },
     select: function( event, ui ) {
-      $names.val(ui.item.value)
+      $('.is_shown').addClass('is-hidden').removeClass('is_shown');
+
+      var acheiveId = ui.item.value.replace(/\s+/g, '_').toLowerCase()
+      $("." + acheiveId).removeClass('is-hidden').addClass('is_shown');
+      $names.val(ui.item.value);
+    },
+    change: function( event, ui ) {
+      if(ui.item == null) {
+        $('.is_shown').addClass('is-hidden').removeClass('is_shown');
+      }
     }
   } ).focus(function () {
     if ($(this).attr('state') != 'open' && $(this).val() == '') {
