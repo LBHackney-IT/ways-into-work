@@ -85,21 +85,3 @@ en:
           first: "6 months or more in your job"
           subsequent: "6 months or more in your job"
         achieved: "Still in work after 6 months"
-      # boc_completed:
-      #   title:
-      #     first: "Better off calculation complete"
-      #     subsequent: "Better off calculation complete"
-      #     future: ""
-      #   description:
-      #     first: "Completed a better off calculation"
-      #     subsequent: "Completed a better off calculation"
-      #   achieved: "'BOCs completed' (Better Off Calculation)"
-      # 13_week_sustainment:
-      #   title:
-      #     first: "Job held"
-      #     subsequent: "Job held"
-      #     future: ""
-      #   description:
-      #     first: "13 weeks in your job"
-      #     subsequent: "13 weeks in your job"
-      #   achieved: "13 week sustainment (relevant for TF)"
