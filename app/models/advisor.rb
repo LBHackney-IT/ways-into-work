@@ -45,9 +45,7 @@ class Advisor < ApplicationRecord
       :advisor_clients
     end
   end
-  
-  private
-  
+    
   def send_confirmation!
     login.send :set_reset_password_token
     login.send_reset_password_instructions
