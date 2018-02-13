@@ -25,6 +25,10 @@ class DashboardStats
     @base_query.registered_on(@from, @to).count
   end
 
+  def initial_assessments
+    @base_query.initial_assessments_attended(@from, @to).count
+  end
+
   def with_outcome(id)
     @base_query.with_outcome(id, @from, @to).count
   end

@@ -129,6 +129,28 @@ RSpec.describe Client, type: :model do
       end
     end
 
+    describe 'initial_assessments_attended' do
+      let!(:client_attended) { Fabricate.create(:client) }
+      let!(:client_not_attended) { Fabricate.create(:client) }
+
+      let!(:meeting_attended) do
+        Fabricate(:meeting, client: client_attended, client_attended: true, start_datetime: new_date, agenda: 'initial_assessment')
+      end
+      let!(:meeting_not_attended) do
+        Fabricate(:meeting, client: client_not_attended, client_attended: false, start_datetime: new_date, agenda: 'initial_assessment')
+      end
+      let!(:meeting_attended1) do
+        Fabricate(:meeting, client: client_not_attended, client_attended: true, start_datetime: old_date, agenda: 'initial_assessment')
+      end
+      let!(:meeting_attended2) { Fabricate(:meeting, client: client_not_attended, client_attended: true, start_datetime: new_date) }
+
+      it 'only gets initial assessment meeting that was attended in the time frame' do
+        expect(
+          Client.initial_assessments_attended(Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
+        ).to match_array([client_attended])
+      end
+    end
+
     describe 'registered_on' do
       let!(:new_clients) { Fabricate.times(5, :client, created_at: new_date) }
 
@@ -139,12 +161,12 @@ RSpec.describe Client, type: :model do
       end
 
       it 'gets clients registered last month' do
-        expect(Client.registered_on(1.month.ago)).to match_array(old_clients)
+        expect(Client.registered_on(1.month.ago.beginning_of_month)).to match_array(old_clients)
       end
 
       it 'gets clients registered within a date range' do
         expect(
-          Client.registered_on(old_date.beginning_of_day, new_date.end_of_day)
+          Client.registered_on(1.month.ago.beginning_of_month, new_date.end_of_day)
         ).to match(new_clients + old_clients)
       end
     end

@@ -27,7 +27,17 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
 
-  scope :with_outcome, ->(outcome, from, to) { where(id: Achievement.with_name(outcome).achieved_in_period(from, to).pluck(:client_id)) }
+  scope :with_outcome, lambda { |outcome, from, to|
+    where(id: Achievement.with_name(outcome).achieved_in_period(from, to).pluck(:client_id))
+  }
+
+  scope :registered_on, lambda { |from, to = from.end_of_month|
+    where('created_at BETWEEN ? AND ?', from, to)
+  }
+
+  scope :initial_assessments_attended, lambda { |from, to|
+    joins(:meetings).where("meetings.agenda = 'initial_assessment' AND meetings.client_attended = true AND meetings.start_datetime BETWEEN ? AND ?", from, to)
+  }
 
   accepts_nested_attributes_for :login
 
@@ -83,10 +93,6 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :by_age, lambda { |under_25s|
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
-  }
-
-  scope :registered_on, lambda { |from, to = from.end_of_month|
-    where('created_at BETWEEN ? AND ?', from, to)
   }
 
   pg_search_scope :search_query, against: %i[first_name last_name], using: {
