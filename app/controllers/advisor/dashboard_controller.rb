@@ -59,6 +59,7 @@ class Advisor::DashboardController < Advisor::BaseController
 
   def setup_quarter(quarter)
     @from = Date.new(@year.to_i, first_month[quarter])
+    @from += 1.year if quarter == :Q4
     @to = @from.end_of_quarter
   end
 

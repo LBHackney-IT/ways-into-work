@@ -52,8 +52,8 @@ RSpec.describe Advisor::DashboardController, type: :controller do
           Time.zone.parse('2017-12-31')
         ],
         'Q4' => [
-          Time.zone.parse('2017-01-01'),
-          Time.zone.parse('2017-03-31')
+          Time.zone.parse('2018-01-01'),
+          Time.zone.parse('2018-03-31')
         ]
       }.each do |quarter, dates|
         it "sets the right from and to dates for #{quarter}" do
