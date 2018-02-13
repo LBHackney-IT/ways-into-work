@@ -34,6 +34,8 @@ RSpec.describe Client, type: :model do
                        health_condition: 'Prefer not to say',
                        receive_benefits: true,
                        care_leaver: 'No',
+                       employed: true,
+                       meetings: [Fabricate.build(:meeting, agenda: 'initial_assessment', client_attended: true)],
                        referrer: Fabricate(:referrer, email: 'referrer@example.com'),
                        achievements: [Fabricate(:achievement, name: 'training_started'),
                                       Fabricate.times(3, :achievement, name: 'interview'),
@@ -45,6 +47,7 @@ RSpec.describe Client, type: :model do
     it 'generates a CSV row' do
       expect(client.csv_row).to eq([
         Time.zone.now.to_date,
+        client.meetings.first.start_datetime.to_date,
         'Advisor McAdvisorface',
         'Client McClientface',
         'login@example.com',
@@ -60,6 +63,7 @@ RSpec.describe Client, type: :model do
         'Prefer not to say',
         'Yes',
         'No',
+        'Yes',
         'referrer@example.com',
         0,
         0,
@@ -72,26 +76,8 @@ RSpec.describe Client, type: :model do
       ])
     end
 
-    it 'generates a csv header' do
-      expect(Client.csv_header).to eq([
-        'Registation date',
-        'Advisor Name',
-        'Client Name',
-        'Email',
-        'Funding Code',
-        'Types of Work Interested In',
-        'RAG Rating',
-        'Industry Preference',
-        'Ethnicity',
-        'Gender',
-        'Date of birth',
-        'Affected by Beneft Cap?',
-        'Assigned to Supported Employment?',
-        'Health Condition or Disability?',
-        'Claiming Benefits?',
-        'Care leaver?',
-        'Referrer Email'
-      ] + AchievementOption.all.collect(&:name))
+    it 'generates a csv header with all the achievement options' do
+      expect(AchievementOption.all.collect(&:name) - Client.csv_header).to be_empty
     end
 
     it 'generates an entire CSV' do
@@ -129,22 +115,44 @@ RSpec.describe Client, type: :model do
       end
     end
 
+    describe 'initial_assessments_attended' do
+      let!(:client_attended) { Fabricate.create(:client) }
+      let!(:client_not_attended) { Fabricate.create(:client) }
+
+      let!(:meeting_attended) do
+        Fabricate(:meeting, client: client_attended, client_attended: true, start_datetime: new_date, agenda: 'initial_assessment')
+      end
+      let!(:meeting_not_attended) do
+        Fabricate(:meeting, client: client_not_attended, client_attended: false, start_datetime: new_date, agenda: 'initial_assessment')
+      end
+      let!(:meeting_attended1) do
+        Fabricate(:meeting, client: client_not_attended, client_attended: true, start_datetime: old_date, agenda: 'initial_assessment')
+      end
+      let!(:meeting_attended2) { Fabricate(:meeting, client: client_not_attended, client_attended: true, start_datetime: new_date) }
+
+      it 'only gets initial assessment meeting that was attended in the time frame' do
+        expect(
+          Client.initial_assessments_attended(Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
+        ).to match_array([client_attended])
+      end
+    end
+
     describe 'registered_on' do
       let!(:new_clients) { Fabricate.times(5, :client, created_at: new_date) }
 
       let!(:old_clients) { Fabricate.times(5, :client, created_at: old_date) }
 
       it 'gets clients registered this month' do
-        expect(Client.registered_on(Time.zone.now)).to match_array(new_clients)
+        expect(Client.registered_on(Time.zone.now.beginning_of_month)).to match_array(new_clients)
       end
 
       it 'gets clients registered last month' do
-        expect(Client.registered_on(1.month.ago)).to match_array(old_clients)
+        expect(Client.registered_on(1.month.ago.beginning_of_month)).to match_array(old_clients)
       end
 
       it 'gets clients registered within a date range' do
         expect(
-          Client.registered_on(old_date.beginning_of_day, new_date.end_of_day)
+          Client.registered_on(1.month.ago.beginning_of_month, new_date.end_of_day)
         ).to match(new_clients + old_clients)
       end
     end

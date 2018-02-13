@@ -27,7 +27,17 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :with_appointment, -> { where('meetings_count > 0 OR imported = true') }
 
-  scope :with_outcome, ->(outcome, from, to) { where(id: Achievement.with_name(outcome).achieved_in_period(from, to).pluck(:client_id)) }
+  scope :with_outcome, lambda { |outcome, from, to|
+    where(id: Achievement.with_name(outcome).achieved_in_period(from, to).pluck(:client_id))
+  }
+
+  scope :registered_on, lambda { |from, to = from.end_of_month|
+    where('created_at BETWEEN ? AND ?', from, to)
+  }
+
+  scope :initial_assessments_attended, lambda { |from, to|
+    joins(:meetings).where("meetings.agenda = 'initial_assessment' AND meetings.client_attended = true AND meetings.start_datetime BETWEEN ? AND ?", from, to)
+  }
 
   accepts_nested_attributes_for :login
 
@@ -117,6 +127,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def self.csv_header # rubocop:disable Metrics/MethodLength
     [
       'Registation date',
+      'Initial assessment date',
       'Advisor Name',
       'Client Name',
       'Email',
@@ -132,17 +143,10 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       'Health Condition or Disability?',
       'Claiming Benefits?',
       'Care leaver?',
+      'Currently employed?',
       'Referrer Email',
       AchievementOption.all.map(&:name)
     ].flatten
-  end
-
-  def self.registered_on(from, to = nil)
-    if to.nil?
-      from = from.beginning_of_month
-      to = from.end_of_month
-    end
-    where('created_at BETWEEN ? AND ?', from, to)
   end
 
   def last_meeting_or_contact
@@ -195,9 +199,14 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     :client_dashboard
   end
 
+  def initial_assessment_date
+    meetings.where(agenda: 'initial_assessment', client_attended: true).order(created_at: :desc).limit(1).pluck(:start_datetime).first
+  end
+
   def csv_row # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     [
       created_at.to_date,
+      initial_assessment_date&.to_date,
       advisor.name,
       name,
       login.email,
@@ -213,6 +222,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       health_condition,
       receive_benefits?.humanize,
       care_leaver,
+      employed?.humanize,
       referrer&.email,
       achievement_counts
     ].flatten
