@@ -1,9 +1,10 @@
 = render 'shared/form_errors', object: form.object
 %fieldset
   = form.input :title, label: "Agreed Task (max 70 characters)", :input_html => { :class => "input", :maxlength => 70 }
+
   .achievement_list
     - AchievementOption.all.each do |achievement|
-      .is-hidden.linked_achievement.achievement{ :class => achievement.name.parameterize.underscore }
+      .linked_achievement.achievement{ :class => achievement.name == action_plan_task.title ? "is_shown #{achievement.name.parameterize.underscore}" : "is-hidden #{achievement.name.parameterize.underscore}" }
         .icon_cont
           .icon= fa_icon achievement.icon
         Achievement attached to task
