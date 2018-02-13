@@ -11,7 +11,13 @@
     =form.input :phone, as: :tel, :input_html => { :class => 'input' }
   .column
     =form.input :email, as: :email, required: true, :input_html => { :class => 'input' }
-    
+
 .columns
   .column
-    =form.input :reason, as: :text, required: true, :input_html => { :class => 'textarea', :rows => 4 }
+    .field
+      %label{for: :referrer_reason, class: 'label'}
+        Reason for referral
+        %abbr{title: :required} *
+      %p If the client is affected by the Benefit Cap or is part of the Troubled Families programme, please state this below.
+
+    =form.input :reason, as: :text, required: true, :input_html => { :class => 'textarea', :rows => 4 }, label: false
