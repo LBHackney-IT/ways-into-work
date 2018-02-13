@@ -20,7 +20,7 @@
 
 %br
 
-= render partial: 'assessment_note', locals: {form: form, note: @work_experience_notes, label: 'Additional information about work or education experience:', type: :text }
+= render partial: 'shared/assessment_note', locals: {form: form, note: @work_experience_notes, label: 'Additional information about work or education experience:', type: :text }
 
 .convert_checkbox
   =form.input :training_courses, as: :check_boxes, collection: TrainingCourseOption.all, :label => 'Have you completed any of the following training courses?', include_hidden: false
