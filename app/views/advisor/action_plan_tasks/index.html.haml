@@ -12,11 +12,11 @@
 - if client.achievements.any?
   .profile-tab.achievement-container
     .column
-      %h3 Acheivements
+      %h3 Achievements
       %br
-      .action-section.columns
+      .action-section.columns.is-multiline
         - client.achievements.all.group_by(&:name).each do |id, group|
-          .achievement.column
+          .achievement.column.is-one-quarter
             .icon_cont
               .icon= fa_icon AchievementOption.find(id).icon
             .context
