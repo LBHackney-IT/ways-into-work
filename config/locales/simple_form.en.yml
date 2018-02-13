@@ -10,6 +10,13 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+    options:
+      advisor:
+        role:
+          advisor: 'Advisor'
+          team_leader: 'Team Leader'
+          admin: 'Admin'
+          employer_engagement: 'Employer Engagement'
     # Examples
     # labels:
     #   defaults:
