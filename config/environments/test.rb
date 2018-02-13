@@ -35,3 +35,12 @@ WaysIntoWork::Application.configure do
   # this doesn't actually send any SMS messages so safe to check in
   config.notify_api_key = 'testhackneyworks-4dc22113-fc51-41ec-b73d-d25155d82fff-1a0de55f-2c5b-491d-99ae-ebe78caeb88f'
 end
+
+# Always raise I18n exceptions in test environment
+class I18nTestExceptionHandler < I18n::ExceptionHandler
+  def self.call(exception, locale, key, options)
+    return super(exception, locale, key, options) unless exception.respond_to?(:to_exception)
+    raise exception.to_exception
+  end
+end
+I18n.exception_handler = I18nTestExceptionHandler

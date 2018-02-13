@@ -21,6 +21,7 @@ WaysIntoWork::Application.routes.draw do
     resources :dashboard, only: :index
 
     resources :task_titles, only: :index
+    resources :advisor, only: %i[new create]
   end
 
   resources :clients, only: %i[new create]

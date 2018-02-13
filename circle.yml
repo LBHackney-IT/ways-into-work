@@ -11,5 +11,5 @@ test:
   override:
     - bundle exec rake
   post:
-    - bundle exec brakeman -z -q
-    - bundle exec rubocop -c .rubocop.yml 
+    - bundle exec brakeman -z -q --except PermitAttributes
+    - bundle exec rubocop -c .rubocop.yml

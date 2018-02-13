@@ -5,9 +5,10 @@ end
 
 Then(/^my client should have an achievement recorded$/) do
   expect(@client.achievements.count).to eq(1)
-  expect(@client.achievements.first.name).to eq(AchievementOption.named(@achievement).id)
+  achievement_id = AchievementOption.named(@achievement).id
+  expect(@client.achievements.first.name).to eq(achievement_id)
   visit advisor_client_achievements_path(@client)
-  I18n.t("advisors.achievement.#{@achievement}.title.first")
+  expect(page).to have_content(I18n.t("advisors.achievement.#{achievement_id}.title.first"))
 end
 
 Then(/^I should see there are no achievements yet$/) do

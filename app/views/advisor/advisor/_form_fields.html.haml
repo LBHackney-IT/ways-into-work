@@ -1,0 +1,15 @@
+= render 'shared/form_errors', object: form.object
+%fieldset
+  = form.input :name, label: 'Name', :input_html => { :class => 'input' }
+  
+  = form.simple_fields_for :login do |f|
+    = f.input :email, label: 'Email', required: true, :input_html => { :class => 'input' }
+    
+  = form.input :phone, label: 'Phone Number', :input_html => { :class => 'input' }
+  = form.input :role, as: :radio_buttons, collection: form.object.class.roles.keys, wrapper_html: { class: 'convert_radio' }, label_method: lambda { |role| t("simple_form.options.advisor.role.#{role}") }
+  .field
+    = form.label :hub_id, 'Hub', class: 'label'
+    .select.simple_input
+      = form.input_field :hub_id, as: :select, include_blank: 'None', collection: Hub.all, class: 'input'
+  
+  = form.submit class: 'button is-primary'
