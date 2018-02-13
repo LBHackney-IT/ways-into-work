@@ -7,4 +7,12 @@
 
       = render 'shared/form_errors', object: form.object
       = render partial: 'form_fields', locals: {form: form}
+
+      %h4 Supported Employment
+      %p Our Supported Employment advisors specialise in supporting clients with mental health conditions, learning difficulties or disabilities. Please tick here if you would like to see one of these advisors.
+
+      = form.input :assigned_supported_employment, as: :boolean, label: false
+
+      = render partial: 'shared/assessment_note', locals: {form: form, note: client.assessment_notes.find_or_initialize_by(content_key: :additional_info), label: 'Anything else we should know?', type: :text }
+
       = form.submit 'Register', :class => 'button is-primary'

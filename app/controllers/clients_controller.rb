@@ -38,7 +38,12 @@ class ClientsController < ApplicationController
       :address_line_1,
       :address_line_2,
       :postcode,
-      login_attributes: [:email]
+      :assigned_supported_employment,
+      login_attributes: [:email],
+      assessment_notes_attributes: %i[
+        content
+        content_key
+      ]
     )
   end
 end
