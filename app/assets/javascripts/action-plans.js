@@ -9,7 +9,7 @@ $.fn.suggestNames = function() {
     disabled: false,
     source: function( request, response ) {
       $.ajax( {
-        url: "/advisor/task_names",
+        url: "/advisor/task_titles",
         data: {
           term: request.term
         },
