@@ -222,15 +222,20 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       ethnicity,
       gender,
       date_of_birth&.to_date,
-      affected_by_benefit_cap?.humanize,
-      assigned_supported_employment?.humanize,
+      nil_yes_or_no(affected_by_benefit_cap),
+      nil_yes_or_no(assigned_supported_employment),
       health_condition,
-      receive_benefits?.humanize,
+      receive_benefits,
       care_leaver,
-      employed?.humanize,
+      nil_yes_or_no(employed),
       referrer&.email,
       achievement_counts
     ].flatten
+  end
+
+  def nil_yes_or_no(boolean_field)
+    return if boolean_field.nil?
+    boolean_field ? 'Yes' : 'No'
   end
 
   def achievement_counts
