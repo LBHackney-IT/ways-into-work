@@ -37,7 +37,7 @@
           - else
             %h4 Meetings:
             %p="#{client.first_name} doesn't have any meetings yet"
-            %p=link_to "Create a new meeting", new_advisor_client_meeting_path(client.id)
+            %p=link_to "Create a new meeting", new_advisor_client_meeting_path(client.id), class: "button is-small is-primary"
 
           %hr
 
@@ -58,11 +58,11 @@
               %p=client.decorate_single_task
               %p=task.ended_at.to_date.to_s(:short)
 
-            =link_to "View all tasks", advisor_client_action_plan_tasks_path(client.id), class: "button is-small is-primary"
+            =link_to "Create a new task", new_advisor_client_action_plan_task_path(client.id), class: "button is-small is-primary"
           - else
             %h4 Action Plan:
             %p="#{client.first_name} doesn't have any ongoing tasks"
-            %p=link_to "Create a new task", new_advisor_client_action_plan_task_path(client.id)
+            %p=link_to "Create a new task", new_advisor_client_action_plan_task_path(client.id), class: "button is-small is-primary"
 
           %hr
 
