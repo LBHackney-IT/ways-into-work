@@ -5,58 +5,58 @@
       %span.client_total#filtered_count
         =render partial: 'filtered_count', locals: { clients: @filtered_clients }
 
-  -if @filterrific.model_class.any?
-    = form_for_filterrific @filterrific do |f|
-      #client_filters
-        %h3.ie-only Filter clients
-        .columns.is-multiline
-          .column
-            %label.label Hub
-            %span.select
-              = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' }, onchange: '$(form).submit()')
-          .column
-            %label.label Assigned Advisor
-            %span.select
-              = f.select(:by_advisor_id, @filterrific.select_options[:by_advisor_id], { include_blank: '- Any -' })
+  = form_for_filterrific @filterrific do |f|
+    #client_filters
+      %h3.ie-only Filter clients
+      .columns.is-multiline
+        .column
+          %label.label Hub
+          %span.select
+            = f.select(:by_hub_id, @filterrific.select_options[:by_hub_id], { include_blank: '- Any -' }, onchange: '$(form).submit()')
+        .column
+          %label.label Assigned Advisor
+          %span.select
+            = f.select(:by_advisor_id, @filterrific.select_options[:by_advisor_id], { include_blank: '- Any -' })
 
-          .column
-            %label.label Training Course
-            %span.select
-              = f.select(:by_training, @filterrific.select_options[:by_training], { include_blank: '- Any -' })
+        .column
+          %label.label Training Course
+          %span.select
+            = f.select(:by_training, @filterrific.select_options[:by_training], { include_blank: '- Any -' })
 
-          .column
-            %label.label Industry preference
-            %span.select
-              = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' })
+        .column
+          %label.label Industry preference
+          %span.select
+            = f.select(:by_types_of_work, @filterrific.select_options[:by_types_of_work], { include_blank: '- Any -' })
 
-        .columns#vertical
-          .column
-            %label.label Search client names:
-            = f.text_field(:search_query, class: 'input auto-width')
+      .columns#vertical
+        .column
+          %label.label Search client names:
+          = f.text_field(:search_query, class: 'input auto-width')
 
-          .column
-            %label.label Age
-            %span.select
-              = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
+        .column
+          %label.label Age
+          %span.select
+            = f.select(:by_age, @filterrific.select_options[:by_age], { include_blank: '- Any -' })
 
-          .column
-            %label.label Objective
-            %span.select
-              = f.select(:by_objective, @filterrific.select_options[:by_objective], { include_blank: '- Any -' })
+        .column
+          %label.label Objective
+          %span.select
+            = f.select(:by_objective, @filterrific.select_options[:by_objective], { include_blank: '- Any -' })
 
-          .column
-            %label.label Status
-            %span.select
-              = f.select(:by_rag_status, @filterrific.select_options[:by_rag_status], { include_blank: '- Any -' })
+        .column
+          %label.label Status
+          %span.select
+            = f.select(:by_rag_status, @filterrific.select_options[:by_rag_status], { include_blank: '- Any -' })
 
-          .column.has-text-right#fix-line-hieght-dbl
-            = f.button :format, name: :format, value: 'csv', class: 'button' do
-              Export clients
-            &nbsp;
-            = link_to('Reset filters & show all', reset_filterrific_url, class: "button add-top")
+        .column
+          %label.label Archived
+          %span.select
+            = f.select(:include_archived, @filterrific.select_options[:include_archived], { include_blank: '- Filtered -' })
 
-    = render partial: 'filtered_table', locals: { clients: @filtered_clients }
+        .column.has-text-right#fix-line-hieght-dbl
+          = f.button :format, name: :format, value: 'csv', class: 'button' do
+            Export clients
+          &nbsp;
+          = link_to('Reset filters & show all', reset_filterrific_url, class: "button add-top")
 
-  - else
-    %h4=I18n.t('advisors.headers.no_clients_yet')
-    =link_to I18n.t('buttons.my_clients'), advisor_my_clients_path, class: 'button is-primary' if current_advisor.hackney_works_team?
+  = render partial: 'filtered_table', locals: { clients: @filtered_clients }

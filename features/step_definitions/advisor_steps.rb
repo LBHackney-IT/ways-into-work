@@ -4,12 +4,22 @@ module AdvisorSH
       expect(page).to have_content(client.name)
     end
   end
+
+  def client_listed(client = @client)
+    within '.clients .client' do
+      expect(page).to have_content(client.name)
+    end
+  end
 end
 World AdvisorSH
 
 When(/^I archive the client$/) do
   click_on I18n.t('clients.buttons.make_contact')
   click_on I18n.t('clients.buttons.archive_client')
+end
+
+Then(/^I should not see the client listed$/) do
+  expect(page).not_to have_content(@client.name)
 end
 
 Then(/^the client should be removed from view$/) do
@@ -46,10 +56,7 @@ When(/^I navigate to see all clients$/) do
 end
 
 Then(/^I should see the new client listed$/) do
-  within '.client' do
-    expect(page).to have_content(@client.name)
-    # expect(page).to have_content(I18n.t('clients.information.registered_date', created: @client.created_at.to_date.to_s(:short)))
-  end
+  client_listed
 end
 
 When(/^I assign the client to myself$/) do
@@ -69,6 +76,14 @@ end
 
 Given(/^there is an advisor Dave in my hub$/) do
   @dave = Fabricate(:advisor, name: 'Dave Donald', hub: @i.hub)
+end
+
+When(/^I include archived clients in the results$/) do
+  select 'Include', from: 'filterrific_include_archived'
+end
+
+Then(/^I should see the archived client listed$/) do
+  client_listed
 end
 
 When(/^I filter by to Retail as types of work$/) do

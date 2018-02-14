@@ -6,6 +6,10 @@ Given(/^there is a client who just registered$/) do
   @client = Fabricate(:client)
 end
 
+Given(/^there is a client who has been archived$/) do
+  @client = Fabricate(:client, deleted_at: Time.zone.now)
+end
+
 Given(/^I have just signed up as a client$/) do
   @i = Fabricate(:client)
 end
