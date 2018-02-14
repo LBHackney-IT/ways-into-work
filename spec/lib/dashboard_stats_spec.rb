@@ -109,7 +109,7 @@ RSpec.describe DashboardStats, type: :model do
           [
             Fabricate(:achievement,
                       name: 'job_apprenticeship',
-                      date_achieved: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
+                      created_at: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
           ]
         end
       end

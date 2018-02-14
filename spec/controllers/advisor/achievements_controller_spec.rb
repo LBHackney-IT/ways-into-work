@@ -23,7 +23,6 @@ RSpec.describe Advisor::AchievementsController, type: :controller do
         client_id: client.id,
         achievement: {
           name: 'cv_completed',
-          date_achieved: Time.zone.today,
           notes: 'Some notes'
         }
       }

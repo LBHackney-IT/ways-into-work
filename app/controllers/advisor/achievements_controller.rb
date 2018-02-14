@@ -15,7 +15,6 @@ class Advisor::AchievementsController < Advisor::BaseController
   def achievement_params
     params.require(:achievement).permit(
       :name,
-      :date_achieved,
       :notes
     )
   end

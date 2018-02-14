@@ -164,7 +164,7 @@ RSpec.describe Client, type: :model do
             [
               Fabricate(:achievement,
                         name: 'job_apprenticeship',
-                        date_achieved: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
+                        created_at: rand(Time.zone.now.beginning_of_month..Time.zone.now.end_of_month))
             ]
           end
         end
@@ -177,7 +177,7 @@ RSpec.describe Client, type: :model do
             [
               Fabricate(:achievement,
                         name: 'job_apprenticeship',
-                        date_achieved: rand(1.month.ago.beginning_of_month..1.month.ago.end_of_month))
+                        created_at: rand(1.month.ago.beginning_of_month..1.month.ago.end_of_month))
             ]
           end
         end
