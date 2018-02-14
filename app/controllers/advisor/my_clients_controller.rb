@@ -20,12 +20,13 @@ class Advisor::MyClientsController < Advisor::BaseController
     )) || return
     @filtered_clients = @filterrific.find.page(params[:page])
   end
-  
+
   def filterrific_options
     {
       by_types_of_work: TypeOfWorkOption.options_for_select,
       by_training: TrainingCourseOption.options_for_select,
-      by_age: [['Under 25', :under_25s]]
+      by_age: [['Under 25', :under_25s]],
+      include_archived: [['Include', true]]
     }
   end
 end

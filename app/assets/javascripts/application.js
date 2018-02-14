@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require jquery_ujs
 //= require filterrific/filterrific-jquery
 //= require mobile-nav
 //= require eligibility

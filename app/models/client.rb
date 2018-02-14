@@ -9,7 +9,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   belongs_to :advisor
   belongs_to :referrer
   has_one :hub, through: :advisor
-  has_one :login, class_name: UserLogin.to_s, as: :user, dependent: :destroy, autosave: true
+  has_one :login, class_name: UserLogin.to_s, as: :user, autosave: true
 
   validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
@@ -66,6 +66,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       by_advisor_id
       by_training
       by_age
+      include_archived
       by_rag_status
       by_objective
       sorted_by
@@ -93,6 +94,10 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :by_age, lambda { |under_25s|
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
+  }
+
+  scope :include_archived, lambda { |include_archived|
+    with_deleted if include_archived
   }
 
   pg_search_scope :search_query, against: %i[first_name last_name], using: {

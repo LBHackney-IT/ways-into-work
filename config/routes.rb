@@ -9,6 +9,7 @@ WaysIntoWork::Application.routes.draw do
   get 'just_registered' => 'just_registered#show'
 
   namespace :advisor do
+    resource :restore_client, only: :update
     resources :clients do
       resources :file_uploads, only: %i[create new destroy]
       resources :meetings
