@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
 
   layout 'default'
 
+  expose :current_advisor, lambda {
+    current_user_login.user if current_user_login.user_type == 'Advisor'
+  }
+
+  expose :current_client, lambda {
+    current_user_login.user if current_user_login.user_type == 'Client'
+  }
+
+
   def after_sign_in_path_for(resource_or_scope)
     user_root(resource_or_scope)
   end
