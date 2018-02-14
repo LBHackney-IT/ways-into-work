@@ -41,8 +41,7 @@
 
           %hr
 
-          - if client.action_plan_tasks.ongoing.any?
-            - task = client.action_plan_tasks.ongoing.first
+          - if task = client.action_plan_tasks.ongoing.first
             .action_plan_task{class: task.due_date < Time.zone.now ? 'overdue' : ''}
               %h4=client.decorate_task_title
               %p=client.decorate_single_task
