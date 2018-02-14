@@ -5,9 +5,10 @@ class ActionPlanTask < ApplicationRecord
 
   belongs_to :client
   belongs_to :advisor # optional
+  has_one :achievement, dependent: :destroy
 
-  before_save :check_completion
-  after_save :award_achievement
+  before_save :check_completion, :award_achievement
+  after_save  :remove_achievement
 
   scope :completed, -> { where(status: 'completed') }
 
@@ -22,12 +23,11 @@ class ActionPlanTask < ApplicationRecord
   def award_achievement
     return unless completed?
     return if (achievement = AchievementOption.named(title)).blank?
-    client.achievements.create(name: achievement.id, action_plan_task_id: id)
+    build_achievement(name: achievement.id, client: client)
   end
 
-  # def remove_achievement
-  #   TODO - now achievement is tied to tasks we should be able to remove on transition to ongoing
-  #   return unless completed? && AchievementOption.named(title).present?
-  #   client.achievements.where(name: title).first.destroy
-  # end
+  def remove_achievement
+    return if completed?
+    achievement&.destroy
+  end
 end
