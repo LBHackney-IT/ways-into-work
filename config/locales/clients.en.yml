@@ -38,6 +38,7 @@ en:
         short: "Details"
     buttons:
       archive_client: 'Archive client record and opt-out'
+      restore_client: 'Activate client again'
       upload: 'Upload'
       manage_uploads: 'Manage uploads'
       delete: 'Delete'

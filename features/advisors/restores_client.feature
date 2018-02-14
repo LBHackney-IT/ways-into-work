@@ -14,7 +14,6 @@ Feature: Advisor restores client
     When I include archived clients in the results
     Then I should see the archived client listed
 
-  @wip
   Scenario: Advisor restores archived client
     Given I am on the advisor archived clients page
     When I restore the client to the system

@@ -18,6 +18,10 @@ When(/^I archive the client$/) do
   click_on I18n.t('clients.buttons.archive_client')
 end
 
+When(/^I restore the client to the system$/) do
+  click_on I18n.t('clients.buttons.restore_client')
+end
+
 Then(/^I should not see the client listed$/) do
   expect(page).not_to have_content(@client.name)
 end
@@ -83,6 +87,12 @@ When(/^I include archived clients in the results$/) do
 end
 
 Then(/^I should see the archived client listed$/) do
+  client_listed
+end
+
+Then(/^the client should be restored and found by default$/) do
+  expect(@client.reload.deleted?).to eq(false)
+  visit advisor_clients_path
   client_listed
 end
 
