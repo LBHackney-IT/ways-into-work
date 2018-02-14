@@ -6,7 +6,9 @@ module AdvisorSH
   end
 
   def client_listed(client = @client)
-    expect(page).to have_content(client.name)
+    within '#all_clients' do
+      expect(page).to have_css('.client', text: client.name)
+    end
   end
 end
 World AdvisorSH
