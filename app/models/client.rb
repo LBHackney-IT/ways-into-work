@@ -133,6 +133,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     [
       'Registation date',
       'Initial assessment date',
+      'Archive date',
       'Advisor Name',
       'Client Name',
       'Email',
@@ -212,6 +213,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     [
       created_at.to_date,
       initial_assessment_date&.to_date,
+      deleted_at&.to_date,
       advisor.name,
       name,
       login.email,
