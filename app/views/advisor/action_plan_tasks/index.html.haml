@@ -41,7 +41,7 @@
               %th Due:
               %th Assigned:
           %tbody
-            = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing, as: 'action_plan_task'
+            = render partial: 'ongoing_action', collection: client.action_plan_tasks.ongoing.order(due_date: :asc), as: 'action_plan_task'
     - else
       %p="#{client.name} has no tasks yet"
       =button_to I18n.t('clients.buttons.new_action_plan_task'), new_advisor_client_action_plan_task_path(client), method: :get, class: "button is-primary"
@@ -62,4 +62,4 @@
               %th Assigned to:
               %th
           %tbody
-            = render partial: 'completed_action', collection: client.action_plan_tasks.completed, as: 'action_plan_task'
+            = render partial: 'completed_action', collection: client.action_plan_tasks.completed.order(ended_at: :desc), as: 'action_plan_task'
