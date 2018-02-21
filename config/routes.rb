@@ -10,12 +10,15 @@ WaysIntoWork::Application.routes.draw do
 
   namespace :advisor do
     resource :restore_client, only: :update
-    resources :clients do
+    resources :clients, except: :edit do
       resources :file_uploads, only: %i[create new destroy]
       resources :meetings
       resources :action_plan_tasks
       resources :contact_notes, only: %i[create new index]
       resources :achievements
+      member do
+        get 'edit(/:tab)', to: 'clients#edit', as: 'edit'
+      end
     end
 
     resources :my_clients, only: :index
