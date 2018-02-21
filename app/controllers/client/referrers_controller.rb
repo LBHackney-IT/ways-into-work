@@ -9,6 +9,7 @@ class Client::ReferrersController < ApplicationController
   def create
     if referrer.save
       referrer.client.send_emails
+      referrer.send_confirmation_email
     else
       render :new
     end

@@ -66,6 +66,11 @@ When(/^I click the opt\-in email confirmation link$/) do
   visit request_uri(links_in_email(current_email).first)
 end
 
+Then(/^I should receive an email confirming that the client has been referred$/) do
+  address = Referrer.last.email
+  expect(unread_emails_for(address).size).to eq(1)
+end
+
 #
 # Reset the e-mail queue within a scenario.
 # This is done automatically before each scenario.

@@ -31,6 +31,11 @@ Feature: Client is referred via another agency
     When I refer a client as "client@example.com"
     Then "client@example.com" receive an email asking to confirm address
 
+  @homerton_postcode
+  Scenario: referrer receives email confirmation
+    When I refer a client as "client@example.com"
+    Then I should receive an email confirming that the client has been referred
+
   @outside_hackney_postcode
   Scenario: client outside borough can't be referred
     When I refer a client with a postcode outside the borough
