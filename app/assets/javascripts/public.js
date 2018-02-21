@@ -32,19 +32,22 @@ $(document).ready(function() {
         $(this).data('scrollTop', $(window).scrollTop());
     },
     activate: function(event, ui) {
+        var baseUrl = $(this).data('baseUrl');
         if (!$(this).data('scrollTop')) {
             jQuery('html').css('height', 'auto');
-            window.location.hash = ui.newPanel.attr('id');
+            hash = ui.newPanel.attr('id');
         }
 
         if ($(window).scrollTop() == $(this).data('scrollTop'))
-            window.location.hash = ui.newPanel.attr('id');
+            hash = ui.newPanel.attr('id');
         var min_height = $(this).data('scrollTop') + $(window).height();
         if ($('html').outerHeight() < min_height) {
             $('html').height(min_height -
                  ($('html').outerHeight() - $('html').height()));
-            window.location.hash = ui.newPanel.attr('id');
+            hash = ui.newPanel.attr('id');
         }
+        
+        history.pushState({}, $('title').text(), baseUrl + '/' + hash)
         $(window).scrollTop($(this).data('scrollTop'));
     }
   });
