@@ -52,7 +52,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     case params[:commit]
     when I18n.t('clients.buttons.assign_advisor')
       redirect_back(fallback_location: edit_advisor_client_path(client))
-    when I18n.t('clients.buttons.upload') || I18n.t('clients.buttons.manage_uploads')
+    when I18n.t('clients.buttons.upload')
       redirect_to new_advisor_client_file_upload_path(client)
     else
       redirect_back(fallback_location: root_path)
