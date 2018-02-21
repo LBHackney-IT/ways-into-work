@@ -6,12 +6,15 @@ class TypeOfWorkOption < Option
       new('childcare', 'Childcare'),
       new('voluntary', 'Charities / voluntary sector'),
       new('cleaning', 'Cleaning'),
+      new('driver', 'Driver'),
       new('media', 'Creative / media'),
       new('customer_service', 'Customer service'),
       new('engineering_construction', 'Engineering / construction'),
       new('finance', 'Finance / accounting'),
+      new('facilities', 'Facilities / property'),
       new('health_social_care', 'Health and social care'),
-      new('hospitality', 'Hospitality '),
+      new('hospitality', 'Hospitality'),
+      new('housing', 'Housing'),
       new('hr', 'HR'),
       new('manual_trades', 'Manual trades'),
       new('manufacturing', 'Manufacturing'),
@@ -22,6 +25,7 @@ class TypeOfWorkOption < Option
       new('teaching', 'Teaching / teaching assistant'),
       new('tech_it', 'Tech / IT'),
       new('travel', 'Travel and logistics'),
+      new('warehouse', 'Warehouse operative'),
       new('youth', 'Youth work')
     ]
   end
