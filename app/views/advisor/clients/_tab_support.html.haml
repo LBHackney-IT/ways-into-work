@@ -18,9 +18,9 @@
 
 
 .convert_checkbox.field
-  =form.input :receive_benefits, as: :radio_buttons, collection: BenefitsOption.all, :label => 'Does the client receive any work related benefits?', wrapper_html: { class: "convert_radio" }
+  =form.input :receive_benefits, as: :radio_buttons, collection: BenefitsOption.all, :label => 'Which work related benefits do you recieve?', wrapper_html: { class: "convert_radio" }
   = render partial: 'shared/other_text', locals: { form: form, field: :other_receive_benefits }
 
-=form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Is the client affected by the benefits cap?', wrapper_html: { class: "convert_radio" }
+=form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Are you affected by the benefit cap?', wrapper_html: { class: "convert_radio" }
 
 =form.input :welfare_calculation_completed, as: :radio_buttons, :label => 'Better Off Calculation completed?', wrapper_html: { class: "convert_radio" }
