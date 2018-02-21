@@ -26,6 +26,10 @@ $(document).ready(function() {
   $(".clickable_row").clickableRow();
 
   $(".admin.action_plan_tasks form").suggestNames();
+  
+  $('#client_welfare_calculation_completed_true').showBocNotes();
+  
+  $('#client_welfare_calculation_completed_false').hideBocNotes();
 
   $("#tabs").tabs({
     create: function(event, ui) {
