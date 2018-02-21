@@ -24,3 +24,5 @@
 =form.input :affected_by_benefit_cap, as: :radio_buttons, :label => 'Is the client affected by the benefits cap?', wrapper_html: { class: "convert_radio" }
 
 =form.input :welfare_calculation_completed, as: :radio_buttons, :label => 'Better Off Calculation completed?', wrapper_html: { class: "convert_radio" }
+
+=form.input :welfare_calculation_notes, as: :text, :label => 'Notes on Better Off Calculation', input_html: { class: 'textarea' }, wrapper_html: { class: (form.object.welfare_calculation_notes.blank? ? 'is-hidden' : ''), id: 'boc-wrapper' }

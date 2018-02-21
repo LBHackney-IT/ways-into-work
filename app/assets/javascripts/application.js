@@ -29,4 +29,5 @@
 //= require show-achievement
 //= require clickable-row
 //= require action-plans
+//= require boc-notes
 //= require public
