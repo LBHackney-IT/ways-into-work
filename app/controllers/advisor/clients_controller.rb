@@ -181,6 +181,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       types_of_work: [],
       training_courses: [],
       personal_traits: [],
+      health_barriers: [],
       assessment_notes_attributes: %i[
         id
         content
