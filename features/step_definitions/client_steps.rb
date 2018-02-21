@@ -82,3 +82,7 @@ end
 Then(/^the client should be contactable by sms reminder$/) do
   expect(@client.reload.preferred_contact_methods.sort).to eq(ContactMethodOption.all.map(&:id).sort)
 end
+
+Then(/^I should be redirected to the client's edit page$/) do
+  expect(current_path).to eq(edit_advisor_client_path(@client))
+end

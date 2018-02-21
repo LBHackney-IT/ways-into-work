@@ -3,6 +3,6 @@ class Advisor::RestoreClientsController < Advisor::BaseController
 
   def update
     client.restore!
-    redirect_back(fallback_location: :advisor_clients)
+    redirect_to edit_advisor_client_path(client.id)
   end
 end

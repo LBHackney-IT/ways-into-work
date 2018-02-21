@@ -18,4 +18,5 @@ Feature: Advisor restores client
   Scenario: Advisor restores archived client
     Given I am on the advisor archived clients page
     When I restore the client to the system
-    Then the client should be restored and found by default
+    Then I should be redirected to the client's edit page
+    And the client should be restored and found by default
