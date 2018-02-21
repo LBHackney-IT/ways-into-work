@@ -1,5 +1,5 @@
 = simple_form_for [client.object], url: advisor_client_path(client.object), method: :put do |form|
-  #tabs.container
+  #tabs.container{ 'data-base-url' => edit_advisor_client_path(id: client.object) }
     .head.level
       .level-left
         %h2=client.name
