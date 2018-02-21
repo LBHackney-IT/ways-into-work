@@ -28,6 +28,13 @@ $(document).ready(function() {
   $(".admin.action_plan_tasks form").suggestNames();
 
   $("#tabs").tabs({
+    create: function(event, ui) {
+      var tabID = $(this).data('activeTab') ;
+      var activeTab = document.getElementById(tabID);
+      var index = $('#tab-container .tab').index(activeTab);
+                  
+      $(this).tabs( "option", "active", index );
+    },
     beforeActivate: function(event, ui) {
         $(this).data('scrollTop', $(window).scrollTop());
     },
