@@ -179,6 +179,7 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hashdiff (0.3.7)
+    hashids (1.0.4)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -436,6 +437,7 @@ DEPENDENCIES
   font-awesome-rails
   going_postal
   haml-rails
+  hashids
   httparty
   humanize_boolean
   i18n-debug

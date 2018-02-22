@@ -46,6 +46,8 @@ gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service
 
 gem 'notifications-ruby-client'
 
+gem 'hashids'
+
 group :development, :staging, :test do
   gem 'fabrication'
   gem 'ffaker'
