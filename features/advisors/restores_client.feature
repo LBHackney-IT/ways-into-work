@@ -11,7 +11,7 @@ Feature: Advisor restores client
   Scenario: Advisor can find archived clients
     Given I am on the advisor clients page
     Then I should not see the client listed
-    When I include archived clients in the results
+    When I am on the advisor archived clients page
     Then I should see the archived client listed
 
   Scenario: Advisor restores archived client
