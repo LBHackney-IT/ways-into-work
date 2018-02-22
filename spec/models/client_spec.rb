@@ -335,4 +335,10 @@ RSpec.describe Client, type: :model do
     client = Fabricate.create(:client, referrer: referrer)
     expect(client.referrer).to eq(referrer)
   end
+  
+  it 'has a hash id' do
+    client = Fabricate.create(:client)
+    expect(client.uniqid).to match(/HW\-[ABCDEFG123456789]{8,}/)
+  end
+  
 end

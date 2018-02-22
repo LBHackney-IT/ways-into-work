@@ -155,6 +155,11 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       AchievementOption.all.map(&:name)
     ].flatten
   end
+  
+  def uniqid
+    hashid = Hashids.new(ENV['HASHID_SALT'], 8, 'ABCDEFG123456789').encode(id)
+    "HW-#{hashid}"
+  end
 
   def last_meeting_or_contact
     last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
