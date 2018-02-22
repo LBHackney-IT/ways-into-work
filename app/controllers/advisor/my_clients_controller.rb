@@ -26,7 +26,7 @@ class Advisor::MyClientsController < Advisor::BaseController
       by_types_of_work: TypeOfWorkOption.options_for_select,
       by_training: TrainingCourseOption.options_for_select,
       by_age: [['Under 25', :under_25s]],
-      include_archived: [['Include', true]]
+      archived: [['Archived', :archived], ['All', :all]]
     }
   end
 end

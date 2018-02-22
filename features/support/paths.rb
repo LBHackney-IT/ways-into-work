@@ -21,7 +21,7 @@ module NavigationHelpers
       advisor_clients_path
 
     when /the advisor archived clients/
-      advisor_clients_path(filterrific: { include_archived: true })
+      advisor_clients_path(filterrific: { archived: 'archived' })
 
     when /the advisors edit client/
       edit_advisor_client_path(@client)

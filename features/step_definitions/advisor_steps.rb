@@ -83,7 +83,7 @@ Given(/^there is an advisor Dave in my hub$/) do
 end
 
 When(/^I include archived clients in the results$/) do
-  select 'Include', from: 'filterrific_include_archived'
+  select 'All', from: 'filterrific_archived'
 end
 
 Then(/^I should see the archived client listed$/) do
