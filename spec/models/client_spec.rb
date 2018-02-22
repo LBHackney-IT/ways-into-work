@@ -45,6 +45,7 @@ RSpec.describe Client, type: :model do
 
     it 'generates a CSV row' do
       expect(client.csv_row).to eq([
+        client.uniqid,
         Time.zone.now.to_date,
         client.meetings.first.start_datetime.to_date,
         nil,
