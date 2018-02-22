@@ -8,7 +8,6 @@ Feature: Advisor restores client
     Given I am signed in as an advisor
     And there is a client who has been archived
 
-  @wip
   Scenario: Advisor can find archived clients
     Given I am on the advisor clients page
     Then I should not see the client listed
@@ -17,6 +16,7 @@ Feature: Advisor restores client
 
   Scenario: Advisor restores archived client
     Given I am on the advisor archived clients page
+    And I include archived clients in the results
     When I restore the client to the system
     Then I should be redirected to the client's edit page
     And the client should be restored and found by default

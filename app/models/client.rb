@@ -66,7 +66,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       by_advisor_id
       by_training
       by_age
-      include_archived
+      archived
       by_rag_status
       by_objective
       sorted_by
@@ -96,8 +96,14 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
   }
 
-  scope :include_archived, lambda { |include_archived|
-    with_deleted if include_archived
+  scope :archived, lambda { |state|
+    if state == 'archived'
+      only_deleted
+    elsif state == 'all'
+      with_deleted
+    else
+      all
+    end
   }
 
   pg_search_scope :search_query, against: %i[first_name last_name], using: {
