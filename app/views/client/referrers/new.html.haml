@@ -23,11 +23,13 @@
         = render partial: 'clients/form_fields', locals: {form: builder}
 
 
-        %h4 Supported Employment
-        %p Our Supported Employment advisors specialise in supporting clients with mild to moderate mental health conditions, learning difficulties or disabilities.
+        %br
+        %br
+        %h4.bold Supported Employment
+        %p Our Supported Employment advisors specialise in supporting clients with mental health conditions, learning difficulties or disabilities.
 
         .inline_checkbox
           = builder.input :assigned_supported_employment, as: :boolean, label: "Tick here to refer the client to a Supported Employment advisor."
 
 
-      = form.submit 'Register', :class => 'button is-primary'
+      = form.submit t('buttons.referral'), :class => 'button is-primary is-large is-pulled-right'
