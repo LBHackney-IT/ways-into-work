@@ -150,6 +150,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       'Claiming Benefits?',
       'Care leaver?',
       'Currently employed?',
+      'Referrering organisation',
       'Referrer Email',
       AchievementOption.all.map(&:name)
     ].flatten
@@ -230,6 +231,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       receive_benefits,
       care_leaver,
       nil_yes_or_no(employed),
+      referrer&.organisation,
       referrer&.email,
       achievement_counts
     ].flatten

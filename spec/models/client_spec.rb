@@ -64,6 +64,7 @@ RSpec.describe Client, type: :model do
         nil,
         'No',
         'Yes',
+        'benefits',
         'referrer@example.com',
         0,
         0,
