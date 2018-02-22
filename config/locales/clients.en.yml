@@ -11,6 +11,7 @@ en:
         advisor_assigned: "Advisor has now been assigned to manage this client and has been notified."
         updated: 'Client updates have been saved'
         archived: "Client has been archived"
+        anonymise: 'Client has been anonymised'
     mail:
       subject:
         welcome: "Welcome to Hackney Works"
@@ -39,6 +40,7 @@ en:
     buttons:
       archive_client: 'Archive client record'
       restore_client: 'Activate client again'
+      anonymise_client: 'Anonymise client data'
       upload: 'Upload File'
       delete: 'Delete'
       make_contact: "Contact"

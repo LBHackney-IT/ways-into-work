@@ -34,6 +34,11 @@ Given(/^I am signed in as a member of the employer engagement team$/) do
   login_as(@i.login)
 end
 
+Given(/^I am signed in as an admin$/) do
+  @i = Fabricate(:advisor, role: :admin)
+  login_as(@i.login)
+end
+
 Given(/^I am signed in as an Client$/) do
   @i = Fabricate(:fully_reg_client)
   login_as(@i.login)

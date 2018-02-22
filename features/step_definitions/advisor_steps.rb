@@ -22,6 +22,14 @@ When(/^I restore the client to the system$/) do
   click_on I18n.t('clients.buttons.restore_client')
 end
 
+When(/^I anonymise the client$/) do
+  click_on I18n.t('clients.buttons.anonymise_client')
+end
+
+Then(/^I should not be able to see the anonymise client button$/) do
+  expect(page).not_to have_content(I18n.t('clients.buttons.anonymise_client'))
+end
+
 Then(/^I should not see the client listed$/) do
   expect(page).not_to have_content(@client.name)
 end

@@ -104,3 +104,16 @@ Then(/^the client should have no types of work set$/) do
   @client.reload
   expect(@client.types_of_work).to eq([])
 end
+
+Then(/^the client's personal details should be anonymised$/) do
+  @client.reload
+  
+  expect(@client.first_name).to eq(nil)
+  expect(@client.last_name).to eq(nil)
+  expect(@client.phone).to eq(nil)
+  expect(@client.address_line_1).to eq(nil)
+  expect(@client.address_line_2).to eq(nil)
+  expect(@client.postcode).to eq(nil)
+  expect(@client.date_of_birth).to eq(nil)
+  expect(@client.national_insurance_number).to eq(nil)
+end

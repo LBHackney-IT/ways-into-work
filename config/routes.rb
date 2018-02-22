@@ -18,6 +18,7 @@ WaysIntoWork::Application.routes.draw do
 
   namespace :advisor do
     resource :restore_client, only: :update
+    resource :anonymise_client, only: :update
     resources :clients, except: :edit do
       resources :file_uploads, only: %i[create new destroy]
       resources :meetings
