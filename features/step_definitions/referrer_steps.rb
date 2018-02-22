@@ -17,6 +17,7 @@ module ReferrerSH
   def register
     click_button I18n.t('buttons.register')
   end
+
   def register_referral
     click_button I18n.t('buttons.referral')
   end
