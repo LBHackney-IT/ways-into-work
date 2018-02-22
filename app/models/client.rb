@@ -320,4 +320,16 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       agenda: 'initial_assessment'
     )
   end
+  
+  def anonymise!
+    self.first_name = nil
+    self.last_name = nil
+    self.phone = nil
+    self.address_line_1 = nil
+    self.address_line_2 = nil
+    self.postcode = nil
+    self.date_of_birth = nil
+    self.national_insurance_number = nil
+    save(validate: false)
+  end
 end
