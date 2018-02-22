@@ -355,4 +355,16 @@ RSpec.describe Client, type: :model do
     expect(client.uniqid).to match(/HW\-[ABCDEFG123456789]{8,}/)
   end
   
+  it 'anonymises a client' do
+    client = Fabricate.create(:client)
+    client.anonymise!
+    expect(client.first_name).to eq(nil)
+    expect(client.last_name).to eq(nil)
+    expect(client.phone).to eq(nil)
+    expect(client.address_line_1).to eq(nil)
+    expect(client.address_line_2).to eq(nil)
+    expect(client.postcode).to eq(nil)
+    expect(client.date_of_birth).to eq(nil)
+    expect(client.national_insurance_number).to eq(nil)
+  end
 end
