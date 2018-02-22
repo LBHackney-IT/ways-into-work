@@ -1,9 +1,9 @@
 class BenefitsOption < Option
   def self.all
     [
-      new('jsa', 'JSA'),
       new('esa', 'ESA'),
       new('ib', 'IB'),
+      new('jsa', 'JSA'),
       new('uc', 'UC'),
       new('none', 'None')
     ]

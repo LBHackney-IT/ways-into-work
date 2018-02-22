@@ -1,5 +1,6 @@
 #filterrific_results.clients
   -if clients.any?
+    = paginate clients # provided by kaminari
     %table.table
       %thead
         %tr

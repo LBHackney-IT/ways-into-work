@@ -18,6 +18,8 @@ en:
     all_clients: "View all clients"
     my_clients: "View my clients"
     advisors: "Find your local hub"
+    referral: "Make Referral"
+    register: "Register"
   flash:
     success:
       task_saved: "Agreed Task: %{title} saved"

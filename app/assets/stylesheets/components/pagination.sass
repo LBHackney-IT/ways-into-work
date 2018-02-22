@@ -37,7 +37,7 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
 .pagination,
 .pagination-list
   align-items: center
-  display: flex
+  // display: flex
   justify-content: center
   text-align: center
 
@@ -132,3 +132,20 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
       .pagination-list
         justify-content: flex-end
         order: 3
+
+
+
+
+.pagination .page a, .pagination .next a, .pagination .last a, .pagination .current,  .pagination .prev a,  .pagination .first a
+  padding: 8px 15px
+  margin-left: 18px
+  margin-right: 18px
+  background-color: white
+  border-radius: 3px
+  border: 1px solid #C7C7C6
+  color: #4a4a4a
+
+  &:hover
+    border: 1px solid #4a4a4a
+.pagination .current
+  background-color: transparent
