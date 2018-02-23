@@ -13,7 +13,7 @@
           = link_to "Back to my clients", :advisor_my_clients, class: "button nav-back"
         - else
           = link_to "Back to all clients", :advisor_clients, class: "button nav-back"
-        = form.submit 'Save profile', :class => 'button is-primary'
+        = form.submit 'Save', :class => 'button is-primary'
 
     = render partial: 'shared/upper_tabs', locals: {the_client: client}
 
