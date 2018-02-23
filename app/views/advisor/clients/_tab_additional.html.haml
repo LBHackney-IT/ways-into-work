@@ -10,9 +10,6 @@
 =form.input :assigned_supported_employment, as: :radio_buttons, :label => 'Is the client assigned to supported employment?', wrapper_html: { class: "convert_radio" }
 
 = render partial: 'shared/assessment_note', locals: {form: form, note: @additional_info_notes, label: 'Advisor notes', type: :text }
-%label.label Additional File Uploads
-=client.new_file_button(I18n.t('clients.buttons.upload'))
 
 %br
-%br
-= link_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-danger is-small is-pulled-right"
+= link_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-danger is-small"

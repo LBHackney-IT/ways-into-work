@@ -60,7 +60,7 @@
           = render 'shared/form_errors', object: form.object
 
           = render partial: '/shared/client_profile_overview'
-        
+
         #details.tab
           = render partial: 'tab_contact', locals: {form: form}
 
@@ -78,6 +78,8 @@
 
         #equality.tab
           = render partial: 'tab_equality', locals: {form: form}
-        
+
         #additional.tab
           = render partial: 'tab_additional', locals: {form: form}
+        %br
+        = form.submit 'Save profile', :class => 'button is-primary is-pulled-right'
