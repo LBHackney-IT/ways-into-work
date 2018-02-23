@@ -3,9 +3,9 @@
     .level-left
       %h3.subtitle= "Add a new client"
     .level-right
-      =link_to "Back to My Clients", advisor_my_clients_path, class: 'button pull-right'
+      =link_to "Back to My Clients", advisor_my_clients_path, class: 'button pull-right top_right_button'
   %hr
 
   = simple_form_for [client.object], url: :advisor_clients do |form|
     = render partial: '/clients/form_fields', locals: {form: form}
-    = form.submit 'Save', :class => 'button is-primary'
+    = form.submit 'Save', :class => 'button is-primary tablet_cta'

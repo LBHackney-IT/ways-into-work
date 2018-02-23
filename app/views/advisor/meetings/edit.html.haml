@@ -3,11 +3,11 @@
     .level-left
       %h3.subtitle Edit Meeting
     .level-right
-      =link_to I18n.t('clients.buttons.back_to_meetings'), advisor_client_meetings_path, class: 'button pull-right'
+      =link_to I18n.t('clients.buttons.back_to_meetings'), advisor_client_meetings_path, class: 'button pull-right top_right_button'
   %hr
 
   = simple_form_for [client, meeting], url: advisor_client_meeting_path(client_id: client.id, id: meeting.id), method: :put do |form|
 
     = render partial: 'form_fields', locals: {form: form}
 
-    = form.submit I18n.t('clients.buttons.update'), :class => 'button is-primary'
+    = form.submit I18n.t('clients.buttons.update'), :class => 'button is-primary tablet_cta'

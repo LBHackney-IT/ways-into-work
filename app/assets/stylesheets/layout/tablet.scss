@@ -1,0 +1,44 @@
+@media all and (max-width: 880px) {
+  .level-right .top_right_button {
+    margin-top: -50px;
+  }
+
+  #upper-tabs .single-tab {
+    padding: 15px 18px !important;
+  }
+  #tab-list li {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+  }
+  #tabs {
+    .tablet_cta {
+      width: 97.5%;
+    }
+  }
+  #fix_alignment {
+    padding-bottom: 65px;
+  }
+  .achievement.is-one-quarter {
+    width: 49%;
+    display: inline-block;
+  }
+  .admin .table .action_plan_task td.task {
+    width: auto !important;
+  }
+  .edit_meeting, #new_meeting {
+    .is-one-quarter {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .convert_checkbox span.checkbox label {
+      height: auto;
+    }
+    .convert_checkbox span.checkbox {
+      width: auto;
+    }
+  }
+  #print_page {
+    display: none;
+  }
+}
