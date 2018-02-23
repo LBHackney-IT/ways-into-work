@@ -2,7 +2,7 @@
   %td.third=link_to client.name, edit_advisor_client_path(client)
   %td.quarter
     =client.created_at.to_date.to_s(:short)
-    %span.bold=number_of_days_waiting(client.created_at.to_date)
+    %span.bold.is-hidden-touch=number_of_days_waiting(client.created_at.to_date)
   %td.one-sixth
     ="#{pluralize(client.contact_notes_count, 'time')}"
   %td.one-eigth
