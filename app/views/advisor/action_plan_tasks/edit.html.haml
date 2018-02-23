@@ -3,7 +3,7 @@
     .level-left
       %h3.subtitle= "Edit task"
     .level-right
-      =link_to I18n.t('clients.buttons.back_to_action_plan'), advisor_client_action_plan_tasks_path, class: 'button pull-right'
+      =link_to I18n.t('clients.buttons.back_to_action_plan'), advisor_client_action_plan_tasks_path, class: 'button pull-right top_right_button'
   %hr
 
   = simple_form_for [action_plan_task.client, action_plan_task], url: advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :put do |form|
