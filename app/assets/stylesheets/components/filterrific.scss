@@ -1,0 +1,12 @@
+
+@media all and (max-width: 880px) {
+  #filterrific_filter {
+    .column {
+      width: 49%;
+      display: inline-block;
+      input, select, .select {
+        width: 100% !important;
+      }
+    }
+  }
+}
