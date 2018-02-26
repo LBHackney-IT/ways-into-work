@@ -30,7 +30,7 @@ gem 'active_model_serializers'
 gem 'aws-sdk'
 gem 'paperclip'
 
-gem 'filterrific'
+gem 'filterrific', git: 'https://github.com/wearefuturegov/filterrific'
 gem 'humanize_boolean'
 
 gem 'kaminari'
