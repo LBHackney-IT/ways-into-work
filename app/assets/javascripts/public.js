@@ -81,7 +81,7 @@ $(document).ready(function() {
   $('#referrer_organisation').showOthers();
 
   $('.show_achievement').showAchievement();
-  
+
   $('.edit_client').addEmpty();
   
   $('.admin.vacancies.index').featuredVacancies();
@@ -89,4 +89,7 @@ $(document).ready(function() {
   $('#subscribe.button').click(function(){
     window.open('https://public.govdelivery.com/accounts/UKHACKNEYCOUNCIL/subscribers/qualify?email='+$('#newsletter_email').val(), '_blank');
   });
+  
+  $('#filterrific_filter').filterrificBrowserHistory();
+
 });
