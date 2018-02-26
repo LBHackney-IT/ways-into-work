@@ -35,5 +35,4 @@
 //= require featured-vacancies
 //= require slider
 //= require filterrific-browser-history
-//= require update-advisors
 //= require public
