@@ -119,11 +119,6 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
     @default_hub_id ||= current_advisor.default_hub_id
   end
 
-  def selected_hub_id
-    return default_hub_id if params[:filterrific].blank?
-    params[:filterrific][:by_hub_id]
-  end
-
   def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
       :title,
