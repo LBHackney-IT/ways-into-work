@@ -76,7 +76,7 @@ $(document).ready(function() {
 
   $('#print_page').printPage();
 
-  $('#dashboard_hubs').removeAdvisors();
+  $('#dashboard_hubs').removeAdvisors('#advisor');
 
   $('#referrer_organisation').showOthers();
 
@@ -92,6 +92,6 @@ $(document).ready(function() {
   
   $('#filterrific_filter').filterrificBrowserHistory();
   
-  $('#filterrific_by_hub_id').updateAdvisors();
+  $('#filterrific_by_hub_id').removeAdvisors('#filterrific_by_advisor_id');
 
 });
