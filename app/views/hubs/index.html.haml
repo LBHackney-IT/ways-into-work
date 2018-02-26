@@ -1,9 +1,18 @@
 .column
-  %h3 
+  %h3
     = t('hackney_works.hubs.title')
   %br
-  #hubs= render partial: 'hub', collection: hubs
+  #hubs
+    = render partial: 'hub', collection: hubs
 
+    .box.hub
+      %h2 Supported Employment
+      %p Team leader: Chetna Chudasama
+      .columns
+        .map.column.is-two-thirds
+          %p If you need specialist support our team includes dedicated Supported Employment advisors who support residents with health conditions and disabilities.
+          %p For more information go here. **LINK MISSING
+        .image.column.is-one-third{id: "hub_staff_4"}
   .box.top.hubs
     %p
       = t('hackney_works.hubs.info')
