@@ -1,14 +1,10 @@
 .column
   %h2.subtitle Do you live within Hackney?
 
-  %p Sorry, this service is only for Hackney residents.
+  %p Sorry, this service is only for Hackney residents. Based on the post code you provided it seems you are not within the London borough of Hackney.
 
-  %br
-
-  %p Using your postcode we looked up to see whether your address is within the London borough of Hackney but it doesn't seem to be.
-
-  %p You may be able to find other ways into work schemes in you area.
-
-  %p If you live in Hackney and are seeing this screen then please call your local hub using the link below.
+  %p If you live in Hackney and are seeing this screen either try registering again and make sure your post code is correct, or you can register over the phone by calling the hub closest to where you live:
 
   =link_to "Find your local hub", hubs_path, class: "button is-primary"
+
+  %p You may also be eligible if you are a school or care leaver who used to live in Hackney but no longer live inside the borough.
