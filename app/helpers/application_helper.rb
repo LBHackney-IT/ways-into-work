@@ -15,10 +15,6 @@ module ApplicationHelper
     'current' if current_page?(path)
   end
 
-  def page_title
-    home? ? 'Hackney Opportunities' : 'Hackney Works'
-  end
-
   private
 
   def home?
