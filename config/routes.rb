@@ -1,7 +1,7 @@
 WaysIntoWork::Application.routes.draw do
   devise_for :user_logins
 
-  root to: 'welcome#show'
+  root to: 'hackney_works#show'
 
   get 'hackney_works' => 'hackney_works#show'
 
