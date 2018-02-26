@@ -3,6 +3,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   expose :referrer, -> { ReferrerDecorator.decorate(client.referrer) }
 
   before_action :init_client, only: :create
+  before_action :clear_params, only: %i[update create]
 
   def new
     client.build_login
@@ -173,6 +174,17 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :address_line_1,
       :address_line_2,
       :postcode,
+      option_params,
+      assessment_notes_attributes: %i[
+        id
+        content
+        content_key
+      ]
+    )
+  end
+  
+  def option_params # rubocop:disable Metrics/MethodLength
+    {
       preferred_contact_methods: [],
       funded: [],
       barriers: [],
@@ -181,13 +193,8 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       types_of_work: [],
       training_courses: [],
       personal_traits: [],
-      health_barriers: [],
-      assessment_notes_attributes: %i[
-        id
-        content
-        content_key
-      ]
-    )
+      health_barriers: []
+    }
   end
 
   def init_assessment_notes
@@ -215,5 +222,11 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       get_better_at
       additional_info
     ]
+  end
+  
+  def clear_params
+    option_params.keys.each do |k|
+      edit_client_params[k.to_s]&.delete_if { |p| p.blank? }
+    end
   end
 end

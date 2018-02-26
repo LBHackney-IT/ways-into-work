@@ -102,5 +102,5 @@ end
 
 Then(/^the client should have no types of work set$/) do
   @client.reload
-  expect(@client.types_of_work).to eq([''])
+  expect(@client.types_of_work).to eq([])
 end
