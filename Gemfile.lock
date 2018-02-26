@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/wearefuturegov/filterrific
+  revision: 9809407c89fbb9c8b3719f21d21f5caef2e5863c
+  specs:
+    filterrific (5.0.1)
+
+GIT
   remote: https://github.com/wearefuturegov/rails_service_check
   revision: 678f75d650978dc43e1217c084151154bcc9859b
   specs:
@@ -160,7 +166,6 @@ GEM
     fabrication (2.20.1)
     ffaker (2.8.1)
     ffi (1.9.18)
-    filterrific (2.1.2)
     font-awesome-rails (4.7.0.3)
       railties (>= 3.2, < 5.2)
     gherkin (4.1.3)
@@ -433,7 +438,7 @@ DEPENDENCIES
   email_spec
   fabrication
   ffaker
-  filterrific
+  filterrific!
   font-awesome-rails
   going_postal
   haml-rails
