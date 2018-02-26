@@ -30,4 +30,5 @@
 //= require clickable-row
 //= require action-plans
 //= require boc-notes
+//= require add-empty
 //= require public
