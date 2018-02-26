@@ -91,5 +91,7 @@ $(document).ready(function() {
   });
   
   $('#filterrific_filter').filterrificBrowserHistory();
+  
+  $('#filterrific_by_hub_id').updateAdvisors();
 
 });

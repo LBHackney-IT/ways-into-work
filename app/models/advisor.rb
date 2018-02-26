@@ -26,12 +26,8 @@ class Advisor < ApplicationRecord
     admin? || employer_engagement? ? nil : hub_id
   end
 
-  def self.options_for_select(hub_id)
-    if hub_id.blank?
-      order('LOWER(name)')
-    else
-      by_hub_id(hub_id).order('LOWER(name)')
-    end.map { |e| [e.name, e.id, { 'data-hub-id' => e&.hub&.id }] }
+  def self.options_for_select
+    order('LOWER(name)').map { |e| [e.name, e.id, { 'data-hub-id' => e&.hub&.id }] }
   end
   
   def hackney_works_team?
