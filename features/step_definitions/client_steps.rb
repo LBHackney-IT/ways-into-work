@@ -86,3 +86,21 @@ end
 Then(/^I should be redirected to the client's edit page$/) do
   expect(current_path).to eq(edit_advisor_client_path(@client))
 end
+
+Given(/^the client has types of work set$/) do
+  @client.types_of_work = %w[catering voluntary manual_trades teaching]
+  @client.save
+end
+
+Given(/^I clear the client's type of work options$/) do
+  click_on 'Goals'
+  @client.types_of_work.each do |type|
+    find('label', text: TypeOfWorkOption.find(type).name).click
+  end
+  click_on 'Save profile'
+end
+
+Then(/^the client should have no types of work set$/) do
+  @client.reload
+  expect(@client.types_of_work).to eq([''])
+end

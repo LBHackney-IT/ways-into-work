@@ -15,7 +15,7 @@ class Option
   end
 
   def self.display(ids = [])
-    ids.collect { |id| find(id).name }.join(', ')
+    ids.reject(&:blank?).collect { |id| find(id).name }.join(', ')
   end
 
   def self.options_for_select

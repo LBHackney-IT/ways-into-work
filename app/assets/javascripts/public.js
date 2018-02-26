@@ -76,5 +76,7 @@ $(document).ready(function() {
   $('#referrer_organisation').showOthers();
 
   $('.show_achievement').showAchievement();
+  
+  $('.edit_client').addEmpty();
 
 });
