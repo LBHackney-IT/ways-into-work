@@ -28,7 +28,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def edit
-    @active_tab = params[:tab] || 'overview'
+    @active_tab = params[:tab]
     init_assessment_notes
   end
 
