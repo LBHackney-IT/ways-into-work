@@ -17,7 +17,10 @@ $(document).ready(function() {
 
   $('#alerts').alerts();
 
-  $('.parralax_me').parralax(0.3, true);
+  $('#parralax_me').parralax(0.3, true);
+  $('#testimonials .parralax_me').parralax(0.25, true);
+
+  $('#testimonials .slider').slider();
 
   $(".validate").validate();
 

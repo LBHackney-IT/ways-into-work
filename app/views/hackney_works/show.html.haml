@@ -50,14 +50,34 @@
       %p=t('hackney_works.hack_100.about')
       = link_to I18n.t('hackney_works.hack_100.button'), hackney100_path, class: 'button'
 
-.full-width.testimonials
-  %h2=t('hackney_works.testimonials.title')
-  .testimonial
-    %p=t('hackney_works.testimonials.testimonial_a')
-  .testimonial
-    %p=t('hackney_works.testimonials.testimonial_b')
-  .testimonial
-    %p=t('hackney_works.testimonials.testimonial_c')
+.full-width#testimonials.hero
+  .bg_img
+    =image_tag('canal.jpg', class: 'parralax_me', id: 'parralax_me2')
+  .container
+    %h2=t('hackney_works.testimonials.title')
+    .slider
+      .testimonial#testimonial1.active
+        .image
+          =image_tag('quote1.png')
+        .quote
+          %p=t('hackney_works.testimonials.testimonial_a')
+          %span=t('hackney_works.testimonials.testimonial_a_name')
+      .testimonial#testimonial2
+        .image
+          =image_tag('quote2.png')
+        .quote
+          %p=t('hackney_works.testimonials.testimonial_b')
+          %span=t('hackney_works.testimonials.testimonial_b_name')
+      .testimonial#testimonial3
+        .image
+          =image_tag('quote3.png')
+        .quote
+          %p=t('hackney_works.testimonials.testimonial_c')
+          %span=t('hackney_works.testimonials.testimonial_c_name')
+      .slide_indicator
+        .active.indicator{:data => {:number => 1}}
+        .indicator{:data => {:number => 2}}
+        .indicator{:data => {:number => 3}}
 
 #vacancies.container
   %h2=t('hackney_works.vacancies.title')
