@@ -2,4 +2,6 @@
   %td= link_to vacancy.title, edit_advisor_vacancy_path(vacancy)
   %td= t("vacancies.vacancy_type.#{vacancy.vacancy_type}")
   %td= vacancy.salary
-  %td= button_to 'Delete', advisor_vacancy_path(vacancy), method: :delete, class: 'button is-primary', data: { confirm: 'Are you sure you want to delete this job?'}
+  %td
+    = link_to 'Edit', edit_advisor_vacancy_path(vacancy), class: 'button is-primary is-small'
+    = button_to 'Delete', advisor_vacancy_path(vacancy), method: :delete, class: 'button is-danger is-small button_inline', data: { confirm: 'Are you sure you want to delete this job?'}
