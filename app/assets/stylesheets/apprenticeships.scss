@@ -1,5 +1,7 @@
 body.hackney_apprenticeships.show,
-body.hackney100.show {
+body.hackney100.show,
+body.supported_employment.show,
+body.employers_information.show {
   .lines {
     border-top-color: $color__hackney-apprentices;
     border-bottom-color: rgba($color__hackney-apprentices, 0.2);

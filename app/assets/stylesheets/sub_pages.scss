@@ -1,0 +1,29 @@
+body.supported_employment.show,
+body.employers_information.show {
+  .lines {
+    border-top-color: $color__hackney-works;
+    border-bottom-color: #009CA6;
+    &:after {
+      background: rgba($color__hackney-works, 0.55);
+    }
+  }
+  footer {
+    .lines {
+      border-top-color: #009CA6;
+      border-bottom-color: $color__hackney-works;
+    }
+  }
+  .full-width.hero {
+    background: linear-gradient(135deg, rgba(0, 156, 166, 0.4) 0%, rgba(0, 156, 166, 0.79) 100%);
+  }
+  p a {
+    color: $color__hackney-works;
+    font-weight: 600;
+    &:hover {
+      color: #4a4a4a;
+    }
+  }
+  .is-primary {
+    background-color: $color__hackney-works;
+  }
+}
