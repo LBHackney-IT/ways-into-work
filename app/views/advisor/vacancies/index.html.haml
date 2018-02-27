@@ -6,9 +6,14 @@
       =link_to  "Add new vacancy", new_advisor_vacancy_path, class: 'button is-primary'
   -if vacancies.any?
     = render partial: 'vacancies', locals: { vacancies: vacancies }
+
+    %p Drag a vacancy from above onto one of the features below to replace it.
   -else
     %p You do not have any vacancies yet.
     =link_to  "Add a vacancy", new_advisor_vacancy_path, class: 'button is-primary'
+
+  %br
+  %br
 
   .head.level
     .level-left
