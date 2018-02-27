@@ -2,18 +2,21 @@
   .head.level
     .level-left
       %h2 Available Vacancies
-      
     .level-right
-      = link_to 'Add new vacancy', new_advisor_vacancy_path, class: 'button is-primary'
-      
-  = render partial: 'vacancies', locals: { vacancies: vacancies }
-  
+      =link_to  "Add new vacancy", new_advisor_vacancy_path, class: 'button is-primary'
+  -if vacancies.any?
+    = render partial: 'vacancies', locals: { vacancies: vacancies }
+  -else
+    %p You do not have any vacancies yet.
+    =link_to  "Add a vacancy", new_advisor_vacancy_path, class: 'button is-primary'
+
   .head.level
     .level-left
       %h2 Vacancies on Homepage
-      
-  = render partial: 'shared/featured_vacancies', locals: { featured_vacancies: @featured_vacancies }
-  
 
-        
-          
+  = render partial: 'shared/featured_vacancies', locals: { featured_vacancies: @featured_vacancies }
+
+
+
+
+
