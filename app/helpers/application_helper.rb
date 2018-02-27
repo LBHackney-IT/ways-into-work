@@ -11,6 +11,14 @@ module ApplicationHelper
     end
   end
 
+  def current_footer
+    if !user_login_signed_in?
+      'layouts/site_footer'
+    else
+      'layouts/site_footer_admin'
+    end
+  end
+
   def cp(path)
     'current' if current_page?(path)
   end
