@@ -1,5 +1,5 @@
-.tile.is-parent
-  .tile.is-child.box.featured-vacancy{'data-vacancy-id': featured_vacancy.vacancy&.id, 'data-url': advisor_featured_vacancy_path(featured_vacancy.id), id: "featured_vacancy_#{featured_vacancy.id}" }
+.column.is-one-third.featured-vacancy{'data-vacancy-id': featured_vacancy.vacancy&.id, 'data-url': advisor_featured_vacancy_path(featured_vacancy.id), id: "featured_vacancy_#{featured_vacancy.id}" }
+  .box
     %h3.title= featured_vacancy.vacancy&.title
     %p.vacancy_type= featured_vacancy.vacancy&.vacancy_type.nil? ? '' : t("vacancies.vacancy_type.#{featured_vacancy.vacancy&.vacancy_type}")
     %p.salary= featured_vacancy.vacancy&.salary
