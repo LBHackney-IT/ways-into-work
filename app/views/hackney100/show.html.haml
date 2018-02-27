@@ -1,0 +1,50 @@
+.full-width.hero
+  .bg_img
+    =image_tag('dalston.jpg', class: 'parralax_me', id: 'parralax_me')
+  .container.columns.main
+    .column.is-one-thrid#logo
+      =image_tag('hackney-works-white.svg', :alt => 'Hackney Works')
+    .column.is-two-thirds
+      %h1=t('hackney_works.hero.title')
+      %p=t('hackney_works.hero.info')
+      %p=t('hackney_works.hero.extra')
+  .lines
+
+.container.points
+  %h2
+    =t('hackney_works.points.title')
+
+  = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+  = link_to I18n.t('buttons.advisors'), hubs_path, class: 'button'
+
+#other_pages.full-width.columns
+  .column.is-one-third
+    %h2=t('hackney_works.employ_support.title')
+    %p=t('hackney_works.employ_support.about')
+    .button=t('hackney_works.employ_support.button')
+  #apprent.column.is-one-third
+    %h2=t('hackney_works.apprenticeships.title')
+    %p=t('hackney_works.apprenticeships.about')
+    .button=t('hackney_works.apprenticeships.button')
+  #hack100.column.is-one-third
+    %h2=t('hackney_works.hack_100.title')
+    %p=t('hackney_works.hack_100.about')
+    .button=t('hackney_works.hack_100.button')
+
+.full-width.testimonials
+  %h2=t('hackney_works.testimonials.title')
+  .testimonial
+    %p=t('hackney_works.testimonials.testimonial_a')
+  .testimonial
+    %p=t('hackney_works.testimonials.testimonial_b')
+  .testimonial
+    %p=t('hackney_works.testimonials.testimonial_c')
+
+#vacancies.container
+  %h2=t('hackney_works.vacancies.title')
+  =link_to I18n.t('hackney_works.vacancies.button'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+
+#newsletter.container
+  %h2=t('hackney_works.newsletter.title')
+  %p.about=t('hackney_works.newsletter.about')
+  .button=t('hackney_works.newsletter.button')
