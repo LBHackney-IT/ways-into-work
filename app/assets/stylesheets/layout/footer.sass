@@ -1,5 +1,5 @@
 footer
-  margin-top: 25px
+  margin-top: 15px
   .container
     padding: 1em 1em 0 1em
     margin-bottom: 0.25em !important
@@ -32,3 +32,32 @@ footer
     .line, .logo
       display: block
       text-align: center
+
+
+
+.front_page_footer
+  background-color: $black
+  color: rgba(#fff, 0.7)
+  .lines
+    margin-top: -8px
+  .logo
+    text-align: left
+    img
+      height: 1.75em
+      margin-bottom: 5px
+  .tagline
+    width: 230px
+  a
+    color: #fff
+    font-weight: 500
+    &:hover
+      opacity: 0.6
+  .link
+    margin-bottom: 15px
+  .copy
+    margin-top: 35px
+    +mobile
+      margin-top: 0
+  .column
+    +mobile
+      margin-bottom: 15px

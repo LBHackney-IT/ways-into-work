@@ -1,8 +1,29 @@
-%footer
+%footer.front_page_footer
+  .lines
   .container.columns
-    .line.column
-      =image_tag('find-yourself-type.svg', :alt => 'Find yourself in Hackney')
     .logo.column
       %a{:href => "https://hackney.gov.uk", :target => "_blank"}
-        =image_tag('hackney_logo_black.png', :alt => 'Hackney Council')
-  .lines
+        =image_tag('hackney_logo_white.png', :alt => 'Hackney Council')
+        %br
+        =image_tag('find-yourself-type-white.svg', :alt => 'Find yourself in Hackney', class: 'tagline')
+      .copy
+        &copy; 2018 Hackney
+    .column
+      .link
+        ="Information for employers"
+      .link
+        =link_to "Supported Employment", hackney_apprenticeships_path
+      .link
+        =link_to "Apprenticeships", supported_employment_path
+      .link
+        =link_to "Hackney 100", hackney100_path
+    .column
+      .link
+        =link_to "Refer someone", new_client_referrers_path
+      .link
+        =link_to "Meet the team", hubs_path
+      .link
+        ="Privacy"
+      .link
+        ="Terms"
+
