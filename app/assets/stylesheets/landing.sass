@@ -5,8 +5,13 @@ html
   background-color: whitesmoke
 
 body.welcome.show,
-body.hackney_works.show
+body.hackney_works.show,
+body.hackney_apprenticeships.show,
+body.hackney100.show,
+body.supported_employment.show,
+body.employers_information.show
   .site-header
+    padding-top: 7px
     background: transparent
     position: absolute
     top: 0
@@ -20,6 +25,9 @@ body.hackney_works.show
       color: #fff
     .lines
       display: none
+    .nav-item a.is-tab:hover, .nav-item a.is-tab.current, a.nav-item.is-tab:hover, a.nav-item.is-tab.current, input.nav-item.is-tab:hover, input.nav-item.is-tab.current, .nav-item input.is-tab:hover, .nav-item input.is-tab.current
+      background-color: transparent
+      text-decoration: underline
   .main.section#main
     padding-top: 0
     @media screen and (max-width: 960px)
