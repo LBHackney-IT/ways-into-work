@@ -4,7 +4,7 @@ en:
   devise:
     buttons:
       login: 'Log in'
-      register: 'Sign up'
+      register: 'Register now'
       sign_up: "Sign up"
       accept_terms: 'Sign up'
     confirmations:
