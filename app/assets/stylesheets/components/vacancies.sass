@@ -4,3 +4,14 @@
     color: #ccc
     h3
       color: #ccc
+
+.ui-draggable
+  cursor: move /* fallback if grab cursor is unsupported */
+  cursor: grab
+  cursor: -moz-grab
+  cursor: -webkit-grab
+
+.ui-draggable:active, .ui-draggable-dragging
+  cursor: grabbing
+  cursor: -moz-grabbing
+  cursor: -webkit-grabbing
