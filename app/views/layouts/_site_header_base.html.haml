@@ -5,7 +5,6 @@
   %span
   %span
 .nav-right.nav-menu
-  = link_to I18n.t('header.nav.hackney_works'), :hackney_works, class: "nav-item is-tab #{cp(:hackney_works)}"
   = link_to I18n.t('header.nav.hubs'), hubs_path, class: "nav-item is-tab #{cp(hubs_path)}"
   = link_to I18n.t('header.nav.referrers'), new_client_referrers_path, class: "nav-item is-tab #{cp(new_client_referrers_path)}"
   -if cp(user_login_session_path) == "current"

@@ -13,7 +13,7 @@ Feature: Client signs up for the service
     When I navigate to register for the service
     And I try and register with a postcode outside the borough
     Then I should be on the outside hackney page
-  
+
   Scenario: client must enter a postcode
     Given I am on the home page
     When I navigate to register for the service

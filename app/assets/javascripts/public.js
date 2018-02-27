@@ -17,6 +17,8 @@ $(document).ready(function() {
 
   $('#alerts').alerts();
 
+  $('.parralax_me').parralax(0.3, true);
+
   $(".validate").validate();
 
   $("form").handleFormElements();
@@ -26,9 +28,9 @@ $(document).ready(function() {
   $(".clickable_row").clickableRow();
 
   $(".admin.action_plan_tasks form").suggestNames();
-  
+
   $('#client_welfare_calculation_completed_true').showBocNotes();
-  
+
   $('#client_welfare_calculation_completed_false').hideBocNotes();
 
   $("#tabs").tabs({
@@ -36,7 +38,7 @@ $(document).ready(function() {
       var tabID = $(this).data('activeTab') ;
       var activeTab = document.getElementById(tabID);
       var index = $('#tab-container .tab').index(activeTab);
-                  
+
       $(this).tabs( "option", "active", index );
     },
     beforeActivate: function(event, ui) {
@@ -57,7 +59,7 @@ $(document).ready(function() {
                  ($('html').outerHeight() - $('html').height()));
             hash = ui.newPanel.attr('id');
         }
-        
+
         history.pushState({}, $('title').text(), baseUrl + '/' + hash)
         $(window).scrollTop($(this).data('scrollTop'));
     }

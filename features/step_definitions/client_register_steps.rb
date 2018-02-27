@@ -15,9 +15,6 @@ end
 World RegistrationSH
 
 When(/^I navigate to register for the service$/) do
-  within '.services' do
-    click_link 'Hackney Works'
-  end
   click_link I18n.t('devise.buttons.register')
 end
 

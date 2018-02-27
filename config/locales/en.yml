@@ -18,7 +18,7 @@ en:
     my_clients: "View my clients"
     advisors: "Find your local hub"
     referral: "Make Referral"
-    register: "Register"
+    register: "Register now"
   flash:
     success:
       task_saved: "Agreed Task: %{title} saved"
@@ -27,16 +27,16 @@ en:
       not_authorized: "Appears you are trying to access a page without authorization"
   hackney_works:
     hero:
-      title: "Find your opportunity"
-      info: "We support Hackney residents who are looking for jobs, apprenticeships, training or volunteering."
-      extra: "If you are a Hackney resident and currently out of work or earning less than £18,000, our free service can help you."
+      title: "Find your pathway to success"
+      info: "A free employment support service for Hackney residents."
+      extra: "Whether you’re looking for your first job, you want a better job, or you’ve been out of work for a while, our advisors can help you to achieve your goals."
     points:
-      title: "We can help when"
-      point_a: "You've been out of work for a little while"
-      point_b: "You want to start your career"
-      point_c: "You want to find a better job"
-      point_d: "You want to retrain or upskill"
-      point_e: "You need work that is flexible"
+      title: "Hackney Works offers residents"
+      point_a: "A personal advisor to support you"
+      point_b: "Access to free training courses"
+      point_c: "Help with CVs and job applications"
+      point_d: "Exclusive local job vacancies"
+      point_e: "Interview technique coaching"
     testimonials:
       title: "What people say about us"
       testimonial_a: '"I came away feeling like I was valued... I have gained confidence in myself and I have now gained part time employment."'
@@ -46,6 +46,25 @@ en:
       title: "Find your local hub"
       info: "If you would like to contact the Hackney Works team, you can reach us on:"
       extra: "0208 356 5700"
+    employ_support:
+      title: "Do you need specialist support?"
+      about: "Our team includes dedicated Supported Employment advisors who support residents with health conditions and disabilities."
+      button: "Find out more"
+    apprenticeships:
+      title: "Looking for an apprenticeship?"
+      about: "If you’re aged 15 or above, we can help you can find work experience, learn new skills and earn a salary with an apprenticeship."
+      button: "Apprenticeships"
+    hack_100:
+      title: "Are you aged 16-19?"
+      about: "The Council are helping to create 100 work placements for young people, aged 16-19, in businesses around Hackney."
+      button: "Hackney 100"
+    vacancies:
+      title: "Some of our current vacancies"
+      button: "Register to apply"
+    newsletter:
+      title: "Hackney Jobs Newsletter"
+      about: "To find out about latest employment and training opportunities in Hackney subscribe to our newsletter."
+      button: "Subscribe"
   simple_form:
     labels:
       referrer:

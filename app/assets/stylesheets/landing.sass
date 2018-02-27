@@ -1,9 +1,22 @@
 =background-image-gradient($angle, $color, $url, $amount: 0.75)
-  background-image: linear-gradient($angle, rgba($color, $amount), rgba($color, $amount - 0.2)), image-url($url)
+  background: linear-gradient($angle, rgba($color, $amount), rgba($color, $amount - 0.2)), image-url($url) no-repeat center center
 
 body.welcome.show,
 body.hackney_works.show
-  background: white
+  .site-header
+    background: transparent
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    color: #fff
+    text-shadow: 0 1px 4px rgba(92,92,92,0.50)
+    .nav-toggle span
+      background-color: #fff
+    a
+      color: #fff
+    .lines
+      display: none
   .main.section#main
     padding-top: 0
     @media screen and (max-width: 960px)
@@ -62,21 +75,52 @@ body.hackney_works.show
         width: 70%
 
 .full-width.hero
-  +background-image-gradient(90deg, $color__hackney-works, 'town-hall.png')
+  // +background-image-gradient(-135deg, $color__hackney-works, 'dalston.jpg')
+  background: linear-gradient(135deg, rgba(0,156,166,0.40) 0%, rgba(0,156,166,0.79) 100%)
+
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
   background-size: cover
-  background-position: bottom
-  padding: 4em 0 0 0
-  text-align: center
+
+  padding: 150px 0 70px 0
+  text-align: left
   color: white
+  position: relative
+
+  text-shadow: 0 1px 4px rgba(92,92,92,0.50)
+  +mobile
+    text-align: center
+  +just_mobile
+    padding: 50px 0 20px 0
+    h1
+      margin-top: 0 !important
+    #logo
+      img
+        width: 150px
+    .bg_img
+      img
+        margin-left: -100px
+  .lines
+    position: absolute
+    bottom: -8px
+  #logo
+    text-align: center
+    img
+      transform: rotate(-5deg)
   .main
     padding: 0 1em
   h1
-    text-transform: uppercase
     color: white
-    font-weight: bold
+    font-weight: 700
+    margin-top: 20px
+    margin-bottom: 20px
   p
     font-size: 1.25em
     margin-bottom: 1.25em
+    font-size: 18px
+    line-height: 23px
+    font-weight: 500
   .button.is-primary
     border: 1px solid white
   .content
@@ -88,19 +132,22 @@ body.hackney_works.show
 
 .points
   text-align: center
-  padding: 60px 1em 20px 1em
+  padding: 75px 1em 55px 1em
+  font-size: 18px
+  .fa
+    color: $color__hackney-works
+    font-size: 47px
   h2
-    font-weight: normal
-    padding-bottom: 60px
+    margin-bottom: 50px
   .point
-    padding: 0 2em 4em 2em
-    .img-container
-      height: 51px
+    padding: 0 2em 3em 2em
     p
       margin-top: 1em
   .button
     margin-bottom: 2em
-
+    &.is-primary
+      font-weight: 600
+      margin-right: 10px
 .testimonials
   .column
     background-size: cover
@@ -125,14 +172,58 @@ body.hackney_works.show
     &:nth-child(3)
       +background-image-gradient(0deg, $black-ter, 'people/client-7.jpg', 0.5)
 
+.not_a_link, .not_a_link:hover
+  color: $black
+
+#other_pages
+  .is-one-third
+    padding: 40px
+    text-align: center
+    background-color: rgba(#10BEC9, 0.5)
+    transition: 0.5s ease-in-out background-color
+    &:hover
+      background-color: $color__hackney-works
+      color: #fff
+      transition: 0.2s ease-in-out background-color
+      h2
+        color: #fff !important
+    &#hack100
+      background-color: #FF9EA1
+      &:hover
+        background-color: $color__hackney-100
+    &#apprent
+      background-color: rgba(#93D66B, 0.5)
+      &:hover
+        background-color: $color__hackney-apprentices
+    h2
+      min-height: 60px
+      +mobile
+        min-height: 0
+      +fullhd
+        min-height: 0
+
+.bg_img
+  overflow: hidden
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  z-index: -1
+  img
+    +mobile
+      max-width: none !important
+      height: 120%
+      width: auto
 
 
+#vacancies
+  text-align: center
+  padding: 65px 0 65px 0
 
-
-
-
-
-
-
-
-
+#newsletter
+  text-align: center
+  padding-bottom: 30px
+  .about
+    max-width: 575px
+    margin-right: auto
+    margin-left: auto
