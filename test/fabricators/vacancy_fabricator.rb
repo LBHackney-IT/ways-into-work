@@ -1,6 +1,8 @@
+include ActionView::Helpers::TextHelper
+
 Fabricator(:vacancy) do
-  title { FFaker::Job.title }
+  title { truncate(FFaker::Job.title, length: 45, separator: ' ') }
   vacancy_type { Vacancy.vacancy_types.keys.sample(1).first }
-  salary { FFaker::Lorem.sentence }
-  description { FFaker::Lorem.sentence }
+  salary { truncate(FFaker::Lorem.sentence, length: 18, separator: ' ') }
+  description { truncate(FFaker::Lorem.sentence, length: 230, separator: ' ') }
 end
