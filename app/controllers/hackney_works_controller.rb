@@ -1,3 +1,5 @@
 class HackneyWorksController < ApplicationController
-  def show; end
+  def show
+    @featured_vacancies = FeaturedVacancy.all
+  end
 end
