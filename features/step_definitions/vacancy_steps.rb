@@ -1,7 +1,7 @@
 module VacancySH
   def fill_in_vacancy_form(vacancy = Fabricate.build(:vacancy))
     fill_in :vacancy_title, with: vacancy.title
-    select vacancy.vacancy_type, from: :vacancy_vacancy_type
+    select I18n.t("vacancies.vacancy_type.#{vacancy.vacancy_type}"), from: :vacancy_vacancy_type
     fill_in :vacancy_salary, with: vacancy.salary
     fill_in :vacancy_description, with: vacancy.description
     
