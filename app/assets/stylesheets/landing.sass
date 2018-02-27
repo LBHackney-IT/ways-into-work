@@ -176,6 +176,12 @@ body.hackney_works.show
   color: $black
 
 #other_pages
+  a:not(.button)
+    color: $black
+    &:hover
+      color: #fff
+  p
+    margin-bottom: 20px
   .is-one-third
     padding: 40px
     text-align: center
@@ -185,8 +191,9 @@ body.hackney_works.show
       background-color: $color__hackney-works
       color: #fff
       transition: 0.2s ease-in-out background-color
-      h2
+      h2, a:not(.button)
         color: #fff !important
+
     &#hack100
       background-color: #FF9EA1
       &:hover
