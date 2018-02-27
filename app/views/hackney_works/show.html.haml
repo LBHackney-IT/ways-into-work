@@ -30,22 +30,25 @@
       .column.point
         =fa_icon "handshake-o"
         %p=t('hackney_works.points.point_e')
-  = link_to I18n.t('devise.buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+  = link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
   = link_to I18n.t('buttons.advisors'), hubs_path, class: 'button'
 
 #other_pages.full-width.columns
-  .column.is-one-third
-    %h2=t('hackney_works.employ_support.title')
-    %p=t('hackney_works.employ_support.about')
-    .button=t('hackney_works.employ_support.button')
-  #apprent.column.is-one-third
-    %h2=t('hackney_works.apprenticeships.title')
-    %p=t('hackney_works.apprenticeships.about')
-    .button=t('hackney_works.apprenticeships.button')
-  #hack100.column.is-one-third
-    %h2=t('hackney_works.hack_100.title')
-    %p=t('hackney_works.hack_100.about')
-    .button=t('hackney_works.hack_100.button')
+  = link_to supported_employment_path do
+    .column.is-one-third
+      %h2=t('hackney_works.employ_support.title')
+      %p=t('hackney_works.employ_support.about')
+      = link_to I18n.t('hackney_works.employ_support.button'), supported_employment_path, class: 'button'
+  = link_to hackney_apprenticeships_path do
+    #apprent.column.is-one-third
+      %h2=t('hackney_works.apprenticeships.title')
+      %p=t('hackney_works.apprenticeships.about')
+      = link_to I18n.t('hackney_works.apprenticeships.button'), hackney_apprenticeships_path, class: 'button'
+  = link_to hackney100_path do
+    #hack100.column.is-one-third
+      %h2=t('hackney_works.hack_100.title')
+      %p=t('hackney_works.hack_100.about')
+      = link_to I18n.t('hackney_works.hack_100.button'), hackney100_path, class: 'button'
 
 .full-width.testimonials
   %h2=t('hackney_works.testimonials.title')
