@@ -66,4 +66,6 @@
 #newsletter.container
   %h2=t('hackney_works.newsletter.title')
   %p.about=t('hackney_works.newsletter.about')
-  .button=t('hackney_works.newsletter.button')
+  .email_subscribe
+    =email_field_tag 'newsletter_email', nil, class: 'input', placeholder: 'Add email...'
+    #subscribe.button=t('hackney_works.newsletter.button')
