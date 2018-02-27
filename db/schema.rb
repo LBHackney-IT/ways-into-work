@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221165808) do
+ActiveRecord::Schema.define(version: 20180227095655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 20180221165808) do
     t.string "national_insurance_number"
     t.boolean "affected_by_benefit_cap"
     t.boolean "assigned_supported_employment"
-    t.boolean "welfare_calculation_completed"
     t.datetime "next_meeting_date"
+    t.boolean "welfare_calculation_completed"
     t.string "health_barriers", default: [], array: true
     t.string "other_receive_benefits"
     t.string "welfare_calculation_notes"
@@ -185,6 +185,13 @@ ActiveRecord::Schema.define(version: 20180221165808) do
     t.index ["email"], name: "index_user_logins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_user_logins_on_reset_password_token", unique: true
     t.index ["user_type", "user_id"], name: "index_user_logins_on_user_type_and_user_id"
+  end
+
+  create_table "vacancies", force: :cascade do |t|
+    t.string "title"
+    t.integer "vacancy_type"
+    t.string "salary"
+    t.text "description"
   end
 
   add_foreign_key "achievements", "clients"

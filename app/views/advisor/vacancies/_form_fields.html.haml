@@ -1,0 +1,14 @@
+= render 'shared/form_errors', object: form.object
+%fieldset
+  = form.input :title, label: 'Title', input_html: { class: 'input' }
+  .field
+    = form.label :vacancy_type, 'Vacancy Type', class: 'label'
+    .select.simple_input.is-fullwidth
+      = form.input_field :vacancy_type, as: :select, include_blank: false, collection: Vacancy.vacancy_types.keys, class: 'input'
+  
+  = form.input :salary, label: 'Salary', input_html: { class: 'input' }
+  
+  = form.input :description, as: :text, input_html: { class: 'textarea' }
+  
+  .form-action
+    = form.submit I18n.t('clients.buttons.save'), class: 'button is-primary', id: 'save_and_exit'
