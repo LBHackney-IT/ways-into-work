@@ -1,0 +1,7 @@
+#tabs.container
+  .column
+    .head.level
+      %h3 Add Vacancy
+
+    = simple_form_for [:admin, vacancy], url: advisor_vacancies_path do |form|
+      = render partial: 'form_fields', locals: {form: form}
