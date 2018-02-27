@@ -3,6 +3,9 @@
     .level-left
       %h2 Available Vacancies
       
+    .level-right
+      = link_to 'Add new vacancy', new_advisor_vacancy_path, class: 'button is-primary'
+      
   = render partial: 'vacancies', locals: { vacancies: vacancies }
   
   .head.level
