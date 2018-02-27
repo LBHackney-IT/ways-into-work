@@ -30,7 +30,7 @@ WaysIntoWork::Application.routes.draw do
 
     resources :task_titles, only: :index
     resources :advisors
-    resources :vacancies, only: %i[create update new index]
+    resources :vacancies
   end
 
   resources :clients, only: %i[new create]
