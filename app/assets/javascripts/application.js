@@ -33,4 +33,5 @@
 //= require add-empty
 //= require parralax
 //= require featured-vacancies
+//= require slider
 //= require public

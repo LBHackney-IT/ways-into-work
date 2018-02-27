@@ -1,6 +1,9 @@
 =background-image-gradient($angle, $color, $url, $amount: 0.75)
   background: linear-gradient($angle, rgba($color, $amount), rgba($color, $amount - 0.2)), image-url($url) no-repeat center center
 
+html
+  background-color: whitesmoke
+
 body.welcome.show,
 body.hackney_works.show
   .site-header
@@ -24,15 +27,15 @@ body.hackney_works.show
   footer
     margin-top: -0.75em
   #main-site-wrapper .site-header .lines,
-  footer .lines
-    border-top-color: #0A624A
-    border-bottom-color: #7CB736
-    &:after
-      background-color: #17A34F
+  // footer .lines
+  //   border-top-color: #0A624A
+  //   border-bottom-color: #7CB736
+  //   &:after
+  //     background-color: #17A34F
 
-  footer .lines
-    border-bottom-color: #0A624A
-    border-top-color: #7CB736
+  // footer .lines
+  //   border-bottom-color: #0A624A
+  //   border-top-color: #7CB736
 .services
   margin-top: 60px
   margin-bottom: 30px
@@ -89,6 +92,7 @@ body.hackney_works.show
   position: relative
 
   text-shadow: 0 1px 4px rgba(92,92,92,0.50)
+
   +mobile
     text-align: center
   +just_mobile
@@ -148,34 +152,12 @@ body.hackney_works.show
     &.is-primary
       font-weight: 600
       margin-right: 10px
-.testimonials
-  .column
-    background-size: cover
-    background-position: center center
-    padding-top: 16em
-    p
-      width: 70%
-      display: block
-      margin: 0 auto
-      text-align: center
-      color: white
-      padding-bottom: 2em
-      font-size: 1.25em
-      +mobile
-        width: 100%
-        padding-left: 1em
-        padding-right: 1em
-    &:nth-child(1)
-      +background-image-gradient(0deg, $black-ter, 'people/client-6.jpg', 0.5)
-    &:nth-child(2)
-      +background-image-gradient(0deg, $black-ter, 'people/client-8.jpg', 0.5)
-    &:nth-child(3)
-      +background-image-gradient(0deg, $black-ter, 'people/client-7.jpg', 0.5)
 
 .not_a_link, .not_a_link:hover
   color: $black
 
 #other_pages
+  margin-bottom: 0
   a:not(.button)
     color: $black
     &:hover
@@ -217,11 +199,82 @@ body.hackney_works.show
   top: 0
   z-index: -1
   img
+    width: 100%
     +mobile
       max-width: none !important
       height: 120%
-      width: auto
+      width: auto !important
 
+#parralax_me2
+  +just_mobile
+    -o-transition-property: none !important
+    -moz-transition-property: none !important
+    -ms-transition-property: none !important
+    -webkit-transition-property: none !important
+    transition-property: none !important
+    /*CSS transforms*/
+    -o-transform: none !important
+    -moz-transform: none !important
+    -ms-transform: none !important
+    -webkit-transform: none !important
+    transform: none !important
+    /*CSS animations*/
+    -webkit-animation: none !important
+    -moz-animation: none !important
+    -o-animation: none !important
+    -ms-animation: none !important
+    animation: none !important
+
+
+#testimonials
+  background: linear-gradient(135deg, rgba(74,74,74,0.40) 0%, rgba(74,74,74,0.79) 100%)
+  padding: 60px 0
+  text-align: center
+
+  .testimonial
+    .quote
+      text-align: left
+  h2
+    color: #fff
+    margin-bottom: 40px
+
+  .image
+    display: inline-block
+    width: 100px
+    margin-right: 15px
+    vertical-align: top
+  .quote
+    display: inline-block
+    width: 70%
+    p
+      margin-bottom: 0
+      font-size: 25px
+      font-weight: 500
+      line-height: 35px
+    span
+      font-size: 18px
+      margin-top: 3px
+      display: block
+.slider
+  .testimonial
+    display: none
+    &.active
+      display: block
+  .slide_indicator
+    margin-top: 40px
+    .indicator
+      width: 12px
+      height: 12px
+      border-radius: 100%
+      background-color: rgba(#fff, 0.5)
+      display: inline-block
+      margin: 5px
+      transition: 0.2s ease-in-out background-color
+      &.active
+        background-color: #fff
+      &:hover
+        background-color: #fff
+        cursor: pointer
 
 #vacancies
   text-align: center

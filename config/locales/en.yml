@@ -40,8 +40,11 @@ en:
     testimonials:
       title: "What people say about us"
       testimonial_a: '"I came away feeling like I was valued... I have gained confidence in myself and I have now gained part time employment."'
+      testimonial_a_name: "Hackney Resident"
       testimonial_b: '"My advisor is awesome! She is friendly and she is trying to help me. You can really feel it - and she is always smiling."'
+      testimonial_b_name: "Hackney Resident"
       testimonial_c: '"After my first meeting I felt quite positive. My advisor really wanted to help me to find work in what I want to do."'
+      testimonial_c_name: "Hackney Resident"
     hubs:
       title: "Find your local hub"
       info: "If you would like to contact the Hackney Works team, you can reach us on:"
