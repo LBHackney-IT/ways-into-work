@@ -36,7 +36,7 @@
         .columns
           .column.point
             =fa_icon "gbp"
-            %p A competitive salary.
+            %p A great salary of £10.20 per hour if you're over 18.
           .column.point
             =fa_icon "leanpub"
             %p High quality training.
@@ -50,20 +50,21 @@
       %h3 Who can apply?
       %p You can apply for our apprenticeships if you’re 16-24 and you live in Hackney or went to a Hackney school or college.
       %p You can also apply if Hackney Council is your corporate parent, i.e. if you are or were in care.
+  %br
+  %br
+  %br
+  #newsletter.container
+    %h2=t('hackney_works.apprenticeships.newsletter.title')
+    %p.about=t('hackney_works.apprenticeships.newsletter.about')
+    .email_subscribe
+      %form#mc-embedded-subscribe-form.validate{:action => "https://hackney.us17.list-manage.com/subscribe/post?u=33d75b080fe55e7a52dfa61c1&id=fbc373ca9e", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
+        #mc_embed_signup_scroll
+          %input#mce-EMAIL.email{:name => "EMAIL", :placeholder => "Add your email...", :required => "", :type => "email", :value => "", class: 'input'}/
+          / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+          %div{"aria-hidden" => "true", :style => "position: absolute; left: -5000px;"}
+            %input{:name => "b_33d75b080fe55e7a52dfa61c1_fbc373ca9e", :tabindex => "-1", :type => "text", :value => ""}/
+          %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "Subscribe", class: 'is-primary'}/
 
-#newsletter.container
-  %h2=t('hackney_works.apprenticeships.newsletter.title')
-  %p.about=t('hackney_works.apprenticeships.newsletter.about')
-  .email_subscribe
-    %form#mc-embedded-subscribe-form.validate{:action => "https://hackney.us17.list-manage.com/subscribe/post?u=33d75b080fe55e7a52dfa61c1&id=fbc373ca9e", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
-      #mc_embed_signup_scroll
-        %input#mce-EMAIL.email{:name => "EMAIL", :placeholder => "Add your email...", :required => "", :type => "email", :value => "", class: 'input'}/
-        / real people should not fill this in and expect good things - do not remove this or risk form bot signups
-        %div{"aria-hidden" => "true", :style => "position: absolute; left: -5000px;"}
-          %input{:name => "b_33d75b080fe55e7a52dfa61c1_fbc373ca9e", :tabindex => "-1", :type => "text", :value => ""}/
-        %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "Subscribe", class: 'is-primary'}/
-%br
-%br
 .container
   .hackneys_apprentice.max_restrict
     %h2 More Information
