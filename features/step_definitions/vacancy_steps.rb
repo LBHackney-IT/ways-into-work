@@ -28,3 +28,27 @@ Then(/^the vacancy should exist in the database$/) do
   expect(vacancy.salary).to eq(@vacancy.salary)
   expect(vacancy.description).to eq(@vacancy.description)
 end
+
+Given(/^there is a vacancy$/) do
+  @vacancy = Fabricate.create(:vacancy)
+end
+
+Given(/^I edit the vacancy's title$/) do
+  visit edit_advisor_vacancy_path(@vacancy)
+  @title = 'New Title'
+  fill_in_vacancy_form(Fabricate.build(:vacancy, title: @title))
+end
+
+Then(/^the vacancy's title should have changed$/) do
+  @vacancy.reload
+  expect(@vacancy.title).to eq(@title)
+end
+
+Given(/^I delete that vacancy$/) do
+  visit advisor_vacancies_path
+  click_button 'Delete'
+end
+
+Then(/^the vacancy should not exist$/) do
+  expect(Vacancy.count).to eq(0)
+end

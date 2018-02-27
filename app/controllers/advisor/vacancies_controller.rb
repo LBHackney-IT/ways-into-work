@@ -1,10 +1,13 @@
 class Advisor::VacanciesController < ApplicationController
   before_action :check_permissions!
+  expose :vacancies, -> { Vacancy.all }
   expose :vacancy
   
   def index; end
   
   def new; end
+  
+  def edit; end
   
   def create
     if vacancy.update_attributes(vacancy_params)
@@ -14,7 +17,18 @@ class Advisor::VacanciesController < ApplicationController
     end
   end
   
-  def update; end
+  def update
+    if vacancy.update_attributes(vacancy_params)
+      redirect_to advisor_vacancies_path
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    vacancy.destroy
+    redirect_to advisor_vacancies_path
+  end
   
   private
 
