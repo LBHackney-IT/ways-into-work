@@ -8,6 +8,7 @@ WaysIntoWork::Application.routes.draw do
   get 'hackney_apprenticeships' => 'hackney_apprenticeships#show'
   get 'hackney100' => 'hackney100#show'
   get 'supported_employment' => 'supported_employment#show'
+  get 'employers_information' => 'employers_information#show'
 
   get 'outside_hackney' => 'eligibility#outside_hackney'
   get 'just_registered' => 'just_registered#show'
