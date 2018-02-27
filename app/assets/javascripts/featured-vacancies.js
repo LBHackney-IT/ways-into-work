@@ -9,7 +9,7 @@ var placeVacancy = function(source, destination) {
     destination.find('.title').html(sourceData.title);
     destination.find('.vacancy_type').html(sourceData.vacancyType);
     destination.find('.salary').html(sourceData.salary);
-    destination.find('.description').html(sourceData.description);
+    destination.find('.job_description').html(sourceData.description);
     
     $(source).addClass('is-hidden');
     $(source).addClass('is-hidden');
