@@ -1,6 +1,12 @@
 .column.is-one-third.featured-vacancy{'data-vacancy-id': featured_vacancy.vacancy&.id, 'data-url': advisor_featured_vacancy_path(featured_vacancy.id), id: "featured_vacancy_#{featured_vacancy.id}" }
   .box
-    %h3.title= featured_vacancy.vacancy&.title
-    %p.vacancy_type= featured_vacancy.vacancy&.vacancy_type.nil? ? '' : t("vacancies.vacancy_type.#{featured_vacancy.vacancy&.vacancy_type}")
-    %p.salary= featured_vacancy.vacancy&.salary
-    %p.description= featured_vacancy.vacancy&.description
+    .job_information
+      %p.bold= featured_vacancy.vacancy&.title
+      %p
+        %span.bold Type:
+        = featured_vacancy.vacancy&.vacancy_type.nil? ? '' : t("vacancies.vacancy_type.#{featured_vacancy.vacancy&.vacancy_type}")
+      %p
+        %span.bold Salary:
+        = featured_vacancy.vacancy&.salary
+    .job_description
+      %p= featured_vacancy.vacancy&.description
