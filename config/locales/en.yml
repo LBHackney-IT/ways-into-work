@@ -61,7 +61,7 @@ en:
         title: "Kick start your career with an apprenticeship"
         info: "Get the work experience you need, learn new skills and earn a salary!"
         extra: "From small start-ups to multinational companies, lots of employers are using apprenticeships to attract talented young people into the workforce. From construction to catering, finance to fashion, there is an apprenticeship out there for you!"
-      about:
+      internal_about:
         title: "Looking for an apprenticeship?"
         content: |
           <p>Interested in apprenticeships and want some support? Try our free Hackney Works service.</p>
