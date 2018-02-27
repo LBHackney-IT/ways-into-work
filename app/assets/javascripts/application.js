@@ -32,4 +32,5 @@
 //= require boc-notes
 //= require add-empty
 //= require parralax
+//= require featured-vacancies
 //= require public

@@ -31,6 +31,7 @@ WaysIntoWork::Application.routes.draw do
     resources :task_titles, only: :index
     resources :advisors
     resources :vacancies
+    resources :featured_vacancies, only: %i[update]
   end
 
   resources :clients, only: %i[new create]

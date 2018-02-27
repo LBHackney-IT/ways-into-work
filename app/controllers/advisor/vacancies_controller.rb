@@ -3,6 +3,8 @@ class Advisor::VacanciesController < ApplicationController
   expose :vacancies, -> { Vacancy.all }
   expose :vacancy
   
+  before_action :load_featured_vacancies, only: %i[index]
+  
   def index; end
   
   def new; end
@@ -38,6 +40,10 @@ class Advisor::VacanciesController < ApplicationController
   
   def vacancy_params
     params.require(:vacancy).permit(:title, :vacancy_type, :salary, :description)
+  end
+  
+  def load_featured_vacancies
+    @featured_vacancies = FeaturedVacancy.all
   end
   
 end
