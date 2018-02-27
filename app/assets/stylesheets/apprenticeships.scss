@@ -1,9 +1,16 @@
-body.hackney_apprenticeships.show {
+body.hackney_apprenticeships.show,
+body.hackney100.show {
   .lines {
     border-top-color: $color__hackney-apprentices;
-    border-bottom-color: #D1F9B9;
+    border-bottom-color: rgba($color__hackney-apprentices, 0.2);
     &:after {
       background: rgba($color__hackney-apprentices, 0.55);
+    }
+  }
+  footer {
+    .lines {
+      border-top-color: rgba($color__hackney-apprentices, 0.2);
+      border-bottom-color: $color__hackney-apprentices;
     }
   }
   p a {
