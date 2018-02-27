@@ -1,6 +1,16 @@
-.container
+.container#vacancies
   .head.level
     .level-left
-      %h2 All Vacancies
+      %h2 Available Vacancies
       
   = render partial: 'vacancies', locals: { vacancies: vacancies }
+  
+  .head.level
+    .level-left
+      %h2 Vacancies on Homepage
+      
+  = render partial: 'featured_vacancies', locals: { featured_vacancies: @featured_vacancies }
+  
+
+        
+          

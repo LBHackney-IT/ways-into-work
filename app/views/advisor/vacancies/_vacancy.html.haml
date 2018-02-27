@@ -1,4 +1,4 @@
-%tr
+%tr{'data-id': vacancy.id ,'data-title': vacancy.title, 'data-vacancy-type': vacancy.vacancy_type, 'data-salary': vacancy.salary, 'data-description': vacancy.description, class: (vacancy.featured_vacancy.nil? ? '' : 'is-hidden'), id: "vacancy_#{vacancy.id}" }
   %td= link_to vacancy.title, edit_advisor_vacancy_path(vacancy)
   %td= vacancy.vacancy_type
   %td= vacancy.salary

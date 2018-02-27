@@ -80,6 +80,8 @@ $(document).ready(function() {
   $('.show_achievement').showAchievement();
   
   $('.edit_client').addEmpty();
+  
+  $('.admin.vacancies.index').featuredVacancies();
 
   $('#subscribe.button').click(function(){
     window.open('https://public.govdelivery.com/accounts/UKHACKNEYCOUNCIL/subscribers/qualify?email='+$('#newsletter_email').val(), '_blank');

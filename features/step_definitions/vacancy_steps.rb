@@ -52,3 +52,7 @@ end
 Then(/^the vacancy should not exist$/) do
   expect(Vacancy.count).to eq(0)
 end
+
+Given(/^there are (\d+) vacancies$/) do |num|
+  @vacancies = Fabricate.times(num.to_i, :vacancy)
+end
