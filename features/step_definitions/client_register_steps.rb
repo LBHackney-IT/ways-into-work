@@ -15,7 +15,7 @@ end
 World RegistrationSH
 
 When(/^I navigate to register for the service$/) do
-  click_link I18n.t('devise.buttons.register')
+  click_link I18n.t('buttons.register')
 end
 
 Then(/^I should be asked to accept the eligibility criteria$/) do

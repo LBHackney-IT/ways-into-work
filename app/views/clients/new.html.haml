@@ -18,4 +18,4 @@
 
       = render partial: 'shared/assessment_note', locals: {form: form, note: client.assessment_notes.find_or_initialize_by(content_key: :additional_info), label: 'Anything else we should know?', type: :text }
       %br
-      = form.submit 'Register', :class => 'button is-primary is-pulled-right is-large'
+      = form.submit t('devise.buttons.register'), :class => 'button is-primary is-pulled-right is-large'
