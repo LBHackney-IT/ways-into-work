@@ -1,0 +1,63 @@
+body.hackney_apprenticeships.show {
+  .lines {
+    border-top-color: $color__hackney-apprentices;
+    border-bottom-color: #D1F9B9;
+    &:after {
+      background: rgba($color__hackney-apprentices, 0.55);
+    }
+  }
+  p a {
+    color: $color__hackney-apprentices;
+    font-weight: 600;
+    &:hover {
+      color: #4a4a4a;
+    }
+  }
+  .full-width.hero {
+    background: linear-gradient(135deg, rgba(111,184,67,0.40) 0%, rgba(111,184,67,0.82) 100%);
+  }
+  .is-primary {
+    background-color: $color__hackney-apprentices;
+  }
+  .info_block {
+    text-align: center;
+    padding: 75px 1em 55px 1em;
+    font-size: 18px;
+    h2 {
+      margin-bottom: 15px;
+    }
+    .is-two-thirds p {
+      text-align: left;
+    }
+  }
+  .hackneys_apprentice {
+    margin: 25px auto;
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+  }
+  .points {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    h3 {
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    .fa {
+      color: $color__hackney-apprentices;
+    }
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 22px;
+    text-align: center;
+  }
+}
+.white_block {
+  background-color: #fff;
+  margin-bottom: 75px;
+  margin-top: 10px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
