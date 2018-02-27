@@ -81,4 +81,7 @@ $(document).ready(function() {
   
   $('.edit_client').addEmpty();
 
+  $('#subscribe.button').click(function(){
+    window.open('https://public.govdelivery.com/accounts/UKHACKNEYCOUNCIL/subscribers/qualify?email='+$('#newsletter_email').val(), '_blank');
+  });
 });
