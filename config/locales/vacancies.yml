@@ -1,0 +1,5 @@
+en:
+  vacancies:
+    vacancy_type:
+      full_time: 'Full Time'
+      part_time: 'Part Time'

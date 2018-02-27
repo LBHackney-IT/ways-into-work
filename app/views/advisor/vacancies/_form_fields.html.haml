@@ -4,7 +4,7 @@
   .field
     = form.label :vacancy_type, 'Vacancy Type', class: 'label'
     .select.simple_input.is-fullwidth
-      = form.input_field :vacancy_type, as: :select, include_blank: false, collection: Vacancy.vacancy_types.keys, class: 'input'
+      = form.input_field :vacancy_type, as: :select, include_blank: false, collection: Vacancy.vacancy_types.keys.map { |k| [t("vacancies.vacancy_type.#{k}"), k]}, class: 'input'
   
   = form.input :salary, label: 'Salary', input_html: { class: 'input' }
   
