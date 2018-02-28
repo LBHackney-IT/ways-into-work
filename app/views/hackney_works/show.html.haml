@@ -30,8 +30,7 @@
       .column.point
         =fa_icon "handshake-o"
         %p=t('hackney_works.points.point_e')
-  = link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
-  = link_to I18n.t('buttons.advisors'), hubs_path, class: 'button'
+  = link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary is-large'
 
 #other_pages.full-width.columns
   = link_to supported_employment_path do
