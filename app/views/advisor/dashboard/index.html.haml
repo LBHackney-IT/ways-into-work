@@ -46,6 +46,8 @@
       .columns.is-multiline
         = render partial: 'stat', locals: { stat: @stats.registered, title: 'Clients registered' }
 
+        = render partial: 'stat', locals: { stat: @stats.meetings_attended, title: 'Meetings attended' }
+        
         = render partial: 'stat', locals: { stat: @stats.initial_assessments, title: 'Initial assessments' }
 
         - AchievementOption.all.each do |outcome|

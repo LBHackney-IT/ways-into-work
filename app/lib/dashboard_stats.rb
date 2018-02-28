@@ -24,6 +24,10 @@ class DashboardStats
   def registered
     @base_query.registered_on(@from, @to).count
   end
+  
+  def meetings_attended
+    @base_query.meetings_attended(@from, @to).count
+  end
 
   def initial_assessments
     @base_query.initial_assessments_attended(@from, @to).count
