@@ -6,8 +6,10 @@
       =image_tag('hackney-works-white.svg', :alt => 'Hackney Works')
     .column.is-two-thirds
       %h1=t('hackney_works.hero.title')
-      %p=t('hackney_works.hero.info')
-      %p=t('hackney_works.hero.extra')
+      %p
+        %span.bold=t('hackney_works.hero.info')
+        %br
+        =t('hackney_works.hero.extra')
   .lines
 
 .container.points
