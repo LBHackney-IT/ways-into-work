@@ -18,7 +18,7 @@ RSpec.describe ReferrerMailer, type: :mailer do
     end
     
     it 'includes the client name' do
-      expect(mail.body.encoded).to include("Thank you for referring #{client.name} on Hackney Works")
+      expect(mail.body.encoded).to include("Thank you for referring #{client.name} to the Hackney Works service")
     end
     
   end
