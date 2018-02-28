@@ -1,10 +1,23 @@
 .column
   %h2.subtitle Do you live within Hackney?
 
-  %p Sorry, this service is only for Hackney residents. Based on the post code you provided it seems you are not within the London borough of Hackney.
+  %p Sorry, based on the post code you provided it looks like you live outside Hackney so we weren’t able to register you online.
+
+  %p You could still be eligible for our service if either of the following apply:
+  %ul
+    %li You are being housed in Hackney Council temporary accommodation outside the borough.
+    %li You have Hackney Council as a corporate parent, i.e. you are or were in care.
+
+  %p
+    If so, please call us on
+    =link_to "0208 356 5700", "tel:0208 356 5700"
+    and we will book you an appointment with an advisor.
+
+  %p If not, try your local council website for information about employment support services in your area.
+  %br
+
 
   %p If you live in Hackney and are seeing this screen either try registering again and make sure your post code is correct, or you can register over the phone by calling the hub closest to where you live:
 
   =link_to "Find your local hub", hubs_path, class: "button is-primary"
 
-  %p You may also be eligible if you are a school or care leaver who used to live in Hackney but no longer live inside the borough.
