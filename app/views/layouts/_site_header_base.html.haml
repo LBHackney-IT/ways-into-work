@@ -6,8 +6,7 @@
   %span
 .nav-right.nav-menu
   = link_to I18n.t('header.nav.hubs'), hubs_path, class: "nav-item is-tab #{cp(hubs_path)}"
-  = link_to I18n.t('header.nav.referrers'), new_client_referrers_path, class: "nav-item is-tab #{cp(new_client_referrers_path)}"
-  -if cp(user_login_session_path) == "current"
-    = link_to I18n.t('header.nav.sign_up'), new_client_path, class: "nav-item is-tab #{cp(new_client_path)}"
-  -else
+  / = link_to I18n.t('header.nav.referrers'), new_client_referrers_path, class: "nav-item is-tab #{cp(new_client_referrers_path)}"
+  -if !user_login_signed_in?
+    = link_to "Register", new_client_path, class: "nav-item is-tab #{cp(new_client_path)}"
     = link_to I18n.t('header.nav.sign_in'), user_login_session_path, class: "nav-item is-tab #{cp(user_login_session_path)}"
