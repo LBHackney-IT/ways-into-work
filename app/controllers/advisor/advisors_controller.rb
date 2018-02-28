@@ -10,7 +10,7 @@ class Advisor::AdvisorsController < Advisor::BaseController
   end
 
   def create
-    advisor.login.generate_default_password
+    advisor.login&.generate_default_password
     if advisor.save
       advisor.send_confirmation!
       flash[:success] = "#{advisor.name} created."
