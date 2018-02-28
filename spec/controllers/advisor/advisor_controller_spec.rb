@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Advisor::AdvisorController, type: :controller do
+RSpec.describe Advisor::AdvisorsController, type: :controller do
   
   before { sign_in(advisor.login) }
   
