@@ -1,21 +1,20 @@
-.column
-  %h3
-    = t('hackney_works.hubs.title')
-  %br
-  #hubs
-    = render partial: 'hub', collection: hubs
+%h3
+  = t('hackney_works.hubs.title')
+%br
+#hubs
+  = render partial: 'hub', collection: hubs
 
-    .box.hub
-      %h2 Supported Employment
-      %p Team leader: Chetna Chudasama
-      .columns
-        .map.column.is-two-thirds
-          %p If you need specialist support our team includes dedicated Supported Employment advisors who support residents with health conditions and disabilities.
-          %p= link_to "Find out more about supported employment.", supported_employment_path
-        .image.column.is-one-third{id: "hub_staff_4"}
-  .box.top.hubs
-    %p
-      = t('hackney_works.hubs.info')
-    %p
-      = t('hackney_works.hubs.extra')
-    %p=mail_to 'hackneyworks@hackney.gov.uk'
+  .box.hub
+    %h2 Supported Employment
+    %p Team leader: Chetna Chudasama
+    .columns
+      .map.column.is-two-thirds
+        %p If you need specialist support our team includes dedicated Supported Employment advisors who support residents with health conditions and disabilities.
+        %p= link_to "Find out more about supported employment.", supported_employment_path
+      .image.column.is-one-third{id: "hub_staff_4"}
+.box.top.hubs
+  %p
+    = t('hackney_works.hubs.info')
+  %p
+    = t('hackney_works.hubs.extra')
+  %p=mail_to 'hackneyworks@hackney.gov.uk'
