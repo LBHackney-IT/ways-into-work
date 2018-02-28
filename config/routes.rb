@@ -10,6 +10,8 @@ WaysIntoWork::Application.routes.draw do
   get 'supported_employment' => 'supported_employment#show'
   get 'employers_information' => 'employers_information#show'
 
+  get 'privacy_policy' => 'privacy_policy#show'
+
   get 'outside_hackney' => 'eligibility#outside_hackney'
   get 'just_registered' => 'just_registered#show'
 
