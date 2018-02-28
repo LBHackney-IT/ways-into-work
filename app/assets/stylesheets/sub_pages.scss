@@ -26,4 +26,9 @@ body.employers_information.show {
   .is-primary {
     background-color: $color__hackney-works;
   }
+  .points {
+    .fa {
+      color: $color__hackney-works;
+    }
+  }
 }
