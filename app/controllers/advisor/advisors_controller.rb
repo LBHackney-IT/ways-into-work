@@ -30,6 +30,12 @@ class Advisor::AdvisorsController < Advisor::BaseController
       render :edit
     end
   end
+  
+  def destroy
+    advisor.destroy
+    flash[:success] = "#{advisor.name} deleted."
+    redirect_to advisor_advisors_path
+  end
 
   private
 

@@ -80,6 +80,20 @@ RSpec.describe Advisor::AdvisorsController, type: :controller do
       end
       
     end
+    
+    describe '#destroy' do
+      
+      before { delete :destroy, params: { id: advisor.id } }
+      
+      it 'deletes an advisor' do
+        expect(Advisor.count).to eq(0)
+      end
+      
+      it 'deletes the associated login' do
+        expect(UserLogin.count).to eq(0)
+      end
+      
+    end
   end
   
   context 'as an advisor' do
