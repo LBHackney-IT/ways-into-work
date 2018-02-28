@@ -2,8 +2,9 @@
 %fieldset
   = form.input :name, label: 'Name', :input_html => { :class => 'input' }
   
-  = form.simple_fields_for :login do |f|
-    = f.input :email, label: 'Email', required: true, :input_html => { :class => 'input' }
+  - if form.object.id.nil?
+    = form.simple_fields_for :login do |f|
+      = f.input :email, label: 'Email', required: true, :input_html => { :class => 'input' }
     
   = form.input :phone, label: 'Phone Number', :input_html => { :class => 'input' }
   = form.input :role, as: :radio_buttons, collection: form.object.class.roles.keys, wrapper_html: { class: 'convert_radio' }, label_method: lambda { |role| t("simple_form.options.advisor.role.#{role}") }
