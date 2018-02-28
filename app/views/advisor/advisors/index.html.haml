@@ -1,0 +1,8 @@
+.container
+  .head.level
+    .level-left
+      %h2 All Advisors
+    .level-right
+      =link_to  'Add new advisor', new_advisor_advisor_path, class: 'button is-primary'
+      
+  = render partial: 'advisors', locals: { advisors: advisors }
