@@ -55,6 +55,29 @@ RSpec.describe Advisor::AdvisorsController, type: :controller do
         expect(current_email).to have_subject(I18n.t('advisors.mail.subject.welcome'))
       end
       
+      context 'with invalid or missing params' do
+        
+        let(:params) do
+          {
+            advisor: {
+              name: 'Me',
+              phone: '12345',
+              role: 'advisor',
+              hub_id: Fabricate(:hub).id
+            }
+          }
+        end
+        
+        it 'does not create an advisor' do
+          expect { subject }.to change { Advisor.count }.by(0)
+        end
+        
+        it 'renders the new template' do
+          expect(subject).to render_template(:new)
+        end
+        
+      end
+      
     end
     
     describe '#update' do
@@ -70,15 +93,16 @@ RSpec.describe Advisor::AdvisorsController, type: :controller do
           }
         }
       end
+      let(:subject) { put :update, params: params }
       
       it 'updates an advisor' do
-        put :update, params: params
+        subject
         advisor.reload
         params[:advisor].each do |k, v|
           expect(advisor.send(k)).to eq(v)
         end
       end
-      
+          
     end
     
     describe '#destroy' do
