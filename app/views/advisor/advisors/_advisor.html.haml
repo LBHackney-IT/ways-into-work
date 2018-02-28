@@ -1,6 +1,6 @@
 %tr
   %td= advisor.name
-  %td= advisor.email
+  %td= advisor.hub&.name || 'None'
   %td= advisor.role
   %td
     = link_to 'Edit', edit_advisor_advisor_path(advisor), class: 'button is-primary is-small'
