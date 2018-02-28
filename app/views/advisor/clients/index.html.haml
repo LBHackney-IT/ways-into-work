@@ -53,11 +53,9 @@
           %span.select
             = f.select(:archived, @filterrific.select_options[:archived], { include_blank: 'Non-archived' })
 
-        .column.has-text-right#fix-line-hieght-dbl
+        .column.has-text-right
           = f.button :surpress_cv_download_on_pressing_enter_ugh!, class: 'is-hidden'
-          = f.button :format, name: :format, value: 'csv', class: 'button' do
-            Export clients
-          &nbsp;
-          = link_to('Reset filters', reset_filterrific_url, class: "button add-top")
-  
+          = link_to('Reset filters', reset_filterrific_url, class: "button is-danger is-small")
+    = f.button :format, name: :format, value: 'csv', class: 'button' do
+      Export clients
   = render partial: 'filtered_table', locals: { clients: @filtered_clients }
