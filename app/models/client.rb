@@ -34,9 +34,13 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :registered_on, lambda { |from, to = from.end_of_month|
     where('created_at BETWEEN ? AND ?', from, to)
   }
+  
+  scope :meetings_attended, lambda { |from, to|
+    joins(:meetings).where('meetings.client_attended = true AND meetings.start_datetime BETWEEN ? AND ?', from, to)
+  }
 
   scope :initial_assessments_attended, lambda { |from, to|
-    joins(:meetings).where("meetings.agenda = 'initial_assessment' AND meetings.client_attended = true AND meetings.start_datetime BETWEEN ? AND ?", from, to)
+    meetings_attended(from, to).where("meetings.agenda = 'initial_assessment'")
   }
 
   accepts_nested_attributes_for :login
