@@ -3,7 +3,5 @@
     .head.level
       %h3 Add Account
 
-    = simple_form_for [:admin, advisor], url: advisor_advisor_index_path do |form|
+    = simple_form_for [:admin, advisor], url: advisor_advisors_path do |form|
       = render partial: 'form_fields', locals: {form: form}
-
-
