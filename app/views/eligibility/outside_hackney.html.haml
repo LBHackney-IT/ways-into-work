@@ -1,5 +1,4 @@
 .column
-  // NORMAL CONTENT
   %h2.subtitle Do you live within Hackney?
 
   %p Sorry, based on the post code you provided it looks like you live outside Hackney so we weren’t able to register you online.
@@ -21,18 +20,3 @@
   %p If you live in Hackney and are seeing this screen either try registering again and make sure your post code is correct, or you can register over the phone by calling the hub closest to where you live:
 
   =link_to "Find your local hub", hubs_path, class: "button is-primary"
-
-  // REFERRAL CONTENT
-  / %h2.subtitle Does your referral live within Hackney?
-
-  / %p Sorry, it looks like this person lives outside Hackney so we weren’t able to complete the referral.
-
-  / %p They could still be eligible for our service if either of the following apply:
-  / %ul
-  /   %li They are being housed in Hackney Council temporary accommodation outside the borough.
-  /   %li They have Hackney Council as a corporate parent, i.e. they are or were in care.
-
-  / %p
-  /   If so, please call us on
-  /   =link_to "0208 356 5700", "tel:0208 356 5700"
-  /   we can process your referral.

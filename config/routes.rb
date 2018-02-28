@@ -13,6 +13,7 @@ WaysIntoWork::Application.routes.draw do
   get 'privacy_policy' => 'privacy_policy#show'
 
   get 'outside_hackney' => 'eligibility#outside_hackney'
+  get 'client/referrers/outside_hackney' => 'eligibility#referrer_outside_hackney', as: 'referrer_outside_hackney'
   get 'just_registered' => 'just_registered#show'
 
   namespace :advisor do

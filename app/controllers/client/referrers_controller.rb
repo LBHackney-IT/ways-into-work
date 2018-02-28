@@ -23,7 +23,7 @@ class Client::ReferrersController < ApplicationController
       client.auto_assign_advisor(ward_code)
       client.login.generate_default_password
     else
-      redirect_to(:outside_hackney)
+      redirect_to(:referrer_outside_hackney)
     end
   end
 

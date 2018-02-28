@@ -39,7 +39,7 @@ Feature: Client is referred via another agency
   @outside_hackney_postcode
   Scenario: client outside borough can't be referred
     When I refer a client with a postcode outside the borough
-    Then I should be on the outside hackney page
+    Then I should be on the referrer outside hackney page
 
   @javascript @homerton_postcode
   Scenario: Referral with other organisation
