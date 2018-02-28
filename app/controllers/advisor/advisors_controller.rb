@@ -23,12 +23,9 @@ class Advisor::AdvisorsController < Advisor::BaseController
   def edit; end
   
   def update
-    if advisor.update_attributes(advisor_params)
-      flash[:success] = "#{advisor.name} updated."
-      redirect_to advisor_advisors_path
-    else
-      render :edit
-    end
+    advisor.update_attributes(advisor_params)
+    flash[:success] = "#{advisor.name} updated."
+    redirect_to advisor_advisors_path
   end
   
   def destroy
