@@ -1,0 +1,7 @@
+#tabs.container
+  .column
+    .head.level
+      %h3 Edit Advisor
+
+    = simple_form_for [:admin, advisor], url: advisor_advisor_path(advisor) do |form|
+      = render partial: 'form_fields', locals: {form: form}

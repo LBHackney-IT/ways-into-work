@@ -14,7 +14,7 @@ class Advisor::AdvisorsController < Advisor::BaseController
     if advisor.save
       advisor.send_confirmation!
       flash[:success] = "#{advisor.name} created."
-      redirect_to user_root
+      redirect_to advisor_advisors_path
     else
       render :new
     end
@@ -22,7 +22,14 @@ class Advisor::AdvisorsController < Advisor::BaseController
   
   def edit; end
   
-  def update; end
+  def update
+    if advisor.update_attributes(advisor_params)
+      flash[:success] = "#{advisor.name} updated."
+      redirect_to advisor_advisors_path
+    else
+      render :edit
+    end
+  end
 
   private
 

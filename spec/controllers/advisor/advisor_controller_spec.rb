@@ -56,6 +56,30 @@ RSpec.describe Advisor::AdvisorsController, type: :controller do
       end
       
     end
+    
+    describe '#update' do
+      
+      let(:params) do
+        {
+          id: advisor.id,
+          advisor: {
+            name: 'Me',
+            phone: '12345',
+            role: 'advisor',
+            hub_id: Fabricate(:hub).id
+          }
+        }
+      end
+      
+      it 'updates an advisor' do
+        put :update, params: params
+        advisor.reload
+        params[:advisor].each do |k, v|
+          expect(advisor.send(k)).to eq(v)
+        end
+      end
+      
+    end
   end
   
   context 'as an advisor' do
