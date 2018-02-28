@@ -1,0 +1,7 @@
+%tr
+  %td= advisor.name
+  %td= advisor.email
+  %td= advisor.role
+  %td
+    = link_to 'Edit', edit_advisor_advisor_path(advisor), class: 'button is-primary is-small'
+    = button_to 'Delete', advisor_advisor_path(advisor), method: :delete, class: 'button is-danger is-small button_inline', data: { confirm: 'Are you sure you want to delete this advisor?'}
