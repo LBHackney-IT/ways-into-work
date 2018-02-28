@@ -1,7 +1,7 @@
 .column.is-one-third.featured-vacancy{'data-vacancy-id': featured_vacancy.vacancy&.id, 'data-url': advisor_featured_vacancy_path(featured_vacancy.id), id: "featured_vacancy_#{featured_vacancy.id}" }
   .box
     .job_information
-      %p.title.bold= featured_vacancy.vacancy&.title
+      %p.job_title.bold= featured_vacancy.vacancy&.title
       %p
         %span.bold Type:
         .vacancy_type

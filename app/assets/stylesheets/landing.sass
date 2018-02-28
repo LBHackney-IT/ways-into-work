@@ -24,8 +24,11 @@ body.employers_information.show
     width: 100%
     color: #fff
     text-shadow: 0 1px 4px rgba(92,92,92,0.50)
+    +mobile
+      padding-top: 0
     .nav-toggle span
       background-color: #fff
+
     a, input
       color: #fff
     .lines
@@ -115,6 +118,8 @@ body.employers_information.show
     #logo
       img
         width: 150px
+      +mobile
+        margin-top: 10px
     .bg_img
       img
         margin-left: -100px
@@ -253,6 +258,11 @@ body.employers_information.show
   h2
     color: #fff
     margin-bottom: 40px
+    +mobile
+      max-width: 90%
+      margin-left: auto
+      margin-right: auto
+      margin-bottom: 20px
 
   .image
     display: inline-block
@@ -262,11 +272,16 @@ body.employers_information.show
   .quote
     display: inline-block
     width: 70%
+    +mobile
+      width: 90%
     p
       margin-bottom: 0
       font-size: 25px
       font-weight: 500
       line-height: 35px
+      +mobile
+        font-size: 22px
+        line-height: 29px
     span
       font-size: 18px
       margin-top: 3px
@@ -286,6 +301,10 @@ body.employers_information.show
       display: inline-block
       margin: 5px
       transition: 0.2s ease-in-out background-color
+      +mobile
+        width: 22px
+        height: 22px
+        margin: 5px 10px
       &.active
         background-color: #fff
       &:hover
@@ -297,6 +316,10 @@ body.employers_information.show
   padding: 80px 0 80px 0
   h2
     margin-bottom: 35px
+  .job_title
+    font-size: 23px
+    +mobile
+      font-size: 18px
 
 #newsletter
   text-align: center
@@ -308,6 +331,12 @@ body.employers_information.show
   .email_subscribe
     input[type=email]
       width: 230px
+    .button
+      +mobile
+        display: block
+        width: 230px
+        margin: 0 auto
+        margin-top: 10px
 
 .max_restrict
   max-width: 900px

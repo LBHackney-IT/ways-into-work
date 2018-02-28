@@ -7,6 +7,9 @@ $nav-height: 3.25rem !default
   // Responsiveness
   +tablet
     display: none
+  &:hover
+    span
+      background-color: $black !important
 
 .nav-item
   align-items: center
@@ -96,6 +99,9 @@ input.nav-item, .nav-item input
 .nav-menu
   // Responsiveness
   +mobile
+    a
+      color: $black !important
+      text-shadow: none !important
     &.nav-right
       background-color: $white
       box-shadow: 0 4px 7px rgba($black, 0.1)
