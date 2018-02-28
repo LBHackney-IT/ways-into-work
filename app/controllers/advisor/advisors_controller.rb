@@ -1,6 +1,9 @@
-class Advisor::AdvisorController < Advisor::BaseController
+class Advisor::AdvisorsController < Advisor::BaseController
   before_action :check_permissions!
   expose :advisor
+  expose :advisors, -> { Advisor.all }
+  
+  def index; end
 
   def new
     advisor.build_login
@@ -16,6 +19,10 @@ class Advisor::AdvisorController < Advisor::BaseController
       render :new
     end
   end
+  
+  def edit; end
+  
+  def update; end
 
   private
 
