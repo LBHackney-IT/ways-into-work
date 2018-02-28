@@ -116,12 +116,15 @@ RSpec.describe Client, type: :model do
         expect(Client.by_hub_id(hub2.id)).to match_array(hub2_clients)
       end
     end
-
-    describe 'initial_assessments_attended' do
+    
+    describe 'meeting counts' do
       let!(:client_attended) { Fabricate.create(:client) }
       let!(:client_not_attended) { Fabricate.create(:client) }
-
+      
       let!(:meeting_attended) do
+        Fabricate(:meeting, client: client_attended, client_attended: true, start_datetime: new_date)
+      end
+      let!(:assessment_attended) do
         Fabricate(:meeting, client: client_attended, client_attended: true, start_datetime: new_date, agenda: 'initial_assessment')
       end
       let!(:meeting_not_attended) do
@@ -130,13 +133,23 @@ RSpec.describe Client, type: :model do
       let!(:meeting_attended1) do
         Fabricate(:meeting, client: client_not_attended, client_attended: true, start_datetime: old_date, agenda: 'initial_assessment')
       end
-      let!(:meeting_attended2) { Fabricate(:meeting, client: client_not_attended, client_attended: true, start_datetime: new_date) }
-
-      it 'only gets initial assessment meeting that was attended in the time frame' do
-        expect(
-          Client.initial_assessments_attended(Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
-        ).to match_array([client_attended])
+      
+      describe 'meetings_attended' do
+        it 'gets all attended meetings in the time frame' do
+          expect(
+            Client.meetings_attended(Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
+          ).to match_array([client_attended, client_attended])
+        end
       end
+      
+      describe 'initial_assessments_attended' do
+        it 'only gets initial assessment meeting that was attended in the time frame' do
+          expect(
+            Client.initial_assessments_attended(Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)
+          ).to match_array([client_attended])
+        end
+      end
+      
     end
 
     describe 'registered_on' do
