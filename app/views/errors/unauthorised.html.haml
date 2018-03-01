@@ -1,0 +1,10 @@
+.full-width.hero
+  .bg_img
+    =image_tag('dalston-red.jpg', class: 'parralax_me', id: 'parralax_me')
+  .container.columns.main
+    .column.is-one-thrid#logo
+      =image_tag('hackney-works-white.svg', :alt => 'Hackney 100')
+    .column.is-two-thirds
+      %h1 401 Unauthorised
+      %p.bold You're trying to access a page you don't have permission to access
+      %p Please try #{link_to 'logging in', user_login_session_path}, or go #{link_to 'back to the homepage', '/'}
