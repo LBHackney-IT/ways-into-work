@@ -1,0 +1,11 @@
+.full-width.hero
+  .bg_img
+    =image_tag('dalston-red.jpg', class: 'parralax_me', id: 'parralax_me')
+  .container.columns.main
+    .column.is-one-thrid#logo
+      =image_tag('hackney-works-white.svg', :alt => 'Hackney 100')
+    .column.is-two-thirds
+      %h1 404 Not Found
+      %p.bold The page you are looking for cannot be found
+      %p The link you clicked may be broken or the page may have been removed.
+      %p Visit the #{link_to 'homepage', '/'} or #{mail_to WaysIntoWork.config.support_email, 'contact us'} about the problem.
