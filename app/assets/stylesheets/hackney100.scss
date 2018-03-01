@@ -25,4 +25,9 @@ body.hackney100.show {
   .is-primary {
     background-color: $color__hackney-100;
   }
+  .points {
+    .fa {
+      color: $color__hackney-100;
+    }
+  }
 }
