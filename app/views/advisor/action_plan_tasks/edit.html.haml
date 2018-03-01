@@ -7,16 +7,18 @@
   %hr
 
   = simple_form_for [action_plan_task.client, action_plan_task], url: advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :put do |form|
-
-    = render partial: 'form_fields', locals: {form: form}
-
     .convert_radio
       = form.input :status, as: :radio_buttons, label: "Status:", collection: [['In Progress', :ongoing], ['Completed', :completed]]
+    %br
+    %br
 
-    .form-action
-      = form.submit I18n.t('clients.buttons.update'), class: "button is-primary", id: 'save_and_exit'
+    = render partial: 'form_fields', locals: {form: form}
+    .columns
+      .form-action.column.add-margin-top
+        = link_to I18n.t('clients.buttons.cancel'), advisor_client_action_plan_tasks_path(client_id: action_plan_task.client_id), method: :get, class: "button"
+        = button_to I18n.t('clients.buttons.delete'), advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :delete, class: "button is-danger"
 
-      = link_to I18n.t('clients.buttons.cancel'), advisor_client_action_plan_tasks_path(client_id: action_plan_task.client_id), method: :get, class: "button"
 
-  .form-action
-    = button_to I18n.t('clients.buttons.delete'), advisor_client_action_plan_task_path(client_id: client.id, id: action_plan_task.id), method: :delete, class: "button is-danger"
+      .column.form-action.has-text-right
+        = form.submit I18n.t('clients.buttons.update'), class: "button is-primary is-large", id: 'save_and_exit'
+
