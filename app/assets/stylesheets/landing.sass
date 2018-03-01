@@ -94,8 +94,8 @@ body.employers_information.show
         width: 70%
 
 .full-width.hero
-  // +background-image-gradient(-135deg, $color__hackney-works, 'dalston.jpg')
-  background: linear-gradient(135deg, rgba(0,156,166,0.40) 0%, rgba(0,156,166,0.79) 100%)
+  // background: linear-gradient(135deg, rgba(0,156,166,0.40) 0%, rgba(0,156,166,0.79) 100%)
+  background: transparent
 
   -webkit-background-size: cover
   -moz-background-size: cover
@@ -198,15 +198,29 @@ body.employers_information.show
       transition: 0.2s ease-in-out background-color
       h2, a:not(.button)
         color: #fff !important
-
+    +mobile
+      background-color: $color__hackney-works
+      color: #fff
+      h2, a:not(.button)
+        color: #fff !important
     &#hack100
       background-color: #FF9EA1
-      &:hover
+      &:hover, +mobile
         background-color: $color__hackney-100
+      +mobile
+        background-color: $color__hackney-100
+        color: #fff
+        h2, a:not(.button)
+          color: #fff !important
     &#apprent
       background-color: rgba(#93D66B, 0.5)
-      &:hover
+      &:hover, +mobile
         background-color: $color__hackney-apprentices
+      +mobile
+        background-color: $color__hackney-apprentices
+        color: #fff
+        h2, a:not(.button)
+          color: #fff !important
     h2
       min-height: 60px
       +mobile
@@ -250,7 +264,8 @@ body.employers_information.show
 
 
 #testimonials
-  background: linear-gradient(135deg, rgba(74,74,74,0.40) 0%, rgba(74,74,74,0.79) 100%)
+  // background: linear-gradient(135deg, rgba(74,74,74,0.40) 0%, rgba(74,74,74,0.79) 100%)
+  background: linear-gradient(135deg, rgba(74, 74, 74, 0.6) 0%, rgba(74, 74, 74, 0.9) 100%)
   padding: 90px 0 70px 0
   text-align: center
 
