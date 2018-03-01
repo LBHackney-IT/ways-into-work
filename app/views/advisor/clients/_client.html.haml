@@ -9,9 +9,8 @@
     %i.fa.fa-circle{class: client.rag_status}
   %td.has-text-right
     - if client.deleted?
-      = button_to I18n.t('clients.buttons.restore_client'), advisor_restore_client_path(client_id: client.id), method: :put, class: "button is-small"
+      = button_to I18n.t('clients.buttons.restore_client'), advisor_restore_client_path(client_id: client.id), method: :put, class: "button is-small is-primary button_inline"
       - if current_advisor.admin?
-        %br
-        = button_to I18n.t('clients.buttons.anonymise_client'), advisor_anonymise_client_path(client_id: client.id), method: :put, class: "button is-small", data: { confirm: "Are you sure? This will delete ALL the client's personally identifiable data." }
+        = button_to I18n.t('clients.buttons.anonymise_client'), advisor_anonymise_client_path(client_id: client.id), method: :put, class: "button is-small is-danger button_inline", data: { confirm: "Are you sure? This will delete ALL the client's personally identifiable data." }
     -else
       =button_to 'View details', edit_advisor_client_path(client), method: :get, class: "button is-small"
