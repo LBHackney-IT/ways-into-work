@@ -26,5 +26,7 @@
         =link_to "Privacy", privacy_policy_path
 
       .link
-        ="Terms"
+        = link_to "Register", new_client_path
+        ="/"
+        = link_to I18n.t('header.nav.sign_in'), user_login_session_path
 
