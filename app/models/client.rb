@@ -18,7 +18,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   has_many :meetings
   has_many :achievements
-
+  
   scope :contact_by_sms, -> { where("'sms_reminder' = ANY (preferred_contact_methods)") }
 
   scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
@@ -107,7 +107,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       with_deleted
     else
       all
-    end
+    end.where.not(first_name: nil)
   }
 
   pg_search_scope :search_query, against: %i[first_name last_name], using: {
