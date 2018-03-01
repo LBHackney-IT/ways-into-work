@@ -20,20 +20,19 @@
 
   .points
     %h3 What we can help with
-    = link_to new_client_path, class: 'not_a_link' do
-      .columns
-        .column.point
-          =fa_icon "star-o"
-          %p Help to identify your unique skills
-        .column.point
-          =fa_icon "rocket"
-          %p Give you exclusive access to suitable job vacancies
-        .column.point
-          =fa_icon "road"
-          %p Support you to stay in work and to progress
-        .column.point
-          =fa_icon "plus"
-          %p Help you to explain your health condition to employers
+    .columns
+      .column.point
+        =fa_icon "star-o"
+        %p Help to identify your unique skills
+      .column.point
+        =fa_icon "rocket"
+        %p Give you exclusive access to suitable job vacancies
+      .column.point
+        =fa_icon "road"
+        %p Support you to stay in work and to progress
+      .column.point
+        =fa_icon "plus"
+        %p Help you to explain your health condition to employers
     = link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
 .full-width#testimonials.hero
   .bg_img
