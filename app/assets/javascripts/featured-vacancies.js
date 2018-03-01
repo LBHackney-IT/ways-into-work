@@ -6,7 +6,7 @@ var placeVacancy = function(source, destination) {
     _method:'PUT',
     featured_vacancy: { vacancy_id: sourceData.id }
   }, function() {
-    destination.find('.title').html(sourceData.title);
+    destination.find('.job_title').html(sourceData.title);
     destination.find('.vacancy_type').html(sourceData.vacancyType);
     destination.find('.salary').html(sourceData.salary);
     destination.find('.job_description').html(sourceData.description);
