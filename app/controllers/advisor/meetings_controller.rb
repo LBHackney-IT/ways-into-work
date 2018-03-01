@@ -33,7 +33,7 @@ class Advisor::MeetingsController < Advisor::BaseController
 
   private
 
-  def meeting_params # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def meeting_params # rubocop:disable Metrics/MethodLength
     @parsed_params ||= params.require(:meeting).permit(
       :start_date,
       :start_time,
