@@ -17,6 +17,7 @@ class Advisor::MeetingsController < Advisor::BaseController
       flash[:success] = 'Meeting saved'
       redirect_to advisor_client_meetings_path(client_id: meeting.client_id)
     else
+      build_errors
       render :new
     end
   end
@@ -43,13 +44,25 @@ class Advisor::MeetingsController < Advisor::BaseController
       :other_agenda,
       :client_attended
     ).tap do |attrs|
-      date = attrs.delete('start_date').try(:to_date)
-      time = attrs.delete('start_time').try(:to_time)
-      attrs[:start_datetime] = if time.present? && date.present?
-                                 DateTime.new(date.year, date.month, date.day, time.hour, time.min).utc
-                               else
-                                 '' # Ensure error is thrown
-                               end
+      @date = attrs.delete('start_date').try(:to_date)
+      @time = attrs.delete('start_time').try(:to_time)
+      attrs[:start_datetime] = build_datetime(@date, @time)
     end
   end
+  
+  def build_datetime(date, time)
+    if time.present? && date.present?
+      DateTime.new(date.year, date.month, date.day, time.hour, time.min).utc
+    else
+      @date_error = time.present? ? 'date' : 'time'
+      nil
+    end
+  end
+  
+  def build_errors
+    return unless @date_error
+    meeting.errors.messages.delete(:start_datetime)
+    meeting.errors.messages[@date_error.to_sym] = ["can't be blank"]
+  end
+  
 end
