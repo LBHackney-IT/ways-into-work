@@ -21,6 +21,9 @@ module WaysIntoWork
     # config.active_record.schema_format = :sql
 
     config.eager_load = false
+    
+    # Use controllers to generate 500, 404 etc
+    config.exceptions_app = routes
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
