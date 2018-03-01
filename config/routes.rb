@@ -58,4 +58,8 @@ WaysIntoWork::Application.routes.draw do
     resource :additional_information, only: %i[edit update], controller: 'additional_information'
     resource :dashboard, only: :show
   end
+  
+  match '/401', to: 'errors#unauthorised', via: :all
+  match '/404', to: 'errors#not_found', via: :all
+  match '/500', to: 'errors#error', via: :all
 end
