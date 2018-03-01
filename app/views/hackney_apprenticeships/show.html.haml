@@ -3,7 +3,7 @@
     =image_tag('dalston-green.jpg', class: 'parralax_me', id: 'parralax_me')
   .container.columns.main
     .column.is-one-thrid#logo
-      =image_tag('hackney-apprentices-white.svg', :alt => 'Hackney Works')
+      =image_tag('hackney-apprentices-white.svg', :alt => 'Hackney Apprenticeships')
     .column.is-two-thirds
       %h1=t('hackney_works.apprenticeships.hero.title')
       %p=t('hackney_works.apprenticeships.hero.info')
@@ -11,8 +11,8 @@
   .lines
 
 .container.info_block.columns
-  .column.is-one-third
-    photo
+  .column.is-one-third#apprenticeships_image
+    =image_tag('apprenticeships_image.png')
   .column.is-two-thirds
     %h2=t('hackney_works.apprenticeships.internal_about.title')
 
