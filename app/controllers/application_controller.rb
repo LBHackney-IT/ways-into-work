@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   expose :current_client, lambda {
     current_user_login.user if current_user_login.user_type == 'Client'
   }
+  
+  def index
+    @featured_vacancies = FeaturedVacancy.all
+  end
 
   def after_sign_in_path_for(resource_or_scope)
     user_root(resource_or_scope)

@@ -35,16 +35,16 @@
   = link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary is-large'
 
 #other_pages.full-width.columns
-  = link_to supported_employment_path do
+  = link_to support_path do
     .column.is-one-third
       %h2=t('hackney_works.employ_support.title')
       %p=t('hackney_works.employ_support.about')
-      = link_to I18n.t('hackney_works.employ_support.button'), supported_employment_path, class: 'button'
-  = link_to hackney_apprenticeships_path do
+      = link_to I18n.t('hackney_works.employ_support.button'), support_path, class: 'button'
+  = link_to apprenticeships_path do
     #apprent.column.is-one-third
       %h2=t('hackney_works.apprenticeships.title')
       %p=t('hackney_works.apprenticeships.about')
-      = link_to I18n.t('hackney_works.apprenticeships.button'), hackney_apprenticeships_path, class: 'button'
+      = link_to I18n.t('hackney_works.apprenticeships.button'), apprenticeships_path, class: 'button'
   = link_to hackney100_path do
     #hack100.column.is-one-third
       %h2=t('hackney_works.hack_100.title')

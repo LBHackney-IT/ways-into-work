@@ -1,20 +1,20 @@
 WaysIntoWork::Application.routes.draw do
   devise_for :user_logins
 
-  root to: 'hackney_works#show'
+  root to: 'application#index'
 
-  get 'hackney_works' => 'hackney_works#show'
+  get 'hackney_works', to: redirect('/')
 
-  get 'hackney_apprenticeships' => 'hackney_apprenticeships#show'
-  get 'hackney100' => 'hackney100#show'
-  get 'supported_employment' => 'supported_employment#show'
-  get 'employers_information' => 'employers_information#show'
+  get 'apprenticeships' => 'static#apprenticeships'
+  get 'hackney100' => 'static#hackney100'
+  get 'support' => 'static#support'
+  get 'employers' => 'static#employers'
 
-  get 'privacy_policy' => 'privacy_policy#show'
+  get 'privacy-policy' => 'static#privacy_policy'
 
-  get 'outside_hackney' => 'eligibility#outside_hackney'
-  get 'client/referrers/outside_hackney' => 'eligibility#referrer_outside_hackney', as: 'referrer_outside_hackney'
-  get 'just_registered' => 'just_registered#show'
+  get 'outside-hackney' => 'static#outside_hackney'
+  get 'client/referrers/outside-hackney' => 'static#referrer_outside_hackney', as: 'referrer_outside_hackney'
+  get 'just-registered' => 'static#just_registered'
 
   namespace :advisor do
     resource :restore_client, only: :update
