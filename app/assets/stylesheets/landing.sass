@@ -179,10 +179,8 @@ body.employers.static
 
 #other_pages
   margin-bottom: 0
-  a:not(.button)
-    color: $black
-    &:hover
-      color: #fff
+  a:not(.button), h2
+    color: #fff !important
   p
     max-width: 350px
     margin: 0 auto
@@ -190,37 +188,19 @@ body.employers.static
   .is-one-third
     padding: 40px
     text-align: center
-    background-color: rgba(#10BEC9, 0.5)
+    background-color: $color__hackney-works
     transition: 0.5s ease-in-out background-color
     &:hover
-      background-color: $color__hackney-works
-      color: #fff
+      background-color: rgba($color__hackney-works, 0.8)
       transition: 0.2s ease-in-out background-color
-      h2, a:not(.button)
-        color: #fff !important
-    +mobile
-      background-color: $color__hackney-works
-      color: #fff
-      h2, a:not(.button)
-        color: #fff !important
     &#hack100
-      background-color: #FF9EA1
-      &:hover, +mobile
-        background-color: $color__hackney-100
-      +mobile
-        background-color: $color__hackney-100
-        color: #fff
-        h2, a:not(.button)
-          color: #fff !important
+      background-color: $color__hackney-100
+      &:hover
+        background-color: rgba($color__hackney-100, 0.8)
     &#apprent
-      background-color: rgba(#93D66B, 0.5)
-      &:hover, +mobile
-        background-color: $color__hackney-apprentices
-      +mobile
-        background-color: $color__hackney-apprentices
-        color: #fff
-        h2, a:not(.button)
-          color: #fff !important
+      background-color: $color__hackney-apprentices
+      &:hover
+        background-color: rgba($color__hackney-apprentices, 0.8)
     h2
       min-height: 60px
       +mobile

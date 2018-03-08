@@ -47,7 +47,10 @@
       = link_to I18n.t('hackney_works.apprenticeships.button'), apprenticeships_path, class: 'button'
   = link_to hackney100_path do
     #hack100.column.is-one-third
-      %h2=t('hackney_works.hack_100.title')
+      %h2
+        Are you aged
+        %br
+        16-19?
       %p=t('hackney_works.hack_100.about')
       = link_to I18n.t('hackney_works.hack_100.button'), hackney100_path, class: 'button'
 
@@ -59,19 +62,19 @@
     .slider
       .testimonial#testimonial1.active
         .image
-          =image_tag('quote1.png')
+          =image_tag('aaron-quote.png')
         .quote
           %p=t('hackney_works.testimonials.testimonial_a')
           %span=t('hackney_works.testimonials.testimonial_a_name')
       .testimonial#testimonial2
         .image
-          =image_tag('quote2.png')
+          =image_tag('lordena-quote.png')
         .quote
           %p=t('hackney_works.testimonials.testimonial_b')
           %span=t('hackney_works.testimonials.testimonial_b_name')
       .testimonial#testimonial3
         .image
-          =image_tag('quote3.png')
+          =image_tag('quote1.png')
         .quote
           %p=t('hackney_works.testimonials.testimonial_c')
           %span=t('hackney_works.testimonials.testimonial_c_name')
@@ -93,3 +96,17 @@
   .email_subscribe
     =email_field_tag 'newsletter_email', nil, class: 'input', placeholder: 'Add email...'
     #subscribe.button=t('hackney_works.newsletter.button')
+  %br
+  %p.about
+    If you have any questions or you’d like to find out more, you can contact us at
+    =mail_to "hackneyworks@hackney.gov.uk"
+    or on 020 8356 5700.
+
+%br
+%br
+.container
+  .sup_page_content.max_restrict.center
+    %h2 Information for Employers
+    %p
+      If you’re interested in finding out more about apprenticeships and how they could work for your organisation,
+      =link_to "see our information for employers page.", employers_path
