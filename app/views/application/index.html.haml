@@ -18,19 +18,24 @@
   = link_to new_client_path, class: 'not_a_link' do
     .columns
       .column.point
-        =fa_icon "user"
+        .icon_circle
+          =fa_icon "user"
         %p=t('hackney_works.points.point_a')
       .column.point
-        =fa_icon "book"
+        .icon_circle
+          =fa_icon "book"
         %p=t('hackney_works.points.point_b')
       .column.point
-        =fa_icon "pencil"
+        .icon_circle
+          =fa_icon "pencil"
         %p=t('hackney_works.points.point_c')
       .column.point
-        =fa_icon "newspaper-o"
+        .icon_circle
+          =fa_icon "newspaper-o"
         %p=t('hackney_works.points.point_d')
       .column.point
-        =fa_icon "handshake-o"
+        .icon_circle
+          =fa_icon "handshake-o"
         %p=t('hackney_works.points.point_e')
   = link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary is-large'
 
