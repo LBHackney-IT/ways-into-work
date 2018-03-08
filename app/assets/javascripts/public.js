@@ -83,15 +83,15 @@ $(document).ready(function() {
   $('.show_achievement').showAchievement();
 
   $('.edit_client').addEmpty();
-  
+
   $('.admin.vacancies.index').featuredVacancies();
 
   $('#subscribe.button').click(function(){
     window.open('https://public.govdelivery.com/accounts/UKHACKNEYCOUNCIL/subscribers/qualify?email='+$('#newsletter_email').val(), '_blank');
   });
-  
+
   $('#filterrific_filter').filterrificBrowserHistory();
-  
+
   $('#filterrific_by_hub_id').removeAdvisors('#filterrific_by_advisor_id');
 
 });
