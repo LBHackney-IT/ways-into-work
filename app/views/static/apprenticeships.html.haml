@@ -50,7 +50,7 @@
 %br
 
 .full-width#testimonials.hero
-  .bg_img
+  .bg_img#appren_quote
     =image_tag('apprentice_quote.jpg', class: 'parralax_me', id: 'parralax_me2')
   .container
     .slider
@@ -86,15 +86,15 @@
 %br
 %br
 %br
+.full-width.white_block
+  .container
+    .sup_page_content.max_restrict
+      %h2=t('hackney_works.apprenticeships.internal_about.title')
 
-.container.white_block
-  .sup_page_content.max_restrict
-    %h2=t('hackney_works.apprenticeships.internal_about.title')
+      %p=t('hackney_works.apprenticeships.internal_about.content').html_safe
 
-    %p=t('hackney_works.apprenticeships.internal_about.content').html_safe
-
-    .center
-      .bold= link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+      .center
+        .bold= link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
 %br
 .container
   .sup_page_content.max_restrict

@@ -122,7 +122,19 @@ body.employers.static
         margin-top: 10px
     .bg_img
       img
-        margin-left: -100px
+        margin-left: 0
+        transform: none !important
+
+  #appren_quote
+    img
+      margin-top: 210px
+      +just_mobile
+        margin-left: -200px
+  @media screen and (max-width: 959px)
+    .bg_img
+      img
+        transform: none !important
+        margin-top: 0 !important
   .lines
     position: absolute
     bottom: -8px
@@ -217,7 +229,7 @@ body.employers.static
   z-index: -1
   img
     width: 100%
-    +mobile
+    +just_mobile
       max-width: none !important
       height: 120%
       width: auto !important
