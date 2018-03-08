@@ -6,11 +6,14 @@
 
   .box.hub
     %h2 Supported Employment
-    %p Team leader: Chetna Chudasama
+    %p Supported Employment Officer: Chetna Chudasama
+    %p Homerton Opportunity Hub, This hub has temporarily relocated to: Lee House, 6a Rectory Road, London, N16 7QS
+
+    %p If you need specialist support our team includes dedicated Supported Employment advisors who support residents with health conditions and disabilities.
+    %p= link_to "Find out more about supported employment.", support_path
     .columns
-      .map.column.is-two-thirds
-        %p If you need specialist support our team includes dedicated Supported Employment advisors who support residents with health conditions and disabilities.
-        %p= link_to "Find out more about supported employment.", support_path
+      .map.column.is-two-thirds{id: "hub_map_4", 'data-lat' => hubs.first.latitude, 'data-lng' => hubs.first.longitude, 'data-name' => hubs.first.name, 'data-street' => hubs.first.address_line_1 }
+
       .image.column.is-one-third{id: "hub_staff_4"}
 .box.top.hubs
   %p
