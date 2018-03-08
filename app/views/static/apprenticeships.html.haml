@@ -10,17 +10,10 @@
       %p=t('hackney_works.apprenticeships.hero.extra')
   .lines
 
-.container.info_block.columns
-  .column.is-one-third#apprenticeships_image
-    =image_tag('apprenticeships_image.png')
-  .column.is-two-thirds
-    %h2=t('hackney_works.apprenticeships.internal_about.title')
+%br
+%br
 
-    %p=t('hackney_works.apprenticeships.internal_about.content').html_safe
-
-    .bold= link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
-
-.white_block.full-width
+.full-width
   .container
     .sup_page_content.max_restrict
       %h2 Apprenticeships at Hackney Council
@@ -48,14 +41,38 @@
             %p Support to find a job once your training ends
     .sup_page_content.max_restrict
       %h3 Who can apply?
-      %p You can apply for our apprenticeships if you’re 16-24 and you live in Hackney or went to a Hackney school or college.
+      %p You can apply for our apprenticeships if you live in Hackney or went to a Hackney school or college.
       %p You can also apply if Hackney Council is your corporate parent, i.e. if you are or were in care.
-  %br
-  %br
-  %br
+      %p Most of our apprenticeships are for 16-24 year olds.
+
+%br
+%br
+%br
+
+.full-width#testimonials.hero
+  .bg_img
+    =image_tag('apprentice_quote.jpg', class: 'parralax_me', id: 'parralax_me2')
+  .container
+    .slider
+      .testimonial.active
+        %br
+        %br
+        .quote
+          %p "I have an amazing qualification and 2 years’ worth of experience in a competitive field. This apprenticeship has taught me that drive is more important than anything else and there’s more than one route to get to where you want to be."
+          %span La Braya, Digital Marketing Apprentice, at Apprenticeship Graduation Ceremony
+
+        %br
+        %br
+        %br
+
+%br
+%br
+%br
+
+.full-width
   #newsletter.container
     %h2=t('hackney_works.apprenticeships.newsletter.title')
-    %p.about=t('hackney_works.apprenticeships.newsletter.about')
+    %p.about Be the first to find out about all new apprenticeships at the council by signing up to our email alerts.
     .email_subscribe
       %form#mc-embedded-subscribe-form.validate{:action => "https://hackney.us17.list-manage.com/subscribe/post?u=33d75b080fe55e7a52dfa61c1&id=fbc373ca9e", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
         #mc_embed_signup_scroll
@@ -65,6 +82,20 @@
             %input{:name => "b_33d75b080fe55e7a52dfa61c1_fbc373ca9e", :tabindex => "-1", :type => "text", :value => ""}/
           %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "Subscribe", class: 'is-primary'}/
 
+
+%br
+%br
+%br
+
+.container.white_block
+  .sup_page_content.max_restrict
+    %h2=t('hackney_works.apprenticeships.internal_about.title')
+
+    %p=t('hackney_works.apprenticeships.internal_about.content').html_safe
+
+    .center
+      .bold= link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+%br
 .container
   .sup_page_content.max_restrict
     %h2 More Information

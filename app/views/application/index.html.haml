@@ -60,19 +60,19 @@
   .container
     %h2=t('hackney_works.testimonials.title')
     .slider
-      .testimonial#testimonial1.active{:data => {:number => 1}}
+      .testimonial.clickable#testimonial1.active{:data => {:number => 1}}
         .image
           =image_tag('aaron-quote.png')
         .quote
           %p=t('hackney_works.testimonials.testimonial_a')
           %span=t('hackney_works.testimonials.testimonial_a_name')
-      .testimonial#testimonial2{:data => {:number => 2}}
+      .testimonial.clickable#testimonial2{:data => {:number => 2}}
         .image
           =image_tag('lordena-quote.png')
         .quote
           %p=t('hackney_works.testimonials.testimonial_b')
           %span=t('hackney_works.testimonials.testimonial_b_name')
-      .testimonial#testimonial3{:data => {:number => 3}}
+      .testimonial.clickable#testimonial3{:data => {:number => 3}}
         .image
           =image_tag('quote1.png')
         .quote

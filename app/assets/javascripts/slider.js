@@ -2,7 +2,7 @@ $.fn.slider = function() {
   if (this.length === 0) { return false; }
   var inUse = false;
 
-  $('.testimonial').click(function() {
+  $('.testimonial.clickable').click(function() {
     if($(this).hasClass('active') && inUse == false) {
       var num = $(this).data('number');
       if (num == 3) {
