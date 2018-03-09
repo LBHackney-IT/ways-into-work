@@ -19,7 +19,7 @@
       = render partial: 'shared/assessment_note', locals: {form: form, note: client.assessment_notes.find_or_initialize_by(content_key: :additional_info), label: 'Anything else we should know?', type: :text }
       %br
       %p
-        We will never share your personal information with third parties, read our
-        =link_to "privacy policy", privacy_policy_path
+        We will never share your personal information with third parties without your consent. Read our
+        =link_to "privacy policy", privacy_policy_path, target: '_blank'
         to find out more about our use of personal data.
       = form.submit t('devise.buttons.register'), :class => 'button is-primary is-pulled-right is-large'
