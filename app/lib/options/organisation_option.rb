@@ -1,5 +1,5 @@
 class OrganisationOption < Option
-  def self.all
+  def self.all # rubocop:disable Metrics/MethodLength
     [
       new('adult_social_care', 'Adult Social Care'),
       new('benefits', 'Benefits'),
