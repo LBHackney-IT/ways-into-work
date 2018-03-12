@@ -44,7 +44,7 @@ RSpec.describe Client, type: :model do
     let(:clients) { Fabricate.times(10, :client) }
 
     it 'generates a CSV row' do
-      expect(client.csv_row).to eq([
+      expect(client.csv_row).to match_array([
         client.uniqid,
         Time.zone.now.to_date,
         client.meetings.first.start_datetime.to_date,
@@ -65,7 +65,7 @@ RSpec.describe Client, type: :model do
         nil,
         'No',
         'Yes',
-        'benefits',
+        'adult_social_care',
         'referrer@example.com',
         0,
         0,
