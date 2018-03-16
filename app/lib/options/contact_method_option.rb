@@ -3,7 +3,7 @@ class ContactMethodOption < Option
     [
       new('email', 'Email'),
       new('phone', 'Phone call'),
-      new('sms_reminder', 'SMS reminders (for meetings)')
+      new('sms_reminder', 'Text reminders')
     ]
   end
 end
