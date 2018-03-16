@@ -13,41 +13,40 @@
 %br
 %br
 
-.full-width
-  .container
-    .sup_page_content.max_restrict
-      %h2 Apprenticeships at Hackney Council
-      %p.bold We all have potential. Hackney Apprentices reach theirs sooner
-      %p There are more than 80 apprentices at the council. They work in lots of different areas including Housing, ICT, Plumbing/Electrical, Administration, Youth Work and Finance. Our apprenticeships are at Levels 2, 3 and 4 and usually last around 18 months.
+.container
+  .sup_page_content.max_restrict
+    %h2 Apprenticeships at Hackney Council
+    %p.bold We all have potential. Hackney Apprentices reach theirs sooner
+    %p There are more than 80 apprentices at the council. They work in lots of different areas including Housing, ICT, Plumbing/Electrical, Administration, Youth Work and Finance. Our apprenticeships are at Levels 2, 3 and 4 and usually last around 18 months.
 
-      %p
-        We recruit regularly throughout the year and will have a big recruitment campaign in the summer.
-        =link_to "To see any current vacancies click here.", "https://hackney.gov.uk/current-apprenticeships", target: "_blank"
-    .points
-      %h3 What we offer
-      = link_to new_client_path, class: 'not_a_link' do
-        .columns
-          .column.point
-            .icon_circle
-              =fa_icon "gbp"
-            %p A great salary of £10.20 per hour if you're over 18
-          .column.point
-            .icon_circle
-              =fa_icon "leanpub"
-            %p High quality training
-          .column.point
-            .icon_circle
-              =fa_icon "calendar"
-            %p Social events with other apprentices across the council
-          .column.point
-            .icon_circle
-              =fa_icon "briefcase"
-            %p Support to find a job once your training ends
-    .sup_page_content.max_restrict
-      %h3 Who can apply?
-      %p You can apply for our apprenticeships if you live in Hackney or went to a Hackney school or college.
-      %p You can also apply if Hackney Council is your corporate parent, i.e. if you are or were in care.
-      %p Most of our apprenticeships are for 16-24 year olds.
+    %p
+      We recruit regularly throughout the year and will have a big recruitment campaign in the summer.
+      =link_to "To see any current vacancies click here.", "https://hackney.gov.uk/current-apprenticeships", target: "_blank"
+  .points
+    %h3 What we offer
+    = link_to new_client_path, class: 'not_a_link' do
+      .columns
+        .column.point
+          .icon_circle
+            =fa_icon "gbp"
+          %p A great salary of £10.20 per hour if you're over 18
+        .column.point
+          .icon_circle
+            =fa_icon "leanpub"
+          %p High quality training
+        .column.point
+          .icon_circle
+            =fa_icon "calendar"
+          %p Social events with other apprentices across the council
+        .column.point
+          .icon_circle
+            =fa_icon "briefcase"
+          %p Support to find a job once your training ends
+  .sup_page_content.max_restrict
+    %h3 Who can apply?
+    %p You can apply for our apprenticeships if you live in Hackney or went to a Hackney school or college.
+    %p You can also apply if Hackney Council is your corporate parent, i.e. if you are or were in care.
+    %p Most of our apprenticeships are for 16-24 year olds.
 
 %br
 %br
@@ -73,18 +72,17 @@
 %br
 %br
 
-.full-width
-  #newsletter.container
-    %h2=t('hackney_works.apprenticeships.newsletter.title')
-    %p.about Be the first to find out about all new apprenticeships at the council by signing up to our email alerts.
-    .email_subscribe
-      %form#mc-embedded-subscribe-form.validate{:action => "https://hackney.us17.list-manage.com/subscribe/post?u=33d75b080fe55e7a52dfa61c1&id=fbc373ca9e", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
-        #mc_embed_signup_scroll
-          %input#mce-EMAIL.email{:name => "EMAIL", :placeholder => "Add your email...", :required => "", :type => "email", :value => "", class: 'input'}/
-          / real people should not fill this in and expect good things - do not remove this or risk form bot signups
-          %div{"aria-hidden" => "true", :style => "position: absolute; left: -5000px;"}
-            %input{:name => "b_33d75b080fe55e7a52dfa61c1_fbc373ca9e", :tabindex => "-1", :type => "text", :value => ""}/
-          %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "Subscribe", class: 'is-primary'}/
+#newsletter.container
+  %h2=t('hackney_works.apprenticeships.newsletter.title')
+  %p.about Be the first to find out about all new apprenticeships at the council by signing up to our email alerts.
+  .email_subscribe
+    %form#mc-embedded-subscribe-form.validate{:action => "https://hackney.us17.list-manage.com/subscribe/post?u=33d75b080fe55e7a52dfa61c1&id=fbc373ca9e", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
+      #mc_embed_signup_scroll
+        %input#mce-EMAIL.email{:name => "EMAIL", :placeholder => "Add your email...", :required => "", :type => "email", :value => "", class: 'input'}/
+        / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+        %div{"aria-hidden" => "true", :style => "position: absolute; left: -5000px;"}
+          %input{:name => "b_33d75b080fe55e7a52dfa61c1_fbc373ca9e", :tabindex => "-1", :type => "text", :value => ""}/
+        %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "Subscribe", class: 'is-primary'}/
 
 
 %br
