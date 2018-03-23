@@ -27,7 +27,7 @@ end
 When(/^I create a new password$/) do
   fill_in 'user_login_password', with: 'SomeLongPassword'
   fill_in('user_login_password_confirmation', with: 'SomeLongPassword')
-  click_button 'Create my password'
+  click_button 'Save'
 end
 
 When(/^I try and register with a postcode outside the borough$/) do

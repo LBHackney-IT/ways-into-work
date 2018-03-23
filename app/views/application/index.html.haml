@@ -94,6 +94,9 @@
     =render partial: 'shared/featured_vacancies', locals: { featured_vacancies: @featured_vacancies }
     %br
     =link_to I18n.t('hackney_works.vacancies.button'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
+- else
+  %br
+  %br
 
 #newsletter.container
   %h2=t('hackney_works.newsletter.title')
