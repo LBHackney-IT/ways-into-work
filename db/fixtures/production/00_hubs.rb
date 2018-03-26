@@ -27,12 +27,12 @@ hubs = [
     ward_mapit_codes: %w[144385 144386 144389 144395 144394 144383 144393]
   }, {
     id: 4,
-    name: 'Supported Employment, Homerton Hub',
-    address_line_1: '6a Rectory Road',
-    postcode: 'N16 7QS',
-    longitude: -0.0700934,
-    latitude: 51.5551779,
-    ward_mapit_codes: %w[144385 144386 144389 144395 144394 144383 144393]
+    name: 'Supported Employment Hoxton Hub',
+    address_line_1: '137-139 Bowling Green Walk',
+    postcode: 'N1 6AL',
+    longitude: -0.08319,
+    latitude: 51.528154,
+    ward_mapit_codes: %w[144396 144392 144382 144381 144380 144391 144379]
   }
 ]
 
