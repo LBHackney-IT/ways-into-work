@@ -4,6 +4,8 @@
   %span
   %span
   %span
+  .txt
+    Menu
 .nav-right.nav-menu
   = link_to "My Clients", user_root, class: "nav-item is-tab #{cp(user_root)}" if current_advisor.hackney_works_team?
   = link_to "All Clients", :advisor_clients, class: "nav-item is-tab #{cp(:advisor_clients)}"
