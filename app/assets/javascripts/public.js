@@ -15,6 +15,16 @@ $(document).ready(function() {
 
   $('.nav-toggle').mobileNav();
 
+  if ( 'ontouchstart' in document.documentElement ) {
+    $( '.touch-to-dial' ).each(function() {
+      var ttdPhoneNumber = $( this ).text();
+
+      // Wrap phone number with an anchor and then insert phone number.
+      $( this ).wrapInner( '<a href=""></a>' );
+      $( this ).find('a').attr( 'href', 'tel:' + ttdPhoneNumber );
+    });
+  }
+
   $('#alerts').alerts();
 
   $('#parralax_me').parralax(0.3, true);
