@@ -4,6 +4,6 @@ class Advisor::AnonymiseClientsController < Advisor::BaseController
   def update
     client.anonymise!
     flash[:success] = I18n.t('clients.flashes.success.anonymise')
-    redirect_to advisor_my_clients_path
+    redirect_to user_root
   end
 end

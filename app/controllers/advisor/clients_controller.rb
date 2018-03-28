@@ -45,7 +45,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   def destroy
     client.destroy
     flash[:success] = I18n.t('clients.flashes.success.archived')
-    redirect_to advisor_my_clients_path
+    redirect_to user_root
   end
 
   private
