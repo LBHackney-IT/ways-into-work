@@ -14,7 +14,7 @@ class Advisor::ContactNotesController < Advisor::BaseController
   def create
     if contact_note.save
       flash[:success] = "Your contact note for #{client.name} has been saved"
-      redirect_to :advisor_my_clients
+      redirect_to user_root
     else
       flash[:error] = 'Failed to save contact details'
       render :new
