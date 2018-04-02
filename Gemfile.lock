@@ -191,7 +191,7 @@ GEM
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
-    httparty (0.16.1)
+    httparty (0.16.2)
       multi_xml (>= 0.5.2)
     humanize_boolean (0.0.2)
       i18n
