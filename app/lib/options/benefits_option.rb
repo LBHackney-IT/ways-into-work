@@ -5,6 +5,7 @@ class BenefitsOption < Option
       new('ib', 'IB'),
       new('jsa', 'JSA'),
       new('uc', 'UC'),
+      new('is', 'IS (Income Support)'),
       new('none', 'None')
     ]
   end
