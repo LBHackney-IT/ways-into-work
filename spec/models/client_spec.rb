@@ -77,6 +77,11 @@ RSpec.describe Client, type: :model do
         1
       ])
     end
+    
+    it 'returns nil if login is not present' do
+      client.login = nil
+      expect(client.csv_row[6]).to eq(nil)
+    end
 
     it 'generates a csv header with all the achievement options' do
       expect(AchievementOption.all.collect(&:name) - Client.csv_header).to be_empty
