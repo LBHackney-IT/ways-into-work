@@ -26,6 +26,7 @@ RSpec.describe Client, type: :model do
                        objectives: %w[full_time_work],
                        rag_status: 'amber',
                        types_of_work: %w[catering],
+                       other_bame: '',
                        bame: 'mixed',
                        gender: 'Male',
                        date_of_birth: Time.zone.now - 25.years,

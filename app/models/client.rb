@@ -266,7 +266,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   end
 
   def ethnicity
-    other_bame || BameOption.find(bame)&.name
+    other_bame.presence || BameOption.find(bame)&.name
   end
 
   def assign_advisor(advisor_id, current_advisor)
