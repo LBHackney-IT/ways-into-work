@@ -141,8 +141,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def self.csv_header # rubocop:disable Metrics/MethodLength
     [
-      'Registation date',
       'Client ID',
+      'Registration date',
       'Initial assessment date',
       'Archive date',
       'Advisor Name',
