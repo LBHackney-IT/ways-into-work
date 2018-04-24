@@ -26,9 +26,12 @@ RSpec.describe Client, type: :model do
                        objectives: %w[full_time_work],
                        rag_status: 'amber',
                        types_of_work: %w[catering],
+                       other_bame: '',
                        bame: 'mixed',
                        gender: 'Male',
                        date_of_birth: Time.zone.now - 25.years,
+                       receive_benefits: 'esa',
+                       other_receive_benefits: '',
                        affected_by_benefit_cap: true,
                        assigned_supported_employment: false,
                        health_condition: 'Prefer not to say',
@@ -62,7 +65,7 @@ RSpec.describe Client, type: :model do
         'Yes',
         'No',
         'Prefer not to say',
-        nil,
+        'ESA',
         'No',
         'Yes',
         'adult_social_care',
@@ -76,6 +79,11 @@ RSpec.describe Client, type: :model do
         2,
         1
       ])
+    end
+    
+    it 'returns nil if login is not present' do
+      client.login = nil
+      expect(client.csv_row[6]).to eq(nil)
     end
 
     it 'generates a csv header with all the achievement options' do

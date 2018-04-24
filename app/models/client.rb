@@ -141,8 +141,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def self.csv_header # rubocop:disable Metrics/MethodLength
     [
-      'ID',
-      'Registation date',
+      'Client ID',
+      'Registration date',
       'Initial assessment date',
       'Archive date',
       'Advisor Name',
@@ -234,7 +234,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       deleted_at&.to_date,
       advisor.name,
       name,
-      login.email,
+      login&.email,
       funded.join(', '),
       objectives.join(', '),
       rag_status,
@@ -245,7 +245,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       nil_yes_or_no(affected_by_benefit_cap),
       nil_yes_or_no(assigned_supported_employment),
       health_condition,
-      receive_benefits,
+      benefits,
       care_leaver,
       nil_yes_or_no(employed),
       referrer&.organisation,
@@ -266,7 +266,11 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   end
 
   def ethnicity
-    other_bame || BameOption.find(bame)&.name
+    other_bame.presence || BameOption.find(bame)&.name
+  end
+  
+  def benefits
+    other_receive_benefits.presence || BenefitsOption.find(receive_benefits)&.name
   end
 
   def assign_advisor(advisor_id, current_advisor)
