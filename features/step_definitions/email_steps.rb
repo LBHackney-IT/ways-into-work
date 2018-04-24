@@ -63,7 +63,7 @@ When(/^I click the opt\-in email confirmation link$/) do
   address = UserLogin.last.email
   expect(unread_emails_for(address).size).to eq(1)
   open_email(address)
-  visit request_uri(links_in_email(current_email).first)
+  visit request_uri(links_in_email(current_email).find { |l| l.match? /reset_password_token/ })
 end
 
 Then(/^I should receive an email confirming that the client has been referred$/) do

@@ -1,5 +1,6 @@
 class CustomDeviseMailer < Devise::Mailer
   default from: WaysIntoWork.config.support_email
+  layout 'mailer'
 
   def reset_password_instructions(record, token, opts = {})
     if record.sign_in_count.positive?
