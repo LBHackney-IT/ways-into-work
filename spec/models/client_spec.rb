@@ -45,7 +45,7 @@ RSpec.describe Client, type: :model do
                                       Fabricate.times(2, :achievement, name: 'job_start'),
                                       Fabricate(:achievement, name: 'job_sustained')].flatten)
     end
-    let(:clients) { Fabricate.times(10, :client) }
+    let!(:clients) { Fabricate.times(10, :client) }
 
     it 'generates a CSV row' do
       expect(client.csv_row).to match_array([
@@ -92,7 +92,7 @@ RSpec.describe Client, type: :model do
     end
 
     it 'generates an entire CSV' do
-      csv = CSV.parse Client.csv(clients)
+      csv = CSV.parse Client.csv(Client.all)
       expect(csv.count).to eq(11)
       expect(csv.shift).to eq(Client.csv_header)
       expect(csv.count).to eq(10)
