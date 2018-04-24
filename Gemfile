@@ -48,7 +48,7 @@ gem 'notifications-ruby-client'
 
 gem 'hashids'
 
-gem 'sendgrid-actionmailer'
+gem 'sendgrid_actionmailer_adapter'
 
 group :development, :staging, :test do
   gem 'fabrication'
