@@ -133,7 +133,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def self.csv(clients)
     CSV.generate do |csv|
       csv << csv_header
-      clients.each do |c|
+      clients.includes(:advisor, :login, :referrer, :achievements).each do |c|
         csv << c.csv_row
       end
     end
