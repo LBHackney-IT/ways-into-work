@@ -222,15 +222,11 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     :client_dashboard
   end
 
-  def initial_assessment_date
-    meetings.where(agenda: 'initial_assessment', client_attended: true).order(created_at: :desc).limit(1).pluck(:start_datetime).first
-  end
-
   def csv_row # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     [
       uniqid,
       created_at.to_date,
-      initial_assessment_date&.to_date,
+      initial_assessment_date,
       deleted_at&.to_date,
       advisor.name,
       name,
