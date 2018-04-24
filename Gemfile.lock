@@ -164,8 +164,6 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     fabrication (2.20.1)
-    faraday (0.15.0)
-      multipart-post (>= 1.2, < 3)
     ffaker (2.9.0)
     ffi (1.9.18)
     font-awesome-rails (4.7.0.4)
@@ -241,7 +239,7 @@ GEM
     multi_json (1.12.1)
     multi_test (0.1.2)
     multi_xml (0.6.0)
-    multipart-post (2.0.0)
+    mustermann (1.0.2)
     nio4r (2.1.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -275,6 +273,8 @@ GEM
     public_suffix (3.0.1)
     puma (3.11.4)
     rack (2.0.5)
+    rack-protection (2.0.1)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.1.0)
@@ -351,6 +351,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
+    ruby_http_client (3.3.0)
     ruby_parser (3.9.0)
       sexp_processor (~> 4.1)
     rubyzip (1.2.1)
@@ -369,13 +370,11 @@ GEM
     selenium-webdriver (3.4.3)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
-    sendgrid-actionmailer (0.2.1)
-      mail (~> 2.5)
-      sendgrid-ruby (< 2.0)
-    sendgrid-ruby (1.1.6)
-      faraday (~> 0.9)
-      mimemagic
-      smtpapi (~> 0.1)
+    sendgrid-ruby (5.2.0)
+      ruby_http_client (~> 3.2)
+      sinatra (>= 1.4.7, < 3)
+    sendgrid_actionmailer_adapter (0.2.2)
+      sendgrid-ruby (~> 5.0)
     sexp_processor (4.9.0)
     simple_form (4.0.0)
       actionpack (> 4)
@@ -385,7 +384,11 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.1)
-    smtpapi (0.1.0)
+    sinatra (2.0.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.1)
+      tilt (~> 2.0)
     sorcerer (1.0.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -477,7 +480,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   sass-rails
-  sendgrid-actionmailer
+  sendgrid_actionmailer_adapter
   simple_form
   simplecov
   uglifier
