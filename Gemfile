@@ -48,6 +48,8 @@ gem 'notifications-ruby-client'
 
 gem 'hashids'
 
+gem 'sendgrid-actionmailer'
+
 group :development, :staging, :test do
   gem 'fabrication'
   gem 'ffaker'
