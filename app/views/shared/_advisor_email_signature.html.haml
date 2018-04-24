@@ -1,2 +1,5 @@
 %br/
-%p="You are receiving this message because your email has been registered as a part of the Hackney Works team. To remove yourself from this mailing list, please send an email to: #{mail_to('hackneyworks@hackney.gov.uk')}".html_safe
+%p
+  You are receiving this message because your email has been registered as a part of the Hackney Works team.
+  To remove yourself from this mailing list, you can
+  = link_to 'unsubscribe from all emails', '<%asm_preferences_raw_url%>'
