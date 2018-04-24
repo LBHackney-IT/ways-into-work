@@ -74,6 +74,9 @@
     },
     "SENDGRID_API_KEY": {
       "required": true
+    },
+    "NOTIFY_API_KEY": {
+      "required": true
     }
   },
   "formation": {
