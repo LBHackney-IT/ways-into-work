@@ -17,5 +17,7 @@ class StaticController < ApplicationController
   
   def just_registered; end
   
+  def unsubscribed; end
+  
 end
 # :nocov:
