@@ -27,6 +27,7 @@ RSpec.describe Client, type: :model do
                        rag_status: 'amber',
                        types_of_work: %w[catering],
                        other_bame: '',
+                       initial_assessment_date: Time.zone.today - 5.days,
                        bame: 'mixed',
                        gender: 'Male',
                        date_of_birth: Time.zone.now - 25.years,
@@ -50,7 +51,7 @@ RSpec.describe Client, type: :model do
       expect(client.csv_row).to match_array([
         client.uniqid,
         Time.zone.now.to_date,
-        client.meetings.first.start_datetime.to_date,
+        client.initial_assessment_date,
         nil,
         'Advisor McAdvisorface',
         'Client McClientface',
