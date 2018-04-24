@@ -27,7 +27,7 @@ class Advisor < ApplicationRecord
   end
 
   def self.options_for_select
-    order('LOWER(name)').map { |e| [e.name, e.id, { 'data-hub-id' => e&.hub&.id }] }
+    order('LOWER(name)').includes(:hub).map { |e| [e.name, e.id, { 'data-hub-id' => e&.hub&.id }] }
   end
   
   def hackney_works_team?

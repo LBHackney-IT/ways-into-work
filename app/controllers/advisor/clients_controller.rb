@@ -99,7 +99,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
         by_hub_id: default_hub_id
       }
     )) || return
-    @filtered_clients = @filterrific.find.page(params[:page])
+    @filtered_clients = @filterrific.find.page(params[:page]).includes(:advisor)
   end
 
   def filterrific_options
