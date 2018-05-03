@@ -52,15 +52,15 @@ class Advisor::DashboardController < Advisor::BaseController
     if @month.to_s.match?(/Q/)
       setup_quarter(@month.to_sym)
     else
-      @from = Date.new(@year.to_i, @month.to_i)
-      @to = @from.end_of_month
+      @from = Time.new(@year.to_i, @month.to_i).getlocal
+      @to = @from.end_of_month.end_of_day
     end
   end
 
   def setup_quarter(quarter)
-    @from = Date.new(@year.to_i, first_month[quarter])
+    @from = Time.new(@year.to_i, first_month[quarter]).getlocal
     @from += 1.year if quarter == :Q4
-    @to = @from.end_of_quarter
+    @to = @from.end_of_quarter.end_of_day
   end
 
   def first_month
