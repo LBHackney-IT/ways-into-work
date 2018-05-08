@@ -352,6 +352,36 @@ RSpec.describe Client, type: :model do
       end
     end
   end
+  
+  describe 'initial_assessment_date' do
+    
+    let(:initial_assessment_date) { Time.zone.today - 5.days }
+    
+    context 'with date set' do
+      let(:client) { Fabricate(:client, initial_assessment_date: initial_assessment_date) }
+      
+      it 'just returns the date' do
+        expect(client.initial_assessment_date).to eq(initial_assessment_date)
+      end
+    end
+    
+    context 'without date set' do
+      let(:client) { Fabricate(:client, initial_assessment_date: nil) }
+
+      before do
+        Fabricate.create(:meeting,
+                         client: client,
+                         agenda: 'initial_assessment',
+                         client_attended: true,
+                         start_datetime: initial_assessment_date.to_datetime)
+      end
+      
+      it 'sets and returns the date' do
+        expect(client.initial_assessment_date).to eq(initial_assessment_date)
+      end
+    end
+    
+  end
 
   it 'can have a referrer' do
     referrer = Fabricate.create(:referrer)

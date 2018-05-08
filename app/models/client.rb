@@ -175,6 +175,15 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def last_meeting_or_contact
     last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
   end
+  
+  def initial_assessment_date
+    self[:initial_assessment_date] ||= begin
+      meeting = meetings.find_by(agenda: 'initial_assessment', client_attended: true)
+      return nil unless meeting
+      update_attribute(:initial_assessment_date, meeting.start_datetime.to_date) # rubocop:disable Rails/SkipsModelValidations
+      meeting.start_datetime.to_date
+    end
+  end
 
   def upcoming_meetings
     @upcoming_meetings ||= meetings.where('meetings.start_datetime > ?', Time.zone.now).order(:start_datetime)
