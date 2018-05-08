@@ -40,7 +40,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   }
 
   scope :initial_assessments_attended, lambda { |from, to|
-    meetings_attended(from, to).where("meetings.agenda = 'initial_assessment'")
+    meetings_attended(from, to).where("meetings.agenda = 'initial_assessment'").uniq
   }
 
   accepts_nested_attributes_for :login
