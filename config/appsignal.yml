@@ -7,6 +7,8 @@ default: &defaults
   ignore_actions:
     - "RailsServiceCheck::ChecksController#all"
     - "GET /service_check"
+  # Skip session data, it contains private information.
+  skip_session_data: true
 
 # Configuration per environment, leave out an environment or set active
 # to false to not push metrics for that environment.
@@ -20,3 +22,8 @@ staging:
 production:
   <<: *defaults
   active: true
+  # Enable allocation tracking for memory metrics:
+  enable_allocation_tracking: true
+  # Enable Garbage Collection instrumentation
+  enable_gc_instrumentation: true
+  send_params: false
