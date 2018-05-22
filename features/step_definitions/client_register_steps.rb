@@ -6,6 +6,7 @@ module RegistrationSH
     fill_in "#{prefix}_phone", with: client.phone
     fill_in "#{prefix}_address_line_1", with: client.address_line_1
     fill_in "#{prefix}_postcode", with: client.postcode
+    check "#{prefix}_consent_given"
   end
 
   def save
