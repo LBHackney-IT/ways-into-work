@@ -35,6 +35,7 @@ class Client::ReferrersController < ApplicationController
       :email,
       :reason,
       client_attributes: [
+        :consent_given,
         :title,
         :first_name,
         :last_name,

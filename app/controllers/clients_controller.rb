@@ -31,6 +31,7 @@ class ClientsController < ApplicationController
   def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
       :title,
+      :consent_given,
       :first_name,
       :last_name,
       :phone,

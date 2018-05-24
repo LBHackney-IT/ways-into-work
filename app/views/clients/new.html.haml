@@ -2,14 +2,22 @@
   = simple_form_for [client] do |form|
     %fieldset
       %h3.subtitle Register for the service
-      %hr
-      %p Please complete the details below. Once you have registered, you will receive an email to verify your account.
+
+      %p
+        Before we begin we need to ask for explicit consent to store your data in alignment with our #{link_to("privacy policy", privacy_policy_path, target: '_blank')}. Outside of the tools listed, we will never share your personal information with third parties without your consent.
 
       = render 'shared/form_errors', object: form.object
+
+      .inline_checkbox
+        = form.input :consent_given, as: :boolean, label: 'I give consent to store my data', required: true
+
+      %hr
+
+      %p Please complete the details below. Once you have registered, you will receive an email to verify your account.
+
       = render partial: 'form_fields', locals: {form: form}
 
-      %br
-      %br
+      %hr
       %h4.bold Supported Employment
       %p Our Supported Employment advisors specialise in supporting clients with mental health conditions, learning difficulties or disabilities.
 
@@ -18,8 +26,4 @@
 
       = render partial: 'shared/assessment_note', locals: {form: form, note: client.assessment_notes.find_or_initialize_by(content_key: :additional_info), label: 'Anything else we should know?', type: :text }
       %br
-      %p
-        We will never share your personal information with third parties without your consent. Read our
-        =link_to "privacy policy", privacy_policy_path, target: '_blank'
-        to find out more about our use of personal data.
       = form.submit t('devise.buttons.register'), :class => 'button is-primary is-pulled-right is-large'

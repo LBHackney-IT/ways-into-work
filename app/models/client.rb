@@ -11,6 +11,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, autosave: true
 
+  validates :consent_given, acceptance: { message: I18n.t('activerecord.errors.full_messages.client.consent_given'), accept: true }
+
   validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
   delegate :email, :email=, to: :login
@@ -18,7 +20,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   has_many :meetings
   has_many :achievements
-  
+
   scope :contact_by_sms, -> { where("'sms_reminder' = ANY (preferred_contact_methods)") }
 
   scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
@@ -34,7 +36,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :registered_on, lambda { |from, to = from.end_of_month|
     where('created_at BETWEEN ? AND ?', from, to)
   }
-  
+
   scope :meetings_attended, lambda { |from, to|
     joins(:meetings).where('meetings.client_attended = true AND meetings.start_datetime BETWEEN ? AND ?', from, to)
   }
@@ -166,7 +168,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       AchievementOption.all.map(&:name)
     ].flatten
   end
-  
+
   def uniqid
     hashid = Hashids.new(ENV['HASHID_SALT'], 8, 'ABCDEFG123456789').encode(id)
     "HW-#{hashid}"
@@ -175,7 +177,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def last_meeting_or_contact
     last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
   end
-  
+
   def initial_assessment_date
     self[:initial_assessment_date] ||= begin
       meeting = meetings.find_by(agenda: 'initial_assessment', client_attended: true)
@@ -273,7 +275,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def ethnicity
     other_bame.presence || BameOption.find(bame)&.name
   end
-  
+
   def benefits
     other_receive_benefits.presence || BenefitsOption.find(receive_benefits)&.name
   end
@@ -329,7 +331,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       agenda: 'initial_assessment'
     )
   end
-  
+
   def anonymise!
     self.first_name = nil
     self.last_name = nil
