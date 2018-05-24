@@ -38,6 +38,7 @@ class ClientSeeder
       puts "email #{email}"
       begin
         client.tap do |c|
+          c.consent_given = true
           c.advisor_id = row['Advisor']
           c.phone = row['Contact Number']
           c.address_line_1 = row['Address line 1']

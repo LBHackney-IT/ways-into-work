@@ -20,6 +20,12 @@ describe Advisor::TaskTitlesController, type: :controller do
       expect(parsed_body.count).to eq(3)
       expect(parsed_body).to eq(['Submit job application', 'Start job or apprenticeship', 'Stay in job more than 6 months'])
     end
+    
+    it 'does not error when typing reserved characters' do
+      get :index, params: { term: 'start training or education course (' }
+      expect(response.content_type).to eq 'application/json'
+      expect(response.status).to eql(200)
+    end
 
     it 'matches none based on typing 3 characters' do
       get :index, params: { term: 'blah' }

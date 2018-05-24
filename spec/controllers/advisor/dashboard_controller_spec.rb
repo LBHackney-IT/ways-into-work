@@ -61,8 +61,8 @@ RSpec.describe Advisor::DashboardController, type: :controller do
             month: quarter,
             year: 2017
           }
-          expect(assigns(:from)).to eq(dates[0])
-          expect(assigns(:to)).to eq(dates[1])
+          expect(assigns(:from).to_date).to eq(dates[0].to_date)
+          expect(assigns(:to).to_date).to eq(dates[1].to_date)
         end
       end
     end

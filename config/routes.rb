@@ -9,6 +9,7 @@ WaysIntoWork::Application.routes.draw do
   get 'hackney100' => 'static#hackney100'
   get 'support' => 'static#support'
   get 'employers' => 'static#employers'
+  get 'unsubscribed' => 'static#unsubscribed'
 
   get 'privacy-policy' => 'static#privacy_policy'
 

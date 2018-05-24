@@ -99,7 +99,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
         by_hub_id: default_hub_id
       }
     )) || return
-    @filtered_clients = @filterrific.find.page(params[:page])
+    @filtered_clients = @filterrific.find.page(params[:page]).includes(:advisor)
   end
 
   def filterrific_options
@@ -121,6 +121,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
 
   def client_params # rubocop:disable Metrics/MethodLength
     params.require(:client).permit(
+      :consent_given,
       :title,
       :first_name,
       :last_name,
@@ -177,7 +178,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       ]
     )
   end
-  
+
   def option_params # rubocop:disable Metrics/MethodLength
     {
       preferred_contact_methods: [],
@@ -218,7 +219,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       additional_info
     ]
   end
-  
+
   def clear_params
     option_params.keys.each do |k|
       edit_client_params[k.to_s]&.delete_if { |p| p.blank? }

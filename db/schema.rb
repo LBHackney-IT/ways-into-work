@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227112920) do
+ActiveRecord::Schema.define(version: 20180522001757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,11 +105,13 @@ ActiveRecord::Schema.define(version: 20180227112920) do
     t.string "national_insurance_number"
     t.boolean "affected_by_benefit_cap"
     t.boolean "assigned_supported_employment"
-    t.datetime "next_meeting_date"
     t.boolean "welfare_calculation_completed"
     t.string "health_barriers", default: [], array: true
     t.string "other_receive_benefits"
+    t.datetime "next_meeting_date"
     t.string "welfare_calculation_notes"
+    t.date "initial_assessment_date"
+    t.boolean "consent_given"
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end

@@ -1,6 +1,7 @@
 Fabricator(:client) do
   first_name { FFaker::Name.first_name }
   last_name { FFaker::Name.last_name }
+  consent_given true
   phone '07000 123456'
   address_line_1  'London'
   postcode 'E8 1EA'

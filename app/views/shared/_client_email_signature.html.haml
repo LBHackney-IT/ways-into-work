@@ -1,2 +1,9 @@
-%br/
-%p="You are receiving this message because your email has been registered on the Hackney Works website. To remove yourself from this mailing list, please send an email to: #{mail_to('hackneyworks@hackney.gov.uk')}".html_safe
+%hr/
+%p
+  You are receiving this message because your email has been registered on the Hackney Works website.
+  To remove yourself from this mailing list, you can
+  = link_to 'unsubscribe from all emails', "<%asm_preferences_raw_url%>".html_safe
+%p
+  To remove yourself from the service entirely, you can send an email to: #{mail_to('hackneyworks@hackney.gov.uk', 'hackneyworks@hackney.gov.uk', subject: 'Remove my data')} with the subject 'Remove my data'.
+%p
+  For more information, #{link_to 'see our Privacy Policy', privacy_policy_url}.

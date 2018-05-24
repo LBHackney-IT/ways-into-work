@@ -12,7 +12,7 @@ class Advisor::TaskTitlesController < ApplicationController
     term = params[:term].downcase
     return names if term.blank? || term.length < 2
     names.select do |name|
-      name.downcase.match(term)
+      name.downcase.match(Regexp.escape(term))
     end
   end
 end

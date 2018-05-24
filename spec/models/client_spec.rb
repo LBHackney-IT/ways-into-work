@@ -26,9 +26,13 @@ RSpec.describe Client, type: :model do
                        objectives: %w[full_time_work],
                        rag_status: 'amber',
                        types_of_work: %w[catering],
+                       other_bame: '',
+                       initial_assessment_date: Time.zone.today - 5.days,
                        bame: 'mixed',
                        gender: 'Male',
                        date_of_birth: Time.zone.now - 25.years,
+                       receive_benefits: 'esa',
+                       other_receive_benefits: '',
                        affected_by_benefit_cap: true,
                        assigned_supported_employment: false,
                        health_condition: 'Prefer not to say',
@@ -41,13 +45,13 @@ RSpec.describe Client, type: :model do
                                       Fabricate.times(2, :achievement, name: 'job_start'),
                                       Fabricate(:achievement, name: 'job_sustained')].flatten)
     end
-    let(:clients) { Fabricate.times(10, :client) }
+    let!(:clients) { Fabricate.times(10, :client) }
 
     it 'generates a CSV row' do
       expect(client.csv_row).to match_array([
         client.uniqid,
         Time.zone.now.to_date,
-        client.meetings.first.start_datetime.to_date,
+        client.initial_assessment_date,
         nil,
         'Advisor McAdvisorface',
         'Client McClientface',
@@ -62,7 +66,7 @@ RSpec.describe Client, type: :model do
         'Yes',
         'No',
         'Prefer not to say',
-        nil,
+        'ESA',
         'No',
         'Yes',
         'adult_social_care',
@@ -77,13 +81,18 @@ RSpec.describe Client, type: :model do
         1
       ])
     end
+    
+    it 'returns nil if login is not present' do
+      client.login = nil
+      expect(client.csv_row[6]).to eq(nil)
+    end
 
     it 'generates a csv header with all the achievement options' do
       expect(AchievementOption.all.collect(&:name) - Client.csv_header).to be_empty
     end
 
     it 'generates an entire CSV' do
-      csv = CSV.parse Client.csv(clients)
+      csv = CSV.parse Client.csv(Client.all)
       expect(csv.count).to eq(11)
       expect(csv.shift).to eq(Client.csv_header)
       expect(csv.count).to eq(10)
@@ -342,6 +351,36 @@ RSpec.describe Client, type: :model do
         end
       end
     end
+  end
+  
+  describe 'initial_assessment_date' do
+    
+    let(:initial_assessment_date) { Time.zone.today - 5.days }
+    
+    context 'with date set' do
+      let(:client) { Fabricate(:client, initial_assessment_date: initial_assessment_date) }
+      
+      it 'just returns the date' do
+        expect(client.initial_assessment_date).to eq(initial_assessment_date)
+      end
+    end
+    
+    context 'without date set' do
+      let(:client) { Fabricate(:client, initial_assessment_date: nil) }
+
+      before do
+        Fabricate.create(:meeting,
+                         client: client,
+                         agenda: 'initial_assessment',
+                         client_attended: true,
+                         start_datetime: initial_assessment_date.to_datetime)
+      end
+      
+      it 'sets and returns the date' do
+        expect(client.initial_assessment_date).to eq(initial_assessment_date)
+      end
+    end
+    
   end
 
   it 'can have a referrer' do

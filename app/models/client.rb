@@ -11,6 +11,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   has_one :hub, through: :advisor
   has_one :login, class_name: UserLogin.to_s, as: :user, autosave: true
 
+  validates :consent_given, acceptance: { message: I18n.t('activerecord.errors.full_messages.client.consent_given'), accept: true }
+
   validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
   delegate :email, :email=, to: :login
@@ -18,7 +20,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   has_many :meetings
   has_many :achievements
-  
+
   scope :contact_by_sms, -> { where("'sms_reminder' = ANY (preferred_contact_methods)") }
 
   scope :needing_contact, -> { needing_appointment.order(contact_notes_count: :asc, created_at: :asc) }
@@ -34,13 +36,13 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :registered_on, lambda { |from, to = from.end_of_month|
     where('created_at BETWEEN ? AND ?', from, to)
   }
-  
+
   scope :meetings_attended, lambda { |from, to|
     joins(:meetings).where('meetings.client_attended = true AND meetings.start_datetime BETWEEN ? AND ?', from, to)
   }
 
   scope :initial_assessments_attended, lambda { |from, to|
-    meetings_attended(from, to).where("meetings.agenda = 'initial_assessment'")
+    meetings_attended(from, to).where("meetings.agenda = 'initial_assessment'").uniq
   }
 
   accepts_nested_attributes_for :login
@@ -133,7 +135,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def self.csv(clients)
     CSV.generate do |csv|
       csv << csv_header
-      clients.each do |c|
+      clients.includes(:advisor, :login, :referrer, :achievements).each do |c|
         csv << c.csv_row
       end
     end
@@ -141,8 +143,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def self.csv_header # rubocop:disable Metrics/MethodLength
     [
-      'ID',
-      'Registation date',
+      'Client ID',
+      'Registration date',
       'Initial assessment date',
       'Archive date',
       'Advisor Name',
@@ -166,7 +168,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       AchievementOption.all.map(&:name)
     ].flatten
   end
-  
+
   def uniqid
     hashid = Hashids.new(ENV['HASHID_SALT'], 8, 'ABCDEFG123456789').encode(id)
     "HW-#{hashid}"
@@ -174,6 +176,15 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def last_meeting_or_contact
     last_communication_events.max.to_date.to_s(:long) if last_communication_events.any?
+  end
+
+  def initial_assessment_date
+    self[:initial_assessment_date] ||= begin
+      meeting = meetings.find_by(agenda: 'initial_assessment', client_attended: true)
+      return nil unless meeting
+      update_attribute(:initial_assessment_date, meeting.start_datetime.to_date) # rubocop:disable Rails/SkipsModelValidations
+      meeting.start_datetime.to_date
+    end
   end
 
   def upcoming_meetings
@@ -222,19 +233,15 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     :client_dashboard
   end
 
-  def initial_assessment_date
-    meetings.where(agenda: 'initial_assessment', client_attended: true).order(created_at: :desc).limit(1).pluck(:start_datetime).first
-  end
-
   def csv_row # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     [
       uniqid,
       created_at.to_date,
-      initial_assessment_date&.to_date,
+      initial_assessment_date,
       deleted_at&.to_date,
       advisor.name,
       name,
-      login.email,
+      login&.email,
       funded.join(', '),
       objectives.join(', '),
       rag_status,
@@ -245,7 +252,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       nil_yes_or_no(affected_by_benefit_cap),
       nil_yes_or_no(assigned_supported_employment),
       health_condition,
-      receive_benefits,
+      benefits,
       care_leaver,
       nil_yes_or_no(employed),
       referrer&.organisation,
@@ -266,7 +273,11 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   end
 
   def ethnicity
-    other_bame || BameOption.find(bame)&.name
+    other_bame.presence || BameOption.find(bame)&.name
+  end
+
+  def benefits
+    other_receive_benefits.presence || BenefitsOption.find(receive_benefits)&.name
   end
 
   def assign_advisor(advisor_id, current_advisor)
@@ -320,7 +331,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       agenda: 'initial_assessment'
     )
   end
-  
+
   def anonymise!
     self.first_name = nil
     self.last_name = nil
