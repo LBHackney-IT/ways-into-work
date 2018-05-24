@@ -13,7 +13,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   validates :consent_given, acceptance: { message: I18n.t('activerecord.errors.full_messages.client.consent_given'), accept: true }
 
-  validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, :consent_given, presence: true
+  validates :login, :first_name, :last_name, :phone, :advisor, :postcode, :hub, presence: true
 
   delegate :email, :email=, to: :login
   delegate :sign_in_count, to: :login
