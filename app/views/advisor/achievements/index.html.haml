@@ -6,13 +6,13 @@
   = I18n.t('advisors.achievement.achieved')
 
 .achievement-container.achieved
-  - client.achievements.all.group_by(&:name).each do |id, group|
+  - AchievementOption.group_by_option(client.achievements).each do |option, group|
     .achievement.box
-      %h4=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(group.size)}")
+      %h4=I18n.t("advisors.achievement.#{option.id}.title.#{first_or_subsequent(group.size)}")
       .div.icon-center
-        = fa_icon AchievementOption.find(id).icon
+        = fa_icon option.icon
       %p.small <strong>Complete: </strong> #{achievements.last.created_at.to_date.to_s(:long)}
-      %p.small=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
+      %p.small=I18n.t("advisors.achievement.#{option.id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
 
 .column
   %label.label
