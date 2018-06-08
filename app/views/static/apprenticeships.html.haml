@@ -17,6 +17,9 @@
   .sup_page_content.max_restrict
     %h2 Apprenticeships at Hackney Council
     %p.bold Join an award-winning programme, and ‘earn while you learn’ with an apprenticeship at Hackney Council.
+
+    %p An apprenticeship is a full time job with at least 20% of your time spent studying. Apprenticeships last from one to four years, depending on the qualification you’re taking.
+
     %p There are more than 100 apprentices at the council. They work in lots of different areas ,for example Housing, ICT,, Trades, Business Administration, Youth Work,, and Finance. Our apprenticeships are at Levels 2, 3 and 4.
 
     %p
@@ -84,25 +87,41 @@
 %br
 %br
 
+
 .full-width#testimonials.hero
   .bg_img#appren_quote
-    =image_tag('apprentice_quote.jpg', class: 'parralax_me', id: 'parralax_me2')
+    =image_tag('canal.jpg', class: 'parralax_me', id: 'parralax_me2')
   .container
     .slider
-      .testimonial.active
-        %br
-        %br
+      .testimonial.clickable#testimonial1.active{:data => {:number => 1}}
+        .image
+          =image_tag('appren_1.png')
         .quote
           %p "I have an amazing qualification and 2 years’ worth of experience in a competitive field. This apprenticeship has taught me that drive is more important than anything else and there’s more than one route to get to where you want to be."
           %span La Braya, Digital Marketing Apprentice, at our Apprenticeship Graduation Ceremony
-
-        %br
-        %br
-        %br
-
-%br
-%br
-%br
+      .testimonial.clickable#testimonial2{:data => {:number => 2}}
+        .image
+          =image_tag('appren_2.png')
+        .quote
+          %p “After one year of not enjoying university, I wanted to find something that would help build a future through a career that I will enjoy, and I found an apprenticeship was the perfect way to start that.”
+          %span Husain, ICT Apprentice
+      .testimonial.clickable#testimonial3{:data => {:number => 3}}
+        .image
+          =image_tag('appren_4.png')
+        .quote
+          %p “I love having the freedom to work across different areas, and having my line manager believe in me and trust me. It’s been great in terms of my skills but also in terms of a social and a professional network”
+          %span Thaddaeus, Design Apprentice
+      .testimonial.clickable#testimonial4{:data => {:number => 4}}
+        .image
+          =image_tag('appren_3.png')
+        .quote
+          %p “It’s given me a more professional manner in the way I approach work. My favourite part of my apprenticeship is probably the training Hackney gives us because it’s given me a real in-depth knowledge of things like mental health, or how we can help people with debt”
+          %span Micki-Jo, Housing Apprentice
+      .slide_indicator
+        .active.indicator#indi1{:data => {:number => 1}}
+        .indicator#indi2{:data => {:number => 2}}
+        .indicator#indi3{:data => {:number => 3}}
+        .indicator#indi4{:data => {:number => 4}}
 
 #newsletter.container
   %h2=t('hackney_works.apprenticeships.newsletter.title')
