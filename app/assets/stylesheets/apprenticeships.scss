@@ -30,9 +30,6 @@ body.employers.static {
       }
     }
   }
-  .full-width.hero {
-    background: linear-gradient(135deg, rgba(111,184,67,0.80) 0%, rgba(111,184,67,0.92) 100%);
-  }
   .is-primary {
     background-color: $color__hackney-apprentices;
   }
@@ -92,6 +89,9 @@ body.apprenticeships {
     img {
       max-width: 250px;
     }
+  }
+  .full-width.hero {
+    background: linear-gradient(135deg, rgba(111,184,67,0.80) 0%, rgba(111,184,67,0.92) 100%);
   }
 }
 
