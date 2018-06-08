@@ -95,6 +95,37 @@ body.apprenticeships {
   }
 }
 
+
+.accordion {
+  .accord-single {
+    margin-bottom: 10px;
+
+    .fa {
+      vertical-align: middle;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      -o-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+
+    &.open {
+      .fa {
+        transform: rotate(45deg);
+      }
+    }
+  }
+  .accord-toggle {
+    cursor: pointer;
+  }
+  .accord-cont {
+    display: none;
+  }
+  .accord-cont.default {
+    display: block;
+  }
+}
+
+
 .sup_page_content {
   margin: 25px auto;
   font-size: 18px;

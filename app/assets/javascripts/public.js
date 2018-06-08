@@ -104,6 +104,8 @@ $(document).ready(function() {
 
   $('#filterrific_by_hub_id').removeAdvisors('#filterrific_by_advisor_id');
 
+  $('.accordion').each(function() { $(this).accordion() });
+
   // Find all YouTube videos
   var $allVideos = $(".youtube"),
 
