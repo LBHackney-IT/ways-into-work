@@ -81,6 +81,13 @@ body.employers.static {
   }
 }
 
+
+body.apprenticeships {
+  .hide_hackney_link {
+    display: none;
+  }
+}
+
 .sup_page_content {
   margin: 25px auto;
   font-size: 18px;
