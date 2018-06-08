@@ -16,37 +16,57 @@
 .container
   .sup_page_content.max_restrict
     %h2 Apprenticeships at Hackney Council
-    %p.bold We all have potential. Hackney Apprentices reach theirs sooner
-    %p There are more than 80 apprentices at the council. They work in lots of different areas including Housing, ICT, Plumbing/Electrical, Administration, Youth Work and Finance. Our apprenticeships are at Levels 2, 3 and 4 and usually last around 18 months.
+    %p.bold Join an award-winning programme, and ‘earn while you learn’ with an apprenticeship at Hackney Council.
+    %p There are more than 100 apprentices at the council. They work in lots of different areas ,for example Housing, ICT,, Trades, Business Administration, Youth Work,, and Finance. Our apprenticeships are at Levels 2, 3 and 4.
 
     %p
-      We recruit regularly throughout the year and will have a big recruitment campaign in the summer.
-      =link_to "To see any current vacancies click here.", "https://hackney.gov.uk/current-apprenticeships", target: "_blank"
+      We recruit regularly throughout the year and we have our main recruitment campaign in the summer.
+      =link_to "See our current vacancies", "https://hackney.gov.uk/current-apprenticeships", target: "_blank"
+
+  .sup_page_content.max_restrict.youtube_cont
+    %iframe.youtube{:allow => "autoplay; encrypted-media", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/IfuP6dwv-SU?rel=0&showinfo=0", :width => "560"}
+  .sup_page_content.max_restrict
+    %p We were named the Top Public Sector Employer in the UK for apprentices at the 2018 School Leaver Awards. This was based on the direct feedback from our apprentices about their experience on our programme.
+    .award_banner
+      =image_tag('award.jpg')
+
   .points
     %h3 What we offer
-    = link_to new_client_path, class: 'not_a_link' do
-      .columns
-        .column.point
-          .icon_circle
-            =fa_icon "gbp"
-          %p A great salary of £10.20 per hour if you're over 18
-        .column.point
-          .icon_circle
-            =fa_icon "leanpub"
-          %p High quality training
-        .column.point
-          .icon_circle
-            =fa_icon "calendar"
-          %p Social events with other apprentices across the council
-        .column.point
-          .icon_circle
-            =fa_icon "briefcase"
-          %p Support to find a job once your training ends
+    .columns
+      .column.point
+        .icon_circle
+          =fa_icon "gbp"
+        %p A starting salary of
+        up to £22,000
+      .column.point
+        .icon_circle
+          =fa_icon "leanpub"
+        %p High quality
+        training
+      .column.point
+        .icon_circle
+          =fa_icon "calendar"
+        %p Social events with other apprentices across the council
+      .column.point
+        .icon_circle
+          =fa_icon "briefcase"
+        %p Support to find a job once your training ends
   .sup_page_content.max_restrict
     %h3 Who can apply?
-    %p You can apply for our apprenticeships if you live in Hackney or went to a Hackney school or college.
-    %p You can also apply if Hackney Council is your corporate parent, i.e. if you are or were in care.
-    %p Most of our apprenticeships are for 16-24 year olds.
+    %p You can apply for our apprenticeships if you:
+    %ul.default
+      %li live in Hackney
+      %li went to a Hackney school or college
+      %li are receiving Hackney leaving care services
+    %p You must hold a British or European passport or have indefinite leave to remain in the UK.
+
+    %p Most of our apprenticeships are aimed at 16-24 year olds starting out in their careers, although we also have some higher level apprenticeships which are more suitable for older applicants, and those with some prior experience.
+
+    %p You may not be able to undertake an apprenticeship in a subject and level that you have already completed.
+
+    %p For many of our apprenticeships, you do not need any formal qualifications to apply. We may ask you to take a short English and Maths assessment to make sure you are at the right level for the apprenticeship qualification.
+
+    %h3 What happens if I have a criminal record?
 
 %br
 %br
@@ -115,8 +135,12 @@
     %p
       To search for apprenticeship vacancies across England, use the
       =link_to "find an apprenticeship service.", "https://www.gov.uk/apply-apprenticeship", target: '_blank'
-
 %br
+
+.sup_page_content.max_restrict.youtube_cont
+  %iframe.youtube{:allow => "autoplay; encrypted-media", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/41bpQCr46vI?rel=0", :width => "560"}
+
+
 %br
 .container
   .sup_page_content.max_restrict
