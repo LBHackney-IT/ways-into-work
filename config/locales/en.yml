@@ -64,10 +64,10 @@ en:
       internal_about:
         title: "Ready to apply?"
         content: |
-          <p>Interested in apprenticeships and want some support?’ to: Our free Hackney Works service can help you with CV writing, interview technique and applications. We also give you exclusive access to apprenticeship opportunities with local employers.</p>
+          <p>Interested in apprenticeships and want some support?’ Our free Hackney Works service can help you with CV writing, interview technique and applications. We also give you exclusive access to apprenticeship opportunities with local employers.</p>
           <p>Please note, this service is for people who live in Hackney.</p>
       newsletter:
-        title: "‘Apprenticeship email alerts"
+        title: "Apprenticeship email alerts"
         about: "Be the first to find out about all new vacancies by signing up to our email alerts."
     hack_100:
       about: "The Council are creating 100 work placements for young people, aged 16-19, in businesses around Hackney."
