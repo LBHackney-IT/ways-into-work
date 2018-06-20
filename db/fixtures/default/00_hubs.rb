@@ -20,10 +20,11 @@ hubs = [
   }, {
     id: 3,
     name: 'Homerton Hub',
-    address_line_1: '6a Rectory Road',
+    address_line_1: 'Lee House',
+    address_line_2: '6a Rectory Road',
     postcode: 'N16 7QS',
-    longitude: -0.0700934,
-    latitude: 51.5551779,
+    longitude: -0.0690001,
+    latitude: 51.555139,
     ward_mapit_codes: %w[144385 144386 144389 144395 144394 144383 144393]
   }, {
     id: 4,

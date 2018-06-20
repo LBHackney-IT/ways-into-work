@@ -1,6 +1,6 @@
 .full-width.hero
   .bg_img
-    =image_tag('dalston-green.jpg', class: 'parralax_me', id: 'parralax_me')
+    =image_tag('apprentice_hero.jpg', class: 'parralax_me', id: 'parralax_me')
   .container.columns.main
     .column.is-one-thrid#logo
       =image_tag('hackney-apprentices-white.svg', :alt => 'Hackney Apprenticeships')
@@ -16,65 +16,117 @@
 .container
   .sup_page_content.max_restrict
     %h2 Apprenticeships at Hackney Council
-    %p.bold We all have potential. Hackney Apprentices reach theirs sooner
-    %p There are more than 80 apprentices at the council. They work in lots of different areas including Housing, ICT, Plumbing/Electrical, Administration, Youth Work and Finance. Our apprenticeships are at Levels 2, 3 and 4 and usually last around 18 months.
+    %p.bold Join an award-winning programme, and ‘earn while you learn’ with an apprenticeship at Hackney Council.
+
+    %p An apprenticeship is a full time job with at least 20% of your time spent studying. Apprenticeships last from one to four years, depending on the qualification you’re taking.
+
+    %p There are more than 100 apprentices at the council. They work in lots of different areas, for example Housing, ICT, Trades, Business Administration, Youth Work, and Finance. Our apprenticeships are at Levels 2, 3 and 4.
 
     %p
-      We recruit regularly throughout the year and will have a big recruitment campaign in the summer.
-      =link_to "To see any current vacancies click here.", "https://hackney.gov.uk/current-apprenticeships", target: "_blank"
+      We recruit regularly throughout the year and we have our main recruitment campaign in the summer.
+      =link_to "See our current vacancies", "https://hackney.gov.uk/current-apprenticeships", target: "_blank"
+
+  .sup_page_content.max_restrict.youtube_cont
+    %iframe.youtube{:allow => "autoplay; encrypted-media", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/IfuP6dwv-SU?rel=0&showinfo=0", :width => "560"}
+  .sup_page_content.max_restrict
+    %p We were named the Top Public Sector Employer in the UK for apprentices at the 2018 School Leaver Awards. This was based on the direct feedback from our apprentices about their experience on our programme.
+    .award_banner
+      =image_tag('award.jpg')
+
   .points
     %h3 What we offer
-    = link_to new_client_path, class: 'not_a_link' do
-      .columns
-        .column.point
-          .icon_circle
-            =fa_icon "gbp"
-          %p A great salary of £10.20 per hour if you're over 18
-        .column.point
-          .icon_circle
-            =fa_icon "leanpub"
-          %p High quality training
-        .column.point
-          .icon_circle
-            =fa_icon "calendar"
-          %p Social events with other apprentices across the council
-        .column.point
-          .icon_circle
-            =fa_icon "briefcase"
-          %p Support to find a job once your training ends
+    .columns
+      .column.point
+        .icon_circle
+          =fa_icon "gbp"
+        %p A starting salary of
+        up to £22,000
+      .column.point
+        .icon_circle
+          =fa_icon "leanpub"
+        %p High quality
+        training
+      .column.point
+        .icon_circle
+          =fa_icon "calendar"
+        %p Social events with other apprentices across the council
+      .column.point
+        .icon_circle
+          =fa_icon "briefcase"
+        %p Support to find a job once your training ends
   .sup_page_content.max_restrict
     %h3 Who can apply?
-    %p You can apply for our apprenticeships if you live in Hackney or went to a Hackney school or college.
-    %p You can also apply if Hackney Council is your corporate parent, i.e. if you are or were in care.
-    %p Most of our apprenticeships are for 16-24 year olds.
+    %p You can apply for our apprenticeships if you:
+    %ul.default
+      %li live in Hackney
+      %li went to a Hackney school or college
+      %li are receiving Hackney leaving care services
+    %p You must hold a British or European passport or have indefinite leave to remain in the UK.
+
+    %p Most of our apprenticeships are aimed at 16-24 year olds starting out in their careers, although we also have some higher level apprenticeships which are more suitable for older applicants, and those with some prior experience.
+
+    %p You may not be able to undertake an apprenticeship in a subject and level that you have already completed.
+
+    %p For many of our apprenticeships, you do not need any formal qualifications to apply. We may ask you to take a short English and Maths assessment to make sure you are at the right level for the apprenticeship qualification.
+
+    %br
+
+    .accordion
+      .accord-single
+        .accord-toggle
+          %h3
+            What happens if I have a criminal record?
+            =fa_icon "plus"
+        .accord-cont
+          %p At Hackney we support the rehabilitation of offenders and will not unfairly discriminate against any person with a conviction. If you do have a current or unspent criminal conviction you will be asked to declare this as part of your application.This will not stop you from being able to access the apprenticeship programme, however applications will be looked at on a case by case basis to assess suitability for job role.
+          %p If the role involves working with children or vulnerable adults you will also have to declare any spent and unspent convictions and be subject to a DBS (Disclosure and Barring Service) check.
+
+          %p=link_to "Nacro offer further information and support about how to disclose.", "https://www.nacro.org.uk/resettlement-advice-service/support-for-individuals/disclosing-criminal-records/disclosing-criminal-records-employers/", target: "_blank"
 
 %br
 %br
 %br
+
 
 .full-width#testimonials.hero
   .bg_img#appren_quote
-    =image_tag('apprentice_quote.jpg', class: 'parralax_me', id: 'parralax_me2')
+    =image_tag('canal.jpg', class: 'parralax_me', id: 'parralax_me2')
   .container
     .slider
-      .testimonial.active
-        %br
-        %br
+      .testimonial.clickable#testimonial1.active{:data => {:number => 1}}
+        .image
+          =image_tag('appren_1.png')
         .quote
           %p "I have an amazing qualification and 2 years’ worth of experience in a competitive field. This apprenticeship has taught me that drive is more important than anything else and there’s more than one route to get to where you want to be."
           %span La Braya, Digital Marketing Apprentice, at our Apprenticeship Graduation Ceremony
-
-        %br
-        %br
-        %br
-
-%br
-%br
-%br
+      .testimonial.clickable#testimonial2{:data => {:number => 2}}
+        .image
+          =image_tag('appren_2.png')
+        .quote
+          %p “After one year of not enjoying university, I wanted to find something that would help build a future through a career that I will enjoy, and I found an apprenticeship was the perfect way to start that.”
+          %span Husain, ICT Apprentice
+      .testimonial.clickable#testimonial3{:data => {:number => 3}}
+        .image
+          =image_tag('appren_4.png')
+        .quote
+          %p “I love having the freedom to work across different areas, and having my line manager believe in me and trust me. It’s been great in terms of my skills but also in terms of a social and a professional network”
+          %span Thaddaeus, Design Apprentice
+      .testimonial.clickable#testimonial4{:data => {:number => 4}}
+        .image
+          =image_tag('appren_3.png')
+        .quote
+          %p “It’s given me a more professional manner in the way I approach work. My favourite part of my apprenticeship is probably the training Hackney gives us because it’s given me a real in-depth knowledge of things like mental health, or how we can help people with debt”
+          %span Micki-Jo, Housing Apprentice
+      .slide_indicator
+        .active.indicator#indi1{:data => {:number => 1}}
+        .indicator#indi2{:data => {:number => 2}}
+        .indicator#indi3{:data => {:number => 3}}
+        .indicator#indi4{:data => {:number => 4}}
 
 #newsletter.container
+  %br
   %h2=t('hackney_works.apprenticeships.newsletter.title')
-  %p.about Be the first to find out about all new apprenticeships at the council by signing up to our email alerts.
+  %p.about Sign up for email alerts to find out about new apprenticeships at the council and other Hackney employers.
   .email_subscribe
     %form#mc-embedded-subscribe-form.validate{:action => "https://hackney.us17.list-manage.com/subscribe/post?u=33d75b080fe55e7a52dfa61c1&id=fbc373ca9e", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
       #mc_embed_signup_scroll
@@ -115,13 +167,16 @@
     %p
       To search for apprenticeship vacancies across England, use the
       =link_to "find an apprenticeship service.", "https://www.gov.uk/apply-apprenticeship", target: '_blank'
-
 %br
+
+.sup_page_content.max_restrict.youtube_cont
+  %iframe.youtube{:allow => "autoplay; encrypted-media", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/41bpQCr46vI?rel=0", :width => "560"}
+
+
 %br
 .container
   .sup_page_content.max_restrict
     %h2 Information for Employers
     %p
-      If you’re interested in finding out more about apprenticeships and how they could work for your organisation,
-      =link_to "see our information for employers page.", employers_path
+      =link_to "Find out more about how your business can get involved.", employers_path
 

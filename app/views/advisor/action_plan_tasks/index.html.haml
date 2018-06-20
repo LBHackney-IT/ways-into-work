@@ -15,14 +15,14 @@
       %h3 Achievements
       %br
       .action-section.columns.is-multiline
-        - client.achievements.all.group_by(&:name).each do |id, group|
+        - AchievementOption.group_by_option(client.achievements).each do |option, group|
           .achievement.column.is-one-quarter
             .icon_cont
-              .icon= fa_icon AchievementOption.find(id).icon
+              .icon= fa_icon option.icon
             .context
-              %p=I18n.t("advisors.achievement.#{id}.title.#{first_or_subsequent(group.size)}")
+              %p=I18n.t("advisors.achievement.#{option.id}.title.#{first_or_subsequent(group.size)}")
               - if group.size > 1
-                %p.sub=I18n.t("advisors.achievement.#{id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
+                %p.sub=I18n.t("advisors.achievement.#{option.id}.description.#{first_or_subsequent(group.size)}", count: group.size).html_safe
               - else
                 %p.sub=group.last.created_at.to_date.to_s(:long)
 

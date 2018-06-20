@@ -30,9 +30,6 @@ body.employers.static {
       }
     }
   }
-  .full-width.hero {
-    // background: linear-gradient(135deg, rgba(111,184,67,0.40) 0%, rgba(111,184,67,0.82) 100%);
-  }
   .is-primary {
     background-color: $color__hackney-apprentices;
   }
@@ -80,6 +77,59 @@ body.employers.static {
     padding-right: 15px;
   }
 }
+
+
+body.apprenticeships {
+  .hide_hackney_link {
+    display: none;
+  }
+
+  .award_banner {
+    text-align: center;
+    img {
+      max-width: 250px;
+    }
+  }
+  .full-width.hero {
+    background: linear-gradient(135deg, rgba(111,184,67,0.80) 0%, rgba(111,184,67,0.92) 100%);
+  }
+  .testimonial {
+    .image {
+      margin-top: 40px;
+    }
+  }
+}
+
+
+.accordion {
+  .accord-single {
+    margin-bottom: 10px;
+
+    .fa {
+      vertical-align: middle;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      -o-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+
+    &.open {
+      .fa {
+        transform: rotate(45deg);
+      }
+    }
+  }
+  .accord-toggle {
+    cursor: pointer;
+  }
+  .accord-cont {
+    display: none;
+  }
+  .accord-cont.default {
+    display: block;
+  }
+}
+
 
 .sup_page_content {
   margin: 25px auto;

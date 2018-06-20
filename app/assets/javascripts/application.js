@@ -35,4 +35,5 @@
 //= require featured-vacancies
 //= require slider
 //= require filterrific-browser-history
+//= require accordion
 //= require public
