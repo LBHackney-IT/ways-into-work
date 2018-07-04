@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/wearefuturegov/local-offer
+    working_directory: ~/wearefuturegov/ways-into-work
     parallelism: 1
     shell: /bin/bash --login
     environment:
