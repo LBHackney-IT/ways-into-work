@@ -21,7 +21,6 @@ config/database.yml
 .DS_Store
 *.dump
 .rbenv-gemsets
-.ruby-version
 .ruby-gemset
 .powrc
 .powenv
