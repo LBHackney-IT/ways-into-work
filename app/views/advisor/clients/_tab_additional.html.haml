@@ -11,5 +11,10 @@
 
 = render partial: 'shared/assessment_note', locals: {form: form, note: @additional_info_notes, label: 'Advisor notes', type: :text }
 
+%h4= t('client.emergency_contact_details')
+
+=form.input :emergency_contact_name, as: :string, input_html: { class: 'input' }
+=form.input :emergency_contact_phone, as: :string, input_html: { class: 'input' }
+
 %br
 = link_to I18n.t('clients.buttons.archive_client'), advisor_client_path(client), method: :delete, class: "button is-danger is-small"
