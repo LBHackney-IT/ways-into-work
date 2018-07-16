@@ -12,7 +12,15 @@ class AdvisorClientDecorator < ClientDecorator
   end
 
   def delete_file_button(file)
-    h.button_to(I18n.t('clients.buttons.delete'), h.advisor_client_file_upload_path(client_id: id, id: file.id), class: 'button is-primary is-small', method: :delete)
+    h.button_to(
+      I18n.t('clients.buttons.delete'),
+      h.advisor_client_file_upload_path(client_id: id, id: file.id),
+      class: 'button is-primary is-small',
+      method: :delete,
+      data: {
+        confirm: 'Are you sure you want to delete this file?'
+      }
+    )
   end
 
   def decorate_meetings_action
