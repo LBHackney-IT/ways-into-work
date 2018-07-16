@@ -47,8 +47,12 @@ class Advisor < ApplicationRecord
     login.send_reset_password_instructions
   end
   
-  def can_assign?(client)
+  def can_assign_to_me?(client)
     return false unless hackney_works_team?
     client.advisor != self
+  end
+  
+  def can_assign?
+    team_leader? || admin?
   end
 end
