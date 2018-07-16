@@ -21,3 +21,5 @@
     =form.input :address_line_2, as: :string, :input_html => { :class => 'input' }
   .column
     =form.input :postcode, as: :string, :input_html => { :class => 'input' }
+
+= render partial: 'shared/assessment_note', locals: {form: form, note: client.assessment_notes.find_or_initialize_by(content_key: :additional_info), label: 'Anything else we should know?', type: :text }
