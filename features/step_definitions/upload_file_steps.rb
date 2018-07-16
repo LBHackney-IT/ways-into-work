@@ -26,3 +26,7 @@ When(/^I upload my cv file$/) do
   page.attach_file(:file_upload_attachment, Rails.root.join('features', 'upload_files', @file_name))
   click_on I18n.t('clients.buttons.upload')
 end
+
+Then(/^the CV upload reference should still be present$/) do
+  expect(@client.file_uploads.count).to_not eq(0)
+end

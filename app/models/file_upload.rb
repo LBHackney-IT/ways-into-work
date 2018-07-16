@@ -1,5 +1,7 @@
 class FileUpload < ApplicationRecord
-  has_attached_file :attachment
+  has_attached_file :attachment, preserve_files: true
+  
+  acts_as_paranoid
 
   validates_attachment_content_type :attachment, content_type: /\A.*\Z/
 
