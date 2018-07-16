@@ -10,7 +10,13 @@ Feature: Team leader assigns client to another Advisor
     When I navigate to see the client's details
     Then I should see that the client is assigned to me
     And I should be able to assign the client to Dave
-
+    
+  Scenario: Admin is able to assign client
+    Given I am signed in as an admin
+    And I am on the advisor clients page
+    When I navigate to see the client's details
+    Then I should be able to assign the client to Dave
+    
   Scenario: Advisor assigns client
     Given I am on the advisors edit client page
     When I assign the client to dave
