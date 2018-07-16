@@ -33,3 +33,9 @@ Feature: Client signs up for the service
     When I click the opt-in email confirmation link
     And I create a new password
     Then I should see a password updated notice message
+  
+  @homerton_postcode
+  Scenario: client can't sign up with an exisitng phone number
+    Given I have just signed up as a client
+    And I try and register with the same phone number
+    Then I should see an error telling me the phone number already exists

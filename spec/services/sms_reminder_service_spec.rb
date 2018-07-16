@@ -2,8 +2,8 @@ require 'spec_helper'
 
 RSpec.describe SmsReminderService, type: :model do
   describe 'send reminders to clients about meetings' do
-    let!(:client1) { Fabricate(:client, phone: '07557286509') }
-    let!(:client2) { Fabricate(:client, phone: '07557286509', preferred_contact_methods: ['sms_reminder']) }
+    let!(:client1) { Fabricate(:client) }
+    let!(:client2) { Fabricate(:client, preferred_contact_methods: ['sms_reminder']) }
 
     let!(:meeting) do
       Fabricate(:meeting, client: client1, start_datetime: Time.zone.now + 1.day)
