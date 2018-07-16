@@ -57,7 +57,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   phony_normalize :phone, default_country_code: 'GB'
   validates_plausible_phone :phone, country_code: 'GB'
-  validates :phone, uniqueness: true
+  validates :phone, uniqueness: true, on: :create
 
   has_many :assessment_notes
   has_many :contact_notes
