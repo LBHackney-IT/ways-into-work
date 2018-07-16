@@ -2,7 +2,7 @@ Fabricator(:client) do
   first_name { FFaker::Name.first_name }
   last_name { FFaker::Name.last_name }
   consent_given true
-  phone '07000 123456'
+  phone { "07000 #{rand(0..999_999).to_s.rjust(6, '0')}" }
   address_line_1  'London'
   postcode 'E8 1EA'
   date_of_birth { Time.zone.now - rand(30..35).years }

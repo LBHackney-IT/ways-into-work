@@ -43,8 +43,19 @@ When(/^I try and register without a postcode$/) do
   register
 end
 
+Given(/^I try and register with the same phone number$/) do
+  visit new_client_path
+  client = Fabricate.build(:client, phone: @i.phone.phony_formatted(spaces: ''))
+  fill_in_registration_form(FFaker::Internet.email, client)
+  register
+end
+
 Then(/^I should see an error telling me I need a postcode$/) do
   expect(page).to have_content('Postcode can\'t be blank')
+end
+
+Then(/^I should see an error telling me the phone number already exists$/) do
+  expect(page).to have_content('Phone has already been taken')
 end
 
 When(/^I register my self as "([^"]*)"$/) do |email|
