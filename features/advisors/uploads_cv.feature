@@ -1,4 +1,4 @@
-@advisor_cv
+@stub_s3
 Feature: Advisor uploads file for information page
   So that I can upload CV documents of clients
   As an Advisor
