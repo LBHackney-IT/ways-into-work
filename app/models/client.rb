@@ -342,6 +342,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     self.postcode = nil
     self.date_of_birth = nil
     self.national_insurance_number = nil
+    file_uploads.each(&:really_destroy!)
     save(validate: false)
   end
 end
