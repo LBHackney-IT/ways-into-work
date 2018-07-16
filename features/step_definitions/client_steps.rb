@@ -22,6 +22,12 @@ Given(/^the client is not assigned to me$/) do
   expect(@client.advisor).to_not eq(@i)
 end
 
+Given(/^I archive and restore the client$/) do
+  @client.destroy
+  @client.reload
+  @client.restore(recursive: true)
+end
+
 Then(/^the client should not be assigned to me$/) do
   expect(@client.reload.advisor).to_not eq(@i)
 end
