@@ -1,4 +1,4 @@
-@client_cv
+@stub_s3
 Feature: Client uploads file for information page
   So that I can upload CV documents to share with my advisor
   As an Client
