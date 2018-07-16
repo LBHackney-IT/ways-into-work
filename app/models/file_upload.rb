@@ -10,6 +10,8 @@ class FileUpload < ApplicationRecord
   validates :client, presence: true
 
   belongs_to :client
+  
+  before_real_destroy :remove_file
 
   def file_type
     case attachment_content_type
@@ -20,5 +22,11 @@ class FileUpload < ApplicationRecord
     when /officedocument/ then 'word'
     else 'generic'
     end
+  end
+  
+  private
+  
+  def remove_file
+    attachment.s3_bucket.object(attachment.path.sub(%r{\A/}, '')).delete
   end
 end

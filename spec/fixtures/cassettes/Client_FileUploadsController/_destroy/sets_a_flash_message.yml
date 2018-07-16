@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com/public/system/attachments/6/original/CV.doc
+    uri: https://<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com/public/system/attachments/1/original/CV.doc
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -13,7 +13,7 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.8 ruby/2.4.1 x86_64-darwin16 resources
+      - aws-sdk-ruby2/2.11.89 ruby/2.4.1 x86_64-darwin16 resources
       X-Amz-Acl:
       - public-read
       Expect:
@@ -21,15 +21,15 @@ http_interactions:
       Content-Md5:
       - i4/7RAhJh7g1iwo9yR51rQ==
       X-Amz-Date:
-      - 20171130T114125Z
+      - 20180716T141812Z
       Host:
       - "<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com"
       X-Amz-Content-Sha256:
       - c15bc012d8067f6da8d427c89e5b3cd9d4a645e72983a27a9d80343af8550af7
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20171130/<AWS_REGION>/s3/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20180716/<AWS_REGION>/s3/aws4_request,
         SignedHeaders=content-md5;content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date,
-        Signature=4b8ddda1ee893a02168ebf6cf7bc9cacd0af39f0f9f6c1835f79397f8f7659e4
+        Signature=5bf56f0ca12833162ce79049b0a94166759c57c9870dee8188270d7919a4e79a
       Content-Length:
       - '22016'
       Accept:
@@ -40,11 +40,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 56/LmPjRFEjgSVkDG2LZa6eXm5hYOFU7bRSz5dtAjUeCXPztnZzxZh/XFMid7gFLh/+UOcXHmN8=
+      - UeR4oW9j9gcA6lPwm3IUmrOANInF15YD9u+C2QB/aRKBvTOxwpxJdbjDxL6xJnZJLHRyAxwAasQ=
       X-Amz-Request-Id:
-      - E3351D11A87F9B78
+      - F3B2B61DF0508162
       Date:
-      - Thu, 30 Nov 2017 11:41:29 GMT
+      - Mon, 16 Jul 2018 14:18:13 GMT
       Etag:
       - '"8b8ffb44084987b8358b0a3dc91e75ad"'
       Content-Length:
@@ -55,64 +55,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 30 Nov 2017 11:41:25 GMT
-- request:
-    method: head
-    uri: https://<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com/public/system/attachments/6/original/CV.doc
-    body:
-      encoding: ASCII-8BIT
-      string: ''
-    headers:
-      Content-Type:
-      - ''
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby2/2.10.8 ruby/2.4.1 x86_64-darwin16 resources
-      X-Amz-Date:
-      - 20171130T114125Z
-      Host:
-      - "<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com"
-      X-Amz-Content-Sha256:
-      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20171130/<AWS_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b5b28af96c1a6102eeb29f01a287aa5dd51c9696a58d4647e3dc2013723bf299
-      Content-Length:
-      - '0'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Amz-Id-2:
-      - Npk8Y7umo6z9uL+2aIRECSqhKqZ++L/bIcqFmlOsylLkywokaz76hGR+Hh0ryObDf39UzGtqW9A=
-      X-Amz-Request-Id:
-      - 06065FB4E7E41A2C
-      Date:
-      - Thu, 30 Nov 2017 11:41:30 GMT
-      Last-Modified:
-      - Thu, 30 Nov 2017 11:41:29 GMT
-      Etag:
-      - '"8b8ffb44084987b8358b0a3dc91e75ad"'
-      Accept-Ranges:
-      - bytes
-      Content-Type:
-      - application/msword
-      Content-Length:
-      - '22016'
-      Server:
-      - AmazonS3
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 30 Nov 2017 11:41:25 GMT
+  recorded_at: Mon, 16 Jul 2018 14:18:12 GMT
 - request:
     method: delete
-    uri: https://<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com/public/system/attachments/6/original/CV.doc
+    uri: https://<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com/public/system/attachments/1/original/CV.doc
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -122,16 +68,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.8 ruby/2.4.1 x86_64-darwin16 resources
+      - aws-sdk-ruby2/2.11.89 ruby/2.4.1 x86_64-darwin16 resources
       X-Amz-Date:
-      - 20171130T114125Z
+      - 20180716T141812Z
       Host:
       - "<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20171130/<AWS_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=6135c843748bb2b63a052250c98aa2232ba301664294ec54b664f70c39dc0aa4
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20180716/<AWS_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=7513e28fc45fa47e24782648d8e40ae650efa0e1e88007c9d1ec945a99c1facb
       Content-Length:
       - '0'
       Accept:
@@ -142,16 +88,16 @@ http_interactions:
       message: No Content
     headers:
       X-Amz-Id-2:
-      - 98CCJXMN8L2Pp6fPVS5hSeU5NhS9qM+kT6IzIdf9hrAaoes3G7+x2rssCKeBPIG6qPJEFPFybFg=
+      - XUFwiCLCE8Db6WZNdi9aznv1sCmLBxH2udf82LitbMl+eQkqHZxheDXgg5gKbMHOIIJ8i7ERGgo=
       X-Amz-Request-Id:
-      - 4C580507ACFAEDC8
+      - 5D95EAB1730CBCB0
       Date:
-      - Thu, 30 Nov 2017 11:41:30 GMT
+      - Mon, 16 Jul 2018 14:18:13 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 30 Nov 2017 11:41:25 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Mon, 16 Jul 2018 14:18:12 GMT
+recorded_with: VCR 4.0.0
