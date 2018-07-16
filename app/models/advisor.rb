@@ -46,4 +46,9 @@ class Advisor < ApplicationRecord
     login.send :set_reset_password_token
     login.send_reset_password_instructions
   end
+  
+  def can_assign?(client)
+    return false unless hackney_works_team?
+    client.advisor != self
+  end
 end
