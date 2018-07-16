@@ -17,7 +17,7 @@ class Advisor::FileUploadsController < Advisor::BaseController
   end
 
   def destroy
-    file_upload.destroy
+    file_upload.really_destroy!
     flash[:success] = 'File deleted'
     redirect_to new_advisor_client_file_upload_path(client)
   end
