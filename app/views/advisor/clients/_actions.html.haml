@@ -6,6 +6,6 @@
         .select
           = form.input :advisor_id, as: :select, collection: Advisor.all, include_blank: false, label: false
         = form.submit I18n.t('clients.buttons.assign_advisor'), class: "step button is-primary"
-      - elsif client.advisor != current_advisor
+      - elsif current_advisor.can_assign?(client)
         = form.input :advisor_id, as: :hidden, input_html: { value: current_advisor.id }
-        = form.submit I18n.t('clients.buttons.assign_to_me'), class: "step button is-primary" if !current_advisor.admin?
+        = form.submit I18n.t('clients.buttons.assign_to_me'), class: "step button is-primary"

@@ -76,6 +76,11 @@ When(/^I assign the client to myself$/) do
   click_on I18n.t('clients.buttons.assign_to_me')
 end
 
+Then(/^I should not be able to see the assign to me button$/) do
+  click_on 'View details'
+  expect(page).to_not have_content(I18n.t('clients.buttons.assign_to_me'))
+end
+
 Then(/^the client should be part of my case load$/) do
   expect(@i.reload.clients).to include(@client)
   visit advisor_my_clients_path

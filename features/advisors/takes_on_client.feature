@@ -19,3 +19,9 @@ Feature: Advisor takes on new case
     And I am on the advisor clients page
     When I assign the client to myself
     Then the client should be part of my case load
+  
+  Scenario: Employer engagement can't see assign button
+    Given I am an in the employer engagement team
+    And I have signed in
+    And I am on the advisor clients page
+    Then I should not be able to see the assign to me button
