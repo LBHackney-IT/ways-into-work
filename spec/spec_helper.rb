@@ -14,6 +14,8 @@ require 'database_cleaner'
 require 'email_spec'
 require 'email_spec/rspec'
 
+require 'webmock/rspec'
+
 require Rails.root.join('spec', 'helpers', 'client_seeder_helper')
 require Rails.root.join('spec', 'helpers', 'vcr')
 

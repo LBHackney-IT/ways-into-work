@@ -40,9 +40,9 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - tmo6WHxMfeFFwmA2aAhYVcqcfOWgdB8BApVhnIOT/6ssJlaJJqEeayWlsd+0NRvJy2h5suv8F1Q=
+      - BLPCB2c4d7ia3++V4vXx3tVa8+pC9stqR+THvDmOv4kUtyIt/p1wek5eE0YOlf4Hdi94xQyCdMM=
       X-Amz-Request-Id:
-      - 60BBF6F1EB47385A
+      - EF98EC297080CF6E
       Date:
       - Mon, 16 Jul 2018 14:15:54 GMT
       Etag:
@@ -88,9 +88,9 @@ http_interactions:
       message: No Content
     headers:
       X-Amz-Id-2:
-      - BE5V9aLoNdO3Gsbr+zt0nDpLWylo+piqIiWyNAESa3MKGW9/Do/skotjK7WP66ecnYJhgrlZA2c=
+      - NB+Z3Xl7hHk10a55l/yzRX8LvniATmak6kbe3RzaP9VRm7EA1OemgzcwFpZgYtLFQbDoU/7ct7Y=
       X-Amz-Request-Id:
-      - 37D782D57764D596
+      - '069969FCF91C3457'
       Date:
       - Mon, 16 Jul 2018 14:15:54 GMT
       Server:

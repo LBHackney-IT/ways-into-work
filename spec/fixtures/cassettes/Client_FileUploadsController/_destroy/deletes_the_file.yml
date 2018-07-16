@@ -21,7 +21,7 @@ http_interactions:
       Content-Md5:
       - i4/7RAhJh7g1iwo9yR51rQ==
       X-Amz-Date:
-      - 20180716T141553Z
+      - 20180716T141812Z
       Host:
       - "<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com"
       X-Amz-Content-Sha256:
@@ -29,7 +29,7 @@ http_interactions:
       Authorization:
       - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20180716/<AWS_REGION>/s3/aws4_request,
         SignedHeaders=content-md5;content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date,
-        Signature=c4c196beb50e2d73ed21805b07646a387597d34f3ba91cdab705c390c1ff83ef
+        Signature=5bf56f0ca12833162ce79049b0a94166759c57c9870dee8188270d7919a4e79a
       Content-Length:
       - '22016'
       Accept:
@@ -40,11 +40,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - tmo6WHxMfeFFwmA2aAhYVcqcfOWgdB8BApVhnIOT/6ssJlaJJqEeayWlsd+0NRvJy2h5suv8F1Q=
+      - qo6HKQ9lsXeUljQBAIQFamdRlsBdMJQTno4EXhqRULdhduH6XzwIseBSk2vC9+NgPk69ygCJNRE=
       X-Amz-Request-Id:
-      - 60BBF6F1EB47385A
+      - 5B418A5A7B4B2FBC
       Date:
-      - Mon, 16 Jul 2018 14:15:54 GMT
+      - Mon, 16 Jul 2018 14:18:13 GMT
       Etag:
       - '"8b8ffb44084987b8358b0a3dc91e75ad"'
       Content-Length:
@@ -55,7 +55,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 16 Jul 2018 14:15:53 GMT
+  recorded_at: Mon, 16 Jul 2018 14:18:12 GMT
 - request:
     method: delete
     uri: https://<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com/public/system/attachments/1/original/CV.doc
@@ -70,14 +70,14 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby2/2.11.89 ruby/2.4.1 x86_64-darwin16 resources
       X-Amz-Date:
-      - 20180716T141553Z
+      - 20180716T141812Z
       Host:
       - "<S3_BUCKET_NAME>.s3.<AWS_REGION>.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
       - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20180716/<AWS_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=79c26b8729740c9aa7364cc5955134db42cd9ae7a7dc2dba0484cdfa97ff2f07
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=7513e28fc45fa47e24782648d8e40ae650efa0e1e88007c9d1ec945a99c1facb
       Content-Length:
       - '0'
       Accept:
@@ -88,16 +88,16 @@ http_interactions:
       message: No Content
     headers:
       X-Amz-Id-2:
-      - BE5V9aLoNdO3Gsbr+zt0nDpLWylo+piqIiWyNAESa3MKGW9/Do/skotjK7WP66ecnYJhgrlZA2c=
+      - Gl+wjbgEgvDEvcTS5opHbNS761zz3GiwkORZ27LKBV7p/T6qVCySW3xMuk+eAe/6F9O3NpoafEg=
       X-Amz-Request-Id:
-      - 37D782D57764D596
+      - B54DE030C63DE952
       Date:
-      - Mon, 16 Jul 2018 14:15:54 GMT
+      - Mon, 16 Jul 2018 14:18:13 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 16 Jul 2018 14:15:53 GMT
+  recorded_at: Mon, 16 Jul 2018 14:18:12 GMT
 recorded_with: VCR 4.0.0
