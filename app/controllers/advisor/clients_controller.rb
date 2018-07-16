@@ -170,6 +170,8 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       :address_line_1,
       :address_line_2,
       :postcode,
+      :emergency_contact_name,
+      :emergency_contact_number,
       option_params,
       assessment_notes_attributes: %i[
         id

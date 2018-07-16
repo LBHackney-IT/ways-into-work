@@ -91,7 +91,10 @@ en:
           preferred_contact_methods: "Which contact methods are preferred by the client?"
       client:
         preferred_contact_methods: "Please select the methods you would prefer us to contact you by:"
+        emergency_contact_name: 'Name'
+        emergency_contact_phone: 'Phone Number'
   client:
+    emergency_contact_details: 'Emergency Contact Details'
     upper_tabs:
       tab_a: "Profile"
       tab_b: "Meetings"
