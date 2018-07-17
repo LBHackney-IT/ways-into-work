@@ -3,3 +3,4 @@
   %td=contact_note.contact_date
   %td="#{contact_note.contact_method}"
   %td="#{contact_note.content}"
+  %td=link_to 'Edit', edit_advisor_client_contact_note_path(id: contact_note.id), class: 'button is-primary is-small'

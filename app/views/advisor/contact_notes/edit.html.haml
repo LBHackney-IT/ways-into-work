@@ -1,0 +1,25 @@
+%section
+  .head.level
+    .level-left
+      %h3.subtitle= "Edit contact note for #{client.first_name}"
+    .level-right
+      =link_to I18n.t('clients.buttons.back_to_contact_notes'), advisor_client_contact_notes_path, class: 'button pull-right top_right_button'
+
+  %hr
+
+  .box
+    = simple_form_for [client, contact_note], url: advisor_client_contact_note_path(client_id: client.id, id: contact_note.id), method: :put do |form|
+      = render 'shared/form_errors', object: form.object
+
+      %fieldset
+        .convert_radio.field
+          =form.input :contact_method, as: :radio_buttons, collection: ['Email', 'Phone call'], :label => 'How did you communicate with them?', include_hidden: false
+
+        .field
+          =form.input :content, as: :text, label: 'Notes', :input_html => { :class => "textarea" }
+
+        =form.input :client_id, as: :hidden
+        =form.input :advisor_id, as: :hidden
+
+      .control
+        = form.submit I18n.t('clients.buttons.save'), :class => 'button is-primary'

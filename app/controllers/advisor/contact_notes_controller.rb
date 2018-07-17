@@ -3,12 +3,22 @@ class Advisor::ContactNotesController < Advisor::BaseController
 
   expose :contact_note
 
-  def index
-    init_contact_note
-  end
+  def index; end
 
   def new
     init_contact_note
+  end
+  
+  def edit; end
+  
+  def update
+    if contact_note.update(contact_note_params)
+      flash[:success] = "Your contact note for #{client.name} has been updated"
+      redirect_to user_root
+    else
+      flash[:error] = 'Failed to save contact note'
+      render :edit
+    end
   end
 
   def create
@@ -16,7 +26,7 @@ class Advisor::ContactNotesController < Advisor::BaseController
       flash[:success] = "Your contact note for #{client.name} has been saved"
       redirect_to user_root
     else
-      flash[:error] = 'Failed to save contact details'
+      flash[:error] = 'Failed to save contact note'
       render :new
     end
   end
@@ -35,6 +45,5 @@ class Advisor::ContactNotesController < Advisor::BaseController
   def init_contact_note
     contact_note.advisor_id = current_advisor.id
     contact_note.client_id = params[:client_id]
-    contact_note.contact_method = client.preferred_contact_methods
   end
 end
