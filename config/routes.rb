@@ -24,7 +24,7 @@ WaysIntoWork::Application.routes.draw do
       resources :file_uploads, only: %i[create new destroy]
       resources :meetings
       resources :action_plan_tasks
-      resources :contact_notes, only: %i[create new index]
+      resources :contact_notes
       resources :achievements
       member do
         get 'edit(/:tab)', to: 'clients#edit', as: 'edit'
