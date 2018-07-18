@@ -14,7 +14,7 @@ class Advisor::ContactNotesController < Advisor::BaseController
   def update
     if contact_note.update(contact_note_params)
       flash[:success] = "Your contact note for #{client.name} has been updated"
-      redirect_to user_root
+      redirect_to advisor_client_contact_notes_path(client_id: client.id)
     else
       flash[:error] = 'Failed to save contact note'
       render :edit
