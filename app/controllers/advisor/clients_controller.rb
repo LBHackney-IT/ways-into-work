@@ -8,6 +8,10 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   def new
     client.build_login
   end
+  
+  def show
+    redirect_to edit_advisor_client_path(client)
+  end
 
   def create
     if client.save && client.generate_initial_meeting

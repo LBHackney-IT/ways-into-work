@@ -19,6 +19,16 @@ RSpec.describe Advisor::ClientsController, type: :controller do
     
   end
   
+  describe '#show ' do
+    
+    let(:client) { Fabricate(:client) }
+    
+    it 'redirects to the edit action' do
+      expect(get :show, params: { id: client.id }).to redirect_to(edit_advisor_client_path(client))
+    end
+    
+  end
+  
   describe '#update' do
     
     let(:client) { Fabricate(:client) }
