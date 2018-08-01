@@ -14,11 +14,11 @@ RSpec.describe ReferrerMailer, type: :mailer do
     end
     
     it 'includes the referrer name' do
-      expect(mail.body.encoded).to include("Hi, #{referrer.name}")
+      expect(mail.body.encoded).to include(CGI.escapeHTML("Hi, #{referrer.name}"))
     end
     
     it 'includes the client name' do
-      expect(mail.body.encoded).to include("Thank you for referring #{client.name} to the Hackney Works service")
+      expect(mail.body.encoded).to include(CGI.escapeHTML("Thank you for referring #{client.name} to the Hackney Works service"))
     end
     
   end
