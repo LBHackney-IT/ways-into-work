@@ -16,4 +16,20 @@ RSpec.describe Advisor, type: :model do
     end
     
   end
+  
+  describe 'destroy' do
+    
+    it "nullifies clients' advisor IDs" do
+      clients = Fabricate.times(5, :client, advisor: subject)
+      subject.destroy
+      clients.each do |c|
+        c.reload
+        expect(c.advisor).to eq(nil)
+      end
+    end
+    
+  end
+  
+
+  
 end

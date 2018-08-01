@@ -10,7 +10,7 @@ class Advisor < ApplicationRecord
 
   belongs_to :hub
 
-  has_many :clients
+  has_many :clients, dependent: :nullify
   
   enum role: %i[advisor team_leader admin employer_engagement]
 
