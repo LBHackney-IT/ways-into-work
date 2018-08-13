@@ -240,7 +240,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
       created_at.to_date,
       initial_assessment_date,
       deleted_at&.to_date,
-      advisor.name,
+      advisor&.name,
       name,
       login&.email,
       funded.join(', '),
