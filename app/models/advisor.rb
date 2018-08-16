@@ -18,6 +18,8 @@ class Advisor < ApplicationRecord
 
   scope :team_leader, ->(hub) { where(hub: hub, role: :team_leader) }
   
+  before_destroy :nullify_client_reference
+  
   def devise_mailer
     CustomDeviseMailer
   end
@@ -54,5 +56,13 @@ class Advisor < ApplicationRecord
   
   def can_assign?
     team_leader? || admin?
+  end
+  
+  private
+  
+  def nullify_client_reference
+    clients.with_deleted.each do |c|
+      c.update_attribute :advisor_id, nil # rubocop:disable Rails/SkipsModelValidations
+    end
   end
 end

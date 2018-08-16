@@ -21,8 +21,9 @@ RSpec.describe Advisor, type: :model do
     
     it "nullifies clients' advisor IDs" do
       clients = Fabricate.times(5, :client, advisor: subject)
+      deleted_clients = Fabricate.times(2, :client, advisor: subject, deleted_at: Time.zone.now)
       subject.destroy
-      clients.each do |c|
+      (clients & deleted_clients).each do |c|
         c.reload
         expect(c.advisor).to eq(nil)
       end
