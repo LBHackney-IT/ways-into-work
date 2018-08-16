@@ -138,4 +138,21 @@ class ClientDecorator < ApplicationDecorator # rubocop:disable Metrics/ClassLeng
   def delete_file_button(file)
     h.button_to(I18n.t('clients.buttons.delete'), h.client_file_upload_path(client_id: id, id: file.id), class: 'button is-primary is-small', method: :delete)
   end
+  
+  def decorate_advisor_name
+    client.advisor&.name
+  end
+  
+  def advisor_description(current_advisor)
+    if client.advisor.nil?
+      "#{client.first_name} has no advisor"
+    else
+      "#{advisor_prefix(current_advisor)} #{client.first_name}'s advisor"
+    end
+  end
+  
+  def advisor_prefix(current_advisor)
+    client.advisor == current_advisor ? 'You are' : "#{client.advisor.name} is"
+  end
+  
 end

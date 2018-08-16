@@ -4,7 +4,7 @@
   - else
     %td=link_to client.name, edit_advisor_client_path(client)
   %td=client.last_meeting_or_contact
-  %td=client.advisor.name
+  %td=client.advisor&.name
   %td
     %i.fa.fa-circle{class: client.rag_status}
   %td.has-text-right

@@ -3,10 +3,7 @@
     .head.level
       .level-left
         %h2=client.name
-        - if client.advisor == current_advisor
-          %span.client_total="You are #{client.first_name}'s advisor"
-        - else
-          %span.client_total="#{client.advisor.name} is #{client.first_name}'s advisor"
+        %span.client_total=client.advisor_description(current_advisor)
 
       .level-right.home
         - if client.advisor == current_advisor
