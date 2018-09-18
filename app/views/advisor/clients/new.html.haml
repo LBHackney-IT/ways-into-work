@@ -11,7 +11,7 @@
       Before adding your client, please confirm they give consent to store their data on our system, and are happy with our #{link_to("privacy policy", privacy_policy_path, target: '_blank')}.
 
     .inline_checkbox
-      = form.input :consent_given, as: :boolean, label: 'client gives consent to store thier data', required: true
+      = form.input :consent_given, as: :boolean, label: 'client gives consent to store their data', required: true
 
     = render partial: '/clients/form_fields', locals: {form: form}
     = form.submit 'Save', :class => 'button is-primary tablet_cta'

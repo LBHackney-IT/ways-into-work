@@ -24,7 +24,7 @@
           Before referring anyone, please confirm that they have given you consent to store their data on our system, and are happy with our #{link_to("privacy policy", privacy_policy_path, target: '_blank')}.
 
         .inline_checkbox
-          = builder.input :consent_given, as: :boolean, label: 'Client gives consent to store thier data', required: true
+          = builder.input :consent_given, as: :boolean, label: 'Client gives consent to store their data', required: true
 
         = render partial: 'clients/form_fields', locals: {form: builder}
 
