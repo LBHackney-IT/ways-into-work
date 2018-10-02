@@ -70,7 +70,8 @@ en:
         title: "Apprenticeship email alerts"
         about: "Be the first to find out about all new vacancies by signing up to our email alerts."
     hack_100:
-      about: "The Council are creating 100 work placements for young people, aged 16-19, in businesses around Hackney."
+      title: "Interested in Work Placements?"
+      about: "The Council are creating 100 work placements for young people, aged 16-24, in businesses around Hackney."
       button: "Hackney 100"
     vacancies:
       title: "Some of our current vacancies"
