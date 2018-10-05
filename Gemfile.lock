@@ -241,7 +241,7 @@ GEM
     multi_xml (0.6.0)
     mustermann (1.0.2)
     nio4r (2.1.0)
-    nokogiri (1.8.3)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     notifications-ruby-client (2.7.0)
       jwt (>= 1.5, < 3)
