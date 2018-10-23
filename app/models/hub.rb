@@ -4,6 +4,7 @@ class Hub < ApplicationRecord
   has_many :advisors
 
   has_many :clients, through: :advisors
+  belongs_to :manager, class_name: 'Advisor', foreign_key: :manager_id, optional: true
 
   scope :covering_ward, ->(code) { where('? = ANY (ward_mapit_codes)', code) }
 
@@ -17,9 +18,5 @@ class Hub < ApplicationRecord
 
   def self.options_for_select
     order('LOWER(name)').map { |e| [e.name, e.id] }
-  end
-
-  def team_leader
-    advisors.find_by(role: :team_leader)
   end
 end

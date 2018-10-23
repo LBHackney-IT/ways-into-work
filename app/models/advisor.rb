@@ -9,6 +9,7 @@ class Advisor < ApplicationRecord
   delegate :email, to: :login
 
   belongs_to :hub
+  has_one :managed_hub, class_name: 'Hub', foreign_key: :manager_id
 
   has_many :clients, dependent: :nullify
   
