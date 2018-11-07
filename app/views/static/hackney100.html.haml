@@ -45,13 +45,19 @@
   -#       %p Get valuable hands on experience
 
   .sup_page_content.max_restrict
-    %h3 Hackney 100: 2019
-    %p We will be re-launching the Hackney 100 programme in 2019, with a range of exciting new paid work placements.
+    = form_tag 'https://hackney.us17.list-manage.com/subscribe/post?u=33d75b080fe55e7a52dfa61c1&amp;id=7e35ff08ff', method: 'post', target: '_blank' do
+      %h3 Hackney 100: 2019
+      %p We will be re-launching the Hackney 100 programme in 2019, with a range of exciting new paid work placements.
 
+      %p To register your interest in being part of the Hackney 100, please submit your email below:
+      
+      .field
+        = text_field_tag :EMAIL, '', class: 'input'
+      
+      .field
+        = submit_tag 'Submit', class: 'button is-primary', name: 'subscribe'
 
-    %p To register your interest in being part of the Hackney 100, please email us at: #{mail_to 'hackneyworks@hackney.gov.uk'}
-
-    %p If we have suitable work placement opportunities before we re-launch the programme, we may get in touch to discuss these.
+      %p If we have suitable work placement opportunities before we re-launch the programme, we may get in touch to discuss these.
 
 
 %br
