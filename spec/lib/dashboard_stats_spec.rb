@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe DashboardStats, type: :model do
 
-  before(:all) do
+  before do
     @hub1 = Fabricate(:homerton_hub)
     @hub2 = Fabricate(:hub)
     @advisor = Fabricate(:advisor, hub: @hub1)
