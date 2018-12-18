@@ -35,7 +35,14 @@ class DashboardStats
   end
 
   def with_outcome(id)
-    @base_query.with_outcome(id, @from, @to).count
+    Achievement.where(client_id: user_ids)
+               .with_name(id)
+               .achieved_in_period(@from, @to)
+               .count
+  end
+  
+  def user_ids
+    @base_query.pluck(:id)
   end
 
   def csv_header

@@ -121,6 +121,20 @@ RSpec.describe DashboardStats, type: :model do
     it 'gets client count for an outcome' do
       expect(subject.with_outcome('job_apprenticeship')).to eq(4)
     end
+    
+    context 'with multiple actions in the same day' do
+      before do
+        achievements = Fabricate.times(3, :achievement,
+                                       name: 'job_application',
+                                       created_at: Time.zone.now.beginning_of_month)
+        
+        Fabricate.create(:client, achievements: achievements)
+      end
+      
+      it 'gets client count for an outcome' do
+        expect(subject.with_outcome('job_application')).to eq(3)
+      end
+    end
   end
 
   it 'generates a CSV header' do
