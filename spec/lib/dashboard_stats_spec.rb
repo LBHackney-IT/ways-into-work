@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe DashboardStats, type: :model do
-
   before do
     @hub1 = Fabricate(:homerton_hub)
     @hub2 = Fabricate(:hub)
@@ -182,7 +181,7 @@ RSpec.describe DashboardStats, type: :model do
   
   context 'with deleted' do
     before do
-      Fabricate.times(2, :client, deleted_at: DateTime.now)
+      Fabricate.times(2, :client, deleted_at: Time.zone.now)
     end
     
     it 'includes deleted clients' do
