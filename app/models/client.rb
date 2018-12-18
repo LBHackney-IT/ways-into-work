@@ -98,6 +98,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   scope :health_conditions, -> { where(health_condition: 'Yes') }
   scope :female, -> { where(gender: 'Female') }
   scope :bame, -> { where('bame != ?', 'white_british') }
+  scope :affected_by_benefit_cap, -> { where(affected_by_benefit_cap: true) }
 
   scope :by_age, lambda { |under_25s|
     where('date_of_birth  > ?', Time.zone.today - 25.years) if under_25s
