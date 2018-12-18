@@ -1,20 +1,21 @@
 require 'spec_helper'
 
 RSpec.describe DashboardStats, type: :model do
-  let(:hub1) { Fabricate(:homerton_hub) }
-  let(:hub2) { Fabricate(:hub) }
-  let(:advisor) { Fabricate(:advisor, hub: hub1) }
-  let(:advisor2) { Fabricate(:advisor, hub: hub1) }
 
-  before do
-    Fabricate.times(1, :client, advisor: advisor)
-    Fabricate.times(1, :client, advisor: advisor2)
-    Fabricate.times(2, :client, advisor: Fabricate(:advisor, hub: hub2))
+  before(:all) do
+    @hub1 = Fabricate(:homerton_hub)
+    @hub2 = Fabricate(:hub)
+    @advisor = Fabricate(:advisor, hub: @hub1)
+    @advisor2 = Fabricate(:advisor, hub: @hub1)
+
+    Fabricate.times(1, :client, advisor: @advisor)
+    Fabricate.times(1, :client, advisor: @advisor2)
+    Fabricate.times(2, :client, advisor: Fabricate(:advisor, hub: @hub2))
     Fabricate.times(3, :client,
-                    advisor: Fabricate(:advisor, hub: hub1),
+                    advisor: Fabricate(:advisor, hub: @hub1),
                     created_at: 1.month.ago)
     Fabricate.times(4, :client,
-                    advisor: Fabricate(:advisor, hub: hub2),
+                    advisor: Fabricate(:advisor, hub: @hub2),
                     created_at: 1.month.ago)
   end
 
@@ -28,7 +29,7 @@ RSpec.describe DashboardStats, type: :model do
   end
 
   context 'with hub set' do
-    let(:options) { { hub: hub1.id } }
+    let(:options) { { hub: @hub1.id } }
 
     it 'gets a registered count' do
       expect(subject.registered).to eq(2)
@@ -36,7 +37,7 @@ RSpec.describe DashboardStats, type: :model do
   end
 
   context 'with advisor set' do
-    let(:options) { { advisor: advisor.id } }
+    let(:options) { { advisor: @advisor.id } }
 
     it 'gets a registered count' do
       expect(subject.registered).to eq(1)
@@ -62,7 +63,7 @@ RSpec.describe DashboardStats, type: :model do
     end
 
     context 'with hub set' do
-      let(:options) { { hub: hub1.id } }
+      let(:options) { { hub: @hub1.id } }
 
       it 'gets a registered count' do
         expect(subject.registered).to eq(3)
@@ -163,5 +164,15 @@ RSpec.describe DashboardStats, type: :model do
     expect(csv.count).to eq(13)
     expect(csv[0]).to eq(subject.csv_header)
     expect(csv.find { |r| r[0] == from_date.strftime('%Y-%m-%d') }.map(&:to_s)).to eq(subject.csv_row.map(&:to_s))
+  end
+  
+  context 'with deleted' do
+    before do
+      Fabricate.times(2, :client, deleted_at: DateTime.now)
+    end
+    
+    it 'includes deleted clients' do
+      expect(subject.registered).to eq(6)
+    end
   end
 end
