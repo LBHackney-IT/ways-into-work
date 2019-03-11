@@ -20,6 +20,7 @@ RSpec.describe Client, type: :model do
       Fabricate.create(:client,
                        first_name: 'Client',
                        last_name: 'McClientface',
+                       postcode: 'E8 1EA',
                        login: Fabricate.create(:user_login, email: 'login@example.com'),
                        advisor: advisor,
                        funded: %w[hackney_works_general troubled_families],
@@ -54,7 +55,9 @@ RSpec.describe Client, type: :model do
         client.initial_assessment_date,
         nil,
         'Advisor McAdvisorface',
-        'Client McClientface',
+        'Client',
+        'McClientface',
+        'E8 1EA',
         'login@example.com',
         'hackney_works_general, troubled_families',
         'full_time_work',
@@ -84,7 +87,7 @@ RSpec.describe Client, type: :model do
     
     it 'returns nil if login is not present' do
       client.login = nil
-      expect(client.csv_row[6]).to eq(nil)
+      expect(client.csv_row[8]).to eq(nil)
     end
 
     it 'generates a csv header with all the achievement options' do
