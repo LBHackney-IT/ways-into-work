@@ -1,7 +1,7 @@
 class Advisor::AdvisorsController < Advisor::BaseController
   before_action :check_permissions!
   expose :advisor
-  expose :advisors, -> { Advisor.all.order(:name) }
+  expose :advisors, -> { Advisor.all.order(:name).includes(:hub) }
   
   def index; end
 
