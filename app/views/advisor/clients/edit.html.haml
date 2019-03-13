@@ -55,6 +55,7 @@
       #tab-container.column
         - if client.date_of_birth == nil
           .dob_missing.alert.alert-notice
+            =fa_icon "warning"
             Please add date of birth
         #overview.tab
           = render 'shared/form_errors', object: form.object
