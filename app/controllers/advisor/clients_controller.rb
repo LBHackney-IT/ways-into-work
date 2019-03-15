@@ -47,7 +47,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
   end
 
   def destroy
-    client.destroy
+    client.discard
     flash[:success] = I18n.t('clients.flashes.success.archived')
     redirect_to user_root
   end
@@ -100,7 +100,8 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       persistence_id: false,
       select_options: filterrific_options,
       default_filter_params: {
-        by_hub_id: default_hub_id
+        by_hub_id: default_hub_id,
+
       }
     )) || return
     @filtered_clients = @filterrific.find.page(params[:page]).includes(:advisor)
@@ -115,7 +116,7 @@ class Advisor::ClientsController < Advisor::BaseController # rubocop:disable Cla
       by_age: [['Under 25', true]],
       by_objective: ObjectiveOption.options_for_select,
       by_rag_status: [['Red', :red], ['Amber', :amber], ['Green', :green]],
-      archived: [['Archived', :archived], ['All', :all]]
+      archived: [['Non-archived', :notarchived], ['Archived', :archived], ['All', :all]]
     }
   end
 

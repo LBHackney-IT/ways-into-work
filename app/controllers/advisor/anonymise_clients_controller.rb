@@ -1,5 +1,5 @@
 class Advisor::AnonymiseClientsController < Advisor::BaseController
-  expose :client, -> { Client.with_deleted.find(params[:client_id]) }
+  expose :client, -> { Client.find(params[:client_id]) }
 
   def update
     client.anonymise!

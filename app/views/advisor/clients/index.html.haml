@@ -48,7 +48,7 @@
         .column
           %label.label Archived state
           %span.select
-            = f.select(:archived, @filterrific.select_options[:archived], { include_blank: 'Non-archived' })
+            = f.select(:archived, @filterrific.select_options[:archived])
 
         .column.has-text-right
           = f.button :surpress_cv_download_on_pressing_enter_ugh!, class: 'is-hidden'
