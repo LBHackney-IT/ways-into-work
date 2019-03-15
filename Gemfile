@@ -40,8 +40,7 @@ gem 'appsignal'
 
 gem 'decent_exposure'
 
-# gem 'paranoia'
-gem 'discard'
+gem 'paranoia'
 
 gem 'rails_service_check', git: 'https://github.com/wearefuturegov/rails_service_check'
 
