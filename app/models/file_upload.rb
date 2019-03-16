@@ -1,7 +1,10 @@
 class FileUpload < ApplicationRecord
+  include Discard::Model
+  self.discard_column = :deleted_at
+  
   has_attached_file :attachment, preserve_files: true
   
-  acts_as_paranoid
+  # acts_as_paranoid
 
   validates_attachment_content_type :attachment, content_type: /\A.*\Z/
 
@@ -11,7 +14,7 @@ class FileUpload < ApplicationRecord
 
   belongs_to :client
   
-  before_real_destroy :remove_file
+  before_destroy :remove_file
 
   def file_type
     case attachment_content_type

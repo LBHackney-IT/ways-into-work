@@ -62,7 +62,7 @@ class Advisor < ApplicationRecord
   private
   
   def nullify_client_reference
-    clients.with_deleted.each do |c|
+    clients.with_discarded.each do |c|
       c.update_attribute :advisor_id, nil # rubocop:disable Rails/SkipsModelValidations
     end
   end

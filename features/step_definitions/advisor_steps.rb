@@ -104,7 +104,7 @@ Then(/^I should see the archived client listed$/) do
 end
 
 Then(/^the client should be restored and found by default$/) do
-  expect(@client.reload.deleted?).to eq(false)
+  expect(@client.reload.discarded?).to eq(false)
   visit advisor_clients_path
   client_listed
 end

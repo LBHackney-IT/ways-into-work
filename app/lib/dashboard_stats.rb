@@ -3,7 +3,7 @@ class DashboardStats
     @options = options
     @from = from
     @to = to
-    @base_query = Client.with_deleted
+    @base_query = Client.with_discarded
                         .by_hub_id(@options[:hub])
                         .by_advisor_id(@options[:advisor])
                         .by_funding_code(@options[:funding_code])

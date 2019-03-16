@@ -40,7 +40,7 @@
                   = render partial: 'awaiting_contact', collection: @clients_requiring_contact, as: 'client'
 
 
-  - if @filterrific.model_class.with_deleted.any?
+  - if @filterrific.model_class.with_discarded.any?
     = form_for_filterrific @filterrific do |f|
       #client_filters
         %h3.ie-only Filter clients

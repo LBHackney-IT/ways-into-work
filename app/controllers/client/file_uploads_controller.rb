@@ -17,7 +17,7 @@ class Client::FileUploadsController < Client::BaseController
   end
 
   def destroy
-    file_upload.really_destroy!
+    file_upload.destroy
     flash[:success] = 'File deleted'
     redirect_to new_client_file_upload_path(client)
   end
