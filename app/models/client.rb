@@ -9,7 +9,7 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   belongs_to :advisor
   belongs_to :referrer
   has_one :hub, through: :advisor
-  has_one :login, class_name: UserLogin.to_s, as: :user, autosave: true, dependent: :destroy
+  has_one :login, class_name: UserLogin.to_s, as: :user, autosave: true
 
   validates :consent_given, acceptance: { message: I18n.t('activerecord.errors.full_messages.client.consent_given'), accept: true }
 

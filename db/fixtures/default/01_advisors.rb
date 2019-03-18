@@ -1,8 +1,8 @@
 advisors = [
   {
-    email: 'kiran@wearefuturegov.com',
-    name: 'Kiran Dhillon',
-    hub_id: 2
+    email: 'jaye@wearefuturegov.com',
+    name: 'Jaye Hackett',
+    hub_id: 1
   }, {
     email: 'kiran+tl@wearefuturegov.com',
     name: 'Kiran Team Leader',
