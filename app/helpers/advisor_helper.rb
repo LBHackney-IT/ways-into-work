@@ -13,4 +13,12 @@ module AdvisorHelper
       ' - today'
     end
   end
+
+  def opp_end_date(date)
+    if Time.current.year == date.year
+      date.strftime("%a %b #{date.day.ordinalize}")
+    else
+      date.strftime("%a %b #{date.day.ordinalize} %Y")
+    end
+  end
 end
