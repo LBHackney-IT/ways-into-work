@@ -7,8 +7,12 @@ class Advisor::JobsController < Advisor::BaseController
   end
 
   def create
-    @job = Job.create(job_params)
-    redirect_to advisor_opportunities_path
+    @job = Job.new(job_params)
+    if @job.save
+      redirect_to advisor_opportunities_path
+    else
+      render 'new'
+    end
   end
 
   def job_params
