@@ -11,6 +11,6 @@
       = f.input :title, :input_html => { :class => 'input' }
       = f.input :end_date, as: :string, label: 'Closing date', input_html: {type: :date, class: 'input date_input', value: f.object.try(:end_date).try(:to_date)}, placeholder: "dd/mm/yyyy"
       = f.input :short_description, as: :text, label: 'Short description (max 400 characters)', input_html: { class: 'textarea', :maxlength => 400 }
-      = f.input :salary
-      = f.input :long_description
+      = f.input :salary, label: 'Pay', :input_html => { :class => 'input' }
+      = f.input :long_description, as: :text, input_html: { class: 'textarea' }
       = f.submit "Create"
