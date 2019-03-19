@@ -410,10 +410,4 @@ RSpec.describe Client, type: :model do
     expect(client.national_insurance_number).to eq(nil)
   end
 
-  it 'destroys user_login with self' do
-    client = Fabricate.create(:client)
-    expect(UserLogin.where(user_id: client.id, user_type: 'Client').count).to eq(1)
-    client.destroy
-    expect(UserLogin.where(user_id: client.id, user_type: 'Client').count).to eq(0)
-  end
 end
