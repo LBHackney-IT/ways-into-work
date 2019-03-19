@@ -1,3 +1,12 @@
-= form_with url: advisor_opportunities_path, local: true do |form|
-  = form.select 'opportunity_type', options_for_select(@opportunity_types)
-  = form.submit "Add"
+%section
+  .head.level
+    .level-left
+      %h2= "Add a new opportunity"
+    .level-right
+      =link_to "Back to all opportunities", advisor_opportunities_path, class: 'button pull-right top_right_button'
+  %hr
+
+  = form_with url: advisor_opportunities_path, local: true do |form|
+    %label.label Which type of opportunity do you want to add?
+    = form.select 'opportunity_type', options_for_select(@opportunity_types)
+    = form.submit "Add"
