@@ -1,8 +1,21 @@
-= link_to "Add an Opportunity", new_advisor_opportunity_path
+#all_opportunities
+  .head.level
+    .level-left
+      %h2 Active opportunities
+      %span.client_total#filtered_count
+        %span.bold=pluralize(@opportunities.count, ' active opportunity')
+    .level-right.home
+      = link_to "Add new Opportunity", new_advisor_opportunity_path, class: "button"
 
-.div
-  - @opportunities.each do |opportunity|
-    .div
-      = opportunity.title
-      = opportunity.short_description
-      = opportunity.end_date
+  %br
+  .container
+    .opportunity_list.columns
+      - @opportunities.each do |opportunity|
+        .single_opportunity.column.is-one-third
+          .box
+            .opportunity_title
+              = link_to opportunity.title, "#"
+            .description
+              = opportunity.short_description
+            .end_date
+              = opportunity.end_date
