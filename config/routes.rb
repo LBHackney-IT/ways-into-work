@@ -38,6 +38,8 @@ WaysIntoWork::Application.routes.draw do
     resources :advisors
     resources :vacancies
     resources :featured_vacancies, only: %i[update]
+    resources :opportunities
+    resources :jobs
   end
 
   resources :clients, only: %i[new create]
