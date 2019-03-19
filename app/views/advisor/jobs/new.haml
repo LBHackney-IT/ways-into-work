@@ -13,4 +13,4 @@
       = f.input :short_description, as: :text, label: 'Short description (max 400 characters)', input_html: { class: 'textarea', :maxlength => 400 }
       = f.input :salary, label: 'Pay', :input_html => { :class => 'input' }
       = f.input :long_description, as: :text, input_html: { class: 'textarea' }
-      = f.submit "Create"
+      = f.submit "Create", :class => 'button is-primary tablet_cta'
