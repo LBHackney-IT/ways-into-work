@@ -11,12 +11,16 @@
   .container
     .opportunity_list.columns
       - @opportunities.each do |opportunity|
-        .single_opportunity.column.is-one-third
+        .single_opportunity.column.is-one-third.job_opp
           .box
             .opportunity_title
               = link_to opportunity.title, "#"
-            .description
+            .salary.bold
+              = opportunity.salary
+            %p.description
               = opportunity.short_description
-            .end_date
-              Closing date:
+            %p.end_date
+              %span.bold Closing date:
               =opp_end_date(opportunity.end_date)
+            .tag
+              Job
