@@ -1,0 +1,6 @@
+= simple_form_for @job, url: advisor_jobs_path, local: true do |f|
+  = f.input :title
+  = f.input :end_date, as: :string, label: 'End date', input_html: {type: :date, class: 'input', value: f.object.try(:end_date).try(:to_date)}, placeholder: "dd/mm/yyyy"
+  = f.input :short_description
+  = f.input :salary
+  = f.submit "Create"

@@ -1,0 +1,8 @@
+= link_to "Add an Opportunity", new_advisor_opportunity_path
+
+.div
+  - @opportunities.each do |opportunity|
+    .div
+      = opportunity.title
+      = opportunity.short_description
+      = opportunity.end_date

@@ -1,0 +1,3 @@
+= form_with url: advisor_opportunities_path, local: true do |form|
+  = form.select 'opportunity_type', options_for_select(@opportunity_types)
+  = form.submit "Add"
