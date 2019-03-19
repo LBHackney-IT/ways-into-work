@@ -1,9 +1,13 @@
 module Opportunity
 
-  def self.hey
+  def self.all_active
+    Job.all
   end
 
-  def hey
-    byebug
+  def self.types
+    types = [
+      ['Job', Job],
+      ['External Apprenticeship', ExternalApprenticeship]
+    ]
   end
 end
