@@ -14,7 +14,7 @@
         .single_opportunity.column.is-one-third.job_opp
           .box
             .opportunity_title
-              = link_to opportunity.title, "#"
+              = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
             .salary.bold
               = opportunity.salary
             %p.description
