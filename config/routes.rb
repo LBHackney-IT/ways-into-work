@@ -40,6 +40,7 @@ WaysIntoWork::Application.routes.draw do
     resources :featured_vacancies, only: %i[update]
     resources :opportunities
     resources :jobs
+    resources :external_apprenticeships
   end
 
   resources :clients, only: %i[new create]
