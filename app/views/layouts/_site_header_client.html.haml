@@ -8,6 +8,7 @@
     Menu
 .nav-right.nav-menu
   = link_to I18n.t('header.nav.hackney_works'), user_root, class: "nav-item is-tab #{cp(user_root)}"
+  = link_to "Opportunities", :client_opportunities, class: "nav-item is-tab #{cp(:client_opportunities)}"
   = link_to I18n.t('header.nav.profile'), client_profile_path, class: "nav-item is-tab #{cp(client_profile_path)}"
   = link_to I18n.t('header.nav.hubs'), hubs_path, class: "nav-item is-tab #{cp(hubs_path)}"
   = button_to I18n.t('header.nav.sign_out'), destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
