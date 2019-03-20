@@ -1,7 +1,7 @@
 module Opportunity
 
   def self.all_active
-    Job.all
+    opportunities = Job.all + ExternalApprenticeship.all
   end
 
   def self.types
@@ -9,5 +9,14 @@ module Opportunity
       ['Job', Job],
       ['External Apprenticeship', ExternalApprenticeship]
     ]
+  end
+
+  def type_string
+    case self
+    when Job
+      'Job'
+    when ExternalApprenticeship
+      'External Apprenticeship'
+    end
   end
 end
