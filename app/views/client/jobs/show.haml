@@ -1,0 +1,18 @@
+.div
+  = job.title
+
+.div
+  Closing date
+  = job.end_date
+.div
+  Pay
+  = job.salary
+
+.div
+  Full Description
+  = job.long_description
+
+.h2
+  Register your interest
+.div
+  = link_to "Register interest now", new_client_enquiry_path(opportunity_type: Job, opportunity_id: job.id)

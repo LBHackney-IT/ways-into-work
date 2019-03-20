@@ -1,0 +1,15 @@
+%section
+  .head.level
+    .level-left
+      %h2= "Enquire about this opportunity"
+    .level-right
+      =link_to "Back to all opportunities", client_opportunities_path, class: 'button pull-right top_right_button'
+  %hr
+
+  .opportunity_form
+    = simple_form_for @enquiry, url: client_enquiries_path, local: true do |f|
+      = f.input :supporting_statement, :input_html => { :class => 'input' }
+      = f.input :opportunity_id, as: :hidden
+      = f.input :opportunity_type, as: :hidden
+      
+      = f.submit "Make enquiry", :class => 'button is-primary tablet_cta'

@@ -60,6 +60,10 @@ WaysIntoWork::Application.routes.draw do
     resource :employment_status, only: %i[edit update], controller: 'employment_status'
     resource :additional_information, only: %i[edit update], controller: 'additional_information'
     resource :dashboard, only: :show
+    resources :opportunities, only: [:index, :show]
+    resources :jobs, only: [:show]
+    resources :external_apprenticeships, only: [:show]
+    resources :enquiries
   end
   
   match '/401', to: 'errors#unauthorised', via: :all
