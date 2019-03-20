@@ -4,8 +4,9 @@
       %h2 Active opportunities
       %span.client_total#filtered_count
         %span.bold=pluralize(@opportunities.count, ' active opportunity')
-    .level-right.home
-      = link_to "Add new Opportunity", new_advisor_opportunity_path, class: "button"
+    - if current_advisor
+      .level-right.home
+        = link_to "Add new Opportunity", new_advisor_opportunity_path, class: "button"
 
   %br
   .container
