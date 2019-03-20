@@ -9,4 +9,6 @@ class ExternalApprenticeship < ApplicationRecord
 
   has_many :enquiries, as: :opportunity
 
+  scope :active, -> { where('end_date >= ?', Date.today) }
+
 end
