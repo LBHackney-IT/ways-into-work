@@ -11,7 +11,7 @@
   .container
     .opportunity_list.columns.is-multiline
       - @opportunities.each do |opportunity|
-        .single_opportunity.column.is-one-third.job_opp
+        %div{ class: 'opportunity_#{opportunity.type_string.parameterize} single_opportunity column is-one-third' }
           .box
             .opportunity_title
               = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
@@ -19,6 +19,9 @@
               = opportunity.salary
             %p.description
               = opportunity.short_description
+            %p.end_date
+              %span.bold Location:
+              =opportunity.location
             %p.end_date
               %span.bold Closing date:
               =opp_end_date(opportunity.end_date)

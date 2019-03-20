@@ -1,18 +1,24 @@
-.div
-  = job.title
+%section
+  .head.level
+    .level-left
+      %h2= job.title
+    .level-right
+      =link_to "Back to all opportunities", advisor_opportunities_path, class: 'button pull-right top_right_button'
+  %hr
 
-.div
-  Closing date
-  = job.end_date
-.div
-  Pay
-  = job.salary
-.div
-  Enquiries so far
+  .box
+    %p.salary
+      %span.bold Salary:
+      = job.salary
+    %p.end_date
+      %span.bold Location:
+      =job.location
+    %p.end_date
+      %span.bold Closing date:
+      =opp_end_date(job.end_date)
 
-.div
-  Full Description
-  = job.long_description
+  .box
+    = job.long_description
 
-.div
-  Enquiries for this opportunity
+  .box
+    %h2 Enquiries for this opportunity
