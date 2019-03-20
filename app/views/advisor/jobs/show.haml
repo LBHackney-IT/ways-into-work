@@ -22,3 +22,20 @@
 
   .box
     %h2 Enquiries for this opportunity
+    %table
+      %tr
+        %th
+          Client
+        %th
+          Applied on
+        %th
+          Status
+      - job.enquiries.each do |enquiry|
+        %tr
+          %td
+            = enquiry.client.first_name
+            = enquiry.client.last_name
+          %td
+            = enquiry.created_at.strftime("%e %B %Y")
+          %td
+            = enquiry.status
