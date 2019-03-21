@@ -22,7 +22,7 @@ module Opportunity
     when Job
       'Job'
     when ExternalApprenticeship
-      'External Apprenticeship'
+      'Apprenticeship'
     end
   end
 end
