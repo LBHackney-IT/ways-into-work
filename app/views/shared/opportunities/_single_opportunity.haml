@@ -1,7 +1,10 @@
 %div{ class: opportunity.type_string.parameterize + '_opportunity single_opportunity column is-one-third' }
   .box
     .opportunity_title
-      = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
+      - if current_advisor
+        = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
+      - if current_client
+        = link_to opportunity.title, polymorphic_path([:client, opportunity])
     %p.description
       = opportunity.short_description
     = render partial: 'shared/opportunities/common_job_details', locals: { opportunity: opportunity }
