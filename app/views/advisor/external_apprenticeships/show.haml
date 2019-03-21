@@ -1,0 +1,41 @@
+%section
+  .head.level
+    .level-left
+      %h2= external_apprenticeship.title
+    .level-right
+      =link_to "Back to all opportunities", advisor_opportunities_path, class: 'button pull-right top_right_button'
+  %hr
+
+  .box
+    %p.salary
+      %span.bold Salary:
+      = external_apprenticeship.salary
+    %p.end_date
+      %span.bold Location:
+      =external_apprenticeship.location
+    %p.end_date
+      %span.bold Closing date:
+      =opp_end_date(external_apprenticeship.end_date)
+
+  .box
+    = external_apprenticeship.long_description
+
+  .box
+    %h2 Enquiries for this opportunity
+    %table
+      %tr
+        %th
+          Client
+        %th
+          Applied on
+        %th
+          Status
+      - external_apprenticeship.enquiries.each do |enquiry|
+        %tr
+          %td
+            = enquiry.client.first_name
+            = enquiry.client.last_name
+          %td
+            = enquiry.created_at.strftime("%e %B %Y")
+          %td
+            = enquiry.status
