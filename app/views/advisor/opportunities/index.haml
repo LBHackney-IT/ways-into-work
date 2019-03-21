@@ -13,7 +13,7 @@
   .container
     .opportunity_list.columns.is-multiline
       - @opportunities.each do |opportunity|
-        = render partial: 'single_opportunity', locals: { opportunity: opportunity }
+        = render partial: 'shared/opportunities/single_opportunity', locals: { opportunity: opportunity }
 
   - if current_advisor
     %br
@@ -28,4 +28,4 @@
     .container
       .opportunity_list.columns.is-multiline
         - @old_opportunities.each do |opportunity|
-          = render partial: 'single_opportunity', locals: { opportunity: opportunity }
+          = render partial: 'shared/opportunities/single_opportunity', locals: { opportunity: opportunity }
