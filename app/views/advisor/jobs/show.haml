@@ -7,15 +7,7 @@
   %hr
 
   .box
-    %p.salary
-      %span.bold Salary:
-      = job.salary
-    %p.end_date
-      %span.bold Location:
-      =job.location
-    %p.end_date
-      %span.bold Closing date:
-      =opp_end_date(job.end_date)
+    = render partial: 'shared/opportunities/common_job_details', locals: { opportunity: job }
 
   .box
     = job.long_description
