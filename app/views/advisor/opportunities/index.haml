@@ -13,23 +13,7 @@
   .container
     .opportunity_list.columns.is-multiline
       - @opportunities.each do |opportunity|
-        %div{ class: opportunity.type_string.parameterize + '_opportunity single_opportunity column is-one-third' }
-          .box
-            .opportunity_title
-              = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
-            %p.description
-              = opportunity.short_description
-            %p.salary
-              %span.bold Salary:
-              = opportunity.salary
-            %p.end_date
-              %span.bold Location:
-              =opportunity.location
-            %p.end_date
-              %span.bold Closing date:
-              =opp_end_date(opportunity.end_date)
-            .tag
-              = opportunity.type_string
+        = render partial: 'single_opportunity', locals: { opportunity: opportunity }
 
   - if current_advisor
     %br
@@ -39,25 +23,9 @@
       .level-left
         %h2 Completed opportunities
         %span.client_total#filtered_count
-          %span.bold=pluralize(@old_opportunities.count, ' active opportunity')
+          %span.bold=pluralize(@old_opportunities.count, 'completed opportunity')
 
     .container
       .opportunity_list.columns.is-multiline
         - @old_opportunities.each do |opportunity|
-          %div{ class: opportunity.type_string.parameterize + '_opportunity single_opportunity column is-one-third' }
-            .box
-              .opportunity_title
-                = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
-              %p.description
-                = opportunity.short_description
-              %p.salary
-                %span.bold Salary:
-                = opportunity.salary
-              %p.end_date
-                %span.bold Location:
-                =opportunity.location
-              %p.end_date
-                %span.bold Closing date:
-                =opp_end_date(opportunity.end_date)
-              .tag
-                = opportunity.type_string
+          = render partial: 'single_opportunity', locals: { opportunity: opportunity }

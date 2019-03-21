@@ -1,0 +1,17 @@
+%div{ class: opportunity.type_string.parameterize + '_opportunity single_opportunity column is-one-third' }
+  .box
+    .opportunity_title
+      = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
+    %p.description
+      = opportunity.short_description
+    %p.salary
+      %span.bold Salary:
+      = opportunity.salary
+    %p.end_date
+      %span.bold Location:
+      =opportunity.location
+    %p.end_date
+      %span.bold Closing date:
+      =opp_end_date(opportunity.end_date)
+    .tag
+      = opportunity.type_string
