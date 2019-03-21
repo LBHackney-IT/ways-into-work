@@ -2,8 +2,9 @@
   .head.level
     .level-left
       %h2 Active opportunities
-      %span.client_total#filtered_count
-        %span.bold=pluralize(@opportunities.count, ' active opportunity')
+      - if current_advisor
+        %span.client_total#filtered_count
+          %span.bold=pluralize(@opportunities.count, ' active opportunity')
     - if current_advisor
       .level-right.home
         = link_to "Add new Opportunity", new_advisor_opportunity_path, class: "button"
@@ -29,3 +30,34 @@
               =opp_end_date(opportunity.end_date)
             .tag
               = opportunity.type_string
+
+  - if current_advisor
+    %br
+    %br
+    %br
+    .head.level
+      .level-left
+        %h2 Completed opportunities
+        %span.client_total#filtered_count
+          %span.bold=pluralize(@old_opportunities.count, ' active opportunity')
+
+    .container
+      .opportunity_list.columns.is-multiline
+        - @old_opportunities.each do |opportunity|
+          %div{ class: opportunity.type_string.parameterize + '_opportunity single_opportunity column is-one-third' }
+            .box
+              .opportunity_title
+                = link_to opportunity.title, polymorphic_path([:advisor, opportunity])
+              %p.description
+                = opportunity.short_description
+              %p.salary
+                %span.bold Salary:
+                = opportunity.salary
+              %p.end_date
+                %span.bold Location:
+                =opportunity.location
+              %p.end_date
+                %span.bold Closing date:
+                =opp_end_date(opportunity.end_date)
+              .tag
+                = opportunity.type_string

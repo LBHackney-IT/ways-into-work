@@ -5,6 +5,11 @@ module Opportunity
     opportunities.sort_by { |opportunity| opportunity.end_date }
   end
 
+  def self.inactive_ending_first
+    old_opportunities = Job.inactive + ExternalApprenticeship.inactive
+    old_opportunities.sort_by { |opportunity| opportunity.end_date }
+  end
+
   def self.types
     types = [
       ['Job', Job],

@@ -1,6 +1,7 @@
 class Advisor::OpportunitiesController < Advisor::BaseController
   def index
     @opportunities = Opportunity.active_ending_first
+    @old_opportunities = Opportunity.inactive_ending_first
   end
 
   def new
