@@ -22,20 +22,23 @@
 
   .box
     %h2 Enquiries for this opportunity
-    %table
-      %tr
-        %th
-          Client
-        %th
-          Applied on
-        %th
-          Status
-      - external_apprenticeship.enquiries.each do |enquiry|
+    - if external_apprenticeship.enquiries.count > 0
+      %table
         %tr
-          %td
-            = enquiry.client.first_name
-            = enquiry.client.last_name
-          %td
-            = enquiry.created_at.strftime("%e %B %Y")
-          %td
-            = enquiry.status
+          %th
+            Client
+          %th
+            Applied on
+          %th
+            Status
+        - external_apprenticeship.enquiries.each do |enquiry|
+          %tr
+            %td
+              = enquiry.client.first_name
+              = enquiry.client.last_name
+            %td
+              = enquiry.created_at.strftime("%e %B %Y")
+            %td
+              = enquiry.status
+    - else
+      %p No enquires have been made on this apprenticeship yet
