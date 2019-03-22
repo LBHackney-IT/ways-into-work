@@ -1,15 +1,13 @@
 #all_opportunities
   .head.level
-    - if current_advisor
-      .level-left
-        %h2 Active opportunities
+    .level-left
+      %h2 Active opportunities
+      - if current_advisor
         %span.client_total#filtered_count
           %span.bold=pluralize(@opportunities.count, ' active opportunity')
+    - if current_advisor
       .level-right.home
-        = link_to "Add new Opportunity", new_advisor_opportunity_path, class: "button is-primary"
-    - else
-      .level-left
-        %h2 All opportunities
+        = link_to "Add new Opportunity", new_advisor_opportunity_path, class: "button"
 
   %br
   .container

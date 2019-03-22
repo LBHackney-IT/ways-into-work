@@ -1,18 +1,18 @@
-.div
-  = job.title
+%section
+  .head.level
+    .level-left
+      %h2= job.title
+    .level-right
+      =link_to "Back to all opportunities", client_opportunities_path, class: 'button pull-right top_right_button'
+  %hr
 
-.div
-  Closing date
-  = job.end_date
-.div
-  Pay
-  = job.salary
+  .box
+    = render partial: 'shared/opportunities/common_job_details', locals: { opportunity: job }
 
-.div
-  Full Description
-  = job.long_description
+  .box
+    = job.long_description
 
-.h2
-  Register your interest
-.div
-  = link_to "Register interest now", new_client_enquiry_path(opportunity_type: Job, opportunity_id: job.id)
+  .box
+    %h2 Register your interest
+    = link_to "Register interest now", new_client_enquiry_path(opportunity_type: Job, opportunity_id: job.id), class: 'button is-primary'
+

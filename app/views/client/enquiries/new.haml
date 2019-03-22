@@ -8,8 +8,8 @@
 
   .opportunity_form
     = simple_form_for @enquiry, url: client_enquiries_path, local: true do |f|
-      = f.input :supporting_statement, :input_html => { :class => 'input' }
+      = f.input :supporting_statement, as: :text, :input_html => { :class => 'textarea' }
       = f.input :opportunity_id, as: :hidden
       = f.input :opportunity_type, as: :hidden
-      
+
       = f.submit "Make enquiry", :class => 'button is-primary tablet_cta'
