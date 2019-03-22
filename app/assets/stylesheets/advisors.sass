@@ -152,6 +152,7 @@ a[data-icon='envelope']
   .single-tab
     padding: 15px 30px
     opacity: 0.5
+    position: relative
     &:hover
       opacity: 1
     &.current
@@ -169,6 +170,23 @@ a[data-icon='envelope']
     &:first-child.current
       // margin-left: -0.75em
     &:last-child.current
+    .enquiry_notification
+      font-size: 16px
+      color: #fff
+      background: #E8442E
+      width: 25px
+      height: 25px
+      border-radius: 100%
+      display: block
+      text-align: center
+      line-height: 25px
+      position: absolute
+      top: 0px
+      left: 0px
+    &.current
+      .enquiry_notification
+        top: -5px
+        left: -5px
 
 .profile-tab
   border: 1px rgba(29, 29, 27, 0.15) solid
