@@ -1,27 +1,21 @@
-module Opportunity
+class Opportunity < ApplicationRecord
+  actable
 
-  def self.active_ending_first
-    opportunities = Job.active + ExternalApprenticeship.active
-    opportunities.sort_by { |opportunity| opportunity.end_date }
-  end
+  validates :title, presence: true
+  validates :closing_date, presence: true
+  validates :short_description, presence: true
+  validates :location, presence: true
 
-  def self.inactive_ending_first
-    old_opportunities = Job.inactive + ExternalApprenticeship.inactive
-    old_opportunities.sort_by { |opportunity| opportunity.end_date }
-  end
+  scope :active, -> { where('closing_date >= ?', Date.today).order(:closing_date) }
+  scope :inactive, -> { where('closing_date < ?', Date.today).order(:closing_date) }
 
-  def self.types
-    types = [
-      ['Job', Job],
-      ['External Apprenticeship', ExternalApprenticeship]
-    ]
-  end
+  has_many :enquiries
 
   def type_string
-    case self
-    when Job
+    case self.actable_type
+    when 'Job'
       'Job'
-    when ExternalApprenticeship
+    when 'ExternalApprenticeship'
       'Apprenticeship'
     end
   end

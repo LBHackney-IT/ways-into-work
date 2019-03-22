@@ -1,15 +1,11 @@
 class ExternalApprenticeship < ApplicationRecord
-  include Opportunity
+  acts_as :opportunity
 
-  validates :title, presence: true
-  validates :end_date, presence: true
-  validates :short_description, presence: true
-  validates :location, presence: true
-  validates :salary, presence: true
+  validates :pay, presence: true
+  validates :contract, presence: true
+  validates :sector, presence: true
+  validates :full_description, presence: true
 
   has_many :enquiries, as: :opportunity
-
-  scope :active, -> { where('end_date >= ?', Date.today) }
-  scope :inactive, -> { where('end_date < ?', Date.today) }
 
 end
