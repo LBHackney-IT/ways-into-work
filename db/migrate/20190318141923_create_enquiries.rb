@@ -3,8 +3,8 @@ class CreateEnquiries < ActiveRecord::Migration[5.1]
     create_table :enquiries do |t|
       t.integer :client_id
       t.integer :opportunity_id
-      t.string :opportunity_type
-      t.integer :status
+      t.text :supporting_statement
+      t.integer :status, default: 0
       t.timestamps
     end
   end
