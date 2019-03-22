@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   layout 'default'
 
   expose :current_advisor, lambda {
-    current_user_login.user if current_user_login.user_type == 'Advisor'
+    current_user_login.user if current_user_login.try(:user_type) == 'Advisor'
   }
 
   expose :current_client, lambda {
-    current_user_login.user if current_user_login.user_type == 'Client'
+    current_user_login.user if current_user_login.try(:user_type) == 'Client'
   }
   
   def index

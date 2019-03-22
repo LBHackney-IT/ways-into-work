@@ -6,7 +6,6 @@ class Advisor::OpportunitiesController < Advisor::BaseController
   end
 
   def new
-    @opportunity_types = Opportunity.types
   end
 
   def create
