@@ -28,8 +28,7 @@
         - external_apprenticeship.enquiries.each do |enquiry|
           %tr
             %td
-              = enquiry.client.first_name
-              = enquiry.client.last_name
+              =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td

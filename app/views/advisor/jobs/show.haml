@@ -28,7 +28,7 @@
         - job.enquiries.each do |enquiry|
           %tr
             %td
-              =link_to enquiry.client.name, edit_advisor_client_path(enquiry.client)
+              =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
