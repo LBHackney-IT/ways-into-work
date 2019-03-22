@@ -1,9 +1,9 @@
 %p.salary
   %span.bold Salary:
-  = opportunity.salary
+  = opportunity.specific.pay
 %p.end_date
   %span.bold Location:
-  =opportunity.location
+  = opportunity.location
 %p.end_date
   %span.bold Closing date:
-  =opp_end_date(opportunity.end_date)
+  = opp_end_date(opportunity.closing_date)

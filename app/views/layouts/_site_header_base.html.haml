@@ -8,7 +8,7 @@
     Menu
 .nav-right.nav-menu
   = link_to I18n.t('header.nav.hubs'), hubs_path, class: "nav-item is-tab #{cp(hubs_path)} hide_hackney_link"
-  = link_to I18n.t('header.nav.opps'), client_opportunities_path, class: "nav-item is-tab #{cp(client_opportunities_path)} hide_hackney_link"
+  = link_to I18n.t('header.nav.opps'), opportunities_path, class: "nav-item is-tab #{cp(opportunities_path)} hide_hackney_link"
   = link_to I18n.t('header.nav.referrers'), new_client_referrers_path, class: "nav-item is-tab #{cp(new_client_referrers_path)} hide_hackney_link"
   -if !user_login_signed_in?
     = link_to "Register", new_client_path, class: "nav-item is-tab #{cp(new_client_path)} hide_hackney_link"

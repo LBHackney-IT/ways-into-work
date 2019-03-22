@@ -1,0 +1,44 @@
+%section
+  .head.level
+    .level-left
+      %h2= @opportunity.title
+    .level-right
+      =link_to "Back to all opportunities", opportunities_path, class: 'button pull-right top_right_button'
+  %hr
+
+  .box
+    = render partial: 'shared/opportunities/common_job_details', locals: { opportunity: @opportunity }
+
+  .box
+    = @opportunity.specific.full_description
+
+  .box
+    %h2 Register your interest
+    = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
+    - if current_advisor
+      %h2 Enquiries for this opportunity
+      - if @opportunity.enquiries.count > 0
+        %table
+          %tr
+            %th
+              Client
+            %th
+              Applied on
+            %th
+              Status
+            %th
+              Feedback
+          - @opportunity.enquiries.each do |enquiry|
+            %tr
+              %td
+                =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
+              %td
+                = enquiry.created_at.strftime("%e %B %Y")
+              %td
+                = enquiry.status
+              %td
+                .button.is-primary.is-small Give feedback
+      - else
+        %p No enquires have been made on this opportunity yet
+
+
