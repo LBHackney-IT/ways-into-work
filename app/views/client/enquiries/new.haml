@@ -12,4 +12,8 @@
       = f.input :opportunity_id, as: :hidden
       = f.input :opportunity_type, as: :hidden
 
-      = f.submit "Make enquiry", :class => 'button is-primary tablet_cta'
+      %div
+        .warning_message.alert.alert-notice
+          We'll send your enquiry using the contact details on your profile.
+
+      = f.submit "Send enquiry", :class => 'button is-primary tablet_cta'
