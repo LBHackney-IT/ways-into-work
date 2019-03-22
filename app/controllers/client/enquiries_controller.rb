@@ -10,8 +10,8 @@ class Client::EnquiriesController < Client::BaseController
     @enquiry = Enquiry.new(enquiry_params)
     @enquiry.client_id = current_client.id
     if @enquiry.save
-      flash[:alert] = 'Thank you for registering your interest in this opportunity. Our Hackney Works team will review your submission and get in touch if you are being considered for the role.'
-      redirect_to client_opportunities_path
+      flash[:alert] = 'Your enquiry was sent successfully'
+      redirect_to client_enquiry_confirm_path
     else
       render 'new'
     end

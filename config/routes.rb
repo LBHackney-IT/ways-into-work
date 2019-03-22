@@ -65,6 +65,7 @@ WaysIntoWork::Application.routes.draw do
     resources :jobs, only: [:show]
     resources :external_apprenticeships, only: [:show]
     resources :enquiries
+    get 'enquiry_confirm' => 'enquiry_confirm#show'
   end
 
   match '/401', to: 'errors#unauthorised', via: :all
