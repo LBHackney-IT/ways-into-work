@@ -50,6 +50,8 @@ gem 'hashids'
 
 gem 'sendgrid_actionmailer_adapter'
 
+gem 'active_record-acts_as'
+
 group :development, :staging, :test do
   gem 'fabrication'
   gem 'ffaker'
