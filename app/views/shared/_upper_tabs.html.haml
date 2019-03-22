@@ -15,9 +15,9 @@
     %span
       = t('client.upper_tabs.tab_d')
 
-  / = link_to advisor_client_achievements_path(client_id: the_client.id), class: "single-tab #{cp(advisor_client_achievements_path(client_id: the_client.id))}" do
-  /   %span
-  /     = t('client.upper_tabs.tab_e')
+  = link_to advisor_client_enquiries_path(client_id: the_client.id), class: "single-tab #{cp(advisor_client_enquiries_path(client_id: the_client.id))}" do
+    %span
+      = t('client.upper_tabs.tab_g')
 
   = link_to new_advisor_client_file_upload_path(client_id: the_client.id), class: "single-tab #{cp(new_advisor_client_file_upload_path(client_id: the_client.id))}" do
     %span

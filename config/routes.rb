@@ -26,6 +26,7 @@ WaysIntoWork::Application.routes.draw do
       resources :action_plan_tasks
       resources :contact_notes
       resources :achievements
+      resources :enquiries
       member do
         get 'edit(/:tab)', to: 'clients#edit', as: 'edit'
       end
@@ -65,7 +66,7 @@ WaysIntoWork::Application.routes.draw do
     resources :external_apprenticeships, only: [:show]
     resources :enquiries
   end
-  
+
   match '/401', to: 'errors#unauthorised', via: :all
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#error', via: :all

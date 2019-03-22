@@ -23,14 +23,17 @@
             Applied on
           %th
             Status
+          %th
+            Feedback
         - job.enquiries.each do |enquiry|
           %tr
             %td
-              = enquiry.client.first_name
-              = enquiry.client.last_name
+              =link_to enquiry.client.name, edit_advisor_client_path(enquiry.client)
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
               = enquiry.status
+            %td
+              .button.is-primary.is-small Give feedback
     - else
       %p No enquires have been made on this job yet
