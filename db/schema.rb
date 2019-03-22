@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190320165844) do
+ActiveRecord::Schema.define(version: 20190322115954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,23 +132,18 @@ ActiveRecord::Schema.define(version: 20190320165844) do
   create_table "enquiries", force: :cascade do |t|
     t.integer "client_id"
     t.integer "opportunity_id"
-    t.string "opportunity_type"
+    t.text "supporting_statement"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "supporting_statement"
   end
 
   create_table "external_apprenticeships", force: :cascade do |t|
-    t.string "title"
-    t.string "short_description"
-    t.datetime "end_date"
-    t.string "salary"
-    t.text "long_description"
-    t.string "reference_number"
-    t.string "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "qualification"
+    t.string "pay"
+    t.string "contract"
+    t.string "sector"
+    t.text "full_description"
   end
 
   create_table "featured_vacancies", force: :cascade do |t|
@@ -183,17 +178,10 @@ ActiveRecord::Schema.define(version: 20190320165844) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.string "title"
-    t.string "short_description"
-    t.datetime "end_date"
-    t.string "salary"
-    t.text "long_description"
-    t.string "reference_number"
-    t.string "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "pay"
     t.string "contract"
     t.string "sector"
+    t.text "full_description"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -208,6 +196,17 @@ ActiveRecord::Schema.define(version: 20190320165844) do
     t.boolean "client_attended"
     t.index ["advisor_id"], name: "index_meetings_on_advisor_id"
     t.index ["client_id"], name: "index_meetings_on_client_id"
+  end
+
+  create_table "opportunities", force: :cascade do |t|
+    t.string "title"
+    t.string "short_description"
+    t.string "location"
+    t.datetime "closing_date"
+    t.string "actable_type"
+    t.integer "actable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "referrers", force: :cascade do |t|
