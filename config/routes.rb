@@ -45,6 +45,7 @@ WaysIntoWork::Application.routes.draw do
   end
 
   resources :clients, only: %i[new create]
+  resources :opportunities, only: [:index, :show]
 
   resources :hubs, only: :index
 
@@ -61,10 +62,11 @@ WaysIntoWork::Application.routes.draw do
     resource :employment_status, only: %i[edit update], controller: 'employment_status'
     resource :additional_information, only: %i[edit update], controller: 'additional_information'
     resource :dashboard, only: :show
-    resources :opportunities, only: [:index, :show]
     resources :jobs, only: [:show]
     resources :external_apprenticeships, only: [:show]
-    resources :enquiries
+    resources :opportunities do
+      resources :enquiries
+    end
     get 'enquiry_confirm' => 'enquiry_confirm#show'
   end
 
