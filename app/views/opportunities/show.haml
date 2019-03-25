@@ -14,7 +14,7 @@
     %p.end_date
       %span.bold Contract:
       = @opportunity.specific.contract
-    - if @opportunity.specific.try(:qualification) && @opportunity.specific.qualification != ''
+    - if @opportunity.specific.try(:qualification).present?
       %p.qualification
         %span.bold Qualification/Level:
         = @opportunity.specific.qualification

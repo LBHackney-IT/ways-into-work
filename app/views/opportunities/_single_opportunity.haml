@@ -5,7 +5,7 @@
     %p.description
       = opportunity.short_description
     = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: opportunity }
-    - if opportunity.specific.try(:qualification) && opportunity.specific.qualification != ''
+    - if opportunity.specific.try(:qualification).present?
       %p.qualification
         %span.bold Qualification/Level:
         = opportunity.specific.qualification
