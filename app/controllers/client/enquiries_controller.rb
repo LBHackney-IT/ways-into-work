@@ -11,7 +11,7 @@ class Client::EnquiriesController < Client::BaseController
     @enquiry.opportunity_id = params[:opportunity_id]
     if @enquiry.save
       flash[:alert] = 'Your enquiry was sent successfully'
-      redirect_to client_enquiry_confirm_path
+      render 'confirm'
     else
       render 'new'
     end
