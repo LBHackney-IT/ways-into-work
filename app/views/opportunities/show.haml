@@ -10,7 +10,7 @@
     = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: @opportunity }
 
   .box
-    = @opportunity.specific.full_description
+    = simple_format(@opportunity.specific.full_description)
 
   .box
     - if current_advisor
