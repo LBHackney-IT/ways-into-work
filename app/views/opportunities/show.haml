@@ -35,7 +35,8 @@
               %td
                 = enquiry.status
               %td
-                .button.is-primary.is-small Give feedback
+                .button.primary.is-small
+                  = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry)
       - else
         %p No enquires have been made on this opportunity yet
     - else

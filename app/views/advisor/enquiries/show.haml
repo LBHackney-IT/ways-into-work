@@ -1,0 +1,28 @@
+%section
+  .head.level
+    .level-left
+      %h2 Review Enquiry
+    .level-right
+      = link_to "Back to opportunity", opportunity_path(opportunity), class: 'button pull-right top_right_button'
+  %hr
+
+  .box
+    Client:
+    = client.first_name + " " + client.last_name
+    Opportunity:
+    = opportunity.title
+    Enquired on:
+    = enquiry.created_at.strftime("%e %B %Y")
+    CV:
+
+  .box
+    %h2 
+      Supporting Statement
+    = enquiry.supporting_statement
+
+  = simple_form_for enquiry, url: advisor_opportunity_enquiry_path, method: :put, local: true do |form|
+    = form.input :status, as: :radio_buttons, label: "Accept?:", collection: [['Yes', 'accepted'], ['No', 'declined']]
+    = form.input :feedback
+    = form.submit "Submit"
+
+
