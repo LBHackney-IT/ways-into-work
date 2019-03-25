@@ -24,7 +24,7 @@
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
-              = enquiry.status
+              = enquiry.status.capitalize
             %td
               = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
     - else

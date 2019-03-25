@@ -7,22 +7,28 @@
   %hr
 
   .box
-    Client:
-    = client.first_name + " " + client.last_name
-    Opportunity:
-    = opportunity.title
-    Enquired on:
-    = enquiry.created_at.strftime("%e %B %Y")
-    CV:
+    %p
+      %span.bold Client:
+      =link_to client.name, advisor_client_path(client_id: enquiry.client.id)
+    %p
+      %span.bold Opportunity:
+      =link_to opportunity.title, opportunity_path(opportunity)
+    %p
+      %span.bold Enquired on:
+      = enquiry.created_at.strftime("%e %B %Y")
+    %p
+      %span.bold CV:
 
-  .box
-    %h2 
-      Supporting Statement
+    %p.bold
+      = "#{client.first_name}'s Supporting Statement"
     = enquiry.supporting_statement
 
-  = simple_form_for enquiry, url: advisor_opportunity_enquiry_path, method: :put, local: true do |form|
-    = form.input :status, as: :radio_buttons, label: "Accept?:", collection: [['Yes', 'accepted'], ['No', 'declined']]
-    = form.input :feedback
-    = form.submit "Submit"
+  .box
+    = simple_form_for enquiry, url: advisor_opportunity_enquiry_path, method: :put, local: true do |form|
+      .convert_radio
+        = form.input :status, as: :radio_buttons, label: "Where they accepted?", collection: [['Yes', 'accepted'], ['No', 'declined']]
+      %br
+      = form.input :feedback, as: :text, input_html: { class: 'textarea' }
+      = form.submit "Submit", :class => 'button is-primary tablet_cta'
 
 
