@@ -4,6 +4,9 @@
       %h2= @opportunity.title
     .level-right
       =link_to "Back to all opportunities", opportunities_path, class: 'button pull-right top_right_button'
+      -if !current_advisor
+        / add to if - && not already applied
+        = link_to "Register interest", new_client_opportunity_enquiry_path(@opportunity), class: 'break_button button is-primary pull-right top_right_button'
   %hr
 
   .box
