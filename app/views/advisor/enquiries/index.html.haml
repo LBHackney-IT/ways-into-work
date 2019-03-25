@@ -20,12 +20,12 @@
         - client.enquiries.each do |enquiry|
           %tr
             %td
-              =link_to enquiry.opportunity.title, polymorphic_path([:advisor, enquiry.opportunity])
+              = enquiry.opportunity.title
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
               = enquiry.status
             %td
-              .button.is-primary.is-small Give feedback
+              = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry), class: 'button is-primary is-small'
     - else
       %p="No enquires have been made by #{client.first_name} yet."
