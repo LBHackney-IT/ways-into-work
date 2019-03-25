@@ -12,22 +12,26 @@
         %h2 All opportunities
 
   %br
-  .container
-    .opportunity_list.columns.is-multiline
-      - @opportunities.each do |opportunity|
-        = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
-
-  - if current_advisor
-    %br
-    %br
-    %br
-    .head.level
-      .level-left
-        %h2 Completed opportunities
-        %span.client_total#filtered_count
-          %span.bold=pluralize(@old_opportunities.count, 'completed opportunity')
-
+  - if @opportunities.any?
     .container
       .opportunity_list.columns.is-multiline
-        - @old_opportunities.each do |opportunity|
+        - @opportunities.each do |opportunity|
           = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
+
+    - if current_advisor
+      %br
+      %br
+      %br
+      .head.level
+        .level-left
+          %h2 Completed opportunities
+          %span.client_total#filtered_count
+            %span.bold=pluralize(@old_opportunities.count, 'completed opportunity')
+
+      .container
+        .opportunity_list.columns.is-multiline
+          - @old_opportunities.each do |opportunity|
+            = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
+  - elsif !current_advisor
+    .box
+      %p Sorry there are not any opportunities currently avaliable. Please check back soon for more opportunities.
