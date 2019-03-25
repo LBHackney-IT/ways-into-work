@@ -67,7 +67,7 @@ WaysIntoWork::Application.routes.draw do
     resources :jobs, only: [:show]
     resources :external_apprenticeships, only: [:show]
     resources :opportunities do
-      resources :enquiries, only: [:create]
+      resources :enquiries, only: [:new, :create]
     end
     get 'enquiry_confirm' => 'enquiry_confirm#show'
   end
