@@ -11,3 +11,6 @@
         = opportunity.specific.qualification
     .tag
       = opportunity.type_string
+    -if current_advisor
+      .tag.primary
+        =pluralize(opportunity.enquiries.count, ' enquiry')
