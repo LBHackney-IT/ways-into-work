@@ -26,6 +26,6 @@
             %td
               = enquiry.status
             %td
-              = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry), class: 'button is-primary is-small'
+              = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
     - else
       %p="No enquires have been made by #{client.first_name} yet."
