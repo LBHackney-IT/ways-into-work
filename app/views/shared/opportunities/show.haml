@@ -13,9 +13,10 @@
     = @opportunity.specific.full_description
 
   .box
-    %h2 Register your interest
-    = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
-    - if current_advisor
+    - if current_client
+      %h2 Register your interest
+      = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
+    - elsif current_advisor
       %h2 Enquiries for this opportunity
       - if @opportunity.enquiries.count > 0
         %table
