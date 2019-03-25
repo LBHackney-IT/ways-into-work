@@ -4,7 +4,7 @@
       = link_to opportunity.title, polymorphic_path(opportunity)
     %p.description
       = opportunity.short_description
-    = render partial: 'shared/opportunities/common_job_details', locals: { opportunity: opportunity }
+    = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: opportunity }
     - if opportunity.specific.try(:qualification)
       %p.qualification
         %span.bold Qualification/Level:

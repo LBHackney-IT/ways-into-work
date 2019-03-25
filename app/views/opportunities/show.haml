@@ -7,16 +7,13 @@
   %hr
 
   .box
-    = render partial: 'shared/opportunities/common_job_details', locals: { opportunity: @opportunity }
+    = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: @opportunity }
 
   .box
     = @opportunity.specific.full_description
 
   .box
-    - if current_client
-      %h2 Register your interest
-      = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
-    - elsif current_advisor
+    - if current_advisor
       %h2 Enquiries for this opportunity
       - if @opportunity.enquiries.count > 0
         %table
@@ -41,5 +38,8 @@
                 .button.is-primary.is-small Give feedback
       - else
         %p No enquires have been made on this opportunity yet
+    - else
+      %h2 Register your interest
+      = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
 
 
