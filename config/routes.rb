@@ -26,9 +26,10 @@ WaysIntoWork::Application.routes.draw do
       resources :action_plan_tasks
       resources :contact_notes
       resources :achievements
-      resources :enquiries
+      #resources :enquiries
       member do
         get 'edit(/:tab)', to: 'clients#edit', as: 'edit'
+        #get 'enquiries', to: 'enquiries#for_client'
       end
     end
 
@@ -44,6 +45,8 @@ WaysIntoWork::Application.routes.draw do
     end
     resources :jobs, only: [:new, :create, :show]
     resources :external_apprenticeships, only: [:new, :create, :show]
+    resources :enquiries, only: [:index, :show]
+    get 'clients/:client_id/enquiries', to: 'enquiries#for_client', as: :client_enquiries
   end
 
   resources :clients, only: %i[new create]

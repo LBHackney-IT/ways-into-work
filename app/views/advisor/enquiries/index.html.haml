@@ -1,31 +1,71 @@
 %section
   .head.level
     .level-left
-      %h2="#{client.first_name}'s Enquiries"
+      %h2="Enquiries awaiting review"
+      %span.client_total#filtered_count
+        %span.bold=pluralize(@enquiries_awaiting.count, ' awaiting enquiry')
 
-  = render partial: 'shared/upper_tabs', locals: {the_client: client}
+  - if enquiries.count > 0
+    - if @enquiries_awaiting.count > 0
+      %table.table
+        %thead
+          %tr
+            %th
+              Client
+            %th
+              Opportunity
+            %th
+              Enquired on
+            %th
+              Status
+            %th
 
-  .profile-tab.top-right-corner
-    - if client.enquiries.count > 0
-      %table.enquiries
-        %tr
-          %th
-            Client
-          %th
-            Applied on
-          %th
-            Status
-          %th
-            Feedback
-        - client.enquiries.each do |enquiry|
+        - @enquiries_awaiting.each do |enquiry|
           %tr
             %td
-              = enquiry.opportunity.title
+              =link_to enquiry.client.name, advisor_client_enquiries_path(enquiry.client)
+            %td
+              = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
               = enquiry.status.capitalize
             %td
               = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
-    - else
-      %p="No enquires have been made by #{client.first_name} yet."
+    - if @enquiries_reviewed.count > 0
+      %br
+      %br
+      %br
+      .head.level
+        .level-left
+          %h2="Reviewed enquiries"
+          %span.client_total#filtered_count
+            %span.bold=pluralize(@enquiries_reviewed.count, ' reviewed enquiry')
+
+      %table.table
+        %thead
+          %tr
+            %th
+              Client
+            %th
+              Opportunity
+            %th
+              Enquired on
+            %th
+              Status
+            %th
+
+        - @enquiries_reviewed.each do |enquiry|
+          %tr
+            %td
+              =link_to enquiry.client.name, advisor_client_enquiries_path(enquiry.client)
+            %td
+              = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
+            %td
+              = enquiry.created_at.strftime("%e %B %Y")
+            %td
+              = enquiry.status.capitalize
+            %td
+              = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
+  - else
+    %p="No enquires have been made yet"
