@@ -9,10 +9,10 @@
   .box
     %p
       %span.bold Client:
-      =link_to client.name, advisor_client_path(client_id: enquiry.client.id)
+      = link_to @client.name, advisor_client_path(@client)
     %p
       %span.bold Opportunity:
-      =link_to opportunity.title, opportunity_path(opportunity)
+      = link_to opportunity.title, opportunity_path(opportunity)
     %p
       %span.bold Enquired on:
       = enquiry.created_at.strftime("%e %B %Y")
@@ -20,7 +20,7 @@
       %span.bold CV:
 
     %p.bold
-      = "#{client.first_name}'s Supporting Statement"
+      = "#{@client.first_name}'s Supporting Statement"
     = enquiry.supporting_statement
 
   .box

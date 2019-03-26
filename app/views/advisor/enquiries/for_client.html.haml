@@ -1,12 +1,12 @@
 %section
   .head.level
     .level-left
-      %h2="#{client.first_name}'s Enquiries"
+      %h2= "#{@client.first_name}'s Enquiries"
 
-  = render partial: 'shared/upper_tabs', locals: {the_client: client}
+  = render partial: 'shared/upper_tabs', locals: {the_client: @client}
 
   .profile-tab.top-right-corner
-    - if client.enquiries.count > 0
+    - if @client.enquiries.count > 0
       %table.enquiries
         %tr
           %th
@@ -17,7 +17,7 @@
             Status
           %th
             Feedback
-        - client.enquiries.each do |enquiry|
+        - @client.enquiries.each do |enquiry|
           %tr
             %td
               = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
@@ -28,4 +28,4 @@
             %td
               = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
     - else
-      %p="No enquires have been made by #{client.first_name} yet."
+      %p= "No enquires have been made by #{@client.first_name} yet."
