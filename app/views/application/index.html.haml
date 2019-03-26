@@ -85,15 +85,8 @@
         .indicator#indi2{:data => {:number => 2}}
         .indicator#indi3{:data => {:number => 3}}
 
--if @featured_vacancies.any?
-  #vacancies.container
-    %h2=t('hackney_works.vacancies.title')
-    =render partial: 'shared/featured_vacancies', locals: { featured_vacancies: @featured_vacancies }
-    %br
-    =link_to I18n.t('hackney_works.vacancies.button'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary'
-- else
-  %br
-  %br
+%br
+%br
 
 #newsletter.container
   %h2=t('hackney_works.newsletter.title')
