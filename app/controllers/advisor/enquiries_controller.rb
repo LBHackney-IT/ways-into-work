@@ -1,5 +1,5 @@
 class Advisor::EnquiriesController < Advisor::BaseController
-  expose :client
+
   expose :opportunity
   expose :enquiry
   expose :enquiries, ->{ Enquiry.all }
@@ -10,10 +10,12 @@ class Advisor::EnquiriesController < Advisor::BaseController
   end
 
   def for_client
+    @client = Client.find(params[:client_id])
     render 'for_client'
   end
 
   def show
+    @client = enquiry.client
     session[:return_to] = request.referrer
   end
 
