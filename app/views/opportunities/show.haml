@@ -4,8 +4,9 @@
       %h2= @opportunity.title
     .level-right
       =link_to "Back to all opportunities", opportunities_path, class: 'button pull-right top_right_button'
-      -if !current_advisor
-        / add to if - && not already applied
+      - if @opportunity.enquired_for_by_client?(current_client)
+        You have already enquired about this opportunity
+      - elsif !current_advisor
         = link_to "Register interest", new_client_opportunity_enquiry_path(@opportunity), class: 'break_button button is-primary pull-right top_right_button'
   %hr
 
@@ -56,7 +57,11 @@
       .box
         %p No enquires have been made on this opportunity yet
   - else
-    %h2 Register your interest
-    = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
+    - if @opportunity.enquired_for_by_client?(current_client)
+      .box
+        You have already enquired about this opportunity
+    - else
+      %h2 Register your interest
+      = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
 
 

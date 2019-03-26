@@ -19,4 +19,13 @@ class Opportunity < ApplicationRecord
       'Apprenticeship'
     end
   end
+
+  def enquired_for_by_client? client
+    if enquiries.where(client_id: client.id).count > 1
+      true
+    else
+      false
+    end
+  end
+
 end
