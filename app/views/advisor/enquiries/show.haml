@@ -3,7 +3,7 @@
     .level-left
       %h2 Review Enquiry
     .level-right
-      = link_to "Back to opportunity", opportunity_path(opportunity), class: 'button pull-right top_right_button'
+      = link_to "Back", session[:return_to], class: 'button pull-right top_right_button'
   %hr
 
   .box
