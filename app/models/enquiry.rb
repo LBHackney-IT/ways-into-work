@@ -2,6 +2,8 @@ class Enquiry < ApplicationRecord
   belongs_to :client
   belongs_to :opportunity
 
+  has_one :file_upload
+
   validates :status, presence: true
 
   enum status: %i[awaiting accepted declined]

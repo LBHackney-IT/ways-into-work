@@ -135,6 +135,15 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     end
   }
 
+  def file_uploads_for_select
+    file_uploads_for_select = []
+    file_uploads.each do |fu|
+      file_uploads_for_select << [fu.attachment_file_name, fu.id]
+    end
+    file_uploads_for_select << ['+ Upload new', 0]
+    return file_uploads_for_select
+  end
+
   def self.csv(clients)
     CSV.generate do |csv|
       csv << csv_header
