@@ -1,9 +1,9 @@
 %section
   .head.level
     .level-left
-      %h2= "Enquire about this opportunity"
+      %h2= "Enquire about #{@opportunity.title} #{@opportunity.type_string.downcase}"
     .level-right
-      =link_to "Back to all opportunities", client_opportunities_path, class: 'button pull-right top_right_button'
+      =link_to "Back to #{@opportunity.type_string.downcase} description", opportunity_path(@opportunity), class: 'button pull-right top_right_button'
   %hr
 
   .opportunity_form
