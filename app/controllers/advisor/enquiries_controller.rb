@@ -14,12 +14,13 @@ class Advisor::EnquiriesController < Advisor::BaseController
   end
 
   def show
+    session[:return_to] = request.referrer
   end
 
   def update
     if enquiry.update_attributes(enquiry_params)
-      flash[:success] = "Enquiry processed"
-      redirect_to opportunity_path(opportunity)
+      flash[:success] = "Enquiry review updated"
+      redirect_to session[:return_to]
     else
       render 'show'
     end
