@@ -14,5 +14,5 @@
     .tag
       = opportunity.specific.sector
     -if current_advisor
-      .tag.primary
+      .tag{ opportunity.enquiries.count > 0 ? { class: 'primary' }  : {}}
         =pluralize(opportunity.enquiries.count, ' enquiry')
