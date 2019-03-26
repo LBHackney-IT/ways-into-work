@@ -28,11 +28,11 @@
   %br
   %br
   %br
-  .box
-    - if current_advisor
-      %h2 Enquiries for this opportunity
-      - if @opportunity.enquiries.count > 0
-        %table.enquiries
+  - if current_advisor
+    %h2 Enquiries for this opportunity
+    - if @opportunity.enquiries.count > 0
+      %table.table
+        %thead
           %tr
             %th
               Client
@@ -42,20 +42,21 @@
               Status
             %th
 
-          - @opportunity.enquiries.each do |enquiry|
-            %tr
-              %td
-                =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
-              %td
-                = enquiry.created_at.strftime("%e %B %Y")
-              %td
-                = enquiry.status.capitalize
-              %td
-                = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry), class: 'button is-primary is-small'
-      - else
-        %p No enquires have been made on this opportunity yet
+        - @opportunity.enquiries.each do |enquiry|
+          %tr
+            %td
+              =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
+            %td
+              = enquiry.created_at.strftime("%e %B %Y")
+            %td
+              = enquiry.status.capitalize
+            %td
+              = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry), class: 'button is-primary is-small'
     - else
-      %h2 Register your interest
-      = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
+      .box
+        %p No enquires have been made on this opportunity yet
+  - else
+    %h2 Register your interest
+    = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
 
 
