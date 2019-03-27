@@ -5,6 +5,10 @@ class Client::EnquiriesController < Client::BaseController
   def new
     @enquiry = Enquiry.new
     @opportunity = Opportunity.find(params[:opportunity_id])
+    if @opportunity.enquired_for_by_client? current_client
+      flash[:notice] = "You have already enquired about this opportunity"
+      redirect_to opportunity_path(@opportunity)
+    end
     file_upload.client_id = current_client.id
     file_upload.uploaded_by = current_client.name
   end
