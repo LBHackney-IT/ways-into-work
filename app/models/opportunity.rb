@@ -22,7 +22,7 @@ class Opportunity < ApplicationRecord
 
   def enquired_for_by_client? client
     return nil if client.nil?
-    if enquiries.where(client_id: client.id).count > 1
+    if enquiries.where(client_id: client.id).count > 0
       true
     else
       false
