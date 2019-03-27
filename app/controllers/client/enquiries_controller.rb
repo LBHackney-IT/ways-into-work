@@ -1,7 +1,5 @@
 class Client::EnquiriesController < Client::BaseController
 
-  expose :file_upload
-
   def new
     @enquiry = Enquiry.new
     @opportunity = Opportunity.find(params[:opportunity_id])
@@ -9,20 +7,21 @@ class Client::EnquiriesController < Client::BaseController
       flash[:notice] = "You have already enquired about this opportunity"
       redirect_to opportunity_path(@opportunity)
     end
-    file_upload.client_id = current_client.id
-    file_upload.uploaded_by = current_client.name
+    @file_upload = FileUpload.new(client_id: current_client.id, uploaded_by: current_client.name)
   end
 
   def create # horrible method - to be refactored :)
     @enquiry = Enquiry.new(enquiry_params)
+    @opportunity = Opportunity.find(params[:opportunity_id])
     @enquiry.client_id = current_client.id
-    @enquiry.opportunity_id = params[:opportunity_id]
+    @enquiry.opportunity_id = @opportunity.id
+    @file_upload = FileUpload.new(client_id: current_client.id, uploaded_by: current_client.name)
 
     if params[:enquiry][:file_upload_id].present? # Check they have seleted something - already uplaoded or new.
       if params[:enquiry][:file_upload_id] == "0" # If new file upload
-        file_upload = FileUpload.create(file_upload_params)
-        if file_upload.save # set file_upload_id on enquiry if created successfully
-          @enquiry.file_upload_id = file_upload.id
+        @file_upload = FileUpload.create(file_upload_params)
+        if @file_upload.save # set file_upload_id on enquiry if created successfully
+          @enquiry.file_upload_id = @file_upload.id
           if @enquiry.save
             flash[:notice] = "Your enquiry was sent successfully"
             render 'confirm'
@@ -31,7 +30,8 @@ class Client::EnquiriesController < Client::BaseController
             render 'new'
           end
         else
-          flash[:notice] = "There was a problem with your enquiry"
+          @enquiry.file_upload_id = 0
+          flash[:error] = "There was a problem with your file upload, did you select a file?"
           render 'new'
         end
       else # If existing file upload
@@ -45,7 +45,6 @@ class Client::EnquiriesController < Client::BaseController
         end
       end
     else # If nothing selected render new with message
-      @opportunity = Opportunity.find(params[:opportunity_id])
       flash[:notice] = "You must select a file to upload"
       render 'new'
     end

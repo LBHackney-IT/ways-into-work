@@ -14,8 +14,8 @@
           = f.input_field :file_upload_id, as: :select, include_blank: 'Select a CV from your files', collection: current_client.file_uploads_for_select, class: 'input', input_wrapper_html: {class: 'select'}
 
         .file_uploader
-          = simple_fields_for file_upload do |file_fields|
-            = render 'shared/form_errors', object: file_fields.object
+          = simple_fields_for @file_upload do |file_fields|
+
             %div
               = file_fields.input :attachment, as: :file, label: "Choose a file to upload"
               = file_fields.input :uploaded_by, as: :hidden
