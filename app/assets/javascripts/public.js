@@ -106,6 +106,34 @@ $(document).ready(function() {
 
   $('.accordion').each(function() { $(this).accordion() });
 
+
+  if($('.file_selector').length) {
+    if ($('.file_selector select').children("option:selected").val() != '' && $('.file_selector select').children("option:selected").val() == 0) {
+      $('.file_uploader').slideDown();
+    }
+     var checkForFile = false;
+
+     $('#new_enquiry').submit(function(){
+        if(checkForFile) {
+          var fileName = $("#file_upload_attachment").val();
+
+          if(!fileName) {
+            alert("No file uploaded");
+            return false;
+          }
+        }
+      });
+
+    $('.file_selector select').change(function() {
+      if ($(this).children("option:selected").val() == 0) {
+        checkForFile = true;
+        $('.file_uploader').slideDown();
+      } else {
+        $('.file_uploader').slideUp();
+      }
+    });
+  }
+
   // Find all YouTube videos
   var $allVideos = $(".youtube"),
 

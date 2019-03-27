@@ -1,29 +1,35 @@
 %section
   .head.level
     .level-left
-      %h2= "Enquire about #{@opportunity.title} #{@opportunity.type_string.downcase}"
+      %h2= "Enquire about this #{@opportunity.type_string.downcase}"
     .level-right
       =link_to "Back to #{@opportunity.type_string.downcase} description", opportunity_path(@opportunity), class: 'button pull-right top_right_button'
-  %hr
 
-  .opportunity_form
-    = simple_form_for [@opportunity, @enquiry], url: client_opportunity_enquiries_path, html: { multipart: true }, local: true do |f|
+  .box
+    .opportunity_form
+      = simple_form_for [@opportunity, @enquiry], url: client_opportunity_enquiries_path, html: { multipart: true }, local: true do |f|
 
-      Upload your CV
-      = f.input_field :file_upload_id, as: :select, include_blank: 'None', collection: current_client.file_uploads_for_select, class: 'input'
+        .file_selector
+          %label.label Upload your CV
+          = f.input_field :file_upload_id, as: :select, include_blank: 'Select a CV from your files', collection: current_client.file_uploads_for_select, class: 'input', input_wrapper_html: {class: 'select'}
 
-      / Hide below unless '+ Upload new' (value: 0) is selected
-      = simple_fields_for file_upload do |file_fields|
-        = render 'shared/form_errors', object: file_fields.object
-        %fieldset
-          = file_fields.input :attachment, as: :file, label: "Choose a file to upload"
-          = file_fields.input :uploaded_by, as: :hidden
-          = file_fields.input :client_id, as: :hidden
+        .file_uploader
+          = simple_fields_for file_upload do |file_fields|
+            = render 'shared/form_errors', object: file_fields.object
+            %div
+              = file_fields.input :attachment, as: :file, label: "Choose a file to upload"
+              = file_fields.input :uploaded_by, as: :hidden
+              = file_fields.input :client_id, as: :hidden
 
-      = f.input :supporting_statement, as: :text, :input_html => { :class => 'textarea' }
+        = f.input :supporting_statement, as: :text, :input_html => { :class => 'textarea' }
 
-      %div
-        .warning_message.alert.alert-notice
-          We'll send your enquiry using the contact details on your profile.
+        %div
+          .warning_message.alert.alert-notice
+            We'll send your enquiry using the contact details on your profile.
 
-      = f.submit "Send enquiry", :class => 'button is-primary tablet_cta'
+        = f.submit "Send enquiry", :class => 'button is-primary tablet_cta'
+
+  .opportunity_short_description.box
+    %h3= @opportunity.title
+    %p= @opportunity.short_description
+    .button= link_to "View #{@opportunity.type_string.downcase} description", opportunity_path(@opportunity), title: "Open description in a new tab", target: '_blank'

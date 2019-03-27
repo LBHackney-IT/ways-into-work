@@ -13,6 +13,13 @@
   .date_input {
     max-width: 200px;
   }
+  .file_selector {
+    margin-bottom: 25px;
+  }
+  .file_uploader {
+    margin-bottom: 25px;
+    display: none;
+  }
 }
 
 .opportunities .head h2 {
@@ -22,4 +29,20 @@
 
 .break_button {
   margin-left: 10px;
+}
+
+.enquiries {
+  tr.declined, tr.accepted {
+    opacity: 0.5;
+  }
+  tr.declined {
+    .button.is-primary {
+      background-color: $red;
+    }
+  }
+  tr.accepted {
+    .button.is-primary {
+      background-color: $green;
+    }
+  }
 }

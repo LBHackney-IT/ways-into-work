@@ -18,7 +18,7 @@
           %th
             Feedback
         - @client.enquiries.each do |enquiry|
-          %tr
+          %tr{ class: enquiry.status }
             %td
               = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
             %td
