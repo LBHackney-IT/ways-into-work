@@ -56,7 +56,7 @@
             %th
 
         - @enquiries_reviewed.each do |enquiry|
-          %tr
+          %tr{ class: enquiry.status }
             %td
               =link_to enquiry.client.name, advisor_client_enquiries_path(enquiry.client)
             %td
