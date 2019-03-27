@@ -27,7 +27,7 @@
   .box
     = simple_form_for enquiry, url: advisor_opportunity_enquiry_path, method: :put, local: true do |form|
       .convert_radio
-        = form.input :status, as: :radio_buttons, label: "Where they accepted?", collection: [['Yes', 'accepted'], ['No', 'declined']]
+        = form.input :status, as: :radio_buttons, label: "Were they accepted?", collection: [['Yes', 'accepted'], ['No', 'declined']]
       %br
       = form.input :feedback, as: :text, input_html: { class: 'textarea' }
       = form.submit "Submit", :class => 'button is-primary tablet_cta'
