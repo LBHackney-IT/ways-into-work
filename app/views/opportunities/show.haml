@@ -30,7 +30,7 @@
   - if current_advisor
     %h2 Enquiries for this opportunity
     - if @opportunity.enquiries.count > 0
-      %table.table
+      %table.table.enquiries
         %thead
           %tr
             %th
@@ -42,7 +42,7 @@
             %th
 
         - @opportunity.enquiries.each do |enquiry|
-          %tr
+          %tr{ class: enquiry.status }
             %td
               =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
             %td
