@@ -18,7 +18,10 @@
       = enquiry.created_at.strftime("%e %B %Y")
     %p
       %span.bold CV:
-      = link_to @file_upload.attachment_file_name, @file_upload.attachment.try(:url), title: @file_upload.attachment_file_name, target: :blank 
+      - if @file_upload.present?
+        = link_to @file_upload.attachment_file_name, @file_upload.attachment.try(:url), title: @file_upload.attachment_file_name, target: :blank
+      - else
+        No CV provided
 
     %p.bold
       = "#{@client.first_name}'s Supporting Statement"

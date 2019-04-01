@@ -10,7 +10,7 @@
       = simple_form_for [@opportunity, @enquiry], url: client_opportunity_enquiries_path, html: { multipart: true }, local: true do |f|
 
         .file_selector
-          %label.label Upload your CV*
+          %label.label Upload your CV
           = f.input_field :file_upload_id, as: :select, include_blank: 'Select a CV from your files', collection: current_client.file_uploads_for_select, class: 'input', input_wrapper_html: {class: 'select'}
 
         .file_uploader

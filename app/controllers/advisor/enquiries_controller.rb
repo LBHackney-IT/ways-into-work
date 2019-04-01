@@ -16,7 +16,7 @@ class Advisor::EnquiriesController < Advisor::BaseController
 
   def show
     @client = enquiry.client
-    @file_upload = FileUpload.find(enquiry.file_upload_id)
+    @file_upload = FileUpload.find_by(id: enquiry.file_upload_id)
     session[:return_to] = request.referrer
   end
 
