@@ -1,0 +1,4 @@
+= f.input :title, :input_html => { :class => 'input' }
+= f.input :closing_date, as: :string, label: 'Closing date', input_html: {type: :date, class: 'input date_input', value: f.object.try(:closing_date).try(:to_date)}, placeholder: "dd/mm/yyyy"
+= f.input :short_description, as: :text, label: 'Short description (max 250 characters)', input_html: { class: 'textarea', :maxlength => 250 }
+= f.input :location, label: 'Location', :input_html => { :class => 'input' }
