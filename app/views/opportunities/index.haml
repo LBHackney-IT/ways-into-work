@@ -11,16 +11,17 @@
       .level-left
         %h2 All opportunities
 
-  .filters
-    Filter opportunities:
-    .tag.large.job.inactive Job
-    .tag.large.apprenticeship.inactive Apprenticeship
-    .tag.large.placement.inactive Placement
-    .tag.large.event.inactive Event
-    .tag.large.training.inactive Training
-
-  %br
   - if @opportunities.any?
+    .filters
+      Filter opportunities:
+      .tag.large.job.inactive Jobs
+      .tag.large.apprenticeship.inactive Apprenticeships
+      .tag.large.placement.inactive Placements
+      .tag.large.event.inactive Events
+      .tag.large.training.inactive Training
+
+    %br
+
     .container
       .opportunity_list.columns.is-multiline
         - @opportunities.each do |opportunity|
@@ -46,5 +47,6 @@
             - @old_opportunities.each do |opportunity|
               = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
   - elsif !current_advisor
+    %br
     .box
       %p Sorry there are not any opportunities currently avaliable. Please check back soon for more opportunities.
