@@ -38,9 +38,11 @@
             %th
               Client
             %th
-              Enquired on
+              Enquired
             %th
-              Status
+              Email
+            %th
+              Phone
             %th
 
         - @opportunity.enquiries.order("created_at desc").each do |enquiry|
@@ -50,7 +52,9 @@
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
-              = enquiry.status.capitalize
+              = enquiry.client.email
+            %td
+              = enquiry.client.phone
             %td
               = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry), class: 'button is-primary is-small'
     - else

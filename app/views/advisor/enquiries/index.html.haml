@@ -15,9 +15,11 @@
             %th
               Opportunity
             %th
-              Enquired on
+              Enquired
             %th
-              Status
+              Email
+            %th
+              Phone
             %th
 
         - @enquiries_awaiting.each do |enquiry|
@@ -29,7 +31,9 @@
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
-              = enquiry.status.capitalize
+              = enquiry.client.email
+            %td
+              = enquiry.client.phone
             %td
               = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
     - if @enquiries_reviewed.count > 0
@@ -50,9 +54,11 @@
             %th
               Opportunity
             %th
-              Enquired on
+              Enquired
             %th
-              Status
+              Email
+            %th
+              Phone
             %th
 
         - @enquiries_reviewed.each do |enquiry|
@@ -64,7 +70,9 @@
             %td
               = enquiry.created_at.strftime("%e %B %Y")
             %td
-              = enquiry.status.capitalize
+              = enquiry.client.email
+            %td
+              = enquiry.client.phone
             %td
               = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
   - else
