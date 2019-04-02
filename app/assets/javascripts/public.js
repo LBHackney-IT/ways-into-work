@@ -108,12 +108,9 @@ $(document).ready(function() {
 
 
   if($('.file_selector').length) {
-    if ($('.file_selector select').children("option:selected").val() != '' && $('.file_selector select').children("option:selected").val() == 0) {
-      $('.file_uploader').slideDown();
-    }
-
     $('.file_selector select').change(function() {
-      if ($(this).children("option:selected").val() == 0) {
+      console.log($(this).children("option:selected").val())
+      if ($(this).children("option:selected").val() == 0 && $(this).children("option:selected").val() != '') {
         $('.file_uploader').slideDown();
       } else {
         $('.file_uploader').slideUp();
