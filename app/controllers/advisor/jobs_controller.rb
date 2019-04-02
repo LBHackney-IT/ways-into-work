@@ -1,7 +1,5 @@
 class Advisor::JobsController < Advisor::BaseController
 
-  expose :job
-
   def new
     @job = Job.new
   end
@@ -15,7 +13,17 @@ class Advisor::JobsController < Advisor::BaseController
     end
   end
 
-  def show
+  def edit
+    @job = Job.find(params[:id])
+  end
+
+  def update
+    @job = Job.find(params[:id])
+    if @job.update_attributes(job_params)
+      redirect_to opportunity_path(@job.opportunity)
+    else
+      render 'edit'
+    end
   end
 
   def job_params

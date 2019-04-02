@@ -9,8 +9,5 @@
   .opportunity_form
     = simple_form_for @job, url: advisor_jobs_path, local: true do |f|
       = render partial: 'advisor/opportunities/shared_form_fields', locals: {f: f}
-      = f.input :pay, label: 'Pay', :input_html => { :class => 'input' }
-      = f.input :contract, label: 'Contract', :input_html => { :class => 'input' }
-      = f.input :sector, label: 'Sector', :input_html => { :class => 'input' }
-      = f.input :full_description, as: :text, input_html: { class: 'textarea' }
+      = render partial: 'shared_fields', locals: {f: f}
       = f.submit "Add new job opportunity", :class => 'button is-primary tablet_cta'
