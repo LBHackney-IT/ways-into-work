@@ -6,7 +6,7 @@ class Enquiry < ApplicationRecord
 
   validates :status, presence: true
 
-  enum status: %i[awaiting accepted declined]
+  enum status: %i[awaiting accepted unsuccessful]
 
   scope :awaiting, -> { where('status = 0').order(:created_at) }
   scope :reviewed, -> { where('status != 0').order(:created_at) }

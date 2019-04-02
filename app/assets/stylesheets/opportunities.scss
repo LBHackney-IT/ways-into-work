@@ -32,7 +32,7 @@
 }
 
 .enquiries {
-  tr.declined, tr.accepted {
+  tr.unsuccessful, tr.accepted {
     opacity: 0.5;
     .button.is-primary {
       background-color: $grey;
