@@ -36,4 +36,6 @@
 //= require slider
 //= require filterrific-browser-history
 //= require accordion
+//= require tinymce
+
 //= require public

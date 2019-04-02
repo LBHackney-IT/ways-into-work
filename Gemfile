@@ -10,6 +10,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
+gem 'tinymce-rails'
 
 gem 'simple_form'
 

@@ -2,4 +2,7 @@
 = f.input :contract, label: 'Contract', :input_html => { :class => 'input' }
 = f.input :sector, label: 'Sector', :input_html => { :class => 'input' }
 = f.input :qualification, label: 'Qualification/Level', :input_html => { :class => 'input' }
-= f.input :full_description, as: :text, input_html: { class: 'textarea' }
+
+= f.input :full_description, as: :text, input_html: { class: 'tinymce' }
+= tinymce_assets
+= tinymce

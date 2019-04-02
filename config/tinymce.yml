@@ -1,0 +1,10 @@
+toolbar:
+  - styleselect | bold italic | undo redo | numlist | bullist
+  - link
+plugins:
+  - link
+  - lists
+  - autoresize
+branding: false
+menubar: false
+alignleft: false
