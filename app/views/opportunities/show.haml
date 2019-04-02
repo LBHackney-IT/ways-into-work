@@ -41,7 +41,7 @@
               Status
             %th
 
-        - @opportunity.enquiries.each do |enquiry|
+        - @opportunity.enquiries.order("created_at desc").each do |enquiry|
           %tr{ class: enquiry.status }
             %td
               =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
