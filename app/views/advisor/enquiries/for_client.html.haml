@@ -17,7 +17,7 @@
             Status
           %th
             Feedback
-        - @client.enquiries.each do |enquiry|
+        - @client.enquiries.order("created_at desc").each do |enquiry|
           %tr{ class: enquiry.status }
             %td
               = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
