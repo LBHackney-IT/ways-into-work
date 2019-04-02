@@ -6,6 +6,8 @@
       =link_to "Back to all opportunities", opportunities_path, class: 'button pull-right top_right_button'
       - if !current_advisor && !@opportunity.enquired_for_by_client?(current_client)
         = link_to "Register interest", new_client_opportunity_enquiry_path(@opportunity), class: 'break_button button is-primary pull-right top_right_button'
+      - if current_advisor
+        = link_to "Edit opportunity", edit_polymorphic_path([:advisor, @opportunity.specific]), class: 'break_button button is-primary pull-right top_right_button'
   %hr
 
   .box

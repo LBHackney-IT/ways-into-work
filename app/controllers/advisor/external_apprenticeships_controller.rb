@@ -1,7 +1,5 @@
 class Advisor::ExternalApprenticeshipsController < Advisor::BaseController
 
-  expose :external_apprenticeship
-
   def new
     @external_apprenticeship = ExternalApprenticeship.new
   end
@@ -15,7 +13,17 @@ class Advisor::ExternalApprenticeshipsController < Advisor::BaseController
     end
   end
 
-  def show
+  def edit
+    @external_apprenticeship = ExternalApprenticeship.find(params[:id])
+  end
+
+  def update
+    @external_apprenticeship = ExternalApprenticeship.find(params[:id])
+    if @external_apprenticeship.update_attributes(external_apprenticeship_params)
+      redirect_to opportunity_path(@external_apprenticeship.opportunity)
+    else
+      render 'edit'
+    end
   end
 
   def external_apprenticeship_params
