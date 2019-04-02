@@ -1,5 +1,5 @@
 %p.end_date
-  %span.bold Closing date:
+  %span.bold= unenqireable ? "End date:" : "Closing date:"
   = opp_end_date(opportunity.closing_date)
 %p.end_date
   %span.bold Location:

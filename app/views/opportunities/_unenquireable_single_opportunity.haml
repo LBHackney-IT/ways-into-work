@@ -1,23 +1,25 @@
 %div{ class: opportunity.type_string.parameterize + '_opportunity single_opportunity column is-one-third' }
   .box
+    .opportunity_tags
+      .tag{ class: opportunity.type_string.downcase }
+        = opportunity.type_string
+      -if current_advisor
+        .tag{ opportunity.enquiries.count > 0 ? { class: 'primary' }  : {}}
+          =pluralize(opportunity.enquiries.count, ' enquiry')
+
     .opportunity_title
       - if current_advisor
         = link_to opportunity.title, edit_polymorphic_path([:advisor, opportunity.specific])
       - else
-        = link_to opportunity.title, opportunity.specific.url, target: '_blank'
+        = opportunity.title
     %p.description
       = opportunity.short_description
-    = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: opportunity }
+    = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: opportunity, unenqireable: true }
 
     %p.eventbrite_link
-      = link_to "View on eventbrite", opportunity.specific.url, target: '_blank'
+      = link_to "View on eventbrite", opportunity.specific.url, target: '_blank', class: 'button is-primary is-event'
 
     - if opportunity.specific.try(:qualification).present?
       %p.qualification
         %span.bold Qualification/Level:
         = opportunity.specific.qualification
-    .tag
-      = opportunity.type_string
-    -if current_advisor
-      .tag{ opportunity.enquiries.count > 0 ? { class: 'primary' }  : {}}
-        =pluralize(opportunity.enquiries.count, ' enquiry')

@@ -31,7 +31,7 @@
 
   .box
     %h2.bold= @opportunity.title
-    = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: @opportunity }
+    = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: @opportunity, unenqireable: false }
     %p.end_date
       %span.bold Contract:
       = @opportunity.specific.contract

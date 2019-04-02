@@ -45,3 +45,32 @@
     }
   }
 }
+
+.button.is-event {
+  background-color: #ff8000;
+  width: 100%;
+  &:hover {
+    background-color: darken(#ff8000, 5%);
+  }
+}
+
+.opportunity_tags {
+  margin-bottom: 10px;
+
+  .tag.event {
+    background-color: #ff8000;
+    color: #fff;
+  }
+  .tag.apprenticeship {
+    background-color: $color__hackney-apprentices;
+    color: #fff;
+  }
+  .tag.placement {
+    background-color: $color__hackney-100;
+    color: #fff;
+  }
+  .tag.job {
+    background-color: $color__hackney-works;
+    color: #fff;
+  }
+}
