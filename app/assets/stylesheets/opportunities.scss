@@ -56,21 +56,45 @@
 
 .opportunity_tags {
   margin-bottom: 10px;
+}
+.tag.event, .tag.training {
+  background-color: #ff8000;
+  color: #fff;
+}
+.tag.apprenticeship {
+  background-color: $color__hackney-apprentices;
+  color: #fff;
+}
+.tag.placement {
+  background-color: $color__hackney-100;
+  color: #fff;
+}
+.tag.job {
+  background-color: $color__hackney-works;
+  color: #fff;
+}
 
-  .tag.event {
-    background-color: #ff8000;
-    color: #fff;
+.tag.inactive {
+  background-color: #fff;
+  color: #1D1D1B;
+  &.event:hover, &.training:hover {
+    cursor: pointer;
+    background-color: rgba(#ff8000, 0.2);
   }
-  .tag.apprenticeship {
-    background-color: $color__hackney-apprentices;
-    color: #fff;
+  &.apprenticeship:hover {
+    cursor: pointer;
+    background-color: rgba($color__hackney-apprentices, 0.2);
   }
-  .tag.placement {
-    background-color: $color__hackney-100;
-    color: #fff;
+  &.placement:hover {
+    cursor: pointer;
+    background-color: rgba($color__hackney-100, 0.2);
   }
-  .tag.job {
-    background-color: $color__hackney-works;
-    color: #fff;
+  &.job:hover {
+    cursor: pointer;
+    background-color: rgba($color__hackney-works, 0.2);
   }
+}
+.tag.large {
+  font-size: 17px;
+  margin-bottom: 5px;
 }
