@@ -34,13 +34,12 @@
 .enquiries {
   tr.declined, tr.accepted {
     opacity: 0.5;
-  }
-  tr.declined {
     .button.is-primary {
-      background-color: $red;
+      background-color: $grey;
     }
   }
   tr.accepted {
+    opacity: 0.6;
     .button.is-primary {
       background-color: $green;
     }
