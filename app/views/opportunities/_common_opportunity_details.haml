@@ -4,6 +4,7 @@
 %p.end_date
   %span.bold Location:
   = opportunity.location
-%p.salary
-  %span.bold Salary:
-  = opportunity.specific.pay
+- if opportunity.specific.try(:pay).present?
+  %p.salary
+    %span.bold Salary:
+    = opportunity.specific.pay

@@ -16,7 +16,10 @@
     .container
       .opportunity_list.columns.is-multiline
         - @opportunities.each do |opportunity|
-          = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
+          - if opportunity.specific.try(:url).present?
+            = render partial: 'opportunities/unenquireable_single_opportunity', locals: { opportunity: opportunity }
+          - else
+            = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
 
     - if current_advisor
       - if @old_opportunities.any?
