@@ -1,0 +1,11 @@
+%section
+  .head.level
+    .level-left
+      %h2= "Edit work placement"
+  %hr
+
+  .opportunity_form
+    = simple_form_for @work_placement, url: advisor_work_placement_path, local: true, method: :put do |f|
+      = render partial: 'advisor/opportunities/shared_form_fields', locals: {f: f}
+      = render partial: 'shared_fields', locals: {f: f}
+      = f.submit "Update work placement", :class => 'button is-primary tablet_cta'

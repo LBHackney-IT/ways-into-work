@@ -45,6 +45,7 @@ WaysIntoWork::Application.routes.draw do
     end
     resources :jobs
     resources :external_apprenticeships
+    resources :work_placements
     resources :enquiries, only: [:index, :show]
     get 'clients/:client_id/enquiries', to: 'enquiries#for_client', as: :client_enquiries
   end

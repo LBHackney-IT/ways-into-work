@@ -17,6 +17,8 @@ class Opportunity < ApplicationRecord
       'Job'
     when 'ExternalApprenticeship'
       'Apprenticeship'
+    when 'WorkPlacement'
+      'Placement'
     end
   end
 
