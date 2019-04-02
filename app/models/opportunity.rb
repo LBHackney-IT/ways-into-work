@@ -9,6 +9,11 @@ class Opportunity < ApplicationRecord
   scope :active, -> { where('closing_date >= ?', Date.today).order(:closing_date) }
   scope :inactive, -> { where('closing_date < ?', Date.today).order(:closing_date) }
 
+  scope :jobs, -> { where(actable_type: 'Job') }
+  scope :events, -> { where(actable_type: 'Event') }
+  scope :apprenticeships, -> { where('actable_type = ? OR actable_type = ?', 'ExternalApprenticeship', 'InternalApprenticeship') }
+  scope :placements, -> { where(actable_type: 'WorkPlacement') }
+
   has_many :enquiries
 
   def type_string

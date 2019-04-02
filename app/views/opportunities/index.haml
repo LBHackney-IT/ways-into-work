@@ -11,17 +11,18 @@
       .level-left
         %h2 All opportunities
 
+  .filters
+    Filter opportunities:
+    .tag.large.job.inactive= link_to "All", opportunities_path
+    .tag.large.job.inactive= link_to "Jobs", opportunities_path(type: 'jobs')
+    .tag.large.apprenticeship.inactive= link_to "Apprenticeships", opportunities_path(type: 'apprenticeships')
+    .tag.large.placement.inactive= link_to "Placements", opportunities_path(type: 'placements')
+    .tag.large.event.inactive= link_to "Events", opportunities_path(type: 'events')
+    .tag.large.training.inactive= link_to "Training", opportunities_path(type: 'training')
+
   - if @opportunities.any?
-    .filters
-      Filter opportunities:
-      .tag.large.job.inactive Jobs
-      .tag.large.apprenticeship.inactive Apprenticeships
-      .tag.large.placement.inactive Placements
-      .tag.large.event.inactive Events
-      .tag.large.training.inactive Training
 
     %br
-
     .container
       .opportunity_list.columns.is-multiline
         - @opportunities.each do |opportunity|
