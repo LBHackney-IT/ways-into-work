@@ -7,6 +7,7 @@
   %td=client.advisor&.name
   %td
     %i.fa.fa-circle{class: client.rag_status}
+  %td=client.enquiries.awaiting.count
   %td.has-text-right
     - if client.deleted?
       = button_to I18n.t('clients.buttons.restore_client'), advisor_restore_client_path(client_id: client.id), method: :put, class: "button is-small is-primary button_inline"

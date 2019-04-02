@@ -11,11 +11,11 @@
           %th
             = filterrific_sorting_link(@filterrific, 'first_name', label: 'Client')
           %th Last Meeting / Contact
-          / %th Assigned Hub
           %th
             = filterrific_sorting_link(@filterrific, 'advisor')
           %th
             = filterrific_sorting_link(@filterrific, 'rag_status')
+          %th Enquiries
           %th
       %tbody
         = render partial: 'client', collection: clients

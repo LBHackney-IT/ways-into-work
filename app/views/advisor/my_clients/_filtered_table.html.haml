@@ -10,6 +10,7 @@
           %th Last Meeting / Contact
           %th
             = filterrific_sorting_link(@filterrific, 'rag_status', label: 'Status')
+          %th Enquiries
           %th
       %tbody
         = render partial: 'with_meeting', collection: clients, as: 'client'
