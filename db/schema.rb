@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190402140234) do
+ActiveRecord::Schema.define(version: 20190403092043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20190402140234) do
     t.boolean "consent_given"
     t.string "emergency_contact_name"
     t.string "emergency_contact_phone"
+    t.boolean "wants_advisor", default: true
     t.index ["advisor_id"], name: "index_clients_on_advisor_id"
     t.index ["referrer_id"], name: "index_clients_on_referrer_id"
   end
