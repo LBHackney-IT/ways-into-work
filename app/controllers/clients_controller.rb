@@ -4,6 +4,7 @@ class ClientsController < ApplicationController
   before_action :init_client, only: :create
 
   def new
+    check_if_enquiry_signup
     client.build_login
   end
 
@@ -12,11 +13,16 @@ class ClientsController < ApplicationController
       client.send_emails
       redirect_to just_registered_path
     else
+      check_if_enquiry_signup
       render :new
     end
   end
 
   private
+
+  def check_if_enquiry_signup
+    @registering_to_enquire = true if session[:user_login_return_to].include? "enquiries/new"
+  end
 
   def init_client
     return if client.postcode.blank?
