@@ -336,7 +336,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def send_emails
     login.send_reset_password_instructions
-    AdvisorMailer.notify_client_signed_up(self).deliver_now
+    if wants_advisor?
+      AdvisorMailer.notify_client_signed_up(self).deliver_now
+    end
   end
 
   def generate_initial_meeting
