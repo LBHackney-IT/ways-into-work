@@ -27,7 +27,13 @@ class ClientsController < ApplicationController
   def init_client
     return if client.postcode.blank?
     if (ward_code = client.hackney_ward_code).present?
-      client.auto_assign_advisor(ward_code)
+
+      if client.wants_advisor?
+        client.auto_assign_advisor(ward_code)
+      else
+        client.advisor = Advisor.by_hub_id(5).first # Assign to Ghost Hub if they do not want an advisor
+      end
+
       client.login.generate_default_password
     else
       redirect_to(:outside_hackney)
