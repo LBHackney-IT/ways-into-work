@@ -60,23 +60,37 @@
 .tag.event, .tag.training {
   background-color: #ff8000;
   color: #fff;
+  a {
+    color: #fff;
+  }
 }
 .tag.apprenticeship {
   background-color: $color__hackney-apprentices;
   color: #fff;
+  a {
+    color: #fff;
+  }
 }
 .tag.placement {
   background-color: $color__hackney-100;
   color: #fff;
+  a {
+    color: #fff;
+  }
 }
 .tag.job {
   background-color: $color__hackney-works;
   color: #fff;
+  a {
+    color: #fff;
+  }
 }
 
 .tag.inactive {
   background-color: #fff;
-  color: #1D1D1B;
+  a {
+    color: #1D1D1B;
+  }
   &.event:hover, &.training:hover {
     cursor: pointer;
     background-color: rgba(#ff8000, 0.2);

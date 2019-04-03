@@ -13,12 +13,18 @@
 
   .filters
     Filter opportunities:
-    .tag.large.job.inactive= link_to "All", opportunities_path
-    .tag.large.job.inactive= link_to "Jobs", opportunities_path(type: 'jobs')
-    .tag.large.apprenticeship.inactive= link_to "Apprenticeships", opportunities_path(type: 'apprenticeships')
-    .tag.large.placement.inactive= link_to "Placements", opportunities_path(type: 'placements')
-    .tag.large.event.inactive= link_to "Events", opportunities_path(type: 'events')
-    .tag.large.training.inactive= link_to "Training", opportunities_path(type: 'training')
+    .tag.large.job{ class: request.original_fullpath == opportunities_path ? '' : 'inactive' }
+      = link_to "All", opportunities_path
+    .tag.large.job{ class: request.original_fullpath == opportunities_path(type: 'jobs') ? '' : 'inactive' }
+      = link_to "Jobs", opportunities_path(type: 'jobs')
+    .tag.large.apprenticeship{ class: request.original_fullpath == opportunities_path(type: 'apprenticeships') ? '' : 'inactive' }
+      = link_to "Apprenticeships", opportunities_path(type: 'apprenticeships')
+    .tag.large.placement{ class: request.original_fullpath == opportunities_path(type: 'placements') ? '' : 'inactive' }
+      = link_to "Placements", opportunities_path(type: 'placements')
+    .tag.large.event{ class: request.original_fullpath == opportunities_path(type: 'events') ? '' : 'inactive' }
+      = link_to "Events", opportunities_path(type: 'events')
+    .tag.large.training{ class: request.original_fullpath == opportunities_path(type: 'training') ? '' : 'inactive' }
+      = link_to "Training", opportunities_path(type: 'training')
 
   - if @opportunities.any?
 
@@ -31,23 +37,25 @@
           - else
             = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
 
-    - if current_advisor
-      - if @old_opportunities.any?
-        %br
-        %br
-        %br
-        .head.level
-          .level-left
-            %h2 Completed opportunities
-            %span.client_total#filtered_count
-              %span.bold=pluralize(@old_opportunities.count, 'completed opportunity')
-
-
-        .container
-          .opportunity_list.columns.is-multiline
-            - @old_opportunities.each do |opportunity|
-              = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
   - elsif !current_advisor
     %br
     .box
       %p Sorry there are not any opportunities currently avaliable. Please check back soon for more opportunities.
+
+
+  - if current_advisor
+    - if @old_opportunities.any?
+      %br
+      %br
+      %br
+      .head.level
+        .level-left
+          %h2 Completed opportunities
+          %span.client_total#filtered_count
+            %span.bold=pluralize(@old_opportunities.count, 'completed opportunity')
+
+
+      .container
+        .opportunity_list.columns.is-multiline
+          - @old_opportunities.each do |opportunity|
+            = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
