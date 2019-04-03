@@ -1,5 +1,8 @@
 .opportunity_list {
   .single_opportunity {
+    .box {
+      min-height: 100%;
+    }
     .opportunity_title {
       font-size: 25px;
       font-weight: 600;
