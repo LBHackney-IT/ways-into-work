@@ -1,4 +1,16 @@
 %section
+  .filters
+    Filter by type:
+    .tag.large.job{ class: request.original_fullpath == advisor_enquiries_path ? '' : 'inactive' }
+      = link_to "All", advisor_enquiries_path
+    .tag.large.job{ class: request.original_fullpath == advisor_enquiries_path(type: 'jobs') ? '' : 'inactive' }
+      = link_to "Jobs", advisor_enquiries_path(type: 'jobs')
+    .tag.large.apprenticeship{ class: request.original_fullpath == advisor_enquiries_path(type: 'apprenticeships') ? '' : 'inactive' }
+      = link_to "Apprenticeships", advisor_enquiries_path(type: 'apprenticeships')
+    .tag.large.placement{ class: request.original_fullpath == advisor_enquiries_path(type: 'placements') ? '' : 'inactive' }
+      = link_to "Placements", advisor_enquiries_path(type: 'placements')
+  %br
+  %br
   .head.level
     .level-left
       %h2="Enquiries awaiting review"

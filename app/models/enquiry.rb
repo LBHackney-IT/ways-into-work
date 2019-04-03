@@ -11,4 +11,7 @@ class Enquiry < ApplicationRecord
   scope :awaiting, -> { where('status = 0').order(:created_at) }
   scope :reviewed, -> { where('status != 0').order(:created_at) }
 
+  scope :jobs, -> { joins(:opportunity).where(opportunities: { actable_type: 'Job'} ) }
+  scope :apprenticeships, -> { joins(:opportunity).where(opportunities: { actable_type: 'ExternalApprenticeship'} ) }
+  scope :placements, -> { joins(:opportunity).where(opportunities: { actable_type: 'WorkPlacement'} ) }
 end
