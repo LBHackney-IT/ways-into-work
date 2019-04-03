@@ -17,6 +17,11 @@
 
       = render partial: 'form_fields', locals: {form: form}
 
+      - if @registering_to_enquire
+        %hr
+        %h4.bold Advisor assistance
+        %p= form.input :wants_advisor, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Would you like to be assigned to a Hackney Works advisor to assist you with your job search?"
+
       %hr
       %h4.bold Supported Employment
       %p Our Supported Employment advisors specialise in supporting clients with mental health conditions, learning difficulties or disabilities.
