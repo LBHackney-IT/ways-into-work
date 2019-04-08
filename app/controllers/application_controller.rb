@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def check_if_enquiry_signup
+    @registering_to_enquire = true if session[:user_login_return_to]&.include? "enquiries/new"
+  end
+
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end

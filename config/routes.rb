@@ -1,5 +1,5 @@
 WaysIntoWork::Application.routes.draw do
-  devise_for :user_logins
+  devise_for :user_logins, controllers: {sessions: "sessions"}
 
   root to: 'application#index'
 
