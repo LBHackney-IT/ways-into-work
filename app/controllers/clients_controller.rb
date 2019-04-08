@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
   private
 
   def check_if_enquiry_signup
-    @registering_to_enquire = true if session[:user_login_return_to].include? "enquiries/new"
+    @registering_to_enquire = true if session[:user_login_return_to]&.include? "enquiries/new"
   end
 
   def init_client
