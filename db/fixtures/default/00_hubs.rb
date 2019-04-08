@@ -37,6 +37,9 @@ hubs = [
   }, {
     id: 5,
     name: 'Jobs Hub'
+  }, {
+    id: 6,
+    name: 'Employment Pathways Hub'
   }
 ]
 

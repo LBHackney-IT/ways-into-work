@@ -50,6 +50,10 @@ advisors = [
     email: 'jobs@wearefuturegov.com',
     name: 'Jobs',
     hub_id: 5
+  }, {
+    email: 'employmentpathways@wearefuturegov.com',
+    name: 'Jobs',
+    hub_id: 6
   }
 ]
 
