@@ -21,5 +21,9 @@
         %span.bold Qualification/Level:
         = opportunity.specific.qualification
 
-    %p.eventbrite_link
-      = link_to "View on eventbrite", opportunity.specific.url, target: '_blank', class: 'button is-primary is-event'
+    - if opportunity.actable_type == 'InternalApprenticeship'
+      %p.internal_apprenticeship
+        = link_to "Apply for role at Hackney", opportunity.specific.url, target: '_blank', class: 'button is-primary is-internal'
+    - else
+      %p.eventbrite_link
+        = link_to "View on eventbrite", opportunity.specific.url, target: '_blank', class: 'button is-primary is-event'

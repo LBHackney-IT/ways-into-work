@@ -9,7 +9,7 @@
       font-weight: 600;
       margin-bottom: 10px;
     }
-    .eventbrite_link {
+    .eventbrite_link, .internal_apprenticeship {
       margin-top: 50px;
     }
     .is-primary.button {
@@ -63,6 +63,13 @@
   width: 100%;
   &:hover {
     background-color: darken(#ff8000, 5%);
+  }
+}
+.button.is-internal {
+  background-color: $color__hackney-apprentices;
+  width: 100%;
+  &:hover {
+    background-color: darken($color__hackney-apprentices, 5%);
   }
 }
 
