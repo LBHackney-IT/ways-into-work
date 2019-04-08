@@ -13,6 +13,7 @@ class Opportunity < ApplicationRecord
   scope :events, -> { where(actable_type: 'Event') }
   scope :apprenticeships, -> { where('actable_type = ? OR actable_type = ?', 'ExternalApprenticeship', 'InternalApprenticeship') }
   scope :placements, -> { where(actable_type: 'WorkPlacement') }
+  scope :training, -> { where(actable_type: 'Training') }
 
   has_many :enquiries
 
