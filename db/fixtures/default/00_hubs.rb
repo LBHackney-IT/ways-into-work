@@ -34,6 +34,9 @@ hubs = [
     longitude: -0.08319,
     latitude: 51.528154,
     ward_mapit_codes: %w[144396 144392 144382 144381 144380 144391 144379]
+  }, {
+    id: 5,
+    name: 'Jobs Hub'
   }
 ]
 

@@ -46,6 +46,10 @@ advisors = [
     email: 'martin@wearefuturegov.com',
     name: 'Martin J Thompson',
     hub_id: 1
+  }, {
+    email: 'jobs@wearefuturegov.com',
+    name: 'Jobs',
+    hub_id: 5
   }
 ]
 
