@@ -26,8 +26,16 @@ class ClientsController < ApplicationController
 
       if client.wants_advisor?
         client.auto_assign_advisor(ward_code)
-      else
-        client.advisor = Advisor.by_hub_id(5).first # Assign to Ghost Hub if they do not want an advisor
+      else # if they do not want an advisor
+        opportunity_id = session[:user_login_return_to].match(/\d+/)[0] # Get enquiry ID from url
+        opportunity = Opportunity.find(opportunity_id)
+
+        if opportunity.actable_type == 'WorkPlacement'
+          client.advisor = Advisor.by_hub_id(6).first # Assign to Employment Pathways Hub
+        else
+          client.advisor = Advisor.by_hub_id(5).first # or assign to Ghost Jobs Hub for Jobs nad ExternalApprenticeships
+        end
+
       end
 
       client.login.generate_default_password
