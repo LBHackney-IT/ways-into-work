@@ -5,10 +5,10 @@
       %span Already have an account?
       %span.bold=link_to "Log in", new_session_path(resource_name)
 
-  - if devise_mapping.registerable? && controller_name != 'registrations'
+  - if devise_mapping.registerable? && controller_name != 'registrations' && !@registering_to_enquire
     .link.has-text-left
       %span Don't have an account?
-      %span.bold=link_to "Register now", new_client_path
+      %span.bold=link_to "Sign up", new_client_path
 
   - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
     .link.has-text-right.small-text

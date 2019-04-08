@@ -1,4 +1,12 @@
 .column
+  - if @registering_to_enquire
+    %p In order to register your interest for this opportunity you need an account on Hackney Works.
+
+    %p If you already have an account sign in using the form below, if not then sign up a new account now, it only takes a minute.
+
+    =link_to "Sign up a new account", new_client_path, class: 'button is-primary'
+    %br
+    %br
   %h2.subtitle Log in
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
@@ -23,4 +31,5 @@
 
     .actions
       = f.submit "Log in", class: 'button is-primary'
+
   = render "devise/shared/links"
