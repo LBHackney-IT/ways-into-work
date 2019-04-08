@@ -26,6 +26,8 @@ class Opportunity < ApplicationRecord
       'Placement'
     when 'Event'
       'Event'
+    when 'Training'
+      'Training'
     end
   end
 

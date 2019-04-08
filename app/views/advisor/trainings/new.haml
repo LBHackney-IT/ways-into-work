@@ -1,0 +1,13 @@
+%section
+  .head.level
+    .level-left
+      %h2= "Add a new training course"
+    .level-right
+      =link_to "Back to all opportunities", opportunities_path, class: 'button pull-right top_right_button'
+  %hr
+
+  .opportunity_form
+    = simple_form_for @training, url: advisor_trainings_path, local: true do |f|
+      = render partial: 'advisor/opportunities/shared_form_fields', locals: {f: f}
+      = render partial: 'shared_fields', locals: {f: f}
+      = f.submit "Add training", :class => 'button is-primary tablet_cta'
