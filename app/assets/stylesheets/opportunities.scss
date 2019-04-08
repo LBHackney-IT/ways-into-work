@@ -2,11 +2,20 @@
   .single_opportunity {
     .box {
       min-height: 100%;
+      position: relative;
     }
     .opportunity_title {
       font-size: 25px;
       font-weight: 600;
       margin-bottom: 10px;
+    }
+    .eventbrite_link {
+      margin-top: 50px;
+    }
+    .is-primary.button {
+      position: absolute;
+      bottom: 1.25rem;
+      width: calc(100% - 2.5rem);
     }
   }
 }
@@ -59,6 +68,9 @@
 
 .opportunity_tags {
   margin-bottom: 10px;
+  .tag {
+    margin-bottom: 5px;
+  }
 }
 .tag.event, .tag.training {
   background-color: #ff8000;
@@ -116,6 +128,3 @@
   margin-bottom: 5px;
 }
 
-.eventbrite_link {
-  margin-top: 25px;
-}

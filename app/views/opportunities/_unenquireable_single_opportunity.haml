@@ -16,10 +16,10 @@
       = opportunity.short_description
     = render partial: 'opportunities/common_opportunity_details', locals: { opportunity: opportunity, unenqireable: true }
 
-    %p.eventbrite_link
-      = link_to "View on eventbrite", opportunity.specific.url, target: '_blank', class: 'button is-primary is-event'
-
     - if opportunity.specific.try(:qualification).present?
       %p.qualification
         %span.bold Qualification/Level:
         = opportunity.specific.qualification
+
+    %p.eventbrite_link
+      = link_to "View on eventbrite", opportunity.specific.url, target: '_blank', class: 'button is-primary is-event'
