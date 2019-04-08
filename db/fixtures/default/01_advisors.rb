@@ -52,7 +52,7 @@ advisors = [
     hub_id: 5
   }, {
     email: 'employmentpathways@wearefuturegov.com',
-    name: 'Jobs',
+    name: 'Employment Pathways',
     hub_id: 6
   }
 ]
