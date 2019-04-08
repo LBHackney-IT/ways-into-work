@@ -1,0 +1,11 @@
+%section
+  .head.level
+    .level-left
+      %h2= "Edit internal apprenticeship"
+  %hr
+
+  .opportunity_form
+    = simple_form_for @internal_apprenticeship, url: advisor_internal_apprenticeship_path, local: true, method: :put do |f|
+      = render partial: 'advisor/opportunities/shared_form_fields', locals: {f: f}
+      = render partial: 'shared_fields', locals: {f: f}
+      = f.submit "Update internal apprenticeship", :class => 'button is-primary tablet_cta'

@@ -23,6 +23,8 @@ class Opportunity < ApplicationRecord
       'Job'
     when 'ExternalApprenticeship'
       'Apprenticeship'
+    when 'InternalApprenticeship'
+      'Apprenticeship'
     when 'WorkPlacement'
       'Placement'
     when 'Event'

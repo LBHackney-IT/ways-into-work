@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190408143525) do
+ActiveRecord::Schema.define(version: 20190408151422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,6 +182,14 @@ ActiveRecord::Schema.define(version: 20190408143525) do
     t.string "ward_mapit_codes", default: [], array: true
     t.bigint "manager_id"
     t.index ["manager_id"], name: "index_hubs_on_manager_id"
+  end
+
+  create_table "internal_apprenticeships", force: :cascade do |t|
+    t.string "url"
+    t.string "contract"
+    t.string "pay"
+    t.string "sector"
+    t.string "qualification"
   end
 
   create_table "jobs", force: :cascade do |t|
