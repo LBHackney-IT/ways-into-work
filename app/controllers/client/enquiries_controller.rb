@@ -33,6 +33,7 @@ class Client::EnquiriesController < Client::BaseController
 
     if @enquiry.save
       flash[:alert] = 'Your enquiry was sent successfully'
+      ClientMailer.confirm_enquiry(current_client, @opportunity).deliver_now
       render 'confirm'
     else
       flash[:notice] = "There was a problem with your enquiry"

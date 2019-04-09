@@ -20,6 +20,7 @@ en:
     mail:
       subject:
         welcome: "Welcome to Hackney Works"
+        confirm_enquiry: "Thanks for registering your interest"
     onboarding:
       employment:
         upload: "Upload a CV. Don’t worry if you don’t have one!"
