@@ -1,7 +1,7 @@
 %section
   .head.level
     .level-left
-      %h2= "Enquire about this #{@opportunity.type_string.downcase}"
+      %h2= "Register interest in this #{@opportunity.type_string.downcase}"
     .level-right
       =link_to "Back to #{@opportunity.type_string.downcase} description", opportunity_path(@opportunity), class: 'button pull-right top_right_button'
 
@@ -9,9 +9,11 @@
     .opportunity_form
       = simple_form_for [@opportunity, @enquiry], url: client_opportunity_enquiries_path, html: { multipart: true }, local: true do |f|
 
+        = f.input :supporting_statement, label: 'Why are you interested in this opportunity? (optional)', as: :text, :input_html => { :class => 'textarea' }
+
         .file_selector
-          %label.label Upload your CV
-          = f.input_field :file_upload_id, as: :select, include_blank: 'Select a CV:', collection: current_client.file_uploads_for_select, class: 'input', input_wrapper_html: {class: 'select'}
+          %label.label Upload your CV (optional)
+          = f.input_field :file_upload_id, as: :select, include_blank: 'Select CV:', collection: current_client.file_uploads_for_select, class: 'input', input_wrapper_html: {class: 'select'}
 
         .file_uploader{class: ('hidden' unless @file_upload.errors.any?)}
           = simple_fields_for @file_upload do |file_fields|
@@ -20,8 +22,6 @@
               = file_fields.input :attachment, as: :file, label: "Choose a file to upload"
               = file_fields.input :uploaded_by, as: :hidden
               = file_fields.input :client_id, as: :hidden
-
-        = f.input :supporting_statement, as: :text, :input_html => { :class => 'textarea' }
 
         %div
           .warning_message.alert.alert-notice
