@@ -1,3 +1,9 @@
+#want_advisor.convert_radio
+  = f.input :featured, as: :radio_buttons, collection: [['Yes', true], ['No', false]], checked: :false
+  %p
+    You can only feature 3 opportunities at any given time. If more than 3 are selected, the opportunities that are ending soonest will be featured.
+  %hr
+
 = f.input :title, label: 'Title (max 65 characters)', :input_html => { :class => 'input', :maxlength => 65 }
 = f.input :closing_date, as: :string, label: 'Closing date', input_html: {type: :date, class: 'input date_input', value: f.object.try(:closing_date).try(:to_date)}, placeholder: "dd/mm/yyyy"
 = f.input :short_description, as: :text, label: 'Short description (max 250 characters)', input_html: { class: 'textarea', :maxlength => 250 }
