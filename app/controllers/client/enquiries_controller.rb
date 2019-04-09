@@ -18,13 +18,14 @@ class Client::EnquiriesController < Client::BaseController
     @file_upload = FileUpload.new(client_id: current_client.id, uploaded_by: current_client.name)
 
     if params[:enquiry][:file_upload_id] == "0" # If new file upload
-      @file_upload = FileUpload.create(file_upload_params)
+      @file_upload = FileUpload.new(file_upload_params)
       if @file_upload.save # set file_upload_id on enquiry if upload created successfully
         @enquiry.file_upload_id = @file_upload.id
-      else
+      else # If selected new file upload but then didnt actually upload anything
         @enquiry.file_upload_id = 0
         flash[:error] = "There was a problem with your file upload, did you select a file?"
         render 'new'
+        return
       end
     else # If existing file upload
       @enquiry.file_upload_id = params[:enquiry][:file_upload_id] # set file_upload_id on enquiry
