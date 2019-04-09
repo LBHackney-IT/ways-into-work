@@ -13,7 +13,7 @@
           %label.label Upload your CV
           = f.input_field :file_upload_id, as: :select, include_blank: 'Select a CV:', collection: current_client.file_uploads_for_select, class: 'input', input_wrapper_html: {class: 'select'}
 
-        .file_uploader
+        .file_uploader{class: ('hidden' unless @file_upload.errors.any?)}
           = simple_fields_for @file_upload do |file_fields|
 
             %div
