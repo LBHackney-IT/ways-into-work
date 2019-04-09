@@ -11,11 +11,11 @@ class ClientsController < ApplicationController
   def create
     check_if_enquiry_signup
     if client.save
+      client.send_emails
       if @registering_to_enquire
         sign_in(client.login, scope: :user_login)
         redirect_to session[:user_login_return_to]
       else
-        client.send_emails
         redirect_to just_registered_path
       end
     else
