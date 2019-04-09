@@ -28,7 +28,7 @@ class Advisor::TrainingsController < Advisor::BaseController
   end
 
   def training_params
-    params.require(:training).permit(:title, :short_description, :closing_date, :location, :url, :qualification)
+    params.require(:training).permit(:title, :short_description, :closing_date, :location, :url, :qualification, :featured)
   end
 
 end

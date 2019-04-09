@@ -28,7 +28,7 @@ class Advisor::EventsController < Advisor::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:title, :short_description, :closing_date, :location, :url)
+    params.require(:event).permit(:title, :short_description, :closing_date, :location, :url, :featured)
   end
 
 end

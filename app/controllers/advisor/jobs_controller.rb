@@ -27,7 +27,7 @@ class Advisor::JobsController < Advisor::BaseController
   end
 
   def job_params
-    params.require(:job).permit(:title, :short_description, :closing_date, :full_description, :pay, :location, :sector, :contract)
+    params.require(:job).permit(:title, :short_description, :closing_date, :full_description, :pay, :location, :sector, :contract, :featured)
   end
 
 end

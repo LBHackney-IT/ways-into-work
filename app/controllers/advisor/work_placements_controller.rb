@@ -27,7 +27,7 @@ class Advisor::WorkPlacementsController < Advisor::BaseController
   end
 
   def work_placement_params
-    params.require(:work_placement).permit(:title, :short_description, :closing_date, :full_description, :pay, :location, :sector, :contract)
+    params.require(:work_placement).permit(:title, :short_description, :closing_date, :full_description, :pay, :location, :sector, :contract, :featured)
   end
 
 end

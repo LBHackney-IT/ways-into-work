@@ -27,7 +27,7 @@ class Advisor::ExternalApprenticeshipsController < Advisor::BaseController
   end
 
   def external_apprenticeship_params
-    params.require(:external_apprenticeship).permit(:title, :short_description, :closing_date, :full_description, :pay, :location, :sector, :contract, :qualification)
+    params.require(:external_apprenticeship).permit(:title, :short_description, :closing_date, :full_description, :pay, :location, :sector, :contract, :qualification, :featured)
   end
 
 end
