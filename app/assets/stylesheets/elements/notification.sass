@@ -39,6 +39,11 @@
 
   #flash_alert, #flash_notice, #flash_success, #flash_error
     float: left
+    background-color: $hackney-brand
+    @include just_mobile
+      padding-bottom: 10px
+      padding-left: 15px
+      padding-right: 15px
 
   #alert_close
     float: right
@@ -49,6 +54,8 @@
 
   &.alert-alert, &.alert-error
     background-color: $red
+    #flash_alert, #flash_notice, #flash_success, #flash_error
+      background-color: $red
 
   &.alert-success
     background-color: $hackney-brand
@@ -56,6 +63,9 @@
   &.alert-notice
     background-color: rgba($hackney-brand, 0.25)
     color: rgba($black, 0.75)
+    #flash_alert, #flash_notice, #flash_success, #flash_error
+      background-color: rgba($hackney-brand, 0.25)
+      color: rgba($black, 0.75)
 
 body.application.index
   #alerts, .alert

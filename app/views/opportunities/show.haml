@@ -28,7 +28,6 @@
 
   %br
   %br
-  %br
   - if current_advisor
     %h2 Enquiries for this opportunity
     - if @opportunity.enquiries.count > 0
@@ -68,6 +67,11 @@
       .box
         %h2 Register your interest
         %p Register interest with our Hackney Works team who will link you to the employer & partners.
+        %p This service is for Hackney residents but any of the following apply to you then please call 020 8356 5700
+        %ol
+          %li You are being housed in Hackney Council temporary accommodation outside the borough.
+          %li You have Hackney Council as a corporate parent, i.e. you are or were in care.
+          %li Went to Hackney school or college
         = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
 
 

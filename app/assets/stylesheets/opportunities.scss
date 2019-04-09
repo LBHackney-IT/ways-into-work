@@ -4,10 +4,19 @@
       min-height: 100%;
       position: relative;
     }
+    .description {
+      @include just_mobile {
+        font-size: 14px;
+      }
+    }
     .opportunity_title {
       font-size: 25px;
       font-weight: 600;
       margin-bottom: 10px;
+      @include just_mobile {
+        font-size: 22px;
+        line-height: 26px;
+      }
     }
     .eventbrite_link, .internal_apprenticeship {
       margin-top: 50px;
@@ -132,6 +141,11 @@
 }
 .tag.large {
   font-size: 17px;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+  @include just_mobile {
+    font-size: 15px;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+  }
 }
 

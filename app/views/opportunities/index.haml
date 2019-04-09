@@ -12,7 +12,7 @@
         %h2 All opportunities
 
   .filters
-    Filter opportunities:
+    Filter:
     .tag.large.job{ class: request.original_fullpath == opportunities_path ? '' : 'inactive' }
       = link_to "All", opportunities_path
     .tag.large.job{ class: request.original_fullpath == opportunities_path(type: 'jobs') ? '' : 'inactive' }

@@ -5,6 +5,8 @@ $nav-height: 3.25rem !default
 .nav-toggle
   +hamburger($nav-height)
   // Responsiveness
+  right: 0
+  position: absolute
   +tablet
     display: none
   &:hover
@@ -142,6 +144,6 @@ input.nav-item, .nav-item input
   span
     left: 25%
   .txt
-    top: 13px
+    top: 14px
     position: relative
     margin-left: 25px

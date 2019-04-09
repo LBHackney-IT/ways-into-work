@@ -20,10 +20,9 @@
       - if @registering_to_enquire
         %hr
         %h4.bold Hackney Works service
-        %p We provide a service that .........
-        %p Find out more here...
+        %p Hackney Works is a completely free one to one support service for finding work with dedicated Hackney Works Advisers. Our advisors can provide support for you with CVs, interview preperation and much more to help you in finding a new job.
         #want_advisor.convert_radio
-          = form.input :wants_advisor, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Would you like to be assigned to a Hackney Works advisor to assist you with your job search?"
+          = form.input :wants_advisor, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Would you like to be assigned to a Hackney Works advisor?"
 
       %hr
       #supportedemployment_block
