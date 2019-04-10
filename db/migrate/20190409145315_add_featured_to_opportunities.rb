@@ -1,5 +1,5 @@
 class AddFeaturedToOpportunities < ActiveRecord::Migration[5.1]
   def change
-    add_column :opportunities, :featured, :boolean
+    add_column :opportunities, :featured, :boolean, default: false
   end
 end

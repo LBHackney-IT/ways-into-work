@@ -222,7 +222,7 @@ ActiveRecord::Schema.define(version: 20190409145315) do
     t.integer "actable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "featured"
+    t.boolean "featured", default: false
   end
 
   create_table "referrers", force: :cascade do |t|
