@@ -1,12 +1,8 @@
 class OpportunitiesController < ApplicationController
   def index
-    if filter_type = params[:type]
-      @opportunities = Opportunity.send(filter_type).active
-      @old_opportunities = Opportunity.send(filter_type).inactive
-    else
-      @opportunities = Opportunity.active
-      @old_opportunities = Opportunity.inactive
-    end
+    filter_type = params[:type] || 'all'
+    @opportunities = Opportunity.send(filter_type).active
+    @old_opportunities = Opportunity.send(filter_type).inactive
   end
 
   def show
