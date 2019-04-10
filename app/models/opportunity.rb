@@ -8,7 +8,7 @@ class Opportunity < ApplicationRecord
 
   scope :active, -> { where('closing_date >= ?', Date.today).order(:closing_date) }
   scope :inactive, -> { where('closing_date < ?', Date.today).order(:closing_date) }
-  scope :featured, -> { where(featured: true).order(closing_date: :asc).limit(3) }
+  scope :featured, -> { active.where(featured: true).order(closing_date: :asc).limit(3) }
 
   scope :jobs, -> { where(actable_type: 'Job') }
   scope :events, -> { where(actable_type: 'Event') }
