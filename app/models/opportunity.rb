@@ -18,6 +18,8 @@ class Opportunity < ApplicationRecord
 
   has_many :enquiries
 
+  paginates_per 30
+
   def type_string
     case self.actable_type
     when 'Job'

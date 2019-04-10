@@ -36,6 +36,8 @@
             = render partial: 'opportunities/unenquireable_single_opportunity', locals: { opportunity: opportunity }
           - else
             = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
+    %br
+    = paginate @opportunities
 
   - elsif !current_advisor
     %br
@@ -59,3 +61,5 @@
         .opportunity_list.columns.is-multiline
           - @old_opportunities.each do |opportunity|
             = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
+      %br
+      = paginate @old_opportunities
