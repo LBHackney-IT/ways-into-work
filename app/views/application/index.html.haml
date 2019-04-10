@@ -39,6 +39,28 @@
         %p=t('hackney_works.points.point_e')
   = link_to I18n.t('buttons.register'), new_client_path, title: "Register for the Hackney Works service", class: 'button is-primary is-large'
 
+#featured_opps
+  %h2 Our Opportunities
+  %p
+    Jobs, Apprenticeship and Work placement with Hackney council, employers & partners
+    %br
+    Employment & Skills training and events in Hackney
+
+  - if @featured_opportunities.any?
+    %br
+    .container
+      .opportunity_list.columns
+        - @featured_opportunities.each do |opportunity|
+          - if opportunity.specific.try(:url).present?
+            = render partial: 'opportunities/unenquireable_single_opportunity', locals: { opportunity: opportunity }
+          - else
+            = render partial: 'opportunities/single_opportunity', locals: { opportunity: opportunity }
+    %br
+    %br
+
+  =link_to "View all opportunities", "#", class: 'button is-primary'
+
+
 #other_pages.full-width.columns
   = link_to support_path do
     .column.is-one-third

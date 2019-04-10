@@ -1,7 +1,6 @@
 #want_advisor.convert_radio
+  %p The three featured opportunities that are ending soonest will be displayed on the home page.
   = f.input :featured, as: :radio_buttons, collection: [['Yes', true], ['No', false]]
-  %p
-    You can only feature 3 opportunities at any given time. If more than 3 are selected, the opportunities that are ending soonest will be featured.
   %hr
 
 = f.input :title, label: 'Title (max 65 characters)', :input_html => { :class => 'input', :maxlength => 65 }
