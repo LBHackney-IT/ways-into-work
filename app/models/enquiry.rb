@@ -14,4 +14,6 @@ class Enquiry < ApplicationRecord
   scope :jobs, -> { joins(:opportunity).where(opportunities: { actable_type: 'Job'} ) }
   scope :apprenticeships, -> { joins(:opportunity).where(opportunities: { actable_type: 'ExternalApprenticeship'} ) }
   scope :placements, -> { joins(:opportunity).where(opportunities: { actable_type: 'WorkPlacement'} ) }
+
+  paginates_per 50
 end

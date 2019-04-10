@@ -5,13 +5,9 @@ class Advisor::EnquiriesController < Advisor::BaseController
   expose :enquiries, ->{ Enquiry.all }
 
   def index
-    if filter_type = params[:type]
-      @enquiries_awaiting = Enquiry.send(filter_type).awaiting
-      @enquiries_reviewed = Enquiry.send(filter_type).reviewed
-    else
-      @enquiries_awaiting = Enquiry.awaiting
-      @enquiries_reviewed = Enquiry.reviewed
-    end
+    filter_type = params[:type] || 'all'
+    @enquiries_awaiting = Enquiry.send(filter_type).awaiting.page params[:page]
+    @enquiries_reviewed = Enquiry.send(filter_type).reviewed.page params[:page]
   end
 
   def for_client
