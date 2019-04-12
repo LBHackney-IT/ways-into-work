@@ -5,8 +5,9 @@
     .column.is-one-thrid#logo
       =image_tag('hackney-100-white.svg', :alt => 'Hackney 100')
     .column.is-two-thirds
-      %h1 Are you aged 16-24 and looking for some high-quality paid work experience?
-      %p Hackney Council are working with employers and partners across the borough to create exciting work placements and help young residents age 16-24 to succeed in creating careers in the tech, digital, creative, hospitality and construction industries. We also have opportunities at Hackney Council.
+      %h1 Are you looking for some high-quality paid work experience?
+      %p Hackney Council are working with employers and partners across the borough to create exciting work placements for local young people aged 16-24 or those residents with a disability or health condition. Work placements are a great way to get an insight into a career you might be considering, while making useful contacts and getting paid experience to put on your CV. Hackney 100 has a particular focus on placements in the tech, digital, creative and construction industries. We also have opportunities at Hackney Council.
+
   .lines
 
 %br
@@ -47,19 +48,24 @@
   .sup_page_content.max_restrict
     = form_tag 'https://Hackney.us19.list-manage.com/subscribe/post?u=cb895b8f785cbfed33399bb89&amp;id=58cc3c6a1b', method: 'post', target: '_blank' do
       %h3 Hackney 100: 2019
-      %p Hackney 100 is open for applications for 2019 placements.
-
-      %p
-        You can find a list of all placements avaliable on
+      %p.large
+        Hackney 100 is open for applications for 2019 placements. You can find a list of all placements available on
         =link_to "our opportunities page", opportunities_path(type: 'placements')
 
-      %p To register your interest in being part of the Hackney 100, please submit your email below:
+      %p Eligibility:
+      %ul
+        %li Hackney residents aged 16 - 24*
+        %li Non residents aged 16 - 24 who are studying at a Hackney School, college or training provider
+        %li Non residents aged 16-24 who are receiving (or have previously received) Hackney Leaving Care services
+      %p *there is no upper age limit for applicants who live and/or study in Hackney who have a disability or health condition
+      / NEWSLETTER LINK (REMOVED)
+      / %p To register your interest in being part of the Hackney 100, please submit your email below:
 
-      .field
-        = text_field_tag :EMAIL, '', class: 'input'
+      / .field
+      /   = text_field_tag :EMAIL, '', class: 'input'
 
-      .field
-        = submit_tag 'Submit', class: 'button is-primary', name: 'subscribe'
+      / .field
+      /   = submit_tag 'Submit', class: 'button is-primary', name: 'subscribe'
 
 
 %br
