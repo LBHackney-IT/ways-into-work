@@ -29,16 +29,16 @@ class ClientsController < ApplicationController
     return if client.postcode.blank?
     if (ward_code = client.hackney_ward_code).present?
 
-      if client.wants_advisor?
+      if client.wants_advisor? # default is true, only get option to not have advisor if registering through enquiry.
         client.auto_assign_advisor(ward_code)
       else # if they do not want an advisor
-        opportunity_id = session[:user_login_return_to].match(/\d+/)[0] # Get enquiry ID from url
+        opportunity_id = session[:user_login_return_to].match(/\d+/)[0] # Get opportunity (that enquiring for) ID from url
         opportunity = Opportunity.find(opportunity_id)
 
         if opportunity.actable_type == 'WorkPlacement'
           client.advisor = Advisor.by_hub_id(6).first # Assign to Employment Pathways Hub
         else
-          client.advisor = Advisor.by_hub_id(5).first # or assign to Ghost Jobs Hub for Jobs nad ExternalApprenticeships
+          client.advisor = Advisor.by_hub_id(5).first # or assign to Ghost Jobs Hub for Jobs and ExternalApprenticeships
         end
 
       end
