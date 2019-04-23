@@ -307,7 +307,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
   def update_advisor(advisor, current_advisor)
     update_attribute(:advisor, advisor) # rubocop:disable Rails/SkipsModelValidations
     return if current_advisor == advisor
-    AdvisorMailer.notify_assigned(self, current_advisor.name).deliver_now
+    unless advisor.hub.try(:id) == 5 # 'Ghost' Jobs Hub
+      AdvisorMailer.notify_assigned(self, current_advisor.name).deliver_now
+    end
   end
 
   def auto_assign_advisor(ward_mapit_code)
