@@ -17,3 +17,12 @@
           = yield
 
     = render current_footer
+
+  / Global site tag (gtag.js) - Google Analytics
+  %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-138887970-1"}
+  :javascript
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-138887970-1');
