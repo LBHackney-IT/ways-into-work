@@ -66,12 +66,20 @@
     - else
       .box
         %h2 Register your interest
-        %p Register interest with our Hackney Works team who will link you to the employer & partners.
-        %p This service is for Hackney residents but if any of the following apply to you then please call 020 8356 5700
-        %ol
-          %li You are being housed in Hackney Council temporary accommodation outside the borough.
-          %li You have Hackney Council as a corporate parent, i.e. you are or were in care.
-          %li Went to Hackney school or college
+        - if  ["WorkPlacement", "ExternalApprenticeship"].include? @opportunity.actable_type
+          %p For placements and apprenticeships, you are eligible to apply if you:
+          %ul
+            %li Have Hackney Council as a corporate parent, i.e. you are or were in care
+            %li Attended or are attending a Hackney school or college
+          %p Our system will not allow you to enter a non-Hackney postcode. If either of the above apply to you, then please use the postcode for Hackney Town Hall (E8 1EA) when registering.
+        - else
+          %p Register interest with our Hackney Works team who will link you to the employer & partners.
+          %p This service is for Hackney residents but if any of the following apply to you then please call 020 8356 5700
+          %ol
+            %li You are being housed in Hackney Council temporary accommodation outside the borough.
+            %li You have Hackney Council as a corporate parent, i.e. you are or were in care.
+            %li Went to Hackney school or college
+
         = link_to "Register interest now", new_client_opportunity_enquiry_path(@opportunity), class: 'button is-primary'
 
 
