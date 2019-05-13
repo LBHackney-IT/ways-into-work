@@ -35,19 +35,20 @@
             %th
 
         - @enquiries_awaiting.each do |enquiry|
-          %tr
-            %td
-              =link_to enquiry.client.name, advisor_client_enquiries_path(enquiry.client)
-            %td
-              = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
-            %td
-              = enquiry.created_at.strftime("%e %B %Y")
-            %td
-              = enquiry.client.email
-            %td
-              = enquiry.client.phone
-            %td
-              = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
+          - if enquiry.client
+            %tr
+              %td
+                =link_to enquiry.client.name, advisor_client_enquiries_path(enquiry.client)
+              %td
+                = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
+              %td
+                = enquiry.created_at.strftime("%e %B %Y")
+              %td
+                = enquiry.client.email
+              %td
+                = enquiry.client.phone
+              %td
+                = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
       = paginate @enquiries_awaiting
     - if @enquiries_reviewed.count > 0
       %br
@@ -75,19 +76,20 @@
             %th
 
         - @enquiries_reviewed.each do |enquiry|
-          %tr{ class: enquiry.status }
-            %td
-              =link_to enquiry.client.name, advisor_client_enquiries_path(enquiry.client)
-            %td
-              = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
-            %td
-              = enquiry.created_at.strftime("%e %B %Y")
-            %td
-              = enquiry.client.email
-            %td
-              = enquiry.client.phone
-            %td
-              = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
+          - if enquiry.client
+            %tr{ class: enquiry.status }
+              %td
+                =link_to enquiry.client.name, advisor_client_enquiries_path(enquiry.client)
+              %td
+                = link_to enquiry.opportunity.title, opportunity_path(enquiry.opportunity)
+              %td
+                = enquiry.created_at.strftime("%e %B %Y")
+              %td
+                = enquiry.client.email
+              %td
+                = enquiry.client.phone
+              %td
+                = link_to "Review enquiry", advisor_opportunity_enquiry_path(enquiry.opportunity, enquiry), class: 'button is-primary is-small'
       = paginate @enquiries_reviewed
   - else
     %p="No enquires have been made yet"
