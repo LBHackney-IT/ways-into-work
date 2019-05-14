@@ -45,17 +45,18 @@
             %th
 
         - @opportunity.enquiries.order("created_at desc").each do |enquiry|
-          %tr{ class: enquiry.status }
-            %td
-              =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
-            %td
-              = enquiry.created_at.strftime("%e %B %Y")
-            %td
-              = enquiry.client.email
-            %td
-              = enquiry.client.phone
-            %td
-              = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry), class: 'button is-primary is-small'
+          - if enquiry.client
+            %tr{ class: enquiry.status }
+              %td
+                =link_to enquiry.client.name, advisor_client_enquiries_path(client_id: enquiry.client.id)
+              %td
+                = enquiry.created_at.strftime("%e %B %Y")
+              %td
+                = enquiry.client.email
+              %td
+                = enquiry.client.phone
+              %td
+                = link_to "Review enquiry", advisor_opportunity_enquiry_path(@opportunity, enquiry), class: 'button is-primary is-small'
     - else
       .box
         %p No enquires have been made on this opportunity yet
