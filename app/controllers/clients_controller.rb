@@ -36,9 +36,9 @@ class ClientsController < ApplicationController
         opportunity = Opportunity.find(opportunity_id)
 
         if opportunity.actable_type == 'WorkPlacement'
-          client.advisor = Advisor.by_hub_id(6).first # Assign to Employment Pathways Hub
+          client.advisor = Hub.find(6).manager # Assign to Employment Pathways Hub
         else
-          client.advisor = Advisor.by_hub_id(5).first # or assign to Ghost Jobs Hub for Jobs and ExternalApprenticeships
+          client.advisor = Hub.find(5).manager # or assign to Ghost Jobs Hub for Jobs and ExternalApprenticeships
         end
 
       end
