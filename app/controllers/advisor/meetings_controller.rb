@@ -52,7 +52,7 @@ class Advisor::MeetingsController < Advisor::BaseController
   
   def build_datetime(date, time)
     if time.present? && date.present?
-      DateTime.new(date.year, date.month, date.day, time.hour, time.min).utc
+      DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone)
     else
       @date_error = time.present? ? 'date' : 'time'
       nil
