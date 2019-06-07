@@ -16,6 +16,17 @@
   .field
     =form.input :notes, as: :text, :input_html => { :class => "textarea" }
 
+  %p
+    Time.zone.now:
+    = Time.zone.now
+
+  %p
+    Time.now:
+    = Time.now
+
+  %p
+    meeting.start_datetime:
+    = meeting.start_datetime
 
   - if meeting.start_datetime && meeting.start_datetime < Time.zone.now
     .field
