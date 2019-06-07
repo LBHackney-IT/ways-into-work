@@ -18,15 +18,38 @@
 
   %p
     Time.zone.now:
-    = Time.zone.now
+    %strong
+      = Time.zone.now
 
   %p
     Time.now:
-    = Time.now
+    %strong
+      = Time.now
 
   %p
     meeting.start_datetime:
-    = meeting.start_datetime
+    %strong
+      = meeting.start_datetime
+
+  %p
+    "12:00".to_time:
+    %strong
+      = "12:00".to_time
+
+  %p
+    "2019-06-07".to_date
+    %strong
+      = "2019-06-07".to_date
+
+  %p
+    DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec, "12:00".to_time.zone):
+    %strong
+      = DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec, "12:00".to_time.zone)
+
+  %p
+    DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec):
+    %strong
+      = DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec)
 
   - if meeting.start_datetime && meeting.start_datetime < Time.zone.now
     .field
