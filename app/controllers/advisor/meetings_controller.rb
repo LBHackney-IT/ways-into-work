@@ -45,7 +45,7 @@ class Advisor::MeetingsController < Advisor::BaseController
       :client_attended
     ).tap do |attrs|
       @date = attrs.delete('start_date').try(:to_date)
-      @time = attrs.delete('start_time').try(:to_time)
+      @time = attrs.delete('start_time').try(:to_time, local: true)
       attrs[:start_datetime] = build_datetime(@date, @time)
     end
   end
