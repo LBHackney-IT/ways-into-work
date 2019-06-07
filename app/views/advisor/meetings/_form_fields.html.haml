@@ -10,7 +10,7 @@
         = form.input :start_date, as: :string, label: 'Meeting date', input_html: {type: :date, class: 'input', value: (form.object.try(:start_datetime).try(:to_date) || @date)}, placeholder: "dd/mm/yyyy", required: true
 
       .column.is-one-quarter
-        = form.input :start_time, as: :string, label: 'Meeting time', input_html: {type: :time, class: 'input', value: (form.object.try(:start_datetime)&.localtime&.to_s(:time) || @time&.strftime("%H:%M"))}, placeholder: "--:--", required: true
+        = form.input :start_time, as: :string, label: 'Meeting time', input_html: {type: :time, class: 'input', value: (form.object.try(:start_datetime)&.to_s(:time) || @time&.strftime("%H:%M"))}, placeholder: "--:--", required: true
 
 
   .field
