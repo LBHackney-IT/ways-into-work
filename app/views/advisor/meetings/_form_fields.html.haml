@@ -51,6 +51,15 @@
     %strong
       = DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec)
 
+  %p
+    "12:00".to_time.localtime
+    %strong
+      = "12:00".to_time.localtime
+
+  %p
+    Preserve time zones:
+    = ActiveSupport.to_time_preserves_timezone
+
   - if meeting.start_datetime && meeting.start_datetime < Time.zone.now
     .field
       = form.input :client_attended, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Did the client attend this meeting?',  wrapper_html: { class: "convert_radio has_child" }
