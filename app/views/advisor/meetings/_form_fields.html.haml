@@ -60,6 +60,21 @@
     Preserve time zones:
     = ActiveSupport.to_time_preserves_timezone
 
+  %p
+    DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec).in_time_zone:
+    %strong
+      = DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec).in_time_zone
+
+  %p
+    DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec, Time.zone.name):
+    %strong
+      = DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec, Time.zone.name)
+
+  %p
+    DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec, Time.zone.name).in_time_zone:
+    %strong
+      = DateTime.new("2019-06-07".to_date.year, "2019-06-07".to_date.month, "2019-06-07".to_date.day, "12:00".to_time.hour, "12:00".to_time.min, "12:00".to_time.sec, Time.zone.name).in_time_zone
+
   - if meeting.start_datetime && meeting.start_datetime < Time.zone.now
     .field
       = form.input :client_attended, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Did the client attend this meeting?',  wrapper_html: { class: "convert_radio has_child" }
