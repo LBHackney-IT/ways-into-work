@@ -45,14 +45,14 @@ class Advisor::MeetingsController < Advisor::BaseController
       :client_attended
     ).tap do |attrs|
       @date = attrs.delete('start_date').try(:to_date)
-      @time = attrs.delete('start_time').try(:to_time, local: true)
+      @time = attrs.delete('start_time').try(:to_time)
       attrs[:start_datetime] = build_datetime(@date, @time)
     end
   end
   
   def build_datetime(date, time)
     if time.present? && date.present?
-      DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone)
+      DateTime.new(date.year, date.month, date.day, time.hour, time.min).in_time_zone
     else
       @date_error = time.present? ? 'date' : 'time'
       nil
