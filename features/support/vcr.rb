@@ -10,6 +10,7 @@ VCR.configure do |c|
   filter_vars.each do |key, value|
     c.filter_sensitive_data("<#{key}>") { value }
   end
+  c.allow_http_connections_when_no_cassette = true
 end
 
 VCR.cucumber_tags do |t|
