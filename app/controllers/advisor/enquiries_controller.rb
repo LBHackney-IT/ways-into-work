@@ -6,8 +6,10 @@ class Advisor::EnquiriesController < Advisor::BaseController
 
   def index
     filter_type = params[:type] || 'all'
-    @enquiries_awaiting = Enquiry.send(filter_type).awaiting.page params[:page]
-    @enquiries_reviewed = Enquiry.send(filter_type).reviewed.page params[:page]
+    if ["all", "jobs", "apprenticeships", "placements"].include?(filter_type)
+      @enquiries_awaiting = Enquiry.send(filter_type).awaiting.page params[:page]
+      @enquiries_reviewed = Enquiry.send(filter_type).reviewed.page params[:page]
+    end
   end
 
   def for_client

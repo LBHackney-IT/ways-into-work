@@ -1,8 +1,10 @@
 class OpportunitiesController < ApplicationController
   def index
     filter_type = params[:type] || 'all'
-    @opportunities = Opportunity.send(filter_type).active.page params[:page]
-    @old_opportunities = Opportunity.send(filter_type).inactive.page params[:page]
+    if ["all", "jobs", "apprenticeships", "placements", "events", "training"].include?(filter_type)
+      @opportunities = Opportunity.send(filter_type).active.page params[:page]
+      @old_opportunities = Opportunity.send(filter_type).inactive.page params[:page]
+    end
   end
 
   def show
