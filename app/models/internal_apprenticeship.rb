@@ -9,5 +9,4 @@ class InternalApprenticeship < ApplicationRecord
   validates :url, presence: true
 
   before_save :smart_add_url_protocol
-
 end

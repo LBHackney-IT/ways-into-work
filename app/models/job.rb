@@ -7,5 +7,4 @@ class Job < ApplicationRecord
   validates :full_description, presence: true
 
   has_many :enquiries, as: :opportunity
-
 end

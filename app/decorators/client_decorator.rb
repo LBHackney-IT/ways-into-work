@@ -154,5 +154,4 @@ class ClientDecorator < ApplicationDecorator # rubocop:disable Metrics/ClassLeng
   def advisor_prefix(current_advisor)
     client.advisor == current_advisor ? 'You are' : "#{client.advisor.name} is"
   end
-
 end
