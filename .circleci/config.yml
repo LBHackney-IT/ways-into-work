@@ -49,7 +49,7 @@ jobs:
           RAILS_ENV: test
           RACK_ENV: test
     - run: bundle exec brakeman -z -q --except PermitAttributes
-    - run: bundle exec rubocop -c .rubocop.yml
+    #- run: bundle exec rubocop -c .rubocop.yml
     - store_test_results:
         path: /tmp/circleci-test-results
     - store_artifacts:
