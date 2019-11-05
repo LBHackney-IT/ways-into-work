@@ -373,7 +373,7 @@ GEM
     sendgrid_actionmailer_adapter (0.2.2)
       sendgrid-ruby (~> 5.0)
     sexp_processor (4.9.0)
-    simple_form (4.0.1)
+    simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.16.1)
@@ -484,7 +484,7 @@ DEPENDENCIES
   rubocop
   sass-rails
   sendgrid_actionmailer_adapter
-  simple_form
+  simple_form (>= 5.0.0)
   simplecov
   tinymce-rails
   uglifier

@@ -12,7 +12,7 @@ gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'tinymce-rails'
 
-gem 'simple_form'
+gem 'simple_form', ">= 5.0.0"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
