@@ -69,7 +69,7 @@ end
 group :test do
   gem 'brakeman', require: false
   gem 'capybara-selenium'
-  gem 'webdrivers', '~> 4.0'
+  gem 'webdrivers'
   gem 'coderay'
   gem 'coveralls', require: false
   gem 'cucumber-rails', require: false
