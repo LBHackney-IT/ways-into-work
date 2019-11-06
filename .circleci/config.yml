@@ -11,10 +11,10 @@ jobs:
       LC_ALL: en_US.UTF-8
     docker:
     - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
-      command: /sbin/init
     steps:
     - checkout
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+    - run: sudo service postgresql start
     - run: curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - run: sudo dpkg -i google-chrome.deb
     - run: sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
@@ -49,7 +49,7 @@ jobs:
           RAILS_ENV: test
           RACK_ENV: test
     - run: bundle exec brakeman -z -q --except PermitAttributes
-    - run: bundle exec rubocop -c .rubocop.yml
+    #- run: bundle exec rubocop -c .rubocop.yml
     - store_test_results:
         path: /tmp/circleci-test-results
     - store_artifacts:

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
-gem 'rails', '5.1'
+gem 'rails', '5.1.6.2'
 
 # UI
 gem 'devise'
@@ -12,7 +12,7 @@ gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'tinymce-rails'
 
-gem 'simple_form'
+gem 'simple_form', ">= 5.0.0"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -69,7 +69,7 @@ end
 group :test do
   gem 'brakeman', require: false
   gem 'capybara-selenium'
-  gem 'webdrivers', '~> 4.0'
+  gem 'webdrivers'
   gem 'coderay'
   gem 'coveralls', require: false
   gem 'cucumber-rails', require: false
