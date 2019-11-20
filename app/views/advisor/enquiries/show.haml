@@ -19,7 +19,7 @@
     %p
       %span.bold CV:
       - if @file_upload.present?
-        = link_to @file_upload.attachment_file_name, @file_upload.attachment.try(:url), title: @file_upload.attachment_file_name, target: :blank
+        = link_to @file_upload.attachment_file_name, download_url(@file_upload), title: @file_upload.attachment_file_name, target: :blank
       - else
         No CV provided
 
