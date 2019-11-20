@@ -29,4 +29,8 @@ class Advisor::FileUploadsController < Advisor::BaseController
       :uploaded_by
     )
   end
+
+  def download(file_upload)
+    redirect_to file_upload.expiring_url(10)
+  end
 end

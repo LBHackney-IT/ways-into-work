@@ -93,6 +93,7 @@ module WaysIntoWork
       config.paperclip_defaults = {
         storage: :s3,
         s3_credentials: s3_conf,
+        :s3_permissions => :private,
         bucket: ENV.fetch('S3_BUCKET_NAME'),
         s3_region: ENV['AWS_REGION'],
         s3_protocol: 'https',

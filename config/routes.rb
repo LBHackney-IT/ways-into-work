@@ -79,6 +79,8 @@ WaysIntoWork::Application.routes.draw do
     get 'enquiry_confirm' => 'enquiry_confirm#show'
   end
 
+  get '/download/:id', to: 'downloads#download', as: 'download'
+
   match '/401', to: 'errors#unauthorised', via: :all
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#error', via: :all
