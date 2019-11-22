@@ -1,0 +1,26 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "732ab2909263ba6b22b7a69214728df30c3aab9844a5755c02a531bbe512d885",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/downloads_controller.rb",
+      "line": 6,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(FileUpload.find(params[:id]).attachment.expiring_url(10))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "DownloadsController",
+        "method": "download"
+      },
+      "user_input": "FileUpload.find(params[:id]).attachment.expiring_url(10)",
+      "confidence": "High",
+      "note": "False positive - url is always to our AWS"
+    }
+  ],
+  "updated": "2019-11-22 11:45:59 +0000",
+  "brakeman_version": "4.3.1"
+}
