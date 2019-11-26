@@ -5,7 +5,7 @@ $.fn.handleMaps = function() {
   var hubs = $(this).find('.hub');
   var map, lat, lng, hub_map;
 
-  L.mapbox.accessToken = '<%= ENV['MAPBOX_ACCESS_TOKEN'] %>';
+  L.mapbox.accessToken = '<%= WaysIntoWork.config.mapbox_access_token %>';
 
   hubs.each(function() {
     map = $(this).find('.map');

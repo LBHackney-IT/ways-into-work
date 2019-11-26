@@ -78,8 +78,6 @@ module WaysIntoWork
 
     config.action_mailer.preview_path = Rails.root.join('lib', 'mail_previews')
 
-    # TODO: use this instead of ENV in js erb file. Useful convention to only use
-    # ENV variables in these config files so you can see at a glance all that are used
     config.mapbox_access_token = ENV['MAPBOX_ACCESS_TOKEN']
 
     config.notify_api_key = ENV['NOTIFY_API_KEY']
