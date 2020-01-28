@@ -1,7 +1,9 @@
 class Client < ApplicationRecord # rubocop:disable ClassLength
   include PgSearch
 
-  acts_as_paranoid
+  # acts_as_paranoid
+  include Discard::Model
+  self.discard_column = :deleted_at
 
   enum rag_status: %i[un_assessed red amber green]
 
@@ -107,9 +109,9 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   scope :archived, lambda { |state|
     if state == 'archived'
-      only_deleted
-    elsif state == 'all'
-      with_deleted
+      discarded
+    elsif state == 'notarchived'
+      kept
     else
       all
     end.where.not(first_name: nil)

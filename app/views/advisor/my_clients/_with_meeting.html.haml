@@ -1,5 +1,5 @@
 %tr[client]
-  - if client.deleted?
+  - if client.discarded?
     %td= client.name
   - else
     %td=link_to client.name, edit_advisor_client_path(client)
@@ -9,7 +9,7 @@
     %i.fa.fa-circle{class: client.rag_status}
   %td=client.enquiries.awaiting.count
   %td.has-text-right
-    - if client.deleted?
+    - if client.discarded?
       = button_to I18n.t('clients.buttons.restore_client'), advisor_restore_client_path(client_id: client.id), method: :put, class: "button is-small"
     -else
       =button_to 'View details', edit_advisor_client_path(client), method: :get, class: "button is-small"
