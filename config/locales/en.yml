@@ -63,10 +63,11 @@ en:
         info: "Get the work experience you need, learn new skills and earn a salary!"
         extra: "From small start-ups to multinational companies, lots of employers are using apprenticeships to attract talented young people into the workforce. From construction to catering, finance to fashion, there is an apprenticeship out there for you!"
       internal_about:
-        title: "Ready to apply?"
+        title: "Application Support"
         content: |
           <p>Interested in apprenticeships and want some support to find and apply for apprenticeships? Our free Hackney Works service can help you with CV writing, interview technique and applications. We also give you exclusive access to apprenticeship opportunities with local employers.</p>
           <p>Please note, this service is for people who live in Hackney.</p>
+          <p>Read our <a href="https://docs.google.com/document/d/1P5cWqoK6jqSy-AmYqfZmg256R5M-dVVAbX3LWeuIaNU/edit" target="_blank">guidance for applicants</a> for more information on the recruitment process.</p>
       newsletter:
         title: "Apprenticeship email alerts"
         about: "Be the first to find out about all new vacancies by signing up to our email alerts."
