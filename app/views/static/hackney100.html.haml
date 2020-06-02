@@ -46,9 +46,19 @@
   -#       %p Get valuable hands on experience
 
   .sup_page_content.max_restrict
+    %h2 Work placements
+
+    %p Are you looking for some high-quality paid work experience?
+
+    %p Hackney Council works with employers and partners across the borough to create exciting, paid work placements for people living in or educated in Hackney.
+
     = form_tag 'https://Hackney.us19.list-manage.com/subscribe/post?u=cb895b8f785cbfed33399bb89&amp;id=58cc3c6a1b', method: 'post', target: '_blank' do
       %h3 Hackney 100
-      %p.large
+
+      %p
+        Hackney 100 offers an experience of work through placements of 70-100 hours, with either Hackney Council or one of our partner employers. The aim is to give you a better understanding of a career you might be considering, while making useful contacts and getting paid experience to put on your CV
+
+      %p
         You can find a list of all placements available on
         =link_to "our opportunities page", opportunities_path(type: 'placements')
 
@@ -69,6 +79,29 @@
 
   .sup_page_content.max_restrict.youtube_cont
     %iframe.youtube{:allow => "autoplay; encrypted-media", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/lgpdhyCmDAU", :width => "560"}
+
+.container
+  .sup_page_content.max_restrict
+    %h3 Traineeships
+
+    %p
+      Our traineeship schemes last 3-6 months and offer a paid work placement, alongside English, Maths and Employability training. They are a great way to improve your employability skills, and get your foot in the door for a great career.
+
+    %p
+      If you are interested in our traineeships, you can contact
+      =mail_to 'traineeships@hackney.gov.uk'
+
+.container
+  .sup_page_content.max_restrict
+    %h3 Unpaid Work Experience
+    %p
+      We try to accommodate requests for unpaid work experience at Hackney Council. Please note:
+      %ul
+        %li Unpaid work experience is for no longer than 2 weeks
+        %li Due to a high volume of requests, we prioritise requests from people with a link to the borough of Hackney
+        %li We are unable to offer placements for Social Work students; these are arranged through a partner university
+      To request an unpaid work placement, please visit
+      =link_to "our opportunities page.", opportunities_path(type: 'placements')
 
 .container
   .sup_page_content.max_restrict

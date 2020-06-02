@@ -7,6 +7,7 @@ WaysIntoWork::Application.routes.draw do
 
   get 'apprenticeships' => 'static#apprenticeships'
   get 'hackney100' => 'static#hackney100'
+  get 'work_placements' => 'static#hackney100'
   get 'support' => 'static#support'
   get 'employers' => 'static#employers'
   get 'unsubscribed' => 'static#unsubscribed'
