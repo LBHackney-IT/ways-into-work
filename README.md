@@ -60,3 +60,9 @@ bundle exec rails s
 ```
 
 The server is now running at http://localhost:3000
+
+## API
+
+There's a read-only API of opportunities at `/api/v1/opportunities`.
+
+It responds to `?type=` and `?page=` query parameters.

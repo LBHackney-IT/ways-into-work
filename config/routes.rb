@@ -85,4 +85,11 @@ WaysIntoWork::Application.routes.draw do
   match '/401', to: 'errors#unauthorised', via: :all
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#error', via: :all
+
+
+  namespace :api do 
+    namespace :v1 do
+      resources :opportunities, only: [:index]
+    end
+  end
 end
