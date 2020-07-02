@@ -8,4 +8,9 @@ class Api::V1::OpportunitiesController < ApplicationController
         end
     end
 
+    def featured
+      @opportunities = Opportunity.featured
+      render json: @opportunities
+    end
+
 end
