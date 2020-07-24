@@ -1,0 +1,36 @@
+%section
+  .head.level
+    .level-left
+      %h2="Course Applications"
+      %span.client_total#filtered_count
+        %span.bold=pluralize(@course_applications.count, ' application')
+
+  - if @course_applications.count > 0
+    %table.table
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Applied
+          %th
+            Email
+          %th
+            Phone
+          %th
+            Course
+
+      - @course_applications.each do |course_application|
+        %tr
+          %td
+            = "#{course_application.first_name} #{course_application.last_name}"
+          %td
+            = course_application.created_at.strftime("%e %B %Y")
+          %td
+            = course_application.email
+          %td
+            = course_application.phone_number
+          %td
+            = link_to course_application.intake_id, advisor_course_application_path(course_application)
+  - else
+    %p="No applications have been made yet"

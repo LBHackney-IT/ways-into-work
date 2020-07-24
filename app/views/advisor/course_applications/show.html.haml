@@ -1,0 +1,15 @@
+%section
+  .head.level
+    .level-left
+      %h2 Application
+    .level-right
+      = link_to "Back", session[:return_to], class: 'button pull-right top_right_button'
+  %hr
+
+  .box
+    %p
+      %span.bold Applicant:
+      = "#{@course_application.first_name} #{@course_application.last_name}"
+    %p
+      %span.bold Course:
+      

@@ -51,6 +51,7 @@ WaysIntoWork::Application.routes.draw do
     resources :trainings, only: [:new, :create, :update, :edit]
     resources :internal_apprenticeships, only: [:new, :create, :update, :edit]
     resources :enquiries, only: [:index, :show]
+    resources :course_applications, only: [:index, :show]
     get 'clients/:client_id/enquiries', to: 'enquiries#for_client', as: :client_enquiries
   end
 
