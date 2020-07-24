@@ -87,10 +87,11 @@ WaysIntoWork::Application.routes.draw do
   match '/500', to: 'errors#error', via: :all
 
 
-  namespace :api do 
+  namespace :api do
     namespace :v1 do
       resources :opportunities, only: [:index]
       get 'opportunities/featured' => 'opportunities#featured'
+      resources :course_applications, only: [:create]
     end
   end
 end
