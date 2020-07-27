@@ -19,3 +19,16 @@
     %p
       %span.bold Total applications:
       = @course_application.total_applications
+    %p
+      %span.bold Accepted applications:
+      = @course_application.accepted_applications
+
+  .box
+    = simple_form_for @course_application, url: advisor_course_application_path, method: :put, local: true do |form|
+      .convert_radio
+        = form.input :status, as: :radio_buttons, label: "Were they accepted?", collection: [['Yes', 'accepted'], ['No', 'unsuccessful']]
+      %br
+      =# form.input :feedback, as: :text, input_html: { class: 'textarea' }
+      = form.submit "Submit", :class => 'button is-primary tablet_cta'
+
+
