@@ -12,4 +12,10 @@
       = "#{@course_application.first_name} #{@course_application.last_name}"
     %p
       %span.bold Course:
-      
+      = @course["post_title"]
+    %p
+      %span.bold Capacity:
+      = @intake["acf"]["total_capacity"]
+    %p
+      %span.bold Total applications:
+      = @course_application.total_applications

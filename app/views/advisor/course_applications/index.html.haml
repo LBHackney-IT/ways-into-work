@@ -31,6 +31,7 @@
           %td
             = course_application.phone_number
           %td
-            = link_to course_application.intake_id, advisor_course_application_path(course_application)
+            =# link_to course_application.intake_id, advisor_course_application_path(course_application)
+            = link_to (@intakes.select{ |intake| intake["id"] == course_application.intake_id })[0]["acf"]["parent_course"]["post_title"], advisor_course_application_path(course_application)
   - else
     %p="No applications have been made yet"
