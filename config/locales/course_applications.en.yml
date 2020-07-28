@@ -1,0 +1,5 @@
+en:
+  course_applications:
+    mail:
+      subject:
+        confirm_course_application: "Thanks for applying"

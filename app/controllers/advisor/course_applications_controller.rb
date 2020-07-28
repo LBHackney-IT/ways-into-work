@@ -13,15 +13,13 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
 
   def show
     @course_application = CourseApplication.find(params[:id])
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
-    @intake = response.parsed_response[0]
+    @intake = @course_application.intake
     @course = @intake["acf"]["parent_course"]
   end
 
   def update
     @course_application = CourseApplication.find(params[:id])
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
-    @intake = response.parsed_response[0]
+    @intake = @course_application.intake
     @course = @intake["acf"]["parent_course"]
     if @course_application.update_attributes(course_application_params)
       flash[:success] = "Enquiry review updated"
