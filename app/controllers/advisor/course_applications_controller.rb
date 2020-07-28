@@ -1,7 +1,12 @@
 class Advisor::CourseApplicationsController < Advisor::BaseController
 
   def index
-    @course_applications = CourseApplication.all
+    if params[:course_intake_select]
+      @course_applications = CourseApplication.where(intake_id: params[:course_intake_select])
+    else
+      @course_applications = CourseApplication.all
+    end
+    
     response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
     @intakes = response.parsed_response
   end
