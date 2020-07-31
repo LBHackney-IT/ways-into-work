@@ -1,12 +1,15 @@
 class Advisor::CourseApplicationsController < Advisor::BaseController
 
   def index
+    @course_applications = CourseApplication.all
     if params[:course_intake_select]
-      @course_applications = CourseApplication.where(intake_id: params[:course_intake_select])
+      @course_applications_awaiting_review = CourseApplication.awaiting_review.where(intake_id: params[:course_intake_select])
+      @course_applications_reviewed = CourseApplication.reviewed.where(intake_id: params[:course_intake_select])
     else
-      @course_applications = CourseApplication.all
+      @course_applications_awaiting_review = CourseApplication.awaiting_review
+      @course_applications_reviewed = CourseApplication.reviewed
     end
-    
+
     response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
     @intakes = response.parsed_response
   end
@@ -26,7 +29,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
       #redirect_to session[:return_to]
       render 'show'
     else
-      render 'show'
+      render 'index'
     end
   end
 
