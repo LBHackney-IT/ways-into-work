@@ -41,15 +41,18 @@
               = course_application.email
             %td
               = course_application.phone_number
-            %td
-              - if intake(@intakes, course_application.intake_id)
+            - if intake(@intakes, course_application.intake_id).present?
+              %td
                 = intake(@intakes, course_application.intake_id)["acf"]["parent_course"]["post_title"]
-              - else
+              %td
+                = intake_as_dates(@intakes, course_application.intake_id)
+              %td
+                = link_to "Review application", advisor_course_application_path(course_application), class: 'button is-primary is-small'
+            - else
+              %td
+              %td
                 Intake not found
-            %td
-              = intake_as_dates(@intakes, course_application.intake_id)
-            %td
-              = link_to "Review application", advisor_course_application_path(course_application), class: 'button is-primary is-small'
+              %td
 
 
     - if @course_applications_reviewed.count > 0
@@ -85,15 +88,18 @@
               = course_application.email
             %td
               = course_application.phone_number
-            %td
-              - if intake(@intakes, course_application.intake_id)
+            - if intake(@intakes, course_application.intake_id).present?
+              %td
                 = link_to intake(@intakes, course_application.intake_id)["acf"]["parent_course"]["post_title"], advisor_course_application_path(course_application)
-              - else
+              %td
+                = intake_as_dates(@intakes, course_application.intake_id)
+              %td
+                = link_to "Review application", advisor_course_application_path(course_application), class: 'button is-primary is-small'
+            - else
+              %td
+              %td
                 Intake not found
-            %td
-              = intake_as_dates(@intakes, course_application.intake_id)
-            %td
-              = link_to "Review application", advisor_course_application_path(course_application), class: 'button is-primary is-small'
+              %td
   - else
     %br
     %p="No applications have been made yet"

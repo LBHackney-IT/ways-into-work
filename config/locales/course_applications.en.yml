@@ -3,3 +3,5 @@ en:
     mail:
       subject:
         confirm_course_application: "Thanks for applying"
+        course_application_accepted: "You've been accepted"
+        course_application_unsuccessful: "You haven't been accepted"

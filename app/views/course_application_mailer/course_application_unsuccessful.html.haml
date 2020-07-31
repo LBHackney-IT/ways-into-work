@@ -1,0 +1,5 @@
+%p="Hello #{@course_application.first_name},"
+
+%p="Unfortunately you weren't accepted onto #{@intake["acf"]["parent_course"]["post_title"]}. Here is some feedback:"
+
+%p=@course_application.feedback

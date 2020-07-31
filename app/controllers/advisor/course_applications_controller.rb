@@ -7,7 +7,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
 
   def index
     @course_applications = CourseApplication.all
-    if params[:course_intake_select]
+    if params[:course_intake_select].present?
       @selected_filter_intake = params[:course_intake_select]
       @course_applications_awaiting_review = CourseApplication.awaiting_review.where(intake_id: params[:course_intake_select])
       @course_applications_reviewed = CourseApplication.reviewed.where(intake_id: params[:course_intake_select])
@@ -21,13 +21,18 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
   end
 
   def update
-
+    previous_status = @course_application.status
     if @course_application.update_attributes(course_application_params)
-      flash[:success] = "Enquiry review updated"
-      #redirect_to session[:return_to]
-      render 'show'
+      flash[:success] = "Course application updated"
+
+      if (@course_application.status == "accepted") && (previous_status == nil)
+        CourseApplicationMailer.course_application_accepted(@course_application).deliver_now
+      elsif (@course_application.status == "unsuccessful") && (previous_status == nil)
+        CourseApplicationMailer.course_application_unsuccessful(@course_application).deliver_now
+      end
+      redirect_to advisor_course_applications_path
     else
-      render 'index'
+      render 'show'
     end
   end
 
