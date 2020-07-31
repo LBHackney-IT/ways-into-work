@@ -8,6 +8,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
   def index
     @course_applications = CourseApplication.all
     if params[:course_intake_select]
+      @selected_filter_intake = params[:course_intake_select]
       @course_applications_awaiting_review = CourseApplication.awaiting_review.where(intake_id: params[:course_intake_select])
       @course_applications_reviewed = CourseApplication.reviewed.where(intake_id: params[:course_intake_select])
     else

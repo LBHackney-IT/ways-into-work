@@ -4,7 +4,7 @@
     = form_with url: advisor_course_applications_path, method: :get, skip_enforcing_utf8: true do
       =# label_tag "Filter by course intake: "
       %span.select
-        = select_tag "course_intake_select", grouped_options_for_select(@intakes.map{ |intake| [intake["acf"]["parent_course"]["post_title"], [["#{intake["acf"]["start_date"].to_date.strftime("%b %Y")} - #{intake["acf"]["end_date"].to_date.strftime("%b %Y")}", intake["id"]]]] }), onchange: 'this.form.submit();', include_blank: "--Filter by intake--"
+        = select_tag "course_intake_select", grouped_options_for_select(@intakes.map{ |intake| [intake["acf"]["parent_course"]["post_title"], [["#{intake["acf"]["start_date"].to_date.strftime("%b %Y")} - #{intake["acf"]["end_date"].to_date.strftime("%b %Y")}", intake["id"]]]] }, @selected_filter_intake), onchange: 'this.form.submit();', include_blank: "--Filter by intake--"
   %br
   .head.level
     .level-left
