@@ -83,7 +83,7 @@
               = course_application.phone_number
             %td
               - if intake(@intakes, course_application.intake_id)
-                = intake(@intakes, course_application.intake_id)["acf"]["parent_course"]["post_title"]
+                = link_to intake(@intakes, course_application.intake_id)["acf"]["parent_course"]["post_title"], advisor_course_application_path(course_application)
               - else
                 Intake not found
             %td
