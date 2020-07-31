@@ -1,4 +1,7 @@
 class Advisor::CourseApplicationsController < Advisor::BaseController
+  include CourseApplicationHelper
+
+  before_action :set_intakes
 
   def index
     @course_applications = CourseApplication.all
@@ -9,20 +12,17 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
       @course_applications_awaiting_review = CourseApplication.awaiting_review
       @course_applications_reviewed = CourseApplication.reviewed
     end
-
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
-    @intakes = response.parsed_response
   end
 
   def show
     @course_application = CourseApplication.find(params[:id])
-    @intake = @course_application.intake
+    @intake = intake(@intakes, @course_application.intake_id)
     @course = @intake["acf"]["parent_course"]
   end
 
   def update
     @course_application = CourseApplication.find(params[:id])
-    @intake = @course_application.intake
+    @intake = intake(@intakes, @course_application.intake_id)
     @course = @intake["acf"]["parent_course"]
     if @course_application.update_attributes(course_application_params)
       flash[:success] = "Enquiry review updated"
@@ -31,6 +31,11 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
     else
       render 'index'
     end
+  end
+
+  def set_intakes
+    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
+    @intakes = response.parsed_response
   end
 
   def course_application_params
