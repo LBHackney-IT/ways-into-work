@@ -20,8 +20,7 @@
   .box
     %p
       %span.bold Course:
-      = @course["post_title"]
-      %a{href: "#"} View details
+      = link_to @course["post_title"], @intake["link"]
     %p
       %span.bold Intake:
       = "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}"

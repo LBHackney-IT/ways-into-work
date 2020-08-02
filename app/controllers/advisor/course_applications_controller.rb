@@ -51,6 +51,14 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
   end
 
   def course_application_params
-    params.require(:course_application).permit(:first_name, :last_name, :phone_number, :email, :intake_id, :status, :feedback)
+    params.require(:course_application).permit(
+      :first_name, 
+      :last_name, 
+      :phone_number, 
+      :email, 
+      :intake_id, 
+      :status, 
+      :feedback
+    )
   end
 end
