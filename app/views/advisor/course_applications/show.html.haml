@@ -20,10 +20,10 @@
   .box
     %p
       %span.bold Course:
-      = link_to @course["post_title"], @intake["link"]
+      = @course["post_title"]
     %p
       %span.bold Intake:
-      = "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}"
+      = link_to "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}", @intake["link"]
     
     %p
       %span.bold Accepted applications:
