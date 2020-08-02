@@ -16,19 +16,33 @@
     %p
       %span.bold Phone number:
       = @course_application.phone_number
-    %br
+
+  .box
     %p
       %span.bold Course:
       = @course["post_title"]
+      %a{href: "#"} View details
     %p
-      %span.bold Capacity:
-      = @intake["acf"]["total_capacity"]
-    %p
-      %span.bold Total applications:
-      = @course_application.total_applications
+      %span.bold Intake:
+      = "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}"
+    
     %p
       %span.bold Accepted applications:
-      = @course_application.accepted_applications
+      = "#{@course_application.accepted_applications} / #{@intake["acf"]["total_capacity"]}"
+      %meter{ value: @course_application.accepted_applications, 
+              optimum: 0,
+              low: @intake["acf"]["total_capacity"].to_i*0.66,
+              high: @intake["acf"]["total_capacity"],  
+              max: @intake["acf"]["total_capacity"]+ ".1"}
+
+    %p
+      %span.bold Total applications:
+      = "#{@course_application.total_applications} / #{@intake["acf"]["total_capacity"]}"
+      %meter{ value: @course_application.total_applications, 
+              optimum: 0,
+              low: @intake["acf"]["total_capacity"].to_i*0.66,
+              high: @intake["acf"]["total_capacity"],  
+              max: @intake["acf"]["total_capacity"]+ ".1"}
 
   .box
     = simple_form_for @course_application, url: advisor_course_application_path, method: :put, local: true do |form|
