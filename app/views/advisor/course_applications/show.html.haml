@@ -11,6 +11,13 @@
       %span.bold Applicant:
       = "#{@course_application.first_name} #{@course_application.last_name}"
     %p
+      %span.bold Email:
+      = @course_application.email
+    %p
+      %span.bold Phone number:
+      = @course_application.phone_number
+    %br
+    %p
       %span.bold Course:
       = @course["post_title"]
     %p
