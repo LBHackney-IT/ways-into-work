@@ -37,7 +37,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
   end
 
   def set_intakes
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
+    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake?per_page=100")
     @intakes = response.parsed_response
   end
 
