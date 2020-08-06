@@ -37,6 +37,8 @@ gem 'humanize_boolean'
 gem 'kaminari'
 gem 'pg_search'
 
+gem 'rack-cors'
+
 gem 'appsignal'
 
 gem 'decent_exposure'

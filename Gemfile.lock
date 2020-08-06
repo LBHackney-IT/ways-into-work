@@ -270,6 +270,8 @@ GEM
     public_suffix (3.0.2)
     puma (3.12.0)
     rack (2.0.7)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-protection (2.0.3)
       rack
     rack-test (1.1.0)
@@ -475,6 +477,7 @@ DEPENDENCIES
   phony_rails
   pry
   puma
+  rack-cors
   rails (= 5.1.6.2)
   rails-controller-testing
   rails_12factor
