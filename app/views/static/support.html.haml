@@ -8,7 +8,7 @@
       %h1 Supported Employment
       %p If you have a disability or health condition and are looking for work, our dedicated Supported Employment advisors can help you to achieve your goals.
   .lines
-= render 'layouts/corona_notice'
+= render 'layouts/corona_notice' unless current_advisor.present?
 %br
 %br
 .container

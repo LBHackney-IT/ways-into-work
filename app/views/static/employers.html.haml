@@ -9,7 +9,7 @@
       %p Looking to grow your team? Want access to local talent? Interested in taking on an apprentice?
       %p Grow your own talent with an in-house training programme
   .lines
-= render 'layouts/corona_notice'
+= render 'layouts/corona_notice' unless current_advisor.present?
 .container
   .points
     %h3 A bespoke recruitment service

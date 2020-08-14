@@ -13,7 +13,7 @@
       = render "layouts/alerts"
 
       %main{:class => "main section", :id => "main", :role => "main"}
-        = render 'layouts/corona_notice' unless (controller_name == 'static' || controller_name == 'application')
+        = render 'layouts/corona_notice' unless (controller_name == 'static' || controller_name == 'application' || current_advisor.present?)
         .container.content.is-multiline
           = yield
 

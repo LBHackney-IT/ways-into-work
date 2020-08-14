@@ -1,6 +1,8 @@
+
 .full-width.hero
   .bg_img
     =image_tag('dalston-grey.jpg', class: 'parralax_me', id: 'parralax_me')
+
   .container.columns.main
     .column.is-one-thrid#logo
       =image_tag('hackney-works-white.svg', :alt => 'Hackney Works')
@@ -12,7 +14,7 @@
         =t('hackney_works.hero.extra')
   .lines
 
-= render 'layouts/corona_notice'
+  = render 'layouts/corona_notice' unless current_advisor.present?
 
 .container.points
   %h2
