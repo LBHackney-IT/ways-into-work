@@ -7,18 +7,18 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
   def index
     @course_applications = CourseApplication.all
 
-    # grab intakes for the applications in the db only
     intake_ids = @course_applications.map{ |application| application.intake_id }
     response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake?per_page=100&include=#{intake_ids.join(",")}")
     @intakes = response.parsed_response
 
+    @filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
+
+    @course_applications_awaiting_review = CourseApplication.awaiting_review
+    @course_applications_reviewed = CourseApplication.reviewed
+
     if params[:course_intake_select].present?
-      @selected_filter_intake = params[:course_intake_select]
       @course_applications_awaiting_review = CourseApplication.awaiting_review.where(intake_id: params[:course_intake_select])
       @course_applications_reviewed = CourseApplication.reviewed.where(intake_id: params[:course_intake_select])
-    else
-      @course_applications_awaiting_review = CourseApplication.awaiting_review
-      @course_applications_reviewed = CourseApplication.reviewed
     end
 
   end
