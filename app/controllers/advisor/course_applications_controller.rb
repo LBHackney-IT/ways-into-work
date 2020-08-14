@@ -1,12 +1,17 @@
 class Advisor::CourseApplicationsController < Advisor::BaseController
   include CourseApplicationHelper
 
-  before_action :set_intakes
   before_action :set_course_application, only: [:show, :update]
-  before_action :set_intake_and_course, only: [:show, :update]
+  before_action :get_intake_and_course, only: [:show, :update]
 
   def index
     @course_applications = CourseApplication.all
+
+    # grab intakes for the applications in the db only
+    intake_ids = @course_applications.map{ |application| application.intake_id }
+    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake?per_page=100&include=#{intake_ids.join(",")}")
+    @intakes = response.parsed_response
+
     if params[:course_intake_select].present?
       @selected_filter_intake = params[:course_intake_select]
       @course_applications_awaiting_review = CourseApplication.awaiting_review.where(intake_id: params[:course_intake_select])
@@ -15,6 +20,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
       @course_applications_awaiting_review = CourseApplication.awaiting_review
       @course_applications_reviewed = CourseApplication.reviewed
     end
+
   end
 
   def show
@@ -36,17 +42,13 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
     end
   end
 
-  def set_intakes
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake?per_page=100")
-    @intakes = response.parsed_response
-  end
-
   def set_course_application
     @course_application = CourseApplication.find(params[:id])
   end
 
-  def set_intake_and_course
-    @intake = intake(@intakes, @course_application.intake_id)
+  def get_intake_and_course
+    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake/#{@course_application.intake_id}")
+    @intake = response.parsed_response
     @course = @intake["acf"]["parent_course"]
   end
 
