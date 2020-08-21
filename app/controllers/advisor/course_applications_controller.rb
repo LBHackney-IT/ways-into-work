@@ -8,7 +8,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
     @course_applications = CourseApplication.all
 
     intake_ids = @course_applications.map{ |application| application.intake_id }
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake?per_page=100&include=#{intake_ids.join(",")}")
+    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake?per_page=100&include=#{intake_ids.join(",")}")
     @intakes = response.parsed_response
 
     @filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
@@ -47,7 +47,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
   end
 
   def get_intake_and_course
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake/#{@course_application.intake_id}")
+    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@course_application.intake_id}")
     @intake = response.parsed_response
     @course = @intake["acf"]["parent_course"]
   end

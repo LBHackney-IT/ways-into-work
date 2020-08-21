@@ -4,7 +4,7 @@ class CourseApplicationMailer < ApplicationMailer
   def confirm_application(course_application)
     @course_application = course_application
 
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
+    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake")
     @intakes = response.parsed_response
 
     @intake = intake(@intakes, @course_application.intake_id)
@@ -18,7 +18,7 @@ class CourseApplicationMailer < ApplicationMailer
   def course_application_accepted(course_application)
     @course_application = course_application
 
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
+    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake")
     @intakes = response.parsed_response
 
     @intake = intake(@intakes, @course_application.intake_id)
@@ -32,7 +32,7 @@ class CourseApplicationMailer < ApplicationMailer
   def course_application_unsuccessful(course_application)
     @course_application = course_application
 
-    response = HTTParty.get("https://hackney-works-staging.hackney.gov.uk/wp-json/wp/v2/intake")
+    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake")
     @intakes = response.parsed_response
 
     @intake = intake(@intakes, @course_application.intake_id)
