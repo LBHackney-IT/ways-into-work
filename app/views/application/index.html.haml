@@ -66,6 +66,11 @@
 
 
 #other_pages.full-width.columns
+  = link_to "https://opportunities.hackney.gov.uk" do
+    #learn.column.is-one-third
+      %h2 Learn new skills
+      %p Learning for adults is now part of Hackney Works. You can find courses and apply for them online.
+      = link_to "Find a course", "https://opportunities.hackney.gov.uk", class: 'button'
   = link_to support_path do
     .column.is-one-third
       %h2=t('hackney_works.employ_support.title')
@@ -81,7 +86,7 @@
       %h2=t('hackney_works.hack_100.title')
       %p=t('hackney_works.hack_100.about')
       = link_to I18n.t('hackney_works.hack_100.button'), work_placements_path, class: 'button'
-
+  
 .full-width#testimonials.hero
   .bg_img
     =image_tag('canal.jpg', class: 'parralax_me', id: 'parralax_me2')

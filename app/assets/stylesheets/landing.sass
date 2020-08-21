@@ -200,6 +200,10 @@ body.employers.static
 
 #other_pages
   margin-bottom: 0
+
+  @media screen and (min-width: 881px)
+    flex-wrap: wrap
+
   a:not(.button), h2
     color: #fff !important
   p
@@ -211,6 +215,10 @@ body.employers.static
     text-align: center
     background-color: $color__hackney-works
     transition: 0.5s ease-in-out background-color
+    @media screen and (min-width: 881px)
+      width: 50%
+    @media screen and (min-width: 1200px)
+      width: 25%
     &:hover
       background-color: rgba($color__hackney-works, 0.8)
       transition: 0.2s ease-in-out background-color
@@ -222,6 +230,10 @@ body.employers.static
       background-color: $color__hackney-apprentices
       &:hover
         background-color: rgba($color__hackney-apprentices, 0.8)
+    &#learn
+      background-color: $orange
+    &#hack100
+      background-color: $color__hackney-100
     h2
       min-height: 60px
       +mobile
