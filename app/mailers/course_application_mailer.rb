@@ -11,7 +11,7 @@ class CourseApplicationMailer < ApplicationMailer
 
     mail(
       to: @course_application.email,
-      subject: I18n.t('course_applications.mail.subject.confirm_application')
+      subject: I18n.t('course_applications.mail.subject.confirm_course_application')
     )
   end
 
