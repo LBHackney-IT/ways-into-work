@@ -4,10 +4,7 @@ class CourseApplicationMailer < ApplicationMailer
   def confirm_application(course_application)
     @course_application = course_application
 
-    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake")
-    @intakes = response.parsed_response
-
-    @intake = intake(@intakes, @course_application.intake_id)
+    @intake = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@course_application.intake_id}").parsed_response
 
     mail(
       to: @course_application.email,
@@ -18,10 +15,7 @@ class CourseApplicationMailer < ApplicationMailer
   def course_application_accepted(course_application)
     @course_application = course_application
 
-    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake")
-    @intakes = response.parsed_response
-
-    @intake = intake(@intakes, @course_application.intake_id)
+    @intake = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@course_application.intake_id}").parsed_response
 
     mail(
       to: @course_application.email,
@@ -32,10 +26,7 @@ class CourseApplicationMailer < ApplicationMailer
   def course_application_unsuccessful(course_application)
     @course_application = course_application
 
-    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake")
-    @intakes = response.parsed_response
-
-    @intake = intake(@intakes, @course_application.intake_id)
+    @intake = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@course_application.intake_id}").parsed_response
 
     mail(
       to: @course_application.email,
