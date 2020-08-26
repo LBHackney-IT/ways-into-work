@@ -7,6 +7,7 @@ class Api::V1::CourseApplicationsController < ApplicationController
       if @course_application.save
         render status: 200, json: @course_application.to_json
         CourseApplicationMailer.confirm_application(@course_application).deliver_later
+        CourseApplicationMailer.notify_team_of_new_application(@course_application).deliver_later
       else
         render status: 500
       end

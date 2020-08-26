@@ -75,6 +75,7 @@ module WaysIntoWork
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
     config.support_email = ENV.fetch('SUPPORT_EMAIL', 'no-reply@example.com')
+    config.learning_team_email = ENV.fetch('LEARNING_TEAM_EMAIL', 'no-reply@example.com')
 
     config.action_mailer.preview_path = Rails.root.join('lib', 'mail_previews')
 
