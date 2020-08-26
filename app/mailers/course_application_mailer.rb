@@ -1,5 +1,4 @@
 class CourseApplicationMailer < ApplicationMailer
-  default from: WaysIntoWork.config.learning_team_email
 
   def confirm_application(course_application)
     @course_application = course_application
