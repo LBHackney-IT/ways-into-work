@@ -24,15 +24,6 @@
     %p
       %span.bold Intake:
       = link_to "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}", @intake["link"]
-    
-    %p
-      %span.bold Accepted applications:
-      = "#{@course_application.accepted_applications} / #{@intake["acf"]["total_capacity"]}"
-      %meter{ value: @course_application.accepted_applications, 
-              optimum: 0,
-              low: @intake["acf"]["total_capacity"].to_i*0.66,
-              high: @intake["acf"]["total_capacity"],  
-              max: @intake["acf"]["total_capacity"]+ ".1"}
 
     %p
       %span.bold Total applications:
@@ -44,11 +35,11 @@
               max: @intake["acf"]["total_capacity"]+ ".1"}
 
   .box
-    = simple_form_for @course_application, url: advisor_course_application_path, method: :put, local: true do |form|
-      .convert_radio
-        = form.input :status, as: :radio_buttons, label: "Were they accepted?", collection: [['Yes', 'accepted'], ['No', 'unsuccessful']]
-      %br
-      = form.input :feedback, as: :text, input_html: { class: 'textarea' }
-      = form.submit "Submit", :class => 'button is-primary tablet_cta'
+    - if @course_application.dismissed
+      This application has been dismissed
+    - else
+      %p Have you processed this application? If so, click the 'dismiss' button below and it will be moved into the 'reviewed applications' section. 
+      %p You will still be able to view the details if you need them again later.
+      = link_to "Dismiss", advisor_course_application_dismiss_path(@course_application), method: :put, :class => "button is-primary tablet_cta #{'disabled' if @course_application.dismissed}", :data => {:confirm => 'Are you sure you want to dismiss this application?'}
 
 
