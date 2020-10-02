@@ -21,6 +21,11 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
       @course_applications_reviewed = CourseApplication.reviewed.where(intake_id: params[:course_intake_select])
     end
 
+    respond_to do |format|
+      format.html
+      format.csv { send_data @course_applications.to_csv, filename: "coure-applications-#{Date.today}.csv" }
+    end
+
   end
 
   def show

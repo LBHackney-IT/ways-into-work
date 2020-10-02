@@ -4,7 +4,9 @@
     = form_with url: advisor_course_applications_path, method: :get, skip_enforcing_utf8: true do
       %span.select
         = select_tag "course_intake_select", grouped_options_for_select(@filter_options.map{ |course_name, intakes| [course_name, intakes.map { |intake| [intake_as_dates(@intakes, intake["id"]), intake["id"]]}]}, params[:course_intake_select]), onchange: 'this.form.submit();', include_blank: "All intakes"
-  
+  .has-text-right
+    = link_to "Export CSV", advisor_course_applications_path(format: :csv), class: 'button'
+
   %br
   .head.level
     .level-left
