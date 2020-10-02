@@ -23,7 +23,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @course_applications.to_csv, filename: "coure-applications-#{Date.today}.csv" }
+      format.csv { send_data @course_applications.to_csv(@intakes), filename: "coure-applications-#{Date.today}.csv" }
     end
 
   end

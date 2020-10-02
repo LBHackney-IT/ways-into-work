@@ -7,11 +7,18 @@ class CourseApplication < ApplicationRecord
     CourseApplication.where(intake_id: self.intake_id).count
   end
 
-  def self.to_csv
+  def self.to_csv(intakes)
     CSV.generate(headers: true) do |csv|
-      csv << attribute_names
+      course_application_attributes = self.attribute_names
+      header = course_application_attributes += ["course_title", "intake_dates"]
+      csv << header
       all.each do |ca|
-        csv << attribute_names.map{ |attr| ca.send(attr) }
+        row = attribute_names.map{ |attr| ca.send(attr) }
+        intake = intakes.select{ |intake| intake["id"] == ca.intake_id }.first
+        course_title = intake["acf"]["parent_course"]["post_title"]
+        intake_dates = "#{intake["acf"]["start_date"]} - #{intake["acf"]["end_date"]}"
+        row += [course_title, intake_dates]
+        csv << row
       end
     end
   end
