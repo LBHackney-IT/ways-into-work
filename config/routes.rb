@@ -1,7 +1,9 @@
 WaysIntoWork::Application.routes.draw do
   devise_for :user_logins, controllers: {sessions: "sessions"}
 
-  root to: 'application#index'
+  devise_scope :user_login do
+    root to: "sessions#new"
+  end
 
   get 'hackney_works', to: redirect('/')
 
@@ -57,7 +59,6 @@ WaysIntoWork::Application.routes.draw do
   end
 
   resources :clients, only: %i[new create]
-  resources :opportunities, only: [:index, :show]
 
   resources :hubs, only: :index
 
