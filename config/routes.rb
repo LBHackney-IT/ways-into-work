@@ -44,7 +44,7 @@ WaysIntoWork::Application.routes.draw do
     resources :vacancies
     resources :featured_vacancies, only: %i[update]
     resources :opportunities, only: :new do
-      resources :enquiries, only: [:show, :update]
+      resources :enquiries, only: [:show]
     end
     resources :jobs
     resources :external_apprenticeships
@@ -59,6 +59,7 @@ WaysIntoWork::Application.routes.draw do
   end
 
   resources :clients, only: %i[new create]
+  resources :opportunities, only: [:show, :index]
 
   resources :hubs, only: :index
 
@@ -77,9 +78,6 @@ WaysIntoWork::Application.routes.draw do
     resource :dashboard, only: :show
     resources :jobs, only: [:show]
     resources :external_apprenticeships, only: [:show]
-    resources :opportunities do
-      resources :enquiries, only: [:new, :create]
-    end
     get 'enquiry_confirm' => 'enquiry_confirm#show'
   end
 
