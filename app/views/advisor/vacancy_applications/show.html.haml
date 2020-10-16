@@ -13,9 +13,12 @@
     %p
       %span.bold Email:
       = @vacancy_application.email
+      (possible client: #{link_to "#{@possible_client.first_name} #{@possible_client.last_name}", advisor_client_path(@possible_client)})
+
     %p
       %span.bold Phone number:
       = @vacancy_application.phone_number
+
 
   .box
     %p

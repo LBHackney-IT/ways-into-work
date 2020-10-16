@@ -46,6 +46,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
     meetings_attended(from, to).where("meetings.agenda = 'initial_assessment'").uniq
   }
 
+  scope :with_email, ->(email) { joins(:login).where(user_logins: { email: email }) }
+
   accepts_nested_attributes_for :login
 
   has_many :file_uploads, dependent: :destroy

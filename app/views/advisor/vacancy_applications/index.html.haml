@@ -24,13 +24,20 @@
               Vacancy
 
         - @vacancy_applications_awaiting_review.each do |vacancy_application|
+          - possible_client = Client.with_email(vacancy_application.email).first
           %tr
             %td
-              = "#{vacancy_application.first_name} #{vacancy_application.last_name}"
+              - if possible_client
+                = link_to "#{vacancy_application.first_name} #{vacancy_application.last_name}", advisor_client_path(possible_client)
+              - else
+                = "#{vacancy_application.first_name} #{vacancy_application.last_name}"
             %td
               = vacancy_application.created_at.strftime("%e %B %Y")
             %td
-              = vacancy_application.email
+              - if possible_client
+                = link_to vacancy_application.email, advisor_client_path(possible_client)
+              - else
+                = vacancy_application.email
             %td
               = vacancy_application.phone_number
             - if vacancy(@vacancies, vacancy_application.vacancy_id).present?
