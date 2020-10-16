@@ -93,6 +93,7 @@ WaysIntoWork::Application.routes.draw do
       resources :opportunities, only: [:index]
       get 'opportunities/featured' => 'opportunities#featured'
       resources :course_applications, only: [:create]
+      resources :vacancy_applications, only: [:create]
     end
   end
 end
