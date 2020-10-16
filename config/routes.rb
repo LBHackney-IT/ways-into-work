@@ -54,7 +54,9 @@ WaysIntoWork::Application.routes.draw do
     resources :internal_apprenticeships, only: [:new, :create, :update, :edit]
     resources :enquiries, only: [:index, :show]
     resources :course_applications, only: [:index, :show]
+    resources :vacancy_applications, only: [:index, :show]
     put 'course_applications/:id/dismiss', to: 'course_applications#dismiss', as: :course_application_dismiss
+    put 'vacancy_applications/:id/dismiss', to: 'vacancy_applications#dismiss', as: :vacancy_application_dismiss
     get 'clients/:client_id/enquiries', to: 'enquiries#for_client', as: :client_enquiries
   end
 
