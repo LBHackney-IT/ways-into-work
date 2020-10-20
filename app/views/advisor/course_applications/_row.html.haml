@@ -1,0 +1,19 @@
+%td
+  = "#{course_application.first_name} #{course_application.last_name}"
+%td
+  = course_application.created_at.strftime("%e %B %Y")
+%td
+  = course_application.email
+%td
+  = course_application.phone_number
+- if intake(@intakes, course_application.intake_id).present?
+  %td
+    = intake(@intakes, course_application.intake_id)["acf"]["parent_course"]["post_title"]
+  %td
+    = intake_as_dates(@intakes, course_application.intake_id)
+- else
+  %td
+  %td 
+    %small Not found
+%td
+  = link_to "Review application", advisor_course_application_path(course_application), class: 'button is-primary is-small'
