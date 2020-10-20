@@ -11,15 +11,15 @@ class Advisor::VacancyApplicationsController < Advisor::BaseController
     response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy?per_page=100&include=#{vacancy_ids.join(",")}")
     @vacancies = response.parsed_response
 
-    #@filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
+    @filter_options = @vacancies.group_by { |vacancy| vacancy["title"]["rendered"] }
 
     @vacancy_applications_awaiting_review = VacancyApplication.awaiting_review
     @vacancy_applications_reviewed = VacancyApplication.reviewed
 
-    # if params[:course_intake_select].present?
-    #   @vacancy_applications_awaiting_review = VacancyApplication.awaiting_review.where(intake_id: params[:course_intake_select])
-    #   @vacancy_applications_reviewed = VacancyApplication.reviewed.where(intake_id: params[:course_intake_select])
-    # end
+    if params[:vacancy_select].present?
+      @vacancy_applications_awaiting_review = VacancyApplication.awaiting_review.where(vacancy_id: params[:vacancy_select])
+      @vacancy_applications_reviewed = VacancyApplication.reviewed.where(vacancy_id: params[:vacancy_select])
+    end
 
     respond_to do |format|
       format.html
