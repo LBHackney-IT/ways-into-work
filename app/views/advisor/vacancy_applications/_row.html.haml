@@ -1,0 +1,23 @@
+- possible_client = Client.with_email(vacancy_application.email).first
+%td
+  - if possible_client
+    = link_to "#{vacancy_application.first_name} #{vacancy_application.last_name}", advisor_client_path(possible_client)
+  - else
+    = "#{vacancy_application.first_name} #{vacancy_application.last_name}"
+%td
+  = vacancy_application.created_at.strftime("%e %B %Y")
+%td
+  - if possible_client
+    = link_to vacancy_application.email, advisor_client_path(possible_client)
+  - else
+    = vacancy_application.email
+%td
+  = vacancy_application.phone_number
+- if vacancy(@vacancies, vacancy_application.vacancy_id).present?
+  %td
+    = link_to vacancy(@vacancies, vacancy_application.vacancy_id)["title"]["rendered"], advisor_vacancy_applications_path(vacancy_select: vacancy_application.vacancy_id)
+- else
+  %td
+    %small Not found
+%td
+  = link_to "Review application", advisor_vacancy_application_path(vacancy_application), class: 'button is-primary is-small'
