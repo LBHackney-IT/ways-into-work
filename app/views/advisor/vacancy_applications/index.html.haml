@@ -5,6 +5,17 @@
       %span.select
         = select_tag "vacancy_select", options_for_select(@vacancies.map{ |vacancy| [vacancy["title"]["rendered"], vacancy["id"]] }, params[:vacancy_select]), onchange: 'this.form.submit();', include_blank: "All vacancies"
 
+  - if params[:vacancy_select].present?
+    %br
+    .box
+      %p
+        %span.bold Vacancy:
+        = @vacancy["title"]["rendered"]
+
+      %p
+        %span.bold Total applications:
+        = @total_applications
+
   %br
   .head.level
     .level-left

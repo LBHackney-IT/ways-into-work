@@ -17,8 +17,10 @@ class Advisor::VacancyApplicationsController < Advisor::BaseController
     @vacancy_applications_reviewed = VacancyApplication.reviewed
 
     if params[:vacancy_select].present?
+      @vacancy =  @vacancies.select{|vacancy| vacancy["id"] == params[:vacancy_select].to_i }.try(:first)
       @vacancy_applications_awaiting_review = VacancyApplication.awaiting_review.where(vacancy_id: params[:vacancy_select])
       @vacancy_applications_reviewed = VacancyApplication.reviewed.where(vacancy_id: params[:vacancy_select])
+      @total_applications = @vacancy_applications_awaiting_review.size + @vacancy_applications_reviewed.size
     end
 
     respond_to do |format|
