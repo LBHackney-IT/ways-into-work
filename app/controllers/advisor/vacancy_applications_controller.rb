@@ -25,7 +25,7 @@ class Advisor::VacancyApplicationsController < Advisor::BaseController
 
     respond_to do |format|
       format.html
-      #format.csv { send_data @vacancy_applications.to_csv(@intakes), filename: "coure-applications-#{Date.today}.csv" }
+      format.csv { send_data @vacancy_applications.to_csv(@vacancies), filename: "vacancy-applications-#{Date.today}.csv" }
     end
 
   end

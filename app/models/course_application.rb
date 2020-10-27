@@ -15,8 +15,13 @@ class CourseApplication < ApplicationRecord
       all.each do |ca|
         row = attribute_names.map{ |attr| ca.send(attr) }
         intake = intakes.select{ |intake| intake["id"] == ca.intake_id }.first
-        course_title = intake["acf"]["parent_course"]["post_title"]
-        intake_dates = "#{intake["acf"]["start_date"]} - #{intake["acf"]["end_date"]}"
+        if intake.present?
+          course_title = intake["acf"]["parent_course"]["post_title"]
+          intake_dates = "#{intake["acf"]["start_date"]} - #{intake["acf"]["end_date"]}"
+        else
+          course_title = "Intake not found"
+          intake_dates = "Intake not found"
+        end
         row += [course_title, intake_dates]
         csv << row
       end
