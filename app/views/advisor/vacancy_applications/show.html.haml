@@ -22,9 +22,13 @@
 
 
   .box
-    %p
-      %span.bold Vacancy:
-      = @vacancy["title"]["rendered"]
+    - if @vacancy.present?
+      %p
+        %span.bold Vacancy:
+        = @vacancy["title"]["rendered"]
+    - else
+      %p
+        Vacancy not found
 
     %p
       %span.bold Total applications:

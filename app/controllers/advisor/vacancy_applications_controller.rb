@@ -47,7 +47,7 @@ class Advisor::VacancyApplicationsController < Advisor::BaseController
 
   def get_vacancy
     response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy/#{@vacancy_application.vacancy_id}")
-    @vacancy = response.parsed_response
+    @vacancy = response.parsed_response if response.parsed_response["id"]
   end
 
 end
