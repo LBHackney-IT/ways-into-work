@@ -63,6 +63,33 @@ The server is now running at http://localhost:3000
 
 ## API
 
-There's a read-only API of opportunities at `/api/v1/opportunities`.
+There's an API that accepts applications running at `/api/v1/applications`.
 
-It responds to `?type=` and `?page=` query parameters.
+You can make a POST requests with an object of this general shape:
+
+```
+{
+	"application":{
+		"first_name": "Firstname",
+		"last_name": "Surname",
+		"email": "firstname.surname@email.com",	
+		"phone_number":"07777777777",
+        "statement": "About the applicant",
+        "type": "CourseApplication",
+		"wordpress_object_id": 100
+	}
+}
+```
+
+The app uses WordPress APIs to get metadata about the thing being applied for. It does this using the `wordpress_object_id` and `type` values.
+
+| Parameter           | Description                                                                         |
+|---------------------|-------------------------------------------------------------------------------------|
+| first_name          | String. User's first name.                                                          |
+| last_name           | String. User's last name.                                                           |
+| email               | String. User's email address.                                                       |
+| phone_number        | String. User's phone number.                                                        |
+| statement           | String containing a CV/resume/cover letter. Only for vacancy applications           |
+| type                | String. Either "CourseApplication" or "VacancyApplication"                          |
+| wordpress_object_id | Number. ID of the object within the opportunities WordPress site being applied for. |
+
