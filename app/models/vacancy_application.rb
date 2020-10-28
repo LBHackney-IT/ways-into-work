@@ -1,9 +1,5 @@
 class VacancyApplication < Application
 
-  def total_applications
-    VacancyApplication.where(vacancy_id: self.vacancy_id).count
-  end
-
   def self.to_csv(vacancies)
     CSV.generate(headers: true) do |csv|
       vacancy_application_attributes = self.attribute_names

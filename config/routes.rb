@@ -54,11 +54,7 @@ WaysIntoWork::Application.routes.draw do
     resources :internal_apprenticeships, only: [:new, :create, :update, :edit]
     resources :enquiries, only: [:index, :show]
     get 'clients/:client_id/enquiries', to: 'enquiries#for_client', as: :client_enquiries
-    # resources :course_applications, only: [:index, :show]
-    # resources :vacancy_applications, only: [:index, :show]
     resources :applications, only: [:index, :show]
-    # put 'course_applications/:id/dismiss', to: 'course_applications#dismiss', as: :course_application_dismiss
-    # put 'vacancy_applications/:id/dismiss', to: 'vacancy_applications#dismiss', as: :vacancy_application_dismiss
     put 'applications/:id/dismiss', to: 'applications#dismiss', as: :application_dismiss
   end
 
@@ -96,8 +92,6 @@ WaysIntoWork::Application.routes.draw do
     namespace :v1 do
       resources :opportunities, only: [:index]
       get 'opportunities/featured' => 'opportunities#featured'
-      # resources :course_applications, only: [:create]
-      # resources :vacancy_applications, only: [:create]
       resources :applications, only: [:create]
     end
   end

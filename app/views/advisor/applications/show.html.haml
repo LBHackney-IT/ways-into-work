@@ -45,6 +45,9 @@
         %p
           %span.bold Vacancy:
           = @vacancy["title"]["rendered"]
+        %p
+          %span.bold Total applications:
+          = "#{@application.total_applications}"
       - else
         %p
           Vacancy not found
