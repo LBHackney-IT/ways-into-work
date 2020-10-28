@@ -1,8 +1,8 @@
 class Advisor::ApplicationsController < Advisor::BaseController
   #include ApplicationHelper
 
-  # before_action :set_course_application, only: [:show, :dismiss]
-  # before_action :get_intake_and_course, only: [:show]
+  before_action :set_application, only: [:show, :dismiss]
+  before_action :get_wordpress_object, only: [:show]
 
   def index
     params[:type] ||= "course" # default to course applications
@@ -50,20 +50,22 @@ class Advisor::ApplicationsController < Advisor::BaseController
   end
 
   def dismiss
-    @course_application.dismissed = true
-    @course_application.save
-    flash[:success] = "Course application dismissed"
-    redirect_to advisor_course_applications_path
+    @application.dismissed = true
+    @application.save
+    flash[:success] = "Application dismissed"
+    redirect_to advisor_applications_path
   end
 
-  def set_course_application
-    @course_application = CourseApplication.find(params[:id])
+  def set_application
+    @application = Application.find(params[:id])
   end
 
-  def get_intake_and_course
-    response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@course_application.intake_id}")
-    @intake = response.parsed_response if response.parsed_response["id"]
-    @course = @intake["acf"]["parent_course"] if @intake
+  def get_wordpress_object
+    if @application.type == 'CourseApplication'
+      response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@application.wordpress_object_id}")
+      @intake = response.parsed_response if response.parsed_response["id"]
+      @course = @intake["acf"]["parent_course"] if @intake
+    end
   end
 
 end

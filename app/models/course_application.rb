@@ -4,7 +4,7 @@ class CourseApplication < Application
   scope :reviewed, -> { where(dismissed: true).order(created_at: :desc) }
 
   def total_applications
-    CourseApplication.where(intake_id: self.intake_id).count
+    CourseApplication.where(wordpress_object_id: self.wordpress_object_id).count
   end
 
   def self.to_csv(intakes)
