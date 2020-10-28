@@ -1,5 +1,7 @@
+- possible_client = Client.with_email(application.email).first
+
 %td
-  - if @possible_client
+  - if possible_client
     = link_to "#{application.first_name} #{application.last_name}", advisor_client_path(possible_client)
   - else
     = "#{application.first_name} #{application.last_name}"
@@ -14,7 +16,7 @@
     %td
       = intake(@intakes, application.wordpress_object_id)["acf"]["parent_course"]["post_title"]
     %td
-      = intake_as_dates(@intakes, application.wordpress_object_id)
+      = link_to intake_as_dates(@intakes, application.wordpress_object_id), advisor_applications_path(type: 'course', course_intake_select: application.wordpress_object_id)
   - else
     %td
     %td 
@@ -22,7 +24,7 @@
 - elsif type == "vacancy"
   - if vacancy(@vacancies, application.wordpress_object_id).present?
     %td
-      = link_to vacancy(@vacancies, application.wordpress_object_id)["title"]["rendered"], advisor_applications_path(vacancy_select: application.wordpress_object_id, type: 'vacancy')
+      = link_to vacancy(@vacancies, application.wordpress_object_id)["title"]["rendered"], advisor_applications_path(type: 'vacancy', vacancy_select: application.wordpress_object_id)
   - else
     %td
       %small Not found

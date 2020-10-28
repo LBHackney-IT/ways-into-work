@@ -2,7 +2,7 @@
 
   .filters
 
-    .tag.large.job{ class: (request.original_fullpath.include?(advisor_applications_path(type: 'course')) || (request.original_fullpath == advisor_applications_path)) ? '' : 'inactive' }
+    .tag.large.job{ class: (request.original_fullpath.include?("type=course") || (request.original_fullpath == advisor_applications_path)) ? '' : 'inactive' }
       = link_to "Course", advisor_applications_path(type: 'course')
 
     .tag.large.job{ class: request.original_fullpath.include?(advisor_applications_path(type: 'vacancy')) ? '' : 'inactive' }

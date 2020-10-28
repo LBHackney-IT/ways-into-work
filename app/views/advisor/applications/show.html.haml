@@ -13,6 +13,8 @@
     %p
       %span.bold Email:
       = @application.email
+      - if @possible_client.present?
+        (possible client: #{link_to "#{@possible_client.first_name} #{@possible_client.last_name}", advisor_client_path(@possible_client)})
     %p
       %span.bold Phone number:
       = @application.phone_number
