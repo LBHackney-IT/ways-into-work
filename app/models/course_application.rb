@@ -1,12 +1,5 @@
 class CourseApplication < Application
 
-  scope :awaiting_review, -> { where(dismissed: false).order(created_at: :desc) }
-  scope :reviewed, -> { where(dismissed: true).order(created_at: :desc) }
-
-  def total_applications
-    CourseApplication.where(wordpress_object_id: self.wordpress_object_id).count
-  end
-
   def self.to_csv(intakes)
     CSV.generate(headers: true) do |csv|
       course_application_attributes = self.attribute_names

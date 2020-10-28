@@ -70,6 +70,9 @@ class Advisor::ApplicationsController < Advisor::BaseController
       response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@application.wordpress_object_id}")
       @intake = response.parsed_response if response.parsed_response["id"]
       @course = @intake["acf"]["parent_course"] if @intake
+    elsif @application.type == 'VacancyApplication'
+      response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy/#{@application.wordpress_object_id}")
+      @vacancy = response.parsed_response if response.parsed_response["id"]
     end
   end
 
