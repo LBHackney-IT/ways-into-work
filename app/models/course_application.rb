@@ -14,7 +14,7 @@ class CourseApplication < Application
       csv << header
       all.each do |ca|
         row = attribute_names.map{ |attr| ca.send(attr) }
-        intake = intakes.select{ |intake| intake["id"] == ca.intake_id }.first
+        intake = intakes.select{ |intake| intake["id"] == ca.wordpress_object_id }.first
         if intake.present?
           course_title = intake["acf"]["parent_course"]["post_title"]
           intake_dates = "#{intake["acf"]["start_date"]} - #{intake["acf"]["end_date"]}"

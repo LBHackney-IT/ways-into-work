@@ -14,7 +14,7 @@ class VacancyApplication < Application
       csv << header
       all.each do |va|
         row = attribute_names.map{ |attr| va.send(attr) }
-        vacancy = vacancies.select{ |vacancy| vacancy["id"] == va.vacancy_id }.first
+        vacancy = vacancies.select{ |vacancy| vacancy["id"] == va.wordpress_object_id }.first
         if vacancy.present?
           vacancy_title = vacancy["title"]["rendered"]
         else
