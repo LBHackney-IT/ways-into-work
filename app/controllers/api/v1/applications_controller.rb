@@ -6,8 +6,8 @@ class Api::V1::ApplicationsController < ApplicationController
       @application = Application.new(application_params)
       if @application.save
         render status: 200, json: @application.to_json
-        # CourseApplicationMailer.confirm_application(@course_application).deliver_later
-        # CourseApplicationMailer.notify_team_of_new_application(@course_application).deliver_later
+        ApplicationMailer.confirm_application(@application).deliver_later
+        ApplicationMailer.notify_team_of_new_application(@application).deliver_later
       else
         render status: 500
       end

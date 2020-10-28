@@ -76,6 +76,7 @@ module WaysIntoWork
 
     config.support_email = ENV.fetch('SUPPORT_EMAIL', 'no-reply@example.com')
     config.learning_team_email = ENV.fetch('LEARNING_TEAM_EMAIL', 'no-reply@example.com')
+    config.vacancy_team_email = ENV.fetch('VACANCY_TEAM_EMAIL', 'no-reply@example.com')
 
     config.action_mailer.preview_path = Rails.root.join('lib', 'mail_previews')
 

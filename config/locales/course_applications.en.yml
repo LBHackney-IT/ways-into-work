@@ -2,7 +2,5 @@ en:
   course_applications:
     mail:
       subject:
-        confirm_course_application: "Thanks for applying"
-        course_application_accepted: "You've been accepted"
-        course_application_unsuccessful: "You haven't been accepted"
-        notify_team_of_new_application: "New course application"
+        confirm_application: "Thanks for applying"
+        notify_team_of_new_application: "New application"
