@@ -6,6 +6,8 @@
   = course_application.email
 %td
   = course_application.phone_number
+
+%td HELLO
 - if intake(@intakes, course_application.intake_id).present?
   %td
     = intake(@intakes, course_application.intake_id)["acf"]["parent_course"]["post_title"]

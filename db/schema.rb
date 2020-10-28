@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201016131619) do
+ActiveRecord::Schema.define(version: 20201027144420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 20201016131619) do
     t.string "phone"
     t.integer "role", default: 0
     t.index ["hub_id"], name: "index_advisors_on_hub_id"
+  end
+
+  create_table "applications", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "type"
+    t.text "statement"
+    t.integer "wordpress_object_id"
+    t.boolean "dismissed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "assessment_notes", force: :cascade do |t|
@@ -128,17 +141,6 @@ ActiveRecord::Schema.define(version: 20201016131619) do
     t.datetime "updated_at", null: false
     t.index ["advisor_id"], name: "index_contact_notes_on_advisor_id"
     t.index ["client_id"], name: "index_contact_notes_on_client_id"
-  end
-
-  create_table "course_applications", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
-    t.string "email"
-    t.integer "intake_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "dismissed", default: false
   end
 
   create_table "enquiries", force: :cascade do |t|
@@ -273,18 +275,6 @@ ActiveRecord::Schema.define(version: 20201016131619) do
     t.integer "vacancy_type"
     t.string "salary"
     t.text "description"
-  end
-
-  create_table "vacancy_applications", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
-    t.string "email"
-    t.text "statement"
-    t.integer "vacancy_id"
-    t.boolean "dismissed", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "work_placements", force: :cascade do |t|

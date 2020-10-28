@@ -1,4 +1,4 @@
-class VacancyApplication < ApplicationRecord
+class VacancyApplication < Application
 
   scope :awaiting_review, -> { where(dismissed: false).order(created_at: :desc) }
   scope :reviewed, -> { where(dismissed: true).order(created_at: :desc) }

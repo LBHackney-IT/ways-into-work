@@ -5,6 +5,7 @@ class Advisor::CourseApplicationsController < Advisor::BaseController
   before_action :get_intake_and_course, only: [:show]
 
   def index
+    byebug
     @course_applications = CourseApplication.all
 
     intake_ids = @course_applications.map{ |application| application.intake_id }

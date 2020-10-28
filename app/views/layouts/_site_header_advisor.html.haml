@@ -10,8 +10,7 @@
   = link_to "My Clients", user_root, class: "nav-item is-tab #{cp(user_root)}" if current_advisor.hackney_works_team?
   = link_to "All Clients", :advisor_clients, class: "nav-item is-tab #{cp(:advisor_clients)}"
   = link_to "Enquiries", advisor_enquiries_path, class: "nav-item is-tab #{cp(advisor_enquiries_path)}"
-  = link_to "Course applications", advisor_course_applications_path, class: "nav-item is-tab #{cp(advisor_course_applications_path)}"
-  = link_to "Vacancy applications", advisor_vacancy_applications_path, class: "nav-item is-tab #{cp(advisor_vacancy_applications_path)}"
+  = link_to "Applications", advisor_applications_path(type: "course"), class: "nav-item is-tab #{cp(advisor_applications_path)}"
   = link_to "Dashboard", :advisor_dashboard_index, class: "nav-item is-tab #{cp(:advisor_dashboard_index)}" if !current_advisor.employer_engagement?
   = link_to "Manage Accounts", :advisor_advisors, class: "nav-item is-tab #{cp(:advisor_advisors)}" if current_advisor.admin?
   = button_to "Log Out", destroy_user_login_session_path, class: "nav-item is-tab", :method => :delete
