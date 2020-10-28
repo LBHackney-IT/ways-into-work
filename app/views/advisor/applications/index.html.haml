@@ -58,32 +58,36 @@
           %tr
             = render partial: 'row', locals: { application: application, type: params[:type] }
 
-    / - if @course_applications_reviewed.count > 0
-    /   .head.level
-    /     .level-left
-    /       %h2="Reviewed applications"
-    /       %span.client_total#filtered_count
-    /         %span.bold=pluralize(@course_applications_reviewed.count, 'reviewed application')
-    /   %table.table
-    /     %thead
-    /       %tr
-    /         %th
-    /           Name
-    /         %th
-    /           Applied
-    /         %th
-    /           Email
-    /         %th
-    /           Phone
-    /         %th
-    /           Course
-    /         %th
-    /           Intake
-    /         %th
+    - if @applications_reviewed.count > 0
+      .head.level
+        .level-left
+          %h2="Reviewed applications"
+          %span.client_total#filtered_count
+            %span.bold=pluralize(@applications_reviewed.count, 'reviewed application')
+      %table.table
+        %thead
+          %tr
+            %th
+              Name
+            %th
+              Applied
+            %th
+              Email
+            %th
+            - if params[:type] == "course"
+              %th
+                Course
+              %th
+                Intake
+            - elsif params[:type] == "vacancy"
+              %th
+                Vacancy
+              %th
+            %th
 
-    /     - @course_applications_reviewed.each do |course_application|
-    /       %tr{ class: "unsuccessful" }
-    /         = render partial: 'row', locals: { course_application: course_application }
+        - @applications_reviewed.each do |application|
+          %tr{ class: "unsuccessful" }
+            = render partial: 'row', locals: { application: application, type: params[:type] }
   - else
     %br
     %p="No applications have been made yet"

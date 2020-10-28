@@ -54,7 +54,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
     @application.dismissed = true
     @application.save
     flash[:success] = "Application dismissed"
-    redirect_to advisor_applications_path
+    redirect_to advisor_applications_path(type: @application.type_as_parameter)
   end
 
   def set_application
