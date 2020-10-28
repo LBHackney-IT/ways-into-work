@@ -27,7 +27,10 @@
                 - else
                   Intake not found
               - elsif application.type == 'VacancyApplication'
-                = vacancy(@vacancies, application.wordpress_object_id)["title"]["rendered"]
+                - if vacancy(@vacancies, application.wordpress_object_id).present?
+                  = vacancy(@vacancies, application.wordpress_object_id)["title"]["rendered"]
+                - else
+                  Vacancy not found
             %td
               = application.created_at.strftime("%e %B %Y")
             %td
