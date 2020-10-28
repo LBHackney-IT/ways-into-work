@@ -1,5 +1,8 @@
 %td
-  = "#{application.first_name} #{application.last_name}"
+  - if @possible_client
+    = link_to "#{application.first_name} #{application.last_name}", advisor_client_path(possible_client)
+  - else
+    = "#{application.first_name} #{application.last_name}"
 %td
   = application.created_at.strftime("%e %B %Y")
 %td
@@ -16,5 +19,13 @@
     %td
     %td 
       %small Not found
+- elsif type == "vacancy"
+  - if vacancy(@vacancies, application.wordpress_object_id).present?
+    %td
+      = link_to vacancy(@vacancies, application.wordpress_object_id)["title"]["rendered"], advisor_applications_path(vacancy_select: application.wordpress_object_id, type: 'vacancy')
+  - else
+    %td
+      %small Not found
+
 %td
   = link_to "Review application", advisor_application_path(application), class: 'button is-primary is-small'

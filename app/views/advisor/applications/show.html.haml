@@ -3,7 +3,7 @@
     .level-left
       %h2 Application
     .level-right
-      = link_to "Back", advisor_applications_path(type: @application.type), class: 'button pull-right top_right_button'
+      = link_to "Back", advisor_applications_path(type: @application.type_as_parameter), class: 'button pull-right top_right_button'
   %hr
 
   .box
@@ -18,25 +18,34 @@
       = @application.phone_number
 
   .box
-    - if @intake.present?
-      %p
-        %span.bold Course:
-        = @course["post_title"]
-      %p
-        %span.bold Intake:
-        = link_to "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}", @intake["link"]
+    - if @application.type == 'CourseApplication'
+      - if @intake.present?
+        %p
+          %span.bold Course:
+          = @course["post_title"]
+        %p
+          %span.bold Intake:
+          = link_to "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}", @intake["link"]
 
-      %p
-        %span.bold Total applications:
-        = "#{@application.total_applications} / #{@intake["acf"]["total_capacity"]}"
-        %meter{ value: @application.total_applications, 
-                optimum: 0,
-                low: @intake["acf"]["total_capacity"].to_i*0.66,
-                high: @intake["acf"]["total_capacity"],  
-                max: @intake["acf"]["total_capacity"]+ ".1"}
-    - else
-      %p
-        Intake not found
+        %p
+          %span.bold Total applications:
+          = "#{@application.total_applications} / #{@intake["acf"]["total_capacity"]}"
+          %meter{ value: @application.total_applications, 
+                  optimum: 0,
+                  low: @intake["acf"]["total_capacity"].to_i*0.66,
+                  high: @intake["acf"]["total_capacity"],  
+                  max: @intake["acf"]["total_capacity"]+ ".1"}
+      - else
+        %p
+          Intake not found
+    - elsif @application.type == 'VacancyApplication'
+      - if @vacancy.present?
+        %p
+          %span.bold Vacancy:
+          = @vacancy["title"]["rendered"]
+      - else
+        %p
+          Vacancy not found
 
   .box
     - if @application.dismissed

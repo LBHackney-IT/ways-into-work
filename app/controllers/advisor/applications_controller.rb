@@ -47,6 +47,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
   end
 
   def show
+    @possible_client = Client.with_email(@application.email).first
   end
 
   def dismiss
