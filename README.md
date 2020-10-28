@@ -81,8 +81,6 @@ You can make a POST requests with an object of this general shape:
 }
 ```
 
-The app uses WordPress APIs to get metadata about the thing being applied for. It does this using the `wordpress_object_id` and `type` values.
-
 | Key           | Description                                                                         |
 |---------------------|-------------------------------------------------------------------------------------|
 | first_name          | String. User's first name.                                                          |
@@ -93,3 +91,10 @@ The app uses WordPress APIs to get metadata about the thing being applied for. I
 | type                | String. Either "CourseApplication" or "VacancyApplication"                          |
 | wordpress_object_id | Number. ID of the object within the opportunities WordPress site being applied for. |
 
+### WordPress integration
+
+The app expects to use WordPress APIs to get metadata about the thing being applied for. It does this using the `wordpress_object_id` and `type` values.
+
+Make sure that you've supplied the domain of [the WordPress site where applications are coming from](https://github.com/LBHackney-IT/hackney-works-wp/), along with an application username and password, as environment config.
+
+Without this, you won't be able to see what users are applying for.
