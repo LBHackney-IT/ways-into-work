@@ -73,7 +73,7 @@ You can make a POST requests with an object of this general shape:
 		"first_name": "Firstname",
 		"last_name": "Surname",
 		"email": "firstname.surname@email.com",	
-		"phone_number":"07777777777",
+        "phone_number":"07777777777",
         "statement": "About the applicant",
         "type": "CourseApplication",
 		"wordpress_object_id": 100
@@ -83,7 +83,7 @@ You can make a POST requests with an object of this general shape:
 
 The app uses WordPress APIs to get metadata about the thing being applied for. It does this using the `wordpress_object_id` and `type` values.
 
-| Parameter           | Description                                                                         |
+| Key           | Description                                                                         |
 |---------------------|-------------------------------------------------------------------------------------|
 | first_name          | String. User's first name.                                                          |
 | last_name           | String. User's last name.                                                           |
