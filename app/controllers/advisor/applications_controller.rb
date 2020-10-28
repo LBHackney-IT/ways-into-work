@@ -1,5 +1,8 @@
+require 'wordpress_api.rb'
+
 class Advisor::ApplicationsController < Advisor::BaseController
   #include ApplicationHelper
+  include WordpressApi
 
   before_action :set_application, only: [:show, :dismiss]
   before_action :get_wordpress_object, only: [:show]
@@ -51,6 +54,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
   end
 
   def show
+    session[:return_to] = request.referrer
     @possible_client = Client.with_email(@application.email).first
   end
 
@@ -59,6 +63,20 @@ class Advisor::ApplicationsController < Advisor::BaseController
     @application.save
     flash[:success] = "Application dismissed"
     redirect_to advisor_applications_path(type: @application.type_as_parameter)
+  end
+
+  def for_client
+    @client = Client.find(params[:client_id])
+    @applications = Application.where(email: @client.email)
+    intake_ids = @applications.where(type: 'CourseApplication').pluck(:wordpress_object_id)
+    if intake_ids.size > 0
+      @intakes = get_courses(intake_ids)
+    end
+    vacancy_ids = @applications.where(type: 'VacancyApplication').pluck(:wordpress_object_id)
+    if vacancy_ids.size > 0
+      @vacancies = get_vacancies(vacancy_ids)
+    end
+    render 'for_client'
   end
 
   def set_application

@@ -1,0 +1,38 @@
+%section
+  .head.level
+    .level-left
+      %h2= "#{@client.first_name}'s Applications"
+
+  = render partial: 'shared/upper_tabs', locals: {the_client: @client}
+
+  .profile-tab.top-right-corner
+    - if @applications.count > 0
+      %table.applications
+        %tr
+          %th
+            Title
+          %th
+            Applied on
+          %th
+            Dismissed
+          %th
+            
+        - @applications.order("created_at desc").each do |application|
+          %tr{ class: application.dismissed }
+            %td
+              - if application.type == 'CourseApplication'
+                - if intake(@intakes, application.wordpress_object_id).present?
+                  = "#{intake(@intakes, application.wordpress_object_id)["acf"]["parent_course"]["post_title"]},"
+                  = intake_as_dates(@intakes, application.wordpress_object_id)
+                - else
+                  Intake not found
+              - elsif application.type == 'VacancyApplication'
+                = vacancy(@vacancies, application.wordpress_object_id)["title"]["rendered"]
+            %td
+              = application.created_at.strftime("%e %B %Y")
+            %td
+              = application.dismissed
+            %td
+              = link_to "Review application", advisor_application_path(application), class: 'button is-primary is-small'
+    - else
+      %p= "No applications have been made by #{@client.first_name} yet."
