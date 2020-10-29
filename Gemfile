@@ -65,6 +65,7 @@ group :development do
   gem 'bullet'
   gem 'i18n-debug'
   gem 'web-console'
+  gem 'rack-mini-profiler'
   # gem 'binding_of_caller'
 end
 
