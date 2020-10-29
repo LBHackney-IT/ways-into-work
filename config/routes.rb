@@ -55,7 +55,9 @@ WaysIntoWork::Application.routes.draw do
     resources :enquiries, only: [:index, :show]
     get 'clients/:client_id/enquiries', to: 'enquiries#for_client', as: :client_enquiries
     get 'clients/:client_id/applications', to: 'applications#for_client', as: :client_applications
+    
     resources :applications, only: [:index, :show]
+    put 'applications/dismiss_all', to: 'applications#dismiss_all', as: :application_dismiss_all
     put 'applications/:id/dismiss', to: 'applications#dismiss', as: :application_dismiss
   end
 

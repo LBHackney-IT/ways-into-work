@@ -65,6 +65,24 @@ class Advisor::ApplicationsController < Advisor::BaseController
     redirect_to advisor_applications_path(type: @application.type_as_parameter)
   end
 
+  def dismiss_all
+    if params[:type] == "course"
+      if params[:wordpress_object_id]
+        CourseApplication.where(wordpress_object_id: params[:wordpress_object_id]).awaiting_review.update_all(dismissed: true)
+      else
+        CourseApplication.awaiting_review.update_all(dismissed: true)
+      end
+    elsif params[:type] == "vacancy"
+      if params[:wordpress_object_id]
+        VacancyApplication.where(wordpress_object_id: params[:wordpress_object_id]).awaiting_review.update_all(dismissed: true)
+      else
+        VacancyApplication.awaiting_review.update_all(dismissed: true)
+      end
+    end
+    flash[:notice] = "All applications have been dismissed"
+    redirect_to advisor_applications_path(type: params[:type])
+  end
+
   def for_client
     @client = Client.find(params[:client_id])
     @applications = Application.where(email: @client.email)
