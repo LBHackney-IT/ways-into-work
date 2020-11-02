@@ -18,6 +18,10 @@
     %p
       %span.bold Phone number:
       = @application.phone_number
+    - if @application.type == 'VacancyApplication'
+      %p
+        %span.bold Statement:
+        = @application.statement
 
   .box
     - if @application.type == 'CourseApplication'
