@@ -1,6 +1,6 @@
 class OpportunitiesController < ApplicationController
   def index
-    redirect_to ENV['WORDPRESS_DOMAIN']
+    redirect_to ENV['WORDPRESS_DOMAIN'] unless current_advisor
   end
 
   def show
