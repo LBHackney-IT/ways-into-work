@@ -1,5 +1,5 @@
 .nav-left
-  = link_to I18n.t('header.title'), :hackney_works, class: 'nav-item is-brand bold'
+  = link_to I18n.t('header.title'), ENV["WORDPRESS_DOMAIN"], class: 'nav-item is-brand bold'
 %span.nav-toggle
   %span
   %span
@@ -7,9 +7,9 @@
   .txt
     Menu
 .nav-right.nav-menu
-  = link_to I18n.t('header.nav.hubs'), hubs_path, class: "nav-item is-tab #{cp(hubs_path)} hide_hackney_link"
-  = link_to "Learn", ENV['WORDPRESS_DOMAIN'], class: "nav-item is-tab hide_hackney_link"
-  = link_to I18n.t('header.nav.referrers'), new_client_referrers_path, class: "nav-item is-tab #{cp(new_client_referrers_path)} hide_hackney_link"
+  =# link_to I18n.t('header.nav.hubs'), hubs_path, class: "nav-item is-tab #{cp(hubs_path)} hide_hackney_link"
+  =# link_to "Learn", ENV['WORDPRESS_DOMAIN'], class: "nav-item is-tab hide_hackney_link"
+  =# link_to I18n.t('header.nav.referrers'), new_client_referrers_path, class: "nav-item is-tab #{cp(new_client_referrers_path)} hide_hackney_link"
   -if !user_login_signed_in?
     = link_to "Register", new_client_path, class: "nav-item is-tab #{cp(new_client_path)} hide_hackney_link"
     = link_to I18n.t('header.nav.sign_in'), user_login_session_path, class: "nav-item is-tab #{cp(user_login_session_path)} hide_hackney_100_link"
