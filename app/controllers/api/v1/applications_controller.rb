@@ -4,7 +4,7 @@ class Api::V1::ApplicationsController < ApplicationController
 
     def create
       @application = Application.new(application_params)
-      byebug
+
       if params[:application][:cv].present?
         @file_upload = FileUpload.new(
             attachment: params[:application][:cv],
