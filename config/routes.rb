@@ -95,7 +95,7 @@ WaysIntoWork::Application.routes.draw do
     namespace :v1 do
       resources :opportunities, only: [:index]
       get 'opportunities/featured' => 'opportunities#featured'
-      resources :applications, only: [:create], constraints: { protocol: 'https://', host: ENV['WORDPRESS_DOMAIN'] }
+      resources :applications, only: [:create], constraints: { protocol: 'https://', host: 'opportunities.hackney.gov.uk' }
     end
   end
 end
