@@ -13,8 +13,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
     if params[:type] == "course"
       @applications = CourseApplication.all
       intake_ids = @applications.map{ |application| application.wordpress_object_id }
-      response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake?per_page=100&include=#{intake_ids.join(",")}")
-      @intakes = response.parsed_response
+      @intakes = get_courses(intake_ids)
 
       @filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
 
@@ -23,8 +22,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
     elsif params[:type] == "vacancy"
       @applications = VacancyApplication.all
       vacancy_ids = @applications.map{ |application| application.wordpress_object_id }
-      response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy?per_page=100&include=#{vacancy_ids.join(",")}")
-      @vacancies = response.parsed_response
+      @vacancies = get_vacancies(vacancy_ids)
 
       @filter_options = @vacancies.group_by { |vacancy| vacancy["title"]["rendered"] }
 
@@ -56,6 +54,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
   def show
     session[:return_to] = request.referrer
     @possible_client = Client.with_email(@application.email).first
+    @file_upload = FileUpload.find_by(id: @application.file_upload_id)
   end
 
   def dismiss

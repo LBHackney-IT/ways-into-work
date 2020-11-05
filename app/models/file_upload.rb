@@ -7,9 +7,9 @@ class FileUpload < ApplicationRecord
 
   validates_with AttachmentPresenceValidator, attributes: :attachment
 
-  validates :client, presence: true
+  #validates :client, presence: true
 
-  belongs_to :client
+  belongs_to :client, optional: true
   
   before_real_destroy :remove_file
 

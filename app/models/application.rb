@@ -1,5 +1,7 @@
 class Application < ApplicationRecord
 
+  has_one :file_upload
+
   scope :awaiting_review, -> { where(dismissed: false).order(created_at: :desc) }
   scope :reviewed, -> { where(dismissed: true).order(created_at: :desc) }
 

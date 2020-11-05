@@ -22,6 +22,12 @@
       %p
         %span.bold Statement:
         = @application.statement
+      %p
+      %span.bold CV:
+      - if @file_upload.present?
+        = link_to @file_upload.attachment_file_name, download_url(@file_upload), title: @file_upload.attachment_file_name, target: :blank
+      - else
+        No CV provided
 
   .box
     - if @application.type == 'CourseApplication'
