@@ -90,6 +90,7 @@ You can make a POST requests with an object of this general shape:
 | statement           | String containing a CV/resume/cover letter. Only for vacancy applications           |
 | type                | String. Either "CourseApplication" or "VacancyApplication"                          |
 | wordpress_object_id | Number. ID of the object within the opportunities WordPress site being applied for. |
+| cv                  | File. An optional attachment for the user's application                             |
 
 ### WordPress integration
 
