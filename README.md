@@ -2,7 +2,7 @@
 [![Coverage Status](http://img.shields.io/coveralls/wearefuturegov/ways-into-work.svg?style=flat-square)](https://coveralls.io/r/wearefuturegov/ways-into-work)
 [![License](http://img.shields.io/:license-apache-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-# Hackney Works
+# Hackney Works case management
 
 Hackney Works is a free service that provides coaching and advice to Hackney
 residents who are looking for work.
@@ -95,6 +95,6 @@ You can make a POST requests with an object of this general shape:
 
 The app expects to use WordPress APIs to get metadata about the thing being applied for. It does this using the `wordpress_object_id` and `type` values.
 
-Make sure that you've supplied the domain of [the WordPress site where applications are coming from](https://github.com/LBHackney-IT/hackney-works-wp/), along with an application username and password, as environment config.
+Make sure that you've supplied the domain of [the WordPress site where applications are coming from](https://github.com/LBHackney-IT/hackney-works-wp/), along with an [application username and password](https://wordpress.org/plugins/application-passwords/), as environment config.
 
 Without this, you won't be able to see what users are applying for.
