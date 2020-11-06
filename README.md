@@ -73,9 +73,9 @@ You can make a POST requests with an object of this general shape:
 		"first_name": "Firstname",
 		"last_name": "Surname",
 		"email": "firstname.surname@email.com",	
-        "phone_number": "07777777777",
-        "statement": "About the applicant",
-        "type": "CourseApplication",
+        	"phone_number": "07777777777",
+        	"statement": "About the applicant",
+        	"type": "CourseApplication",
 		"wordpress_object_id": 100
 	}
 }
