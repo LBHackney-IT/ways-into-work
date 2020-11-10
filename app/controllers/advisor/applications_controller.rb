@@ -1,4 +1,4 @@
-require 'wordpress_api.rb'
+  require 'wordpress_api.rb'
 
 class Advisor::ApplicationsController < Advisor::BaseController
   #include ApplicationHelper
@@ -12,19 +12,23 @@ class Advisor::ApplicationsController < Advisor::BaseController
 
     if params[:type] == "course"
       @applications = CourseApplication.all
-      intake_ids = @applications.map{ |application| application.wordpress_object_id }
-      @intakes = get_courses(intake_ids)
 
-      @filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
+      intake_ids = @applications.map{ |application| application.wordpress_object_id }
+      if intake_ids.any?
+        @intakes = get_courses(intake_ids)
+        @filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
+      end
 
       @applications_awaiting_review = CourseApplication.awaiting_review
       @applications_reviewed = CourseApplication.reviewed
     elsif params[:type] == "vacancy"
       @applications = VacancyApplication.all
-      vacancy_ids = @applications.map{ |application| application.wordpress_object_id }
-      @vacancies = get_vacancies(vacancy_ids)
 
-      @filter_options = @vacancies.group_by { |vacancy| vacancy["title"]["rendered"] }
+      vacancy_ids = @applications.map{ |application| application.wordpress_object_id }
+      if vacancy_ids.any?
+        @vacancies = get_vacancies(vacancy_ids)
+        @filter_options = @vacancies.group_by { |vacancy| vacancy["title"]["rendered"] }
+      end
 
       @applications_awaiting_review = VacancyApplication.awaiting_review
       @applications_reviewed = VacancyApplication.reviewed
@@ -102,12 +106,10 @@ class Advisor::ApplicationsController < Advisor::BaseController
 
   def get_wordpress_object
     if @application.type == 'CourseApplication'
-      response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake/#{@application.wordpress_object_id}")
-      @intake = response.parsed_response if response.parsed_response["id"]
+      @intake = get_object_by_id('CourseApplication', @application.wordpress_object_id)
       @course = @intake["acf"]["parent_course"] if @intake
     elsif @application.type == 'VacancyApplication'
-      response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy/#{@application.wordpress_object_id}")
-      @vacancy = response.parsed_response if response.parsed_response["id"]
+      @vacancy = get_object_by_id('VacancyApplication', @application.wordpress_object_id)
     end
   end
 

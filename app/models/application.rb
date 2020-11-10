@@ -7,7 +7,6 @@ class Application < ApplicationRecord
 
   def title
     if type == 'CourseApplication'
-      byebug
       get_object_by_id(type, wordpress_object_id)
     elsif type == 'VacancyApplication'
     end
