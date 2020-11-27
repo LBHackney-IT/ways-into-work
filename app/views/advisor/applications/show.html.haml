@@ -34,7 +34,7 @@
       - if @intake.present?
         %p
           %span.bold Course:
-          = @course["post_title"]
+          = intake_course_title(@intake)
         %p
           %span.bold Intake:
           = link_to "#{@intake["acf"]["start_date"]} — #{@intake["acf"]["end_date"]}", @intake["link"]

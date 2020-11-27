@@ -14,7 +14,7 @@
 - if type == "course"
   - if intake(@intakes, application.wordpress_object_id).present?
     %td
-      = intake(@intakes, application.wordpress_object_id)["acf"]["parent_course"]["post_title"]
+      = intake_course_title(intake(@intakes, application.wordpress_object_id))
     %td
       = link_to intake_as_dates(@intakes, application.wordpress_object_id), advisor_applications_path(type: 'course', course_intake_select: application.wordpress_object_id)
   - else

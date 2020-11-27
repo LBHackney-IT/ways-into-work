@@ -1,7 +1,7 @@
   require 'wordpress_api.rb'
 
 class Advisor::ApplicationsController < Advisor::BaseController
-  #include ApplicationHelper
+  include CourseApplicationHelper
   include WordpressApi
 
   before_action :set_application, only: [:show, :dismiss]
@@ -16,7 +16,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
       intake_ids = @applications.map{ |application| application.wordpress_object_id }
       if intake_ids.any?
         @intakes = get_intakes(intake_ids)
-        @filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
+        @filter_options = @intakes.group_by { |intake| intake_course_title(intake) }
       end
 
       @applications_awaiting_review = CourseApplication.awaiting_review
@@ -107,7 +107,6 @@ class Advisor::ApplicationsController < Advisor::BaseController
   def get_wordpress_object
     if @application.type == 'CourseApplication'
       @intake = get_object_by_id('CourseApplication', @application.wordpress_object_id)
-      @course = @intake["acf"]["parent_course"] if @intake
     elsif @application.type == 'VacancyApplication'
       @vacancy = get_object_by_id('VacancyApplication', @application.wordpress_object_id)
     end

@@ -3,6 +3,14 @@ module CourseApplicationHelper
     intakes.select { |intake| intake["id"] == intake_id }.try(:first)
   end
 
+  def intake_course_title(intake)
+    if intake["acf"]["parent_course"].present?
+      intake["acf"]["parent_course"]["post_title"]
+    else
+      "Not found"
+    end
+  end
+
   def intake_as_dates(intakes, intake_id)
     if intake = intake(intakes, intake_id)
 
