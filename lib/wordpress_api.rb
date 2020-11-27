@@ -5,7 +5,7 @@ module WordpressApi
         password: ENV["WORDPRESS_PASSWORD"]
     }
 
-    def get_courses(ids)
+    def get_intakes(ids)
         response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake?status=draft,publish&per_page=100&include=#{ids.join(",")}", {
             basic_auth: @@auth
         })

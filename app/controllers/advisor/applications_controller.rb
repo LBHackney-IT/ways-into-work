@@ -15,7 +15,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
 
       intake_ids = @applications.map{ |application| application.wordpress_object_id }
       if intake_ids.any?
-        @intakes = get_courses(intake_ids)
+        @intakes = get_intakes(intake_ids)
         @filter_options = @intakes.group_by { |intake| intake["acf"]["parent_course"]["post_title"] }
       end
 
@@ -91,7 +91,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
     @applications = Application.where(email: @client.email)
     intake_ids = @applications.where(type: 'CourseApplication').pluck(:wordpress_object_id)
     if intake_ids.size > 0
-      @intakes = get_courses(intake_ids)
+      @intakes = get_intakes(intake_ids)
     end
     vacancy_ids = @applications.where(type: 'VacancyApplication').pluck(:wordpress_object_id)
     if vacancy_ids.size > 0
