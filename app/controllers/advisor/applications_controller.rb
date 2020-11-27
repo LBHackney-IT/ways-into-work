@@ -21,6 +21,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
 
       @applications_awaiting_review = CourseApplication.awaiting_review
       @applications_reviewed = CourseApplication.reviewed
+      @applications_reviewed_page = @applications_reviewed.page params[:page]
     elsif params[:type] == "vacancy"
       @applications = VacancyApplication.all
 
@@ -32,16 +33,18 @@ class Advisor::ApplicationsController < Advisor::BaseController
 
       @applications_awaiting_review = VacancyApplication.awaiting_review
       @applications_reviewed = VacancyApplication.reviewed
+      @applications_reviewed_page = @applications_reviewed.page params[:page]
     end
 
     if params[:course_intake_select].present?
       @applications_awaiting_review = CourseApplication.awaiting_review.where(wordpress_object_id: params[:course_intake_select])
       @applications_reviewed = CourseApplication.reviewed.where(wordpress_object_id: params[:course_intake_select])
+      @applications_reviewed_page = @applications_reviewed.page params[:page]
     elsif params[:vacancy_select].present?
       @vacancy =  @vacancies.select{|vacancy| vacancy["id"] == params[:vacancy_select].to_i }.try(:first)
       @applications_awaiting_review = VacancyApplication.awaiting_review.where(wordpress_object_id: params[:vacancy_select])
       @applications_reviewed = VacancyApplication.reviewed.where(wordpress_object_id: params[:vacancy_select])
-      @total_applications = @applications_awaiting_review.size + @applications_reviewed.size
+      @applications_reviewed_page = @applications_reviewed.page params[:page]
     end
 
     respond_to do |format|
