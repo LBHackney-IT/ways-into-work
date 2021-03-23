@@ -16,6 +16,9 @@ jobs:
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
     - run: sudo service postgresql start
     - run: curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - run: sudo apt-get clean
+    - run: sudo apt-get update
+    - run: sudo apt-get install dpkg
     - run: sudo dpkg -i google-chrome.deb
     - run: sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
     - run: rm google-chrome.deb

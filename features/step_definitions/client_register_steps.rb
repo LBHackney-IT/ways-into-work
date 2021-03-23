@@ -16,7 +16,7 @@ end
 World RegistrationSH
 
 When(/^I navigate to register for the service$/) do
-  click_link I18n.t('buttons.register')
+  click_link "Sign up"
 end
 
 Then(/^I should be asked to accept the eligibility criteria$/) do
