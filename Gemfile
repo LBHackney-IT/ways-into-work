@@ -6,7 +6,7 @@ gem 'rails', '5.1.6.2'
 gem 'devise'
 gem 'draper'
 gem 'font-awesome-rails'
-gem 'haml-rails'
+gem "haml-rails", "~> 2.0"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
