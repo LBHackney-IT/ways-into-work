@@ -9,8 +9,8 @@ class CourseApplication < Application
         row = attribute_names.map{ |attr| ca.send(attr) }
         intake = intakes.select{ |intake| intake["id"] == ca.wordpress_object_id }.first
         if intake.present?
-          course_title = intake.dig("acf", "parent_course", "post_title")
-          intake_dates = "#{intake.dig("acf", "start_date")} - #{intake.dig("acf", "end_date")}"
+          course_title = intake["acf"] && intake["acf"]["parent_course"] && intake["acf"]["parent_course"]["post_title"]
+          intake_dates = "#{intake["acf"] && intake["acf"]["start_date"]} - #{intake["acf"] && intake["acf"]["end_date"]}"
         else
           course_title = "Intake not found"
           intake_dates = "Intake not found"

@@ -9,7 +9,7 @@ class VacancyApplication < Application
         row = attribute_names.map{ |attr| va.send(attr) }
         vacancy = vacancies.select{ |vacancy| vacancy["id"] == va.wordpress_object_id }.first
         if vacancy.present?
-          vacancy_title = vacancy.dig("title", "rendered")
+          vacancy_title = vacancy["title"] && vacancy["title"]["rendered"]
         else
           vacancy_title = "Vacancy not found"
         end
