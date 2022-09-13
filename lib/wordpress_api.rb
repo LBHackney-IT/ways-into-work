@@ -6,14 +6,14 @@ module WordpressApi
     }
 
     def get_intakes(ids)
-        response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake?status=draft,trash,publish&per_page=100&include=#{ids.join(",")}", {
+        response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/intake?status=publish&per_page=100&include=#{ids.join(",")}", {
             basic_auth: @@auth
         })
         response.parsed_response
     end
 
     def get_vacancies(ids)
-        response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy?status=draft,trash,publish&per_page=100&include=#{ids.join(",")}", {
+        response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy?status=publish&per_page=100&include=#{ids.join(",")}", {
             basic_auth: @@auth
         })
         response.parsed_response
