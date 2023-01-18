@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/mimemagicrb/mimemagic.git
+  remote: https://github.com/mimemagicrb/mimemagic.git
   revision: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
   ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
   specs:
@@ -277,7 +277,7 @@ GEM
     public_suffix (4.0.6)
     puma (3.12.0)
     racc (1.5.2)
-    rack (2.2.3)
+    rack (2.2.6.2)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-mini-profiler (2.2.0)
