@@ -12,6 +12,13 @@ module WordpressApi
         response.parsed_response
     end
 
+    def get_active_vacancies()
+        response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy?status=publish&per_page=100", {
+            basic_auth: @@auth
+        })
+        response.parsed_response
+    end
+
     def get_vacancies(ids)
         response = HTTParty.get("#{ENV['WORDPRESS_DOMAIN']}/wp-json/wp/v2/vacancy?status=publish&per_page=100&include=#{ids.join(",")}", {
             basic_auth: @@auth
