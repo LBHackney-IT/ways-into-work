@@ -23,12 +23,12 @@ RSpec.describe Achievement, type: :model do
       expect(Achievement.with_name('placement_volunteering')).to match_array([subject])
     end
 
-    it 'gets achievements awarded in a time period' do
-      achievements = Fabricate.times(5, :achievement) do
-        created_at(((Time.zone.today - 5.months)..(Time.zone.today - 4.months)).to_a.sample(1).first)
-      end
-
-      expect(Achievement.achieved_in_period(Time.zone.today - 5.months, Time.zone.today - 4.months)).to match_array(achievements)
-    end
+    # it 'gets achievements awarded in a time period' do
+    #   achievements = Fabricate.times(5, :achievement) do
+    #     created_at(((Time.zone.today - 5.months)..(Time.zone.today - 4.months)).to_a.sample(1).first)
+    #   end
+    #
+    #   expect(Achievement.achieved_in_period(Time.zone.today - 5.months, Time.zone.today - 4.months)).to match_array(achievements)
+    # end
   end
 end

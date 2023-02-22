@@ -10,7 +10,7 @@ jobs:
       LANG: C
       LC_ALL: en_US.UTF-8
     docker:
-    - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
+    - image: cimg/base:2020.01
     steps:
     - checkout
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
