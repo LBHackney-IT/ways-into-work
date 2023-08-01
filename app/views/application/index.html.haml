@@ -14,8 +14,6 @@
         =t('hackney_works.hero.extra')
   .lines
 
-= render 'layouts/corona_notice' unless current_advisor.present?
-
 .container.points
   %h2
     =t('hackney_works.points.title')
@@ -86,7 +84,7 @@
       %h2=t('hackney_works.hack_100.title')
       %p=t('hackney_works.hack_100.about')
       = link_to I18n.t('hackney_works.hack_100.button'), work_placements_path, class: 'button'
-  
+
 .full-width#testimonials.hero
   .bg_img
     =image_tag('canal.jpg', class: 'parralax_me', id: 'parralax_me2')
