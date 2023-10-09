@@ -24,13 +24,5 @@
         #want_advisor.convert_radio
           = form.input :wants_advisor, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Would you like to be assigned to a Hackney Works advisor?"
 
-      %hr
-      #supportedemployment_block
-        %p.bold Supported Employment
-        %p If you need support with your mental health condition or have a learning disability, please tick the box below.
-
-        .inline_checkbox.light-label
-          = form.input :assigned_supported_employment, as: :boolean, label: "Tick here if you would like to see one of these advisors."
-
       %br
       = form.submit t('devise.buttons.register'), :class => 'button is-primary is-pulled-right is-large'
