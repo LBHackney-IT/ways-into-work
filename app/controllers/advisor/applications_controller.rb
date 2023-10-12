@@ -28,6 +28,7 @@ class Advisor::ApplicationsController < Advisor::BaseController
       vacancy_ids = @applications.map{ |application| application.wordpress_object_id }
       if vacancy_ids.any?
         @vacancies = get_vacancies(vacancy_ids)
+        @filter_options = @vacancies.group_by { |vacancy| vacancy["title"]["rendered"] }
       end
 
       @applications_awaiting_review = VacancyApplication.awaiting_review
