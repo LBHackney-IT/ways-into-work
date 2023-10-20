@@ -27,7 +27,8 @@ class Advisor::ApplicationsController < Advisor::BaseController
 
       vacancy_ids = @applications.map{ |application| application.wordpress_object_id }
       if vacancy_ids.any?
-        @vacancies = get_vacancies(vacancy_ids)
+        @vacancies = get_vacancies(vacancy_ids.uniq)
+        @vacancies = @vacancies.sort_by { |a, b| a["title"]["rendered"] }
         @filter_options = @vacancies.group_by { |vacancy| vacancy["title"]["rendered"] }
       end
 
