@@ -7,11 +7,12 @@ WaysIntoWork::Application.routes.draw do
 
   get 'hackney_works', to: redirect('/')
 
-  get 'apprenticeships' => 'static#apprenticeships'
+  get 'apprenticeships', to: redirect('https://opportunities.hackney.gov.uk/apprentices')
   get 'hackney100' => 'static#hackney100'
-  get 'work_placements' => 'static#hackney100'
+  get 'work_placements', to: redirect('https://opportunities.hackney.gov.uk/placements')
   get 'support' => 'static#support'
-  get 'employers' => 'static#employers'
+  get 'employers', to: redirect('https://opportunities.hackney.gov.uk/employers')
+  get 'hubs', to: redirect('https://opportunities.hackney.gov.uk/support-2/')
   get 'unsubscribed' => 'static#unsubscribed'
 
   get 'privacy-policy' => 'static#privacy_policy'
