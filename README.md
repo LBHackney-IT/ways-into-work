@@ -99,3 +99,15 @@ The app expects to use WordPress APIs to get metadata about the thing being appl
 Make sure that you've supplied the domain of [the WordPress site where applications are coming from](https://github.com/LBHackney-IT/hackney-works-wp/), along with an [application username and password](https://wordpress.org/plugins/application-passwords/), as environment config.
 
 Without this, you won't be able to see what users are applying for.
+
+# Deployment
+**NOTE: This application will be migrated over onto our AWS suite in the future.**
+
+This application is currently hosted on Heroku and currently has a staging and production envrionment. 
+The application has to be manually deployed on the Heroku console for each environment if any changes have been made. As such a developer will need access to Heroku to release any changes.
+
+Under the deploy tab for the application is the option to manually deploy from a branch as shown in the image below:
+
+![Heroku application deployment](heroku-deployment.png)
+
+The latest commit will be deployed from the specified branch once the deploy button is clicked.
