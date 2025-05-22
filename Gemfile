@@ -55,7 +55,7 @@ gem 'sendgrid_actionmailer_adapter'
 
 gem 'active_record-acts_as'
 
-gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+gem 'mimemagic'
 
 group :development, :staging, :test do
   gem 'fabrication'
