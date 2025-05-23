@@ -57,9 +57,6 @@ gem 'active_record-acts_as'
 
 gem 'mimemagic'
 
-# Testing
-gem 'rails-controller-testing'
-
 group :development, :staging, :test do
   gem 'fabrication'
   gem 'ffaker'
