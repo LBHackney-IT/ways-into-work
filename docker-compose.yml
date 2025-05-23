@@ -16,7 +16,7 @@ services:
     image: postgres
     container_name: ways-into-work_dev_db_1
     volumes:
-      - dev_pg_data:/var/lib/postgresql/data/:cached
+      - dev_pg_data:/var/lib/postgresql
     environment:
       - POSTGRES_DB=ways-into-work
       - POSTGRES_USER=postgres

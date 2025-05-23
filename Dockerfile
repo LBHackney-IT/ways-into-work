@@ -21,9 +21,9 @@ RUN bundle check || bundle install
 RUN RAILS_ENV=production rails assets:precompile
 
 # Add a script to be executed every time the container starts.
-#COPY bin/entrypoint.sh /usr/bin/
-#RUN chmod +x /usr/bin/entrypoint.sh
-#ENTRYPOINT ["entrypoint.sh"]
+COPY bin/entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 
 COPY . /app
 EXPOSE 3001
