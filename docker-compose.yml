@@ -1,0 +1,33 @@
+version: '3.1'
+services:
+  app:
+    build: .
+    ports: ["3000:3000"]
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: 'rails s -b 0.0.0.0 -p 3000'
+    networks:
+      - dev
+  db:
+    image: postgres
+    container_name: ways-into-work_dev_db_1
+    volumes:
+      - dev_pg_data:/var/lib/postgresql
+    environment:
+      - POSTGRES_DB=ways-into-work
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    restart: on-failure
+    networks:
+      - dev
+
+networks:
+  dev:
+volumes:
+  dev_pg_data: {}
+  dev_node_modules:

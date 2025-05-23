@@ -42,3 +42,6 @@ coverage/
 /.gemtags
 
 public/sitemap.xml.gz
+
+# RubyMine project files
+.idea
