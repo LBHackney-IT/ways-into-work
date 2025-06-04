@@ -75,4 +75,4 @@ workflows:
   version: 2
   check:
     jobs:
-      build-and-test
+      - build-and-test
