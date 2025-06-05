@@ -18,7 +18,7 @@ ENV RAILS_ENV ${RAILS_ENV}
 RUN gem install bundler:1.17.3
 RUN bundle check || bundle install
 
-RUN RAILS_ENV=production SECRET_KEY_BASE="secret" bin/rails assets:precompile
+RUN RAILS_ENV=production SECRET_KEY_BASE="secret" rails assets:precompile
 
 # Add a script to be executed every time the container starts.
 COPY bin/entrypoint.sh /usr/bin/
