@@ -55,7 +55,8 @@ commands:
 jobs:
   build-and-test:
     working_directory: ~/LBHackney-IT/ways-into-work
-    executor: docker-python
+    docker:
+      - image: cimg/base:2025.04
     steps:
       - checkout
       - setup_remote_docker
