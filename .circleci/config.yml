@@ -54,6 +54,7 @@ commands:
 
 jobs:
   build-and-test:
+    working_directory: ~/LBHackney-IT/ways-into-work
     machine:
       image: ubuntu-2004:2023.10.1
     steps:
