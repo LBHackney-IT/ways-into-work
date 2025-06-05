@@ -55,8 +55,8 @@ commands:
 jobs:
   build-and-test:
     working_directory: ~/LBHackney-IT/ways-into-work
-    docker:
-      - image: cimg/base:2025.04
+    machine:
+      image: ubuntu-2004:2023.10.1
     steps:
       - checkout
       - setup_remote_docker
