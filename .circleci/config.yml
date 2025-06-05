@@ -54,6 +54,7 @@ commands:
 
 jobs:
   build-and-test:
+    working_directory: ~/ways_into_work
     executor: docker-python
     steps:
       - checkout
