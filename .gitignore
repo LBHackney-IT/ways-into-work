@@ -16,7 +16,6 @@
 lib/assets
 public/assets
 public/system
-config/database.yml
 .tork.rb
 .DS_Store
 *.dump
