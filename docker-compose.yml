@@ -3,8 +3,7 @@ services:
   app:
     build: .
     ports: ["3000:3000"]
-    env_file:
-      - docker-compose.env
+    env_file: ./.env
     depends_on:
       - db
     volumes:
