@@ -69,7 +69,7 @@ module WaysIntoWork
     config.assets.version = '1.0'
 
     config.secret_key_base = ENV['SECRET_KEY_BASE']
-    config.devise_secret_key = ENV['DEVISE_SECRET_KEY']
+    config.devise_secret_key = ENV['DEVISE_SECRET_KEY_TEST']
     config.devise_pepper = ENV['DEVISE_PEPPER']
 
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
