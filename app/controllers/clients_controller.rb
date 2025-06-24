@@ -27,8 +27,10 @@ class ClientsController < ApplicationController
 
   def init_client
     return if client.postcode.blank?
+    puts "Does the console work"
+    Rails.logger.info "Postcode is #{client.hackney_ward_code}"
     if (ward_code = client.hackney_ward_code).present?
-
+      Rails.logger.info "Postcode is valid"
       if client.wants_advisor? # default is true, only get option to not have advisor if registering through enquiry.
         client.auto_assign_advisor(ward_code)
       else # if they do not want an advisor
@@ -45,6 +47,7 @@ class ClientsController < ApplicationController
 
       client.login.generate_default_password
     else
+      Rails.logger.info "Doing the redirect"
       redirect_to(:outside_hackney)
     end
   end

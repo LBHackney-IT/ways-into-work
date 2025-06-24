@@ -16,7 +16,9 @@ class HackneyWardFinder
   
   def response
     return {} if @postcode.blank? || GoingPostal.postcode?(@postcode, 'GB').blank?
-    @response ||= HTTParty.get(url, headers: headers).parsed_response
+    postcodeApiResponse = HTTParty.get(url, headers: headers).parsed_response
+    Rails.logger.info "Response from API: #{postcodeApiResponse}"
+    @response ||= postcodeApiResponse
   end
   
   def headers
