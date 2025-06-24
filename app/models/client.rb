@@ -321,6 +321,8 @@ class Client < ApplicationRecord # rubocop:disable ClassLength
 
   def hackney_ward_code
     ward_code = HackneyWardFinder.new(postcode).lookup
+    Rails.logger.info "Ward code: #{ward_code}"
+    Rails.logger.info "Was ward code present: #{ward_code.present? ? 'Yes' : 'No'}"
     return ward_code if ward_code.present?
     errors.add(:postcode, I18n.t('clients.validation.outside_borough'))
     nil
